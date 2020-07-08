@@ -1,5 +1,5 @@
 # Downloads
-![WebBites icon](https://i.imgur.com/UElniEd.png)
+![WebBites icon](https://i.imgur.com/SwJeJJk.png)
 [Mac App](https://github.com/elrumo/webbites_roadmap/raw/master/WebBites_Mac.zip)
 
 # webbites_roadmap
