@@ -1,0 +1,14 @@
+# Typescript
+dist
+node_modules
+
+# Environment variables
+.env
+
+# OS
+.DS_Store
+/logs
+.env
+.env
+
+/data

@@ -1,0 +1,2424 @@
+{
+  "alerts": {
+    "bookmark": {
+      "duplicate": "このブックマークは保存済みです",
+      "duplicate_cancel": "保存しない",
+      "duplicate_confirm": "もう一度保存",
+      "error": "ブックマークの保存に失敗しました",
+      "export_success": "ブックマークをエクスポートしました！",
+      "limit_description": {
+        "other": "してさらにブックマークを保存"
+      },
+      "limit_reached": "ブックマークの上限に達しました",
+      "pin_error": "ピン留めできませんでした。後でもう一度お試しください",
+      "save_error_note": "メモの保存に失敗しました",
+      "save_success": "ブックマークを保存しました",
+      "saving": "保存中...",
+      "hide_error": "Could not change that bookmark's visibility",
+      "hide_index_lag": "Hidden, but search may take a moment to catch up"
+    },
+    "clipboard": {
+      "copy_error": "クリップボードへのコピーに失敗しました。",
+      "copy_success": "{text}をクリップボードにコピーしました。"
+    },
+    "editor": {
+      "image_upload_error": "ドロップされた画像の処理に失敗しました：{error}",
+      "image_upload_progress": "画像をアップロード中..."
+    },
+    "file_upload": {
+      "error": "ファイルのアップロードに失敗しました",
+      "success": "ファイルをアップロードしました",
+      "uploading_many": "ファイルをアップロード中...",
+      "uploading_one": "ファイルをアップロード中..."
+    },
+    "image_upload": {
+      "error": "画像のアップロードに失敗しました",
+      "success": "画像のアップロードが完了しました"
+    },
+    "import": {
+      "complete": "完了！",
+      "complete_description": "すべてのブックマークがWebBitesにインポートされました。",
+      "error": "エラーが発生しました。もう一度お試しください",
+      "final_success": "ブックマークのインポートが完了しました。😊",
+      "progress": "しばらくお待ちください...",
+      "progress_description": "ブックマークが多い場合、数秒かかる場合があります",
+      "remaining": "インポート残り：",
+      "remaining_description": "時間がかかる場合があります。アプリを閉じていただいても、完了時にメールでお知らせします。",
+      "success": "ブックマークのインポートが完了しました"
+    },
+    "live_note": {
+      "conflict": "このノートは別のデバイスから更新されました。ローカルの変更は保持されています。",
+      "merged_with_conflicts": "クラウドの変更をマージしました。重複する編集の一部はそのまま保持されています。"
+    },
+    "subscription": {
+      "duplicate_plan": "あ な た は す で に この プ ラ ン に 登 録 さ れ て い ま す 。 現 在 の 登 録 を 確 認 し て く だ さ い 。"
+    },
+    "core_store": {
+      "board_joined": "「{name}」に参加しました",
+      "invite_accepted": "招待を承諾しました",
+      "invite_invalid": "この招待リンクは無効になっています",
+      "board_move_failed": "ここに移動できませんでした",
+      "board_duplicated": "複製しました — ブックマーク {count} 件をコピー | 複製しました — ブックマーク {count} 件をコピー",
+      "board_duplicate_error": "ボードの複製中にエラーが発生しました",
+      "board_archived": "ボードをアーカイブしました",
+      "board_archive_error": "ボードのアーカイブ中にエラーが発生しました",
+      "board_delete_title": "「{name}」を削除しますか？",
+      "folder_delete_description": "フォルダ内のボードとフォルダも削除されます。ブックマーク自体は削除されません。",
+      "board_delete_shared_description": "共有しているすべての人がアクセスできなくなります。ブックマーク自体は削除されません。",
+      "board_delete_description": "ブックマーク自体は削除されません。",
+      "folder_deleted": "フォルダを削除しました",
+      "board_deleted": "ボードを削除しました",
+      "folder_delete_error": "フォルダの削除中にエラーが発生しました",
+      "board_delete_error": "ボードの削除中にエラーが発生しました",
+      "board_leave_title": "「{name}」から退出しますか？",
+      "board_leave_description": "誰かに再度招待されるまで、あなたのボードから表示されなくなります。",
+      "board_leave_confirm": "退出",
+      "board_left": "ボードから退出しました",
+      "board_leave_error": "ボードからの退出中にエラーが発生しました",
+      "trash_load_failed": "削除したブックマークを読み込めませんでした",
+      "trash_restore_failed": "ブックマークを復元できませんでした",
+      "drawing_save_error": "手描きの保存中にエラーが発生しました",
+      "sign_in_required": "この操作にはログインが必要です"
+    },
+    "core_files": {
+      "unsupported_one": "{name} は画像、PDF、音声のいずれでもありません。",
+      "unsupported_many": "アップロードできるのは画像、PDF、音声のみです。",
+      "heic_one": "このブラウザでは {name} を読み込めません。JPEG に書き出してからもう一度お試しください。",
+      "heic_many": "このブラウザでは HEIC 写真を読み込めません。JPEG に書き出してからもう一度お試しください。",
+      "unreadable_one": "{name} はこのブラウザで読み込める画像ではありません。",
+      "unreadable_many": "これらはこのブラウザで読み込める画像ではありません。"
+    }
+  },
+  "auth": {
+    "add_to_waitlist": "ウェイトリストに追加",
+    "chrome_extension_auth_detected": "エクステンション検出",
+    "chrome_extension_auth_not_detected": "エクステンションが検出されない",
+    "close_tab": "閉じるタブ",
+    "current_bookmarking_manager": "現在使用しているブックマークマネージャーは？",
+    "current_bookmarking_manager_placeholder": "例：Chromeブックマーク、Pocket、Raindropなど",
+    "email_error": "ログインに失敗しました：",
+    "email_success": "パスワードをリセットするためのリンクが記載されたメールが送信されました。",
+    "extension_connected": "エクステンション接続",
+    "extension_connected_message": "これでWebBitesをブックマークと一緒に使い始めることができます。",
+    "extension_login_description": "WebBites アカウント に サインイン し て ください",
+    "go_to_app": "アプリへ移動",
+    "logout": "ログアウト",
+    "most_interested": "WebBitesの何に最も興味がありますか？",
+    "most_interested_placeholder": "例：AI整理、クロスプラットフォーム同期など",
+    "notify_me": "通知を受け取る",
+    "password_reset_error": "パスワードのリセット中にエラーが発生しました。　もう一度お試しください。",
+    "password_reset_success": "あなたのパスワードは正常にリセットされました。",
+    "reset_password_description": "新しい パスワード を 入力 して リセット して ください。",
+    "sign_in": "サインイン",
+    "signInWithApple": "Apple で続ける",
+    "sign_up": "サインアップ",
+    "waitlist_done": "ウェイトリストに登録されました！",
+    "waitlist_info": "ウェイトリストに参加して、",
+    "waitlist_info_2": "をフォローして最新情報を入手してください。",
+    "waitlist_success": "ウェイトリストに登録されました！",
+    "waitlist_success_2": "をフォローして最新情報を入手してください。",
+    "waitlist_success_alert": "ウェイティングリストに追加されました🥳。"
+  },
+  "bookmark": {
+    "audio_generation": "音声 生成",
+    "image_extracted_text": "💬 画像から抽出したテキスト"
+  },
+  "bookmark_details": {
+    "added": "追加済み",
+    "alerts": {
+      "color_copied": "カラーをコピーしました",
+      "image_downloaded": "画像をダウンロードしました",
+      "image_download_error": "画像のダウンロードに失敗しました"
+    },
+    "bookmark_types": {
+      "article": "記事",
+      "note": "メモ",
+      "tweet": "ツイート"
+    },
+    "details_title": "ページタイトル",
+    "download_image": "画像をダウンロード",
+    "hide_keywords": "キーワードを非表示",
+    "keywords": "キーワード",
+    "main_colors": "メインカラー",
+    "media": {
+      "cast": "キャスト",
+      "crew": "スタッフ",
+      "developer": "開発者",
+      "director": "監督",
+      "genres": "ジャンル",
+      "publisher": "パブリッシャー",
+      "release_date": "公開日",
+      "screenshots": "スクリーンショット",
+      "show_more": "さらに{count}件表示",
+      "videos": "動画"
+    },
+    "notes_placeholder": "あなたのページのメモ",
+    "page_details": "ページ詳細",
+    "see_all_keywords": "すべてのキーワードを表示",
+    "tags": "タグ",
+    "time": {
+      "days_ago": "{count}日前",
+      "hours_ago": "{count}時間前",
+      "minutes_ago": "{count}分前",
+      "months_ago": "{count}ヶ月前",
+      "seconds_ago": "{count}秒前",
+      "years_ago": "{count}年前"
+    }
+  },
+  "bookmarks": {
+    "add_files": "ファイルを追加",
+    "cards": "ブックマーク",
+    "change_files": "ファイルを変更 ({count})",
+    "copy_url": "URLをコピー",
+    "cover": "カバー",
+    "delete": "ブックマークを削除",
+    "delete_confirmation_multiple": "これらの{count}件のブックマークを削除してもよろしいですか？",
+    "delete_confirmation_single": "このブックマークを削除してもよろしいですか？",
+    "deselect_hint": "クリックでインポートしたくないブックマークを選択解除できます。",
+    "drawing": {
+      "assets_unavailable": "一部の画像を読み込めなかったため、プレビューは更新されません。",
+      "new": "新しい手描き",
+      "untitled": "手描き"
+    },
+    "empty_state_message": "サイトを保存してみましょう？",
+    "empty_state_title": "まだ何もありません...",
+    "expand_to_edit": "展開して編集",
+    "free_import_message": "または100件までは無料でインポートできます。",
+    "hide": {
+      "label": "Hide",
+      "label_hidden": "Hidden",
+      "from_library": "Hide from library",
+      "everywhere": "Hide everywhere",
+      "unhide": "Unhide",
+      "hidden_from_library": "Hidden from your library. Still in its boards.",
+      "hidden_everywhere": "Hidden everywhere, boards included.",
+      "unhidden": "Back in your library",
+      "private_section": "Private",
+      "private_empty": "Nothing hidden yet",
+      "private_empty_hint": "Hide a bookmark and it will wait for you here.",
+      "unlock_title": "Private",
+      "unlock_description": "Enter your password to see your hidden bookmarks.",
+      "unlock_placeholder": "Password",
+      "unlock_confirm": "Unlock",
+      "unlock_wrong": "That password didn't work.",
+      "unlock_reset": "No password? Email me a link to set one.",
+      "unlock_reset_sent": "Check your email for the link.",
+      "unlock_reset_error": "Could not send the email. Try again in a moment."
+    },
+    "image_count": "画像 {n} 枚",
+    "image_n_of_m": "{m} 件中 {n} 件目",
+    "image_order": "画像の順序",
+    "import": "ブックマークをインポート",
+    "import_error": "ブックマークのインポートに失敗しました。後でもう一度お試しください。",
+    "import_limit": "100 以上の ブックマーク を インポート する には、 一度限りの 料金 を 支払う か、 プラン を アップグレード する 必要 が あり ます。",
+    "import_payment_message": "WebBitesの開始時には、多くのブックマークのインポートにコストがかかるため、{count}件のブックマークをインポートする初期費用として、プロジェクトのサポートとコスト補填のために3ドルの1回限りの料金をお願いしています。",
+    "import_progress": "ブックマークをインポート中",
+    "import_progress_message": "時間がかかる場合がありますが、ウィンドウを開いたままにする必要はありません。完了時にメールでお知らせします。",
+    "import_progress_title": "ブックマークをインポート中です。",
+    "import_success": "ブックマークのインポートが完了しました",
+    "import_title": "ブックマークをインポート",
+    "merge": "結合",
+    "merge_confirmation": "これら {count} 件の画像を1つのブックマークに結合しますか？",
+    "merge_explainer": "最初の1件はボードとメモを保持します。残りはゴミ箱に移動し、復元できます。",
+    "merge_failed": "ブックマークを結合できませんでした",
+    "merged": "{count} 枚の画像を持つ1つのブックマークに結合しました",
+    "new": "新規ブックマーク",
+    "new_placeholder": {
+      "game": "ゲームを検索…",
+      "link": "リンクを貼り付け…",
+      "movie": "映画を検索…",
+      "note": "メモを書く…"
+    },
+    "no_bookmarks": "ブックマークが見つかりません",
+    "no_pinned_bookmarks": "ここに表示するブックマークをピン留めしてください",
+    "payment_button": "1回限り3ドル",
+    "pdf_page_count": "{n}ページ",
+    "pdf_page_one": "1ページ",
+    "pin_success": "ブックマークをピン留めしました",
+    "pinned": "ピン留め",
+    "recorder": {
+      "empty": "録音されませんでした。マイクがミュートになっていないか確認してください。",
+      "hint": "タップして録音を開始",
+      "mic_denied": "WebBites がマイクにアクセスできません。ブラウザの設定で許可するか、ファイルをアップロードしてください。",
+      "pause": "一時停止",
+      "paused": "一時停止中",
+      "play": "再生",
+      "record_again": "録音し直す",
+      "record_instead": "代わりに録音する",
+      "requesting": "マイクを待っています…",
+      "restart": "最初からやり直す",
+      "stop": "録音を停止",
+      "title_placeholder": "この録音に名前を付ける",
+      "unsupported": "このブラウザでは録音できません。ファイルのアップロードは可能です。",
+      "upload": "ファイルをアップロード"
+    },
+    "remaining": "ブックマーク 残り",
+    "reorder_hint": "ドラッグして並べ替えます。最初の画像がカバーになります。",
+    "select_all": "({count})すべてを選択",
+    "select_all_visible": "表示中の{count}件すべてを選択",
+    "try_searching": "他のキーワードで検索してみてください",
+    "types": {
+      "articles": "記 事",
+      "audio": "オーディオ",
+      "drawing": "手描き",
+      "game": "ゲーム",
+      "image": "画像",
+      "movie": "映画",
+      "music": "音楽",
+      "pdf": "PDF",
+      "textNote": "メモ",
+      "website": "ウェブサイト"
+    },
+    "unpin_success": "ブックマークのピン留めを解除しました",
+    "unselect_all": "すべて選択解除",
+    "url_copied": "URLをクリップボードにコピーしました",
+    "urls_copied": "URL をクリップボードにコピーしました",
+    "what_to_save": "What do you want to save?",
+    "compose": {
+      "add_tag": "タグを追加",
+      "board": "ボード",
+      "board_create_failed": "ボードを作成できませんでした",
+      "board_failed": "保存しましたが、{board} に追加できませんでした。",
+      "board_label": "ボード、{board}",
+      "board_name": "ボード名",
+      "create_board": "作成",
+      "new_board": "新しいボード…",
+      "notes": "メモ",
+      "notes_placeholder": "メモを追加…",
+      "no_board": "ボードなし",
+      "remove_tag": "タグ {tag} を削除",
+      "saved_to_board": "{board} に保存しました",
+      "stop": "停止",
+      "tag": "タグ",
+      "tags_count": "タグ、{count}"
+    }
+  },
+  "changes": {
+    "body_1": "提案やバグ報告については",
+    "body_1_link": "フィードバックページ",
+    "body_2": "ご登録いただくと、新機能や変更に関する最新情報をお届けします。",
+    "change_label": "変更",
+    "changes_label": "変更",
+    "rss": "RSS で購読することもできます",
+    "title": "変更履歴",
+    "signup_thanks": "最新情報のお知らせにご登録いただきありがとうございます",
+    "already_subscribed": "すでに登録済みです",
+    "signup_failed": "最新情報のお知らせに登録できませんでした"
+  },
+  "common": {
+    "accept": "承諾",
+    "add_tag": "タグの追加",
+    "all": "すべて",
+    "ascending": "上昇",
+    "bookmarks": "ブックマーク",
+    "cancel": "キャンセル",
+    "checking_access": "ア クセ ス を 確 認 中 ...",
+    "choose_something": "選択してください..",
+    "close": "閉じる",
+    "continue": "次へ",
+    "dates": {
+      "month": "月",
+      "year": "年"
+    },
+    "decline": "拒否",
+    "delete": "削除",
+    "descending": "下降",
+    "drop_image": "画像またはPDFをドロップ",
+    "error_try_again": "エラーが発生しました。",
+    "get_updates": "最新情報を入手する",
+    "import": "インポート",
+    "import_bookmarks": "インポート {selected} ブックマーク",
+    "import_bookmarks_remaining": "インポート {selected} ブックマーク ({remaining} クォータに残り)",
+    "language_changed_success": "言語が 正常に 変更されました",
+    "loading": "読み込み中...",
+    "month": "月",
+    "new_first": "ニューファースト",
+    "no_results": "結果が見つかりません",
+    "old_first": "オールドファースト",
+    "open": "開く",
+    "optional": "オプション",
+    "or": "または",
+    "pin": "ピン留め",
+    "remaining": "残り",
+    "remind_later": "後で通知する",
+    "save": "保存",
+    "saved": "保存された",
+    "search": "検索",
+    "select_file": "ファイルを選択",
+    "select_new_file": "他のファイルを選択",
+    "shortcuts": {
+      "copy_url": {
+        "description": "⌥（オプション/alt）キーを押しながらブックマークをクリック",
+        "name": "URLをコピー"
+      },
+      "focus_search": {
+        "description": "/キーを押してキーボードから直接検索にフォーカス",
+        "name": "検索にフォーカス"
+      },
+      "open_website": {
+        "description": "CMDキーを押しながらブックマークをクリック",
+        "name": "ウェブサイトを開く"
+      },
+      "quick_save": {
+        "description": "⌘ + VでクリップボードのURLを保存",
+        "name": "クイック保存"
+      },
+      "select_card": {
+        "description": "⇧キーを押しながらブックマークをクリック",
+        "name": "ブックマークを選択"
+      }
+    },
+    "show_less": "閉じる",
+    "show_more": "もっと見る",
+    "submit": "送信",
+    "tiptap_placeholder": "URLを追加するか、メモを作成するために入力を開始",
+    "unpin": "ピン留めを解除",
+    "updating": "更新中...",
+    "upgrade": "アップグレード",
+    "view_more": "さらに表示"
+  },
+  "cookies": {
+    "cookie_consent": "クッキー 同意",
+    "description": "私たちは Microsoft Clarity を使用して、あなたの体験を向上させる方法を学びます。受け入れることによって、全員のために WebBites をより良くする手助けをしてくれます。"
+  },
+  "feedback": {
+    "bug_reports": "バグ報告",
+    "comments": {
+      "no_comments": "まだコメントはありません",
+      "placeholder": "コメントを書く",
+      "send": "送信",
+      "title": "コメント"
+    },
+    "date": "日付",
+    "delete_comment": {
+      "confirmation": "このコメントを削除してもよろしいですか？",
+      "title": "コメントを削除"
+    },
+    "delete_confirmation": "このフィードバックを削除してもよろしいですか？",
+    "filter_by": "フィルター",
+    "form": {
+      "cancel_button": "キャンセル",
+      "changelog_label": "更新履歴へ",
+      "comment_label": "コメント",
+      "hide_from_everyone_label": "誰にも隠す",
+      "submit_button": "フィードバックを送信",
+      "title": "フィードバックを送信",
+      "title_label": "タイトル",
+      "type_label": "種類",
+      "platform_label": "プラットフォーム"
+    },
+    "least_votes": "最下位",
+    "most_votes": "最多得票",
+    "my_issues": "私の課題",
+    "no_feedback": "フィードバックはまだありません",
+    "order_by": "並び替え",
+    "placeholders": {
+      "search": "機能とバグレポートを検索... ({count})"
+    },
+    "status": "ステータス",
+    "suggestions": "提案",
+    "title": "📨 機能リクエスト、提案、バグ報告",
+    "type": "タイプ",
+    "user": "ユーザー",
+    "votes": "投票数",
+    "platform": {
+      "app": "アプリ",
+      "web": "ウェブ",
+      "extension": "ブラウザ拡張機能",
+      "all": "すべてのプラットフォーム"
+    },
+    "hero_title": "次に作るものを",
+    "hero_highlight": "一緒に決めよう。",
+    "hero_subtitle": "機能をリクエストしたり、バグを報告したり、欲しいアイデアに投票したりできます。",
+    "comments_count": "{count} 件のコメント",
+    "page": {
+      "title": "WebBites - フィードバック",
+      "kanban_view": "カンバン表示",
+      "list_view": "リスト表示",
+      "login_required": "フィードバックを送信するにはログインが必要です",
+      "deleted": "フィードバックを削除しました",
+      "delete_failed": "フィードバックを削除できませんでした"
+    },
+    "options": {
+      "status": {
+        "in_progress": "進行中",
+        "backlog": "バックログ",
+        "pending": "仕分け待ち",
+        "done": "完了",
+        "closed": "クローズ"
+      },
+      "type": {
+        "bug_report": "バグ報告",
+        "feature_request": "機能リクエスト",
+        "improvement": "改善",
+        "other": "その他"
+      },
+      "platform": {
+        "app": "アプリ",
+        "web": "ウェブ",
+        "extension": "ブラウザ拡張機能"
+      }
+    }
+  },
+  "import": {
+    "import_quota_exceeded": "100 以上の ブックマーク を インポート する には、 プラン を アップグレード する 必要 が あり ます。",
+    "import_quota_exceeded_description": "最大で100件の ブックマーク を 無料でインポートできます。 より多くの インポート を行うには、 有料プランに アップグレードしてください。",
+    "connect_title": "またはサービスを接続",
+    "connect_fetch": "ブックマークを取得",
+    "connect_button": "{name} を接続",
+    "connect_unavailable": "利用できません",
+    "connect_error": "{name} からブックマークを取得できませんでした",
+    "connect_denied": "アクセスが拒否されたため、ブックマークはインポートされませんでした",
+    "connect_empty": "{name} にブックマークが見つかりませんでした"
+  },
+  "landing": {
+    "beta_access": {
+      "changelog_button": "更新履歴",
+      "description": "WebBitesを最初に体験し、その未来を形作るお手伝いをしましょう。早期ユーザーは特別な特典とプレミアム機能を受けられます。",
+      "feedback_button": "フィードバック",
+      "title": "ブックマークの未来に参加"
+    },
+    "features": {
+      "ai_organization": {
+        "description": "高度なAI技術を使用して、ブックマークを自動的にカテゴリー分けとタグ付け",
+        "title": "AI整理"
+      },
+      "cross_platform": {
+        "description": "すべてのデバイスで、いつでもどこでもブックマークにアクセス",
+        "title": "クロスプラットフォーム同期"
+      },
+      "smart_search": {
+        "description": "コンテキストを理解するインテリジェント検索で、すぐに必要なものを見つける",
+        "title": "スマート検索"
+      },
+      "subtitle": "AI搭載のプラットフォームで、ブックマークの未来を体験",
+      "title": "なぜWebBitesを選ぶのか？"
+    },
+    "hero": {
+      "app_button": "アプリへ移動",
+      "subtitle": "ワンクリックで何でも保存し、AIが整理、検索、発見を担当します。",
+      "title": "あなたのインターネットを、",
+      "title_emphasis": "整理整頓",
+      "waitlist_button": "ウェイトリストに参加"
+    },
+    "how_it_works": {
+      "steps": {
+        "install": {
+          "description": "ワンクリックでブラウザ拡張機能を追加し、すぐにコンテンツの保存を開始",
+          "title": "拡張機能をインストール"
+        },
+        "organize": {
+          "description": "AIが自動的にカテゴリー分け、タグ付け、検索可能な状態にします",
+          "title": "AIによる整理"
+        },
+        "save": {
+          "description": "拡張機能をクリックするか、キーボードショートカットを使用してウェブページ、記事、コンテンツを保存",
+          "title": "何でも保存"
+        }
+      },
+      "title": "使い方"
+    },
+    "join_now": "今すぐ参加！",
+    "join_now_free": "無 料 で 参 加 し よ う !",
+    "more_features": "もっとの機能",
+    "roadmap": {
+      "next": "次の作業中：",
+      "title": "ロ ー ド マ ッ プ",
+      "viewFull": "全体のロードマップを見る",
+      "workingOn": "現在作業中："
+    },
+    "whats_next": "WebBites の 次 は 何 です か?"
+  },
+  "navigation": {
+    "feedback": "フィードバックを送信",
+    "help": "ヘルプ",
+    "home": "ホーム",
+    "login": "ログイン",
+    "logout_success": "ログアウトしました！",
+    "settings": "設定",
+    "developers": "開発者",
+    "faq": "よくある質問",
+    "features": "機能",
+    "pricing": "料金"
+  },
+  "plans": {
+    "features": {
+      "auto_tag_bookmarks": "すべてのウェブブックマークの自動タグ付け",
+      "auto_tag_images": "画像の自動タグ付け",
+      "plus": {
+        "41": "無料プランのすべての機能 +",
+        "42": "無制限のブックマーク保存",
+        "43": "TL;DR 要約",
+        "44": "画像の自動タグ付け",
+        "45": "高解像度の全ページスクリーンショット",
+        "46": "記事を聴いて要約を取得",
+        "47": "画像のテキスト認識",
+        "48": "最大10GBのファイルをアップロード",
+        "49": "自然言語検索",
+        "50": "スマートボード",
+        "51": "独自のクラウドにバックアップ - 近日公開"
+      },
+      "cloud_backups": "独自のクラウドにバックアップ - 近日公開",
+      "dark_mode": "ダークモード",
+      "everything_in_free": "無料プランのすべての機能 +",
+      "free": {
+        "11": "最大100件のブックマークを保存",
+        "12": "すべての ウェブ ブックマークの 自動 タグ付け",
+        "13": "ページタイトル　色　タグ　ページテキストで検索",
+        "14": "記事の読書モード",
+        "15": "ウェブサイト、画像、メモ、ビデオゲーム、音楽、映画を保存",
+        "16": "全ページスクリーンショット",
+        "17": "毎月5本まで記事を聴けます",
+        "18": "ダーク モード"
+      },
+      "full_page_screenshots": "全ページスクリーンショット",
+      "high_res_screenshots": "高解像度の全ページスクリーンショット",
+      "listen_and_summaries": "記事を聴いて要約を取得",
+      "listen_limit": "毎月5本まで記事を聴けます",
+      "natural_language_search": "自然言語検索",
+      "reading_mode": "記事の読書モード",
+      "save_cards_limit": "最大100件のブックマークを保存",
+      "save_various_types": "ウェブサイト、画像、メモ、ビデオゲーム、音楽、映画を保存",
+      "search_features": "ページタイトル、色、タグ、ページテキストで検索",
+      "smart_boards": "スマートボード",
+      "text_recognition": "画像のテキスト認識",
+      "tldr_summaries": "TL;DR 要約",
+      "unlimited_bookmarks": "無制限のブックマーク保存",
+      "upload_limit": "最大10GBのファイルをアップロード",
+      "apple": {
+        "61": "ブックマークは好きなだけ",
+        "62": "ウェブサイト、画像、メモ、手書きなど",
+        "63": "タイトル・タグ・ページ本文を検索",
+        "64": "リーディングモード",
+        "65": "データは端末の外に出ません"
+      }
+    }
+  },
+  "pricing": {
+    "current_plan": "現在のプラン",
+    "downgrade": "ダウングレード",
+    "downgrade_to_free": "無料に ダウングレード",
+    "free_plan": "無料",
+    "get_started": "始める",
+    "monthly_toggle": "月払い",
+    "price_monthly": "月額${price}",
+    "price_yearly": "年額${price} - {percent}%お得",
+    "sign_up": "サインアップ！",
+    "sign_up_now": "無料で登録！",
+    "title": "料金プラン",
+    "upgrade_for": "{price}でアップグレード",
+    "upgrade_plan": "アップグレード プラン",
+    "waitlist_free": "無料版のウェイトリストに登録！",
+    "yearly_toggle": "年払い（{percent}%割引）",
+    "yearly_plain": "年払い",
+    "apple": {
+      "title": "デバイス内ライブラリ",
+      "tagline": "Apple デバイスのみ。アカウント不要。",
+      "lifetime": "または買い切り${price}",
+      "badge": "App Store",
+      "note": "iOS・macOSアプリ内で購入します。App Storeの価格は地域によって異なります。",
+      "cta": "App Storeで入手"
+    },
+    "price_yearly_plain": "年額${price}"
+  },
+  "reader": {
+    "ai_generated": "AIが生成した音声",
+    "by_author": "{author}による",
+    "listen_article": "記事を聴く",
+    "listen_to_post": "ポストを 聴く",
+    "voice_settings": "読み上げの声",
+    "voice_description": "記事を読み上げる声を選びます。再生ボタンでサンプルを聞けます。",
+    "voice_preview": "サンプルを再生",
+    "accent_settings": "アクセント",
+    "accent_description": "英語の記事はこのアクセントで読み上げられます。タップして試聴できます。"
+  },
+  "search": {
+    "alphabetical": "アルファベット順",
+    "clear_recent": "最近の検索をクリア",
+    "date_added": "追加日",
+    "filter_by_tag": "タグで絞り込み",
+    "filter_by_type": "種類で絞り込み",
+    "placeholder": "ブックマークを検索...",
+    "recent_searches": "最近の検索",
+    "sort_by": "並び替え"
+  },
+  "settings": {
+    "ai_language": "AIの言語",
+    "ai_language_description": "要約とタグが書かれる言語です。",
+    "ai_language_same": "コンテンツと同じ",
+    "auth": {
+      "create_account_description": "サインインまたはアカウントを作成するために、あなたのメールアドレスを入力してください",
+      "email": "メールアドレス",
+      "email_continue": "メールアドレスで続ける",
+      "email_placeholder": "メールアドレスを入力",
+      "name": "名前",
+      "name_placeholder": "名前を入力",
+      "password": "パスワード",
+      "password_placeholder": "パスワードを入力",
+      "password_requirements": "パスワードは6文字以上で、少なくとも1つの数字を含める必要があります",
+      "repeat_password": "パスワードを再入力",
+      "welcome_back": "おかえりなさい",
+      "welcome_back_description": "パスワードを入力して続きから再開しましょう。",
+      "create_account": "アカウントを作成",
+      "create_account_step_description": "名前とパスワードだけで完了します。",
+      "create_account_button": "アカウントを作成",
+      "reset_password": "パスワードをリセット"
+    },
+    "chrome_extension": {
+      "description": "新しいブラウザ拡張機能で、ワンクリックで任意のウェブサイトをブックマークに保存できます！今すぐ",
+      "store_link": "Chrome ウェブストアからダウンロード。",
+      "title": "Chrome拡張機能"
+    },
+    "compact_view": "コンパクト表示",
+    "delete_account": {
+      "confirmation_text": "本当にアカウントを削除しますか？この操作は取り消せません。",
+      "confirm_button": "アカウントを完全に削除",
+      "placeholder": "Delete my account",
+      "title": "アカウントを削除",
+      "type_confirmation": "確認のため「Delete my account」と入力してください"
+    },
+    "display_mode": "表示モード",
+    "grid_view": "グリッド表示",
+    "image_ratio": {
+      "original": "オリジナル"
+    },
+    "image_ratio_label": "画像比率",
+    "language": "言語",
+    "list_view": "リスト表示",
+    "newest_first": "新しい順",
+    "oldest_first": "古い順",
+    "other_options": {
+      "export_bookmarks": "すべてのブックマークをエクスポート",
+      "logout": "ログアウト",
+      "show_onboarding": "オンボーディングを再表示",
+      "title": "その他のオプション"
+    },
+    "personal_info": {
+      "title": "個人情報",
+      "username": "ユーザー名"
+    },
+    "preview_screenshots": "ページのスクリーンショットをプレビュー",
+    "preview_tags": "タグをプレビュー",
+    "show_description": "説明を表示",
+    "show_summary_card": "ホバー時にサマリーカードを表示",
+    "theme": "テーマ",
+    "title": "設定",
+    "view_as": "表示形式",
+    "viewing_options": "表示オプション",
+    "assistants": {
+      "title": "AI アシスタント",
+      "description": "Claude、ChatGPT、Cursor などの AI アプリが、MCP を通じてライブラリを検索したり保存したりできるようにします。",
+      "server_url": "サーバー URL",
+      "server_url_hint": "MCP に対応した任意のアプリに追加してください。WebBites で承認し、変更を許可するかどうかを選べます。",
+      "copy": "コピー",
+      "setup_title": "アプリを設定",
+      "connected_title": "接続済みのアシスタント",
+      "connected_empty": "まだ接続されているアシスタントはありません。承認するとここに表示されます。",
+      "read_only": "読み取りのみ",
+      "read_write": "変更可能",
+      "unverified": "未確認",
+      "connected_on": "{date} に接続",
+      "last_used": "最終使用: {date}",
+      "never_used": "未使用",
+      "disconnect": "接続を解除",
+      "disconnect_confirm": "{name} の接続を解除しますか？すぐにアクセスできなくなります。",
+      "disconnected": "{name} の接続を解除しました",
+      "load_failed": "接続済みのアシスタントを読み込めませんでした。",
+      "revoke_failed": "{name} の接続を解除できませんでした。",
+      "limits": "アシスタントの操作はすべて API の利用枠にカウントされます。Free は月 {free} 回、Plus は月 {plus} 回です。",
+      "docs_link": "MCP ガイドを読む",
+      "local_hint": "アカウントなしで Mac にライブラリを保存していますか？Mac アプリの「設定 → AI アシスタント」で、アプリ内蔵のサーバーをオンにしてください。",
+      "clients": {
+        "claude": {
+          "open": "Claude で {path} を開き、Add custom connector を選びます。",
+          "paste": "名前を WebBites にし、サーバー URL を貼り付けて Add を選びます。",
+          "connect": "Connect を選び、開いた WebBites のページでアクセスを承認します。このコネクタは Claude Desktop とモバイルアプリでも使えます。"
+        },
+        "chatgpt": {
+          "developer_mode": "ChatGPT で {path} を開き、開発者モード（Advanced 内）をオンにします。",
+          "create": "コネクタを作成します。名前を WebBites にし、サーバー URL を貼り付けて OAuth を選びます。",
+          "approve": "開いた WebBites のページでアクセスを承認し、チャットのツールメニューで WebBites をオンにします。"
+        },
+        "claude_code": {
+          "add": "ターミナルでサーバーを追加します:",
+          "sign_in": "Claude Code を起動して /mcp を実行し、webbites を選んでサインインします。ブラウザで WebBites が開くので、アクセスを承認してください。"
+        },
+        "cursor": {
+          "add": "WebBites を {file}、またはプロジェクトの .cursor/mcp.json に追加します:",
+          "connect": "Cursor の設定で MCP の一覧から webbites を探して Connect を選び、WebBites でアクセスを承認します。"
+        },
+        "vscode": {
+          "add": "ワークスペースの {file} に WebBites を追加します:",
+          "start": "そのファイルでサーバーの上にある Start を選び、ブラウザが開いたら WebBites でアクセスを承認します。ツールは Copilot Chat のエージェントモードに表示されます。"
+        },
+        "other": {
+          "name": "その他のアプリ",
+          "remote": "リモート MCP サーバーに対応したアプリでは、サーバー URL をそのまま使えます。設定で「custom connector」「remote server」「MCP」などを探してください。",
+          "stdio": "ローカル（stdio）サーバーしか起動できないアプリは、mcp-remote ブリッジ経由で接続できます（Node.js が必要です）:",
+          "sign_in": "初回の起動時にブラウザで WebBites が開くので、アクセスを承認してください。"
+        },
+        "api_key": {
+          "name": "API キーを使う",
+          "when": "リクエストヘッダーを設定できるアプリでは、サインインの代わりに API キーを送ることもできます。REST API と同様に、キーはライブラリ全体の読み取りと変更ができます。",
+          "send": "「設定 → 開発者」でキーを作成し、Bearer トークンとして送信します:"
+        }
+      }
+    },
+    "developer": {
+      "title": "開発者",
+      "description": "WebBites 上で開発するための API キー、Webhook、使用量。",
+      "button": "開発者ページを開く"
+    },
+    "backups": {
+      "title": "バックアップ",
+      "description": "ブックマーク、スクリーンショット、保存したページを、あなたのストレージへ自動で差分バックアップします。",
+      "plus_only": "自動バックアップは WebBites Plus の機能です。",
+      "choose_destination": "バックアップの保存先",
+      "gdrive": "Google ドライブ",
+      "gdrive_hint": "「WebBites Backups」フォルダに保存",
+      "dropbox": "Dropbox",
+      "dropbox_hint": "Apps/WebBites に保存",
+      "s3": "S3 互換ストレージ",
+      "s3_hint": "Amazon S3、Cloudflare R2、Backblaze B2、MinIO など",
+      "endpoint": "エンドポイント",
+      "region": "リージョン",
+      "bucket": "バケット",
+      "prefix": "フォルダ（任意）",
+      "access_key": "アクセスキー",
+      "secret_key": "シークレットキー",
+      "connect": "接続",
+      "cancel": "キャンセル",
+      "change": "変更",
+      "enabled": "自動バックアップ",
+      "frequency": "頻度",
+      "daily": "毎日",
+      "weekly": "毎週",
+      "last_backup": "前回のバックアップ",
+      "never": "まだありません",
+      "running": "バックアップ中…",
+      "next_backup": "次回 {time}",
+      "back_up_now": "今すぐバックアップ",
+      "disconnect": "接続を解除",
+      "reconnect": "再接続",
+      "needs_reconnect": "{destination} がバックアップを受け付けなくなりました。再接続するとバックアップが再開されます。",
+      "plan_required": "現在のプランにバックアップが含まれていないため、一時停止しています。",
+      "error": "前回のバックアップに失敗しました: {error}。自動的に再試行します。",
+      "connected": "{destination} に接続しました。最初のバックアップは1時間以内に始まります。",
+      "connect_failed": "{destination} に接続できませんでした。",
+      "connect_denied": "{destination} へのアクセスが許可されませんでした。",
+      "queued": "バックアップを開始しました。",
+      "load_failed": "バックアップ設定を読み込めませんでした。",
+      "save_failed": "バックアップ設定を更新できませんでした。",
+      "run_failed": "バックアップを開始できませんでした。",
+      "whats_included": "各バックアップは、前回から変更された分だけを含む zip です（ブックマークのデータ、メモ、スクリーンショット、保存したページのテキスト、ファイル）。各バックアップの最後の zip には、ボード、フィード、どのブラウザでも読み込める bookmarks.html も含まれます。"
+    },
+    "email_change": {
+      "change": "変更",
+      "change_again": "別のアドレスにする",
+      "new_email": "新しいメールアドレス",
+      "current_password": "現在のパスワード",
+      "explainer": "新しいアドレスにリンクを送信します。リンクをクリックするまでは、引き続き {email} でサインインします。",
+      "send_link": "確認リンクを送信",
+      "pending_title": "{email} を確認して完了してください",
+      "pending_body": "新しいアドレスを確認するリンクを送信しました。クリックするまで、アカウントは {email} のままです。",
+      "expires": "リンクの有効期限: {date}",
+      "resend": "メールを再送信",
+      "resend_in": "{seconds} 秒後に再送信できます",
+      "cancel_change": "変更をキャンセル",
+      "sent": "確認リンクを {email} に送信しました",
+      "cancelled": "メールアドレスの変更をキャンセルしました",
+      "changed": "メールアドレスが {email} に変更されました",
+      "errors": {
+        "invalid_email": "有効なメールアドレスを入力してください。",
+        "same_email": "すでにこのメールアドレスを使用しています。",
+        "email_taken": "このメールアドレスは別のアカウントで使用されています。",
+        "password_required": "現在のパスワードを入力してください。",
+        "incorrect_password": "パスワードが正しくありません。",
+        "daily_limit": "本日の確認メールの上限に達しました。明日もう一度お試しください。",
+        "cooldown": "1 分ほど待ってから再送信してください。",
+        "send_failed": "メールを送信できませんでした。しばらくしてからもう一度お試しください。"
+      }
+    }
+  },
+  "testimonials": {
+    "emma_davis": {
+      "name": "エマ・デイビス",
+      "text": "クロスプラットフォーム同期はシームレスで、AI機能のおかげで手動での整理に何時間も費やす必要がなくなりました。",
+      "title": "デジタルマーケター"
+    },
+    "mike_chen": {
+      "name": "マイク・チェン",
+      "text": "ついに、コンテキストを理解するブックマークツールが登場。検索機能は驚くべきものです。",
+      "title": "開発者"
+    },
+    "sarah_johnson": {
+      "name": "サラ・ジョンソン",
+      "text": "WebBitesは私の研究の保存と整理方法を革新しました。AIによるカテゴリー分けは信じられないほど正確です！",
+      "title": "コンテンツクリエイター"
+    }
+  },
+  "upgrade_modal": {
+    "audios_remaining": "さらに{count}件の音声を生成できます。",
+    "audios_upgrade": "さらに音声を生成するにはプランをアップグレードしてください。",
+    "bookmarks_count": "保存済みのブックマーク数：{count}",
+    "bookmarks_remaining": "さらに{count}件保存可能です。",
+    "bookmarks_upgrade": "さらに保存するにはプランのアップグレードが必要です。",
+    "current_plan": "現在の{plan}プランです。",
+    "manage_plan": "プラン を 管理 する",
+    "plan_details": "プラン 詳細",
+    "update_plan": "プラン を 更新",
+    "updating_plan": "プラン を 更新中",
+    "upgrade_to_add_more": "アップグレードして追加"
+  },
+  "usage": {
+    "usage_limit_reached": "使用 制限 に 達しました、プラン を アップグレード してください"
+  },
+  "website_modal": {
+    "add_note": "メモを追加",
+    "annotations": {
+      "delete": {
+        "delete_all_button": "すべて削除",
+        "delete_all_label": "すべての注釈を削除",
+        "delete_all_message": "すべての注釈を削除してもよろしいですか？この操作は取り消せません。",
+        "delete_all_title": "すべての注釈を削除",
+        "message": "この注釈を削除してもよろしいですか？この操作は取り消せません。",
+        "title": "注釈を削除"
+      }
+    },
+    "app": {
+      "age": "年齢",
+      "age_rating": "年齢制限",
+      "and_more": "{first}、他{count}言語",
+      "category": "カテゴリ",
+      "compatibility": "互換性",
+      "copyright": "著作権",
+      "developer": "デベロッパ",
+      "developer_website": "デベロッパWebサイト",
+      "downloads": "ダウンロード数",
+      "in_app_purchases": "アプリ内課金",
+      "information": "情報",
+      "install": "インストール",
+      "language": "言語",
+      "languages": "言語",
+      "more": "続きを読む",
+      "more_languages": "他{count}言語",
+      "no": "なし",
+      "on_store": "{store}",
+      "price": "価格",
+      "privacy_policy": "プライバシーポリシー",
+      "rating": "評価",
+      "ratings": "{count}件の評価",
+      "requires": "{os}以降が必要です。",
+      "seller": "販売元",
+      "size": "サイズ",
+      "updated": "更新日",
+      "version": "バージョン {version}",
+      "view": "表示",
+      "whats_new": "新機能",
+      "yes": "あり"
+    },
+    "audio": {
+      "download": "ダウンロード",
+      "failed": "文字起こしを作成できませんでした。",
+      "generate": "文字起こしを作成",
+      "none": "まだ文字起こしはありません。",
+      "pause": "一時停止",
+      "play": "再生",
+      "quota": "今月のオーディオ利用量を使い切りました。",
+      "retry": "もう一度試す",
+      "scrub": "シーク",
+      "segments": "1 セグメント | {n} セグメント",
+      "transcribing": "文字起こし中…",
+      "transcribing_long": "文字起こし中です。ページを閉じても処理は続きます。",
+      "transcript": "文字起こし",
+      "unavailable": "この録音は利用できません"
+    },
+    "details": "詳細",
+    "pdf": {
+      "open": "PDFを開く",
+      "unavailable": "このPDFは利用できません"
+    },
+    "sidebar": {
+      "tabs": {
+        "audio": "オーディオ",
+        "drawing": "手描き",
+        "figma": "Figma",
+        "image": "画像",
+        "pdf": "PDF",
+        "reader": "リーダー",
+        "screenshot": "スクリーンショット",
+        "text_note": "テキストメモ"
+      }
+    },
+    "social": {
+      "enlarge": "画像を拡大",
+      "next": "次の画像",
+      "previous": "前の画像",
+      "saved_post": "保存した投稿",
+      "video_hint": "投稿を開いて再生",
+      "video_preview": "動画プレビュー",
+      "view_on": "{platform} で見る"
+    },
+    "summary": "要約"
+  },
+  "wizard": {
+    "annotations": {
+      "content": "ウェブサイトのスクリーンショットに直接注釈を付け、検索可能にします",
+      "title": "📝 ページへの注釈"
+    },
+    "first_bookmark": {
+      "content": "今すぐ最初のブックマークを保存してみましょう！",
+      "subcontent": "注：クリップボードにURLが検出された場合、自動的に貼り付けられます。クリップボードへのアクセス許可を求められる場合がありますが、「保存」ボタンをクリックするまでデータは保存または送信されません。",
+      "title": "🥳 最初のブックマークを保存！"
+    },
+    "folders": {
+      "content": "WebBitesが自動的にブックマークを整理し、タグを生成し、キーワードとカラーパレットを抽出します！",
+      "title": "🔖 フォルダーを忘れよう"
+    },
+    "import": {
+      "content": "コンピューターからファイルをドラッグするだけで、既存のすべてのブックマークをインポートできます。または、後で設定メニューからアップロードすることもできます。",
+      "title": "ブックマークをインポート"
+    },
+    "one_click": {
+      "content": "[Chrome](https://chromewebstore.google.com/detail/webbites-browser-extensio/kphdbcjcdhecefloameedhhldchhbela)拡張機能をダウンロードして、ワンクリックで新しいブックマークを保存するか、ウェブアプリから直接追加できます。",
+      "subcontent": "（Safari、Firefox、モバイル拡張機能も近日公開予定！）",
+      "title": "ワンクリックで！"
+    },
+    "save_anything": {
+      "content": "WebBitesではウェブサイトだけでなく、メモ、画像、映画、ゲーム、音楽など、何でも保存できます！",
+      "subcontent": "まもなく書籍にも対応予定！",
+      "title": "👾 🎥 何でも保存"
+    },
+    "screenshots": {
+      "content": "保存したすべてのウェブサイトのフルページスクリーンショットを取得し、ページが削除されても永久にアクセス可能です。",
+      "title": "📸 ページ全体のスクリーンショット"
+    },
+    "welcome": {
+      "content": "最高のブックマークサービスを一緒に作っていきましょう。機能のリクエスト、バグの報告、フィードバックがありましたら、Twitterでお知らせください！",
+      "title": "WebBitesへようこそ！"
+    }
+  },
+  "wizard_tab": {
+    "back": "戻る",
+    "finish": "完了",
+    "import_bookmarks": "ブックマークをインポート",
+    "next": "次へ",
+    "save": "保存",
+    "skip": "スキップ"
+  },
+  "developers": {
+    "title": "WebBites API",
+    "subtitle": "自分のスクリプト、アプリ、自動化からブックマークを読み書きできます。"
+  },
+  "tags": {
+    "preview": "{tag} のブックマークをプレビュー",
+    "preview_empty": "このタグのブックマークはありません",
+    "show_all": "ブックマーク {n} 件をすべて表示 | ブックマーク {n} 件をすべて表示",
+    "clear_selection": "選択を解除",
+    "manage": "Tags",
+    "subtitle": "Every tag you use, with how many bookmarks carry it. Select tags to rename, merge or remove them everywhere.",
+    "search": "Search tags",
+    "sort_count": "Most used",
+    "sort_name": "A–Z",
+    "total": "{n} tag | {n} tags",
+    "bookmarks_count": "{n} bookmark | {n} bookmarks",
+    "selected": "{n} selected",
+    "rename": "Rename",
+    "merge": "Merge",
+    "merge_into": "Merge into",
+    "delete": "Remove",
+    "confirm_delete": "Remove the selected tags from every bookmark? The bookmarks themselves are kept.",
+    "protected": "\"read-later\" powers the Read it later feature and can't be changed.",
+    "empty": "No tags yet",
+    "no_match": "No tags match",
+    "updated": "Updated {n} bookmark | Updated {n} bookmarks"
+  },
+  "footer": {
+    "product": "製品",
+    "support": "サポート",
+    "updates": "最新情報",
+    "pricing": "料金",
+    "extension": "ブラウザ拡張機能",
+    "export": "ブックマークをエクスポート",
+    "help": "ヘルプとお問い合わせ",
+    "feedback": "フィードバック",
+    "changelog": "変更履歴",
+    "privacy": "プライバシー",
+    "terms": "利用規約",
+    "made_by": "制作",
+    "copyright": "WebBites {year}"
+  },
+  "verify_email": {
+    "verifying_title": "新しいメールアドレスを確認しています…",
+    "verifying_body": "少々お待ちください。",
+    "success_title": "メールアドレスを変更しました",
+    "success_body": "WebBites アカウントのメールアドレス:",
+    "success_hint": "次回のサインインではこのアドレスを使用してください。以前のアドレスにもお知らせしました。",
+    "open_app": "WebBites を開く",
+    "sign_in": "サインイン",
+    "expired_title": "このリンクは期限切れです",
+    "expired_body": "リンクの有効期間は 24 時間です。設定から新しいリンクをリクエストしてください。それまでメールアドレスは変わりません。",
+    "taken_title": "このアドレスは使用されています",
+    "taken_body": "リンクの送信後、別のアカウントがこのメールアドレスを使い始めました。メールアドレスは変更されていません。設定から別のアドレスをお試しください。",
+    "invalid_title": "このリンクは使用できません",
+    "invalid_body": "すでに使用されたか、新しいリンクに置き換えられた可能性があります。受信トレイで最新のメールを確認するか、設定からやり直してください。",
+    "failed_title": "問題が発生しました",
+    "failed_body": "メールアドレスは変更されていません。もう一度お試しください。",
+    "try_again": "もう一度試す",
+    "open_settings": "設定を開く",
+    "go_home": "WebBites へ",
+    "page_title": "メールアドレスを確認 · WebBites"
+  },
+  "cli_login": {
+    "title": "WebBites CLI にサインイン",
+    "body": "このコードがターミナルに表示されたコードと一致する場合のみ承認してください。",
+    "signed_in_as": "{email} としてサインイン中",
+    "approve": "承認",
+    "decline": "キャンセル",
+    "approved_title": "サインインしました",
+    "approved_body": "ターミナルに戻ってください。このタブは閉じてかまいません。",
+    "declined_title": "サインインをキャンセルしました",
+    "declined_body": "CLI にはアクセス権が付与されていません。このタブは閉じてかまいません。",
+    "expired_title": "このコードは期限切れです",
+    "expired_body": "コードの有効期限は 10 分で、1 回のみ使用できます。webbites login をもう一度実行して新しいコードを取得してください。",
+    "invalid_title": "このリンクは使用できません",
+    "invalid_body": "ターミナルに表示されたリンクを開くか、webbites login をもう一度実行してください。",
+    "failed_title": "問題が発生しました",
+    "failed_body": "CLI はサインインされませんでした。もう一度お試しください。",
+    "try_again": "再試行",
+    "page_title": "CLI にサインイン · WebBites"
+  },
+  "oauth_consent": {
+    "page_title": "アプリを接続 · WebBites",
+    "title": "{client} があなたの WebBites ライブラリの利用を求めています",
+    "verified": "確認済みのアプリ",
+    "verified_from": "確認済み · {host}",
+    "unverified": "未確認のアプリ",
+    "unverified_body": "WebBites はこのアプリの作成者を確認できません。信頼できるアプリで、あなた自身が始めた操作の場合のみ続けてください。",
+    "can_heading": "このアプリができること",
+    "can_read": "ブックマーク、メモ、ボード、タグの検索と閲覧",
+    "allow_changes": "変更を許可",
+    "allow_changes_body": "ブックマークの保存、編集、整理、ゴミ箱への移動",
+    "cannot": "パスワードの閲覧、アカウントの変更、ゴミ箱を空にすることはできません。",
+    "redirect_heading": "このあと",
+    "redirect_web": "{target} に戻ります。",
+    "redirect_app": "{target} アプリが開きます。",
+    "redirect_loopback": "このコンピュータ上のプログラム（{target}）に戻ります。",
+    "loopback_warning": "このコンピュータ上のアプリからたった今始めた操作の場合のみ承認してください。",
+    "provider_note": "{client} は読み取った内容を自社の AI プロバイダに送信します。その扱いはプロバイダの規約に従います。",
+    "approve": "承認",
+    "decline": "拒否",
+    "signed_in_as": "{account} としてサインイン中",
+    "switch_account": "別のアカウントを使う",
+    "revoke_hint": "「設定 → AI アシスタント」でいつでも接続を解除できます。",
+    "done_title": "接続しました",
+    "done_body": "{client} に戻っています…",
+    "declined_title": "接続しませんでした",
+    "declined_body": "{client} にはアクセス権が付与されていません。アプリに戻っています…",
+    "close_hint": "{client} が開いたら、このタブは閉じてかまいません。",
+    "continue": "続ける",
+    "the_app": "アプリ",
+    "invalid_request_title": "このリンクは使用できません",
+    "invalid_request_body": "アプリから送られたリクエストが不完全または無効なため、何も接続されていません。アプリからもう一度始めてください。",
+    "invalid_client_title": "WebBites はこのアプリを識別できませんでした",
+    "invalid_client_body": "アプリが正しく名乗らなかったため、接続できません。アプリからもう一度始めるか、開発者に問い合わせてください。",
+    "invalid_redirect_title": "このアプリの戻り先アドレスは許可されていません",
+    "invalid_redirect_body": "アカウントを守るため、WebBites はアプリが登録したアドレスにのみ戻します。何も接続されていません。",
+    "invalid_scope_title": "WebBites が提供していないアクセスをアプリが求めました",
+    "invalid_scope_body": "何も接続されていません。アプリからもう一度始めるか、開発者に問い合わせてください。",
+    "invalid_server_title": "こちら側で問題が発生しました",
+    "invalid_server_body": "何も接続されていません。少し待ってからアプリでもう一度お試しください。",
+    "details": "アプリ開発者向けの詳細",
+    "expired_title": "このリクエストは期限切れです",
+    "expired_body": "接続リクエストの有効期間は短く、1 回のみ使用できます。接続しようとしていたアプリからもう一度始めてください。",
+    "rejected_title": "このリクエストを確認できませんでした",
+    "rejected_body": "何も接続されていません。接続しようとしていたアプリからもう一度始めてください。",
+    "failed_title": "問題が発生しました",
+    "failed_body": "何も接続されていません。もう一度お試しください。",
+    "try_again": "再試行"
+  },
+  "automations": {
+    "new": "新しい自動化",
+    "empty": "自動化はまだありません。たとえば「URL に amazon.com が含まれていたら、タグ Shopping を追加」のように始めてみましょう。",
+    "smart_board": "スマートボード",
+    "enable_named": "{name} を有効にする",
+    "load_failed": "自動化を読み込めませんでした",
+    "update_failed": "自動化を更新できませんでした",
+    "save_failed": "自動化を保存できませんでした",
+    "delete_failed": "自動化を削除できませんでした",
+    "name_placeholder": "この自動化に名前を付ける",
+    "enabled": "有効",
+    "whenever": "次のとき",
+    "trigger_bookmark_added": "ブックマークが追加された",
+    "no_conditions": "条件なし：新しいブックマークすべてに実行されます。",
+    "actions": "アクション",
+    "remove_action": "アクションを削除",
+    "choose_board": "ボードを選択",
+    "add_action": "アクションを追加",
+    "action_add_to_board": "ボードに追加",
+    "action_read_later": "後で読むに追加",
+    "action_webhook": "Webhook を呼び出す",
+    "webhook_help": "本文を空にすると、ブックマークが JSON として送信されます。{title}、{url}、{type}、{id} は引用符の中で、{tags} は引用符なしで使います。",
+    "webhook_signed": "各リクエストは {header} で署名されます。",
+    "webhook_signed_secret": "各リクエストは {secret} を使って {header} で署名されます。",
+    "smart_board_note": "これはスマートボードのルールです。条件はボードの設定にも表示されます。削除すると、ボードは手動ボードに戻ります。",
+    "if": "条件",
+    "remove_condition": "条件を削除",
+    "topics_placeholder": "トピックを入力して Enter",
+    "minimum_match": "最小一致度",
+    "add_condition": "条件を追加",
+    "match_all": "すべてに一致",
+    "match_any": "いずれかに一致",
+    "fields": {
+      "url": "URL",
+      "domain": "ドメイン",
+      "title": "タイトル",
+      "type": "種類",
+      "tag": "タグ",
+      "ai_topic": "AI トピック"
+    },
+    "ops": {
+      "contains": "を含む",
+      "not_contains": "を含まない",
+      "is": "が次と一致",
+      "is_not": "が次と一致しない"
+    },
+    "describe": {
+      "a_board": "ボード",
+      "about": "{topics} に関する",
+      "condition": "{field} {op} {value}",
+      "tag": "タグ {tag}",
+      "add_to_board": "{board} に追加",
+      "read_later": "後で読む",
+      "webhook": "Webhook を呼び出す",
+      "joiner_any": " または ",
+      "joiner_all": " かつ ",
+      "every_bookmark": "すべてのブックマーク",
+      "summary": "{when} → {actions}"
+    }
+  },
+  "notifications": {
+    "title": "通知",
+    "aria_unread": "通知、未読 {count} 件",
+    "mark_all_read": "すべて既読にする",
+    "unread": "未読",
+    "empty": "新しい通知はありません。",
+    "group_new": "新着",
+    "group_earlier": "以前",
+    "someone": "誰か",
+    "board_unavailable": "このボードは利用できなくなりました",
+    "sentence": {
+      "board_shared": "{who} さんが「{board}」をあなたと共有しました",
+      "role_changed": "{who} さんが「{board}」へのあなたのアクセス権を変更しました",
+      "board_unshared": "{who} さんがあなたを「{board}」から削除しました",
+      "member_joined": "{who} さんが「{board}」に参加しました",
+      "member_left": "{who} さんが「{board}」から退出しました",
+      "default": "{who} さんが「{board}」を更新しました",
+      "item_added": "{who} さんが「{board}」にブックマークを追加しました | {who} さんが「{board}」にブックマークを {count} 件追加しました",
+      "item_added_titled": "{who} さんが「{board}」に「{title}」を追加しました",
+      "item_edited": "{who} さんが「{board}」のブックマークを編集しました | {who} さんが「{board}」のブックマークを {count} 件編集しました",
+      "item_edited_titled": "{who} さんが「{board}」の「{title}」を編集しました",
+      "item_removed": "{who} さんが「{board}」からブックマークを削除しました | {who} さんが「{board}」からブックマークを {count} 件削除しました",
+      "item_removed_titled": "{who} さんが「{board}」から「{title}」を削除しました"
+    }
+  },
+  "shell": {
+    "login_desktop": {
+      "success": "ログインしました"
+    },
+    "apple_callback": {
+      "completing": "Apple でのサインインを完了しています...",
+      "invalid_state": "state パラメータが無効です - CSRF 攻撃の可能性があります",
+      "no_id_token": "Apple から ID トークンを受け取れませんでした",
+      "auth_failed": "認証に失敗しました",
+      "account_exists": "このメールアドレスのアカウントはすでに存在します。メールアドレスとパスワードでサインインしてください。",
+      "token_expired": "Apple のサインインセッションの有効期限が切れました。もう一度お試しください。",
+      "invalid_token": "Apple の認証トークンが無効です。もう一度お試しください。",
+      "user_creation_failed": "アカウントを作成できませんでした。しばらくしてからもう一度お試しください。",
+      "sign_in_failed": "Apple でサインインできませんでした。もう一度お試しください。"
+    },
+    "welcome_extension": {
+      "heading": "ようこそ！",
+      "tagline": "ボタンをクリックするだけで保存。整理はAIにおまかせ。",
+      "right_click_title": "右クリックで保存",
+      "right_click_description": "右クリックするだけで、ウェブサイトや画像を簡単に保存できます。",
+      "quick_menu_title": "クイックメニュー",
+      "quick_menu_description": "「J」キーで WebBites のクイックメニューを切り替えます。Cmd+J（Windows では Ctrl）で小さな WebBites を開き、すばやく保存や検索ができます。",
+      "reading_title": "快適な読書体験",
+      "reading_description": "記事を自動で検出し、集中できる読書モードで開きます。",
+      "summaries_title": "即座に要約",
+      "summaries_description": "記事やウェブサイトをワンクリックで要約します。",
+      "listen_title": "記事を聴く",
+      "listen_description": "記事や要約を、リアルな音声で読み上げます。"
+    }
+  },
+  "boards": {
+    "empty": "ボードはまだありません",
+    "someone": "誰か",
+    "go_home": "WebBites へ",
+    "leave": "ボードから退出",
+    "duplicate": "複製",
+    "archive": "アーカイブ",
+    "delete_board": "ボードを削除",
+    "added_to": "{board} に追加しました",
+    "already_in": "すでに {board} にあります",
+    "added_bookmarks": "{board} にブックマークを {count} 件追加しました | {board} にブックマークを {count} 件追加しました",
+    "add_error": "ボードへの追加中にエラーが発生しました",
+    "modal": {
+      "edit_title": "ボードを編集",
+      "new_title": "新しいボード",
+      "choose_emoji": "絵文字を選択",
+      "emoji_placeholder": "絵文字を入力または貼り付け",
+      "remove_emoji": "削除",
+      "emoji_work": "仕事",
+      "emoji_creative": "クリエイティブ",
+      "emoji_life": "ライフ",
+      "emoji_misc": "その他",
+      "name_placeholder": "ボード名",
+      "description_placeholder": "このボードには何を入れますか？（任意）",
+      "inside": "場所",
+      "inside_help": "このボードをフォルダに入れるか、最上位に置きます。",
+      "top_level": "最上位",
+      "how_added": "ブックマークの追加方法",
+      "mode_manual": "手動",
+      "mode_manual_help": "ブックマークの追加と削除を自分で行います。",
+      "mode_smart": "スマート",
+      "mode_smart_help": "一致するブックマークは自動で振り分けられ、手動で追加することもできます。",
+      "ai_topics": "AI トピック",
+      "ai_topics_hint": "カンマ区切り",
+      "ai_topics_help": "AI が新しいブックマークをこれらと照合します。下で条件を追加する場合は省略できます。",
+      "topics_placeholder": "UI デザイン、タイポグラフィ、色彩理論",
+      "confidence": "最小一致信頼度",
+      "conditions": "条件",
+      "conditions_help": "新しいブックマークごとにチェックされます。AI トピックと組み合わせるか、条件だけで AI を使わずに運用できます。",
+      "auto_apply": "一致するブックマークを自動で追加",
+      "auto_apply_help": "一致する新しいブックマークは、確認なしでここに振り分けられます。",
+      "include_existing": "既存のブックマークをスキャン",
+      "include_existing_help": "保存済みのブックマークからボードを埋めます。",
+      "automations_link": "タグ、Webhook などは「自動化」で追加できます",
+      "colour": "カラー",
+      "no_colour": "カラーなし",
+      "save_changes": "変更を保存",
+      "create": "ボードを作成",
+      "updated": "ボードを更新しました",
+      "created": "ボードを作成しました",
+      "save_error": "ボードの保存中にエラーが発生しました"
+    },
+    "folder": {
+      "rename_title": "フォルダ名を変更",
+      "new_title": "新しいフォルダ",
+      "name_placeholder": "フォルダ名",
+      "create": "作成",
+      "save_error": "フォルダの保存中にエラーが発生しました"
+    },
+    "sidebar": {
+      "title": "ボード",
+      "new_folder": "新しいフォルダ",
+      "new_board": "新しいボード",
+      "shared": "共有中",
+      "shared_by": "{name} さんが共有",
+      "share_board": "ボードを共有",
+      "rename_folder": "フォルダ名を変更",
+      "edit_board": "ボードを編集",
+      "link_copied": "共有リンクをコピーしました",
+      "link_copy_error": "共有リンクをコピーできませんでした",
+      "menu": {
+        "new_board_here": "ここに新しいボード…",
+        "new_folder_here": "ここに新しいフォルダ…",
+        "rename": "名前を変更…",
+        "delete": "削除…",
+        "share": "共有…",
+        "people_with_access": "アクセスできるユーザー…",
+        "edit_board": "ボードを編集…",
+        "copy_share_link": "共有リンクをコピー"
+      }
+    },
+    "add_to": {
+      "title": "ボードに追加",
+      "removed_from": "{board} から削除しました",
+      "update_error": "ボードの更新中にエラーが発生しました"
+    },
+    "share": {
+      "title": "「{name}」を共有",
+      "people_with_access": "アクセスできるユーザー",
+      "description_owner": "メールで招待するか、リンクを知っている人なら誰でも閲覧できるようにします。",
+      "description_member": "{name} があなたと共有されています。",
+      "this_board": "このボード",
+      "try_again": "もう一度試す",
+      "load_error": "共有設定を読み込めませんでした。",
+      "invite_people": "ユーザーを招待",
+      "add_emails": "メールアドレスを追加",
+      "invite": "招待",
+      "invalid_emails": "{emails} は有効なメールアドレスではありません。 | {emails} は有効なメールアドレスではありません。",
+      "invite_hint": "WebBites アカウントをお持ちでない方には、参加用リンクを記載したメールが届きます。",
+      "you": "（あなた）",
+      "owner": "オーナー",
+      "pending": "保留中",
+      "can_view": "閲覧可",
+      "can_edit": "編集可",
+      "remove_member": "{name} を削除",
+      "nobody_else": "ほかにはまだ誰もいません。",
+      "only_other": "ここにいるのはあなただけです。",
+      "general_access": "一般アクセス",
+      "access_private": "招待したユーザーのみ",
+      "access_link": "リンクを知っている人なら誰でも — 閲覧のみ",
+      "link_on": "リンクを知っている人は、サインインなしで閲覧できます。",
+      "link_off": "上記のユーザーだけがこのボードを開けます。",
+      "link_reset_to_show": "リンクをリセットするとここに表示されます",
+      "link_unavailable": "リンクを利用できません",
+      "copy_link": "リンクをコピー",
+      "click_again": "もう一度クリックしてリセット",
+      "create_link": "リンクを作成",
+      "reset_link": "リンクをリセット",
+      "done": "完了",
+      "invited": "招待を送信しました | {count} 人を招待しました",
+      "invite_error": "招待を送信できませんでした",
+      "role_error": "アクセス権を変更できませんでした",
+      "remove_error": "削除できませんでした",
+      "access_error": "このボードを開ける人を変更できませんでした",
+      "link_copied": "リンクをコピーしました",
+      "link_copy_error": "リンクをコピーできませんでした",
+      "new_link": "新しいリンクを作成しました",
+      "reset_error": "リンクをリセットできませんでした"
+    },
+    "trash": {
+      "title": "ゴミ箱",
+      "description": "削除したブックマークは30日間保管され、その後完全に削除されます。",
+      "empty": "ゴミ箱は空です",
+      "untitled": "無題",
+      "purges_in": "{count} 日後に完全に削除されます | {count} 日後に完全に削除されます | {count} 日後に完全に削除されます",
+      "restore": "復元"
+    },
+    "public": {
+      "open_webbites": "WebBites を開く",
+      "save_your_own": "自分用に保存",
+      "start_free": "無料で始める",
+      "shared_by": "{name} さんが共有",
+      "bookmark_count": "ブックマーク {count} 件 | ブックマーク {count} 件",
+      "empty": "このボードにはまだ何もありません。",
+      "show_more": "ブックマークをさらに表示",
+      "footer": "このボードは WebBites から共有されました。WebBites では、ページを保存して、あとで見つけて、誰とでもボードを共有できます。",
+      "title": "{name} — WebBites",
+      "title_default": "共有ボード — WebBites",
+      "not_found_title": "ボードが見つかりません",
+      "not_found_text": "このリンクの先には何もありません。リンクを最後までコピーできているかご確認ください。",
+      "forbidden_title": "このボードはあなたに共有されていません",
+      "forbidden_text": "オーナーが共有をオフにしたか、リンクをリセットした可能性があります。新しいリンクをオーナーに依頼してください。",
+      "error_title": "このボードを読み込めませんでした",
+      "error_text": "こちら側で問題が発生しました。しばらくしてからもう一度お試しください。"
+    },
+    "invite": {
+      "incomplete_title": "この招待リンクは不完全です",
+      "incomplete_text": "メールのリンクを最後までコピーして、もう一度開いてください。",
+      "invited_title": "ボードに招待されました",
+      "sign_in_text": "参加するには、サインインするか WebBites アカウントを作成してください。",
+      "sign_in_cta": "サインインまたはアカウント作成",
+      "joining": "ボードに参加しています…"
+    }
+  },
+  "editor": {
+    "slash": {
+      "items": {
+        "paragraph": {
+          "title": "テキスト",
+          "subtitle": "そのまま書き始める"
+        },
+        "heading1": {
+          "title": "見出し 1",
+          "subtitle": "大きなセクション見出し"
+        },
+        "heading2": {
+          "title": "見出し 2",
+          "subtitle": "中サイズのセクション見出し"
+        },
+        "heading3": {
+          "title": "見出し 3",
+          "subtitle": "小さなセクション見出し"
+        },
+        "bulletList": {
+          "title": "箇条書きリスト",
+          "subtitle": "シンプルなリスト"
+        },
+        "orderedList": {
+          "title": "番号付きリスト",
+          "subtitle": "数字が付くリスト"
+        },
+        "taskList": {
+          "title": "ToDo",
+          "subtitle": "チェックして済ませるもの"
+        },
+        "blockquote": {
+          "title": "引用",
+          "subtitle": "文章を目立たせる"
+        },
+        "codeBlock": {
+          "title": "コード",
+          "subtitle": "整形済み・等幅"
+        },
+        "horizontalRule": {
+          "title": "区切り線",
+          "subtitle": "ページを二つに区切る"
+        },
+        "image": {
+          "title": "画像",
+          "subtitle": "画像をアップロード"
+        }
+      },
+      "groups": {
+        "basic": "基本ブロック",
+        "media": "メディア"
+      },
+      "no_match": "「{query}」というブロックはありません"
+    },
+    "block_menu": {
+      "duplicate": "複製",
+      "copy_text": "テキストをコピー",
+      "turn_into": "変換"
+    }
+  },
+  "cards": {
+    "everything": "すべて",
+    "media_preview": {
+      "date_unavailable": "日付なし",
+      "movie_poster_alt": "映画のポスター",
+      "game_poster_alt": "ゲームのポスター"
+    },
+    "search_chip": {
+      "remove": "{label} を削除"
+    },
+    "drawing": {
+      "save_failed": "手描きを保存できませんでした"
+    }
+  },
+  "faq": {
+    "title_line1": "よくある質問を、",
+    "title_emphasis": "ブックマーク。",
+    "subtitle": "みなさまからよくいただくご質問を、ひとつの場所にまとめました。トピックを選ぶか、気になる項目を開いてください。",
+    "topics_aria": "トピック",
+    "topics": {
+      "all": "すべて",
+      "start": "はじめに",
+      "saving": "保存と同期",
+      "billing": "プランと請求",
+      "privacy": "プライバシーとデータ",
+      "dev": "開発者向け"
+    },
+    "still_stuck": {
+      "title": "まだ解決しませんか？",
+      "body": "すべてのメールを担当者が読み、通常は2営業日以内にお返事します。行った操作、期待した結果、実際に起きたことをお知らせください。",
+      "email_button": "{email} にメール",
+      "feature_button": "機能をリクエスト"
+    },
+    "items": {
+      "what": {
+        "q": "WebBites とは？",
+        "a": "ウェブサイト、画像、映画、ゲーム、メモなど、何でも保存して、整理の手間なくあとで見つけられる場所です。ワンクリックで保存すると、WebBites が AI でタグ付けと整理を行い、タイトル、色、タグ、ページ内のテキストでも検索できます。"
+      },
+      "platforms": {
+        "q": "どのプラットフォームで使えますか？",
+        "a": "ウェブアプリ、iPhone・iPad・Mac・Vision Pro・Apple TV・Apple Watch 向けのネイティブアプリ、そしてどこからでも保存できるブラウザ拡張機能があります。すべてアカウントを通じて同期されます。"
+      },
+      "account": {
+        "q": "アプリを使うのにアカウントは必要ですか？",
+        "a": "いいえ。iPhone、iPad、Mac、Vision Pro のアプリは、サインインしなくても、お使いのデバイス内のライブラリで利用でき、そのモードで保存した内容が当社に送信されることはありません。同期、共有、セマンティック検索、クラウド機能にはアカウントが必要です。インテリジェンス機能も、設定でデバイス上のモデルに切り替えれば、ローカルのままご利用いただけます。詳細は<a href=\"/privacy\">プライバシーポリシー</a>の第2項をご覧ください。"
+      },
+      "password": {
+        "q": "パスワードを忘れました",
+        "a": "<a href=\"/passwordReset\">リセットページ</a>か、サインイン画面の「パスワードをお忘れですか」リンクをご利用ください。メールは当社のメールプロバイダーから届きます。届かない場合は迷惑メールをご確認ください。Apple でサインインした場合はリセットするパスワードがありません。もう一度 Apple のボタンを使ってください。"
+      },
+      "sync": {
+        "q": "ブックマークが同期されません",
+        "a": "両方のデバイスで同じアカウントにサインインしているか確認し、画面を引き下げて更新してください。オフライン中の保存はキューに入り、ネットワークが戻ると自動で送信されます。設定 → データとオフラインの「保存待ち」画面で確認できます。接続が正常なのに数分以上そこに残っている場合は、メールでご連絡ください。"
+      },
+      "extension": {
+        "q": "拡張機能で保存できません",
+        "a": "拡張機能はサインイン済みのセッションを通じて保存するため、一度ウェブアプリを開いてサインインしてから、もう一度お試しください。Safari では、Safari → 設定 → 拡張機能で、拡張機能を有効にし、表示中のサイトへの権限を許可する必要もあります。"
+      },
+      "bad_save": {
+        "q": "ページがうまく保存されない — 画像がない、タイトルが違う、記事の本文がない",
+        "a": "サイトによっては、自動取得をブロックしていたり、すべてを JavaScript で描画していたり、ペイウォールやログインの向こう側にあったりします。その場合は取得できる範囲で保存します。ブックマークのタイトル、説明、画像を編集すれば、そのまま修正できます。大切なサイトがいつもうまく保存されない場合は URL をお送りください。個別に対応できることが多くあります。"
+      },
+      "export": {
+        "q": "ブックマークのエクスポートやインポートはできますか？",
+        "a": "どちらも可能です。どのプラットフォームでも、設定 → エクスポートで、どのプランでもいつでも、ライブラリを持ち運び可能なファイルとして書き出せます。ブラウザのブックマークを取り込むには、<a href=\"/export-bookmarks\">インポートガイド</a>をご覧ください。"
+      },
+      "pricing": {
+        "q": "料金はいくらですか？",
+        "a": "無料プランと、より多くのブックマークや高度な機能を使える有料プランがあります。現在のプランと料金は、ホームページの<a href=\"/#pricing\">料金セクション</a>をご覧ください。"
+      },
+      "cancel": {
+        "q": "プランの解約や変更はどうすればいいですか？",
+        "a": "お申し込みいただいた場所で解約します。ウェブまたは Mac で登録した場合は、設定 → サブスクリプションから請求ポータルを開いてください。App Store で登録した場合は、Apple が直接請求するため、デバイスの Apple サブスクリプション設定（設定 → ご自身の名前 → サブスクリプション）から行います。有料機能は、お支払い済みの期間の終わりまでご利用いただけます。"
+      },
+      "privacy": {
+        "q": "データはプライベートですか？",
+        "a": "ブックマークはあなたのものです。データを販売することはなく、サインインしなければアプリはすべてデバイス上だけで動作します。保存する内容、その理由、保存期間は<a href=\"/privacy\">プライバシーポリシー</a>に明記しています。"
+      },
+      "delete": {
+        "q": "アカウントを削除するには？",
+        "a": "設定 → アカウントを削除 から確認して実行します。ブックマーク、ファイル、サブスクリプションも一緒に削除され、元に戻せません。コピーが必要な場合は先にエクスポートしてください。当社へのメールは不要で、引き止めのご案内も挟みません。"
+      },
+      "api": {
+        "q": "API はありますか？",
+        "a": "はい。<a href=\"/developers\">開発者ページ</a>で何ができるかをご確認いただけます。<a href=\"/developers/docs\">ドキュメント</a>には、ガイド、API キー、プレイグラウンド、すべてのエンドポイントがあります。"
+      }
+    }
+  },
+  "help_pages": {
+    "legal": {
+      "last_updated": "最終更新日: {date}",
+      "questions": "このページについてのご質問は {email} までご連絡ください。"
+    },
+    "chat": {
+      "title": "チャットで相談",
+      "subtitle": "チームの担当者が対応します。通常は2営業日以内にお返事します。",
+      "iframe_title": "サポートチャット",
+      "not_configured": "チャットはまだ設定されていません。{email} までメールでご連絡ください。",
+      "sign_in_prompt": "サインインして会話を始めると、履歴をひとつの場所で確認できます。",
+      "sign_in": "サインイン",
+      "prefer_email": "メールをご希望ですか？ {email} までご連絡ください。"
+    },
+    "support": {
+      "title": "サポート",
+      "subtitle": "不具合、足りない機能、見つからないものがありますか？担当者への連絡方法はこちらです。",
+      "email_us": "メールで連絡",
+      "email_body": "このアドレスは担当者が1人で読んでおり、通常は2営業日以内にお返事します。行った操作、期待した結果、実際に起きたこと、そしてお使いのアプリ（ウェブ、iPhone、iPad、Mac、Vision Pro、TV、Watch、ブラウザ拡張機能）とバージョンをお知らせください。スクリーンショットがあると、やり取りが一度で済みます。",
+      "operated_by": "WebBites は {operator}（{address}）が運営しています。",
+      "where_title": "連絡先の選び方",
+      "col_want": "やりたいこと",
+      "col_go": "こちらへ",
+      "row_bug": "不具合を報告する、またはヘルプを依頼する",
+      "row_bug_go": "{chat}、または {email}",
+      "chat_link": "チャットで相談",
+      "row_feature": "機能をリクエストする、または投票する",
+      "feedback_board": "フィードバックボード",
+      "row_changes": "変更内容と日付を確認する",
+      "changelog": "更新履歴",
+      "row_api": "API を使って開発する",
+      "developer_docs": "開発者向けドキュメント",
+      "row_import": "ブラウザのブックマークを取り込む",
+      "import_guide": "インポートガイド",
+      "row_security": "セキュリティ上の問題を報告する",
+      "row_security_go": "{email}、件名は「Security」",
+      "row_rights": "データ保護に関する権利を行使する",
+      "row_rights_go": "{link} 第11項",
+      "privacy_policy": "プライバシーポリシー",
+      "faq_title": "よくある質問への回答",
+      "faq_body": "パスワード、同期、エクスポート、解約、拡張機能などについては{link}をご覧ください。",
+      "faq_link": "FAQ ページ",
+      "security_title": "セキュリティ上の問題の報告",
+      "security_body": "件名に「Security」と入れ、問題を再現できる詳細を添えて {email} までメールしてください。修正の機会をいただく前の公開、テスト中の他のユーザーのデータへのアクセスや変更、サービスへの負荷テストやサービス拒否テストはご遠慮ください。受領のご連絡と進捗のご報告をお送りし、ご希望があれば修正後にお名前を掲載します。"
+    }
+  },
+  "support_chat": {
+    "replying_to": "{email} に返信中",
+    "real_person": "担当者が直接読みます",
+    "gate_intro": "サインインして履歴をすべて保存するか、ゲストとしてメッセージを残してください。",
+    "your_email": "メールアドレス",
+    "continue_as_guest": "ゲストとして続ける",
+    "email_note": "返信にのみ使用します。下書きはこのデバイスに保存されます。",
+    "we_reply_to": "{email} 宛にお返事します。通常は2営業日以内です。",
+    "tell_us": "状況をお聞かせください。",
+    "your_message": "メッセージ",
+    "send": "送信",
+    "close_chat": "サポートチャットを閉じる",
+    "open_chat": "サポートチャットを開く",
+    "invalid_email": "返信できるよう、有効なメールアドレスを入力してください。"
+  },
+  "marketing": {
+    "statistics": {
+      "active_users": "アクティブユーザー",
+      "bookmarks_saved": "保存されたブックマーク",
+      "accuracy_rate": "精度",
+      "support": "サポート"
+    }
+  },
+  "import_export": {
+    "time": {
+      "unknown": "不明",
+      "ago_minutes": "{minutes}分{seconds}秒前",
+      "ago_seconds": "{seconds}秒前",
+      "hours_minutes": "{hours}時間{minutes}分",
+      "minutes_seconds": "{minutes}分{seconds}秒",
+      "seconds": "{seconds}秒"
+    },
+    "status_labels": {
+      "inactive": "非アクティブ",
+      "active": "アクティブ",
+      "processing": "処理中",
+      "completed": "完了",
+      "cancelled": "キャンセル済み",
+      "failed": "失敗"
+    },
+    "activity": {
+      "processing": "処理中:",
+      "waiting": "次のブックマークを待機中...",
+      "last_update": "最終更新: {time}"
+    },
+    "failed": {
+      "title": "インポートに失敗 ({count})",
+      "retry": "{count} 件を再試行 | {count} 件を再試行",
+      "retryable": "再試行可能",
+      "failed": "失敗"
+    },
+    "metrics": {
+      "title": "パフォーマンス指標",
+      "per_minute": "ブックマーク/分",
+      "duration": "所要時間",
+      "estimated_completion": "完了予定",
+      "batches": "バッチ"
+    },
+    "overview": {
+      "title": "インポートの状況",
+      "processing": "ブックマーク {total} 件中 {done} 件を処理中",
+      "currently": "現在: {url}",
+      "no_session": "実行中のインポートはありません"
+    },
+    "progress": {
+      "title": "進行状況",
+      "hint": "数分かかる場合があります。このウィンドウを閉じてもインポートは続行されます。",
+      "completed": "{count} 件完了",
+      "failed": "{count} 件失敗"
+    },
+    "queue": {
+      "title": "キューのプレビュー",
+      "remaining": "残り {count} 件",
+      "empty": "キューにアイテムはありません",
+      "batch": "バッチ: {batch}",
+      "more": "... ほか {count} 件"
+    },
+    "modal": {
+      "title": "インポートの進行状況",
+      "cancel_import": "インポートをキャンセル",
+      "retry_success": "{count} 件を再試行のためキューに戻しました | {count} 件を再試行のためキューに戻しました",
+      "retry_error": "再試行に失敗しました。もう一度お試しください。",
+      "cancelled": "インポートをキャンセルしました",
+      "cancel_error": "インポートをキャンセルできませんでした。もう一度お試しください。"
+    },
+    "user_modal": {
+      "title": "ブックマークをインポート",
+      "subtitle": "このユーザーのブックマークインポートを開始します",
+      "no_email": "メールアドレスがありません",
+      "user_id": "ユーザー ID: {id}",
+      "current_bookmarks": "現在のブックマーク: {count}",
+      "import_status": "インポートの状況",
+      "last_import": "前回のインポート: {date}",
+      "total_imported": "インポート合計: ブックマーク {count} 件",
+      "options": "インポートオプション",
+      "force_reimport": "強制的に再インポート（既存のブックマークを上書き）",
+      "skip_duplicates": "重複するブックマークをスキップ",
+      "notify_user": "完了したらユーザーに通知を送信",
+      "from_parse_class": "Parse クラスからインポート",
+      "notice_title": "重要なお知らせ",
+      "progress": "インポートの進行状況",
+      "importing": "インポート中...",
+      "start_import": "インポートを開始",
+      "already_imported_warning": "このユーザーはすでにブックマークをインポートしています。既存のデータを上書きするには「強制的に再インポート」を有効にしてください。",
+      "status_unknown": "不明",
+      "status_imported": "インポート済み",
+      "status_none": "インポートなし",
+      "not_available": "なし",
+      "step_init": "インポートを初期化しています...",
+      "step_prepare": "ユーザーデータを準備しています...",
+      "step_process": "ブックマークを処理しています...",
+      "step_finalize": "インポートを仕上げています...",
+      "step_done": "インポートが完了しました！",
+      "failed_generic": "インポートに失敗しました",
+      "failed": "インポートに失敗しました: {error}"
+    },
+    "export_guide": {
+      "title": "ブックマークのエクスポート方法",
+      "intro": "ブックマークを WebBites に移行する準備はできましたか？お使いのブラウザからブックマークをエクスポートする手順は次のとおりです。",
+      "help_title": "お困りですか？",
+      "help_text": "ブックマークのエクスポートでお困りの場合は、お気軽に{link}。",
+      "help_link": "サポートチームまでご連絡ください",
+      "exporting_from": "{browser} からエクスポート",
+      "note_label": "注意:",
+      "next_title": "次のステップ",
+      "next_intro": "ブックマークをエクスポートしたら、WebBites にインポートできます。",
+      "next_1": "<a href=\"/app\" class=\"text-primary-600 dark:text-primary-400 hover:underline\">WebBites ダッシュボード</a>に移動して、設定モーダルを開きます。",
+      "next_2": "「ブックマークをインポート」ボタンをクリックします。",
+      "next_3": "エクスポートしたブックマークファイルを選択してアップロードします",
+      "next_4": "アップロードしたいものを選んで「インポート」をクリックすれば、あとは WebBites がすべて整理します！",
+      "import_alt": "WebBites インポートのステップ {n}",
+      "steps": {
+        "chrome_1": {
+          "title": "Chrome のメニューを開く",
+          "description": "ブラウザウィンドウの右上にある三点アイコン <strong>⋮</strong> をクリックして、Chrome のメニューを開きます。"
+        },
+        "chrome_2": {
+          "title": "ブックマークマネージャを開く",
+          "description": "<strong>ブックマーク > ブックマークマネージャ</strong>に移動するか、<kbd class=\"new-kbd\">Ctrl+Shift+O</kbd>（Windows/Linux）または <kbd class=\"new-kbd\">⌘+Option+B</kbd>（Mac）を押します。"
+        },
+        "chrome_3": {
+          "title": "ブックマークをエクスポート",
+          "description": "ブックマークマネージャの右上にある三点アイコン <strong>⋮</strong> をクリックし、<strong>ブックマークをエクスポート</strong>を選択します。"
+        },
+        "chrome_4": {
+          "title": "HTML ファイルを保存",
+          "description": "ブックマークを含む HTML ファイルの保存先をコンピュータ上で選びます。デフォルトのファイル名は「bookmarks_[date].html」のようになります。",
+          "note": "この HTML ファイルには、すべてのブックマークとフォルダ構造が含まれます。"
+        },
+        "firefox_1": {
+          "title": "Firefox のメニューを開く",
+          "description": "ブラウザウィンドウの右上にある横三本線（ハンバーガーメニュー）<strong>☰</strong> をクリックします。"
+        },
+        "firefox_2": {
+          "title": "ブックマークを開く",
+          "description": "<strong>ブックマーク > ブックマークを管理</strong>に移動するか、<kbd class=\"new-kbd\">Ctrl+Shift+B</kbd>（Windows/Linux）または <kbd class=\"new-kbd\">⌘+Shift+B</kbd>（Mac）を押します。"
+        },
+        "firefox_3": {
+          "title": "ブックマークをエクスポート",
+          "description": "開いたライブラリウィンドウで、<strong>インポートとバックアップ > ブックマークを HTML にエクスポート</strong>をクリックします。"
+        },
+        "firefox_4": {
+          "title": "HTML ファイルを保存",
+          "description": "HTML ファイルの保存先をコンピュータ上で選びます。デフォルトのファイル名は「bookmarks.html」です。",
+          "note": "WebBites にインポートするときにすぐ見つけられるよう、保存した場所を覚えておいてください。"
+        },
+        "safari_1": {
+          "title": "Safari のメニューを開く",
+          "description": "Safari 上部のメニューバーで<strong>ファイル</strong>をクリックします。"
+        },
+        "safari_2": {
+          "title": "ブックマークをエクスポート",
+          "description": "ドロップダウンメニューから<strong>ブックマークを書き出す</strong>を選択します。"
+        },
+        "safari_3": {
+          "title": "ファイルを保存",
+          "description": "ブックマークファイルの保存先を Mac 上で選びます。.zip ファイルとして保存されるので、.html ファイルを取り出すには展開が必要です。",
+          "note": "Safari では、お気に入りバーやすべてのフォルダ内のものを含め、すべてのブックマークがエクスポートされます。"
+        },
+        "edge_1": {
+          "title": "Edge のメニューを開く",
+          "description": "ブラウザウィンドウの右上にある三点アイコン <strong>⋯</strong> をクリックし、<strong>お気に入り</strong>をクリックします。"
+        },
+        "edge_2": {
+          "title": "お気に入りをエクスポート",
+          "description": "<strong>お気に入りのエクスポート</strong>をクリックします。"
+        },
+        "edge_3": {
+          "title": "HTML ファイルを保存",
+          "description": "お気に入り（ブックマーク）を含む HTML ファイルの保存先をコンピュータ上で選びます。",
+          "note": "Edge では、作成したフォルダ内のものを含め、すべてのお気に入りがエクスポートされます。"
+        },
+        "opera_1": {
+          "title": "ブックマークを開く",
+          "description": "<kbd class=\"new-kbd\">Ctrl+Shift+B</kbd>（Windows/Linux）または <kbd class=\"new-kbd\">⌘+Option+B</kbd>（Mac）を押してブックマークマネージャを開くか、Opera のメニューから<strong>ブックマーク > ブックマーク</strong>を選択します。"
+        },
+        "opera_2": {
+          "title": "ブックマークの全画面表示を開く",
+          "description": "<strong>ブックマークをすべて表示</strong>をクリックします"
+        },
+        "opera_3": {
+          "title": "ブックマークをエクスポート",
+          "description": "ブックマークマネージャの左下にある<strong>インポート/エクスポート</strong>ボタンをクリックし、<strong>ブックマークを HTML ファイルとしてエクスポート</strong>を選択します。"
+        },
+        "opera_4": {
+          "title": "HTML ファイルを保存",
+          "description": "ブックマークを含む HTML ファイルの保存先をコンピュータ上で選びます。",
+          "note": "Opera のブックマークのエクスポートには、すべてのブックマークとフォルダ構造が含まれます。"
+        },
+        "arc_1": {
+          "title": "Arc のサイドバーを開く",
+          "description": "<kbd class=\"new-kbd\">⌘+T</kbd> でコマンドバーを開き、<strong>arc://bookmarks</strong> に移動します。"
+        },
+        "arc_2": {
+          "title": "ブックマークをエクスポート",
+          "description": "ブックマークパネルの右上にある三点アイコン <strong>⋯</strong> をクリックし、<strong>設定</strong>を選択します。設定メニューで<strong>ブックマークをエクスポート</strong>を見つけてクリックします。"
+        },
+        "arc_3": {
+          "title": "HTML ファイルを保存",
+          "description": "ブックマークを含む HTML ファイルの保存先をコンピュータ上で選びます。",
+          "note": "この HTML ファイルには、すべてのブックマークとフォルダ構造が含まれます。"
+        },
+        "raindrop_1": {
+          "title": "Raindrop.io にログイン",
+          "description": "<a href='https://app.raindrop.io' target='_blank' rel='noopener noreferrer'>app.raindrop.io</a> にアクセスして、アカウントにログインします。"
+        },
+        "raindrop_2": {
+          "title": "設定を開く",
+          "description": "右上のプロフィール画像をクリックし、ドロップダウンメニューから<strong>設定</strong>を選択します。"
+        },
+        "raindrop_3": {
+          "title": "ブックマークをエクスポート",
+          "description": "設定メニューで<strong>バックアップ</strong>タブに移動します。「エクスポート」セクションで、希望の形式を選択します（WebBites との互換性には HTML をおすすめします）。"
+        },
+        "raindrop_4": {
+          "title": "ブックマークをダウンロード",
+          "description": "<strong>エクスポート</strong>ボタンをクリックして、ブックマークファイルを生成してダウンロードします。",
+          "note": "Raindrop.io では複数の形式でエクスポートできますが、WebBites へのインポートには HTML 形式が最適です。"
+        }
+      }
+    }
+  },
+  "subscription_success": {
+    "title": "サブスクリプションが有効になりました！",
+    "message": "{plan} プランへのご登録が完了しました。プレミアム体験をお楽しみください！",
+    "benefits_title": "プレミアム特典",
+    "bookmarks": "ブックマーク",
+    "bookmarks_limit": "最大 {limit} 件のブックマークを保存",
+    "audio": "音声トラック",
+    "audio_limit": "{limit} 本のプレミアム音声トラックにアクセス",
+    "import_bookmarks": "ブックマークをインポート",
+    "start": "使ってみる",
+    "unlimited": "無制限"
+  },
+  "rss": {
+    "mark_all_read": "すべて既読にする",
+    "mark_read": "既読にする",
+    "mark_unread": "未読にする",
+    "pane": {
+      "articles": "記事"
+    },
+    "sidebar": {
+      "feeds": "フィード",
+      "all_articles": "すべての記事",
+      "unread": "未読",
+      "import_opml": "フィードをインポート (OPML)…",
+      "export_feeds": "フィードをエクスポート…",
+      "import_added": "フィードを {count} 件追加しました | フィードを {count} 件追加しました",
+      "import_queued": "さらに {count} 件が追加される予定です",
+      "import_failed_rows": "{count} 件を読み取れませんでした",
+      "import_failed": "その OPML ファイルをインポートできませんでした。",
+      "export_failed": "フィードをエクスポートできませんでした。"
+    },
+    "add_feed": {
+      "title": "フィードを追加",
+      "placeholder": "フィードのアドレスまたは名前",
+      "hint": "サイトまたはフィードのアドレスを貼り付けるか、名前で検索します。",
+      "nothing_found": "見つかりません",
+      "no_match": "「{query}」に一致するフィードはありません。フィードのアドレスがわかる場合は、ここに貼り付けてください。",
+      "readers": "購読者 {count} 人 | 購読者 {count} 人",
+      "already_subscribed": "購読済み",
+      "add": "追加",
+      "done": "完了",
+      "subscribe_failed": "そのフィードを購読できませんでした。"
+    },
+    "settings": {
+      "name": "名前",
+      "name_hint": "発行元の名前を使用",
+      "fetch_full": "記事の全文を取得",
+      "fetch_full_description": "多くのフィードは冒頭部分しか配信しません。オンにすると、WebBites が新しい記事を全文取得して要約します。有料プランで利用できます。",
+      "open_website": "ウェブサイトを開く",
+      "feed_dead": "このフィードは応答しなくなったため、確認を停止しました。",
+      "unsubscribe": "購読を解除",
+      "save_failed": "設定を保存できませんでした。"
+    },
+    "list": {
+      "filter": "記事を絞り込む",
+      "showing_unread": "未読のみ表示中",
+      "show_unread": "未読のみ表示",
+      "refresh": "フィードを更新",
+      "confirm_feed": "「{title}」のすべてを既読にしますか？",
+      "confirm_all": "すべての記事を既読にしますか？",
+      "full_text": "全文あり",
+      "summary": "要約あり",
+      "no_matches": "一致なし",
+      "no_matches_description": "「{query}」に一致するものはありません。",
+      "no_feeds": "フィードはまだありません",
+      "no_feeds_description": "フィードを追加して読み始めましょう。",
+      "caught_up": "すべて読みました",
+      "caught_up_description": "未読はありません。",
+      "no_articles": "記事なし",
+      "no_articles_description": "このフィードはまだ何も公開していません。"
+    },
+    "reader": {
+      "no_article": "記事が選択されていません",
+      "pick_article": "リストから選ぶと読み始められます。",
+      "original": "オリジナル",
+      "mark_unread": "未読にする",
+      "summarise": "この記事を要約",
+      "listen": "この記事を聴く",
+      "nothing_to_read": "読めるものがありません",
+      "open_original": "オリジナルを開く",
+      "save_bookmark": "ブックマークとして保存",
+      "add_read_later": "後で読むに追加",
+      "remove_read_later": "後で読むから削除",
+      "show_original": "オリジナルを表示",
+      "show_extracted": "抽出したコンテンツを表示",
+      "empty_failed": "この記事のテキストを発行元から取得できませんでした。",
+      "empty_pending": "全文を取得中です。しばらくしてからもう一度お試しください。",
+      "empty_headlines": "このフィードは見出しのみを配信しています。オリジナルを開いてお読みください。",
+      "too_short": "この記事は要約するにはテキストが少なすぎます。",
+      "summary_failed": "この記事を要約できませんでした。",
+      "audio_failed": "この記事の音声を生成できませんでした。",
+      "saved_read_later": "後で読むに保存しました",
+      "removed_read_later": "後で読むから削除しました",
+      "read_later_failed": "後で読むを更新できませんでした。",
+      "extract_failed": "この記事を抽出できませんでした。"
+    }
+  },
+  "audio_recorder": {
+    "start_recording": "録音を開始",
+    "pause_recording": "録音を一時停止",
+    "resume_recording": "録音を再開"
+  },
+  "audio_voice_picker": {
+    "voices": {
+      "nova": "温かく自然",
+      "alloy": "中立的でバランスが良い",
+      "ash": "自信があり明瞭",
+      "ballad": "柔らかく表現豊か",
+      "coral": "明るく親しみやすい",
+      "echo": "落ち着いた低めの声",
+      "fable": "穏やかな語り部",
+      "onyx": "深みがあり説得力がある",
+      "sage": "穏やかで落ち着いている",
+      "shimmer": "軽やかで前向き",
+      "verse": "生き生きとして躍動的",
+      "marin": "明瞭で会話調",
+      "cedar": "豊かで安定感がある"
+    },
+    "accents": {
+      "american": "アメリカ",
+      "british": "イギリス",
+      "australian": "オーストラリア",
+      "irish": "アイルランド",
+      "indian": "インド",
+      "scottish": "スコットランド"
+    }
+  },
+  "auth_modal": {
+    "passwords_mismatch": "パスワードが一致しません",
+    "password_needs_chars": "あと {n} 文字必要です | あと {n} 文字必要です",
+    "password_needs_number": "パスワードには数字を1つ以上含めてください",
+    "signup_failed": "登録に失敗しました",
+    "login_after_signup_failed": "登録後のログインに失敗しました",
+    "login_failed": "ログインに失敗しました"
+  },
+  "bookmark_editor": {
+    "no_results_for": "{query} に一致する結果はありません"
+  },
+  "bookmark_group": {
+    "add_to_board": "ボードに追加",
+    "board_empty_title": "このボードは空です",
+    "board_empty_message": "ブックマークカードのオプションメニューから、コレクション内のブックマークをこのボードに追加できます。"
+  },
+  "bookmark_options": {
+    "remove_from_board": "ボードから削除",
+    "removed_from_board": "ボードから削除しました",
+    "remove_error": "ボードからの削除中にエラーが発生しました",
+    "read_later": "後で読む",
+    "remove_read_later": "後で読むから削除",
+    "saved_read_later": "後で読むに保存しました",
+    "removed_read_later": "後で読むから削除しました",
+    "add_to_board": "「{board}」に追加",
+    "added_to_board": "{board} に追加しました",
+    "add_error": "ボードへの追加中にエラーが発生しました"
+  },
+  "bookmark_submit": {
+    "save_type": "{type}を保存",
+    "types": {
+      "website": "ウェブサイト",
+      "image": "画像",
+      "pdf": "PDF",
+      "movie": "映画",
+      "game": "ゲーム",
+      "drawing": "手描き",
+      "audio": "音声",
+      "textNote": "メモ"
+    }
+  },
+  "bookmark_card": {
+    "image_alt": "カードの画像",
+    "favicon_alt": "ブックマークのファビコン",
+    "favicon_replacement_alt": "ブックマークの代替ファビコン",
+    "copy_url_failed": "URL をコピーできませんでした"
+  },
+  "compose_expand": {
+    "save_drawing_error": "手描きを保存できませんでした"
+  },
+  "feedback_card": {
+    "hidden_title": "管理者以外には非表示",
+    "status": {
+      "in_progress": "進行中",
+      "backlog": "バックログ",
+      "pending": "保留中",
+      "done": "完了",
+      "closed": "クローズ"
+    }
+  },
+  "feedback_comment": {
+    "deleted": "コメントを削除しました",
+    "delete_failed": "コメントを削除できませんでした"
+  },
+  "feedback_form": {
+    "select_type": "種類を選択",
+    "markdown_supported": "Markdown に対応",
+    "sent": "フィードバックを送信しました",
+    "login_to_submit": "フィードバックを送信するにはログインが必要です",
+    "send_failed": "フィードバックの送信中にエラーが発生しました。しばらくしてからもう一度お試しください",
+    "types": {
+      "bug_report": "バグ報告",
+      "feature_request": "機能リクエスト",
+      "improvement": "改善",
+      "other": "その他"
+    }
+  },
+  "feedback_info_modal": {
+    "login_to_comment": "コメントするにはログインが必要です",
+    "comment_failed": "コメントを投稿できませんでした。しばらくしてからもう一度お試しください"
+  },
+  "feedback_up_vote": {
+    "login_to_vote": "投票するにはログインが必要です"
+  },
+  "import_modal": {
+    "checking_access": "インポートの権限を確認しています...",
+    "quota_title": "ブックマークの上限",
+    "plan_active_title": "インポートプランが有効です",
+    "plan_active_description": "{date} までなら、ブックマークを1回だけ無制限にインポートできます",
+    "validate_failed": "インポートの権限を確認できませんでした",
+    "checkout_failed": "チェックアウトセッションを作成できませんでした"
+  },
+  "landing_footer": {
+    "api_docs": "API ドキュメント"
+  },
+  "main_sidebar": {
+    "trash": "ゴミ箱"
+  },
+  "mobile_top_bar": {
+    "library": "ライブラリ",
+    "more": "もっと見る",
+    "trash": "ゴミ箱",
+    "board": "ボード",
+    "everything": "すべて"
+  },
+  "onboarding_wizard": {
+    "intro": {
+      "title": "ウェブのための、あなたのライブラリ",
+      "content": "見つけたものを保存し、お気に入りのサイトをフォローして、すべてをまた見つけられます。",
+      "subcontent": "1分でわかるツアーをどうぞ。"
+    },
+    "organised": {
+      "title": "自動で整理されます",
+      "content": "保存したものにはすべて自動でタグが付き、ページ全体のスクリーンショットと読みやすいコピーも保存されるので、ページが変わっても安心です。",
+      "subcontent": "ページ内の言葉、タグ、画像内のテキスト、さらに色でも検索できます。"
+    },
+    "feeds": {
+      "title": "お気に入りのサイトをフォロー",
+      "content": "フォロー中のサイトの新しい記事は「フィード」に届きます。読む、聞く、気に入ったものをライブラリに保存する、どれでもどうぞ。",
+      "add": "フィードを追加"
+    },
+    "everywhere": {
+      "title": "どこからでも保存",
+      "content": "ブラウザ拡張機能ならワンクリックで、iPhone・iPad・Mac では共有シートからどのページでも保存できます。",
+      "subcontent": "アプリではこのアカウントでサインインしてください。アカウントなしで作成したデバイス内ライブラリは別のものです。",
+      "chrome": "Chrome 拡張機能",
+      "apps": "iPhone・iPad・Mac"
+    },
+    "import": {
+      "title": "既存のブックマークをインポート",
+      "content": "お使いのブラウザのブックマークを取り込めば、自動で整理します",
+      "subcontent": "ブックマークのエクスポート方法は{link}をご覧ください。",
+      "this_page": "こちらのページ"
+    },
+    "first_bookmark": {
+      "title": "最初のブックマークを保存",
+      "content": "下に URL を入力するか、おすすめを試してみましょう。",
+      "subcontent": "保存すればするほど、コレクションはもっと便利になります。"
+    }
+  },
+  "reader_view": {
+    "error_try_again": "エラーが発生しました。しばらくしてからもう一度お試しください"
+  },
+  "settings_modal": {
+    "view_import_status": "インポートの状況を表示",
+    "extensions_title": "WebBites 拡張機能",
+    "extensions_subtitle": "どこからでも、何でもすばやく保存。",
+    "extensions_label": "拡張機能",
+    "chrome_icon_alt": "WebBites Chrome 拡張機能のアイコン",
+    "raycast_icon_alt": "WebBites Raycast 拡張機能のアイコン",
+    "automations_title": "自動化",
+    "automations_subtitle": "ブックマークが追加されるたびに、タグ付け、振り分け、他の場所への送信を自動で行います。スマートボードもここにあります。",
+    "deleting_account": "アカウントを削除しています...",
+    "account_deleted": "アカウントを削除しました。",
+    "delete_account_failed": "アカウントの削除中にエラーが発生しました。もう一度お試しください。"
+  },
+  "shortcuts_modal": {
+    "click": "クリック"
+  },
+  "social_post_view": {
+    "fallback_platform": "SNS"
+  },
+  "tag_manager": {
+    "untitled": "無題",
+    "error_generic": "問題が発生しました"
+  },
+  "testimonials_old": {
+    "heading": "ユーザーの声"
+  },
+  "tiptap_editor": {
+    "narrow_view": "狭い表示",
+    "wide_view": "広い表示",
+    "paste_url": "URL を貼り付け",
+    "image_size": {
+      "small": "小",
+      "big": "大",
+      "biggest": "特大"
+    },
+    "url_to_link": "URL をリンクに変換",
+    "add_link": "リンクを追加",
+    "insert_block_below": "下にブロックを挿入",
+    "block_actions_hint": "ブロック操作、またはドラッグして移動",
+    "block_actions": "ブロック操作",
+    "errors": {
+      "upload_failed": "画像をアップロードできませんでした: {error}",
+      "no_file": "ファイルが選択されていません",
+      "too_large": "ファイルサイズが 10MB の上限を超えています",
+      "not_image": "選択したファイルは画像ではありません"
+    }
+  },
+  "website_modal_media_view": {
+    "backdrop_alt": "{title} の背景ポスター",
+    "game_cover_alt": "{name} のカバー"
+  },
+  "website_screenshot": {
+    "pan_hint": "Shift を押しながらドラッグして移動",
+    "undo": "元に戻す (Ctrl+Z)",
+    "redo": "やり直す (Ctrl+Y)"
+  },
+  "import_status_history": {
+    "title": "インポート履歴（{count} セッション） | インポート履歴（{count} セッション）",
+    "empty": "過去のインポートセッションはありません",
+    "progress": "{processed}/{total} 件のブックマーク",
+    "success_rate": "成功率 {rate}%",
+    "duration": "所要時間: {duration}",
+    "more_sessions": "... ほか {count} セッション | ... ほか {count} セッション",
+    "unknown": "不明",
+    "status": {
+      "completed": "完了",
+      "active": "アクティブ",
+      "failed": "失敗",
+      "cancelled": "キャンセル済み"
+    }
+  },
+  "bookmarks_area": {
+    "already_pinned": "このウェブサイトはすでにピン留めされています"
+  },
+  "top_bar": {
+    "importing": "インポート中"
+  },
+  "search_bar": {
+    "filters": "フィルタ",
+    "beta": "(ベータ)",
+    "natural_language_description": "時間はかかりますが、自然な言葉で検索できます。例：",
+    "natural_language_example": "「Swift に関する GitHub プロジェクト」",
+    "colors": "カラー",
+    "find_tag": "タグを探す",
+    "tags_loading": "読み込み中…",
+    "no_tags": "タグが見つかりません",
+    "color_names": {
+      "red": "赤",
+      "green": "緑",
+      "blue": "青",
+      "yellow": "黄",
+      "purple": "紫",
+      "orange": "オレンジ",
+      "black": "黒",
+      "white": "白",
+      "pink": "ピンク",
+      "brown": "茶",
+      "gray": "グレー",
+      "cyan": "シアン",
+      "magenta": "マゼンタ",
+      "lime": "ライム",
+      "olive": "オリーブ",
+      "navy": "ネイビー",
+      "teal": "ティール",
+      "maroon": "マルーン",
+      "silver": "シルバー",
+      "gold": "ゴールド",
+      "indigo": "インディゴ",
+      "violet": "バイオレット"
+    }
+  },
+  "new_bookmark": {
+    "fetching_preview": "ウェブサイトのプレビューを取得しています...",
+    "clipboard_access": "ブラウザでクリップボードへのアクセスが許可されているか確認してください。",
+    "saving_note": "メモを保存中",
+    "note_saved": "テキストメモを保存しました",
+    "note_error": "テキストメモの保存中にエラーが発生しました",
+    "saving_drawing": "手描きを保存中",
+    "drawing_saved": "手描きを保存しました",
+    "drawing_error": "手描きの保存中にエラーが発生しました",
+    "media_error": "メディアの保存中にエラーが発生しました",
+    "nothing_to_save": "保存するものがまだありません",
+    "saved": "保存しました",
+    "save_as": {
+      "website": "ウェブサイトを保存",
+      "textNote": "メモを保存",
+      "image": "画像を保存",
+      "pdf": "PDF を保存",
+      "movie": "映画を保存",
+      "game": "ゲームを保存",
+      "drawing": "手描きを保存",
+      "audio": "音声を保存"
+    }
+  },
+  "landing_page": {
+    "hero": {
+      "title": "ウェブのための",
+      "title_emphasis": "あなたのライブラリ",
+      "subtitle": "見つけたものを保存し、お気に入りのサイトをフォローして、すべてをまた見つけられます。整理は WebBites にお任せください。",
+      "logo_alt": "WebBites ロゴ"
+    },
+    "scroll": {
+      "title": "保存したすべてを、",
+      "title_emphasis": "ひとつの場所に",
+      "browser_alt": "ブラウザ上の WebBites ウォール。保存した記事、画像、メモ、音楽が並んで表示されています"
+    },
+    "native": {
+      "title": "iPhone・iPad・Mac と、あらゆるブラウザで",
+      "description": "iPhone・iPad・Mac 向けのネイティブアプリ。それぞれ共有シートと Safari 拡張機能を備え、それ以外ではウェブアプリをフル機能で使えます。WebBites アカウントでサインインすれば、ライブラリはもうそこにあります。",
+      "mac_alt": "WebBites の Mac アプリ。サイドバーにボードとフィード、その隣に保存したブックマークのウォールが表示されています",
+      "phone_alt": "WebBites の iPhone アプリ。同じ保存済みブックマークが2列で表示されています"
+    },
+    "features": {
+      "ai": {
+        "title": "自動で整理",
+        "description": "ブックマークは保存した瞬間にタグ付けされ、整理されます。フォルダを管理する必要はありません。"
+      },
+      "search": {
+        "title": "すぐに見つかる",
+        "description": "ページ内の言葉、タグ、メモ、画像内のテキスト、さらに色でも検索できます。"
+      },
+      "screenshots": {
+        "title": "ずっと残る",
+        "description": "すべてのページについて、ページ全体のスクリーンショットと読みやすいコピーを保存。元のページが変わったり消えたりしても安心です。"
+      },
+      "media": {
+        "title": "何でも保存",
+        "description": "記事、画像、動画、映画、ゲーム、メモを、ひとつのライブラリにまとめて。"
+      },
+      "ai_organisation": {
+        "description": "高度な AI で、ブックマークを自動で分類し、タグを付けます。"
+      },
+      "cross_platform": {
+        "description": "サインインすれば、iPhone・iPad・Mac・ウェブのどれでも同じライブラリが表示されます。"
+      },
+      "reader": {
+        "title": "リーダーモード",
+        "description": "ペイウォールの向こうの記事も含め、記事が自動で読みやすく整形されます！"
+      },
+      "raycast": {
+        "title": "Raycast 対応",
+        "description": "Raycast 拡張機能なら、すべてのブックマークがキー操作ひとつで開けます！"
+      },
+      "browsers": {
+        "title": "ブラウザから保存",
+        "description": "Chrome 拡張機能、または Mac・iPhone アプリに付属の Safari 拡張機能でワンクリック。"
+      },
+      "colors": {
+        "title": "カラー抽出",
+        "description": "すべてのブックマークのメインカラーを自動で抽出するので、色で検索できます！"
+      },
+      "tts": {
+        "title": "テキスト読み上げ",
+        "description": "保存したものも、フィードの記事も、なんでも聴けます。"
+      },
+      "annotate": {
+        "title": "スクリーンショットに注釈",
+        "description": "スクリーンショットの好きな場所をクリックして注釈を追加できます。"
+      },
+      "ocr": {
+        "title": "OCR",
+        "description": "保存したすべての画像に光学文字認識（OCR）が適用され、テキストで検索できるようになります。"
+      },
+      "pin": {
+        "title": "ブックマークをピン留め",
+        "description": "ブックマークをリストの先頭にピン留めして、すぐにアクセスできます。"
+      },
+      "multilingual": {
+        "title": "多言語対応",
+        "description": "複数の言語に対応しています。"
+      }
+    },
+    "save_anything": {
+      "sentence": "{websites}、{images}、{movies}、{games}はもちろん、Notion のようなエディタで{notes}まで、何でも保存できます。",
+      "websites": "ウェブサイト",
+      "images": "画像",
+      "movies": "映画",
+      "games": "ゲーム",
+      "notes": "メモ"
+    },
+    "roadmap_more": {
+      "title": "ほかにもたくさん！",
+      "description": "機能は常に追加されています。フィードバックボードで次に登場するものをチェックしてください！"
+    },
+    "developers": {
+      "title": "保存したすべてのものに API を",
+      "description": "WebBites の機能はすべて HTTP 経由で使えます。リンクを保存し、ライブラリを検索し、AI の処理が終わった瞬間に Webhook を受け取れます。",
+      "docs_button": "開発者向けドキュメントを読む",
+      "facts": {
+        "rest": {
+          "title": "シンプルな REST",
+          "text": "OpenAPI スキーマとブラウザ上のプレイグラウンドで、コードを書く前にすべての呼び出しを試せます。"
+        },
+        "webhooks": {
+          "title": "Webhook",
+          "text": "WebBites に URL を指定すると、完成したブックマーク（スクリーンショット、要約、タグ）が POST されます。署名付きなので検証できます。"
+        },
+        "keys": {
+          "title": "キーも制限も、あなた次第",
+          "text": "キーを作成し、それぞれの使用量を確認し、すべてのレスポンスヘッダーでレート制限を読み取れます。"
+        }
+      },
+      "samples": {
+        "save": "リンクを保存",
+        "search": "検索",
+        "webhook": "Webhook"
+      }
+    },
+    "feeds": {
+      "title": "お気に入りのサイトをフォロー",
+      "description": "ブログ、ニュース、ニュースレターのための内蔵リーダー。アルゴリズムはありません。記事ごとに読む・聴く・要約するができ、気に入ったものはライブラリに保存できます。",
+      "image_alt": "Mac の WebBites フィードリーダー。サイドバーにフィード、その横に記事が開いています"
+    },
+    "where": {
+      "title": "ライブラリの保存場所",
+      "separate": "WebBites アカウントはどこでも同期されます。デバイス内ライブラリはアカウントなしで、iPhone・iPad・Mac の中だけに保存されます。この2つは別物です。デバイス内ライブラリがウェブやアカウントに表示されることはなく、購入も相互に引き継がれません。",
+      "account": "WebBites アカウント：",
+      "account_when": "ウェブや Chrome を使う方、フィード・AI タグ・要約を使いたい方に。",
+      "device": "デバイス内ライブラリ：",
+      "device_when": "Apple デバイスだけを使い、どのサーバーにもデータを置きたくない方に。"
+    }
+  },
+  "login_page": {
+    "not_you": "{email} ではありませんか？"
+  },
+  "password_reset_page": {
+    "chars_needed": "パスワードにはあと {count} 文字必要です | パスワードにはあと {count} 文字必要です",
+    "number_needed": "パスワードには数字を1つ以上含めてください",
+    "mismatch": "パスワードが一致しません"
+  },
+  "questionnaire": {
+    "eyebrow": "WebBitesづくりにご協力ください",
+    "step": "{current} / {total}",
+    "hint": "当てはまるものを選んでください。いつでもスキップできます。",
+    "q_tools": "今はリンクの保存に何を使っていますか？",
+    "q_interest": "いちばん大切なことは何ですか？",
+    "q_ai": "「AIで自動整理」とは、どんなものが理想ですか？",
+    "browser": "ブラウザのブックマーク",
+    "raindrop": "Raindrop",
+    "pocket": "Pocket",
+    "notion": "Notion",
+    "notes": "Apple Notes",
+    "pinterest": "Pinterest",
+    "none": "まだ何も",
+    "find": "あとで見つけやすい",
+    "organise": "整理された状態",
+    "devices": "どの端末からでも保存",
+    "visual": "ビジュアルなアーカイブ",
+    "later": "あとで読む",
+    "share": "ボードを共有",
+    "tags": "自動タグ付け",
+    "search": "普通の言葉で検索",
+    "boards": "ボードに自動で仕分け",
+    "summaries": "要約",
+    "duplicates": "重複の検出",
+    "other": "ほかにあれば（任意）",
+    "skip_question": "この質問をスキップ",
+    "thanks": "ありがとうございます、とても参考になります！"
+  }
+}

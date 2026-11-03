@@ -1,0 +1,2424 @@
+{
+  "alerts": {
+    "bookmark": {
+      "duplicate": "Du hast dieses Lesezeichen bereits gespeichert",
+      "duplicate_cancel": "Nicht speichern",
+      "duplicate_confirm": "Erneut speichern",
+      "error": "Fehler beim Speichern des Lesezeichens",
+      "export_success": "Lesezeichen exportiert!",
+      "limit_description": {
+        "other": " deinen Tarif, um mehr Lesezeichen zu speichern"
+      },
+      "limit_reached": "Du hast dein Lesezeichen-Limit erreicht",
+      "pin_error": "Die Website konnte nicht angeheftet werden. Versuche es später noch einmal.",
+      "save_error_note": "Fehler beim Speichern der Notiz",
+      "save_success": "Lesezeichen gespeichert",
+      "saving": "Wird gespeichert …",
+      "hide_error": "Die Sichtbarkeit dieses Lesezeichens konnte nicht geändert werden",
+      "hide_index_lag": "Ausgeblendet, aber die Suche braucht eventuell einen Moment, bis sie aktuell ist"
+    },
+    "clipboard": {
+      "copy_error": "Kopieren in die Zwischenablage fehlgeschlagen.",
+      "copy_success": "{text} in die Zwischenablage kopiert."
+    },
+    "editor": {
+      "image_upload_error": "Das abgelegte Bild konnte nicht verarbeitet werden: {error}",
+      "image_upload_progress": "Bild wird hochgeladen …"
+    },
+    "file_upload": {
+      "error": "Fehler beim Hochladen der Datei",
+      "success": "Datei erfolgreich hochgeladen",
+      "uploading_many": "Dateien werden hochgeladen …",
+      "uploading_one": "Datei wird hochgeladen …"
+    },
+    "image_upload": {
+      "error": "Fehler beim Hochladen des Bildes",
+      "success": "Bild erfolgreich hochgeladen"
+    },
+    "import": {
+      "complete": "Fertig!",
+      "complete_description": "Alle deine Lesezeichen wurden in WebBites importiert.",
+      "error": "Etwas ist schiefgelaufen. Bitte versuche es noch einmal.",
+      "final_success": "Deine Lesezeichen wurden importiert. 😊",
+      "progress": "Einen Moment …",
+      "progress_description": "Bei vielen Lesezeichen kann das einige Sekunden dauern",
+      "remaining": "Noch zu importierende Lesezeichen:",
+      "remaining_description": "Das kann eine Weile dauern. Du kannst die App schließen, wir schicken dir eine E-Mail, sobald es fertig ist.",
+      "success": "Lesezeichen erfolgreich importiert"
+    },
+    "live_note": {
+      "conflict": "Diese Notiz wurde auf einem anderen Gerät aktualisiert. Deine lokalen Änderungen wurden beibehalten.",
+      "merged_with_conflicts": "Änderungen aus der Cloud zusammengeführt. Einige sich überschneidende Bearbeitungen wurden unverändert beibehalten."
+    },
+    "subscription": {
+      "duplicate_plan": "Du hast diesen Tarif bereits abonniert. Bitte prüfe deine aktuellen Abos."
+    },
+    "core_store": {
+      "board_joined": "Du bist „{name}“ beigetreten",
+      "invite_accepted": "Einladung angenommen",
+      "invite_invalid": "Dieser Einladungslink ist nicht mehr gültig",
+      "board_move_failed": "Das konnte nicht hierher verschoben werden",
+      "board_duplicated": "Dupliziert – {count} Lesezeichen kopiert | Dupliziert – {count} Lesezeichen kopiert",
+      "board_duplicate_error": "Fehler beim Duplizieren des Boards",
+      "board_archived": "Board archiviert",
+      "board_archive_error": "Fehler beim Archivieren des Boards",
+      "board_delete_title": "„{name}“ löschen?",
+      "folder_delete_description": "Die darin enthaltenen Boards und Ordner werden ebenfalls gelöscht. Die Lesezeichen selbst bleiben erhalten.",
+      "board_delete_shared_description": "Alle, mit denen es geteilt ist, verlieren den Zugriff. Die Lesezeichen selbst bleiben erhalten.",
+      "board_delete_description": "Die Lesezeichen selbst bleiben erhalten.",
+      "folder_deleted": "Ordner gelöscht",
+      "board_deleted": "Board gelöscht",
+      "folder_delete_error": "Fehler beim Löschen des Ordners",
+      "board_delete_error": "Fehler beim Löschen des Boards",
+      "board_leave_title": "„{name}“ verlassen?",
+      "board_leave_description": "Es verschwindet aus deinen Boards, bis dich jemand erneut einlädt.",
+      "board_leave_confirm": "Verlassen",
+      "board_left": "Du hast das Board verlassen",
+      "board_leave_error": "Fehler beim Verlassen des Boards",
+      "trash_load_failed": "Gelöschte Lesezeichen konnten nicht geladen werden",
+      "trash_restore_failed": "Lesezeichen konnte nicht wiederhergestellt werden",
+      "drawing_save_error": "Fehler beim Speichern der Zeichnung",
+      "sign_in_required": "Dafür musst du angemeldet sein"
+    },
+    "core_files": {
+      "unsupported_one": "{name} ist weder ein Bild noch ein PDF oder eine Audiodatei.",
+      "unsupported_many": "Es können nur Bilder, PDFs und Audiodateien hochgeladen werden.",
+      "heic_one": "Dieser Browser kann {name} nicht lesen. Exportiere die Datei als JPEG und versuche es noch einmal.",
+      "heic_many": "Dieser Browser kann HEIC-Fotos nicht lesen. Exportiere sie als JPEG und versuche es noch einmal.",
+      "unreadable_one": "{name} ist kein Bild, das dieser Browser lesen kann.",
+      "unreadable_many": "Das sind keine Bilder, die dieser Browser lesen kann."
+    }
+  },
+  "auth": {
+    "add_to_waitlist": "Zur Warteliste hinzufügen",
+    "chrome_extension_auth_detected": "Erweiterung erkannt",
+    "chrome_extension_auth_not_detected": "Erweiterung nicht erkannt",
+    "close_tab": "Tab schließen",
+    "current_bookmarking_manager": "Welchen Lesezeichen-Manager nutzt du aktuell?",
+    "current_bookmarking_manager_placeholder": "z. B. Chrome-Lesezeichen, Pocket, Raindrop …",
+    "email_error": "Die Anmeldung ist fehlgeschlagen mit dem Fehler: ",
+    "email_success": "Wir haben dir eine E-Mail mit einem Link zum Zurücksetzen deines Passworts geschickt",
+    "extension_connected": "Erweiterung verbunden",
+    "extension_connected_message": "Du kannst WebBites jetzt mit deinen Lesezeichen nutzen.",
+    "extension_login_description": "Melde dich bei deinem WebBites-Account an",
+    "go_to_app": "Zur App",
+    "logout": "Abmelden",
+    "most_interested": "Was interessiert dich an WebBites am meisten?",
+    "most_interested_placeholder": "z. B. KI-Organisation, plattformübergreifende Synchronisierung …",
+    "notify_me": "Benachrichtige mich",
+    "password_reset_error": "Beim Zurücksetzen deines Passworts ist ein Fehler aufgetreten. Bitte versuche es noch einmal.",
+    "password_reset_success": "Dein Passwort wurde erfolgreich zurückgesetzt.",
+    "reset_password_description": "Gib ein neues Passwort ein, um es zurückzusetzen.",
+    "sign_in": "Anmelden",
+    "signInWithApple": "Weiter mit Apple",
+    "sign_up": "Registrieren",
+    "waitlist_done": "Du stehst auf der Warteliste!",
+    "waitlist_info": "Trag dich in die Warteliste ein und folge mir auf",
+    "waitlist_info_2": "um auf dem Laufenden zu bleiben.",
+    "waitlist_success": "Du stehst auf der Warteliste! Folge mir auf",
+    "waitlist_success_2": "um auf dem Laufenden zu bleiben.",
+    "waitlist_success_alert": "Du wurdest zur Warteliste hinzugefügt 🥳"
+  },
+  "bookmark": {
+    "audio_generation": "Audio-Erstellung",
+    "image_extracted_text": "💬 Aus dem Bild extrahierter Text"
+  },
+  "bookmark_details": {
+    "added": "Hinzugefügt",
+    "alerts": {
+      "color_copied": "Farbe kopiert",
+      "image_downloaded": "Bild heruntergeladen",
+      "image_download_error": "Fehler beim Herunterladen des Bildes"
+    },
+    "bookmark_types": {
+      "article": "Artikel",
+      "note": "Notiz",
+      "tweet": "Tweet"
+    },
+    "details_title": "Seitentitel",
+    "download_image": "Bild herunterladen",
+    "hide_keywords": "Schlüsselwörter ausblenden",
+    "keywords": "Schlüsselwörter",
+    "main_colors": "Hauptfarben",
+    "media": {
+      "cast": "Besetzung",
+      "crew": "Crew",
+      "developer": "Entwickler",
+      "director": "Regie",
+      "genres": "Genres",
+      "publisher": "Publisher",
+      "release_date": "Erscheinungsdatum",
+      "screenshots": "Screenshots",
+      "show_more": "{count} weitere anzeigen",
+      "videos": "Videos"
+    },
+    "notes_placeholder": "Deine Notizen zur Seite",
+    "page_details": "Seitendetails",
+    "see_all_keywords": "Alle Schlüsselwörter anzeigen",
+    "tags": "Tags",
+    "time": {
+      "days_ago": "vor {count} Tagen",
+      "hours_ago": "vor {count} Stunden",
+      "minutes_ago": "vor {count} Minuten",
+      "months_ago": "vor {count} Monaten",
+      "seconds_ago": "vor {count} Sekunden",
+      "years_ago": "vor {count} Jahren"
+    }
+  },
+  "bookmarks": {
+    "add_files": "Dateien hinzufügen",
+    "cards": "Lesezeichen",
+    "change_files": "Dateien ändern ({count})",
+    "copy_url": "URL kopieren",
+    "cover": "Cover",
+    "delete": "Lesezeichen löschen",
+    "delete_confirmation_multiple": "Möchtest du diese {count} Lesezeichen wirklich löschen?",
+    "delete_confirmation_single": "Möchtest du dieses Lesezeichen wirklich löschen?",
+    "deselect_hint": "Klicke auf ein Lesezeichen, um es aus- oder abzuwählen.",
+    "drawing": {
+      "assets_unavailable": "Einige Bilder konnten nicht geladen werden, deshalb wird die Vorschau nicht aktualisiert.",
+      "new": "Neue Zeichnung",
+      "untitled": "Zeichnung"
+    },
+    "empty_state_message": "Wie wäre es, ein paar Websites zu speichern?",
+    "empty_state_title": "Hier sieht es noch ziemlich leer aus …",
+    "expand_to_edit": "Zum Bearbeiten erweitern",
+    "free_import_message": "Oder du importierst einmalig 100 Lesezeichen kostenlos.",
+    "hide": {
+      "label": "Ausblenden",
+      "label_hidden": "Ausgeblendet",
+      "from_library": "In der Bibliothek ausblenden",
+      "everywhere": "Überall ausblenden",
+      "unhide": "Einblenden",
+      "hidden_from_library": "In deiner Bibliothek ausgeblendet. Weiterhin in den zugehörigen Boards.",
+      "hidden_everywhere": "Überall ausgeblendet, auch in Boards.",
+      "unhidden": "Wieder in deiner Bibliothek",
+      "private_section": "Privat",
+      "private_empty": "Noch nichts ausgeblendet",
+      "private_empty_hint": "Blende ein Lesezeichen aus, dann wartet es hier auf dich.",
+      "unlock_title": "Privat",
+      "unlock_description": "Gib dein Passwort ein, um deine ausgeblendeten Lesezeichen zu sehen.",
+      "unlock_placeholder": "Passwort",
+      "unlock_confirm": "Entsperren",
+      "unlock_wrong": "Das Passwort hat nicht funktioniert.",
+      "unlock_reset": "Kein Passwort? Lass dir einen Link zum Festlegen per E-Mail schicken.",
+      "unlock_reset_sent": "Schau in dein E-Mail-Postfach, dort wartet der Link.",
+      "unlock_reset_error": "Die E-Mail konnte nicht gesendet werden. Versuche es gleich noch einmal."
+    },
+    "image_count": "{n} Bilder",
+    "image_n_of_m": "{n} von {m}",
+    "image_order": "Reihenfolge der Bilder",
+    "import": "Lesezeichen importieren",
+    "import_error": "Fehler beim Importieren der Lesezeichen. Bitte versuche es später noch einmal.",
+    "import_limit": "Um mehr als 100 Lesezeichen zu importieren, musst du einmalig eine Gebühr zahlen oder deinen Tarif upgraden.",
+    "import_payment_message": "Da ich mit WebBites gerade erst anfange, kann der Import vieler Lesezeichen teuer werden. Um die anfänglichen Kosten für die {count} Lesezeichen zu decken, die du importieren möchtest, bitte ich um eine einmalige Gebühr von 3 $, mit der du das Projekt unterstützt.",
+    "import_progress": "Deine Lesezeichen werden importiert",
+    "import_progress_message": "Das kann eine Weile dauern, aber du musst das Fenster nicht geöffnet lassen. Wir schicken dir eine E-Mail, sobald es fertig ist.",
+    "import_progress_title": "Deine Lesezeichen werden importiert.",
+    "import_success": "Lesezeichen erfolgreich importiert",
+    "import_title": "Importiere deine Lesezeichen",
+    "merge": "Zusammenführen",
+    "merge_confirmation": "Diese {count} Bilder zu einem Lesezeichen zusammenführen?",
+    "merge_explainer": "Das erste behält seine Boards und Notizen. Die anderen wandern in den Papierkorb und können wiederhergestellt werden.",
+    "merge_failed": "Diese Lesezeichen konnten nicht zusammengeführt werden",
+    "merged": "Zu einem Lesezeichen mit {count} Bildern zusammengeführt",
+    "new": "Neues Lesezeichen",
+    "new_placeholder": {
+      "game": "Spiel suchen …",
+      "link": "Link einfügen …",
+      "movie": "Film suchen …",
+      "note": "Notiz schreiben …"
+    },
+    "no_bookmarks": "Keine Lesezeichen gefunden",
+    "no_pinned_bookmarks": "Hefte Lesezeichen an, um sie hier zu sehen",
+    "payment_button": "Einmalige Gebühr von 3 $",
+    "pdf_page_count": "{n} Seiten",
+    "pdf_page_one": "1 Seite",
+    "pin_success": "Lesezeichen angeheftet",
+    "pinned": "Angeheftet",
+    "recorder": {
+      "empty": "Es wurde nichts aufgenommen – prüfe, ob dein Mikrofon stummgeschaltet ist.",
+      "hint": "Tippen, um die Aufnahme zu starten",
+      "mic_denied": "WebBites hat keinen Zugriff auf dein Mikrofon. Erlaube den Zugriff in den Browsereinstellungen oder lade eine Datei hoch.",
+      "pause": "Pause",
+      "paused": "Pausiert",
+      "play": "Abspielen",
+      "record_again": "Erneut aufnehmen",
+      "record_instead": "Stattdessen aufnehmen",
+      "requesting": "Warte auf das Mikrofon …",
+      "restart": "Neu beginnen",
+      "stop": "Aufnahme beenden",
+      "title_placeholder": "Aufnahme benennen",
+      "unsupported": "Dieser Browser kann kein Audio aufnehmen. Du kannst aber trotzdem eine Datei hochladen.",
+      "upload": "Stattdessen eine Datei hochladen"
+    },
+    "remaining": "Lesezeichen übrig",
+    "reorder_hint": "Zum Neuordnen ziehen. Das erste Bild ist das Cover.",
+    "select_all": "Alle auswählen ({count})",
+    "select_all_visible": "Alle {count} sichtbaren auswählen",
+    "try_searching": "Versuche, nach etwas anderem zu suchen",
+    "types": {
+      "articles": "Artikel",
+      "audio": "Audio",
+      "drawing": "Zeichnung",
+      "game": "Spiel",
+      "image": "Bild",
+      "movie": "Film",
+      "music": "Musik",
+      "pdf": "PDF",
+      "textNote": "Notiz",
+      "website": "Website"
+    },
+    "unpin_success": "Lesezeichen gelöst",
+    "unselect_all": "Auswahl aufheben",
+    "url_copied": "URL in die Zwischenablage kopiert",
+    "urls_copied": "URLs in die Zwischenablage kopiert",
+    "what_to_save": "Was möchtest du speichern?",
+    "compose": {
+      "add_tag": "Tag hinzufügen",
+      "board": "Board",
+      "board_create_failed": "Das Board konnte nicht erstellt werden",
+      "board_failed": "Gespeichert, konnte aber nicht zu {board} hinzugefügt werden.",
+      "board_label": "Board, {board}",
+      "board_name": "Board-Name",
+      "create_board": "Erstellen",
+      "new_board": "Neues Board …",
+      "notes": "Notizen",
+      "notes_placeholder": "Notiz hinzufügen …",
+      "no_board": "Kein Board",
+      "remove_tag": "Tag {tag} entfernen",
+      "saved_to_board": "In {board} gespeichert",
+      "stop": "Stopp",
+      "tag": "Tag",
+      "tags_count": "Tags, {count}"
+    }
+  },
+  "changes": {
+    "body_1": "Für Vorschläge oder Fehlermeldungen geh zur",
+    "body_1_link": "Feedback-Seite.",
+    "body_2": "Melde dich an, um Neuigkeiten zu neuen Funktionen und Änderungen zu erhalten.",
+    "change_label": "Änderung",
+    "changes_label": "Änderungen",
+    "rss": "Oder abonniere per RSS",
+    "title": "Änderungsprotokoll",
+    "signup_thanks": "Danke für deine Anmeldung zu unseren Updates",
+    "already_subscribed": "Du bist bereits angemeldet",
+    "signup_failed": "Die Anmeldung für Updates hat nicht geklappt"
+  },
+  "common": {
+    "accept": "Akzeptieren",
+    "add_tag": "Tag hinzufügen",
+    "all": "Alle",
+    "ascending": "Aufsteigend",
+    "bookmarks": "Lesezeichen",
+    "cancel": "Abbrechen",
+    "checking_access": "Zugriff wird geprüft …",
+    "choose_something": "Etwas auswählen …",
+    "close": "Schließen",
+    "continue": "Weiter",
+    "dates": {
+      "month": "Monat",
+      "year": "Jahr"
+    },
+    "decline": "Ablehnen",
+    "delete": "Löschen",
+    "descending": "Absteigend",
+    "drop_image": "Bild oder PDF hier ablegen",
+    "error_try_again": "Es ist ein Fehler aufgetreten. Bitte versuche es später noch einmal.",
+    "get_updates": "Updates erhalten",
+    "import": "Importieren",
+    "import_bookmarks": "{selected} Lesezeichen importieren",
+    "import_bookmarks_remaining": "{selected} Lesezeichen importieren ({remaining} im Kontingent übrig)",
+    "language_changed_success": "Sprache erfolgreich geändert",
+    "loading": "Wird geladen …",
+    "month": "Monat",
+    "new_first": "Neueste zuerst",
+    "no_results": "Keine Ergebnisse gefunden",
+    "old_first": "Älteste zuerst",
+    "open": "Öffnen",
+    "optional": "Optional",
+    "or": "Oder",
+    "pin": "Anheften",
+    "remaining": "übrig",
+    "remind_later": "Später erneut erinnern",
+    "save": "Speichern",
+    "saved": "gespeichert",
+    "search": "Suchen",
+    "select_file": "Datei auswählen",
+    "select_new_file": "Andere Datei auswählen",
+    "shortcuts": {
+      "copy_url": {
+        "description": "Klicke auf ein Lesezeichen und halte dabei ⌥ (Option/Alt) gedrückt",
+        "name": "URL kopieren"
+      },
+      "focus_search": {
+        "description": "Drücke /, um die Suche direkt per Tastatur zu fokussieren.",
+        "name": "Suche fokussieren"
+      },
+      "open_website": {
+        "description": "Klicke auf ein Lesezeichen und halte dabei die CMD-Taste gedrückt",
+        "name": "Website öffnen"
+      },
+      "quick_save": {
+        "description": "Drücke ⌘ + V, um die URL aus deiner Zwischenablage zu speichern",
+        "name": "Schnell speichern"
+      },
+      "select_card": {
+        "description": "Klicke auf ein Lesezeichen und halte dabei die ⇧-Taste gedrückt",
+        "name": "Lesezeichen auswählen"
+      }
+    },
+    "show_less": "Weniger anzeigen",
+    "show_more": "Mehr anzeigen",
+    "submit": "Absenden",
+    "tiptap_placeholder": "Füge eine URL ein oder tippe los, um eine Notiz zu erstellen",
+    "unpin": "Lösen",
+    "updating": "Wird aktualisiert …",
+    "upgrade": "Upgrade",
+    "view_more": "Mehr ansehen"
+  },
+  "cookies": {
+    "cookie_consent": "Cookie-Einwilligung",
+    "description": "Wir verwenden Microsoft Clarity, um herauszufinden, wie wir dein Erlebnis verbessern können. Mit deiner Zustimmung hilfst du uns, WebBites für alle besser zu machen."
+  },
+  "feedback": {
+    "bug_reports": "Fehlermeldungen",
+    "comments": {
+      "no_comments": "Noch keine Kommentare",
+      "placeholder": "Kommentar schreiben …",
+      "send": "Senden",
+      "title": "Kommentare"
+    },
+    "date": "Datum",
+    "delete_comment": {
+      "confirmation": "Möchtest du diesen Kommentar wirklich löschen?",
+      "title": "Kommentar löschen"
+    },
+    "delete_confirmation": "Möchtest du dieses Feedback wirklich löschen?",
+    "filter_by": "Filtern nach",
+    "form": {
+      "cancel_button": "Abbrechen",
+      "changelog_label": "Ins Änderungsprotokoll",
+      "comment_label": "Dein Kommentar",
+      "hide_from_everyone_label": "Für alle ausblenden",
+      "submit_button": "Feedback senden",
+      "title": "Feedback einreichen",
+      "title_label": "Titel",
+      "type_label": "Art",
+      "platform_label": "Plattform"
+    },
+    "least_votes": "Wenigste Stimmen",
+    "most_votes": "Meiste Stimmen",
+    "my_issues": "Meine Anliegen",
+    "no_feedback": "Noch kein Feedback",
+    "order_by": "Sortieren nach",
+    "placeholders": {
+      "search": "Nach Funktionen und Fehlermeldungen suchen … ({count})"
+    },
+    "status": "Status",
+    "suggestions": "Vorschläge",
+    "title": "📨 Funktionswünsche, Vorschläge und Fehlermeldungen",
+    "type": "Art",
+    "user": "Nutzer:in",
+    "votes": "Stimmen",
+    "platform": {
+      "app": "App",
+      "web": "Web",
+      "extension": "Browser-Erweiterung",
+      "all": "Alle Plattformen"
+    },
+    "hero_title": "Gestalte mit,",
+    "hero_highlight": "was als Nächstes kommt.",
+    "hero_subtitle": "Wünsche dir eine Funktion, melde einen Fehler oder stimme für die Ideen, die du am meisten willst.",
+    "comments_count": "{count} Kommentare",
+    "page": {
+      "title": "WebBites – Feedback",
+      "kanban_view": "Kanban-Ansicht",
+      "list_view": "Listenansicht",
+      "login_required": "Zum Einreichen von Feedback musst du angemeldet sein",
+      "deleted": "Feedback erfolgreich gelöscht",
+      "delete_failed": "Das Feedback konnte nicht gelöscht werden"
+    },
+    "options": {
+      "status": {
+        "in_progress": "In Bearbeitung",
+        "backlog": "Backlog",
+        "pending": "Wartet auf Sichtung",
+        "done": "Erledigt",
+        "closed": "Geschlossen"
+      },
+      "type": {
+        "bug_report": "Fehlermeldung",
+        "feature_request": "Funktionswunsch",
+        "improvement": "Verbesserung",
+        "other": "Sonstiges"
+      },
+      "platform": {
+        "app": "App",
+        "web": "Web",
+        "extension": "Browser-Erweiterung"
+      }
+    }
+  },
+  "import": {
+    "import_quota_exceeded": "Du musst deinen Tarif upgraden, um mehr als 100 Lesezeichen zu importieren",
+    "import_quota_exceeded_description": "Du kannst bis zu 100 Lesezeichen kostenlos importieren. Wechsle zu einem kostenpflichtigen Tarif, um mehr zu importieren.",
+    "connect_title": "Oder verbinde einen Dienst",
+    "connect_fetch": "Lesezeichen abrufen",
+    "connect_button": "{name} verbinden",
+    "connect_unavailable": "Nicht verfügbar",
+    "connect_error": "Lesezeichen von {name} konnten nicht abgerufen werden",
+    "connect_denied": "Der Zugriff wurde verweigert, es wurden keine Lesezeichen importiert",
+    "connect_empty": "Keine Lesezeichen in {name} gefunden"
+  },
+  "landing": {
+    "beta_access": {
+      "changelog_button": "Änderungsprotokoll",
+      "description": "Gehöre zu den Ersten, die WebBites erleben, und gestalte seine Zukunft mit!",
+      "feedback_button": "Feedback",
+      "title": "Sei dabei bei der Zukunft der Lesezeichen"
+    },
+    "features": {
+      "ai_organization": {
+        "description": "Kategorisiere und tagge deine Lesezeichen automatisch mit moderner KI-Technologie",
+        "title": "KI-Organisation"
+      },
+      "cross_platform": {
+        "description": "Greife jederzeit und überall auf deine Lesezeichen zu, auf all deinen Geräten",
+        "title": "Plattformübergreifende Synchronisierung"
+      },
+      "smart_search": {
+        "description": "Finde alles sofort mit unserer intelligenten Suche, die den Kontext versteht",
+        "title": "Intelligente Suche"
+      },
+      "subtitle": "Erlebe die Zukunft der Lesezeichen mit unserer KI-gestützten Plattform",
+      "title": "Warum WebBites?"
+    },
+    "hero": {
+      "app_button": "Zur App",
+      "subtitle": "Speichere alles mit einem Klick und überlass der KI das Organisieren, Suchen und Finden.",
+      "title": "Dein Internet,",
+      "title_emphasis": "geordnet",
+      "waitlist_button": "Zur Warteliste"
+    },
+    "how_it_works": {
+      "steps": {
+        "install": {
+          "description": "Füge unsere Browser-Erweiterung mit einem Klick hinzu und speichere Inhalte sofort",
+          "title": "Erweiterung installieren"
+        },
+        "organize": {
+          "description": "Unsere KI kategorisiert und taggt deine Inhalte automatisch und macht sie durchsuchbar",
+          "title": "KI organisieren lassen"
+        },
+        "save": {
+          "description": "Klicke auf die Erweiterung oder nutze Tastenkürzel, um jede Webseite, jeden Artikel oder Inhalt zu speichern",
+          "title": "Alles speichern"
+        }
+      },
+      "title": "So funktioniert es"
+    },
+    "join_now": "Jetzt beitreten!",
+    "join_now_free": "Kostenlos beitreten!",
+    "more_features": "Weitere Funktionen",
+    "roadmap": {
+      "next": "Als Nächstes in Arbeit:",
+      "title": "Roadmap",
+      "viewFull": "Gesamte Roadmap ansehen",
+      "workingOn": "Aktuell in Arbeit:"
+    },
+    "whats_next": "Was kommt als Nächstes für WebBites?"
+  },
+  "navigation": {
+    "feedback": "Feedback senden",
+    "help": "Hilfe",
+    "home": "Start",
+    "login": "Anmelden",
+    "logout_success": "Abgemeldet!",
+    "settings": "Einstellungen",
+    "developers": "Entwickler",
+    "faq": "FAQ",
+    "features": "Funktionen",
+    "pricing": "Preise"
+  },
+  "plans": {
+    "features": {
+      "auto_tag_bookmarks": "Alle deine Web-Lesezeichen automatisch taggen",
+      "auto_tag_images": "Deine Bilder automatisch taggen",
+      "plus": {
+        "41": "Alles aus Free +",
+        "42": "Unbegrenzt Lesezeichen speichern",
+        "43": "TL;DR-Zusammenfassungen",
+        "44": "Deine Bilder automatisch taggen",
+        "45": "Ganzseitige Screenshots in höherer Auflösung",
+        "46": "Artikel anhören und Zusammenfassungen erhalten",
+        "47": "Texterkennung in Bildern",
+        "48": "Bis zu 10 GB an Dateien hochladen",
+        "49": "Suche in natürlicher Sprache",
+        "50": "Intelligente Boards",
+        "51": "Backups in deine eigene Cloud – bald verfügbar"
+      },
+      "cloud_backups": "Backups in deine eigene Cloud – bald verfügbar",
+      "dark_mode": "Dunkelmodus",
+      "everything_in_free": "Alles aus Free +",
+      "free": {
+        "11": "Bis zu 100 Lesezeichen speichern",
+        "12": "Alle deine Web-Lesezeichen automatisch taggen",
+        "13": "Suche nach Seitentitel, Farbe, Tags und Seitentext",
+        "14": "Lesemodus für Artikel",
+        "15": "Websites, Bilder, Notizen, Videospiele, Musik und Filme speichern",
+        "16": "Ganzseitige Screenshots",
+        "17": "Hör dir bis zu 5 Artikel pro Monat an",
+        "18": "Dunkelmodus"
+      },
+      "full_page_screenshots": "Ganzseitige Screenshots",
+      "high_res_screenshots": "Ganzseitige Screenshots in höherer Auflösung",
+      "listen_and_summaries": "Artikel anhören und Zusammenfassungen erhalten",
+      "listen_limit": "Hör dir bis zu 5 Artikel pro Monat an",
+      "natural_language_search": "Suche in natürlicher Sprache",
+      "reading_mode": "Lesemodus für Artikel",
+      "save_cards_limit": "Bis zu 100 Lesezeichen speichern",
+      "save_various_types": "Websites, Bilder, Notizen, Videospiele, Musik und Filme speichern",
+      "search_features": "Suche nach Seitentitel, Farbe, Tags und Seitentext",
+      "smart_boards": "Intelligente Boards",
+      "text_recognition": "Texterkennung in Bildern",
+      "tldr_summaries": "TL;DR-Zusammenfassungen",
+      "unlimited_bookmarks": "Unbegrenzt Lesezeichen speichern",
+      "upload_limit": "Bis zu 10 GB an Dateien hochladen",
+      "apple": {
+        "61": "So viele Lesezeichen, wie du willst",
+        "62": "Websites, Bilder, Notizen, Zeichnungen und mehr",
+        "63": "Titel, Tags und Seitentext durchsuchen",
+        "64": "Lesemodus",
+        "65": "Nichts verlässt dieses Gerät"
+      }
+    }
+  },
+  "pricing": {
+    "current_plan": "Aktueller Tarif",
+    "downgrade": "Downgrade",
+    "downgrade_to_free": "Auf Free downgraden",
+    "free_plan": "Free",
+    "get_started": "Loslegen",
+    "monthly_toggle": "Monatlich",
+    "price_monthly": "${price}/Monat",
+    "price_yearly": "${price}/Jahr – {percent} % sparen",
+    "sign_up": "Registrieren!",
+    "sign_up_now": "Kostenlos registrieren!",
+    "title": "Preise",
+    "upgrade_for": "Upgrade für {price}",
+    "upgrade_plan": "Tarif upgraden",
+    "waitlist_free": "Kostenlos auf die Warteliste!",
+    "yearly_toggle": "Jährlich ({percent} % Rabatt)",
+    "yearly_plain": "Jährlich",
+    "apple": {
+      "title": "Gerätebibliothek",
+      "tagline": "Nur Apple-Geräte. Kein Konto.",
+      "lifetime": "oder einmalig ${price}",
+      "badge": "App Store",
+      "note": "In der iOS- und macOS-App gekauft. Die Preise im App Store variieren je nach Region.",
+      "cta": "Im App Store laden"
+    },
+    "price_yearly_plain": "${price}/Jahr"
+  },
+  "reader": {
+    "ai_generated": "Von KI erstellt",
+    "by_author": "Von {author}",
+    "listen_article": "Artikel anhören",
+    "listen_to_post": "Beitrag anhören",
+    "voice_settings": "Vorlesestimme",
+    "voice_description": "Wähle die Stimme, die deine Artikel vorliest. Tippe auf Abspielen, um eine Hörprobe zu hören.",
+    "voice_preview": "Stimme testen",
+    "accent_settings": "Akzent",
+    "accent_description": "Englische Artikel werden mit diesem Akzent vorgelesen. Tippe auf einen, um ihn zu hören."
+  },
+  "search": {
+    "alphabetical": "Alphabetisch",
+    "clear_recent": "Leeren",
+    "date_added": "Hinzugefügt am",
+    "filter_by_tag": "Nach Tag filtern",
+    "filter_by_type": "Nach Art filtern",
+    "placeholder": "Lesezeichen suchen …",
+    "recent_searches": "Letzte Suchen",
+    "sort_by": "Sortieren nach"
+  },
+  "settings": {
+    "ai_language": "KI-Sprache",
+    "ai_language_description": "Die Sprache, in der Zusammenfassungen und Tags verfasst werden.",
+    "ai_language_same": "Wie der Inhalt",
+    "auth": {
+      "create_account_description": "Gib deine E-Mail-Adresse ein, um dich anzumelden oder einen Account zu erstellen",
+      "email": "E-Mail",
+      "email_continue": "Weiter mit E-Mail",
+      "email_placeholder": "E-Mail-Adresse eingeben",
+      "name": "Name",
+      "name_placeholder": "Namen eingeben",
+      "password": "Passwort",
+      "password_placeholder": "Passwort eingeben",
+      "password_requirements": "Das Passwort muss mindestens 6 Zeichen lang sein und mindestens eine Zahl enthalten",
+      "repeat_password": "Passwort wiederholen",
+      "welcome_back": "Willkommen zurück",
+      "welcome_back_description": "Gib dein Passwort ein, um da weiterzumachen, wo du aufgehört hast.",
+      "create_account": "Erstelle deinen Account",
+      "create_account_step_description": "Ein Name und ein Passwort genügen.",
+      "create_account_button": "Account erstellen",
+      "reset_password": "Passwort zurücksetzen"
+    },
+    "chrome_extension": {
+      "description": "Speichere jede Website mit einem einzigen Klick in deinen Lesezeichen – mit der neuen Browser-Erweiterung! Lade sie jetzt herunter aus dem",
+      "store_link": "Chrome Web Store.",
+      "title": "Chrome-Erweiterung"
+    },
+    "compact_view": "Kompakte Ansicht",
+    "delete_account": {
+      "confirmation_text": "Möchtest du deinen Account wirklich löschen? Das kann nicht rückgängig gemacht werden.",
+      "confirm_button": "Meinen Account endgültig löschen",
+      "placeholder": "Meinen Account löschen",
+      "title": "Account löschen",
+      "type_confirmation": "Gib „Meinen Account löschen“ zur Bestätigung ein"
+    },
+    "display_mode": "Anzeigemodus",
+    "grid_view": "Rasteransicht",
+    "image_ratio": {
+      "original": "Original"
+    },
+    "image_ratio_label": "Bildformat",
+    "language": "Sprache",
+    "list_view": "Listenansicht",
+    "newest_first": "Neueste zuerst",
+    "oldest_first": "Älteste zuerst",
+    "other_options": {
+      "export_bookmarks": "Alle Lesezeichen exportieren",
+      "logout": "Abmelden",
+      "show_onboarding": "Einführung erneut anzeigen",
+      "title": "Weitere Optionen"
+    },
+    "personal_info": {
+      "title": "Persönliche Angaben",
+      "username": "Name"
+    },
+    "preview_screenshots": "Screenshots der Seiten in der Vorschau",
+    "preview_tags": "Tags in der Vorschau",
+    "show_description": "Beschreibung anzeigen",
+    "show_summary_card": "Zusammenfassungskarte beim Darüberfahren anzeigen",
+    "theme": "Design",
+    "title": "Einstellungen",
+    "view_as": "Ansicht als",
+    "viewing_options": "Anzeigeoptionen",
+    "assistants": {
+      "title": "KI-Assistenten",
+      "description": "Lass Claude, ChatGPT, Cursor und andere KI-Apps per MCP deine Bibliothek durchsuchen und darin speichern.",
+      "server_url": "Server-URL",
+      "server_url_hint": "Füge diese in jeder App hinzu, die MCP unterstützt. Du bestätigst sie auf WebBites und legst fest, ob sie Änderungen vornehmen darf.",
+      "copy": "Kopieren",
+      "setup_title": "App einrichten",
+      "connected_title": "Verbundene Assistenten",
+      "connected_empty": "Noch keine Assistenten verbunden. Sobald du einen freigibst, erscheint er hier.",
+      "read_only": "Nur lesen",
+      "read_write": "Darf Änderungen vornehmen",
+      "unverified": "Nicht verifiziert",
+      "connected_on": "Verbunden am {date}",
+      "last_used": "Zuletzt verwendet: {date}",
+      "never_used": "Noch nicht verwendet",
+      "disconnect": "Trennen",
+      "disconnect_confirm": "{name} trennen? Der Zugriff wird sofort entzogen.",
+      "disconnected": "{name} getrennt",
+      "load_failed": "Deine verbundenen Assistenten konnten nicht geladen werden.",
+      "revoke_failed": "{name} konnte nicht getrennt werden.",
+      "limits": "Jede Aktion eines Assistenten zählt auf dein API-Kontingent: {free} pro Monat bei Free, {plus} bei Plus.",
+      "docs_link": "MCP-Anleitung lesen",
+      "local_hint": "Du hältst deine Bibliothek ohne Account auf einem Mac? Aktiviere den eigenen Server der Mac-App in der App unter Einstellungen → KI-Assistenten.",
+      "clients": {
+        "claude": {
+          "open": "Öffne in Claude {path} und wähle „Benutzerdefinierten Connector hinzufügen“.",
+          "paste": "Nenne ihn WebBites, füge die Server-URL ein und wähle „Hinzufügen“.",
+          "connect": "Wähle „Verbinden“ und gib dann auf der sich öffnenden WebBites-Seite den Zugriff frei. Der Connector funktioniert auch in Claude Desktop und den mobilen Apps."
+        },
+        "chatgpt": {
+          "developer_mode": "Öffne in ChatGPT {path} und aktiviere den Entwicklermodus (unter „Erweitert“).",
+          "create": "Erstelle einen Connector: Nenne ihn WebBites, füge die Server-URL ein und wähle OAuth.",
+          "approve": "Gib den Zugriff auf der sich öffnenden WebBites-Seite frei und aktiviere WebBites dann im Werkzeugmenü eines Chats."
+        },
+        "claude_code": {
+          "add": "Füge den Server in deinem Terminal hinzu:",
+          "sign_in": "Starte Claude Code, führe /mcp aus, wähle webbites und melde dich an. Dein Browser öffnet WebBites, damit du den Zugriff freigeben kannst."
+        },
+        "cursor": {
+          "add": "Füge WebBites zu {file} hinzu oder zu .cursor/mcp.json in einem Projekt:",
+          "connect": "Suche in den Einstellungen von Cursor in der MCP-Liste nach webbites, wähle „Verbinden“ und gib den Zugriff dann auf WebBites frei."
+        },
+        "vscode": {
+          "add": "Füge WebBites zu {file} in deinem Workspace hinzu:",
+          "start": "Wähle in dieser Datei über dem Server „Start“ und gib den Zugriff auf WebBites frei, sobald sich dein Browser öffnet. Die Werkzeuge erscheinen im Agent-Modus von Copilot Chat."
+        },
+        "other": {
+          "name": "Andere Apps",
+          "remote": "Apps, die Remote-MCP-Server unterstützen, übernehmen die Server-URL unverändert. Suche in ihren Einstellungen nach „Benutzerdefinierter Connector“, „Remote-Server“ oder „MCP“.",
+          "stdio": "Apps, die nur lokale (stdio-)Server starten können, erreichen ihn über die mcp-remote-Bridge, für die Node.js nötig ist:",
+          "sign_in": "Beim ersten Start öffnet dein Browser WebBites, damit du den Zugriff freigeben kannst."
+        },
+        "api_key": {
+          "name": "Mit einem API-Schlüssel",
+          "when": "Apps, in denen du Request-Header festlegen kannst, können die Anmeldung überspringen und stattdessen einen API-Schlüssel senden. Ein Schlüssel kann wie bei der REST-API deine gesamte Bibliothek lesen und ändern.",
+          "send": "Erstelle unter Einstellungen → Entwickler einen Schlüssel und sende ihn dann als Bearer-Token:"
+        }
+      }
+    },
+    "developer": {
+      "title": "Entwickler",
+      "description": "API-Schlüssel, Webhooks und Nutzung, um auf WebBites aufzubauen.",
+      "button": "Entwicklerseite öffnen"
+    },
+    "backups": {
+      "title": "Backups",
+      "description": "Automatische, inkrementelle Backups deiner Lesezeichen, Screenshots und gespeicherten Seiten in einen Speicher, der dir gehört.",
+      "plus_only": "Automatische Backups sind Teil von WebBites Plus.",
+      "choose_destination": "Wohin sollen die Backups gehen?",
+      "gdrive": "Google Drive",
+      "gdrive_hint": "Gespeichert in einem Ordner „WebBites Backups“",
+      "dropbox": "Dropbox",
+      "dropbox_hint": "Gespeichert unter Apps/WebBites",
+      "s3": "S3-kompatibler Speicher",
+      "s3_hint": "Amazon S3, Cloudflare R2, Backblaze B2, MinIO …",
+      "endpoint": "Endpoint",
+      "region": "Region",
+      "bucket": "Bucket",
+      "prefix": "Ordner (optional)",
+      "access_key": "Access Key",
+      "secret_key": "Secret Key",
+      "connect": "Verbinden",
+      "cancel": "Abbrechen",
+      "change": "Ändern",
+      "enabled": "Automatische Backups",
+      "frequency": "Häufigkeit",
+      "daily": "Täglich",
+      "weekly": "Wöchentlich",
+      "last_backup": "Letztes Backup",
+      "never": "Noch nicht",
+      "running": "Backup läuft …",
+      "next_backup": "nächstes {time}",
+      "back_up_now": "Jetzt sichern",
+      "disconnect": "Trennen",
+      "reconnect": "Erneut verbinden",
+      "needs_reconnect": "{destination} nimmt keine Backups mehr an. Verbinde es erneut, um Backups wieder zu aktivieren.",
+      "plan_required": "Backups sind pausiert, weil dein Tarif sie nicht mehr enthält.",
+      "error": "Das letzte Backup ist fehlgeschlagen: {error}. Es wird automatisch erneut versucht.",
+      "connected": "{destination} verbunden. Das erste Backup startet innerhalb der nächsten Stunde.",
+      "connect_failed": "{destination} konnte nicht verbunden werden.",
+      "connect_denied": "Der Zugriff auf {destination} wurde nicht gewährt.",
+      "queued": "Backup gestartet.",
+      "load_failed": "Deine Backup-Einstellungen konnten nicht geladen werden.",
+      "save_failed": "Deine Backup-Einstellungen konnten nicht aktualisiert werden.",
+      "run_failed": "Das Backup konnte nicht gestartet werden.",
+      "whats_included": "Jedes Backup ist ein Zip mit nur dem, was sich seit dem letzten geändert hat: Lesezeichen-Daten, Notizen, Screenshots, Text gespeicherter Seiten und Dateien. Das jeweils letzte Zip eines Backups enthält außerdem deine Boards, deine Feeds und eine bookmarks.html, die jeder Browser importieren kann."
+    },
+    "email_change": {
+      "change": "Ändern",
+      "change_again": "Andere verwenden",
+      "new_email": "Neue E-Mail-Adresse",
+      "current_password": "Aktuelles Passwort",
+      "explainer": "Wir schicken einen Link an die neue Adresse. Bis du ihn anklickst, meldest du dich weiterhin mit {email} an.",
+      "send_link": "Bestätigungslink senden",
+      "pending_title": "Prüfe {email}, um fertig zu werden",
+      "pending_body": "Wir haben dir einen Link zur Bestätigung deiner neuen Adresse geschickt. Bis du ihn anklickst, verwendet dein Account weiterhin {email}.",
+      "expires": "Der Link läuft am {date} ab.",
+      "resend": "E-Mail erneut senden",
+      "resend_in": "Erneut senden in {seconds} s",
+      "cancel_change": "Änderung abbrechen",
+      "sent": "Bestätigungslink an {email} gesendet",
+      "cancelled": "E-Mail-Änderung abgebrochen",
+      "changed": "Deine E-Mail-Adresse lautet jetzt {email}",
+      "errors": {
+        "invalid_email": "Gib eine gültige E-Mail-Adresse ein.",
+        "same_email": "Das ist bereits deine E-Mail-Adresse.",
+        "email_taken": "Ein anderer Account verwendet diese E-Mail-Adresse bereits.",
+        "password_required": "Gib dein aktuelles Passwort ein.",
+        "incorrect_password": "Dieses Passwort ist falsch.",
+        "daily_limit": "Du hast heute zu viele Bestätigungs-E-Mails angefordert. Versuche es morgen noch einmal.",
+        "cooldown": "Warte eine Minute, bevor du eine weitere E-Mail sendest.",
+        "send_failed": "Wir konnten die E-Mail nicht senden. Bitte versuche es gleich noch einmal."
+      }
+    }
+  },
+  "testimonials": {
+    "emma_davis": {
+      "name": "Emma Davis",
+      "text": "Die plattformübergreifende Synchronisierung läuft reibungslos, und die KI-Funktionen ersparen mir stundenlanges manuelles Ordnen.",
+      "title": "Digital Marketerin"
+    },
+    "mike_chen": {
+      "name": "Mike Chen",
+      "text": "Endlich ein Lesezeichen-Tool, das den Kontext versteht. Die Suchfunktion ist umwerfend.",
+      "title": "Entwickler"
+    },
+    "sarah_johnson": {
+      "name": "Sarah Johnson",
+      "text": "WebBites hat revolutioniert, wie ich meine Recherchen speichere und organisiere. Die KI-Kategorisierung ist unglaublich treffsicher!",
+      "title": "Content Creator"
+    }
+  },
+  "upgrade_modal": {
+    "audios_remaining": "Du kannst noch {count} Audios erstellen.",
+    "audios_upgrade": "Um mehr Audios zu erstellen, upgrade deinen Tarif.",
+    "bookmarks_count": "Du hast {count} Lesezeichen gespeichert",
+    "bookmarks_remaining": "und kannst noch {count} weitere speichern.",
+    "bookmarks_upgrade": "Upgrade deinen Tarif, um mehr Lesezeichen zu speichern.",
+    "current_plan": "Du hast den Tarif {plan}.",
+    "manage_plan": "Tarif verwalten",
+    "plan_details": "Tarifdetails",
+    "update_plan": "Tarif ändern",
+    "updating_plan": "Tarif wird geändert",
+    "upgrade_to_add_more": "Upgrade, um mehr hinzuzufügen"
+  },
+  "usage": {
+    "usage_limit_reached": "Nutzungslimit erreicht, bitte upgrade deinen Tarif"
+  },
+  "website_modal": {
+    "add_note": "Notiz hinzufügen",
+    "annotations": {
+      "delete": {
+        "delete_all_button": "Alle löschen",
+        "delete_all_label": "Alle Anmerkungen löschen",
+        "delete_all_message": "Möchtest du wirklich alle Anmerkungen löschen? Das kann nicht rückgängig gemacht werden.",
+        "delete_all_title": "Alle Anmerkungen löschen",
+        "message": "Möchtest du diese Anmerkung wirklich löschen? Das kann nicht rückgängig gemacht werden.",
+        "title": "Anmerkung löschen"
+      }
+    },
+    "app": {
+      "age": "Altersfreigabe",
+      "age_rating": "Altersfreigabe",
+      "and_more": "{first} und {count} weitere",
+      "category": "Kategorie",
+      "compatibility": "Kompatibilität",
+      "copyright": "Copyright",
+      "developer": "Entwickler",
+      "developer_website": "Website des Entwicklers",
+      "downloads": "Downloads",
+      "in_app_purchases": "In-App-Käufe",
+      "information": "Informationen",
+      "install": "Installieren",
+      "language": "Sprache",
+      "languages": "Sprachen",
+      "more": "mehr",
+      "more_languages": "+ {count} weitere",
+      "no": "Nein",
+      "on_store": "im {store}",
+      "price": "Preis",
+      "privacy_policy": "Datenschutzerklärung",
+      "rating": "Bewertung",
+      "ratings": "{count} Bewertungen",
+      "requires": "Erfordert {os} oder neuer.",
+      "seller": "Anbieter",
+      "size": "Größe",
+      "updated": "Aktualisiert",
+      "version": "Version {version}",
+      "view": "Ansehen",
+      "whats_new": "Neuerungen",
+      "yes": "Ja"
+    },
+    "audio": {
+      "download": "Herunterladen",
+      "failed": "Das Transkript konnte nicht erstellt werden.",
+      "generate": "Transkript erstellen",
+      "none": "Noch kein Transkript.",
+      "pause": "Pause",
+      "play": "Abspielen",
+      "quota": "Du hast dein Audio-Kontingent für diesen Monat aufgebraucht.",
+      "retry": "Erneut versuchen",
+      "scrub": "Springen",
+      "segments": "1 Abschnitt | {n} Abschnitte",
+      "transcribing": "Wird transkribiert …",
+      "transcribing_long": "Wird transkribiert – das läuft weiter, auch wenn du die Seite schließt.",
+      "transcript": "Transkript",
+      "unavailable": "Diese Aufnahme ist nicht verfügbar"
+    },
+    "details": "Details",
+    "pdf": {
+      "open": "PDF öffnen",
+      "unavailable": "Dieses PDF ist nicht verfügbar"
+    },
+    "sidebar": {
+      "tabs": {
+        "audio": "Audio",
+        "drawing": "Zeichnung",
+        "figma": "Figma",
+        "image": "Bild",
+        "pdf": "PDF",
+        "reader": "Reader",
+        "screenshot": "Screenshot",
+        "text_note": "Textnotiz"
+      }
+    },
+    "social": {
+      "enlarge": "Bild vergrößern",
+      "next": "Nächstes Bild",
+      "previous": "Vorheriges Bild",
+      "saved_post": "Gespeicherter Beitrag",
+      "video_hint": "Öffne den Beitrag, um es abzuspielen",
+      "video_preview": "Videovorschau",
+      "view_on": "Auf {platform} ansehen"
+    },
+    "summary": "Zusammenfassung"
+  },
+  "wizard": {
+    "annotations": {
+      "content": "Mach direkt auf dem Screenshot der Website Anmerkungen zu allem, was du willst, und lass sie durchsuchbar werden",
+      "title": "📝 Seitenanmerkungen"
+    },
+    "first_bookmark": {
+      "content": "Probiere gleich aus, dein erstes Lesezeichen zu speichern!",
+      "subcontent": "Hinweis: Wenn in deiner Zwischenablage eine URL erkannt wird, wird sie automatisch eingefügt. Möglicherweise wirst du um Zugriff auf deine Zwischenablage gebeten. Es werden keine Daten gespeichert oder gesendet, bis du auf „Speichern“ klickst.",
+      "title": "🥳 Dein erstes Lesezeichen speichern!"
+    },
+    "folders": {
+      "content": "Lass WebBites deine Lesezeichen automatisch organisieren, Tags erstellen, Schlüsselwörter extrahieren und sogar die Farbpalette bestimmen!",
+      "title": "🔖 Vergiss Ordner"
+    },
+    "import": {
+      "content": "Importiere alle deine vorhandenen Lesezeichen, indem du einfach die Datei von deinem Computer hineinziehst, oder lade sie später im Einstellungsmenü hoch.",
+      "title": "Importiere deine Lesezeichen"
+    },
+    "one_click": {
+      "content": "Lade die [Chrome](https://chromewebstore.google.com/detail/webbites-browser-extensio/kphdbcjcdhecefloameedhhldchhbela)-Erweiterung herunter, um neue Lesezeichen mit nur einem Klick zu speichern, oder füge sie direkt in der Web-App hinzu.",
+      "subcontent": "(Erweiterungen für Safari, Firefox und mobile Browser folgen bald!)",
+      "title": "Nur einen Klick entfernt!"
+    },
+    "save_anything": {
+      "content": "Speichere nicht nur Websites: Mit WebBites kannst du auch Notizen, Bilder, Filme, Spiele und Musik speichern!",
+      "subcontent": "Und bald auch Bücher!",
+      "title": "👾 🎥 Speichere alles"
+    },
+    "screenshots": {
+      "content": "Erstelle einen ganzseitigen Screenshot von jeder Website, die du speicherst – für immer abrufbar, auch wenn die Seite offline genommen wird.",
+      "title": "📸 Ganzseitige Screenshots"
+    },
+    "welcome": {
+      "content": "Lass uns gemeinsam den besten Lesezeichen-Dienst da draußen bauen. Melde dich auf Twitter, um Funktionswünsche, gefundene Fehler oder Feedback zu teilen!",
+      "title": "Willkommen bei WebBites!"
+    }
+  },
+  "wizard_tab": {
+    "back": "Zurück",
+    "finish": "Fertig",
+    "import_bookmarks": "Lesezeichen importieren",
+    "next": "Weiter",
+    "save": "Speichern",
+    "skip": "Überspringen"
+  },
+  "developers": {
+    "title": "WebBites API",
+    "subtitle": "Lies und speichere Lesezeichen aus deinen eigenen Skripten, Apps und Automationen."
+  },
+  "tags": {
+    "preview": "Mit {tag} getaggte Lesezeichen ansehen",
+    "preview_empty": "Keine Lesezeichen mit diesem Tag",
+    "show_all": "Das {n} Lesezeichen anzeigen | Alle {n} Lesezeichen anzeigen",
+    "clear_selection": "Auswahl aufheben",
+    "manage": "Tags",
+    "subtitle": "Jeder Tag, den du verwendest, mit der Anzahl der Lesezeichen, die ihn tragen. Wähle Tags aus, um sie überall umzubenennen, zusammenzuführen oder zu entfernen.",
+    "search": "Tags durchsuchen",
+    "sort_count": "Am häufigsten verwendet",
+    "sort_name": "A–Z",
+    "total": "{n} Tag | {n} Tags",
+    "bookmarks_count": "{n} Lesezeichen | {n} Lesezeichen",
+    "selected": "{n} ausgewählt",
+    "rename": "Umbenennen",
+    "merge": "Zusammenführen",
+    "merge_into": "Zusammenführen mit",
+    "delete": "Entfernen",
+    "confirm_delete": "Die ausgewählten Tags von allen Lesezeichen entfernen? Die Lesezeichen selbst bleiben erhalten.",
+    "protected": "„read-later“ steuert die Funktion „Später lesen“ und kann nicht geändert werden.",
+    "empty": "Noch keine Tags",
+    "no_match": "Keine passenden Tags",
+    "updated": "{n} Lesezeichen aktualisiert | {n} Lesezeichen aktualisiert"
+  },
+  "footer": {
+    "product": "Produkt",
+    "support": "Support",
+    "updates": "Updates",
+    "pricing": "Preise",
+    "extension": "Browser-Erweiterung",
+    "export": "Lesezeichen exportieren",
+    "help": "Hilfe und Kontakt",
+    "feedback": "Feedback",
+    "changelog": "Änderungsprotokoll",
+    "privacy": "Datenschutz",
+    "terms": "Nutzungsbedingungen",
+    "made_by": "Entwickelt von",
+    "copyright": "WebBites {year}"
+  },
+  "verify_email": {
+    "verifying_title": "Deine neue E-Mail-Adresse wird bestätigt …",
+    "verifying_body": "Das dauert nur einen Moment.",
+    "success_title": "E-Mail-Adresse geändert",
+    "success_body": "Dein WebBites-Account verwendet jetzt:",
+    "success_hint": "Nutze diese Adresse bei deiner nächsten Anmeldung. Wir haben auch deine alte Adresse benachrichtigt.",
+    "open_app": "WebBites öffnen",
+    "sign_in": "Anmelden",
+    "expired_title": "Dieser Link ist abgelaufen",
+    "expired_body": "Links sind 24 Stunden gültig. Fordere in den Einstellungen einen neuen an. Bis dahin bleibt deine E-Mail-Adresse unverändert.",
+    "taken_title": "Diese Adresse ist bereits vergeben",
+    "taken_body": "Ein anderer Account verwendet diese E-Mail-Adresse, seit der Link gesendet wurde. Deine E-Mail-Adresse wurde nicht geändert – versuche in den Einstellungen eine andere Adresse.",
+    "invalid_title": "Dieser Link funktioniert nicht",
+    "invalid_body": "Er wurde möglicherweise schon verwendet oder durch einen neueren Link ersetzt. Prüfe dein Postfach auf die neueste E-Mail oder beginne in den Einstellungen von vorn.",
+    "failed_title": "Etwas ist schiefgelaufen",
+    "failed_body": "Deine E-Mail-Adresse wurde nicht geändert. Bitte versuche es noch einmal.",
+    "try_again": "Erneut versuchen",
+    "open_settings": "Einstellungen öffnen",
+    "go_home": "Zu WebBites",
+    "page_title": "E-Mail-Adresse bestätigen · WebBites"
+  },
+  "cli_login": {
+    "title": "Bei der WebBites CLI anmelden",
+    "body": "Gib nur frei, wenn dieser Code mit dem in deinem Terminal übereinstimmt.",
+    "signed_in_as": "Angemeldet als {email}",
+    "approve": "Freigeben",
+    "decline": "Abbrechen",
+    "approved_title": "Du bist angemeldet",
+    "approved_body": "Geh zurück zu deinem Terminal. Du kannst diesen Tab schließen.",
+    "declined_title": "Anmeldung abgebrochen",
+    "declined_body": "Die CLI hat keinen Zugriff erhalten. Du kannst diesen Tab schließen.",
+    "expired_title": "Dieser Code ist abgelaufen",
+    "expired_body": "Codes sind 10 Minuten gültig und nur einmal verwendbar. Führe webbites login erneut aus, um einen neuen zu erhalten.",
+    "invalid_title": "Dieser Link funktioniert nicht",
+    "invalid_body": "Öffne den Link, den dein Terminal ausgegeben hat, oder führe webbites login erneut aus.",
+    "failed_title": "Etwas ist schiefgelaufen",
+    "failed_body": "Die CLI wurde nicht angemeldet. Bitte versuche es noch einmal.",
+    "try_again": "Erneut versuchen",
+    "page_title": "Bei der CLI anmelden · WebBites"
+  },
+  "oauth_consent": {
+    "page_title": "App verbinden · WebBites",
+    "title": "{client} möchte deine WebBites-Bibliothek nutzen",
+    "verified": "Verifizierte App",
+    "verified_from": "Verifiziert · {host}",
+    "unverified": "Nicht verifizierte App",
+    "unverified_body": "WebBites kann nicht bestätigen, wer diese App entwickelt hat. Fahre nur fort, wenn du ihr vertraust und das selbst gestartet hast.",
+    "can_heading": "Sie kann",
+    "can_read": "Deine Lesezeichen, Notizen, Boards und Tags durchsuchen und lesen",
+    "allow_changes": "Änderungen erlauben",
+    "allow_changes_body": "Lesezeichen speichern, bearbeiten, organisieren und in den Papierkorb verschieben",
+    "cannot": "Sie kann dein Passwort nicht sehen, deinen Account nicht ändern und deinen Papierkorb nicht leeren.",
+    "redirect_heading": "Danach",
+    "redirect_web": "Du wirst zurück zu {target} geleitet.",
+    "redirect_app": "Die App {target} wird geöffnet.",
+    "redirect_loopback": "Du wirst zurück zu einem Programm auf diesem Computer ({target}) geleitet.",
+    "loopback_warning": "Gib nur frei, wenn du das gerade selbst über eine App auf diesem Computer gestartet hast.",
+    "provider_note": "{client} gibt das Gelesene an seinen KI-Anbieter weiter, gemäß dessen Bedingungen.",
+    "approve": "Freigeben",
+    "decline": "Ablehnen",
+    "signed_in_as": "Angemeldet als {account}",
+    "switch_account": "Anderen Account verwenden",
+    "revoke_hint": "Du kannst die Verbindung jederzeit unter Einstellungen → KI-Assistenten trennen.",
+    "done_title": "Verbunden",
+    "done_body": "Du wirst zu {client} zurückgebracht …",
+    "declined_title": "Nicht verbunden",
+    "declined_body": "{client} hat keinen Zugriff erhalten. Du wirst dorthin zurückgebracht …",
+    "close_hint": "Du kannst diesen Tab schließen, sobald {client} geöffnet ist.",
+    "continue": "Weiter",
+    "the_app": "die App",
+    "invalid_request_title": "Dieser Link funktioniert nicht",
+    "invalid_request_body": "Die App hat eine unvollständige oder ungültige Anfrage gesendet, deshalb wurde nichts verbunden. Beginne noch einmal in der App.",
+    "invalid_client_title": "WebBites konnte diese App nicht identifizieren",
+    "invalid_client_body": "Die App hat sich nicht korrekt ausgewiesen und kann deshalb nicht verbunden werden. Beginne noch einmal in der App oder wende dich an ihren Entwickler.",
+    "invalid_redirect_title": "Die Rücksprungadresse dieser App ist nicht erlaubt",
+    "invalid_redirect_body": "Zum Schutz deines Accounts leitet WebBites dich nur zu einer Adresse zurück, die die App registriert hat. Es wurde nichts verbunden.",
+    "invalid_scope_title": "Die App hat Zugriff angefordert, den WebBites nicht anbietet",
+    "invalid_scope_body": "Es wurde nichts verbunden. Beginne noch einmal in der App oder wende dich an ihren Entwickler.",
+    "invalid_server_title": "Auf unserer Seite ist etwas schiefgelaufen",
+    "invalid_server_body": "Es wurde nichts verbunden. Versuche es gleich noch einmal in der App.",
+    "details": "Details für den Entwickler der App",
+    "expired_title": "Diese Anfrage ist abgelaufen",
+    "expired_body": "Verbindungsanfragen sind nur kurz gültig und nur einmal verwendbar. Beginne noch einmal in der App, die du verbinden wolltest.",
+    "rejected_title": "Diese Anfrage konnte nicht bestätigt werden",
+    "rejected_body": "Es wurde nichts verbunden. Beginne noch einmal in der App, die du verbinden wolltest.",
+    "failed_title": "Etwas ist schiefgelaufen",
+    "failed_body": "Es wurde nichts verbunden. Bitte versuche es noch einmal.",
+    "try_again": "Erneut versuchen"
+  },
+  "automations": {
+    "new": "Neue Automation",
+    "empty": "Noch keine Automationen. Starte zum Beispiel so: Wenn die URL amazon.com enthält, füge den Tag „Shopping“ hinzu.",
+    "smart_board": "Intelligentes Board",
+    "enable_named": "{name} aktivieren",
+    "load_failed": "Automationen konnten nicht geladen werden",
+    "update_failed": "Die Automation konnte nicht aktualisiert werden",
+    "save_failed": "Die Automation konnte nicht gespeichert werden",
+    "delete_failed": "Die Automation konnte nicht gelöscht werden",
+    "name_placeholder": "Automation benennen",
+    "enabled": "Aktiviert",
+    "whenever": "Immer wenn",
+    "trigger_bookmark_added": "ein Lesezeichen hinzugefügt wird",
+    "no_conditions": "Keine Bedingungen: läuft bei jedem neuen Lesezeichen.",
+    "actions": "Aktionen",
+    "remove_action": "Aktion entfernen",
+    "choose_board": "Board auswählen",
+    "add_action": "Aktion hinzufügen",
+    "action_add_to_board": "Zu Board hinzufügen",
+    "action_read_later": "Zu „Später lesen“ hinzufügen",
+    "action_webhook": "Webhook aufrufen",
+    "webhook_help": "Lass den Body leer, um das Lesezeichen als JSON zu senden. Verwende {title}, {url}, {type} oder {id} innerhalb von Anführungszeichen und {tags} ohne Anführungszeichen.",
+    "webhook_signed": "Jede Anfrage wird mit {header} signiert.",
+    "webhook_signed_secret": "Jede Anfrage wird mit {header} unter Verwendung von {secret} signiert.",
+    "smart_board_note": "Dies ist die Regel eines intelligenten Boards. Ihre Bedingungen erscheinen auch in den Einstellungen des Boards; wenn du sie löschst, wird das Board wieder zu einem manuellen.",
+    "if": "Wenn",
+    "remove_condition": "Bedingung entfernen",
+    "topics_placeholder": "Themen, mit Enter bestätigen",
+    "minimum_match": "Mindestübereinstimmung",
+    "add_condition": "Bedingung hinzufügen",
+    "match_all": "Alle davon",
+    "match_any": "Eine davon",
+    "fields": {
+      "url": "URL",
+      "domain": "Domain",
+      "title": "Titel",
+      "type": "Art",
+      "tag": "Tag",
+      "ai_topic": "KI-Thema"
+    },
+    "ops": {
+      "contains": "enthält",
+      "not_contains": "enthält nicht",
+      "is": "ist",
+      "is_not": "ist nicht"
+    },
+    "describe": {
+      "a_board": "ein Board",
+      "about": "zu {topics}",
+      "condition": "{field} {op} {value}",
+      "tag": "Tag {tag}",
+      "add_to_board": "zu {board} hinzufügen",
+      "read_later": "später lesen",
+      "webhook": "Webhook aufrufen",
+      "joiner_any": " oder ",
+      "joiner_all": " und ",
+      "every_bookmark": "jedes Lesezeichen",
+      "summary": "{when} → {actions}"
+    }
+  },
+  "notifications": {
+    "title": "Benachrichtigungen",
+    "aria_unread": "Benachrichtigungen, {count} ungelesen",
+    "mark_all_read": "Alle als gelesen markieren",
+    "unread": "Ungelesen",
+    "empty": "Nichts Neues.",
+    "group_new": "Neu",
+    "group_earlier": "Früher",
+    "someone": "Jemand",
+    "board_unavailable": "Dieses Board ist nicht mehr verfügbar",
+    "sentence": {
+      "board_shared": "{who} hat „{board}“ mit dir geteilt",
+      "role_changed": "{who} hat deinen Zugriff auf „{board}“ geändert",
+      "board_unshared": "{who} hat dich aus „{board}“ entfernt",
+      "member_joined": "{who} ist „{board}“ beigetreten",
+      "member_left": "{who} hat „{board}“ verlassen",
+      "default": "{who} hat „{board}“ aktualisiert",
+      "item_added": "{who} hat ein Lesezeichen zu „{board}“ hinzugefügt | {who} hat {count} Lesezeichen zu „{board}“ hinzugefügt",
+      "item_added_titled": "{who} hat „{title}“ zu „{board}“ hinzugefügt",
+      "item_edited": "{who} hat ein Lesezeichen in „{board}“ bearbeitet | {who} hat {count} Lesezeichen in „{board}“ bearbeitet",
+      "item_edited_titled": "{who} hat „{title}“ in „{board}“ bearbeitet",
+      "item_removed": "{who} hat ein Lesezeichen aus „{board}“ entfernt | {who} hat {count} Lesezeichen aus „{board}“ entfernt",
+      "item_removed_titled": "{who} hat „{title}“ aus „{board}“ entfernt"
+    }
+  },
+  "shell": {
+    "login_desktop": {
+      "success": "Anmeldung erfolgreich"
+    },
+    "apple_callback": {
+      "completing": "Anmeldung mit Apple wird abgeschlossen …",
+      "invalid_state": "Ungültiger State-Parameter – möglicher CSRF-Angriff",
+      "no_id_token": "Von Apple wurde kein ID-Token empfangen",
+      "auth_failed": "Authentifizierung fehlgeschlagen",
+      "account_exists": "Für diese E-Mail-Adresse existiert bereits ein Account. Bitte melde dich stattdessen mit E-Mail und Passwort an.",
+      "token_expired": "Deine Apple-Anmeldesitzung ist abgelaufen. Bitte versuche es noch einmal.",
+      "invalid_token": "Ungültiges Apple-Authentifizierungstoken. Bitte versuche es noch einmal.",
+      "user_creation_failed": "Dein Account konnte nicht erstellt werden. Bitte versuche es später noch einmal.",
+      "sign_in_failed": "Anmeldung mit Apple fehlgeschlagen. Bitte versuche es noch einmal."
+    },
+    "welcome_extension": {
+      "heading": "Willkommen!",
+      "tagline": "Speichere es per Knopfdruck und lass die KI das Organisieren übernehmen.",
+      "right_click_title": "Rechtsklick zum Speichern",
+      "right_click_description": "Speichere jede Website oder jedes Bild ganz einfach per Rechtsklick.",
+      "quick_menu_title": "Schnellmenü",
+      "quick_menu_description": "Drücke „J“, um das WebBites-Schnellmenü ein- oder auszublenden. Mit Cmd+J (Ctrl unter Windows) öffnest du das kleine WebBites für schnelles Speichern und Suchen.",
+      "reading_title": "Besseres Leseerlebnis",
+      "reading_description": "Erkenne Artikel automatisch und öffne sie in einem ablenkungsfreien Lesemodus.",
+      "summaries_title": "Sofort-Zusammenfassungen",
+      "summaries_description": "Fasse jeden Artikel oder jede Website mit nur einem Klick zusammen.",
+      "listen_title": "Artikel anhören",
+      "listen_description": "Wandle jeden Artikel oder jede Zusammenfassung mit einer realistischen Stimme in Sprache um."
+    }
+  },
+  "boards": {
+    "empty": "Noch keine Boards",
+    "someone": "jemand",
+    "go_home": "Zu WebBites",
+    "leave": "Board verlassen",
+    "duplicate": "Duplizieren",
+    "archive": "Archivieren",
+    "delete_board": "Board löschen",
+    "added_to": "Zu {board} hinzugefügt",
+    "already_in": "Bereits in {board}",
+    "added_bookmarks": "{count} Lesezeichen zu {board} hinzugefügt | {count} Lesezeichen zu {board} hinzugefügt",
+    "add_error": "Fehler beim Hinzufügen zum Board",
+    "modal": {
+      "edit_title": "Board bearbeiten",
+      "new_title": "Neues Board",
+      "choose_emoji": "Emoji auswählen",
+      "emoji_placeholder": "Beliebiges Emoji eingeben oder einfügen",
+      "remove_emoji": "Entfernen",
+      "emoji_work": "Arbeit",
+      "emoji_creative": "Kreatives",
+      "emoji_life": "Leben",
+      "emoji_misc": "Sonstiges",
+      "name_placeholder": "Board-Name",
+      "description_placeholder": "Was kommt in dieses Board? (optional)",
+      "inside": "Darin",
+      "inside_help": "Lege dieses Board in einen Ordner oder lass es auf der obersten Ebene.",
+      "top_level": "Oberste Ebene",
+      "how_added": "Wie Lesezeichen hinzugefügt werden",
+      "mode_manual": "Manuell",
+      "mode_manual_help": "Du fügst Lesezeichen selbst hinzu und entfernst sie.",
+      "mode_smart": "Intelligent",
+      "mode_smart_help": "Passende Lesezeichen werden automatisch einsortiert, und du kannst auch selbst welche von Hand hinzufügen.",
+      "ai_topics": "KI-Themen",
+      "ai_topics_hint": "durch Kommas getrennt",
+      "ai_topics_help": "Die KI gleicht neue Lesezeichen damit ab. Optional, wenn du unten Bedingungen hinzufügst.",
+      "topics_placeholder": "UI-Design, Typografie, Farbtheorie",
+      "confidence": "Minimale Übereinstimmungssicherheit",
+      "conditions": "Bedingungen",
+      "conditions_help": "Wird bei jedem neuen Lesezeichen geprüft. Nutze sie zusammen mit KI-Themen oder allein, um die KI ganz zu überspringen.",
+      "auto_apply": "Passende Lesezeichen automatisch hinzufügen",
+      "auto_apply_help": "Neue passende Lesezeichen werden ohne Nachfrage hier einsortiert.",
+      "include_existing": "Meine vorhandenen Lesezeichen durchsuchen",
+      "include_existing_help": "Befülle das Board mit dem, was du bereits gespeichert hast.",
+      "automations_link": "Tags, Webhooks und mehr unter Automationen hinzufügen",
+      "colour": "Farbe",
+      "no_colour": "Keine Farbe",
+      "save_changes": "Änderungen speichern",
+      "create": "Board erstellen",
+      "updated": "Board aktualisiert",
+      "created": "Board erstellt",
+      "save_error": "Fehler beim Speichern des Boards"
+    },
+    "folder": {
+      "rename_title": "Ordner umbenennen",
+      "new_title": "Neuer Ordner",
+      "name_placeholder": "Ordnername",
+      "create": "Erstellen",
+      "save_error": "Fehler beim Speichern des Ordners"
+    },
+    "sidebar": {
+      "title": "Boards",
+      "new_folder": "Neuer Ordner",
+      "new_board": "Neues Board",
+      "shared": "Geteilt",
+      "shared_by": "Geteilt von {name}",
+      "share_board": "Board teilen",
+      "rename_folder": "Ordner umbenennen",
+      "edit_board": "Board bearbeiten",
+      "link_copied": "Freigabelink kopiert",
+      "link_copy_error": "Der Freigabelink konnte nicht kopiert werden",
+      "menu": {
+        "new_board_here": "Neues Board hier …",
+        "new_folder_here": "Neuer Ordner hier …",
+        "rename": "Umbenennen …",
+        "delete": "Löschen …",
+        "share": "Teilen …",
+        "people_with_access": "Personen mit Zugriff …",
+        "edit_board": "Board bearbeiten …",
+        "copy_share_link": "Freigabelink kopieren"
+      }
+    },
+    "add_to": {
+      "title": "Zu Board hinzufügen",
+      "removed_from": "Aus {board} entfernt",
+      "update_error": "Fehler beim Aktualisieren des Boards"
+    },
+    "share": {
+      "title": "„{name}“ teilen",
+      "people_with_access": "Personen mit Zugriff",
+      "description_owner": "Lade Personen per E-Mail ein oder lass alle mit dem Link mitschauen.",
+      "description_member": "{name} ist mit dir geteilt.",
+      "this_board": "Dieses Board",
+      "try_again": "Erneut versuchen",
+      "load_error": "Die Freigabeeinstellungen konnten nicht geladen werden.",
+      "invite_people": "Personen einladen",
+      "add_emails": "E-Mail-Adressen hinzufügen",
+      "invite": "Einladen",
+      "invalid_emails": "{emails} ist keine gültige E-Mail-Adresse. | {emails} sind keine gültigen E-Mail-Adressen.",
+      "invite_hint": "Personen ohne WebBites-Account erhalten eine E-Mail mit einem Link zum Beitreten.",
+      "you": "(du)",
+      "owner": "Eigentümer:in",
+      "pending": "Ausstehend",
+      "can_view": "Darf ansehen",
+      "can_edit": "Darf bearbeiten",
+      "remove_member": "{name} entfernen",
+      "nobody_else": "Noch niemand sonst.",
+      "only_other": "Du bist die einzige andere Person hier.",
+      "general_access": "Allgemeiner Zugriff",
+      "access_private": "Nur eingeladene Personen",
+      "access_link": "Alle mit dem Link – nur ansehen",
+      "link_on": "Alle mit dem Link können ohne Anmeldung mitschauen.",
+      "link_off": "Nur die oben genannten Personen können dieses Board öffnen.",
+      "link_reset_to_show": "Setze den Link zurück, um ihn hier anzuzeigen",
+      "link_unavailable": "Link nicht verfügbar",
+      "copy_link": "Link kopieren",
+      "click_again": "Zum Zurücksetzen erneut klicken",
+      "create_link": "Link erstellen",
+      "reset_link": "Link zurücksetzen",
+      "done": "Fertig",
+      "invited": "Einladung gesendet | {count} Personen eingeladen",
+      "invite_error": "Die Einladung konnte nicht gesendet werden",
+      "role_error": "Der Zugriff konnte nicht geändert werden",
+      "remove_error": "Die Person konnte nicht entfernt werden",
+      "access_error": "Es konnte nicht geändert werden, wer dieses Board öffnen kann",
+      "link_copied": "Link kopiert",
+      "link_copy_error": "Der Link konnte nicht kopiert werden",
+      "new_link": "Neuer Link bereit",
+      "reset_error": "Der Link konnte nicht zurückgesetzt werden"
+    },
+    "trash": {
+      "title": "Papierkorb",
+      "description": "Gelöschte Lesezeichen werden 30 Tage aufbewahrt und dann endgültig entfernt.",
+      "empty": "Nichts im Papierkorb",
+      "untitled": "Ohne Titel",
+      "purges_in": "Wird in {count} Tagen endgültig gelöscht | Wird in {count} Tag endgültig gelöscht | Wird in {count} Tagen endgültig gelöscht",
+      "restore": "Wiederherstellen"
+    },
+    "public": {
+      "open_webbites": "WebBites öffnen",
+      "save_your_own": "Eigene speichern",
+      "start_free": "Kostenlos starten",
+      "shared_by": "Geteilt von {name}",
+      "bookmark_count": "{count} Lesezeichen | {count} Lesezeichen",
+      "empty": "In diesem Board ist noch nichts.",
+      "show_more": "Weitere Lesezeichen anzeigen",
+      "footer": "Dieses Board wurde über WebBites geteilt. Dort kannst du Seiten speichern, wiederfinden und ein Board mit anderen teilen.",
+      "title": "{name} – WebBites",
+      "title_default": "Geteiltes Board – WebBites",
+      "not_found_title": "Board nicht gefunden",
+      "not_found_text": "Dieser Link führt ins Leere. Prüfe, ob du ihn vollständig kopiert hast.",
+      "forbidden_title": "Dieses Board ist nicht mit dir geteilt",
+      "forbidden_text": "Möglicherweise hat der oder die Eigentümer:in das Teilen deaktiviert oder den Link zurückgesetzt. Bitte um einen neuen.",
+      "error_title": "Dieses Board konnte nicht geladen werden",
+      "error_text": "Auf unserer Seite ist etwas schiefgelaufen. Versuche es gleich noch einmal."
+    },
+    "invite": {
+      "incomplete_title": "Dieser Einladungslink ist unvollständig",
+      "incomplete_text": "Öffne den Link aus deiner E-Mail erneut und kopiere ihn vollständig.",
+      "invited_title": "Du wurdest zu einem Board eingeladen",
+      "sign_in_text": "Melde dich an oder erstelle einen WebBites-Account, um beizutreten.",
+      "sign_in_cta": "Anmelden oder Account erstellen",
+      "joining": "Du trittst dem Board bei …"
+    }
+  },
+  "editor": {
+    "slash": {
+      "items": {
+        "paragraph": {
+          "title": "Text",
+          "subtitle": "Einfach losschreiben"
+        },
+        "heading1": {
+          "title": "Überschrift 1",
+          "subtitle": "Große Abschnittsüberschrift"
+        },
+        "heading2": {
+          "title": "Überschrift 2",
+          "subtitle": "Mittlere Abschnittsüberschrift"
+        },
+        "heading3": {
+          "title": "Überschrift 3",
+          "subtitle": "Kleine Abschnittsüberschrift"
+        },
+        "bulletList": {
+          "title": "Aufzählung",
+          "subtitle": "Eine einfache Liste"
+        },
+        "orderedList": {
+          "title": "Nummerierte Liste",
+          "subtitle": "Eine Liste, die mitzählt"
+        },
+        "taskList": {
+          "title": "To-do",
+          "subtitle": "Etwas zum Abhaken"
+        },
+        "blockquote": {
+          "title": "Zitat",
+          "subtitle": "Eine Passage hervorheben"
+        },
+        "codeBlock": {
+          "title": "Code",
+          "subtitle": "Vorformatiert, Festbreitenschrift"
+        },
+        "horizontalRule": {
+          "title": "Trennlinie",
+          "subtitle": "Die Seite in zwei teilen"
+        },
+        "image": {
+          "title": "Bild",
+          "subtitle": "Ein Bild hochladen"
+        }
+      },
+      "groups": {
+        "basic": "Grundlegende Blöcke",
+        "media": "Medien"
+      },
+      "no_match": "Kein Block mit dem Namen „{query}“"
+    },
+    "block_menu": {
+      "duplicate": "Duplizieren",
+      "copy_text": "Text kopieren",
+      "turn_into": "Umwandeln in"
+    }
+  },
+  "cards": {
+    "everything": "Alles",
+    "media_preview": {
+      "date_unavailable": "Datum nicht verfügbar",
+      "movie_poster_alt": "Filmplakat",
+      "game_poster_alt": "Spielcover"
+    },
+    "search_chip": {
+      "remove": "{label} entfernen"
+    },
+    "drawing": {
+      "save_failed": "Die Zeichnung konnte nicht gespeichert werden"
+    }
+  },
+  "faq": {
+    "title_line1": "Fragen,",
+    "title_emphasis": "als Lesezeichen gespeichert.",
+    "subtitle": "Alles, was uns Leute fragen, an einem Ort gespeichert. Wähle ein Thema oder öffne ein Lesezeichen.",
+    "topics_aria": "Themen",
+    "topics": {
+      "all": "Alle",
+      "start": "Erste Schritte",
+      "saving": "Speichern & Synchronisieren",
+      "billing": "Tarife & Abrechnung",
+      "privacy": "Datenschutz & Daten",
+      "dev": "Entwickler"
+    },
+    "still_stuck": {
+      "title": "Immer noch Probleme?",
+      "body": "Jede E-Mail wird von einem Menschen gelesen, in der Regel innerhalb von zwei Werktagen. Schreib uns, was du gemacht hast, was du erwartet hast und was stattdessen passiert ist.",
+      "email_button": "E-Mail an {email}",
+      "feature_button": "Funktion vorschlagen"
+    },
+    "items": {
+      "what": {
+        "q": "Was ist WebBites?",
+        "a": "Ein Ort, um alles zu speichern – Websites, Bilder, Filme, Spiele, Notizen – und es wiederzufinden, ohne selbst ablegen zu müssen. Speichere mit einem Klick, und WebBites vergibt per KI Tags und organisiert es. Die Suche funktioniert nach Titel, Farbe, Tags und sogar nach dem Text auf der Seite."
+      },
+      "platforms": {
+        "q": "Auf welchen Plattformen läuft es?",
+        "a": "Als Web-App, als native Apps für iPhone, iPad, Mac, Vision Pro, Apple TV und Apple Watch und als Browser-Erweiterung, um von überall zu speichern. Alles wird über deinen Account synchronisiert."
+      },
+      "account": {
+        "q": "Brauche ich einen Account, um die Apps zu nutzen?",
+        "a": "Nein. Die Apps für iPhone, iPad, Mac und Vision Pro funktionieren auch ohne Anmeldung mit einer Bibliothek, die auf deinem eigenen Gerät liegt, und nichts, was du in diesem Modus speicherst, wird an uns gesendet. Synchronisierung, Teilen, semantische Suche und die Cloud-Funktionen brauchen einen Account, und die Intelligenz-Funktionen kannst du in den Einstellungen auf Modelle auf dem Gerät umstellen, wenn du auch diese lokal halten möchtest. Die Details stehen in der <a href=\"/privacy\">Datenschutzerklärung</a> §2."
+      },
+      "password": {
+        "q": "Ich habe mein Passwort vergessen",
+        "a": "Nutze <a href=\"/passwordReset\">die Seite zum Zurücksetzen</a> oder den Link „Passwort vergessen“ auf dem Anmeldebildschirm. Die E-Mail kommt von unserem E-Mail-Anbieter – schau im Spam-Ordner nach, falls sie nicht ankommt. Wenn du dich mit Apple angemeldet hast, gibt es kein Passwort zum Zurücksetzen: Nutze einfach wieder die Apple-Schaltfläche."
+      },
+      "sync": {
+        "q": "Meine Lesezeichen werden nicht synchronisiert",
+        "a": "Prüfe, ob du auf beiden Geräten im selben Account angemeldet bist, und ziehe dann zum Aktualisieren nach unten. Ein Speichervorgang ohne Verbindung wartet in einer Warteschlange und wird ausgeführt, sobald das Netzwerk zurück ist – die App zeigt diese auf dem Bildschirm „Wartet auf Speichern“ unter Einstellungen → Daten &amp; Offline an. Wenn dort trotz funktionierender Verbindung länger als ein paar Minuten etwas hängt, schreib uns eine E-Mail."
+      },
+      "extension": {
+        "q": "Die Erweiterung speichert nicht",
+        "a": "Die Erweiterung speichert über deine angemeldete Sitzung. Öffne also einmal die Web-App, melde dich an und versuche es dann erneut. In Safari muss die Erweiterung außerdem aktiviert sein und für die aktuelle Website die Berechtigung erhalten haben, unter Safari → Einstellungen → Erweiterungen."
+      },
+      "bad_save": {
+        "q": "Eine Seite wurde schlecht gespeichert – kein Bild, falscher Titel, kein Artikeltext",
+        "a": "Manche Websites blockieren automatisches Abrufen, rendern alles per JavaScript oder liegen hinter einer Paywall oder einem Login. In diesen Fällen speichern wir, was wir erreichen können. Wenn du Titel, Beschreibung oder Bild am Lesezeichen bearbeitest, ist das dauerhaft behoben. Schick uns die URL, wenn eine Website, die dir wichtig ist, immer wieder falsch herauskommt – viele davon können wir einzeln korrigieren."
+      },
+      "export": {
+        "q": "Kann ich meine Lesezeichen exportieren oder importieren?",
+        "a": "Beides. Unter Einstellungen → Export erhältst du auf jeder Plattform, in jedem Tarif und jederzeit deine Bibliothek in einer portablen Datei. Um Browser-Lesezeichen zu übernehmen, folge der <a href=\"/export-bookmarks\">Importanleitung</a>."
+      },
+      "pricing": {
+        "q": "Was kostet es?",
+        "a": "Es gibt einen kostenlosen Tarif und kostenpflichtige Tarife für mehr Lesezeichen und die erweiterten Funktionen. Die aktuellen Tarife und Preise findest du im <a href=\"/#pricing\">Preisbereich</a> der Startseite."
+      },
+      "cancel": {
+        "q": "Wie kündige ich oder wechsle meinen Tarif?",
+        "a": "Kündige dort, wo du abonniert hast. Hast du im Web oder auf dem Mac abonniert, geht das unter Einstellungen → Abonnement, wodurch sich das Abrechnungsportal öffnet. Hast du über den App Store abonniert, findest du es in den Apple-Abo-Einstellungen auf deinem Gerät (Einstellungen → dein Name → Abonnements), da Apple diese direkt abrechnet. Bezahlte Funktionen behältst du bis zum Ende des Zeitraums, den du bezahlt hast."
+      },
+      "privacy": {
+        "q": "Sind meine Daten privat?",
+        "a": "Deine Lesezeichen gehören dir. Wir verkaufen deine Daten nicht, und die Apps können komplett auf dem Gerät laufen, wenn du dich nie anmeldest. Was wir speichern, warum und wie lange, steht in der <a href=\"/privacy\">Datenschutzerklärung</a>."
+      },
+      "delete": {
+        "q": "Wie lösche ich meinen Account?",
+        "a": "Einstellungen → Account löschen, dann bestätigen. Dabei werden auch deine Lesezeichen, Dateien und dein Abonnement gelöscht, und es lässt sich nicht rückgängig machen – exportiere also vorher, wenn du eine Kopie möchtest. Du musst uns keine E-Mail schreiben, und wir stellen dir auch kein Halteangebot in den Weg."
+      },
+      "api": {
+        "q": "Gibt es eine API?",
+        "a": "Ja – auf der <a href=\"/developers\">Entwicklerseite</a> siehst du, was sie kann, und die <a href=\"/developers/docs\">Dokumentation</a> enthält die Anleitungen, deine API-Schlüssel, einen Playground und jeden Endpoint."
+      }
+    }
+  },
+  "help_pages": {
+    "legal": {
+      "last_updated": "Zuletzt aktualisiert am {date}",
+      "questions": "Fragen zu dieser Seite? Schreib an {email}."
+    },
+    "chat": {
+      "title": "Chatte mit uns",
+      "subtitle": "Ein echter Mensch aus unserem Team kümmert sich darum – in der Regel innerhalb von zwei Werktagen.",
+      "iframe_title": "Support-Chat",
+      "not_configured": "Der Chat ist noch nicht eingerichtet. Schreib uns an {email}.",
+      "sign_in_prompt": "Melde dich an, um ein Gespräch zu beginnen und deinen Verlauf an einem Ort zu behalten.",
+      "sign_in": "Anmelden",
+      "prefer_email": "Lieber per E-Mail? Schreib an {email}."
+    },
+    "support": {
+      "title": "Support",
+      "subtitle": "Etwas kaputt, etwas fehlt oder du findest etwas einfach nicht? So erreichst du einen Menschen.",
+      "email_us": "Schreib uns eine E-Mail",
+      "email_body": "Eine Person liest diese Adresse, in der Regel innerhalb von zwei Werktagen. Schreib uns, was du gemacht hast, was du erwartet hast und was stattdessen passiert ist – und welche App (Web, iPhone, iPad, Mac, Vision Pro, TV, Watch oder Browser-Erweiterung) und Version du verwendet hast. Ein Screenshot erspart einen ganzen Nachrichtenwechsel.",
+      "operated_by": "WebBites wird betrieben von {operator}, {address}.",
+      "where_title": "Wohin womit",
+      "col_want": "Wenn du …",
+      "col_go": "Dann hier entlang",
+      "row_bug": "einen Fehler melden oder Hilfe brauchst",
+      "row_bug_go": "{chat} oder {email}",
+      "chat_link": "Chatte mit uns",
+      "row_feature": "eine Funktion vorschlagen oder darüber abstimmen möchtest",
+      "feedback_board": "Feedback-Board",
+      "row_changes": "sehen möchtest, was sich wann geändert hat",
+      "changelog": "Änderungsprotokoll",
+      "row_api": "auf der API aufbauen möchtest",
+      "developer_docs": "Entwicklerdokumentation",
+      "row_import": "deine Browser-Lesezeichen übernehmen möchtest",
+      "import_guide": "Importanleitung",
+      "row_security": "ein Sicherheitsproblem melden möchtest",
+      "row_security_go": "{email}, Betreff „Security“",
+      "row_rights": "ein Datenschutzrecht ausüben möchtest",
+      "row_rights_go": "{link} §11",
+      "privacy_policy": "Datenschutzerklärung",
+      "faq_title": "Antworten auf die üblichen Fragen",
+      "faq_body": "Passwörter, Synchronisierung, Exporte, Kündigung, die Erweiterung und mehr findest du auf der {link}.",
+      "faq_link": "FAQ-Seite",
+      "security_title": "Ein Sicherheitsproblem melden",
+      "security_body": "Schreib an {email} mit „Security“ im Betreff und genug Details, um das Problem nachzustellen. Bitte veröffentliche es nicht, bevor wir es beheben konnten, greife beim Testen nicht auf Daten anderer zu und verändere sie nicht, und führe keine Last- oder Denial-of-Service-Tests gegen den Dienst durch. Wir bestätigen den Eingang, halten dich auf dem Laufenden und nennen dich nach der Behebung auf Wunsch als Entdecker:in."
+    }
+  },
+  "support_chat": {
+    "replying_to": "Antwort an {email}",
+    "real_person": "Ein echter Mensch liest das",
+    "gate_intro": "Melde dich an, um deinen vollständigen Verlauf zu behalten, oder hinterlasse als Gast eine Nachricht.",
+    "your_email": "Deine E-Mail-Adresse",
+    "continue_as_guest": "Als Gast fortfahren",
+    "email_note": "Wir verwenden sie nur, um zu antworten. Dein Entwurf bleibt auf diesem Gerät.",
+    "we_reply_to": "Wir antworten an {email} – in der Regel innerhalb von zwei Werktagen.",
+    "tell_us": "Erzähl uns, was los ist.",
+    "your_message": "Deine Nachricht",
+    "send": "Senden",
+    "close_chat": "Support-Chat schließen",
+    "open_chat": "Support-Chat öffnen",
+    "invalid_email": "Gib eine gültige E-Mail-Adresse ein, damit wir antworten können."
+  },
+  "marketing": {
+    "statistics": {
+      "active_users": "Aktive Nutzer:innen",
+      "bookmarks_saved": "Gespeicherte Lesezeichen",
+      "accuracy_rate": "Genauigkeit",
+      "support": "Support"
+    }
+  },
+  "import_export": {
+    "time": {
+      "unknown": "Unbekannt",
+      "ago_minutes": "vor {minutes} Min. {seconds} Sek.",
+      "ago_seconds": "vor {seconds} Sek.",
+      "hours_minutes": "{hours} Std. {minutes} Min.",
+      "minutes_seconds": "{minutes} Min. {seconds} Sek.",
+      "seconds": "{seconds} Sek."
+    },
+    "status_labels": {
+      "inactive": "Inaktiv",
+      "active": "Aktiv",
+      "processing": "Wird verarbeitet",
+      "completed": "Abgeschlossen",
+      "cancelled": "Abgebrochen",
+      "failed": "Fehlgeschlagen"
+    },
+    "activity": {
+      "processing": "Wird verarbeitet:",
+      "waiting": "Warte auf das nächste Lesezeichen …",
+      "last_update": "Letzte Aktualisierung: {time}"
+    },
+    "failed": {
+      "title": "Fehlgeschlagene Importe ({count})",
+      "retry": "{count} Element erneut versuchen | {count} Elemente erneut versuchen",
+      "retryable": "Wiederholbar",
+      "failed": "Fehlgeschlagen"
+    },
+    "metrics": {
+      "title": "Leistungskennzahlen",
+      "per_minute": "Lesezeichen/Min.",
+      "duration": "Dauer",
+      "estimated_completion": "voraussichtlicher Abschluss",
+      "batches": "Batches"
+    },
+    "overview": {
+      "title": "Importstatus",
+      "processing": "{done} von {total} Lesezeichen werden verarbeitet",
+      "currently": "Aktuell: {url}",
+      "no_session": "Keine aktive Importsitzung"
+    },
+    "progress": {
+      "title": "Fortschritt",
+      "hint": "Das kann einige Minuten dauern. Der Import läuft weiter, auch wenn du dieses Fenster schließt.",
+      "completed": "{count} abgeschlossen",
+      "failed": "{count} fehlgeschlagen"
+    },
+    "queue": {
+      "title": "Vorschau der Warteschlange",
+      "remaining": "{count} übrig",
+      "empty": "Keine Elemente in der Warteschlange",
+      "batch": "Batch: {batch}",
+      "more": "… und {count} weitere"
+    },
+    "modal": {
+      "title": "Importfortschritt",
+      "cancel_import": "Import abbrechen",
+      "retry_success": "{count} Element zur Wiederholung wieder in die Warteschlange gestellt | {count} Elemente zur Wiederholung wieder in die Warteschlange gestellt",
+      "retry_error": "Die Elemente konnten nicht erneut versucht werden. Bitte versuche es noch einmal.",
+      "cancelled": "Der Importvorgang wurde abgebrochen",
+      "cancel_error": "Der Import konnte nicht abgebrochen werden. Bitte versuche es noch einmal."
+    },
+    "user_modal": {
+      "title": "Lesezeichen importieren",
+      "subtitle": "Lesezeichen-Import für diese:n Nutzer:in auslösen",
+      "no_email": "Keine E-Mail-Adresse angegeben",
+      "user_id": "Nutzer-ID: {id}",
+      "current_bookmarks": "Aktuelle Lesezeichen: {count}",
+      "import_status": "Importstatus",
+      "last_import": "Letzter Import: {date}",
+      "total_imported": "Insgesamt importiert: {count} Lesezeichen",
+      "options": "Importoptionen",
+      "force_reimport": "Erneuten Import erzwingen (vorhandene Lesezeichen überschreiben)",
+      "skip_duplicates": "Doppelte Lesezeichen überspringen",
+      "notify_user": "Nutzer:in nach Abschluss benachrichtigen",
+      "from_parse_class": "Aus Parse-Klasse importieren",
+      "notice_title": "Wichtiger Hinweis",
+      "progress": "Importfortschritt",
+      "importing": "Import läuft …",
+      "start_import": "Import starten",
+      "already_imported_warning": "Diese:r Nutzer:in hat bereits Lesezeichen importiert. Aktiviere „Erneuten Import erzwingen“, um vorhandene Daten zu überschreiben.",
+      "status_unknown": "Unbekannt",
+      "status_imported": "Bereits importiert",
+      "status_none": "Keine Importe",
+      "not_available": "k. A.",
+      "step_init": "Import wird initialisiert …",
+      "step_prepare": "Nutzerdaten werden vorbereitet …",
+      "step_process": "Lesezeichen werden verarbeitet …",
+      "step_finalize": "Import wird abgeschlossen …",
+      "step_done": "Import erfolgreich abgeschlossen!",
+      "failed_generic": "Import fehlgeschlagen",
+      "failed": "Import fehlgeschlagen: {error}"
+    },
+    "export_guide": {
+      "title": "So exportierst du deine Lesezeichen",
+      "intro": "Bereit, deine Lesezeichen zu WebBites zu bringen? Folge diesen einfachen Anleitungen, um deine Lesezeichen aus deinem Lieblingsbrowser zu exportieren.",
+      "help_title": "Brauchst du Hilfe?",
+      "help_text": "Wenn du Probleme beim Exportieren deiner Lesezeichen hast, wende dich gern an {link}.",
+      "help_link": "unser Support-Team",
+      "exporting_from": "Export aus {browser}",
+      "note_label": "Hinweis:",
+      "next_title": "Wie geht es weiter?",
+      "next_intro": "Jetzt, da du deine Lesezeichen exportiert hast, kannst du sie in WebBites importieren:",
+      "next_1": "Geh zu deinem <a href=\"/app\" class=\"text-primary-600 dark:text-primary-400 hover:underline\">WebBites-Dashboard</a> und öffne das Einstellungsfenster.",
+      "next_2": "Klicke auf die Schaltfläche „Lesezeichen importieren“.",
+      "next_3": "Wähle deine exportierte Lesezeichen-Datei aus und lade sie hoch",
+      "next_4": "Wähle die aus, die du hochladen möchtest, klicke auf „Importieren“ und lass WebBites alles für dich organisieren!",
+      "import_alt": "WebBites-Importschritt {n}",
+      "steps": {
+        "chrome_1": {
+          "title": "Chrome-Menü öffnen",
+          "description": "Klicke oben rechts im Browserfenster auf die drei Punkte <strong>⋮</strong>, um das Chrome-Menü zu öffnen."
+        },
+        "chrome_2": {
+          "title": "Lesezeichen-Manager aufrufen",
+          "description": "Gehe zu <strong>Lesezeichen > Lesezeichen-Manager</strong> oder drücke einfach <kbd class=\"new-kbd\">Ctrl+Shift+O</kbd> (Windows/Linux) bzw. <kbd class=\"new-kbd\">⌘+Option+B</kbd> (Mac)."
+        },
+        "chrome_3": {
+          "title": "Lesezeichen exportieren",
+          "description": "Klicke oben rechts im Lesezeichen-Manager auf die drei Punkte <strong>⋮</strong> und wähle dann <strong>Lesezeichen exportieren</strong>."
+        },
+        "chrome_4": {
+          "title": "HTML-Datei speichern",
+          "description": "Wähle auf deinem Computer einen Speicherort für die HTML-Datei mit deinen Lesezeichen. Der Standardname lautet etwa „bookmarks_[Datum].html“.",
+          "note": "Diese HTML-Datei enthält alle deine Lesezeichen und ihre Ordnerstruktur."
+        },
+        "firefox_1": {
+          "title": "Firefox-Menü öffnen",
+          "description": "Klicke oben rechts im Browserfenster auf die drei waagerechten Linien (Hamburger-Menü) <strong>☰</strong>."
+        },
+        "firefox_2": {
+          "title": "Lesezeichen aufrufen",
+          "description": "Gehe zu <strong>Lesezeichen > Lesezeichen verwalten</strong> oder drücke <kbd class=\"new-kbd\">Ctrl+Shift+B</kbd> (Windows/Linux) bzw. <kbd class=\"new-kbd\">⌘+Shift+B</kbd> (Mac)."
+        },
+        "firefox_3": {
+          "title": "Lesezeichen exportieren",
+          "description": "Klicke im sich öffnenden Fenster „Bibliothek“ auf <strong>Importieren und Sichern > Lesezeichen nach HTML exportieren</strong>."
+        },
+        "firefox_4": {
+          "title": "HTML-Datei speichern",
+          "description": "Wähle auf deinem Computer einen Speicherort für die HTML-Datei. Der Standardname lautet „bookmarks.html“.",
+          "note": "Merke dir, wo du diese Datei gespeichert hast, damit du sie beim Import in WebBites leicht findest."
+        },
+        "safari_1": {
+          "title": "Safari-Menü öffnen",
+          "description": "Klicke in der Menüleiste oben in Safari auf <strong>Ablage</strong>."
+        },
+        "safari_2": {
+          "title": "Lesezeichen exportieren",
+          "description": "Wähle im Menü <strong>Lesezeichen exportieren</strong>."
+        },
+        "safari_3": {
+          "title": "Datei speichern",
+          "description": "Wähle auf deinem Mac einen Speicherort für die Lesezeichen-Datei. Dabei wird eine .zip-Datei gespeichert, die du entpacken musst, um die .html-Datei zu erhalten.",
+          "note": "Safari exportiert alle deine Lesezeichen, auch die in der Favoritenleiste und in allen Ordnern."
+        },
+        "edge_1": {
+          "title": "Edge-Menü öffnen",
+          "description": "Klicke oben rechts im Browserfenster auf die drei Punkte <strong>⋯</strong> und dann auf <strong>Favoriten</strong>."
+        },
+        "edge_2": {
+          "title": "Favoriten exportieren",
+          "description": "Klicke auf <strong>Favoriten exportieren</strong>."
+        },
+        "edge_3": {
+          "title": "HTML-Datei speichern",
+          "description": "Wähle auf deinem Computer einen Speicherort für die HTML-Datei mit deinen Favoriten/Lesezeichen.",
+          "note": "Edge exportiert alle deine Favoriten, auch die in von dir erstellten Ordnern."
+        },
+        "opera_1": {
+          "title": "Lesezeichen aufrufen",
+          "description": "Drücke <kbd class=\"new-kbd\">Ctrl+Shift+B</kbd> (Windows/Linux) bzw. <kbd class=\"new-kbd\">⌘+Option+B</kbd> (Mac), um den Lesezeichen-Manager zu öffnen, oder klicke auf das Opera-Menü und wähle <strong>Lesezeichen > Lesezeichen</strong>."
+        },
+        "opera_2": {
+          "title": "Vollständige Lesezeichenansicht öffnen",
+          "description": "Klicke auf <strong>Vollständige Lesezeichenansicht öffnen</strong>"
+        },
+        "opera_3": {
+          "title": "Lesezeichen exportieren",
+          "description": "Klicke unten links im Lesezeichen-Manager auf die Schaltfläche <strong>Importieren/Exportieren</strong> und wähle dann <strong>Lesezeichen als HTML-Datei exportieren</strong>."
+        },
+        "opera_4": {
+          "title": "HTML-Datei speichern",
+          "description": "Wähle auf deinem Computer einen Speicherort für die HTML-Datei mit deinen Lesezeichen.",
+          "note": "Der Lesezeichen-Export von Opera enthält alle deine Lesezeichen und ihre Ordnerstruktur."
+        },
+        "arc_1": {
+          "title": "Arc-Seitenleiste öffnen",
+          "description": "Öffne die Befehlsleiste mit <kbd class=\"new-kbd\">⌘+T</kbd> und gehe zu <strong>arc://bookmarks</strong>."
+        },
+        "arc_2": {
+          "title": "Lesezeichen exportieren",
+          "description": "Klicke oben rechts im Lesezeichen-Bereich auf die drei Punkte <strong>⋯</strong> und wähle dann <strong>Einstellungen</strong>. Suche im Einstellungsmenü <strong>Lesezeichen exportieren</strong> und klicke darauf."
+        },
+        "arc_3": {
+          "title": "HTML-Datei speichern",
+          "description": "Wähle auf deinem Computer einen Speicherort für die HTML-Datei mit deinen Lesezeichen.",
+          "note": "Diese HTML-Datei enthält alle deine Lesezeichen und ihre Ordnerstruktur."
+        },
+        "raindrop_1": {
+          "title": "Bei Raindrop.io anmelden",
+          "description": "Gehe zu <a href='https://app.raindrop.io' target='_blank' rel='noopener noreferrer'>app.raindrop.io</a> und melde dich bei deinem Account an."
+        },
+        "raindrop_2": {
+          "title": "Einstellungen aufrufen",
+          "description": "Klicke oben rechts auf dein Profilbild und wähle dann im Menü <strong>Einstellungen</strong>."
+        },
+        "raindrop_3": {
+          "title": "Lesezeichen exportieren",
+          "description": "Gehe im Einstellungsmenü zum Tab <strong>Backup</strong>. Wähle im Bereich „Export“ dein bevorzugtes Format (HTML wird für die Kompatibilität mit WebBites empfohlen)."
+        },
+        "raindrop_4": {
+          "title": "Lesezeichen herunterladen",
+          "description": "Klicke auf die Schaltfläche <strong>Exportieren</strong>, um deine Lesezeichen-Datei zu erstellen und herunterzuladen.",
+          "note": "Mit Raindrop.io kannst du in mehreren Formaten exportieren, aber das HTML-Format eignet sich am besten für den Import in WebBites."
+        }
+      }
+    }
+  },
+  "subscription_success": {
+    "title": "Abo aktiviert!",
+    "message": "Du hast den Tarif {plan} erfolgreich abonniert. Viel Freude mit deinem Premium-Erlebnis!",
+    "benefits_title": "Deine Premium-Vorteile",
+    "bookmarks": "Lesezeichen",
+    "bookmarks_limit": "Speichere bis zu {limit} Lesezeichen",
+    "audio": "Audiotitel",
+    "audio_limit": "Zugriff auf {limit} Premium-Audiotitel",
+    "import_bookmarks": "Lesezeichen importieren",
+    "start": "Jetzt entdecken",
+    "unlimited": "unbegrenzt"
+  },
+  "rss": {
+    "mark_all_read": "Alle als gelesen markieren",
+    "mark_read": "Als gelesen markieren",
+    "mark_unread": "Als ungelesen markieren",
+    "pane": {
+      "articles": "Artikel"
+    },
+    "sidebar": {
+      "feeds": "Feeds",
+      "all_articles": "Alle Artikel",
+      "unread": "Ungelesen",
+      "import_opml": "Feeds importieren (OPML) …",
+      "export_feeds": "Feeds exportieren …",
+      "import_added": "{count} Feed hinzugefügt | {count} Feeds hinzugefügt",
+      "import_queued": "{count} weitere kommen gerade hinzu",
+      "import_failed_rows": "{count} konnten nicht gelesen werden",
+      "import_failed": "Diese OPML-Datei konnte nicht importiert werden.",
+      "export_failed": "Deine Feeds konnten nicht exportiert werden."
+    },
+    "add_feed": {
+      "title": "Feed hinzufügen",
+      "placeholder": "Feed-Adresse oder Name",
+      "hint": "Füge eine Website- oder Feed-Adresse ein oder suche nach dem Namen.",
+      "nothing_found": "Nichts gefunden",
+      "no_match": "Kein Feed passt zu „{query}“. Wenn du die Adresse des Feeds hast, füge sie hier ein.",
+      "readers": "{count} Leser:in | {count} Leser:innen",
+      "already_subscribed": "Bereits abonniert",
+      "add": "Hinzufügen",
+      "done": "Fertig",
+      "subscribe_failed": "Dieser Feed konnte nicht abonniert werden."
+    },
+    "settings": {
+      "name": "Name",
+      "name_hint": "Name des Herausgebers wird verwendet",
+      "fetch_full": "Vollständige Artikel abrufen",
+      "fetch_full_description": "Viele Feeds liefern nur einen Teaser. Ist diese Option aktiv, ruft WebBites jeden neuen Artikel vollständig ab und fasst ihn für dich zusammen. Verfügbar mit einem kostenpflichtigen Tarif.",
+      "open_website": "Website öffnen",
+      "feed_dead": "Dieser Feed antwortet nicht mehr und wird nicht länger geprüft.",
+      "unsubscribe": "Abbestellen",
+      "save_failed": "Diese Einstellungen konnten nicht gespeichert werden."
+    },
+    "list": {
+      "filter": "Artikel filtern",
+      "showing_unread": "Nur Ungelesene werden angezeigt",
+      "show_unread": "Nur Ungelesene anzeigen",
+      "refresh": "Feed aktualisieren",
+      "confirm_feed": "Alles in „{title}“ als gelesen markieren?",
+      "confirm_all": "Alle Artikel als gelesen markieren?",
+      "full_text": "Volltext verfügbar",
+      "summary": "Zusammenfassung verfügbar",
+      "no_matches": "Keine Treffer",
+      "no_matches_description": "Nichts hier passt zu „{query}“.",
+      "no_feeds": "Noch keine Feeds",
+      "no_feeds_description": "Füge einen Feed hinzu, um mit dem Lesen zu beginnen.",
+      "caught_up": "Alles gelesen",
+      "caught_up_description": "Hier ist nichts ungelesen.",
+      "no_articles": "Keine Artikel",
+      "no_articles_description": "Dieser Feed hat noch nichts veröffentlicht."
+    },
+    "reader": {
+      "no_article": "Kein Artikel ausgewählt",
+      "pick_article": "Wähle etwas aus der Liste, um mit dem Lesen zu beginnen.",
+      "original": "Original",
+      "mark_unread": "Als ungelesen markieren",
+      "summarise": "Diesen Artikel zusammenfassen",
+      "listen": "Diesen Artikel anhören",
+      "nothing_to_read": "Hier gibt es nichts zu lesen",
+      "open_original": "Original öffnen",
+      "save_bookmark": "Als Lesezeichen speichern",
+      "add_read_later": "Zu „Später lesen“ hinzufügen",
+      "remove_read_later": "Aus „Später lesen“ entfernen",
+      "show_original": "Original anzeigen",
+      "show_extracted": "Extrahierten Inhalt anzeigen",
+      "empty_failed": "Wir konnten den Text dieses Artikels nicht vom Herausgeber abrufen.",
+      "empty_pending": "Der vollständige Text wird noch abgerufen. Versuche es gleich noch einmal.",
+      "empty_headlines": "Dieser Feed veröffentlicht nur Schlagzeilen. Öffne das Original, um es zu lesen.",
+      "too_short": "Dieser Artikel enthält zu wenig Text für eine Zusammenfassung.",
+      "summary_failed": "Dieser Artikel konnte nicht zusammengefasst werden.",
+      "audio_failed": "Für diesen Artikel konnte kein Audio erstellt werden.",
+      "saved_read_later": "Zu „Später lesen“ hinzugefügt",
+      "removed_read_later": "Aus „Später lesen“ entfernt",
+      "read_later_failed": "„Später lesen“ konnte nicht aktualisiert werden.",
+      "extract_failed": "Dieser Artikel konnte nicht extrahiert werden."
+    }
+  },
+  "audio_recorder": {
+    "start_recording": "Aufnahme starten",
+    "pause_recording": "Aufnahme pausieren",
+    "resume_recording": "Aufnahme fortsetzen"
+  },
+  "audio_voice_picker": {
+    "voices": {
+      "nova": "Warm und natürlich",
+      "alloy": "Neutral und ausgewogen",
+      "ash": "Selbstsicher und klar",
+      "ballad": "Sanft und ausdrucksstark",
+      "coral": "Hell und freundlich",
+      "echo": "Ruhig und tief",
+      "fable": "Sanfter Geschichtenerzähler",
+      "onyx": "Tief und autoritativ",
+      "sage": "Gelassen und besonnen",
+      "shimmer": "Leicht und beschwingt",
+      "verse": "Lebhaft und dynamisch",
+      "marin": "Klar und im Gesprächston",
+      "cedar": "Voll und bodenständig"
+    },
+    "accents": {
+      "american": "Amerikanisch",
+      "british": "Britisch",
+      "australian": "Australisch",
+      "irish": "Irisch",
+      "indian": "Indisch",
+      "scottish": "Schottisch"
+    }
+  },
+  "auth_modal": {
+    "passwords_mismatch": "Die Passwörter stimmen nicht überein",
+    "password_needs_chars": "Das Passwort braucht noch {n} Zeichen | Das Passwort braucht noch {n} Zeichen",
+    "password_needs_number": "Das Passwort braucht mindestens eine Zahl",
+    "signup_failed": "Registrierung fehlgeschlagen",
+    "login_after_signup_failed": "Anmeldung nach der Registrierung fehlgeschlagen",
+    "login_failed": "Anmeldung fehlgeschlagen"
+  },
+  "bookmark_editor": {
+    "no_results_for": "Keine Ergebnisse für {query} gefunden"
+  },
+  "bookmark_group": {
+    "add_to_board": "Zu Board hinzufügen",
+    "board_empty_title": "Dieses Board ist leer",
+    "board_empty_message": "Füge Lesezeichen aus deiner Sammlung über das Optionsmenü einer beliebigen Lesezeichenkarte zu diesem Board hinzu."
+  },
+  "bookmark_options": {
+    "remove_from_board": "Aus Board entfernen",
+    "removed_from_board": "Aus dem Board entfernt",
+    "remove_error": "Fehler beim Entfernen aus dem Board",
+    "read_later": "Später lesen",
+    "remove_read_later": "Aus „Später lesen“ entfernen",
+    "saved_read_later": "Zu „Später lesen“ hinzugefügt",
+    "removed_read_later": "Aus „Später lesen“ entfernt",
+    "add_to_board": "Zu „{board}“ hinzufügen",
+    "added_to_board": "Zu {board} hinzugefügt",
+    "add_error": "Fehler beim Hinzufügen zum Board"
+  },
+  "bookmark_submit": {
+    "save_type": "{type} speichern",
+    "types": {
+      "website": "Website",
+      "image": "Bild",
+      "pdf": "PDF",
+      "movie": "Film",
+      "game": "Spiel",
+      "drawing": "Zeichnung",
+      "audio": "Audio",
+      "textNote": "Notiz"
+    }
+  },
+  "bookmark_card": {
+    "image_alt": "Kartenbild",
+    "favicon_alt": "Favicon des Lesezeichens",
+    "favicon_replacement_alt": "Ersatz-Favicon des Lesezeichens",
+    "copy_url_failed": "URL konnte nicht kopiert werden"
+  },
+  "compose_expand": {
+    "save_drawing_error": "Die Zeichnung konnte nicht gespeichert werden"
+  },
+  "feedback_card": {
+    "hidden_title": "Nur für Admins sichtbar",
+    "status": {
+      "in_progress": "in Bearbeitung",
+      "backlog": "Backlog",
+      "pending": "ausstehend",
+      "done": "erledigt",
+      "closed": "geschlossen"
+    }
+  },
+  "feedback_comment": {
+    "deleted": "Kommentar erfolgreich gelöscht",
+    "delete_failed": "Der Kommentar konnte nicht gelöscht werden"
+  },
+  "feedback_form": {
+    "select_type": "Art auswählen",
+    "markdown_supported": "Markdown wird unterstützt",
+    "sent": "Feedback erfolgreich gesendet",
+    "login_to_submit": "Zum Einreichen von Feedback musst du angemeldet sein",
+    "send_failed": "Fehler beim Senden des Feedbacks. Bitte versuche es später noch einmal.",
+    "types": {
+      "bug_report": "Fehlermeldung",
+      "feature_request": "Funktionswunsch",
+      "improvement": "Verbesserung",
+      "other": "Sonstiges"
+    }
+  },
+  "feedback_info_modal": {
+    "login_to_comment": "Zum Kommentieren musst du angemeldet sein",
+    "comment_failed": "Dein Kommentar konnte nicht veröffentlicht werden. Bitte versuche es später noch einmal."
+  },
+  "feedback_up_vote": {
+    "login_to_vote": "Zum Abstimmen musst du angemeldet sein"
+  },
+  "import_modal": {
+    "checking_access": "Importzugriff wird geprüft …",
+    "quota_title": "Lesezeichen-Kontingent",
+    "plan_active_title": "Import-Tarif aktiv",
+    "plan_active_description": "Du kannst einmalig unbegrenzt Lesezeichen importieren, solange es vor dem {date} ist",
+    "validate_failed": "Der Importzugriff konnte nicht geprüft werden",
+    "checkout_failed": "Die Checkout-Sitzung konnte nicht erstellt werden"
+  },
+  "landing_footer": {
+    "api_docs": "API-Dokumentation"
+  },
+  "main_sidebar": {
+    "trash": "Papierkorb"
+  },
+  "mobile_top_bar": {
+    "library": "Bibliothek",
+    "more": "Mehr",
+    "trash": "Papierkorb",
+    "board": "Board",
+    "everything": "Alles"
+  },
+  "onboarding_wizard": {
+    "intro": {
+      "title": "Deine Bibliothek fürs Web",
+      "content": "Speichere, was du findest, folge deinen Lieblingsseiten und finde alles wieder.",
+      "subcontent": "Hier ist die Einminutentour."
+    },
+    "organised": {
+      "title": "Sie organisiert sich selbst",
+      "content": "Alles, was du speicherst, wird automatisch verschlagwortet – mit einem ganzseitigen Screenshot und einer lesbaren Kopie, falls sich die Seite ändert.",
+      "subcontent": "Suche nach Wörtern auf der Seite, Tags, Text in Bildern und sogar nach Farbe."
+    },
+    "feeds": {
+      "title": "Folge deinen Lieblingsseiten",
+      "content": "Neue Artikel deiner Lieblingsseiten landen unter Feeds. Lies sie, hör sie dir an oder speichere die besten in deiner Bibliothek.",
+      "add": "Feed hinzufügen"
+    },
+    "everywhere": {
+      "title": "Von überall speichern",
+      "content": "Speichere jede Seite mit einem Klick über die Browsererweiterung oder über das Teilen-Menü auf iPhone, iPad und Mac.",
+      "subcontent": "Melde dich in den Apps mit diesem Konto an. Eine ohne Konto angelegte Gerätebibliothek bleibt davon getrennt.",
+      "chrome": "Chrome-Erweiterung",
+      "apps": "iPhone, iPad & Mac"
+    },
+    "import": {
+      "title": "Vorhandene Lesezeichen importieren",
+      "content": "Bring deine aktuellen Lesezeichen aus jedem Browser mit, wir organisieren sie automatisch",
+      "subcontent": "Besuche {link}, um zu erfahren, wie du deine Lesezeichen exportierst.",
+      "this_page": "diese Seite"
+    },
+    "first_bookmark": {
+      "title": "Speichere dein erstes Lesezeichen",
+      "content": "Gib unten eine URL ein oder probiere unseren Vorschlag.",
+      "subcontent": "Je mehr du speicherst, desto mächtiger wird deine Sammlung."
+    }
+  },
+  "reader_view": {
+    "error_try_again": "Es ist ein Fehler aufgetreten. Versuche es später noch einmal."
+  },
+  "settings_modal": {
+    "view_import_status": "Importstatus anzeigen",
+    "extensions_title": "WebBites-Erweiterungen",
+    "extensions_subtitle": "Speichere alles von überall, schneller.",
+    "extensions_label": "Erweiterungen",
+    "chrome_icon_alt": "Symbol der WebBites-Chrome-Erweiterung",
+    "raycast_icon_alt": "Symbol der WebBites-Raycast-Erweiterung",
+    "automations_title": "Automationen",
+    "automations_subtitle": "Wann immer ein Lesezeichen hinzugefügt wird: taggen, einsortieren oder irgendwohin senden. Intelligente Boards findest du auch hier.",
+    "deleting_account": "Account wird gelöscht …",
+    "account_deleted": "Dein Account wurde erfolgreich gelöscht.",
+    "delete_account_failed": "Beim Löschen deines Accounts ist ein Fehler aufgetreten. Bitte versuche es noch einmal."
+  },
+  "shortcuts_modal": {
+    "click": "Klicken"
+  },
+  "social_post_view": {
+    "fallback_platform": "Social"
+  },
+  "tag_manager": {
+    "untitled": "Ohne Titel",
+    "error_generic": "Etwas ist schiefgelaufen"
+  },
+  "testimonials_old": {
+    "heading": "Das sagen Nutzer:innen"
+  },
+  "tiptap_editor": {
+    "narrow_view": "Schmale Ansicht",
+    "wide_view": "Breite Ansicht",
+    "paste_url": "URL einfügen",
+    "image_size": {
+      "small": "Klein",
+      "big": "Groß",
+      "biggest": "Am größten"
+    },
+    "url_to_link": "URL in Link umwandeln",
+    "add_link": "Link hinzufügen",
+    "insert_block_below": "Block darunter einfügen",
+    "block_actions_hint": "Blockaktionen oder zum Verschieben ziehen",
+    "block_actions": "Blockaktionen",
+    "errors": {
+      "upload_failed": "Das Bild konnte nicht hochgeladen werden: {error}",
+      "no_file": "Keine Datei ausgewählt",
+      "too_large": "Die Datei überschreitet das Limit von 10 MB",
+      "not_image": "Die ausgewählte Datei ist kein Bild"
+    }
+  },
+  "website_modal_media_view": {
+    "backdrop_alt": "Hintergrundbild für {title}",
+    "game_cover_alt": "Cover von {name}"
+  },
+  "website_screenshot": {
+    "pan_hint": "Shift gedrückt halten und ziehen, um zu verschieben",
+    "undo": "Rückgängig (Ctrl+Z)",
+    "redo": "Wiederholen (Ctrl+Y)"
+  },
+  "import_status_history": {
+    "title": "Importverlauf ({count} Sitzung) | Importverlauf ({count} Sitzungen)",
+    "empty": "Keine früheren Importsitzungen",
+    "progress": "{processed}/{total} Lesezeichen",
+    "success_rate": "{rate} % erfolgreich",
+    "duration": "Dauer: {duration}",
+    "more_sessions": "… und {count} weitere Sitzung | … und {count} weitere Sitzungen",
+    "unknown": "Unbekannt",
+    "status": {
+      "completed": "Abgeschlossen",
+      "active": "Aktiv",
+      "failed": "Fehlgeschlagen",
+      "cancelled": "Abgebrochen"
+    }
+  },
+  "bookmarks_area": {
+    "already_pinned": "Diese Website ist bereits angeheftet"
+  },
+  "top_bar": {
+    "importing": "Import läuft"
+  },
+  "search_bar": {
+    "filters": "Filter",
+    "beta": "(Beta)",
+    "natural_language_description": "Langsamer, aber du kannst in natürlicher Sprache suchen. Zum Beispiel:",
+    "natural_language_example": "„GitHub-Projekte über Swift“",
+    "colors": "Farben",
+    "find_tag": "Tag finden",
+    "tags_loading": "Wird geladen …",
+    "no_tags": "Keine Tags gefunden",
+    "color_names": {
+      "red": "Rot",
+      "green": "Grün",
+      "blue": "Blau",
+      "yellow": "Gelb",
+      "purple": "Lila",
+      "orange": "Orange",
+      "black": "Schwarz",
+      "white": "Weiß",
+      "pink": "Rosa",
+      "brown": "Braun",
+      "gray": "Grau",
+      "cyan": "Cyan",
+      "magenta": "Magenta",
+      "lime": "Limette",
+      "olive": "Oliv",
+      "navy": "Marineblau",
+      "teal": "Petrol",
+      "maroon": "Kastanienbraun",
+      "silver": "Silber",
+      "gold": "Gold",
+      "indigo": "Indigo",
+      "violet": "Violett"
+    }
+  },
+  "new_bookmark": {
+    "fetching_preview": "Website-Vorschau wird abgerufen …",
+    "clipboard_access": "Stelle sicher, dass du den Zugriff auf die Zwischenablage in deinem Browser erlaubt hast.",
+    "saving_note": "Notiz wird gespeichert",
+    "note_saved": "Textnotiz gespeichert",
+    "note_error": "Fehler beim Speichern der Textnotiz",
+    "saving_drawing": "Zeichnung wird gespeichert",
+    "drawing_saved": "Zeichnung gespeichert",
+    "drawing_error": "Fehler beim Speichern der Zeichnung",
+    "media_error": "Fehler beim Speichern des Mediums",
+    "nothing_to_save": "Noch nichts zu speichern",
+    "saved": "Gespeichert",
+    "save_as": {
+      "website": "Website speichern",
+      "textNote": "Notiz speichern",
+      "image": "Bild speichern",
+      "pdf": "PDF speichern",
+      "movie": "Film speichern",
+      "game": "Spiel speichern",
+      "drawing": "Zeichnung speichern",
+      "audio": "Audio speichern"
+    }
+  },
+  "landing_page": {
+    "hero": {
+      "title": "Deine Bibliothek",
+      "title_emphasis": "fürs Web",
+      "subtitle": "Speichere alles, was du findest, folge deinen Lieblingsseiten und finde alles wieder. WebBites organisiert es für dich.",
+      "logo_alt": "WebBites-Logo"
+    },
+    "scroll": {
+      "title": "Alles, was du speicherst,",
+      "title_emphasis": "an einem Ort",
+      "browser_alt": "Die WebBites-Wand in einem Browser, die gespeicherte Artikel, Bilder, Notizen und Musik nebeneinander zeigt"
+    },
+    "native": {
+      "title": "iPhone, iPad, Mac und jeder Browser",
+      "description": "Native Apps für iPhone, iPad und Mac, jeweils mit Teilen-Menü und Safari-Erweiterung, und die vollständige Web-App überall sonst. Melde dich mit deinem WebBites-Konto an, und deine Bibliothek ist schon da.",
+      "mac_alt": "Die WebBites-Mac-App mit Boards und Feeds in der Seitenleiste neben einer Wand aus gespeicherten Lesezeichen",
+      "phone_alt": "Die WebBites-iPhone-App, die dieselben gespeicherten Lesezeichen in zwei Spalten zeigt"
+    },
+    "features": {
+      "ai": {
+        "title": "Für dich organisiert",
+        "description": "Jedes Lesezeichen wird beim Speichern verschlagwortet und einsortiert. Keine Ordner, die du pflegen musst."
+      },
+      "search": {
+        "title": "Wiederfinden",
+        "description": "Suche nach Wörtern auf der Seite, Tags, Notizen, Text in Bildern und sogar nach Farbe."
+      },
+      "screenshots": {
+        "title": "Dauerhaft aufbewahrt",
+        "description": "Ein ganzseitiger Screenshot und eine lesbare Kopie jeder Seite, falls sich das Original ändert oder verschwindet."
+      },
+      "media": {
+        "title": "Speichere alles",
+        "description": "Artikel, Bilder, Videos, Filme, Spiele und Notizen, Seite an Seite in einer Bibliothek."
+      },
+      "ai_organisation": {
+        "description": "Kategorisiere und tagge deine Lesezeichen automatisch mit fortschrittlicher KI."
+      },
+      "cross_platform": {
+        "description": "iPhone, iPad, Mac und das Web zeigen nach der Anmeldung alle dieselbe Bibliothek."
+      },
+      "reader": {
+        "title": "Lesemodus",
+        "description": "Artikel werden automatisch für ein besseres Leseerlebnis formatiert, sogar die hinter Paywalls!"
+      },
+      "raycast": {
+        "title": "Bereit für Raycast",
+        "description": "Mit unserer Raycast-Erweiterung sind alle deine Lesezeichen nur einen Tastendruck entfernt!"
+      },
+      "browsers": {
+        "title": "Aus dem Browser speichern",
+        "description": "Ein Klick mit der Chrome-Erweiterung oder der Safari-Erweiterung, die mit den Mac- und iPhone-Apps kommt."
+      },
+      "colors": {
+        "title": "Farben extrahieren",
+        "description": "Die Hauptfarben all deiner Lesezeichen werden für dich extrahiert, sodass du nach Farbe suchen kannst!"
+      },
+      "tts": {
+        "title": "Text-to-Speech",
+        "description": "Hör dir alles an, was du gespeichert hast, oder jeden Artikel aus deinen Feeds."
+      },
+      "annotate": {
+        "title": "Screenshots kommentieren",
+        "description": "Klicke an eine beliebige Stelle im Screenshot, um eine Anmerkung hinzuzufügen."
+      },
+      "ocr": {
+        "title": "OCR",
+        "description": "Auf alle gespeicherten Bilder wird optische Zeichenerkennung (OCR) angewendet, sodass du sie nach Text durchsuchen kannst."
+      },
+      "pin": {
+        "title": "Lesezeichen anheften",
+        "description": "Hefte deine Lesezeichen oben an deine Liste, um schnell darauf zuzugreifen."
+      },
+      "multilingual": {
+        "title": "Mehrsprachig",
+        "description": "Unterstützung für mehrere Sprachen."
+      }
+    },
+    "save_anything": {
+      "sentence": "Speichere alles – von {websites}{images}{movies}{games} bis hin zu {notes} mit unserem Notion-ähnlichen Editor.",
+      "websites": "Websites",
+      "images": "Bildern",
+      "movies": "Filmen",
+      "games": "Spielen",
+      "notes": "Notizen"
+    },
+    "roadmap_more": {
+      "title": "Und noch viel mehr!",
+      "description": "Ständig kommen neue Funktionen dazu. Schau im Feedback-Board nach, was als Nächstes kommt!"
+    },
+    "developers": {
+      "title": "Eine API für alles, was du speicherst",
+      "description": "Alles, was WebBites kann, geht über HTTP. Speichere einen Link, durchsuche deine Bibliothek, erhalte einen Webhook, sobald die KI damit fertig ist.",
+      "docs_button": "Entwicklerdokumentation lesen",
+      "facts": {
+        "rest": {
+          "title": "Schlichtes REST",
+          "text": "Ein OpenAPI-Schema und ein Playground im Browser, um jeden Aufruf auszuprobieren, bevor du Code schreibst."
+        },
+        "webhooks": {
+          "title": "Webhooks",
+          "text": "Richte eine URL auf WebBites aus, und es sendet das fertige Lesezeichen – Screenshot, Zusammenfassung und Tags – per POST, signiert, damit du es verifizieren kannst."
+        },
+        "keys": {
+          "title": "Deine Schlüssel, deine Limits",
+          "text": "Erstelle Schlüssel, sieh, was jeder davon verbraucht hat, und lies das Rate-Limit aus jedem Response-Header ab."
+        }
+      },
+      "samples": {
+        "save": "Link speichern",
+        "search": "Suchen",
+        "webhook": "Webhook"
+      }
+    },
+    "feeds": {
+      "title": "Folge deinen Lieblingsseiten",
+      "description": "Ein integrierter Reader für Blogs, Nachrichten und Newsletter, ohne Algorithmus. Lies jeden Artikel, hör ihn dir an oder lass ihn zusammenfassen, und speichere die besten in deiner Bibliothek.",
+      "image_alt": "Der WebBites-Feedreader auf dem Mac, mit Feeds in der Seitenleiste und einem geöffneten Artikel daneben"
+    },
+    "where": {
+      "title": "Wo deine Bibliothek lebt",
+      "separate": "Ein WebBites-Konto synchronisiert überall. Eine Gerätebibliothek bleibt auf deinem iPhone, iPad oder Mac, ganz ohne Konto. Die beiden sind getrennt: Eine Gerätebibliothek erscheint nie im Web oder in einem Konto, und Käufe lassen sich nicht übertragen.",
+      "account": "WebBites-Konto:",
+      "account_when": "wenn du das Web oder Chrome nutzt oder Feeds, KI-Tags und Zusammenfassungen willst.",
+      "device": "Gerätebibliothek:",
+      "device_when": "wenn du nur Apple-Geräte nutzt und nichts auf einem fremden Server haben willst."
+    }
+  },
+  "login_page": {
+    "not_you": "Nicht {email}?"
+  },
+  "password_reset_page": {
+    "chars_needed": "Das Passwort braucht noch {count} Zeichen | Das Passwort braucht noch {count} Zeichen",
+    "number_needed": "Das Passwort braucht mindestens eine Zahl",
+    "mismatch": "Die Passwörter stimmen nicht überein"
+  },
+  "questionnaire": {
+    "eyebrow": "Gestalte WebBites mit",
+    "step": "{current} von {total}",
+    "hint": "Wähl aus, was passt. Überspringen jederzeit möglich.",
+    "q_tools": "Womit speicherst du Links bisher?",
+    "q_interest": "Was ist dir am wichtigsten?",
+    "q_ai": "Wie sollte „automatisch mit KI organisieren“ für dich aussehen?",
+    "browser": "Browser-Lesezeichen",
+    "raindrop": "Raindrop",
+    "pocket": "Pocket",
+    "notion": "Notion",
+    "notes": "Apple Notes",
+    "pinterest": "Pinterest",
+    "none": "Noch nichts",
+    "find": "Dinge wiederfinden",
+    "organise": "Ordnung halten",
+    "devices": "Von jedem Gerät speichern",
+    "visual": "Ein visuelles Archiv",
+    "later": "Später lesen",
+    "share": "Boards teilen",
+    "tags": "Automatische Tags",
+    "search": "Suche in normaler Sprache",
+    "boards": "In Boards einsortiert",
+    "summaries": "Zusammenfassungen",
+    "duplicates": "Duplikate erkennen",
+    "other": "Sonst noch etwas? (optional)",
+    "skip_question": "Frage überspringen",
+    "thanks": "Danke, das hilft uns sehr!"
+  }
+}

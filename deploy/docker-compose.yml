@@ -1,0 +1,280 @@
+# WebBites, self-hosted. Start with ./install.sh (it writes .env), then:
+#
+#     docker compose up -d
+#
+# Only Caddy publishes ports (80 and 443). Everything else talks over the compose network.
+# Images are pinned by WEBBITES_VERSION in .env.
+
+name: webbites
+
+x-restart: &restart
+  restart: unless-stopped
+
+x-logging: &logging
+  logging:
+    driver: json-file
+    options:
+      max-size: "10m"
+      max-file: "3"
+
+services:
+  caddy:
+    image: caddy:2.8-alpine
+    <<: [*restart, *logging]
+    ports:
+      - "${HTTP_PORT:-80}:80"
+      - "${HTTPS_PORT:-443}:443"
+      - "${HTTPS_PORT:-443}:443/udp"
+    environment:
+      SITE_ADDRESS: ${SITE_ADDRESS:-http://localhost}
+      ACME_EMAIL: ${ACME_EMAIL:-}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      web:
+        condition: service_healthy
+      api:
+        condition: service_healthy
+      parse:
+        condition: service_healthy
+
+  web:
+    image: elrumo/webbites-web:${WEBBITES_VERSION:-latest}
+    <<: [*restart, *logging]
+    environment:
+      SELF_HOSTED: "true"
+      # What the browser uses (the public address) ...
+      VITE_APP_URL: ${PUBLIC_URL:?set PUBLIC_URL in .env (run ./install.sh)}
+      VITE_BACKEND_URL: ${PUBLIC_URL}/
+      VITE_PARSE_URL: ${PUBLIC_URL}/parse
+      VITE_PARSE_ID: ${PARSE_APP_ID:?}
+      VITE_PARSE_JS_KEY: ${PARSE_JS_KEY:?}
+      # ... and what this container uses to reach the other services, inside the network.
+      BACKEND_INTERNAL_URL: http://api:3000/
+      PARSE_INTERNAL_URL: http://parse:1337/parse
+      PARSE_MASTER_KEY: ${PARSE_MASTER_KEY:?}
+      CUSTOM_API_KEY: ${CUSTOM_API_KEY:?}
+      TMDB_API_KEY: ${TMDB_API_KEY:-}
+      TWITCH_CLIENT_ID: ${TWITCH_CLIENT_ID:-}
+      TWITCH_CLIENT_SECRET: ${TWITCH_CLIENT_SECRET:-}
+      S3_PUBLIC_URL: ${S3_PUBLIC_URL:-}
+    depends_on:
+      api:
+        condition: service_healthy
+      parse:
+        condition: service_healthy
+
+  api:
+    image: elrumo/webbites-api:${WEBBITES_VERSION:-latest}
+    <<: [*restart, *logging]
+    environment:
+      PORT: "3000"
+      NODE_ENV: production
+      BILLING_PROVIDER: none
+      QUEUE_DRIVER: redis
+      # Public address, and how to reach Parse and the others from in here.
+      SITE_URL: ${PUBLIC_URL}
+      VITE_WEBSITE_URL: ${PUBLIC_URL}
+      VITE_BACKEND_URL: ${PUBLIC_URL}/
+      VITE_PARSE_URL: http://parse:1337/parse
+      VITE_PARSE_ID: ${PARSE_APP_ID}
+      VITE_PARSE_JS_KEY: ${PARSE_JS_KEY}
+      VITE_PARSE_MASTER_KEY: ${PARSE_MASTER_KEY}
+      REDIS_URL: redis://redis:6379
+      MEILISEARCH_HOST: http://meilisearch:7700
+      MEILISEARCH_API_KEY: ${MEILI_MASTER_KEY}
+      # Shared secrets
+      CUSTOM_API_KEY: ${CUSTOM_API_KEY}
+      VITE_AUDIO_TOKEN_SECRET: ${AUDIO_TOKEN_SECRET}
+      SHARE_LINK_SECRET: ${SHARE_LINK_SECRET}
+      BACKUP_ENCRYPTION_KEY: ${BACKUP_ENCRYPTION_KEY}
+      SETTINGS_ENCRYPTION_KEY: ${SETTINGS_ENCRYPTION_KEY}
+      # Optional features
+      APP_NAME: ${APP_NAME:-WebBites}
+      SUPPORT_EMAIL: ${SUPPORT_EMAIL:-}
+      MAIL_PROVIDER: ${MAIL_PROVIDER:-}
+      MAIL_FROM: ${MAIL_FROM:-}
+      SMTP_HOST: ${SMTP_HOST:-}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASS: ${SMTP_PASS:-}
+      SMTP_SECURE: ${SMTP_SECURE:-false}
+      AI_API_BASE_URL: ${AI_API_BASE_URL:-}
+      AI_API_KEY: ${AI_API_KEY:-}
+      AI_TEXT_MODEL: ${AI_TEXT_MODEL:-}
+      AI_MULTIMODAL_MODEL: ${AI_MULTIMODAL_MODEL:-}
+      EMBEDDING_MODEL: ${EMBEDDING_MODEL:-}
+      FILES_DRIVER: ${FILES_DRIVER:-}
+      S3_BUCKET: ${S3_BUCKET:-}
+      S3_ENDPOINT_URL: ${S3_ENDPOINT_URL:-}
+      S3_REGION: ${S3_REGION:-us-east-1}
+      S3_ACCESS_KEY: ${S3_ACCESS_KEY:-}
+      S3_SECRET_KEY: ${S3_SECRET_KEY:-}
+      S3_PUBLIC_URL: ${S3_PUBLIC_URL:-}
+      SCREENSHOT_SERVICE_URL: ${SCREENSHOT_SERVICE_URL:-}
+      SCREENSHOT_API_KEY: ${SCREENSHOT_API_KEY:-}
+      SENTRY_DSN: ${SENTRY_DSN:-}
+      TMDB_API_KEY: ${TMDB_API_KEY:-}
+      TWITCH_CLIENT_ID: ${TWITCH_CLIENT_ID:-}
+      TWITCH_CLIENT_SECRET: ${TWITCH_CLIENT_SECRET:-}
+    networks:
+      - default
+      - screenshots
+    depends_on:
+      redis:
+        condition: service_healthy
+      parse:
+        condition: service_healthy
+      meilisearch:
+        condition: service_started
+    healthcheck:
+      test: ["CMD", "bun", "-e", "fetch('http://127.0.0.1:3000/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 15s
+      timeout: 5s
+      start_period: 30s
+      retries: 8
+
+  parse:
+    image: elrumo/webbites-parse:${WEBBITES_VERSION:-latest}
+    <<: [*restart, *logging]
+    environment:
+      PORT: "1337"
+      PARSE_APP_ID: ${PARSE_APP_ID}
+      PARSE_JS_KEY: ${PARSE_JS_KEY}
+      PARSE_MASTER_KEY: ${PARSE_MASTER_KEY}
+      DATABASE_URI: mongodb://webbites:${MONGO_PASSWORD:?}@mongo:27017/parse?authSource=admin
+      PARSE_PUBLIC_URL: ${PUBLIC_URL}/parse
+      SITE_URL: ${PUBLIC_URL}
+      # Cloud code calls the API (job queue, search index clean-up) inside the network.
+      BACKEND_URL: http://api:3000/
+      CUSTOM_API_KEY: ${CUSTOM_API_KEY}
+      BILLING_PROVIDER: none
+      INITIAL_ADMIN_EMAIL: ${INITIAL_ADMIN_EMAIL:-}
+      SETTINGS_ENCRYPTION_KEY: ${SETTINGS_ENCRYPTION_KEY}
+      APP_NAME: ${APP_NAME:-WebBites}
+      MAIL_PROVIDER: ${MAIL_PROVIDER:-}
+      MAIL_FROM: ${MAIL_FROM:-}
+      SMTP_HOST: ${SMTP_HOST:-}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASS: ${SMTP_PASS:-}
+      SMTP_SECURE: ${SMTP_SECURE:-false}
+      FILES_DRIVER: ${FILES_DRIVER:-}
+      S3_BUCKET: ${S3_BUCKET:-}
+      S3_ENDPOINT_URL: ${S3_ENDPOINT_URL:-}
+      S3_REGION: ${S3_REGION:-us-east-1}
+      S3_ACCESS_KEY: ${S3_ACCESS_KEY:-}
+      S3_SECRET_KEY: ${S3_SECRET_KEY:-}
+      S3_PUBLIC_URL: ${S3_PUBLIC_URL:-}
+      SENTRY_DSN: ${SENTRY_DSN:-}
+    depends_on:
+      mongo:
+        condition: service_healthy
+
+  mongo:
+    # A single node is enough: nothing here uses transactions or change streams.
+    image: mongo:7
+    <<: [*restart, *logging]
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: webbites
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD:?}
+    volumes:
+      - mongo_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 10s
+      timeout: 5s
+      start_period: 20s
+      retries: 10
+
+  redis:
+    # Not just a cache: developer API keys and queued jobs live here, hence the append-only file.
+    image: redis:7-alpine
+    <<: [*restart, *logging]
+    command: ["redis-server", "--appendonly", "yes", "--appendfsync", "everysec", "--save", "60", "1000"]
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+
+  meilisearch:
+    image: getmeili/meilisearch:v1.12
+    <<: [*restart, *logging]
+    environment:
+      MEILI_ENV: production
+      MEILI_MASTER_KEY: ${MEILI_MASTER_KEY:?}
+      MEILI_NO_ANALYTICS: "true"
+    volumes:
+      - meili_data:/meili_data
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --spider http://127.0.0.1:7700/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      start_period: 10s
+      retries: 10
+
+  # ---- optional: profile "screenshots" -----------------------------------------------------------
+  screenshot:
+    image: elrumo/webbites-screenshot:${WEBBITES_VERSION:-latest}
+    profiles: [screenshots]
+    <<: [*restart, *logging]
+    environment:
+      SCREENSHOT_API_KEY: ${SCREENSHOT_API_KEY:?}
+      MAX_CONCURRENCY: ${SCREENSHOT_CONCURRENCY:-2}
+    # Its own network, shared with the API only: a page that tricks the browser can't see Mongo,
+    # Redis or Parse from there. (install.sh sets SCREENSHOT_SERVICE_URL=http://screenshot:3000.)
+    networks:
+      - screenshots
+    shm_size: 1gb
+
+  # ---- optional: profile "rustfs" ----------------------------------------------------------------
+  rustfs:
+    # S3-compatible object storage. Pin a release here once you have picked one.
+    image: rustfs/rustfs:latest
+    profiles: [rustfs]
+    <<: [*restart, *logging]
+    environment:
+      RUSTFS_ACCESS_KEY: ${RUSTFS_ACCESS_KEY:?}
+      RUSTFS_SECRET_KEY: ${RUSTFS_SECRET_KEY:?}
+      RUSTFS_VOLUMES: /data
+      RUSTFS_ADDRESS: ":9000"
+      RUSTFS_CONSOLE_ENABLE: "false"
+    volumes:
+      - rustfs_data:/data
+
+  rustfs-init:
+    # Creates the bucket once and makes the objects readable by their URL (that is how the
+    # browser loads images). Then exits.
+    image: minio/mc:latest
+    profiles: [rustfs]
+    depends_on:
+      - rustfs
+    restart: "no"
+    environment:
+      RUSTFS_ACCESS_KEY: ${RUSTFS_ACCESS_KEY:?}
+      RUSTFS_SECRET_KEY: ${RUSTFS_SECRET_KEY:?}
+      S3_BUCKET: ${S3_BUCKET:-webbites}
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        until mc alias set local http://rustfs:9000 "$$RUSTFS_ACCESS_KEY" "$$RUSTFS_SECRET_KEY" >/dev/null 2>&1; do sleep 2; done
+        mc mb --ignore-existing "local/$$S3_BUCKET"
+        mc anonymous set download "local/$$S3_BUCKET"
+        echo "bucket $$S3_BUCKET ready"
+
+networks:
+  default: {}
+  screenshots: {}
+
+volumes:
+  caddy_data:
+  caddy_config:
+  mongo_data:
+  redis_data:
+  meili_data:
+  rustfs_data:

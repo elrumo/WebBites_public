@@ -1,0 +1,2424 @@
+{
+  "alerts": {
+    "bookmark": {
+      "duplicate": "이미 저장한 북마크입니다",
+      "duplicate_cancel": "저장 안 함",
+      "duplicate_confirm": "다시 저장",
+      "error": "북마크 저장 중 오류",
+      "export_success": "북마크가 내보내졌습니다!",
+      "limit_description": {
+        "other": "하여 더 많은 북마크를 저장하세요"
+      },
+      "limit_reached": "북마크 한도에 도달했습니다",
+      "pin_error": "사이트를 고정할 수 없습니다. 나중에 다시 시도하세요",
+      "save_error_note": "메모 저장 중 오류",
+      "save_success": "북마크가 저장되었습니다",
+      "saving": "저장 중...",
+      "hide_error": "Could not change that bookmark's visibility",
+      "hide_index_lag": "Hidden, but search may take a moment to catch up"
+    },
+    "clipboard": {
+      "copy_error": "클립보드에 복사하지 못했습니다.",
+      "copy_success": "{text}이(가) 클립보드에 복사되었습니다."
+    },
+    "editor": {
+      "image_upload_error": "드롭된 이미지 처리 실패: {error}",
+      "image_upload_progress": "이미지 업로드 중..."
+    },
+    "file_upload": {
+      "error": "파일 업로드 오류",
+      "success": "파일을 업로드했습니다",
+      "uploading_many": "파일 업로드 중...",
+      "uploading_one": "파일 업로드 중..."
+    },
+    "image_upload": {
+      "error": "이미지 업로드 중 오류 발생",
+      "success": "이미지가 성공적으로 업로드되었습니다"
+    },
+    "import": {
+      "complete": "완료!",
+      "complete_description": "모든 북마크가 WebBites로 가져와졌습니다.",
+      "error": "문제가 발생했습니다. 다시 시도해주세요",
+      "final_success": "북마크가 가져와졌습니다. 😊",
+      "progress": "잠시만 기다려주세요...",
+      "progress_description": "북마크가 많은 경우 몇 초가 걸릴 수 있습니다",
+      "remaining": "가져올 북마크 남음:",
+      "remaining_description": "시간이 걸릴 수 있습니다. 앱을 닫아도 됩니다. 완료되면 이메일로 알려드리겠습니다.",
+      "success": "북마크를 성공적으로 가져왔습니다"
+    },
+    "live_note": {
+      "conflict": "이 메모가 다른 기기에서 업데이트되었습니다. 로컬 변경사항이 유지되었습니다.",
+      "merged_with_conflicts": "클라우드 변경사항이 병합되었습니다. 겹치는 편집 일부는 그대로 유지되었습니다."
+    },
+    "subscription": {
+      "duplicate_plan": "당신은 이미 이 요금제에 가입되어 있습니다. 현재 구독을 확인해 주세요."
+    },
+    "core_store": {
+      "board_joined": "“{name}” 보드에 참여했습니다",
+      "invite_accepted": "초대를 수락했습니다",
+      "invite_invalid": "이 초대 링크는 더 이상 유효하지 않습니다",
+      "board_move_failed": "이곳으로 이동할 수 없습니다",
+      "board_duplicated": "복제했습니다 — 북마크 {count}개 복사됨 | 복제했습니다 — 북마크 {count}개 복사됨",
+      "board_duplicate_error": "보드 복제 중 오류",
+      "board_archived": "보드를 보관했습니다",
+      "board_archive_error": "보드 보관 중 오류",
+      "board_delete_title": "“{name}”을(를) 삭제할까요?",
+      "folder_delete_description": "안에 있는 보드와 폴더도 함께 삭제됩니다. 북마크 자체는 삭제되지 않습니다.",
+      "board_delete_shared_description": "공유받은 모든 사람이 접근 권한을 잃습니다. 북마크 자체는 삭제되지 않습니다.",
+      "board_delete_description": "북마크 자체는 삭제되지 않습니다.",
+      "folder_deleted": "폴더를 삭제했습니다",
+      "board_deleted": "보드를 삭제했습니다",
+      "folder_delete_error": "폴더 삭제 중 오류",
+      "board_delete_error": "보드 삭제 중 오류",
+      "board_leave_title": "“{name}”에서 나갈까요?",
+      "board_leave_description": "누군가 다시 초대하기 전까지 내 보드에서 사라집니다.",
+      "board_leave_confirm": "나가기",
+      "board_left": "보드에서 나갔습니다",
+      "board_leave_error": "보드 나가기 중 오류",
+      "trash_load_failed": "삭제된 북마크를 불러올 수 없습니다",
+      "trash_restore_failed": "북마크를 복원할 수 없습니다",
+      "drawing_save_error": "그림 저장 중 오류",
+      "sign_in_required": "로그인해야 사용할 수 있습니다"
+    },
+    "core_files": {
+      "unsupported_one": "{name}은(는) 이미지, PDF 또는 오디오가 아닙니다.",
+      "unsupported_many": "이미지, PDF, 오디오만 업로드할 수 있습니다.",
+      "heic_one": "이 브라우저에서는 {name}을(를) 읽을 수 없습니다. JPEG로 내보낸 후 다시 시도하세요.",
+      "heic_many": "이 브라우저에서는 HEIC 사진을 읽을 수 없습니다. JPEG로 내보낸 후 다시 시도하세요.",
+      "unreadable_one": "{name}은(는) 이 브라우저에서 읽을 수 있는 이미지가 아닙니다.",
+      "unreadable_many": "이 브라우저에서 읽을 수 있는 이미지가 아닙니다."
+    }
+  },
+  "auth": {
+    "add_to_waitlist": "대기자 명단에 추가",
+    "chrome_extension_auth_detected": "확장자 감지됨",
+    "chrome_extension_auth_not_detected": "확장자가 검색되지 않음",
+    "close_tab": "탭 닫기",
+    "current_bookmarking_manager": "현재 사용 중인 북마크 관리자는 무엇인가요?",
+    "current_bookmarking_manager_placeholder": "예: Chrome 북마크, Pocket, Raindrop...",
+    "email_error": "오류가 발생하여 로그인에 실패했습니다:",
+    "email_success": "비밀번호를 재설정할 수 있는 링크가 포함된 이메일이 전송되었습니다.",
+    "extension_connected": "확장 프로그램 연결",
+    "extension_connected_message": "이제 북마크에 WebBites를 사용할 수 있습니다.",
+    "extension_login_description": "당신의 WebBites 계정에 로그인 하세요",
+    "go_to_app": "앱으로 이동",
+    "logout": "로그아웃",
+    "most_interested": "WebBites에서 가장 관심이 가는 것은 무엇인가요?",
+    "most_interested_placeholder": "예: AI 정리, 크로스 플랫폼 동기화...",
+    "notify_me": "알림 받기",
+    "password_reset_error": "비밀번호를 재설정하는 데 오류가 발생했습니다. 다시 시도하세요.",
+    "password_reset_success": "비밀번호 가 성공적으로 재설정되었습니다.",
+    "reset_password_description": "새로운 비밀번호를 입력하여 재설정하세요.",
+    "sign_in": "로그인",
+    "signInWithApple": "애플로 계속하기",
+    "sign_up": "회원가입",
+    "waitlist_done": "대기자 명단에 등록되었습니다!",
+    "waitlist_info": "대기자 명단에 참여하고",
+    "waitlist_info_2": "에서 최신 소식을 받아보세요.",
+    "waitlist_success": "대기자 명단에 등록되었습니다!",
+    "waitlist_success_2": "에서 최신 소식을 받아보세요.",
+    "waitlist_success_alert": "대기자 명단에 추가되었습니다 🥳"
+  },
+  "bookmark": {
+    "audio_generation": "오 디 오 생성",
+    "image_extracted_text": "💬 이미지에서 추출한 텍스트"
+  },
+  "bookmark_details": {
+    "added": "추가됨",
+    "alerts": {
+      "color_copied": "색상이 복사되었습니다",
+      "image_downloaded": "이미지가 다운로드되었습니다",
+      "image_download_error": "이미지 다운로드 중 오류 발생"
+    },
+    "bookmark_types": {
+      "article": "기사",
+      "note": "메모",
+      "tweet": "트윗"
+    },
+    "details_title": "페이지 제목",
+    "download_image": "이미지 다운로드",
+    "hide_keywords": "키워드 숨기기",
+    "keywords": "키워드",
+    "main_colors": "주요 색상",
+    "media": {
+      "cast": "출연진",
+      "crew": "제작진",
+      "developer": "개발사",
+      "director": "감독",
+      "genres": "장르",
+      "publisher": "배급사",
+      "release_date": "출시일",
+      "screenshots": "스크린샷",
+      "show_more": "{count}개 더 보기",
+      "videos": "동영상"
+    },
+    "notes_placeholder": "페이지 노트",
+    "page_details": "페이지 상세정보",
+    "see_all_keywords": "모든 키워드 보기",
+    "tags": "태그",
+    "time": {
+      "days_ago": "{count}일 전",
+      "hours_ago": "{count}시간 전",
+      "minutes_ago": "{count}분 전",
+      "months_ago": "{count}개월 전",
+      "seconds_ago": "{count}초 전",
+      "years_ago": "{count}년 전"
+    }
+  },
+  "bookmarks": {
+    "add_files": "파일 추가",
+    "cards": "북마크",
+    "change_files": "파일 변경 ({count})",
+    "copy_url": "URL 복사",
+    "cover": "커버",
+    "delete": "북마크 삭제",
+    "delete_confirmation_multiple": "이 {count}개의 북마크를 삭제하시겠습니까?",
+    "delete_confirmation_single": "이 북마크를 삭제하시겠습니까?",
+    "deselect_hint": "가져오지 않을 북마크는 클릭하여 선택을 해제할 수 있습니다.",
+    "drawing": {
+      "assets_unavailable": "일부 이미지를 불러오지 못해 미리보기가 업데이트되지 않습니다.",
+      "new": "새 그림",
+      "untitled": "그림"
+    },
+    "empty_state_message": "사이트를 몇 개 저장해보는 건 어떨까요?",
+    "empty_state_title": "여기엔 아직 아무것도 없네요...",
+    "expand_to_edit": "확대하여 편집",
+    "free_import_message": "또는 100개의 북마크를 한 번 무료로 가져올 수 있습니다.",
+    "hide": {
+      "label": "Hide",
+      "label_hidden": "Hidden",
+      "from_library": "Hide from library",
+      "everywhere": "Hide everywhere",
+      "unhide": "Unhide",
+      "hidden_from_library": "Hidden from your library. Still in its boards.",
+      "hidden_everywhere": "Hidden everywhere, boards included.",
+      "unhidden": "Back in your library",
+      "private_section": "Private",
+      "private_empty": "Nothing hidden yet",
+      "private_empty_hint": "Hide a bookmark and it will wait for you here.",
+      "unlock_title": "Private",
+      "unlock_description": "Enter your password to see your hidden bookmarks.",
+      "unlock_placeholder": "Password",
+      "unlock_confirm": "Unlock",
+      "unlock_wrong": "That password didn't work.",
+      "unlock_reset": "No password? Email me a link to set one.",
+      "unlock_reset_sent": "Check your email for the link.",
+      "unlock_reset_error": "Could not send the email. Try again in a moment."
+    },
+    "image_count": "이미지 {n}개",
+    "image_n_of_m": "{m} 중 {n}",
+    "image_order": "이미지 순서",
+    "import": "북마크 가져오기",
+    "import_error": "북마크 가져오기 오류. 나중에 다시 시도해주세요.",
+    "import_limit": "100 개 이상의 북마크를 가져오려면, 일회성 요금을 지불하거나 요금제를 업그레이드해야 합니다.",
+    "import_payment_message": "WebBites를 시작하면서 많은 북마크를 가져오는 것은 비용이 많이 들 수 있습니다. {count}개의 북마크를 가져오기 위한 초기 비용을 충당하기 위해 프로젝트 지원과 비용 충당을 위해 일회성 요금 3달러를 요청드립니다.",
+    "import_progress": "북마크를 가져오는 중입니다",
+    "import_progress_message": "시간이 걸릴 수 있지만, 창을 열어둘 필요는 없습니다. 완료되면 이메일로 알려드리겠습니다.",
+    "import_progress_title": "북마크를 가져오는 중입니다.",
+    "import_success": "북마크를 성공적으로 가져왔습니다",
+    "import_title": "북마크 가져오기",
+    "merge": "병합",
+    "merge_confirmation": "이 {count}개의 이미지를 하나의 북마크로 병합할까요?",
+    "merge_explainer": "첫 번째 항목은 보드와 메모를 유지합니다. 나머지는 휴지통으로 이동하며 복원할 수 있습니다.",
+    "merge_failed": "북마크를 병합하지 못했습니다",
+    "merged": "{count}개의 이미지를 가진 하나의 북마크로 병합했습니다",
+    "new": "새 북마크",
+    "new_placeholder": {
+      "game": "게임 검색…",
+      "link": "링크를 붙여넣으세요…",
+      "movie": "영화 검색…",
+      "note": "메모를 작성하세요…"
+    },
+    "no_bookmarks": "북마크를 찾을 수 없습니다",
+    "no_pinned_bookmarks": "여기에서 볼 북마크를 고정하세요",
+    "payment_button": "일회성 요금 3달러",
+    "pdf_page_count": "{n}페이지",
+    "pdf_page_one": "1페이지",
+    "pin_success": "북마크가 고정되었습니다",
+    "pinned": "고정됨",
+    "recorder": {
+      "empty": "아무것도 녹음되지 않았습니다. 마이크가 음소거되지 않았는지 확인하세요.",
+      "hint": "탭하여 녹음 시작",
+      "mic_denied": "WebBites가 마이크에 접근할 수 없습니다. 브라우저 설정에서 허용하거나 파일을 업로드하세요.",
+      "pause": "일시정지",
+      "paused": "일시정지됨",
+      "play": "재생",
+      "record_again": "다시 녹음",
+      "record_instead": "대신 녹음하기",
+      "requesting": "마이크를 기다리는 중…",
+      "restart": "처음부터 다시",
+      "stop": "녹음 중지",
+      "title_placeholder": "이 녹음의 이름",
+      "unsupported": "이 브라우저에서는 녹음할 수 없습니다. 파일 업로드는 가능합니다.",
+      "upload": "파일 업로드"
+    },
+    "remaining": "북마크 남은",
+    "reorder_hint": "끌어서 순서를 변경하세요. 첫 번째 이미지가 커버입니다.",
+    "select_all": "모두 선택 ({count})",
+    "select_all_visible": "보이는 {count}개 모두 선택",
+    "try_searching": "다른 검색어로 시도해보세요",
+    "types": {
+      "articles": "기 사",
+      "audio": "오디오",
+      "drawing": "그림",
+      "game": "게임",
+      "image": "이미지",
+      "movie": "영화",
+      "music": "음악",
+      "pdf": "PDF",
+      "textNote": "메모",
+      "website": "웹사이트"
+    },
+    "unpin_success": "북마크 고정이 해제되었습니다",
+    "unselect_all": "모두 선택 해제",
+    "url_copied": "URL이 클립보드에 복사되었습니다",
+    "urls_copied": "URL 이(가) 클립보드에 복사되었습니다",
+    "what_to_save": "What do you want to save?",
+    "compose": {
+      "add_tag": "태그 추가",
+      "board": "보드",
+      "board_create_failed": "보드를 만들 수 없습니다",
+      "board_failed": "저장했지만 {board}에 추가하지 못했습니다.",
+      "board_label": "보드, {board}",
+      "board_name": "보드 이름",
+      "create_board": "만들기",
+      "new_board": "새 보드…",
+      "notes": "메모",
+      "notes_placeholder": "메모 추가…",
+      "no_board": "보드 없음",
+      "remove_tag": "{tag} 태그 삭제",
+      "saved_to_board": "{board}에 저장됨",
+      "stop": "중지",
+      "tag": "태그",
+      "tags_count": "태그, {count}"
+    }
+  },
+  "changes": {
+    "body_1": "제안이나 버그 신고를 하려면 다음 페이지로 이동하세요.",
+    "body_1_link": "피드백 페이지.",
+    "body_2": "새로운 기능 및 변경 사항에 대한 업데이트를 받으려면 등록하세요.",
+    "change_label": "변경",
+    "changes_label": "변경 사항",
+    "rss": "RSS로 구독할 수도 있습니다",
+    "title": "변경 로그",
+    "signup_thanks": "업데이트 소식을 받아보기로 해 주셔서 감사합니다",
+    "already_subscribed": "이미 구독 중입니다",
+    "signup_failed": "업데이트 소식을 신청할 수 없습니다"
+  },
+  "common": {
+    "accept": "수락",
+    "add_tag": "태그 추가",
+    "all": "모두",
+    "ascending": "오름차순",
+    "bookmarks": "북마크",
+    "cancel": "취소",
+    "checking_access": "접근 중...",
+    "choose_something": "선택하세요..",
+    "close": "닫기",
+    "continue": "다음",
+    "dates": {
+      "month": "월",
+      "year": "년"
+    },
+    "decline": "거절",
+    "delete": "삭제",
+    "descending": "내림차순",
+    "drop_image": "이미지 또는 PDF를 놓으세요",
+    "error_try_again": "오류가 발생했습니다. 나중에 다시 시도하세요.",
+    "get_updates": "업데이트 받기",
+    "import": "가져오기",
+    "import_bookmarks": "가져오기 {selected} 북마크",
+    "import_bookmarks_remaining": "가져오기 {selected} 북마크 ({remaining} 쿼터 남음)",
+    "language_changed_success": "언어 가 변경 되 었 습니다",
+    "loading": "로딩 중...",
+    "month": "월",
+    "new_first": "새로운 기능 먼저",
+    "no_results": "검색 결과가 없습니다",
+    "old_first": "오래된 먼저",
+    "open": "열기",
+    "optional": "선택 과목",
+    "or": "또는",
+    "pin": "고정",
+    "remaining": "남은",
+    "remind_later": "나중에 다시 알림",
+    "save": "저장",
+    "saved": "저장됨",
+    "search": "검색",
+    "select_file": "파일 선택",
+    "select_new_file": "다른 파일 선택",
+    "shortcuts": {
+      "copy_url": {
+        "description": "⌥ (옵션/알트) 키를 누른 상태에서 북마크를 클릭하세요",
+        "name": "URL 복사"
+      },
+      "focus_search": {
+        "description": "/를 눌러 키보드에서 바로 검색에 포커스하세요",
+        "name": "검색 포커스"
+      },
+      "open_website": {
+        "description": "CMD 키를 누른 상태에서 북마크를 클릭하세요",
+        "name": "웹사이트 열기"
+      },
+      "quick_save": {
+        "description": "⌘ + V를 눌러 클립보드의 URL을 저장하세요",
+        "name": "빠른 저장"
+      },
+      "select_card": {
+        "description": "⇧ 키를 누른 상태에서 북마크를 클릭하세요",
+        "name": "북마크 선택"
+      }
+    },
+    "show_less": "접기",
+    "show_more": "더보기",
+    "submit": "제출",
+    "tiptap_placeholder": "URL을 추가하거나 메모를 작성하세요",
+    "unpin": "고정 해제",
+    "updating": "업데이트 중...",
+    "upgrade": "업그레이드",
+    "view_more": "더보기"
+  },
+  "cookies": {
+    "cookie_consent": "쿠키 동의",
+    "description": "우리는 Microsoft Clarity 를 사용하여 여러분의 경험을 개선하는 방법을 배웁니다. 수락함으로써, 여러분은 WebBites 를 모두에게 더 좋게 만드는 데 도움을 줍니다."
+  },
+  "feedback": {
+    "bug_reports": "버그 신고",
+    "comments": {
+      "no_comments": "아직 댓글이 없습니다",
+      "placeholder": "댓글 작성...",
+      "send": "보내기",
+      "title": "댓글"
+    },
+    "date": "날짜",
+    "delete_comment": {
+      "confirmation": "이 댓글을 삭제하시겠습니까?",
+      "title": "댓글 삭제"
+    },
+    "delete_confirmation": "이 피드백을 삭제하시겠습니까?",
+    "filter_by": "필터",
+    "form": {
+      "cancel_button": "취소",
+      "changelog_label": "변경 로그로",
+      "comment_label": "댓글",
+      "hide_from_everyone_label": "모두에게 숨기기",
+      "submit_button": "피드백 보내기",
+      "title": "피드백 제출",
+      "title_label": "제목",
+      "type_label": "유형",
+      "platform_label": "플랫폼"
+    },
+    "least_votes": "최소 투표 수",
+    "most_votes": "최다 투표",
+    "my_issues": "내 문제",
+    "no_feedback": "아직 피드백이 없습니다",
+    "order_by": "정렬 기준",
+    "placeholders": {
+      "search": "기능 및 버그 리포트 검색... ({count})"
+    },
+    "status": "상태",
+    "suggestions": "제안",
+    "title": "📨 기능 요청, 제안 및 버그 신고",
+    "type": "유형",
+    "user": "사용자",
+    "votes": "투표",
+    "platform": {
+      "app": "앱",
+      "web": "웹",
+      "extension": "브라우저 확장 프로그램",
+      "all": "모든 플랫폼"
+    },
+    "hero_title": "다음에 만들 것을",
+    "hero_highlight": "함께 정해요.",
+    "hero_subtitle": "기능을 요청하거나, 버그를 신고하거나, 원하는 아이디어에 투표하세요.",
+    "comments_count": "댓글 {count}개",
+    "page": {
+      "title": "WebBites - 피드백",
+      "kanban_view": "칸반 보기",
+      "list_view": "목록 보기",
+      "login_required": "피드백을 제출하려면 로그인해야 합니다",
+      "deleted": "피드백이 삭제되었습니다",
+      "delete_failed": "피드백을 삭제할 수 없습니다"
+    },
+    "options": {
+      "status": {
+        "in_progress": "진행 중",
+        "backlog": "백로그",
+        "pending": "분류 대기 중",
+        "done": "완료",
+        "closed": "종료됨"
+      },
+      "type": {
+        "bug_report": "버그 리포트",
+        "feature_request": "기능 요청",
+        "improvement": "개선 사항",
+        "other": "기타"
+      },
+      "platform": {
+        "app": "앱",
+        "web": "웹",
+        "extension": "브라우저 확장 프로그램"
+      }
+    }
+  },
+  "import": {
+    "import_quota_exceeded": "100 개 이상의 북마크를 가져오려면 요금제를 업그레이드해야 합니다.",
+    "import_quota_exceeded_description": "무료로 최대 100 개의 북마크를 가져올 수 있습니다. 더 많은 북마크를 가져오려면 유료 요금제로 업그레이드하십시오.",
+    "connect_title": "또는 서비스 연결",
+    "connect_fetch": "북마크 가져오기",
+    "connect_button": "{name} 연결",
+    "connect_unavailable": "사용 불가",
+    "connect_error": "{name}에서 북마크를 가져올 수 없습니다",
+    "connect_denied": "접근이 거부되어 북마크를 가져오지 않았습니다",
+    "connect_empty": "{name}에서 북마크를 찾을 수 없습니다"
+  },
+  "landing": {
+    "beta_access": {
+      "changelog_button": "변경 로그",
+      "description": "WebBites를 가장 먼저 경험하고 미래를 함께 만들어가세요. 얼리 유저는 독점 혜택과 프리미엄 기능을 받습니다.",
+      "feedback_button": "피드백",
+      "title": "북마크의 미래에 동참하세요"
+    },
+    "features": {
+      "ai_organization": {
+        "description": "고급 AI 기술을 사용하여 북마크를 자동으로 분류하고 태그를 지정합니다",
+        "title": "AI 정리"
+      },
+      "cross_platform": {
+        "description": "모든 기기에서 언제 어디서나 북마크에 접근하세요",
+        "title": "크로스 플랫폼 동기화"
+      },
+      "smart_search": {
+        "description": "맥락을 이해하는 지능형 검색으로 즉시 원하는 것을 찾으세요",
+        "title": "스마트 검색"
+      },
+      "subtitle": "AI 기반 플랫폼으로 북마크의 미래를 경험하세요",
+      "title": "WebBites를 선택하는 이유"
+    },
+    "hero": {
+      "app_button": "앱으로 이동",
+      "subtitle": "클릭 한 번으로 무엇이든 저장하고 AI가 정리, 검색, 찾기를 처리하도록 하세요.",
+      "title": "당신의 인터넷,",
+      "title_emphasis": "정리되다",
+      "waitlist_button": "대기자 명단 참여"
+    },
+    "how_it_works": {
+      "steps": {
+        "install": {
+          "description": "클릭 한 번으로 브라우저 확장 프로그램을 추가하여 즉시 콘텐츠를 저장하세요",
+          "title": "확장 프로그램 설치"
+        },
+        "organize": {
+          "description": "AI가 자동으로 분류하고 태그를 지정하며 콘텐츠를 검색 가능하게 만듭니다",
+          "title": "AI가 정리"
+        },
+        "save": {
+          "description": "확장 프로그램을 클릭하거나 단축키를 사용하여 웹페이지, 기사 또는 콘텐츠를 저장하세요",
+          "title": "무엇이든 저장"
+        }
+      },
+      "title": "이용 방법"
+    },
+    "join_now": "지금 가입하세요!",
+    "join_now_free": "가 에 합류 하세요!",
+    "more_features": "더 많은 기능",
+    "roadmap": {
+      "next": "다음 작업 중:",
+      "title": "로 드 맵",
+      "viewFull": "전체  로드맵  보기",
+      "workingOn": "현재 작업 중:"
+    },
+    "whats_next": "웨브바이트의 다음은 무엇인가요?"
+  },
+  "navigation": {
+    "feedback": "피드백 제출",
+    "help": "도움말",
+    "home": "홈",
+    "login": "로그인",
+    "logout_success": "로그아웃되었습니다!",
+    "settings": "설정",
+    "developers": "개발자",
+    "faq": "자주 묻는 질문",
+    "features": "기능",
+    "pricing": "가격"
+  },
+  "plans": {
+    "features": {
+      "auto_tag_bookmarks": "모든 웹 북마크 자동 태그",
+      "auto_tag_images": "이미지 자동 태그",
+      "plus": {
+        "41": "무료 플랜의 모든 기능 +",
+        "42": "무제한 북마크 저장",
+        "43": "TL;DR 요약",
+        "44": "이미지 자동 태그",
+        "45": "고해상도 전체 페이지 스크린샷",
+        "46": "기사 듣기 및 요약 받기",
+        "47": "이미지 텍스트 인식",
+        "48": "최대 10GB 파일 업로드",
+        "49": "자연어 검색",
+        "50": "스마트 보드",
+        "51": "개인 클라우드 백업 - 출시 예정"
+      },
+      "cloud_backups": "개인 클라우드 백업 - 출시 예정",
+      "dark_mode": "다크 모드",
+      "everything_in_free": "무료 플랜의 모든 기능 +",
+      "free": {
+        "11": "최대 100개의 북마크 저장",
+        "12": "모든 웹 북마크 자동 태그",
+        "13": "페이지 제목, 색상, 태그 및 페이지 텍스트로 검색",
+        "14": "기사 읽기 모드",
+        "15": "웹사이트, 이미지, 메모, 비디오 게임, 음악 및 영화 저장",
+        "16": "전체 페이지 스크린샷",
+        "17": "매달 최대 5개 글 듣기",
+        "18": "다크 모드"
+      },
+      "full_page_screenshots": "전체 페이지 스크린샷",
+      "high_res_screenshots": "고해상도 전체 페이지 스크린샷",
+      "listen_and_summaries": "기사 듣기 및 요약 받기",
+      "listen_limit": "매달 최대 5개 글 듣기",
+      "natural_language_search": "자연어 검색",
+      "reading_mode": "기사 읽기 모드",
+      "save_cards_limit": "최대 100개의 북마크 저장",
+      "save_various_types": "웹사이트, 이미지, 메모, 비디오 게임, 음악 및 영화 저장",
+      "search_features": "페이지 제목, 색상, 태그 및 페이지 텍스트로 검색",
+      "smart_boards": "스마트 보드",
+      "text_recognition": "이미지 텍스트 인식",
+      "tldr_summaries": "TL;DR 요약",
+      "unlimited_bookmarks": "무제한 북마크 저장",
+      "upload_limit": "최대 10GB 파일 업로드",
+      "apple": {
+        "61": "북마크를 원하는 만큼",
+        "62": "웹사이트, 이미지, 메모, 그림 등",
+        "63": "제목, 태그, 페이지 텍스트 검색",
+        "64": "읽기 모드",
+        "65": "기기 밖으로 나가지 않습니다"
+      }
+    }
+  },
+  "pricing": {
+    "current_plan": "현재 요금제",
+    "downgrade": "다운 그레이드",
+    "downgrade_to_free": "무료 로로 다운 그레이드",
+    "free_plan": "무료",
+    "get_started": "시작하기",
+    "monthly_toggle": "월간",
+    "price_monthly": "월 ${price}",
+    "price_yearly": "연 ${price} - {percent}% 할인",
+    "sign_up": "가입하기!",
+    "sign_up_now": "무료로 가입하세요!",
+    "title": "요금제",
+    "upgrade_for": "{price}로 업그레이드",
+    "upgrade_plan": "업그레이드 플랜",
+    "waitlist_free": "무료로 대기자 명단에 등록하세요!",
+    "yearly_toggle": "연간 ({percent}% 할인)",
+    "yearly_plain": "연간",
+    "apple": {
+      "title": "기기 라이브러리",
+      "tagline": "Apple 기기 전용. 계정 불필요.",
+      "lifetime": "또는 ${price} 한 번만",
+      "badge": "App Store",
+      "note": "iOS 및 macOS 앱에서 구매합니다. App Store 가격은 지역에 따라 다릅니다.",
+      "cta": "App Store에서 받기"
+    },
+    "price_yearly_plain": "연 ${price}"
+  },
+  "reader": {
+    "ai_generated": "AI가 생성한 오디오",
+    "by_author": "{author} 작성",
+    "listen_article": "기사 듣기",
+    "listen_to_post": "포스트 듣기",
+    "voice_settings": "읽기 음성",
+    "voice_description": "기사를 읽어 줄 음성을 선택하세요. 재생을 눌러 샘플을 들어 보세요.",
+    "voice_preview": "샘플 듣기",
+    "accent_settings": "억양",
+    "accent_description": "영어 기사는 이 억양으로 읽어 줍니다. 눌러서 들어 보세요."
+  },
+  "search": {
+    "alphabetical": "알파벳순",
+    "clear_recent": "최근 검색 지우기",
+    "date_added": "추가된 날짜",
+    "filter_by_tag": "태그로 필터링",
+    "filter_by_type": "유형으로 필터링",
+    "placeholder": "북마크 검색...",
+    "recent_searches": "최근 검색",
+    "sort_by": "정렬 기준"
+  },
+  "settings": {
+    "ai_language": "AI 언어",
+    "ai_language_description": "요약과 태그가 작성되는 언어입니다.",
+    "ai_language_same": "콘텐츠와 동일",
+    "auth": {
+      "create_account_description": "이메일 을 입력 하 여 로그인 하거나 계정 을 생성 하세요",
+      "email": "이메일",
+      "email_continue": "이메일로 계속하기",
+      "email_placeholder": "이메일을 입력하세요",
+      "name": "이름",
+      "name_placeholder": "이름을 입력하세요",
+      "password": "비밀번호",
+      "password_placeholder": "비밀번호를 입력하세요",
+      "password_requirements": "비밀번호는 최소 6자 이상이어야 하며 숫자를 하나 이상 포함해야 합니다",
+      "repeat_password": "비밀번호 확인",
+      "welcome_back": "다시 오신 것을 환영합니다",
+      "welcome_back_description": "비밀번호를 입력하고 이어서 시작하세요.",
+      "create_account": "계정 만들기",
+      "create_account_step_description": "이름과 비밀번호만 있으면 됩니다.",
+      "create_account_button": "계정 만들기",
+      "reset_password": "비밀번호 재설정"
+    },
+    "chrome_extension": {
+      "description": "새로운 브라우저 확장 프로그램으로 클릭 한 번에 모든 웹사이트를 북마크에 저장하세요! 지금 다운로드하세요",
+      "store_link": "Chrome 웹 스토어.",
+      "title": "Chrome 확장 프로그램"
+    },
+    "compact_view": "간단 보기",
+    "delete_account": {
+      "confirmation_text": "계정을 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.",
+      "confirm_button": "계정 영구 삭제",
+      "placeholder": "계정 삭제",
+      "title": "계정 삭제",
+      "type_confirmation": "확인을 위해 '계정 삭제'를 입력하세요"
+    },
+    "display_mode": "화면 모드",
+    "grid_view": "그리드 보기",
+    "image_ratio": {
+      "original": "원본"
+    },
+    "image_ratio_label": "이미지 비율",
+    "language": "언어",
+    "list_view": "목록 보기",
+    "newest_first": "최신순",
+    "oldest_first": "오래된순",
+    "other_options": {
+      "export_bookmarks": "모든 북마크 내보내기",
+      "logout": "로그아웃",
+      "show_onboarding": "온보딩 다시 보기",
+      "title": "기타 옵션"
+    },
+    "personal_info": {
+      "title": "개인 정보",
+      "username": "사용자 이름"
+    },
+    "preview_screenshots": "페이지 스크린샷 미리보기",
+    "preview_tags": "태그 미리보기",
+    "show_description": "설명 표시",
+    "show_summary_card": "마우스 오버 시 요약 카드 표시",
+    "theme": "테마",
+    "title": "설정",
+    "view_as": "보기 방식",
+    "viewing_options": "보기 옵션",
+    "assistants": {
+      "title": "AI 어시스턴트",
+      "description": "Claude, ChatGPT, Cursor 등 AI 앱이 MCP를 통해 라이브러리를 검색하고 저장할 수 있게 합니다.",
+      "server_url": "서버 URL",
+      "server_url_hint": "MCP를 지원하는 앱에 추가하세요. WebBites에서 승인하고 변경 허용 여부를 선택하게 됩니다.",
+      "copy": "복사",
+      "setup_title": "앱 설정",
+      "connected_title": "연결된 어시스턴트",
+      "connected_empty": "아직 연결된 어시스턴트가 없습니다. 승인하면 여기에 표시됩니다.",
+      "read_only": "읽기 전용",
+      "read_write": "변경 가능",
+      "unverified": "확인되지 않음",
+      "connected_on": "{date}에 연결됨",
+      "last_used": "마지막 사용: {date}",
+      "never_used": "아직 사용 안 함",
+      "disconnect": "연결 해제",
+      "disconnect_confirm": "{name} 연결을 해제할까요? 즉시 접근 권한을 잃습니다.",
+      "disconnected": "{name} 연결을 해제했습니다",
+      "load_failed": "연결된 어시스턴트를 불러오지 못했습니다.",
+      "revoke_failed": "{name} 연결을 해제하지 못했습니다.",
+      "limits": "어시스턴트의 모든 작업은 API 사용량에 포함됩니다. Free는 월 {free}회, Plus는 월 {plus}회입니다.",
+      "docs_link": "MCP 가이드 읽기",
+      "local_hint": "계정 없이 Mac에 라이브러리를 보관하나요? Mac 앱의 설정 → AI 어시스턴트에서 앱 자체 서버를 켜세요.",
+      "clients": {
+        "claude": {
+          "open": "Claude에서 {path}을(를) 열고 Add custom connector를 선택하세요.",
+          "paste": "이름을 WebBites로 지정하고 서버 URL을 붙여 넣은 다음 Add를 선택하세요.",
+          "connect": "Connect를 선택한 다음 열리는 WebBites 페이지에서 접근을 승인하세요. 이 커넥터는 Claude Desktop과 모바일 앱에서도 작동합니다."
+        },
+        "chatgpt": {
+          "developer_mode": "ChatGPT에서 {path}을(를) 열고 개발자 모드(Advanced 아래)를 켜세요.",
+          "create": "커넥터를 만드세요. 이름을 WebBites로 지정하고 서버 URL을 붙여 넣은 다음 OAuth를 선택하세요.",
+          "approve": "열리는 WebBites 페이지에서 접근을 승인한 다음, 채팅의 도구 메뉴에서 WebBites를 켜세요."
+        },
+        "claude_code": {
+          "add": "터미널에서 서버를 추가하세요:",
+          "sign_in": "Claude Code를 시작하고 /mcp를 실행한 다음 webbites를 선택해 로그인하세요. 브라우저에서 WebBites가 열리면 접근을 승인하세요."
+        },
+        "cursor": {
+          "add": "WebBites를 {file} 또는 프로젝트의 .cursor/mcp.json에 추가하세요:",
+          "connect": "Cursor 설정의 MCP 목록에서 webbites를 찾아 Connect를 선택한 다음 WebBites에서 접근을 승인하세요."
+        },
+        "vscode": {
+          "add": "작업 영역의 {file}에 WebBites를 추가하세요:",
+          "start": "해당 파일에서 서버 위의 Start를 선택하고, 브라우저가 열리면 WebBites에서 접근을 승인하세요. 도구는 Copilot Chat의 에이전트 모드에 나타납니다."
+        },
+        "other": {
+          "name": "기타 앱",
+          "remote": "원격 MCP 서버를 지원하는 앱은 서버 URL을 그대로 사용할 수 있습니다. 설정에서 “custom connector”, “remote server” 또는 “MCP”를 찾아보세요.",
+          "stdio": "로컬(stdio) 서버만 실행할 수 있는 앱은 mcp-remote 브리지를 통해 연결할 수 있습니다(Node.js 필요):",
+          "sign_in": "처음 실행할 때 브라우저에서 WebBites가 열리면 접근을 승인하세요."
+        },
+        "api_key": {
+          "name": "API 키 사용",
+          "when": "요청 헤더를 설정할 수 있는 앱은 로그인 대신 API 키를 보낼 수 있습니다. REST API와 마찬가지로 키로 라이브러리 전체를 읽고 변경할 수 있습니다.",
+          "send": "설정 → 개발자에서 키를 만든 다음 Bearer 토큰으로 보내세요:"
+        }
+      }
+    },
+    "developer": {
+      "title": "개발자",
+      "description": "WebBites 위에 무언가를 만들기 위한 API 키, 웹훅, 사용량.",
+      "button": "개발자 페이지 열기"
+    },
+    "backups": {
+      "title": "백업",
+      "description": "북마크, 스크린샷, 저장한 페이지를 내 저장소로 자동 증분 백업합니다.",
+      "plus_only": "자동 백업은 WebBites Plus 기능입니다.",
+      "choose_destination": "백업을 어디에 저장할까요?",
+      "gdrive": "Google 드라이브",
+      "gdrive_hint": "“WebBites Backups” 폴더에 저장",
+      "dropbox": "Dropbox",
+      "dropbox_hint": "Apps/WebBites에 저장",
+      "s3": "S3 호환 스토리지",
+      "s3_hint": "Amazon S3, Cloudflare R2, Backblaze B2, MinIO 등",
+      "endpoint": "엔드포인트",
+      "region": "리전",
+      "bucket": "버킷",
+      "prefix": "폴더 (선택)",
+      "access_key": "액세스 키",
+      "secret_key": "시크릿 키",
+      "connect": "연결",
+      "cancel": "취소",
+      "change": "변경",
+      "enabled": "자동 백업",
+      "frequency": "빈도",
+      "daily": "매일",
+      "weekly": "매주",
+      "last_backup": "마지막 백업",
+      "never": "아직 없음",
+      "running": "백업 중…",
+      "next_backup": "다음 {time}",
+      "back_up_now": "지금 백업",
+      "disconnect": "연결 해제",
+      "reconnect": "다시 연결",
+      "needs_reconnect": "{destination}에서 백업을 더 이상 받지 않습니다. 다시 연결하면 백업이 재개됩니다.",
+      "plan_required": "현재 플랜에 백업이 포함되어 있지 않아 일시 중지되었습니다.",
+      "error": "마지막 백업이 실패했습니다: {error}. 자동으로 다시 시도합니다.",
+      "connected": "{destination}에 연결되었습니다. 첫 백업은 1시간 이내에 시작됩니다.",
+      "connect_failed": "{destination}에 연결하지 못했습니다.",
+      "connect_denied": "{destination} 접근 권한이 허용되지 않았습니다.",
+      "queued": "백업을 시작했습니다.",
+      "load_failed": "백업 설정을 불러오지 못했습니다.",
+      "save_failed": "백업 설정을 업데이트하지 못했습니다.",
+      "run_failed": "백업을 시작하지 못했습니다.",
+      "whats_included": "각 백업은 지난 백업 이후 변경된 내용만 담은 zip입니다: 북마크 데이터, 메모, 스크린샷, 저장한 페이지 텍스트, 파일. 각 백업의 마지막 zip에는 보드, 피드, 그리고 어떤 브라우저에서도 가져올 수 있는 bookmarks.html도 포함됩니다."
+    },
+    "email_change": {
+      "change": "변경",
+      "change_again": "다른 주소 사용",
+      "new_email": "새 이메일",
+      "current_password": "현재 비밀번호",
+      "explainer": "새 주소로 링크를 보내 드립니다. 링크를 클릭하기 전까지는 계속 {email}(으)로 로그인합니다.",
+      "send_link": "인증 링크 보내기",
+      "pending_title": "{email}에서 확인을 완료하세요",
+      "pending_body": "새 주소를 확인하는 링크를 보냈습니다. 클릭하기 전까지 계정은 계속 {email}을(를) 사용합니다.",
+      "expires": "링크 만료: {date}",
+      "resend": "이메일 다시 보내기",
+      "resend_in": "{seconds}초 후 다시 보내기",
+      "cancel_change": "변경 취소",
+      "sent": "{email}(으)로 인증 링크를 보냈습니다",
+      "cancelled": "이메일 변경이 취소되었습니다",
+      "changed": "이메일이 {email}(으)로 변경되었습니다",
+      "errors": {
+        "invalid_email": "올바른 이메일 주소를 입력하세요.",
+        "same_email": "이미 사용 중인 이메일 주소입니다.",
+        "email_taken": "다른 계정이 이미 이 이메일 주소를 사용하고 있습니다.",
+        "password_required": "현재 비밀번호를 입력하세요.",
+        "incorrect_password": "비밀번호가 올바르지 않습니다.",
+        "daily_limit": "오늘 인증 이메일을 너무 많이 요청했습니다. 내일 다시 시도하세요.",
+        "cooldown": "잠시 후 다시 보내 주세요.",
+        "send_failed": "이메일을 보내지 못했습니다. 잠시 후 다시 시도하세요."
+      }
+    }
+  },
+  "testimonials": {
+    "emma_davis": {
+      "name": "엠마 데이비스",
+      "text": "크로스 플랫폼 동기화가 완벽하고, AI 기능 덕분에 수동 정리에 들이는 시간을 절약할 수 있어요.",
+      "title": "디지털 마케터"
+    },
+    "mike_chen": {
+      "name": "마이크 첸",
+      "text": "드디어 맥락을 이해하는 북마크 도구를 찾았네요. 검색 기능이 정말 놀랍습니다.",
+      "title": "개발자"
+    },
+    "sarah_johnson": {
+      "name": "사라 존슨",
+      "text": "WebBites는 제가 연구 자료를 저장하고 정리하는 방식을 혁신했습니다. AI 분류가 놀랍도록 정확해요!",
+      "title": "콘텐츠 크리에이터"
+    }
+  },
+  "upgrade_modal": {
+    "audios_remaining": "오디오를 {count}개 더 생성할 수 있습니다.",
+    "audios_upgrade": "더 많은 오디오를 생성하려면 요금제를 업그레이드하세요.",
+    "bookmarks_count": "{count}개의 북마크를 저장했으며",
+    "bookmarks_remaining": "추가로 {count}개를 더 저장할 수 있습니다.",
+    "bookmarks_upgrade": "더 많이 저장하려면 요금제를 업그레이드해야 합니다.",
+    "current_plan": "현재 {plan} 요금제를 이용 중입니다.",
+    "manage_plan": "계획 관리",
+    "plan_details": "플랜 상세정보",
+    "update_plan": "플랜 업데이트",
+    "updating_plan": "플랜 업데이트 중",
+    "upgrade_to_add_more": "업그레이드하여 추가"
+  },
+  "usage": {
+    "usage_limit_reached": "사용 한도 초과, 플랜을 업그레이드 해주세요"
+  },
+  "website_modal": {
+    "add_note": "메모 추가",
+    "annotations": {
+      "delete": {
+        "delete_all_button": "모두 삭제",
+        "delete_all_label": "모든 주석 삭제",
+        "delete_all_message": "모든 주석을 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.",
+        "delete_all_title": "모든 주석 삭제",
+        "message": "이 주석을 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.",
+        "title": "주석 삭제"
+      }
+    },
+    "app": {
+      "age": "연령",
+      "age_rating": "연령 등급",
+      "and_more": "{first} 외 {count}개",
+      "category": "카테고리",
+      "compatibility": "호환성",
+      "copyright": "저작권",
+      "developer": "개발자",
+      "developer_website": "개발자 웹 사이트",
+      "downloads": "다운로드",
+      "in_app_purchases": "앱 내 구입",
+      "information": "정보",
+      "install": "설치",
+      "language": "언어",
+      "languages": "언어",
+      "more": "더 보기",
+      "more_languages": "+ {count}개 더",
+      "no": "아니요",
+      "on_store": "{store}",
+      "price": "가격",
+      "privacy_policy": "개인정보 처리방침",
+      "rating": "평가",
+      "ratings": "평가 {count}개",
+      "requires": "{os} 이상 필요.",
+      "seller": "판매자",
+      "size": "크기",
+      "updated": "업데이트",
+      "version": "버전 {version}",
+      "view": "보기",
+      "whats_new": "새로운 기능",
+      "yes": "예"
+    },
+    "audio": {
+      "download": "다운로드",
+      "failed": "전사를 만들지 못했습니다.",
+      "generate": "전사 생성",
+      "none": "아직 전사가 없습니다.",
+      "pause": "일시정지",
+      "play": "재생",
+      "quota": "이번 달 오디오 사용량을 모두 사용했습니다.",
+      "retry": "다시 시도",
+      "scrub": "탐색",
+      "segments": "1개 구간 | {n}개 구간",
+      "transcribing": "전사 중…",
+      "transcribing_long": "전사 중입니다. 페이지를 닫아도 계속 진행됩니다.",
+      "transcript": "전사",
+      "unavailable": "이 녹음을 사용할 수 없습니다"
+    },
+    "details": "상세 정보",
+    "pdf": {
+      "open": "PDF 열기",
+      "unavailable": "이 PDF를 사용할 수 없습니다"
+    },
+    "sidebar": {
+      "tabs": {
+        "audio": "오디오",
+        "drawing": "그림",
+        "figma": "피그마",
+        "image": "이미지",
+        "pdf": "PDF",
+        "reader": "리더",
+        "screenshot": "스크린샷",
+        "text_note": "텍스트 메모"
+      }
+    },
+    "social": {
+      "enlarge": "사진 확대",
+      "next": "다음 사진",
+      "previous": "이전 사진",
+      "saved_post": "저장한 게시물",
+      "video_hint": "게시물을 열어 재생하세요",
+      "video_preview": "동영상 미리보기",
+      "view_on": "{platform}에서 보기"
+    },
+    "summary": "요약"
+  },
+  "wizard": {
+    "annotations": {
+      "content": "웹사이트 스크린샷에 직접 원하는 내용을 주석으로 달고 검색할 수 있습니다",
+      "title": "📝 페이지 주석"
+    },
+    "first_bookmark": {
+      "content": "지금 첫 북마크를 저장해보세요!",
+      "subcontent": "참고: 클립보드에서 URL이 감지되면 자동으로 붙여넣기됩니다. 클립보드 접근 요청이 있을 수 있지만, '저장' 버튼을 클릭하기 전까지는 어떤 데이터도 저장되거나 전송되지 않습니다.",
+      "title": "🥳 첫 북마크를 저장하세요!"
+    },
+    "folders": {
+      "content": "WebBites가 자동으로 북마크를 정리하고, 태그를 생성하며, 키워드와 색상 팔레트까지 추출합니다!",
+      "title": "🔖 폴더는 잊어버리세요"
+    },
+    "import": {
+      "content": "컴퓨터에서 파일을 끌어다 놓거나 나중에 설정 메뉴에서 업로드하여 기존 북마크를 모두 가져오세요.",
+      "title": "북마크 가져오기"
+    },
+    "one_click": {
+      "content": "[Chrome](https://chromewebstore.google.com/detail/webbites-browser-extensio/kphdbcjcdhecefloameedhhldchhbela) 확장 프로그램을 다운로드하여 클릭 한 번으로 새 북마크를 저장하거나 웹 앱에서 직접 추가하세요.",
+      "subcontent": "(Safari, Firefox 및 모바일 확장 프로그램이 곧 출시됩니다!)",
+      "title": "클릭 한 번이면 됩니다!"
+    },
+    "save_anything": {
+      "content": "웹사이트뿐만 아니라 메모, 이미지, 영화, 게임, 음악까지 WebBites로 저장하세요!",
+      "subcontent": "곧 책도 추가됩니다!",
+      "title": "👾 🎥 무엇이든 저장"
+    },
+    "screenshots": {
+      "content": "저장하는 모든 웹사이트의 전체 페이지 스크린샷을 찍어두세요. 페이지가 삭제되더라도 영원히 접근할 수 있습니다.",
+      "title": "📸 전체 페이지 스크린샷"
+    },
+    "welcome": {
+      "content": "최고의 북마크 서비스를 함께 만들어가요. 기능 요청, 버그 신고 또는 피드백이 있으시면 트위터로 연락해주세요!",
+      "title": "WebBites에 오신 것을 환영합니다!"
+    }
+  },
+  "wizard_tab": {
+    "back": "이전",
+    "finish": "완료",
+    "import_bookmarks": "북마크 가져오기",
+    "next": "다음",
+    "save": "저장",
+    "skip": "건너뛰기"
+  },
+  "developers": {
+    "title": "WebBites API",
+    "subtitle": "직접 만든 스크립트, 앱, 자동화에서 북마크를 읽고 저장하세요."
+  },
+  "tags": {
+    "preview": "{tag} 북마크 미리보기",
+    "preview_empty": "이 태그가 있는 북마크가 없습니다",
+    "show_all": "북마크 {n}개 모두 보기 | 북마크 {n}개 모두 보기",
+    "clear_selection": "선택 해제",
+    "manage": "Tags",
+    "subtitle": "Every tag you use, with how many bookmarks carry it. Select tags to rename, merge or remove them everywhere.",
+    "search": "Search tags",
+    "sort_count": "Most used",
+    "sort_name": "A–Z",
+    "total": "{n} tag | {n} tags",
+    "bookmarks_count": "{n} bookmark | {n} bookmarks",
+    "selected": "{n} selected",
+    "rename": "Rename",
+    "merge": "Merge",
+    "merge_into": "Merge into",
+    "delete": "Remove",
+    "confirm_delete": "Remove the selected tags from every bookmark? The bookmarks themselves are kept.",
+    "protected": "\"read-later\" powers the Read it later feature and can't be changed.",
+    "empty": "No tags yet",
+    "no_match": "No tags match",
+    "updated": "Updated {n} bookmark | Updated {n} bookmarks"
+  },
+  "footer": {
+    "product": "제품",
+    "support": "지원",
+    "updates": "업데이트",
+    "pricing": "요금제",
+    "extension": "브라우저 확장 프로그램",
+    "export": "북마크 내보내기",
+    "help": "도움말 및 문의",
+    "feedback": "피드백",
+    "changelog": "변경 사항",
+    "privacy": "개인정보",
+    "terms": "이용약관",
+    "made_by": "만든 사람",
+    "copyright": "WebBites {year}"
+  },
+  "verify_email": {
+    "verifying_title": "새 이메일을 확인하는 중…",
+    "verifying_body": "잠시만 기다려 주세요.",
+    "success_title": "이메일이 변경되었습니다",
+    "success_body": "이제 WebBites 계정에서 사용하는 주소:",
+    "success_hint": "다음 로그인부터 이 주소를 사용하세요. 이전 주소로도 알림을 보냈습니다.",
+    "open_app": "WebBites 열기",
+    "sign_in": "로그인",
+    "expired_title": "링크가 만료되었습니다",
+    "expired_body": "링크는 24시간 동안 유효합니다. 설정에서 새 링크를 요청하세요. 그때까지 이메일은 바뀌지 않습니다.",
+    "taken_title": "이미 사용 중인 주소입니다",
+    "taken_body": "링크를 보낸 후 다른 계정이 이 이메일을 사용하기 시작했습니다. 이메일은 변경되지 않았습니다. 설정에서 다른 주소를 시도하세요.",
+    "invalid_title": "사용할 수 없는 링크입니다",
+    "invalid_body": "이미 사용되었거나 더 최신 링크로 대체되었을 수 있습니다. 받은편지함에서 최신 이메일을 확인하거나 설정에서 다시 시작하세요.",
+    "failed_title": "문제가 발생했습니다",
+    "failed_body": "이메일은 변경되지 않았습니다. 다시 시도하세요.",
+    "try_again": "다시 시도",
+    "open_settings": "설정 열기",
+    "go_home": "WebBites로 이동",
+    "page_title": "이메일 확인 · WebBites"
+  },
+  "cli_login": {
+    "title": "WebBites CLI에 로그인",
+    "body": "이 코드가 터미널에 표시된 코드와 일치할 때만 승인하세요.",
+    "signed_in_as": "{email}(으)로 로그인됨",
+    "approve": "승인",
+    "decline": "취소",
+    "approved_title": "로그인되었습니다",
+    "approved_body": "터미널로 돌아가세요. 이 탭은 닫아도 됩니다.",
+    "declined_title": "로그인이 취소되었습니다",
+    "declined_body": "CLI에 접근 권한이 부여되지 않았습니다. 이 탭은 닫아도 됩니다.",
+    "expired_title": "이 코드는 만료되었습니다",
+    "expired_body": "코드는 10분 동안 유효하며 한 번만 사용할 수 있습니다. webbites login을 다시 실행해 새 코드를 받으세요.",
+    "invalid_title": "이 링크는 작동하지 않습니다",
+    "invalid_body": "터미널에 표시된 링크를 열거나 webbites login을 다시 실행하세요.",
+    "failed_title": "문제가 발생했습니다",
+    "failed_body": "CLI가 로그인되지 않았습니다. 다시 시도하세요.",
+    "try_again": "다시 시도",
+    "page_title": "CLI에 로그인 · WebBites"
+  },
+  "oauth_consent": {
+    "page_title": "앱 연결 · WebBites",
+    "title": "{client}에서 내 WebBites 라이브러리를 사용하려고 합니다",
+    "verified": "확인된 앱",
+    "verified_from": "확인됨 · {host}",
+    "unverified": "확인되지 않은 앱",
+    "unverified_body": "WebBites는 이 앱을 누가 만들었는지 확인할 수 없습니다. 믿을 수 있는 앱이고 직접 시작한 경우에만 계속하세요.",
+    "can_heading": "이 앱이 할 수 있는 일",
+    "can_read": "북마크, 메모, 보드, 태그 검색 및 읽기",
+    "allow_changes": "변경 허용",
+    "allow_changes_body": "북마크 저장, 편집, 정리 및 휴지통으로 이동",
+    "cannot": "비밀번호를 보거나, 계정을 변경하거나, 휴지통을 비울 수는 없습니다.",
+    "redirect_heading": "그다음",
+    "redirect_web": "{target}(으)로 돌아갑니다.",
+    "redirect_app": "{target} 앱이 열립니다.",
+    "redirect_loopback": "이 컴퓨터의 프로그램({target})으로 돌아갑니다.",
+    "loopback_warning": "방금 이 컴퓨터의 앱에서 직접 시작한 경우에만 승인하세요.",
+    "provider_note": "{client}은(는) 읽은 내용을 자체 AI 제공업체로 보내며, 해당 제공업체의 약관이 적용됩니다.",
+    "approve": "승인",
+    "decline": "거부",
+    "signed_in_as": "{account}(으)로 로그인됨",
+    "switch_account": "다른 계정 사용",
+    "revoke_hint": "언제든지 설정 → AI 어시스턴트에서 연결을 해제할 수 있습니다.",
+    "done_title": "연결되었습니다",
+    "done_body": "{client}(으)로 돌아가는 중…",
+    "declined_title": "연결되지 않았습니다",
+    "declined_body": "{client}에 접근 권한이 부여되지 않았습니다. 앱으로 돌아가는 중…",
+    "close_hint": "{client}이(가) 열리면 이 탭을 닫아도 됩니다.",
+    "continue": "계속",
+    "the_app": "앱",
+    "invalid_request_title": "이 링크는 작동하지 않습니다",
+    "invalid_request_body": "앱이 불완전하거나 잘못된 요청을 보내 아무것도 연결되지 않았습니다. 앱에서 다시 시작하세요.",
+    "invalid_client_title": "WebBites에서 이 앱을 식별할 수 없습니다",
+    "invalid_client_body": "앱이 자신을 올바르게 밝히지 않아 연결할 수 없습니다. 앱에서 다시 시작하거나 개발자에게 문의하세요.",
+    "invalid_redirect_title": "이 앱의 돌아갈 주소는 허용되지 않습니다",
+    "invalid_redirect_body": "계정을 안전하게 지키기 위해 WebBites는 앱이 등록한 주소로만 돌려보냅니다. 아무것도 연결되지 않았습니다.",
+    "invalid_scope_title": "앱이 WebBites에서 제공하지 않는 접근 권한을 요청했습니다",
+    "invalid_scope_body": "아무것도 연결되지 않았습니다. 앱에서 다시 시작하거나 개발자에게 문의하세요.",
+    "invalid_server_title": "저희 쪽에서 문제가 발생했습니다",
+    "invalid_server_body": "아무것도 연결되지 않았습니다. 잠시 후 앱에서 다시 시도하세요.",
+    "details": "앱 개발자를 위한 세부 정보",
+    "expired_title": "이 요청은 만료되었습니다",
+    "expired_body": "연결 요청은 짧은 시간 동안만 유효하며 한 번만 사용할 수 있습니다. 연결하려던 앱에서 다시 시작하세요.",
+    "rejected_title": "이 요청을 확인할 수 없습니다",
+    "rejected_body": "아무것도 연결되지 않았습니다. 연결하려던 앱에서 다시 시작하세요.",
+    "failed_title": "문제가 발생했습니다",
+    "failed_body": "아무것도 연결되지 않았습니다. 다시 시도하세요.",
+    "try_again": "다시 시도"
+  },
+  "automations": {
+    "new": "새 자동화",
+    "empty": "아직 자동화가 없습니다. 예를 들어 URL에 amazon.com이 포함되면 쇼핑 태그를 추가하도록 시작해 보세요.",
+    "smart_board": "스마트 보드",
+    "enable_named": "{name} 사용",
+    "load_failed": "자동화를 불러올 수 없습니다",
+    "update_failed": "자동화를 업데이트할 수 없습니다",
+    "save_failed": "자동화를 저장할 수 없습니다",
+    "delete_failed": "자동화를 삭제할 수 없습니다",
+    "name_placeholder": "이 자동화의 이름",
+    "enabled": "사용 중",
+    "whenever": "다음과 같을 때마다",
+    "trigger_bookmark_added": "북마크가 추가될 때",
+    "no_conditions": "조건 없음: 모든 새 북마크에 실행됩니다.",
+    "actions": "동작",
+    "remove_action": "동작 제거",
+    "choose_board": "보드 선택",
+    "add_action": "동작 추가",
+    "action_add_to_board": "보드에 추가",
+    "action_read_later": "나중에 읽기에 추가",
+    "action_webhook": "웹훅 호출",
+    "webhook_help": "본문을 비워 두면 북마크를 JSON으로 보냅니다. 따옴표 안에서는 {title}, {url}, {type}, {id}를, 따옴표 없이는 {tags}를 사용하세요.",
+    "webhook_signed": "각 요청은 {header}로 서명됩니다.",
+    "webhook_signed_secret": "각 요청은 {secret}을(를) 사용해 {header}로 서명됩니다.",
+    "smart_board_note": "스마트 보드의 규칙입니다. 이 조건은 보드 설정에도 표시되며, 삭제하면 보드가 다시 수동 보드로 바뀝니다.",
+    "if": "만약",
+    "remove_condition": "조건 제거",
+    "topics_placeholder": "주제 입력 후 Enter",
+    "minimum_match": "최소 일치도",
+    "add_condition": "조건 추가",
+    "match_all": "모두 충족",
+    "match_any": "하나라도 충족",
+    "fields": {
+      "url": "URL",
+      "domain": "도메인",
+      "title": "제목",
+      "type": "유형",
+      "tag": "태그",
+      "ai_topic": "AI 주제"
+    },
+    "ops": {
+      "contains": "포함",
+      "not_contains": "포함하지 않음",
+      "is": "일치",
+      "is_not": "일치하지 않음"
+    },
+    "describe": {
+      "a_board": "보드",
+      "about": "{topics} 관련",
+      "condition": "{field} {op} {value}",
+      "tag": "태그 {tag}",
+      "add_to_board": "{board}에 추가",
+      "read_later": "나중에 읽기",
+      "webhook": "웹훅 호출",
+      "joiner_any": " 또는 ",
+      "joiner_all": " 그리고 ",
+      "every_bookmark": "모든 북마크",
+      "summary": "{when} → {actions}"
+    }
+  },
+  "notifications": {
+    "title": "알림",
+    "aria_unread": "알림, 읽지 않음 {count}개",
+    "mark_all_read": "모두 읽음으로 표시",
+    "unread": "읽지 않음",
+    "empty": "새로운 알림이 없습니다.",
+    "group_new": "새 알림",
+    "group_earlier": "이전",
+    "someone": "누군가",
+    "board_unavailable": "이 보드는 더 이상 사용할 수 없습니다",
+    "sentence": {
+      "board_shared": "{who}님이 “{board}”을(를) 나와 공유했습니다",
+      "role_changed": "{who}님이 “{board}”에 대한 내 권한을 변경했습니다",
+      "board_unshared": "{who}님이 나를 “{board}”에서 제거했습니다",
+      "member_joined": "{who}님이 “{board}”에 참여했습니다",
+      "member_left": "{who}님이 “{board}”에서 나갔습니다",
+      "default": "{who}님이 “{board}”을(를) 업데이트했습니다",
+      "item_added": "{who}님이 “{board}”에 북마크를 추가했습니다 | {who}님이 “{board}”에 북마크 {count}개를 추가했습니다",
+      "item_added_titled": "{who}님이 “{board}”에 “{title}”을(를) 추가했습니다",
+      "item_edited": "{who}님이 “{board}”의 북마크를 편집했습니다 | {who}님이 “{board}”의 북마크 {count}개를 편집했습니다",
+      "item_edited_titled": "{who}님이 “{board}”의 “{title}”을(를) 편집했습니다",
+      "item_removed": "{who}님이 “{board}”에서 북마크를 제거했습니다 | {who}님이 “{board}”에서 북마크 {count}개를 제거했습니다",
+      "item_removed_titled": "{who}님이 “{board}”에서 “{title}”을(를) 제거했습니다"
+    }
+  },
+  "shell": {
+    "login_desktop": {
+      "success": "로그인 성공"
+    },
+    "apple_callback": {
+      "completing": "Apple 로그인을 완료하는 중...",
+      "invalid_state": "잘못된 state 매개변수 - CSRF 공격 가능성",
+      "no_id_token": "Apple에서 ID 토큰을 받지 못했습니다",
+      "auth_failed": "인증에 실패했습니다",
+      "account_exists": "이 이메일 주소로 만든 계정이 이미 있습니다. 이메일/비밀번호로 로그인해 보세요.",
+      "token_expired": "Apple 로그인 세션이 만료되었습니다. 다시 시도하세요.",
+      "invalid_token": "Apple 인증 토큰이 올바르지 않습니다. 다시 시도하세요.",
+      "user_creation_failed": "계정을 만들지 못했습니다. 나중에 다시 시도하세요.",
+      "sign_in_failed": "Apple 로그인에 실패했습니다. 다시 시도하세요."
+    },
+    "welcome_extension": {
+      "heading": "환영합니다!",
+      "tagline": "버튼 한 번으로 저장하면, 정리는 AI가 알아서 해드립니다.",
+      "right_click_title": "우클릭으로 저장",
+      "right_click_description": "간단한 우클릭만으로 웹사이트나 이미지를 쉽게 저장하세요.",
+      "quick_menu_title": "빠른 메뉴",
+      "quick_menu_description": "'J'를 눌러 WebBites 빠른 메뉴를 열고 닫으세요. Cmd+J(Windows는 Ctrl)로 작은 WebBites를 열어 빠르게 저장하고 검색할 수 있습니다.",
+      "reading_title": "더 편안한 읽기 환경",
+      "reading_description": "기사를 자동으로 감지해 방해 요소 없는 읽기 모드로 엽니다.",
+      "summaries_title": "즉시 요약",
+      "summaries_description": "클릭 한 번으로 모든 기사나 웹사이트를 요약하세요.",
+      "listen_title": "기사 듣기",
+      "listen_description": "모든 기사나 요약을 실감 나는 목소리로 음성 변환하세요."
+    }
+  },
+  "boards": {
+    "empty": "아직 보드가 없습니다",
+    "someone": "누군가",
+    "go_home": "WebBites로 이동",
+    "leave": "보드 나가기",
+    "duplicate": "복제",
+    "archive": "보관",
+    "delete_board": "보드 삭제",
+    "added_to": "{board}에 추가되었습니다",
+    "already_in": "이미 {board}에 있습니다",
+    "added_bookmarks": "{board}에 북마크 {count}개를 추가했습니다 | {board}에 북마크 {count}개를 추가했습니다",
+    "add_error": "보드에 추가하는 중 오류",
+    "modal": {
+      "edit_title": "보드 편집",
+      "new_title": "새 보드",
+      "choose_emoji": "이모지 선택",
+      "emoji_placeholder": "이모지를 입력하거나 붙여넣으세요",
+      "remove_emoji": "제거",
+      "emoji_work": "업무",
+      "emoji_creative": "창작",
+      "emoji_life": "생활",
+      "emoji_misc": "기타",
+      "name_placeholder": "보드 이름",
+      "description_placeholder": "이 보드에는 무엇이 들어가나요? (선택)",
+      "inside": "위치",
+      "inside_help": "이 보드를 폴더 안에 넣거나 최상위에 두세요.",
+      "top_level": "최상위",
+      "how_added": "북마크 추가 방식",
+      "mode_manual": "수동",
+      "mode_manual_help": "북마크를 직접 추가하고 제거합니다.",
+      "mode_smart": "스마트",
+      "mode_smart_help": "조건에 맞는 북마크가 자동으로 정리되며, 직접 추가할 수도 있습니다.",
+      "ai_topics": "AI 주제",
+      "ai_topics_hint": "쉼표로 구분",
+      "ai_topics_help": "AI가 새 북마크를 이 주제들과 비교합니다. 아래에 조건을 추가했다면 선택 사항입니다.",
+      "topics_placeholder": "UI 디자인, 타이포그래피, 색채 이론",
+      "confidence": "최소 일치 신뢰도",
+      "conditions": "조건",
+      "conditions_help": "모든 새 북마크에서 확인합니다. AI 주제와 함께 쓰거나, 단독으로 사용해 AI를 완전히 건너뛸 수 있습니다.",
+      "auto_apply": "일치하는 북마크 자동 추가",
+      "auto_apply_help": "조건에 맞는 새 북마크는 묻지 않고 이 보드에 정리됩니다.",
+      "include_existing": "기존 북마크 검사",
+      "include_existing_help": "이미 저장한 북마크로 보드를 채웁니다.",
+      "automations_link": "자동화에서 태그, 웹훅 등을 추가하세요",
+      "colour": "색상",
+      "no_colour": "색상 없음",
+      "save_changes": "변경사항 저장",
+      "create": "보드 만들기",
+      "updated": "보드를 업데이트했습니다",
+      "created": "보드를 만들었습니다",
+      "save_error": "보드 저장 중 오류"
+    },
+    "folder": {
+      "rename_title": "폴더 이름 변경",
+      "new_title": "새 폴더",
+      "name_placeholder": "폴더 이름",
+      "create": "만들기",
+      "save_error": "폴더 저장 중 오류"
+    },
+    "sidebar": {
+      "title": "보드",
+      "new_folder": "새 폴더",
+      "new_board": "새 보드",
+      "shared": "공유됨",
+      "shared_by": "{name}님이 공유함",
+      "share_board": "보드 공유",
+      "rename_folder": "폴더 이름 변경",
+      "edit_board": "보드 편집",
+      "link_copied": "공유 링크를 복사했습니다",
+      "link_copy_error": "공유 링크를 복사할 수 없습니다",
+      "menu": {
+        "new_board_here": "여기에 새 보드…",
+        "new_folder_here": "여기에 새 폴더…",
+        "rename": "이름 변경…",
+        "delete": "삭제…",
+        "share": "공유…",
+        "people_with_access": "접근 권한이 있는 사람…",
+        "edit_board": "보드 편집…",
+        "copy_share_link": "공유 링크 복사"
+      }
+    },
+    "add_to": {
+      "title": "보드에 추가",
+      "removed_from": "{board}에서 제거되었습니다",
+      "update_error": "보드 업데이트 중 오류"
+    },
+    "share": {
+      "title": "“{name}” 공유",
+      "people_with_access": "접근 권한이 있는 사람",
+      "description_owner": "이메일로 사람들을 초대하거나, 링크가 있는 누구나 볼 수 있게 하세요.",
+      "description_member": "{name}이(가) 나와 공유되었습니다.",
+      "this_board": "이 보드",
+      "try_again": "다시 시도",
+      "load_error": "공유 설정을 불러올 수 없습니다.",
+      "invite_people": "사람 초대",
+      "add_emails": "이메일 추가",
+      "invite": "초대",
+      "invalid_emails": "{emails}은(는) 올바른 이메일이 아닙니다. | {emails}은(는) 올바른 이메일이 아닙니다.",
+      "invite_hint": "WebBites 계정이 없는 사람에게는 참여 링크가 담긴 이메일이 발송됩니다.",
+      "you": "(나)",
+      "owner": "소유자",
+      "pending": "대기 중",
+      "can_view": "보기 가능",
+      "can_edit": "편집 가능",
+      "remove_member": "{name} 제거",
+      "nobody_else": "아직 다른 사람이 없습니다.",
+      "only_other": "여기에는 나 외에 한 명뿐입니다.",
+      "general_access": "일반 접근",
+      "access_private": "초대받은 사람만",
+      "access_link": "링크가 있는 누구나 - 보기 전용",
+      "link_on": "링크가 있는 누구나 로그인 없이 볼 수 있습니다.",
+      "link_off": "위에 있는 사람만 이 보드를 열 수 있습니다.",
+      "link_reset_to_show": "링크를 재설정하면 여기에 표시됩니다",
+      "link_unavailable": "링크를 사용할 수 없습니다",
+      "copy_link": "링크 복사",
+      "click_again": "다시 클릭하면 재설정됩니다",
+      "create_link": "링크 만들기",
+      "reset_link": "링크 재설정",
+      "done": "완료",
+      "invited": "초대를 보냈습니다 | {count}명을 초대했습니다",
+      "invite_error": "초대를 보낼 수 없습니다",
+      "role_error": "접근 권한을 변경할 수 없습니다",
+      "remove_error": "제거할 수 없습니다",
+      "access_error": "이 보드를 열 수 있는 사람을 변경할 수 없습니다",
+      "link_copied": "링크를 복사했습니다",
+      "link_copy_error": "링크를 복사할 수 없습니다",
+      "new_link": "새 링크가 준비되었습니다",
+      "reset_error": "링크를 재설정할 수 없습니다"
+    },
+    "trash": {
+      "title": "휴지통",
+      "description": "삭제한 북마크는 30일 동안 보관된 후 영구적으로 삭제됩니다.",
+      "empty": "휴지통이 비어 있습니다",
+      "untitled": "제목 없음",
+      "purges_in": "{count}일 후 영구 삭제 | {count}일 후 영구 삭제 | {count}일 후 영구 삭제",
+      "restore": "복원"
+    },
+    "public": {
+      "open_webbites": "WebBites 열기",
+      "save_your_own": "나만의 북마크 저장하기",
+      "start_free": "무료로 시작하기",
+      "shared_by": "{name}님이 공유함",
+      "bookmark_count": "북마크 {count}개 | 북마크 {count}개",
+      "empty": "이 보드에는 아직 아무것도 없습니다.",
+      "show_more": "북마크 더 보기",
+      "footer": "이 보드는 WebBites에서 공유되었습니다. WebBites에서는 페이지를 저장하고, 다시 찾고, 누구와도 보드를 공유할 수 있습니다.",
+      "title": "{name} — WebBites",
+      "title_default": "공유된 보드 — WebBites",
+      "not_found_title": "보드를 찾을 수 없습니다",
+      "not_found_text": "이 링크는 어디로도 연결되지 않습니다. 링크를 끝까지 복사했는지 확인하세요.",
+      "forbidden_title": "이 보드는 나와 공유되지 않았습니다",
+      "forbidden_text": "소유자가 공유를 껐거나 링크를 재설정했을 수 있습니다. 새 링크를 요청하세요.",
+      "error_title": "이 보드를 불러올 수 없습니다",
+      "error_text": "저희 쪽에서 문제가 발생했습니다. 잠시 후 다시 시도하세요."
+    },
+    "invite": {
+      "incomplete_title": "이 초대 링크가 완전하지 않습니다",
+      "incomplete_text": "이메일에서 링크를 다시 열어 끝까지 복사하세요.",
+      "invited_title": "보드에 초대되었습니다",
+      "sign_in_text": "참여하려면 로그인하거나 WebBites 계정을 만드세요.",
+      "sign_in_cta": "로그인 또는 계정 만들기",
+      "joining": "보드에 참여하는 중…"
+    }
+  },
+  "editor": {
+    "slash": {
+      "items": {
+        "paragraph": {
+          "title": "텍스트",
+          "subtitle": "바로 글쓰기 시작"
+        },
+        "heading1": {
+          "title": "제목 1",
+          "subtitle": "큰 섹션 제목"
+        },
+        "heading2": {
+          "title": "제목 2",
+          "subtitle": "중간 섹션 제목"
+        },
+        "heading3": {
+          "title": "제목 3",
+          "subtitle": "작은 섹션 제목"
+        },
+        "bulletList": {
+          "title": "글머리 기호 목록",
+          "subtitle": "간단한 목록"
+        },
+        "orderedList": {
+          "title": "번호 목록",
+          "subtitle": "번호가 매겨지는 목록"
+        },
+        "taskList": {
+          "title": "할 일",
+          "subtitle": "체크하며 지워 나갈 항목"
+        },
+        "blockquote": {
+          "title": "인용",
+          "subtitle": "문장을 따로 강조"
+        },
+        "codeBlock": {
+          "title": "코드",
+          "subtitle": "서식 유지, 고정폭 글꼴"
+        },
+        "horizontalRule": {
+          "title": "구분선",
+          "subtitle": "페이지를 둘로 나누기"
+        },
+        "image": {
+          "title": "이미지",
+          "subtitle": "사진 업로드"
+        }
+      },
+      "groups": {
+        "basic": "기본 블록",
+        "media": "미디어"
+      },
+      "no_match": "“{query}”라는 블록이 없습니다"
+    },
+    "block_menu": {
+      "duplicate": "복제",
+      "copy_text": "텍스트 복사",
+      "turn_into": "다음으로 변환"
+    }
+  },
+  "cards": {
+    "everything": "전체",
+    "media_preview": {
+      "date_unavailable": "날짜 없음",
+      "movie_poster_alt": "영화 포스터",
+      "game_poster_alt": "게임 포스터"
+    },
+    "search_chip": {
+      "remove": "{label} 제거"
+    },
+    "drawing": {
+      "save_failed": "그림을 저장할 수 없습니다"
+    }
+  },
+  "faq": {
+    "title_line1": "궁금한 점,",
+    "title_emphasis": "북마크해 두었어요.",
+    "subtitle": "많이 물어보시는 질문을 한곳에 모았습니다. 주제를 고르거나 항목을 열어 보세요.",
+    "topics_aria": "주제",
+    "topics": {
+      "all": "전체",
+      "start": "시작하기",
+      "saving": "저장 및 동기화",
+      "billing": "요금제 및 결제",
+      "privacy": "개인정보 및 데이터",
+      "dev": "개발자"
+    },
+    "still_stuck": {
+      "title": "아직 해결되지 않았나요?",
+      "body": "모든 이메일은 사람이 직접 읽으며, 보통 영업일 기준 이틀 안에 답변드립니다. 무엇을 했는지, 어떻게 되길 기대했는지, 실제로 어떻게 되었는지 알려주세요.",
+      "email_button": "{email}로 이메일 보내기",
+      "feature_button": "기능 요청하기"
+    },
+    "items": {
+      "what": {
+        "q": "WebBites는 무엇인가요?",
+        "a": "웹사이트, 이미지, 영화, 게임, 메모 등 무엇이든 저장하고, 직접 정리하지 않아도 다시 찾을 수 있는 공간입니다. 한 번의 클릭으로 저장하면 WebBites가 AI로 태그를 달고 정리하며, 제목, 색상, 태그, 심지어 페이지 속 텍스트로도 검색할 수 있습니다."
+      },
+      "platforms": {
+        "q": "어떤 플랫폼에서 사용할 수 있나요?",
+        "a": "웹 앱, iPhone, iPad, Mac, Vision Pro, Apple TV, Apple Watch용 네이티브 앱, 그리고 어디서든 저장할 수 있는 브라우저 확장 프로그램이 있습니다. 모든 것은 계정을 통해 동기화됩니다."
+      },
+      "account": {
+        "q": "앱을 사용하려면 계정이 필요한가요?",
+        "a": "아니요. iPhone, iPad, Mac, Vision Pro 앱은 로그아웃 상태에서도 기기에 보관된 라이브러리로 사용할 수 있으며, 이 모드에서 저장한 내용은 저희에게 전송되지 않습니다. 동기화, 공유, 시맨틱 검색 및 클라우드 기능에는 계정이 필요하고, 설정에서 지능형 기능을 온디바이스 모델로 전환해 이것도 로컬에서만 사용할 수 있습니다. 자세한 내용은 <a href=\"/privacy\">개인정보 처리방침</a> §2를 참고하세요."
+      },
+      "password": {
+        "q": "비밀번호를 잊어버렸어요",
+        "a": "<a href=\"/passwordReset\">재설정 페이지</a> 또는 로그인 화면의 ‘비밀번호 찾기’ 링크를 이용하세요. 이메일은 저희 메일 서비스 제공업체에서 발송되니, 도착하지 않으면 스팸함을 확인하세요. Apple로 로그인한 경우에는 재설정할 비밀번호가 없으니 Apple 버튼을 다시 사용하세요."
+      },
+      "sync": {
+        "q": "북마크가 동기화되지 않아요",
+        "a": "두 기기에서 같은 계정으로 로그인했는지 확인한 다음 당겨서 새로고침하세요. 오프라인에서 저장한 항목은 대기열에 보관되었다가 네트워크가 복구되면 전송됩니다. 설정 → 데이터 &amp; 오프라인의 ‘저장 대기 중’ 화면에서 확인할 수 있습니다. 연결이 정상인데도 몇 분 넘게 멈춰 있다면 이메일로 알려주세요."
+      },
+      "extension": {
+        "q": "확장 프로그램이 저장되지 않아요",
+        "a": "확장 프로그램은 로그인된 세션으로 저장하므로, 웹 앱을 한 번 열어 로그인한 후 다시 시도하세요. Safari에서는 확장 프로그램을 켜고 현재 사이트에 대한 권한도 허용해야 합니다. Safari → 설정 → 확장 프로그램에서 설정하세요."
+      },
+      "bad_save": {
+        "q": "페이지가 제대로 저장되지 않았어요 - 이미지가 없거나, 제목이 틀리거나, 기사 텍스트가 없어요",
+        "a": "일부 사이트는 자동 수집을 차단하거나, 모든 것을 JavaScript로 렌더링하거나, 유료 구독이나 로그인 뒤에 있습니다. 이런 경우 접근할 수 있는 내용만 저장됩니다. 북마크에서 제목, 설명 또는 이미지를 직접 수정하면 영구적으로 해결됩니다. 자주 쓰는 사이트가 계속 잘못 저장된다면 URL을 보내주세요. 많은 경우 개별적으로 고칠 수 있습니다."
+      },
+      "export": {
+        "q": "북마크를 내보내거나 가져올 수 있나요?",
+        "a": "둘 다 가능합니다. 어떤 플랫폼에서든 설정 → 내보내기를 선택하면 요금제와 상관없이 언제든 라이브러리를 이동 가능한 파일로 받을 수 있습니다. 브라우저 북마크를 가져오려면 <a href=\"/export-bookmarks\">가져오기 가이드</a>를 따라 하세요."
+      },
+      "pricing": {
+        "q": "비용은 얼마인가요?",
+        "a": "무료 요금제가 있고, 더 많은 북마크와 고급 기능을 위한 유료 요금제가 있습니다. 현재 요금제와 가격은 홈페이지의 <a href=\"/#pricing\">요금 섹션</a>에서 확인하세요."
+      },
+      "cancel": {
+        "q": "구독을 취소하거나 요금제를 변경하려면 어떻게 하나요?",
+        "a": "구독한 곳에서 취소하세요. 웹이나 Mac에서 구독했다면 설정 → 구독에서 결제 포털을 열 수 있습니다. App Store에서 구독했다면 Apple이 직접 결제를 처리하므로 기기의 Apple 구독 설정(설정 → 내 이름 → 구독)에서 변경하세요. 결제한 기간이 끝날 때까지 유료 기능을 계속 사용할 수 있습니다."
+      },
+      "privacy": {
+        "q": "내 데이터는 비공개인가요?",
+        "a": "북마크는 여러분의 것입니다. 저희는 데이터를 판매하지 않으며, 로그인하지 않으면 앱을 전부 기기 안에서만 실행할 수도 있습니다. 어떤 데이터를 왜, 얼마나 오래 저장하는지는 <a href=\"/privacy\">개인정보 처리방침</a>에 자세히 나와 있습니다."
+      },
+      "delete": {
+        "q": "계정은 어떻게 삭제하나요?",
+        "a": "설정 → 계정 삭제를 선택한 후 확인하세요. 북마크, 파일, 구독이 함께 삭제되며 되돌릴 수 없으니, 사본이 필요하다면 먼저 내보내기를 하세요. 저희에게 이메일을 보낼 필요도 없고, 탈퇴를 막는 혜택 제안도 하지 않습니다."
+      },
+      "api": {
+        "q": "API가 있나요?",
+        "a": "네. <a href=\"/developers\">개발자 페이지</a>에서 할 수 있는 일을 확인하고, <a href=\"/developers/docs\">문서</a>에서 가이드, API 키, 플레이그라운드, 모든 엔드포인트를 볼 수 있습니다."
+      }
+    }
+  },
+  "help_pages": {
+    "legal": {
+      "last_updated": "최종 업데이트 {date}",
+      "questions": "이 페이지에 대해 궁금한 점이 있나요? {email}로 문의하세요."
+    },
+    "chat": {
+      "title": "채팅 문의",
+      "subtitle": "팀원이 직접 응답드리며, 보통 영업일 기준 이틀 안에 답변드립니다.",
+      "iframe_title": "지원 채팅",
+      "not_configured": "채팅이 아직 설정되지 않았습니다. {email}로 이메일을 보내주세요.",
+      "sign_in_prompt": "로그인하여 대화를 시작하고 기록을 한곳에 보관하세요.",
+      "sign_in": "로그인",
+      "prefer_email": "이메일이 편하신가요? {email}로 문의하세요."
+    },
+    "support": {
+      "title": "지원",
+      "subtitle": "뭔가 고장 났거나, 빠졌거나, 찾을 수 없나요? 사람에게 문의하는 방법을 안내합니다.",
+      "email_us": "이메일 보내기",
+      "email_body": "한 사람이 이 주소를 직접 읽으며, 보통 영업일 기준 이틀 안에 답변드립니다. 무엇을 했는지, 어떻게 되길 기대했는지, 실제로 어떻게 되었는지와 함께 사용한 앱(웹, iPhone, iPad, Mac, Vision Pro, TV, Watch 또는 브라우저 확장 프로그램)과 버전을 알려주세요. 스크린샷이 있으면 대화를 한 번 줄일 수 있습니다.",
+      "operated_by": "WebBites는 {operator}({address})에서 운영합니다.",
+      "where_title": "문의처 안내",
+      "col_want": "원하는 작업",
+      "col_go": "이동할 곳",
+      "row_bug": "버그 신고 또는 도움 요청",
+      "row_bug_go": "{chat} 또는 {email}",
+      "chat_link": "채팅 문의",
+      "row_feature": "기능 요청 또는 투표",
+      "feedback_board": "피드백 보드",
+      "row_changes": "변경 내용과 시점 확인",
+      "changelog": "변경 로그",
+      "row_api": "API로 개발하기",
+      "developer_docs": "개발자 문서",
+      "row_import": "브라우저 북마크 가져오기",
+      "import_guide": "가져오기 가이드",
+      "row_security": "보안 문제 신고",
+      "row_security_go": "{email}, 제목에 “Security” 기재",
+      "row_rights": "개인정보 보호 권리 행사",
+      "row_rights_go": "{link} §11",
+      "privacy_policy": "개인정보 처리방침",
+      "faq_title": "자주 묻는 질문에 대한 답변",
+      "faq_body": "비밀번호, 동기화, 내보내기, 구독 취소, 확장 프로그램 등에 관한 내용은 {link}에 있습니다.",
+      "faq_link": "FAQ 페이지",
+      "security_title": "보안 문제 신고",
+      "security_body": "제목에 “Security”를 넣고 문제를 재현할 수 있을 만큼 자세한 내용을 {email}로 보내주세요. 저희가 수정하기 전에는 공개하지 말고, 테스트 중 다른 사람의 데이터에 접근하거나 수정하지 마세요. 또한 서비스에 부하 테스트나 서비스 거부 테스트를 하지 마세요. 접수 사실을 확인해 드리고, 진행 상황을 계속 알려드리며, 원하시면 수정 후 제보자로 감사의 뜻을 표시합니다."
+    }
+  },
+  "support_chat": {
+    "replying_to": "{email}(으)로 답장 중",
+    "real_person": "사람이 직접 읽습니다",
+    "gate_intro": "로그인하여 전체 기록을 보관하거나, 게스트로 메시지를 남기세요.",
+    "your_email": "내 이메일",
+    "continue_as_guest": "게스트로 계속",
+    "email_note": "답장하는 용도로만 사용합니다. 작성 중인 내용은 이 기기에만 보관됩니다.",
+    "we_reply_to": "{email}(으)로 답장드립니다. 보통 영업일 기준 이틀 안에 답변드립니다.",
+    "tell_us": "어떤 일이 있는지 알려주세요.",
+    "your_message": "메시지",
+    "send": "보내기",
+    "close_chat": "지원 채팅 닫기",
+    "open_chat": "지원 채팅 열기",
+    "invalid_email": "답장을 받을 수 있도록 올바른 이메일을 입력하세요."
+  },
+  "marketing": {
+    "statistics": {
+      "active_users": "활성 사용자",
+      "bookmarks_saved": "저장된 북마크",
+      "accuracy_rate": "정확도",
+      "support": "지원"
+    }
+  },
+  "import_export": {
+    "time": {
+      "unknown": "알 수 없음",
+      "ago_minutes": "{minutes}분 {seconds}초 전",
+      "ago_seconds": "{seconds}초 전",
+      "hours_minutes": "{hours}시간 {minutes}분",
+      "minutes_seconds": "{minutes}분 {seconds}초",
+      "seconds": "{seconds}초"
+    },
+    "status_labels": {
+      "inactive": "비활성",
+      "active": "활성",
+      "processing": "처리 중",
+      "completed": "완료됨",
+      "cancelled": "취소됨",
+      "failed": "실패"
+    },
+    "activity": {
+      "processing": "처리 중:",
+      "waiting": "다음 북마크를 기다리는 중...",
+      "last_update": "마지막 업데이트: {time}"
+    },
+    "failed": {
+      "title": "가져오기 실패 ({count})",
+      "retry": "{count}개 항목 다시 시도 | {count}개 항목 다시 시도",
+      "retryable": "재시도 가능",
+      "failed": "실패"
+    },
+    "metrics": {
+      "title": "성능 지표",
+      "per_minute": "북마크/분",
+      "duration": "소요 시간",
+      "estimated_completion": "예상 완료",
+      "batches": "배치"
+    },
+    "overview": {
+      "title": "가져오기 상태",
+      "processing": "북마크 {total}개 중 {done}개 처리 중",
+      "currently": "현재: {url}",
+      "no_session": "진행 중인 가져오기 세션이 없습니다"
+    },
+    "progress": {
+      "title": "진행 상황",
+      "hint": "몇 분 걸릴 수 있으며, 이 창을 닫아도 가져오기는 계속됩니다.",
+      "completed": "{count}개 완료",
+      "failed": "{count}개 실패"
+    },
+    "queue": {
+      "title": "대기열 미리보기",
+      "remaining": "{count}개 남음",
+      "empty": "대기열에 항목이 없습니다",
+      "batch": "배치: {batch}",
+      "more": "... 외 {count}개"
+    },
+    "modal": {
+      "title": "가져오기 진행 상황",
+      "cancel_import": "가져오기 취소",
+      "retry_success": "{count}개 항목을 재시도 대기열에 다시 추가했습니다 | {count}개 항목을 재시도 대기열에 다시 추가했습니다",
+      "retry_error": "항목을 다시 시도하지 못했습니다. 다시 시도하세요.",
+      "cancelled": "가져오기가 취소되었습니다",
+      "cancel_error": "가져오기를 취소하지 못했습니다. 다시 시도하세요."
+    },
+    "user_modal": {
+      "title": "북마크 가져오기",
+      "subtitle": "이 사용자의 북마크 가져오기 실행",
+      "no_email": "이메일 없음",
+      "user_id": "사용자 ID: {id}",
+      "current_bookmarks": "현재 북마크: {count}개",
+      "import_status": "가져오기 상태",
+      "last_import": "마지막 가져오기: {date}",
+      "total_imported": "총 가져온 수: 북마크 {count}개",
+      "options": "가져오기 옵션",
+      "force_reimport": "강제 다시 가져오기 (기존 북마크 덮어쓰기)",
+      "skip_duplicates": "중복 북마크 건너뛰기",
+      "notify_user": "완료되면 사용자에게 알림 보내기",
+      "from_parse_class": "Parse 클래스에서 가져오기",
+      "notice_title": "중요 안내",
+      "progress": "가져오기 진행 상황",
+      "importing": "가져오는 중...",
+      "start_import": "가져오기 시작",
+      "already_imported_warning": "이 사용자는 이미 북마크를 가져왔습니다. 기존 데이터를 덮어쓰려면 ‘강제 다시 가져오기’를 켜세요.",
+      "status_unknown": "알 수 없음",
+      "status_imported": "이전에 가져옴",
+      "status_none": "가져오기 없음",
+      "not_available": "해당 없음",
+      "step_init": "가져오기를 초기화하는 중...",
+      "step_prepare": "사용자 데이터를 준비하는 중...",
+      "step_process": "북마크를 처리하는 중...",
+      "step_finalize": "가져오기를 마무리하는 중...",
+      "step_done": "가져오기를 완료했습니다!",
+      "failed_generic": "가져오기 실패",
+      "failed": "가져오기 실패: {error}"
+    },
+    "export_guide": {
+      "title": "북마크 내보내는 방법",
+      "intro": "북마크를 WebBites로 가져올 준비가 되었나요? 아래의 간단한 안내에 따라 자주 쓰는 브라우저에서 북마크를 내보내세요.",
+      "help_title": "도움이 필요하신가요?",
+      "help_text": "북마크를 내보내는 데 문제가 있다면 언제든 {link}하세요.",
+      "help_link": "지원팀에 문의",
+      "exporting_from": "{browser}에서 내보내기",
+      "note_label": "참고:",
+      "next_title": "다음 단계",
+      "next_intro": "북마크를 내보냈다면 이제 WebBites로 가져올 수 있습니다.",
+      "next_1": "<a href=\"/app\" class=\"text-primary-600 dark:text-primary-400 hover:underline\">WebBites 대시보드</a>로 이동해 설정 창을 엽니다.",
+      "next_2": "‘북마크 가져오기’ 버튼을 클릭합니다.",
+      "next_3": "내보낸 북마크 파일을 선택해 업로드합니다.",
+      "next_4": "업로드할 항목을 선택하고 ‘가져오기’를 클릭하면 나머지 정리는 WebBites가 맡아 드립니다!",
+      "import_alt": "WebBites 가져오기 {n}단계",
+      "steps": {
+        "chrome_1": {
+          "title": "Chrome 메뉴 열기",
+          "description": "브라우저 창 오른쪽 상단의 점 세 개 <strong>⋮</strong>를 클릭해 Chrome 메뉴를 엽니다."
+        },
+        "chrome_2": {
+          "title": "북마크 관리자 열기",
+          "description": "<strong>북마크 > 북마크 관리자</strong>로 이동하거나, <kbd class=\"new-kbd\">Ctrl+Shift+O</kbd>(Windows/Linux) 또는 <kbd class=\"new-kbd\">⌘+Option+B</kbd>(Mac)를 누르세요."
+        },
+        "chrome_3": {
+          "title": "북마크 내보내기",
+          "description": "북마크 관리자 오른쪽 상단의 점 세 개 <strong>⋮</strong>를 클릭한 다음 <strong>북마크 내보내기</strong>를 선택합니다."
+        },
+        "chrome_4": {
+          "title": "HTML 파일 저장",
+          "description": "북마크가 담긴 HTML 파일을 저장할 컴퓨터의 위치를 선택합니다. 기본 이름은 ‘bookmarks_[date].html’ 형태입니다.",
+          "note": "이 HTML 파일에는 모든 북마크와 폴더 구조가 들어 있습니다."
+        },
+        "firefox_1": {
+          "title": "Firefox 메뉴 열기",
+          "description": "브라우저 창 오른쪽 상단의 가로줄 세 개(햄버거 메뉴) <strong>☰</strong>를 클릭합니다."
+        },
+        "firefox_2": {
+          "title": "북마크 열기",
+          "description": "<strong>북마크 > 북마크 관리</strong>로 이동하거나, <kbd class=\"new-kbd\">Ctrl+Shift+B</kbd>(Windows/Linux) 또는 <kbd class=\"new-kbd\">⌘+Shift+B</kbd>(Mac)를 누르세요."
+        },
+        "firefox_3": {
+          "title": "북마크 내보내기",
+          "description": "열린 라이브러리 창에서 <strong>가져오기 및 백업 > 북마크를 HTML로 내보내기</strong>를 클릭합니다."
+        },
+        "firefox_4": {
+          "title": "HTML 파일 저장",
+          "description": "HTML 파일을 저장할 컴퓨터의 위치를 선택합니다. 기본 이름은 ‘bookmarks.html’입니다.",
+          "note": "WebBites로 가져올 때 쉽게 찾을 수 있도록 파일을 저장한 위치를 기억해 두세요."
+        },
+        "safari_1": {
+          "title": "Safari 메뉴 열기",
+          "description": "Safari 상단 메뉴 막대에서 <strong>파일</strong>을 클릭합니다."
+        },
+        "safari_2": {
+          "title": "북마크 내보내기",
+          "description": "드롭다운 메뉴에서 <strong>북마크 내보내기</strong>를 선택합니다."
+        },
+        "safari_3": {
+          "title": "파일 저장",
+          "description": "북마크 파일을 저장할 Mac의 위치를 선택합니다. .zip 파일로 저장되므로 압축을 풀어 .html 파일을 꺼내야 합니다.",
+          "note": "Safari는 즐겨찾기 막대와 모든 폴더에 있는 북마크를 포함해 모든 북마크를 내보냅니다."
+        },
+        "edge_1": {
+          "title": "Edge 메뉴 열기",
+          "description": "브라우저 창 오른쪽 상단의 점 세 개 <strong>⋯</strong>를 클릭한 다음 <strong>즐겨찾기</strong>를 클릭합니다."
+        },
+        "edge_2": {
+          "title": "즐겨찾기 내보내기",
+          "description": "<strong>즐겨찾기 내보내기</strong>를 클릭합니다."
+        },
+        "edge_3": {
+          "title": "HTML 파일 저장",
+          "description": "즐겨찾기/북마크가 담긴 HTML 파일을 저장할 컴퓨터의 위치를 선택합니다.",
+          "note": "Edge는 직접 만든 폴더 안의 항목을 포함해 모든 즐겨찾기를 내보냅니다."
+        },
+        "opera_1": {
+          "title": "북마크 열기",
+          "description": "<kbd class=\"new-kbd\">Ctrl+Shift+B</kbd>(Windows/Linux) 또는 <kbd class=\"new-kbd\">⌘+Option+B</kbd>(Mac)를 눌러 북마크 관리자를 열거나, Opera 메뉴를 클릭해 <strong>북마크 > 북마크</strong>를 선택합니다."
+        },
+        "opera_2": {
+          "title": "전체 북마크 보기 열기",
+          "description": "<strong>전체 북마크 보기 열기</strong>를 클릭합니다."
+        },
+        "opera_3": {
+          "title": "북마크 내보내기",
+          "description": "북마크 관리자 왼쪽 하단의 <strong>가져오기/내보내기</strong> 버튼을 클릭한 다음 <strong>북마크를 HTML 파일로 내보내기</strong>를 선택합니다."
+        },
+        "opera_4": {
+          "title": "HTML 파일 저장",
+          "description": "북마크가 담긴 HTML 파일을 저장할 컴퓨터의 위치를 선택합니다.",
+          "note": "Opera의 북마크 내보내기에는 모든 북마크와 폴더 구조가 포함됩니다."
+        },
+        "arc_1": {
+          "title": "Arc 사이드바 열기",
+          "description": "<kbd class=\"new-kbd\">⌘+T</kbd>를 눌러 명령 막대를 열고 <strong>arc://bookmarks</strong>로 이동합니다."
+        },
+        "arc_2": {
+          "title": "북마크 내보내기",
+          "description": "북마크 패널 오른쪽 상단의 점 세 개 <strong>⋯</strong>를 클릭한 다음 <strong>설정</strong>을 선택합니다. 설정 메뉴에서 <strong>북마크 내보내기</strong>를 찾아 클릭합니다."
+        },
+        "arc_3": {
+          "title": "HTML 파일 저장",
+          "description": "북마크가 담긴 HTML 파일을 저장할 컴퓨터의 위치를 선택합니다.",
+          "note": "이 HTML 파일에는 모든 북마크와 폴더 구조가 들어 있습니다."
+        },
+        "raindrop_1": {
+          "title": "Raindrop.io에 로그인",
+          "description": "<a href='https://app.raindrop.io' target='_blank' rel='noopener noreferrer'>app.raindrop.io</a>로 이동해 계정에 로그인합니다."
+        },
+        "raindrop_2": {
+          "title": "설정 열기",
+          "description": "오른쪽 상단의 프로필 사진을 클릭한 다음 드롭다운 메뉴에서 <strong>설정</strong>을 선택합니다."
+        },
+        "raindrop_3": {
+          "title": "북마크 내보내기",
+          "description": "설정 메뉴에서 <strong>백업</strong> 탭으로 이동합니다. ‘내보내기’ 섹션에서 원하는 형식을 선택합니다(WebBites와의 호환성을 위해 HTML을 권장합니다)."
+        },
+        "raindrop_4": {
+          "title": "북마크 다운로드",
+          "description": "<strong>내보내기</strong> 버튼을 클릭해 북마크 파일을 생성하고 다운로드합니다.",
+          "note": "Raindrop.io는 여러 형식으로 내보낼 수 있지만, WebBites로 가져올 때는 HTML 형식이 가장 잘 맞습니다."
+        }
+      }
+    }
+  },
+  "subscription_success": {
+    "title": "구독이 활성화되었습니다!",
+    "message": "{plan} 요금제를 성공적으로 구독했습니다. 프리미엄 경험을 즐겨 보세요!",
+    "benefits_title": "프리미엄 혜택",
+    "bookmarks": "북마크",
+    "bookmarks_limit": "최대 {limit}개의 북마크 저장",
+    "audio": "오디오 트랙",
+    "audio_limit": "프리미엄 오디오 트랙 {limit}개 이용",
+    "import_bookmarks": "북마크 가져오기",
+    "start": "둘러보기 시작",
+    "unlimited": "무제한"
+  },
+  "rss": {
+    "mark_all_read": "모두 읽음으로 표시",
+    "mark_read": "읽음으로 표시",
+    "mark_unread": "읽지 않음으로 표시",
+    "pane": {
+      "articles": "글"
+    },
+    "sidebar": {
+      "feeds": "피드",
+      "all_articles": "모든 글",
+      "unread": "읽지 않음",
+      "import_opml": "피드 가져오기(OPML)…",
+      "export_feeds": "피드 내보내기…",
+      "import_added": "피드 {count}개를 추가했습니다 | 피드 {count}개를 추가했습니다",
+      "import_queued": "{count}개 더 도착 예정",
+      "import_failed_rows": "{count}개를 읽을 수 없습니다",
+      "import_failed": "해당 OPML 파일을 가져올 수 없습니다.",
+      "export_failed": "피드를 내보낼 수 없습니다."
+    },
+    "add_feed": {
+      "title": "피드 추가",
+      "placeholder": "피드 주소 또는 이름",
+      "hint": "사이트나 피드 주소를 붙여넣거나 이름으로 검색하세요.",
+      "nothing_found": "결과 없음",
+      "no_match": "“{query}”와(과) 일치하는 피드가 없습니다. 피드 주소를 알고 있다면 여기에 붙여넣으세요.",
+      "readers": "구독자 {count}명 | 구독자 {count}명",
+      "already_subscribed": "이미 구독 중",
+      "add": "추가",
+      "done": "완료",
+      "subscribe_failed": "해당 피드를 구독할 수 없습니다."
+    },
+    "settings": {
+      "name": "이름",
+      "name_hint": "게시자 이름 사용 중",
+      "fetch_full": "전체 글 가져오기",
+      "fetch_full_description": "많은 피드가 요약문만 제공합니다. 이 옵션을 켜면 WebBites가 새 글을 전체 가져와 요약해 드립니다. 유료 요금제에서 사용할 수 있습니다.",
+      "open_website": "웹사이트 열기",
+      "feed_dead": "이 피드가 응답하지 않아 더 이상 확인하지 않습니다.",
+      "unsubscribe": "구독 취소",
+      "save_failed": "설정을 저장할 수 없습니다."
+    },
+    "list": {
+      "filter": "글 필터",
+      "showing_unread": "읽지 않은 글만 표시 중",
+      "show_unread": "읽지 않은 글만 표시",
+      "refresh": "피드 새로고침",
+      "confirm_feed": "“{title}”의 모든 글을 읽음으로 표시할까요?",
+      "confirm_all": "모든 글을 읽음으로 표시할까요?",
+      "full_text": "전체 텍스트 제공",
+      "summary": "요약 제공",
+      "no_matches": "일치하는 항목 없음",
+      "no_matches_description": "“{query}”와(과) 일치하는 항목이 없습니다.",
+      "no_feeds": "아직 피드가 없습니다",
+      "no_feeds_description": "피드를 추가하고 읽기를 시작하세요.",
+      "caught_up": "모두 읽었습니다",
+      "caught_up_description": "읽지 않은 항목이 없습니다.",
+      "no_articles": "글 없음",
+      "no_articles_description": "이 피드는 아직 게시된 항목이 없습니다."
+    },
+    "reader": {
+      "no_article": "선택한 글이 없습니다",
+      "pick_article": "목록에서 글을 선택해 읽기를 시작하세요.",
+      "original": "원문",
+      "mark_unread": "읽지 않음으로 표시",
+      "summarise": "이 글 요약",
+      "listen": "이 글 듣기",
+      "nothing_to_read": "읽을 내용이 없습니다",
+      "open_original": "원문 열기",
+      "save_bookmark": "북마크로 저장",
+      "add_read_later": "나중에 읽기에 추가",
+      "remove_read_later": "나중에 읽기에서 제거",
+      "show_original": "원문 보기",
+      "show_extracted": "추출된 내용 보기",
+      "empty_failed": "게시자에게서 이 글의 텍스트를 가져오지 못했습니다.",
+      "empty_pending": "전체 텍스트를 아직 가져오는 중입니다. 잠시 후 다시 시도하세요.",
+      "empty_headlines": "이 피드는 헤드라인만 게시합니다. 원문을 열어 읽으세요.",
+      "too_short": "이 글은 요약하기에 텍스트가 너무 적습니다.",
+      "summary_failed": "이 글을 요약할 수 없습니다.",
+      "audio_failed": "이 글의 오디오를 생성할 수 없습니다.",
+      "saved_read_later": "나중에 읽기에 저장했습니다",
+      "removed_read_later": "나중에 읽기에서 제거했습니다",
+      "read_later_failed": "나중에 읽기를 업데이트할 수 없습니다.",
+      "extract_failed": "이 글을 추출할 수 없습니다."
+    }
+  },
+  "audio_recorder": {
+    "start_recording": "녹음 시작",
+    "pause_recording": "녹음 일시정지",
+    "resume_recording": "녹음 재개"
+  },
+  "audio_voice_picker": {
+    "voices": {
+      "nova": "따뜻하고 자연스러운",
+      "alloy": "중립적이고 균형 잡힌",
+      "ash": "자신감 있고 또렷한",
+      "ballad": "부드럽고 표현력 있는",
+      "coral": "밝고 친근한",
+      "echo": "차분하고 낮은",
+      "fable": "다정한 이야기꾼",
+      "onyx": "깊고 권위 있는",
+      "sage": "침착하고 절제된",
+      "shimmer": "가볍고 경쾌한",
+      "verse": "활기차고 역동적인",
+      "marin": "또렷하고 대화하는 듯한",
+      "cedar": "풍부하고 안정적인"
+    },
+    "accents": {
+      "american": "미국식",
+      "british": "영국식",
+      "australian": "호주식",
+      "irish": "아일랜드식",
+      "indian": "인도식",
+      "scottish": "스코틀랜드식"
+    }
+  },
+  "auth_modal": {
+    "passwords_mismatch": "비밀번호가 일치하지 않습니다",
+    "password_needs_chars": "비밀번호가 {n}자 더 필요합니다 | 비밀번호가 {n}자 더 필요합니다",
+    "password_needs_number": "비밀번호에 숫자가 하나 이상 필요합니다",
+    "signup_failed": "회원가입에 실패했습니다",
+    "login_after_signup_failed": "가입 후 로그인에 실패했습니다",
+    "login_failed": "로그인에 실패했습니다"
+  },
+  "bookmark_editor": {
+    "no_results_for": "{query}에 대한 결과가 없습니다"
+  },
+  "bookmark_group": {
+    "add_to_board": "보드에 추가",
+    "board_empty_title": "이 보드는 비어 있습니다",
+    "board_empty_message": "북마크 카드의 옵션 메뉴를 사용해 내 컬렉션에서 이 보드에 북마크를 추가하세요."
+  },
+  "bookmark_options": {
+    "remove_from_board": "보드에서 제거",
+    "removed_from_board": "보드에서 제거되었습니다",
+    "remove_error": "보드에서 제거하는 중 오류",
+    "read_later": "나중에 읽기",
+    "remove_read_later": "나중에 읽기에서 제거",
+    "saved_read_later": "나중에 읽기에 저장했습니다",
+    "removed_read_later": "나중에 읽기에서 제거했습니다",
+    "add_to_board": "“{board}”에 추가",
+    "added_to_board": "{board}에 추가되었습니다",
+    "add_error": "보드에 추가하는 중 오류"
+  },
+  "bookmark_submit": {
+    "save_type": "{type} 저장",
+    "types": {
+      "website": "웹사이트",
+      "image": "이미지",
+      "pdf": "PDF",
+      "movie": "영화",
+      "game": "게임",
+      "drawing": "그림",
+      "audio": "오디오",
+      "textNote": "메모"
+    }
+  },
+  "bookmark_card": {
+    "image_alt": "카드 이미지",
+    "favicon_alt": "북마크 파비콘",
+    "favicon_replacement_alt": "북마크 대체 파비콘",
+    "copy_url_failed": "URL을 복사하지 못했습니다"
+  },
+  "compose_expand": {
+    "save_drawing_error": "그림을 저장할 수 없습니다"
+  },
+  "feedback_card": {
+    "hidden_title": "관리자에게만 표시됩니다",
+    "status": {
+      "in_progress": "진행 중",
+      "backlog": "백로그",
+      "pending": "대기 중",
+      "done": "완료",
+      "closed": "종료됨"
+    }
+  },
+  "feedback_comment": {
+    "deleted": "댓글이 삭제되었습니다",
+    "delete_failed": "댓글을 삭제하지 못했습니다"
+  },
+  "feedback_form": {
+    "select_type": "유형 선택",
+    "markdown_supported": "마크다운 지원",
+    "sent": "피드백을 보냈습니다",
+    "login_to_submit": "피드백을 제출하려면 로그인해야 합니다",
+    "send_failed": "피드백을 보내는 중 오류가 발생했습니다. 나중에 다시 시도하세요",
+    "types": {
+      "bug_report": "버그 리포트",
+      "feature_request": "기능 요청",
+      "improvement": "개선 사항",
+      "other": "기타"
+    }
+  },
+  "feedback_info_modal": {
+    "login_to_comment": "댓글을 작성하려면 로그인해야 합니다",
+    "comment_failed": "댓글을 게시할 수 없습니다. 나중에 다시 시도하세요"
+  },
+  "feedback_up_vote": {
+    "login_to_vote": "투표하려면 로그인해야 합니다"
+  },
+  "import_modal": {
+    "checking_access": "가져오기 권한을 확인하는 중...",
+    "quota_title": "북마크 한도",
+    "plan_active_title": "가져오기 플랜 활성화됨",
+    "plan_active_description": "{date}까지 한 번에 한해 북마크를 무제한으로 가져올 수 있습니다",
+    "validate_failed": "가져오기 권한을 확인하지 못했습니다",
+    "checkout_failed": "결제 세션을 만들지 못했습니다"
+  },
+  "landing_footer": {
+    "api_docs": "API 문서"
+  },
+  "main_sidebar": {
+    "trash": "휴지통"
+  },
+  "mobile_top_bar": {
+    "library": "라이브러리",
+    "more": "더 보기",
+    "trash": "휴지통",
+    "board": "보드",
+    "everything": "전체"
+  },
+  "onboarding_wizard": {
+    "intro": {
+      "title": "웹을 위한 나만의 라이브러리",
+      "content": "찾은 것을 저장하고, 좋아하는 사이트를 팔로우하고, 언제든 다시 찾아보세요.",
+      "subcontent": "1분 투어를 시작합니다."
+    },
+    "organised": {
+      "title": "알아서 정리됩니다",
+      "content": "저장한 모든 항목에 자동으로 태그가 붙고, 페이지가 바뀌어도 볼 수 있도록 전체 페이지 스크린샷과 읽기 좋은 사본이 함께 보관됩니다.",
+      "subcontent": "페이지 속 단어, 태그, 이미지 속 텍스트, 심지어 색상으로도 검색할 수 있습니다."
+    },
+    "feeds": {
+      "title": "좋아하는 사이트를 팔로우하세요",
+      "content": "팔로우하는 사이트의 새 글이 피드로 들어옵니다. 읽거나, 듣거나, 좋은 글은 라이브러리에 저장하세요.",
+      "add": "피드 추가"
+    },
+    "everywhere": {
+      "title": "어디서나 저장하세요",
+      "content": "브라우저 확장 프로그램으로 한 번의 클릭으로, 또는 iPhone, iPad, Mac의 공유 시트에서 어떤 페이지든 저장하세요.",
+      "subcontent": "앱에서는 이 계정으로 로그인하세요. 계정 없이 만든 기기 라이브러리는 별개입니다.",
+      "chrome": "Chrome 확장 프로그램",
+      "apps": "iPhone, iPad 및 Mac"
+    },
+    "import": {
+      "title": "기존 북마크 가져오기",
+      "content": "어떤 브라우저의 북마크든 가져오면 자동으로 정리해 드립니다",
+      "subcontent": "북마크를 내보내는 방법은 {link}에서 확인하세요.",
+      "this_page": "이 페이지"
+    },
+    "first_bookmark": {
+      "title": "첫 북마크 저장하기",
+      "content": "아래에 URL을 입력하거나 추천 항목을 사용해 보세요.",
+      "subcontent": "많이 저장할수록 컬렉션이 더 강력해집니다."
+    }
+  },
+  "reader_view": {
+    "error_try_again": "오류가 발생했습니다. 나중에 다시 시도하세요"
+  },
+  "settings_modal": {
+    "view_import_status": "가져오기 상태 보기",
+    "extensions_title": "WebBites 확장 프로그램",
+    "extensions_subtitle": "어디서든 무엇이든 더 빠르게 저장하세요.",
+    "extensions_label": "확장 프로그램",
+    "chrome_icon_alt": "WebBites Chrome 확장 프로그램 아이콘",
+    "raycast_icon_alt": "WebBites Raycast 확장 프로그램 아이콘",
+    "automations_title": "자동화",
+    "automations_subtitle": "북마크가 추가될 때마다 태그를 달고, 정리하고, 다른 곳으로 보내세요. 스마트 보드도 여기에 있습니다.",
+    "deleting_account": "계정을 삭제하는 중...",
+    "account_deleted": "계정이 삭제되었습니다.",
+    "delete_account_failed": "계정을 삭제하는 중 오류가 발생했습니다. 다시 시도하세요."
+  },
+  "shortcuts_modal": {
+    "click": "클릭"
+  },
+  "social_post_view": {
+    "fallback_platform": "소셜"
+  },
+  "tag_manager": {
+    "untitled": "제목 없음",
+    "error_generic": "문제가 발생했습니다"
+  },
+  "testimonials_old": {
+    "heading": "사용자 후기"
+  },
+  "tiptap_editor": {
+    "narrow_view": "좁게 보기",
+    "wide_view": "넓게 보기",
+    "paste_url": "URL 붙여넣기",
+    "image_size": {
+      "small": "작게",
+      "big": "크게",
+      "biggest": "가장 크게"
+    },
+    "url_to_link": "URL을 링크로",
+    "add_link": "링크 추가",
+    "insert_block_below": "아래에 블록 삽입",
+    "block_actions_hint": "블록 동작, 또는 끌어서 이동",
+    "block_actions": "블록 동작",
+    "errors": {
+      "upload_failed": "이미지 업로드 실패: {error}",
+      "no_file": "선택한 파일이 없습니다",
+      "too_large": "파일 크기가 10MB 제한을 초과합니다",
+      "not_image": "선택한 파일은 이미지가 아닙니다"
+    }
+  },
+  "website_modal_media_view": {
+    "backdrop_alt": "{title}의 배경 포스터",
+    "game_cover_alt": "{name} 커버"
+  },
+  "website_screenshot": {
+    "pan_hint": "Shift를 누른 채 드래그하여 이동",
+    "undo": "실행 취소 (Ctrl+Z)",
+    "redo": "다시 실행 (Ctrl+Y)"
+  },
+  "import_status_history": {
+    "title": "가져오기 기록 (세션 {count}개) | 가져오기 기록 (세션 {count}개)",
+    "empty": "이전 가져오기 세션이 없습니다",
+    "progress": "북마크 {processed}/{total}",
+    "success_rate": "성공률 {rate}%",
+    "duration": "소요 시간: {duration}",
+    "more_sessions": "... 외 세션 {count}개 | ... 외 세션 {count}개",
+    "unknown": "알 수 없음",
+    "status": {
+      "completed": "완료됨",
+      "active": "진행 중",
+      "failed": "실패",
+      "cancelled": "취소됨"
+    }
+  },
+  "bookmarks_area": {
+    "already_pinned": "이 웹사이트는 이미 고정되어 있습니다"
+  },
+  "top_bar": {
+    "importing": "가져오는 중"
+  },
+  "search_bar": {
+    "filters": "필터",
+    "beta": "(베타)",
+    "natural_language_description": "느리지만 자연어로 검색할 수 있습니다. 예를 들어:",
+    "natural_language_example": "\"Swift 관련 GitHub 프로젝트\"",
+    "colors": "색상",
+    "find_tag": "태그 찾기",
+    "tags_loading": "불러오는 중…",
+    "no_tags": "태그를 찾을 수 없습니다",
+    "color_names": {
+      "red": "빨강",
+      "green": "초록",
+      "blue": "파랑",
+      "yellow": "노랑",
+      "purple": "보라",
+      "orange": "주황",
+      "black": "검정",
+      "white": "흰색",
+      "pink": "분홍",
+      "brown": "갈색",
+      "gray": "회색",
+      "cyan": "청록",
+      "magenta": "자홍",
+      "lime": "라임",
+      "olive": "올리브",
+      "navy": "남색",
+      "teal": "틸",
+      "maroon": "적갈색",
+      "silver": "은색",
+      "gold": "금색",
+      "indigo": "인디고",
+      "violet": "바이올렛"
+    }
+  },
+  "new_bookmark": {
+    "fetching_preview": "웹사이트 미리보기를 가져오는 중...",
+    "clipboard_access": "브라우저에서 클립보드 접근을 허용했는지 확인하세요.",
+    "saving_note": "메모 저장 중",
+    "note_saved": "텍스트 메모를 저장했습니다",
+    "note_error": "텍스트 메모 저장 중 오류",
+    "saving_drawing": "그림 저장 중",
+    "drawing_saved": "그림을 저장했습니다",
+    "drawing_error": "그림 저장 중 오류",
+    "media_error": "미디어 저장 중 오류",
+    "nothing_to_save": "아직 저장할 내용이 없습니다",
+    "saved": "저장됨",
+    "save_as": {
+      "website": "웹사이트 저장",
+      "textNote": "메모 저장",
+      "image": "이미지 저장",
+      "pdf": "PDF 저장",
+      "movie": "영화 저장",
+      "game": "게임 저장",
+      "drawing": "그림 저장",
+      "audio": "오디오 저장"
+    }
+  },
+  "landing_page": {
+    "hero": {
+      "title": "웹을 위한",
+      "title_emphasis": "나만의 라이브러리",
+      "subtitle": "찾은 것은 무엇이든 저장하고, 좋아하는 사이트를 팔로우하고, 언제든 다시 찾아보세요. 정리는 WebBites가 합니다.",
+      "logo_alt": "WebBites 로고"
+    },
+    "scroll": {
+      "title": "저장한 모든 것을,",
+      "title_emphasis": "한곳에",
+      "browser_alt": "저장한 기사, 이미지, 메모, 음악이 나란히 보이는 브라우저 속 WebBites 월"
+    },
+    "native": {
+      "title": "iPhone, iPad, Mac 그리고 모든 브라우저",
+      "description": "iPhone, iPad, Mac용 네이티브 앱은 각각 공유 시트와 Safari 확장 프로그램을 갖추고 있으며, 그 밖의 곳에서는 전체 기능의 웹 앱을 쓸 수 있습니다. WebBites 계정으로 로그인하면 라이브러리가 이미 그곳에 있습니다.",
+      "mac_alt": "사이드바에 보드와 피드가 있고 옆으로 저장한 북마크가 펼쳐진 WebBites Mac 앱",
+      "phone_alt": "저장한 북마크를 두 열로 보여주는 WebBites iPhone 앱"
+    },
+    "features": {
+      "ai": {
+        "title": "알아서 정리",
+        "description": "북마크를 저장하는 순간 태그가 붙고 분류됩니다. 관리할 폴더가 없습니다."
+      },
+      "search": {
+        "title": "다시 찾기",
+        "description": "페이지 속 단어, 태그, 메모, 이미지 속 텍스트, 심지어 색상으로도 검색하세요."
+      },
+      "screenshots": {
+        "title": "영구 보관",
+        "description": "모든 페이지의 전체 스크린샷과 읽기 좋은 사본을 보관해, 원본이 바뀌거나 사라져도 걱정 없습니다."
+      },
+      "media": {
+        "title": "무엇이든 저장",
+        "description": "글, 이미지, 동영상, 영화, 게임, 메모를 하나의 라이브러리에 나란히."
+      },
+      "ai_organisation": {
+        "description": "고급 AI로 북마크를 자동으로 분류하고 태그를 답니다."
+      },
+      "cross_platform": {
+        "description": "로그인하면 iPhone, iPad, Mac, 웹 어디서나 같은 라이브러리가 보입니다."
+      },
+      "reader": {
+        "title": "리더 모드",
+        "description": "기사가 더 읽기 편하게 자동으로 정리되며, 유료 구독이 필요한 기사도 가능합니다!"
+      },
+      "raycast": {
+        "title": "Raycast 지원",
+        "description": "Raycast 확장 프로그램으로 모든 북마크를 단축키 한 번에 열 수 있습니다!"
+      },
+      "browsers": {
+        "title": "브라우저에서 저장",
+        "description": "Chrome 확장 프로그램 또는 Mac·iPhone 앱에 포함된 Safari 확장 프로그램으로 한 번에."
+      },
+      "colors": {
+        "title": "색상 추출",
+        "description": "모든 북마크의 주요 색상을 추출해 드리므로 색상으로 검색할 수 있습니다!"
+      },
+      "tts": {
+        "title": "텍스트 음성 변환",
+        "description": "저장한 모든 것, 피드의 모든 글을 들을 수 있습니다."
+      },
+      "annotate": {
+        "title": "스크린샷 주석",
+        "description": "스크린샷의 아무 곳이나 클릭해 주석을 추가하세요."
+      },
+      "ocr": {
+        "title": "OCR",
+        "description": "저장한 모든 이미지에 광학 문자 인식(OCR)이 적용되어 텍스트로 검색할 수 있습니다."
+      },
+      "pin": {
+        "title": "북마크 고정",
+        "description": "북마크를 목록 맨 위에 고정해 쉽게 접근하세요."
+      },
+      "multilingual": {
+        "title": "다국어",
+        "description": "여러 언어를 지원합니다."
+      }
+    },
+    "save_anything": {
+      "sentence": "{websites}{images}{movies}{games}, 그리고 Notion 같은 편집기로 쓰는 {notes}까지 무엇이든 저장하세요.",
+      "websites": "웹사이트, ",
+      "images": "이미지, ",
+      "movies": "영화, ",
+      "games": "게임",
+      "notes": "메모"
+    },
+    "roadmap_more": {
+      "title": "그 밖에도 많습니다!",
+      "description": "새로운 기능이 계속 추가되고 있습니다. 피드백 보드에서 다음 계획을 확인해 보세요!"
+    },
+    "developers": {
+      "title": "저장하는 모든 것을 위한 API",
+      "description": "WebBites가 하는 모든 일은 HTTP로 할 수 있습니다. 링크를 저장하고, 라이브러리를 검색하고, AI가 처리를 마치는 즉시 웹훅을 받아 보세요.",
+      "docs_button": "개발자 문서 보기",
+      "facts": {
+        "rest": {
+          "title": "깔끔한 REST",
+          "text": "코드를 작성하기 전에 모든 호출을 시험해 볼 수 있는 OpenAPI 스키마와 브라우저 플레이그라운드를 제공합니다."
+        },
+        "webhooks": {
+          "title": "웹훅",
+          "text": "URL을 지정하면 WebBites가 완성된 북마크(스크린샷, 요약, 태그)를 POST로 보내며, 검증할 수 있도록 서명되어 있습니다."
+        },
+        "keys": {
+          "title": "내 키, 내 한도",
+          "text": "키를 만들고, 각 키의 사용량을 확인하고, 모든 응답 헤더에서 속도 제한을 읽을 수 있습니다."
+        }
+      },
+      "samples": {
+        "save": "링크 저장",
+        "search": "검색",
+        "webhook": "웹훅"
+      }
+    },
+    "feeds": {
+      "title": "좋아하는 사이트를 팔로우하세요",
+      "description": "블로그, 뉴스, 뉴스레터를 위한 내장 리더. 알고리즘은 없습니다. 글마다 읽고, 듣고, 요약하고, 좋은 글은 라이브러리에 저장하세요.",
+      "image_alt": "Mac의 WebBites 피드 리더. 사이드바에 피드가 있고 옆에 글이 열려 있습니다"
+    },
+    "where": {
+      "title": "라이브러리가 저장되는 곳",
+      "separate": "WebBites 계정은 어디서나 동기화됩니다. 기기 라이브러리는 계정 없이 iPhone, iPad 또는 Mac에만 저장됩니다. 둘은 별개입니다. 기기 라이브러리는 웹이나 계정에 나타나지 않으며, 구매 내역도 서로 옮겨지지 않습니다.",
+      "account": "WebBites 계정:",
+      "account_when": "웹이나 Chrome을 쓰거나 피드, AI 태그, 요약이 필요하다면.",
+      "device": "기기 라이브러리:",
+      "device_when": "Apple 기기만 쓰고 어떤 서버에도 데이터를 두고 싶지 않다면."
+    }
+  },
+  "login_page": {
+    "not_you": "{email}이(가) 아닌가요?"
+  },
+  "password_reset_page": {
+    "chars_needed": "비밀번호가 {count}자 더 필요합니다 | 비밀번호가 {count}자 더 필요합니다",
+    "number_needed": "비밀번호에 숫자가 하나 이상 필요합니다",
+    "mismatch": "비밀번호가 일치하지 않습니다"
+  },
+  "questionnaire": {
+    "eyebrow": "WebBites를 함께 만들어 주세요",
+    "step": "{current} / {total}",
+    "hint": "해당하는 것을 모두 고르세요. 언제든 건너뛸 수 있어요.",
+    "q_tools": "지금은 링크를 무엇으로 저장하고 있나요?",
+    "q_interest": "가장 중요하게 생각하는 것은 무엇인가요?",
+    "q_ai": "“AI 자동 정리”는 어떤 모습이면 좋을까요?",
+    "browser": "브라우저 북마크",
+    "raindrop": "Raindrop",
+    "pocket": "Pocket",
+    "notion": "Notion",
+    "notes": "Apple Notes",
+    "pinterest": "Pinterest",
+    "none": "아직 없음",
+    "find": "다시 찾기 쉬운 것",
+    "organise": "정리된 상태",
+    "devices": "어떤 기기에서든 저장",
+    "visual": "시각적인 아카이브",
+    "later": "나중에 읽기",
+    "share": "보드 공유",
+    "tags": "자동 태그",
+    "search": "일상적인 말로 검색",
+    "boards": "보드로 자동 분류",
+    "summaries": "요약",
+    "duplicates": "중복 찾기",
+    "other": "더 있나요? (선택)",
+    "skip_question": "이 질문 건너뛰기",
+    "thanks": "감사해요, 큰 도움이 돼요!"
+  }
+}

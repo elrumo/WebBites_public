@@ -1,0 +1,2424 @@
+{
+  "alerts": {
+    "bookmark": {
+      "duplicate": "Vous avez déjà enregistré ce signet",
+      "duplicate_cancel": "Ne pas enregistrer",
+      "duplicate_confirm": "Enregistrer à nouveau",
+      "error": "Erreur lors de l’enregistrement du signet",
+      "export_success": "Signets exportés !",
+      "limit_description": {
+        "other": " votre offre pour enregistrer davantage de signets"
+      },
+      "limit_reached": "Vous avez atteint votre limite de signets",
+      "pin_error": "Impossible d’épingler le site, réessayez plus tard",
+      "save_error_note": "Erreur lors de l’enregistrement de la note",
+      "save_success": "Signet enregistré",
+      "saving": "Enregistrement…",
+      "hide_error": "Impossible de modifier la visibilité de ce signet",
+      "hide_index_lag": "Masqué, mais la recherche peut mettre un instant à se mettre à jour"
+    },
+    "clipboard": {
+      "copy_error": "Échec de la copie dans le presse-papiers.",
+      "copy_success": "{text} copié dans le presse-papiers."
+    },
+    "editor": {
+      "image_upload_error": "Échec du traitement de l’image déposée : {error}",
+      "image_upload_progress": "Envoi de l’image…"
+    },
+    "file_upload": {
+      "error": "Erreur lors de l’envoi du fichier",
+      "success": "Fichier envoyé avec succès",
+      "uploading_many": "Envoi des fichiers…",
+      "uploading_one": "Envoi du fichier…"
+    },
+    "image_upload": {
+      "error": "Erreur lors de l’envoi de l’image",
+      "success": "Image envoyée avec succès"
+    },
+    "import": {
+      "complete": "C’est fait !",
+      "complete_description": "Tous vos signets ont été importés dans WebBites.",
+      "error": "Une erreur s’est produite, veuillez réessayer",
+      "final_success": "Vos signets ont été importés. 😊",
+      "progress": "Un instant…",
+      "progress_description": "Si vous avez beaucoup de signets, cela peut prendre quelques secondes",
+      "remaining": "Signets restant à importer :",
+      "remaining_description": "Cela peut prendre un moment. Vous pouvez fermer l’app, nous vous enverrons un e-mail une fois l’opération terminée.",
+      "success": "Signets importés avec succès"
+    },
+    "live_note": {
+      "conflict": "Cette note a été modifiée depuis un autre appareil. Vos modifications locales ont été conservées.",
+      "merged_with_conflicts": "Les modifications du cloud ont été fusionnées. Certaines modifications qui se chevauchaient ont été conservées telles quelles."
+    },
+    "subscription": {
+      "duplicate_plan": "Vous êtes déjà abonné à cette offre. Veuillez vérifier vos abonnements actuels."
+    },
+    "core_store": {
+      "board_joined": "Vous avez rejoint « {name} »",
+      "invite_accepted": "Invitation acceptée",
+      "invite_invalid": "Ce lien d’invitation n’est plus valide",
+      "board_move_failed": "Impossible de le déplacer ici",
+      "board_duplicated": "Dupliqué — {count} signet copié | Dupliqué — {count} signets copiés",
+      "board_duplicate_error": "Erreur lors de la duplication du tableau",
+      "board_archived": "Tableau archivé",
+      "board_archive_error": "Erreur lors de l’archivage du tableau",
+      "board_delete_title": "Supprimer « {name} » ?",
+      "folder_delete_description": "Les tableaux et dossiers qu’il contient sont également supprimés. Les signets eux-mêmes ne sont pas supprimés.",
+      "board_delete_shared_description": "Toutes les personnes avec qui il est partagé perdent l’accès. Les signets eux-mêmes ne sont pas supprimés.",
+      "board_delete_description": "Les signets eux-mêmes ne sont pas supprimés.",
+      "folder_deleted": "Dossier supprimé",
+      "board_deleted": "Tableau supprimé",
+      "folder_delete_error": "Erreur lors de la suppression du dossier",
+      "board_delete_error": "Erreur lors de la suppression du tableau",
+      "board_leave_title": "Quitter « {name} » ?",
+      "board_leave_description": "Il disparaît de vos tableaux jusqu’à ce que quelqu’un vous invite à nouveau.",
+      "board_leave_confirm": "Quitter",
+      "board_left": "Vous avez quitté le tableau",
+      "board_leave_error": "Erreur lors de la sortie du tableau",
+      "trash_load_failed": "Impossible de charger les signets supprimés",
+      "trash_restore_failed": "Impossible de restaurer le signet",
+      "drawing_save_error": "Erreur lors de l’enregistrement du dessin",
+      "sign_in_required": "Vous devez être connecté pour faire cela"
+    },
+    "core_files": {
+      "unsupported_one": "{name} n’est ni une image, ni un PDF, ni un fichier audio.",
+      "unsupported_many": "Seuls les images, PDF et fichiers audio peuvent être envoyés.",
+      "heic_one": "Ce navigateur ne peut pas lire {name}. Exportez-le en JPEG et réessayez.",
+      "heic_many": "Ce navigateur ne peut pas lire les photos HEIC. Exportez-les en JPEG et réessayez.",
+      "unreadable_one": "{name} n’est pas une image que ce navigateur peut lire.",
+      "unreadable_many": "Ce ne sont pas des images que ce navigateur peut lire."
+    }
+  },
+  "auth": {
+    "add_to_waitlist": "Rejoindre la liste d’attente",
+    "chrome_extension_auth_detected": "Extension détectée",
+    "chrome_extension_auth_not_detected": "Extension non détectée",
+    "close_tab": "Fermer l’onglet",
+    "current_bookmarking_manager": "Quel gestionnaire de signets utilisez-vous actuellement ?",
+    "current_bookmarking_manager_placeholder": "p. ex. signets Chrome, Pocket, Raindrop…",
+    "email_error": "La connexion a échoué avec l’erreur : ",
+    "email_success": "Un e-mail contenant un lien pour réinitialiser votre mot de passe a été envoyé",
+    "extension_connected": "Extension connectée",
+    "extension_connected_message": "Vous pouvez maintenant utiliser WebBites avec vos signets.",
+    "extension_login_description": "Connectez-vous à votre compte WebBites",
+    "go_to_app": "Aller à l’app",
+    "logout": "Se déconnecter",
+    "most_interested": "Qu’est-ce qui vous intéresse le plus dans WebBites ?",
+    "most_interested_placeholder": "p. ex. organisation par IA, synchronisation multiplateforme…",
+    "notify_me": "Me prévenir",
+    "password_reset_error": "Une erreur s’est produite lors de la réinitialisation de votre mot de passe. Veuillez réessayer.",
+    "password_reset_success": "Votre mot de passe a été réinitialisé avec succès.",
+    "reset_password_description": "Saisissez un nouveau mot de passe pour le réinitialiser.",
+    "sign_in": "Se connecter",
+    "signInWithApple": "Continuer avec Apple",
+    "sign_up": "S’inscrire",
+    "waitlist_done": "Vous êtes sur la liste d’attente !",
+    "waitlist_info": "Rejoignez la liste d’attente et suivez-moi sur",
+    "waitlist_info_2": "pour rester informé.",
+    "waitlist_success": "Vous êtes sur la liste d’attente ! Suivez-moi sur",
+    "waitlist_success_2": "pour rester informé.",
+    "waitlist_success_alert": "Vous avez été ajouté à la liste d’attente 🥳"
+  },
+  "bookmark": {
+    "audio_generation": "Génération audio",
+    "image_extracted_text": "💬 Texte extrait de l’image"
+  },
+  "bookmark_details": {
+    "added": "Ajouté",
+    "alerts": {
+      "color_copied": "Couleur copiée",
+      "image_downloaded": "Image téléchargée",
+      "image_download_error": "Erreur lors du téléchargement de l’image"
+    },
+    "bookmark_types": {
+      "article": "Article",
+      "note": "Note",
+      "tweet": "Tweet"
+    },
+    "details_title": "Titre de la page",
+    "download_image": "Télécharger l’image",
+    "hide_keywords": "Masquer les mots-clés",
+    "keywords": "Mots-clés",
+    "main_colors": "Couleurs principales",
+    "media": {
+      "cast": "Distribution",
+      "crew": "Équipe",
+      "developer": "Développeur",
+      "director": "Réalisateur",
+      "genres": "Genres",
+      "publisher": "Éditeur",
+      "release_date": "Date de sortie",
+      "screenshots": "Captures d’écran",
+      "show_more": "Afficher {count} de plus",
+      "videos": "Vidéos"
+    },
+    "notes_placeholder": "Vos notes sur la page",
+    "page_details": "Détails de la page",
+    "see_all_keywords": "Voir tous les mots-clés",
+    "tags": "Tags",
+    "time": {
+      "days_ago": "il y a {count} jours",
+      "hours_ago": "il y a {count} heures",
+      "minutes_ago": "il y a {count} minutes",
+      "months_ago": "il y a {count} mois",
+      "seconds_ago": "il y a {count} secondes",
+      "years_ago": "il y a {count} ans"
+    }
+  },
+  "bookmarks": {
+    "add_files": "Ajouter des fichiers",
+    "cards": "signets",
+    "change_files": "Changer les fichiers ({count})",
+    "copy_url": "Copier l’URL",
+    "cover": "Couverture",
+    "delete": "Supprimer le signet",
+    "delete_confirmation_multiple": "Voulez-vous vraiment supprimer ces {count} signets ?",
+    "delete_confirmation_single": "Voulez-vous vraiment supprimer ce signet ?",
+    "deselect_hint": "Cliquez sur un signet pour le sélectionner ou le désélectionner.",
+    "drawing": {
+      "assets_unavailable": "Certaines images n’ont pas pu être chargées, l’aperçu ne sera donc pas mis à jour.",
+      "new": "Nouveau dessin",
+      "untitled": "Dessin"
+    },
+    "empty_state_message": "Et si vous enregistriez quelques sites ?",
+    "empty_state_title": "C’est un peu vide ici…",
+    "expand_to_edit": "Agrandir pour modifier",
+    "free_import_message": "Ou vous pouvez importer 100 signets gratuitement, une seule fois.",
+    "hide": {
+      "label": "Masquer",
+      "label_hidden": "Masqué",
+      "from_library": "Masquer de la bibliothèque",
+      "everywhere": "Masquer partout",
+      "unhide": "Afficher à nouveau",
+      "hidden_from_library": "Masqué de votre bibliothèque. Toujours présent dans ses tableaux.",
+      "hidden_everywhere": "Masqué partout, y compris dans les tableaux.",
+      "unhidden": "De retour dans votre bibliothèque",
+      "private_section": "Privé",
+      "private_empty": "Rien de masqué pour l’instant",
+      "private_empty_hint": "Masquez un signet et il vous attendra ici.",
+      "unlock_title": "Privé",
+      "unlock_description": "Saisissez votre mot de passe pour voir vos signets masqués.",
+      "unlock_placeholder": "Mot de passe",
+      "unlock_confirm": "Déverrouiller",
+      "unlock_wrong": "Ce mot de passe n’a pas fonctionné.",
+      "unlock_reset": "Pas de mot de passe ? Recevez un lien par e-mail pour en définir un.",
+      "unlock_reset_sent": "Consultez votre boîte mail pour trouver le lien.",
+      "unlock_reset_error": "Impossible d’envoyer l’e-mail. Réessayez dans un instant."
+    },
+    "image_count": "{n} images",
+    "image_n_of_m": "{n} sur {m}",
+    "image_order": "Ordre des images",
+    "import": "Importer des signets",
+    "import_error": "Erreur lors de l’importation des signets. Veuillez réessayer plus tard.",
+    "import_limit": "Pour importer plus de 100 signets, vous devez payer des frais uniques ou passer à une offre supérieure.",
+    "import_payment_message": "WebBites ne fait que commencer et importer beaucoup de signets peut coûter cher. Pour couvrir les premiers frais liés aux {count} signets que vous souhaitez importer, je demande des frais uniques de 3 $ afin de soutenir le projet.",
+    "import_progress": "Vos signets sont en cours d’importation",
+    "import_progress_message": "Cela peut prendre un moment, mais vous n’avez pas besoin de garder la fenêtre ouverte. Nous vous enverrons un e-mail une fois l’opération terminée.",
+    "import_progress_title": "Vos signets sont en cours d’importation.",
+    "import_success": "Signets importés avec succès",
+    "import_title": "Importer vos signets",
+    "merge": "Fusionner",
+    "merge_confirmation": "Fusionner ces {count} images en un seul signet ?",
+    "merge_explainer": "Le premier conserve ses tableaux et ses notes. Les autres sont déplacés dans la corbeille et peuvent être restaurés.",
+    "merge_failed": "Impossible de fusionner ces signets",
+    "merged": "Fusionnés en un seul signet de {count} images",
+    "new": "Nouveau signet",
+    "new_placeholder": {
+      "game": "Rechercher un jeu…",
+      "link": "Collez un lien…",
+      "movie": "Rechercher un film…",
+      "note": "Écrivez une note…"
+    },
+    "no_bookmarks": "Aucun signet trouvé",
+    "no_pinned_bookmarks": "Épinglez des signets pour les voir ici",
+    "payment_button": "Frais uniques de 3 $",
+    "pdf_page_count": "{n} pages",
+    "pdf_page_one": "1 page",
+    "pin_success": "Signet épinglé",
+    "pinned": "Épinglés",
+    "recorder": {
+      "empty": "Rien n’a été enregistré — vérifiez que votre micro n’est pas coupé.",
+      "hint": "Touchez pour commencer l’enregistrement",
+      "mic_denied": "WebBites ne peut pas accéder à votre micro. Autorisez-le dans les réglages de votre navigateur, ou importez un fichier.",
+      "pause": "Pause",
+      "paused": "En pause",
+      "play": "Lire",
+      "record_again": "Enregistrer à nouveau",
+      "record_instead": "Enregistrer plutôt",
+      "requesting": "En attente du micro…",
+      "restart": "Recommencer",
+      "stop": "Arrêter l’enregistrement",
+      "title_placeholder": "Nommer cet enregistrement",
+      "unsupported": "Ce navigateur ne peut pas enregistrer d’audio. Vous pouvez tout de même importer un fichier.",
+      "upload": "Importer un fichier à la place"
+    },
+    "remaining": "signets restants",
+    "reorder_hint": "Faites glisser pour réorganiser. La première image est la couverture.",
+    "select_all": "Tout sélectionner ({count})",
+    "select_all_visible": "Sélectionner les {count} visibles",
+    "try_searching": "Essayez de chercher autre chose",
+    "types": {
+      "articles": "Articles",
+      "audio": "Audio",
+      "drawing": "Dessin",
+      "game": "Jeu",
+      "image": "Image",
+      "movie": "Film",
+      "music": "Musique",
+      "pdf": "PDF",
+      "textNote": "Note",
+      "website": "Site web"
+    },
+    "unpin_success": "Signet désépinglé",
+    "unselect_all": "Tout désélectionner",
+    "url_copied": "URL copiée dans le presse-papiers",
+    "urls_copied": "URL copiées dans le presse-papiers",
+    "what_to_save": "Que souhaitez-vous enregistrer ?",
+    "compose": {
+      "add_tag": "Ajouter un tag",
+      "board": "Tableau",
+      "board_create_failed": "Impossible de créer le tableau",
+      "board_failed": "Enregistré, mais impossible de l’ajouter à {board}.",
+      "board_label": "Tableau, {board}",
+      "board_name": "Nom du tableau",
+      "create_board": "Créer",
+      "new_board": "Nouveau tableau…",
+      "notes": "Notes",
+      "notes_placeholder": "Ajouter une note…",
+      "no_board": "Aucun tableau",
+      "remove_tag": "Retirer le tag {tag}",
+      "saved_to_board": "Enregistré dans {board}",
+      "stop": "Arrêter",
+      "tag": "Tag",
+      "tags_count": "Tags, {count}"
+    }
+  },
+  "changes": {
+    "body_1": "Pour toute suggestion ou tout signalement de bug, rendez-vous sur la",
+    "body_1_link": "page de retours.",
+    "body_2": "Inscrivez-vous pour recevoir des nouvelles des fonctionnalités et des changements.",
+    "change_label": "changement",
+    "changes_label": "changements",
+    "rss": "Ou abonnez-vous via RSS",
+    "title": "Journal des modifications",
+    "signup_thanks": "Merci de vous être inscrit pour recevoir nos actualités",
+    "already_subscribed": "Vous êtes déjà abonné",
+    "signup_failed": "Impossible de vous inscrire pour recevoir les actualités"
+  },
+  "common": {
+    "accept": "Accepter",
+    "add_tag": "Ajouter un tag",
+    "all": "Tous",
+    "ascending": "Croissant",
+    "bookmarks": "Signets",
+    "cancel": "Annuler",
+    "checking_access": "Vérification de l’accès…",
+    "choose_something": "Choisissez quelque chose…",
+    "close": "Fermer",
+    "continue": "Suivant",
+    "dates": {
+      "month": "mois",
+      "year": "an"
+    },
+    "decline": "Refuser",
+    "delete": "Supprimer",
+    "descending": "Décroissant",
+    "drop_image": "Déposez une image ou un PDF",
+    "error_try_again": "Une erreur s’est produite, veuillez réessayer plus tard.",
+    "get_updates": "Recevoir les actualités",
+    "import": "Importer",
+    "import_bookmarks": "Importer {selected} signets",
+    "import_bookmarks_remaining": "Importer {selected} signets ({remaining} restants dans le quota)",
+    "language_changed_success": "Langue modifiée avec succès",
+    "loading": "Chargement…",
+    "month": "mois",
+    "new_first": "Récents d’abord",
+    "no_results": "Aucun résultat",
+    "old_first": "Anciens d’abord",
+    "open": "Ouvrir",
+    "optional": "Facultatif",
+    "or": "Ou",
+    "pin": "Épingler",
+    "remaining": "restants",
+    "remind_later": "Me le rappeler plus tard",
+    "save": "Enregistrer",
+    "saved": "enregistrés",
+    "search": "Rechercher",
+    "select_file": "Sélectionner un fichier",
+    "select_new_file": "Sélectionner un autre fichier",
+    "shortcuts": {
+      "copy_url": {
+        "description": "Cliquez sur un signet en maintenant ⌥ (option/alt)",
+        "name": "Copier l’URL"
+      },
+      "focus_search": {
+        "description": "Appuyez sur / pour activer directement la recherche depuis votre clavier.",
+        "name": "Activer la recherche"
+      },
+      "open_website": {
+        "description": "Cliquez sur un signet en maintenant la touche CMD",
+        "name": "Ouvrir le site web"
+      },
+      "quick_save": {
+        "description": "Appuyez sur ⌘ + V pour enregistrer l’URL de votre presse-papiers",
+        "name": "Enregistrement rapide"
+      },
+      "select_card": {
+        "description": "Cliquez sur un signet en maintenant la touche ⇧",
+        "name": "Sélectionner un signet"
+      }
+    },
+    "show_less": "Afficher moins",
+    "show_more": "Afficher plus",
+    "submit": "Envoyer",
+    "tiptap_placeholder": "Ajoutez une URL ou commencez à écrire pour créer une note",
+    "unpin": "Désépingler",
+    "updating": "Mise à jour…",
+    "upgrade": "Passer à l’offre supérieure",
+    "view_more": "Voir plus"
+  },
+  "cookies": {
+    "cookie_consent": "Consentement aux cookies",
+    "description": "Nous utilisons Microsoft Clarity pour savoir comment améliorer votre expérience. En acceptant, vous nous aidez à rendre WebBites meilleur pour tout le monde."
+  },
+  "feedback": {
+    "bug_reports": "Signalements de bugs",
+    "comments": {
+      "no_comments": "Aucun commentaire pour l’instant",
+      "placeholder": "Écrivez un commentaire…",
+      "send": "Envoyer",
+      "title": "Commentaires"
+    },
+    "date": "Date",
+    "delete_comment": {
+      "confirmation": "Voulez-vous vraiment supprimer ce commentaire ?",
+      "title": "Supprimer le commentaire"
+    },
+    "delete_confirmation": "Voulez-vous vraiment supprimer ce retour ?",
+    "filter_by": "Filtrer par",
+    "form": {
+      "cancel_button": "Annuler",
+      "changelog_label": "Vers le journal des modifications",
+      "comment_label": "Votre commentaire",
+      "hide_from_everyone_label": "Masquer pour tout le monde",
+      "submit_button": "Envoyer le retour",
+      "title": "Envoyer un retour",
+      "title_label": "Titre",
+      "type_label": "Type",
+      "platform_label": "Plateforme"
+    },
+    "least_votes": "Moins de votes",
+    "most_votes": "Plus de votes",
+    "my_issues": "Mes demandes",
+    "no_feedback": "Aucun retour pour l’instant",
+    "order_by": "Trier par",
+    "placeholders": {
+      "search": "Rechercher des fonctionnalités et des bugs… ({count})"
+    },
+    "status": "Statut",
+    "suggestions": "Suggestions",
+    "title": "📨 Demandes de fonctionnalités, suggestions et signalements de bugs",
+    "type": "Type",
+    "user": "Utilisateur",
+    "votes": "Votes",
+    "platform": {
+      "app": "App",
+      "web": "Web",
+      "extension": "Extension de navigateur",
+      "all": "Toutes les plateformes"
+    },
+    "hero_title": "Aidez à façonner",
+    "hero_highlight": "la suite.",
+    "hero_subtitle": "Demandez une fonctionnalité, signalez un bug ou votez pour les idées que vous souhaitez le plus.",
+    "comments_count": "{count} commentaires",
+    "page": {
+      "title": "WebBites - Retours",
+      "kanban_view": "Vue Kanban",
+      "list_view": "Vue en liste",
+      "login_required": "Vous devez être connecté pour envoyer un retour",
+      "deleted": "Retour supprimé avec succès",
+      "delete_failed": "Impossible de supprimer le retour"
+    },
+    "options": {
+      "status": {
+        "in_progress": "En cours",
+        "backlog": "Backlog",
+        "pending": "En attente de tri",
+        "done": "Terminé",
+        "closed": "Clos"
+      },
+      "type": {
+        "bug_report": "Signalement de bug",
+        "feature_request": "Demande de fonctionnalité",
+        "improvement": "Amélioration",
+        "other": "Autre"
+      },
+      "platform": {
+        "app": "App",
+        "web": "Web",
+        "extension": "Extension de navigateur"
+      }
+    }
+  },
+  "import": {
+    "import_quota_exceeded": "Vous devez passer à une offre supérieure pour importer plus de 100 signets",
+    "import_quota_exceeded_description": "Vous pouvez importer jusqu’à 100 signets gratuitement. Passez à une offre payante pour en importer davantage.",
+    "connect_title": "Ou connectez un service",
+    "connect_fetch": "Récupérer les signets",
+    "connect_button": "Connecter {name}",
+    "connect_unavailable": "Indisponible",
+    "connect_error": "Impossible de récupérer les signets depuis {name}",
+    "connect_denied": "L’accès a été refusé, aucun signet n’a été importé",
+    "connect_empty": "Aucun signet trouvé dans {name}"
+  },
+  "landing": {
+    "beta_access": {
+      "changelog_button": "Journal des modifications",
+      "description": "Soyez parmi les premiers à découvrir WebBites et aidez à façonner son avenir !",
+      "feedback_button": "Retours",
+      "title": "Rejoignez l’avenir des signets"
+    },
+    "features": {
+      "ai_organization": {
+        "description": "Catégorisez et taguez automatiquement vos signets grâce à une IA avancée",
+        "title": "Organisation par IA"
+      },
+      "cross_platform": {
+        "description": "Accédez à vos signets partout, à tout moment, sur tous vos appareils",
+        "title": "Synchronisation multiplateforme"
+      },
+      "smart_search": {
+        "description": "Trouvez n’importe quoi instantanément grâce à notre recherche intelligente qui comprend le contexte",
+        "title": "Recherche intelligente"
+      },
+      "subtitle": "Découvrez l’avenir des signets avec notre plateforme dopée à l’IA",
+      "title": "Pourquoi choisir WebBites ?"
+    },
+    "hero": {
+      "app_button": "Aller à l’app",
+      "subtitle": "Enregistrez n’importe quoi en un clic et laissez l’IA s’occuper de l’organisation, de la recherche et de la mise en ordre pour vous.",
+      "title": "Votre internet,",
+      "title_emphasis": "organisé",
+      "waitlist_button": "Rejoindre la liste d’attente"
+    },
+    "how_it_works": {
+      "steps": {
+        "install": {
+          "description": "Ajoutez notre extension de navigateur en un clic pour commencer à enregistrer du contenu instantanément",
+          "title": "Installez l’extension"
+        },
+        "organize": {
+          "description": "Notre IA catégorise, tague et rend votre contenu consultable automatiquement",
+          "title": "Laissez l’IA organiser"
+        },
+        "save": {
+          "description": "Cliquez sur l’extension ou utilisez les raccourcis clavier pour enregistrer n’importe quelle page web, article ou contenu",
+          "title": "Enregistrez tout"
+        }
+      },
+      "title": "Comment ça marche"
+    },
+    "join_now": "Rejoignez-nous !",
+    "join_now_free": "Rejoignez-nous gratuitement !",
+    "more_features": "Plus de fonctionnalités",
+    "roadmap": {
+      "next": "Prochainement :",
+      "title": "Feuille de route",
+      "viewFull": "Voir la feuille de route complète",
+      "workingOn": "En cours de développement :"
+    },
+    "whats_next": "Quelle est la suite pour WebBites ?"
+  },
+  "navigation": {
+    "feedback": "Envoyer un retour",
+    "help": "Aide",
+    "home": "Accueil",
+    "login": "Connexion",
+    "logout_success": "Vous êtes déconnecté !",
+    "settings": "Réglages",
+    "developers": "Développeurs",
+    "faq": "FAQ",
+    "features": "Fonctionnalités",
+    "pricing": "Tarifs"
+  },
+  "plans": {
+    "features": {
+      "auto_tag_bookmarks": "Tags automatiques pour tous vos signets web",
+      "auto_tag_images": "Tags automatiques pour vos images",
+      "plus": {
+        "41": "Tout ce qui est inclus dans Gratuit +",
+        "42": "Enregistrez un nombre illimité de signets",
+        "43": "Résumés TL;DR",
+        "44": "Tags automatiques pour vos images",
+        "45": "Captures d’écran de page entière en plus haute résolution",
+        "46": "Écoutez les articles et obtenez des résumés",
+        "47": "Reconnaissance de texte dans les images",
+        "48": "Importez jusqu’à 10 Go de fichiers",
+        "49": "Recherche en langage naturel",
+        "50": "Tableaux intelligents",
+        "51": "Sauvegardes vers votre propre cloud - bientôt"
+      },
+      "cloud_backups": "Sauvegardes vers votre propre cloud - bientôt",
+      "dark_mode": "Mode sombre",
+      "everything_in_free": "Tout ce qui est inclus dans Gratuit +",
+      "free": {
+        "11": "Enregistrez jusqu’à 100 signets",
+        "12": "Tags automatiques pour tous vos signets web",
+        "13": "Recherche par titre de page, couleur, tags et texte de la page",
+        "14": "Mode lecture pour les articles",
+        "15": "Enregistrez des sites web, images, notes, jeux vidéo, musiques et films",
+        "16": "Captures d’écran de page entière",
+        "17": "Écoutez jusqu'à 5 articles par mois",
+        "18": "Mode sombre"
+      },
+      "full_page_screenshots": "Captures d’écran de page entière",
+      "high_res_screenshots": "Captures d’écran de page entière en plus haute résolution",
+      "listen_and_summaries": "Écoutez les articles et obtenez des résumés",
+      "listen_limit": "Écoutez jusqu'à 5 articles par mois",
+      "natural_language_search": "Recherche en langage naturel",
+      "reading_mode": "Mode lecture pour les articles",
+      "save_cards_limit": "Enregistrez jusqu’à 100 signets",
+      "save_various_types": "Enregistrez des sites web, images, notes, jeux vidéo, musiques et films",
+      "search_features": "Recherche par titre de page, couleur, tags et texte de la page",
+      "smart_boards": "Tableaux intelligents",
+      "text_recognition": "Reconnaissance de texte dans les images",
+      "tldr_summaries": "Résumés TL;DR",
+      "unlimited_bookmarks": "Enregistrez un nombre illimité de signets",
+      "upload_limit": "Importez jusqu’à 10 Go de fichiers",
+      "apple": {
+        "61": "Autant de signets que vous le souhaitez",
+        "62": "Sites web, images, notes, dessins et plus encore",
+        "63": "Recherchez dans les titres, les tags et le texte des pages",
+        "64": "Mode lecture",
+        "65": "Rien ne quitte cet appareil"
+      }
+    }
+  },
+  "pricing": {
+    "current_plan": "Offre actuelle",
+    "downgrade": "Passer à une offre inférieure",
+    "downgrade_to_free": "Passer à l’offre gratuite",
+    "free_plan": "Gratuit",
+    "get_started": "Commencer",
+    "monthly_toggle": "Mensuel",
+    "price_monthly": "${price}/mois",
+    "price_yearly": "${price}/an - économisez {percent} %",
+    "sign_up": "Inscrivez-vous !",
+    "sign_up_now": "Inscrivez-vous gratuitement !",
+    "title": "Tarifs",
+    "upgrade_for": "Passer à l’offre supérieure pour {price}",
+    "upgrade_plan": "Passer à l’offre supérieure",
+    "waitlist_free": "Me mettre sur la liste d’attente gratuitement !",
+    "yearly_toggle": "Annuel ({percent} % de réduction)",
+    "yearly_plain": "Annuel",
+    "apple": {
+      "title": "Bibliothèque sur l'appareil",
+      "tagline": "Appareils Apple uniquement. Sans compte.",
+      "lifetime": "ou ${price} en une fois",
+      "badge": "App Store",
+      "note": "Achat dans l’app iOS et macOS. Les prix de l’App Store varient selon la région.",
+      "cta": "Télécharger sur l’App Store"
+    },
+    "price_yearly_plain": "${price}/an"
+  },
+  "reader": {
+    "ai_generated": "Généré par l’IA",
+    "by_author": "Par {author}",
+    "listen_article": "Écouter l’article",
+    "listen_to_post": "Écouter la publication",
+    "voice_settings": "Voix de lecture",
+    "voice_description": "Choisissez la voix qui lit vos articles à voix haute. Appuyez sur lecture pour entendre un échantillon.",
+    "voice_preview": "Écouter un aperçu de la voix",
+    "accent_settings": "Accent",
+    "accent_description": "Les articles en anglais sont lus avec cet accent. Touchez-en un pour l’entendre."
+  },
+  "search": {
+    "alphabetical": "Alphabétique",
+    "clear_recent": "Effacer",
+    "date_added": "Date d’ajout",
+    "filter_by_tag": "Filtrer par tag",
+    "filter_by_type": "Filtrer par type",
+    "placeholder": "Rechercher des signets…",
+    "recent_searches": "Recherches récentes",
+    "sort_by": "Trier par"
+  },
+  "settings": {
+    "ai_language": "Langue de l’IA",
+    "ai_language_description": "La langue dans laquelle les résumés et les tags sont rédigés.",
+    "ai_language_same": "Identique au contenu",
+    "auth": {
+      "create_account_description": "Saisissez votre e-mail pour vous connecter ou créer un compte",
+      "email": "E-mail",
+      "email_continue": "Continuer avec l’e-mail",
+      "email_placeholder": "Saisissez votre e-mail",
+      "name": "Nom",
+      "name_placeholder": "Saisissez votre nom",
+      "password": "Mot de passe",
+      "password_placeholder": "Saisissez votre mot de passe",
+      "password_requirements": "Le mot de passe doit contenir au moins 6 caractères, dont au moins un chiffre",
+      "repeat_password": "Répéter le mot de passe",
+      "welcome_back": "Bon retour parmi nous",
+      "welcome_back_description": "Saisissez votre mot de passe pour reprendre là où vous vous êtes arrêté.",
+      "create_account": "Créez votre compte",
+      "create_account_step_description": "Il suffit d’un nom et d’un mot de passe.",
+      "create_account_button": "Créer un compte",
+      "reset_password": "Réinitialiser le mot de passe"
+    },
+    "chrome_extension": {
+      "description": "Enregistrez n’importe quel site web dans vos signets en un clic avec la nouvelle extension de navigateur ! Téléchargez-la dès maintenant sur le",
+      "store_link": "Chrome Web Store.",
+      "title": "Extension Chrome"
+    },
+    "compact_view": "Vue compacte",
+    "delete_account": {
+      "confirmation_text": "Voulez-vous vraiment supprimer votre compte ? Cette action est irréversible.",
+      "confirm_button": "Supprimer définitivement mon compte",
+      "placeholder": "Supprimer mon compte",
+      "title": "Supprimer le compte",
+      "type_confirmation": "Saisissez « Supprimer mon compte » pour confirmer"
+    },
+    "display_mode": "Mode d’affichage",
+    "grid_view": "Vue en grille",
+    "image_ratio": {
+      "original": "Original"
+    },
+    "image_ratio_label": "Format des images",
+    "language": "Langue",
+    "list_view": "Vue en liste",
+    "newest_first": "Plus récents d’abord",
+    "oldest_first": "Plus anciens d’abord",
+    "other_options": {
+      "export_bookmarks": "Exporter tous les signets",
+      "logout": "Se déconnecter",
+      "show_onboarding": "Revoir la présentation",
+      "title": "Autres options"
+    },
+    "personal_info": {
+      "title": "Informations personnelles",
+      "username": "Nom"
+    },
+    "preview_screenshots": "Aperçu des captures d’écran des pages",
+    "preview_tags": "Aperçu des tags",
+    "show_description": "Afficher la description",
+    "show_summary_card": "Afficher la carte de résumé au survol",
+    "theme": "Thème",
+    "title": "Réglages",
+    "view_as": "Afficher en",
+    "viewing_options": "Options d’affichage",
+    "assistants": {
+      "title": "Assistants IA",
+      "description": "Laissez Claude, ChatGPT, Cursor et d’autres apps d’IA rechercher dans votre bibliothèque et y enregistrer des éléments, via MCP.",
+      "server_url": "URL du serveur",
+      "server_url_hint": "Ajoutez-la à toute app compatible avec MCP. Vous l’approuverez sur WebBites et choisirez si elle peut effectuer des modifications.",
+      "copy": "Copier",
+      "setup_title": "Configurer une app",
+      "connected_title": "Assistants connectés",
+      "connected_empty": "Aucun assistant connecté pour l’instant. Une fois que vous en aurez approuvé un, il apparaîtra ici.",
+      "read_only": "Lecture seule",
+      "read_write": "Peut effectuer des modifications",
+      "unverified": "Non vérifié",
+      "connected_on": "Connecté le {date}",
+      "last_used": "Dernière utilisation : {date}",
+      "never_used": "Pas encore utilisé",
+      "disconnect": "Déconnecter",
+      "disconnect_confirm": "Déconnecter {name} ? Il perd l’accès immédiatement.",
+      "disconnected": "{name} déconnecté",
+      "load_failed": "Impossible de charger vos assistants connectés.",
+      "revoke_failed": "Impossible de déconnecter {name}.",
+      "limits": "Chaque action d’un assistant est comptabilisée dans votre quota d’API : {free} par mois avec l’offre Gratuit, {plus} avec Plus.",
+      "docs_link": "Lire le guide MCP",
+      "local_hint": "Vous gardez votre bibliothèque sur un Mac sans compte ? Activez le serveur intégré de l’app Mac, dans l’app, sous Réglages → Assistants IA.",
+      "clients": {
+        "claude": {
+          "open": "Dans Claude, ouvrez {path} et choisissez Ajouter un connecteur personnalisé.",
+          "paste": "Nommez-le WebBites, collez l’URL du serveur et sélectionnez Ajouter.",
+          "connect": "Sélectionnez Connecter, puis approuvez l’accès sur la page WebBites qui s’ouvre. Le connecteur fonctionne aussi dans Claude Desktop et dans les apps mobiles."
+        },
+        "chatgpt": {
+          "developer_mode": "Dans ChatGPT, ouvrez {path} et activez le mode développeur (sous Avancé).",
+          "create": "Créez un connecteur : nommez-le WebBites, collez l’URL du serveur et choisissez OAuth.",
+          "approve": "Approuvez l’accès sur la page WebBites qui s’ouvre, puis activez WebBites depuis le menu des outils dans une conversation."
+        },
+        "claude_code": {
+          "add": "Ajoutez le serveur depuis votre terminal :",
+          "sign_in": "Lancez Claude Code, exécutez /mcp, choisissez webbites et connectez-vous. Votre navigateur ouvre WebBites pour que vous puissiez approuver l’accès."
+        },
+        "cursor": {
+          "add": "Ajoutez WebBites à {file}, ou à .cursor/mcp.json dans un projet :",
+          "connect": "Dans les réglages de Cursor, trouvez webbites dans la liste MCP et sélectionnez Connecter, puis approuvez l’accès sur WebBites."
+        },
+        "vscode": {
+          "add": "Ajoutez WebBites à {file} dans votre espace de travail :",
+          "start": "Sélectionnez Démarrer au-dessus du serveur dans ce fichier, puis approuvez l’accès sur WebBites quand votre navigateur s’ouvre. Ses outils apparaissent dans le mode agent de Copilot Chat."
+        },
+        "other": {
+          "name": "Autres apps",
+          "remote": "Les apps compatibles avec les serveurs MCP distants prennent l’URL du serveur telle quelle. Cherchez « connecteur personnalisé », « serveur distant » ou « MCP » dans leurs réglages.",
+          "stdio": "Les apps qui ne peuvent démarrer que des serveurs locaux (stdio) peuvent y accéder via le pont mcp-remote, qui nécessite Node.js :",
+          "sign_in": "À la première exécution, votre navigateur ouvre WebBites pour que vous puissiez approuver l’accès."
+        },
+        "api_key": {
+          "name": "Avec une clé d’API",
+          "when": "Les apps qui permettent de définir des en-têtes de requête peuvent se passer de la connexion et envoyer une clé d’API à la place. Une clé peut lire et modifier toute votre bibliothèque, comme avec l’API REST.",
+          "send": "Créez une clé dans Réglages → Développeur, puis envoyez-la comme jeton bearer :"
+        }
+      }
+    },
+    "developer": {
+      "title": "Développeur",
+      "description": "Clés d’API, webhooks et utilisation pour développer avec WebBites.",
+      "button": "Ouvrir la page développeur"
+    },
+    "backups": {
+      "title": "Sauvegardes",
+      "description": "Sauvegardes automatiques et incrémentielles de vos signets, captures d’écran et pages enregistrées vers un stockage qui vous appartient.",
+      "plus_only": "Les sauvegardes automatiques font partie de WebBites Plus.",
+      "choose_destination": "Où envoyer les sauvegardes ?",
+      "gdrive": "Google Drive",
+      "gdrive_hint": "Enregistré dans un dossier « WebBites Backups »",
+      "dropbox": "Dropbox",
+      "dropbox_hint": "Enregistré dans Apps/WebBites",
+      "s3": "Stockage compatible S3",
+      "s3_hint": "Amazon S3, Cloudflare R2, Backblaze B2, MinIO…",
+      "endpoint": "Point de terminaison",
+      "region": "Région",
+      "bucket": "Bucket",
+      "prefix": "Dossier (facultatif)",
+      "access_key": "Clé d’accès",
+      "secret_key": "Clé secrète",
+      "connect": "Connecter",
+      "cancel": "Annuler",
+      "change": "Modifier",
+      "enabled": "Sauvegardes automatiques",
+      "frequency": "Fréquence",
+      "daily": "Quotidienne",
+      "weekly": "Hebdomadaire",
+      "last_backup": "Dernière sauvegarde",
+      "never": "Pas encore",
+      "running": "Sauvegarde en cours…",
+      "next_backup": "prochaine {time}",
+      "back_up_now": "Sauvegarder maintenant",
+      "disconnect": "Déconnecter",
+      "reconnect": "Reconnecter",
+      "needs_reconnect": "{destination} n’accepte plus les sauvegardes. Reconnectez-le pour réactiver les sauvegardes.",
+      "plan_required": "Les sauvegardes sont suspendues, car votre offre ne les inclut plus.",
+      "error": "La dernière sauvegarde a échoué : {error}. Une nouvelle tentative aura lieu automatiquement.",
+      "connected": "{destination} connecté. La première sauvegarde démarre dans l’heure.",
+      "connect_failed": "Impossible de connecter {destination}.",
+      "connect_denied": "L’accès à {destination} n’a pas été accordé.",
+      "queued": "Sauvegarde lancée.",
+      "load_failed": "Impossible de charger vos réglages de sauvegarde.",
+      "save_failed": "Impossible de mettre à jour vos réglages de sauvegarde.",
+      "run_failed": "Impossible de lancer une sauvegarde.",
+      "whats_included": "Chaque sauvegarde est un zip qui ne contient que ce qui a changé depuis la précédente : données des signets, notes, captures d’écran, texte des pages enregistrées et fichiers. Le dernier zip de chaque sauvegarde contient aussi vos tableaux, vos flux et un fichier bookmarks.html que n’importe quel navigateur peut importer."
+    },
+    "email_change": {
+      "change": "Modifier",
+      "change_again": "En utiliser une autre",
+      "new_email": "Nouvel e-mail",
+      "current_password": "Mot de passe actuel",
+      "explainer": "Nous enverrons un lien à la nouvelle adresse. Tant que vous n’aurez pas cliqué dessus, vous continuerez à vous connecter avec {email}.",
+      "send_link": "Envoyer le lien de vérification",
+      "pending_title": "Consultez {email} pour terminer",
+      "pending_body": "Nous avons envoyé un lien pour confirmer votre nouvelle adresse. Tant que vous n’aurez pas cliqué dessus, votre compte continuera à utiliser {email}.",
+      "expires": "Le lien expire {date}.",
+      "resend": "Renvoyer l’e-mail",
+      "resend_in": "Renvoyer dans {seconds} s",
+      "cancel_change": "Annuler la modification",
+      "sent": "Lien de vérification envoyé à {email}",
+      "cancelled": "Modification de l’e-mail annulée",
+      "changed": "Votre e-mail est désormais {email}",
+      "errors": {
+        "invalid_email": "Saisissez une adresse e-mail valide.",
+        "same_email": "C’est déjà votre adresse e-mail.",
+        "email_taken": "Un autre compte utilise déjà cette adresse e-mail.",
+        "password_required": "Saisissez votre mot de passe actuel.",
+        "incorrect_password": "Ce mot de passe est incorrect.",
+        "daily_limit": "Vous avez demandé trop d’e-mails de vérification aujourd’hui. Réessayez demain.",
+        "cooldown": "Patientez une minute avant d’envoyer un autre e-mail.",
+        "send_failed": "Nous n’avons pas pu envoyer l’e-mail. Veuillez réessayer dans un instant."
+      }
+    }
+  },
+  "testimonials": {
+    "emma_davis": {
+      "name": "Emma Davis",
+      "text": "La synchronisation multiplateforme est fluide, et les fonctions d’IA me font gagner des heures d’organisation manuelle.",
+      "title": "Spécialiste du marketing digital"
+    },
+    "mike_chen": {
+      "name": "Mike Chen",
+      "text": "Enfin un outil de signets qui comprend le contexte. La recherche est bluffante.",
+      "title": "Développeur"
+    },
+    "sarah_johnson": {
+      "name": "Sarah Johnson",
+      "text": "WebBites a révolutionné ma façon d’enregistrer et d’organiser mes recherches. La catégorisation par IA est incroyablement précise !",
+      "title": "Créatrice de contenu"
+    }
+  },
+  "upgrade_modal": {
+    "audios_remaining": "Vous pouvez générer {count} audios de plus.",
+    "audios_upgrade": "Pour générer plus d’audios, passez à une offre supérieure.",
+    "bookmarks_count": "Vous avez enregistré {count} signets",
+    "bookmarks_remaining": "et pouvez en enregistrer {count} de plus.",
+    "bookmarks_upgrade": "Passez à une offre supérieure pour enregistrer plus de signets.",
+    "current_plan": "Vous avez l’offre {plan}.",
+    "manage_plan": "Gérer l’offre",
+    "plan_details": "Détails de l’offre",
+    "update_plan": "Modifier l’offre",
+    "updating_plan": "Modification de l’offre",
+    "upgrade_to_add_more": "Passez à l’offre supérieure pour en ajouter davantage"
+  },
+  "usage": {
+    "usage_limit_reached": "Limite d’utilisation atteinte, veuillez passer à une offre supérieure"
+  },
+  "website_modal": {
+    "add_note": "Ajouter une note",
+    "annotations": {
+      "delete": {
+        "delete_all_button": "Tout supprimer",
+        "delete_all_label": "Supprimer toutes les annotations",
+        "delete_all_message": "Voulez-vous vraiment supprimer toutes les annotations ? Cette action est irréversible.",
+        "delete_all_title": "Supprimer toutes les annotations",
+        "message": "Voulez-vous vraiment supprimer cette annotation ? Cette action est irréversible.",
+        "title": "Supprimer l’annotation"
+      }
+    },
+    "app": {
+      "age": "Âge",
+      "age_rating": "Classification d’âge",
+      "and_more": "{first} et {count} autres",
+      "category": "Catégorie",
+      "compatibility": "Compatibilité",
+      "copyright": "Copyright",
+      "developer": "Développeur",
+      "developer_website": "Site web du développeur",
+      "downloads": "Téléchargements",
+      "in_app_purchases": "Achats intégrés",
+      "information": "Informations",
+      "install": "Installer",
+      "language": "Langue",
+      "languages": "Langues",
+      "more": "de plus",
+      "more_languages": "+ {count} de plus",
+      "no": "Non",
+      "on_store": "sur {store}",
+      "price": "Prix",
+      "privacy_policy": "Politique de confidentialité",
+      "rating": "Évaluation",
+      "ratings": "{count} évaluations",
+      "requires": "Nécessite {os} ou version ultérieure.",
+      "seller": "Vendeur",
+      "size": "Taille",
+      "updated": "Mis à jour",
+      "version": "Version {version}",
+      "view": "Voir",
+      "whats_new": "Nouveautés",
+      "yes": "Oui"
+    },
+    "audio": {
+      "download": "Télécharger",
+      "failed": "La transcription n’a pas pu être générée.",
+      "generate": "Générer la transcription",
+      "none": "Pas encore de transcription.",
+      "pause": "Pause",
+      "play": "Lire",
+      "quota": "Vous avez utilisé tout votre quota audio de ce mois-ci.",
+      "retry": "Réessayer",
+      "scrub": "Se déplacer",
+      "segments": "1 segment | {n} segments",
+      "transcribing": "Transcription en cours…",
+      "transcribing_long": "Transcription en cours — elle continue si vous fermez la page.",
+      "transcript": "Transcription",
+      "unavailable": "Cet enregistrement n’est pas disponible"
+    },
+    "details": "Détails",
+    "pdf": {
+      "open": "Ouvrir le PDF",
+      "unavailable": "Ce PDF n’est pas disponible"
+    },
+    "sidebar": {
+      "tabs": {
+        "audio": "Audio",
+        "drawing": "Dessin",
+        "figma": "Figma",
+        "image": "Image",
+        "pdf": "PDF",
+        "reader": "Lecteur",
+        "screenshot": "Capture d’écran",
+        "text_note": "Note texte"
+      }
+    },
+    "social": {
+      "enlarge": "Agrandir l’image",
+      "next": "Image suivante",
+      "previous": "Image précédente",
+      "saved_post": "Publication enregistrée",
+      "video_hint": "Ouvrez la publication pour la lire",
+      "video_preview": "Aperçu de la vidéo",
+      "view_on": "Voir sur {platform}"
+    },
+    "summary": "Résumé"
+  },
+  "wizard": {
+    "annotations": {
+      "content": "Annotez ce que vous voulez directement sur la capture d’écran du site web et rendez vos annotations consultables",
+      "title": "📝 Annotations de page"
+    },
+    "first_bookmark": {
+      "content": "Essayez d’enregistrer votre premier signet dès maintenant !",
+      "subcontent": "Remarque : si une URL est détectée dans votre presse-papiers, elle sera collée automatiquement. Il se peut qu’on vous demande l’accès à votre presse-papiers ; aucune donnée n’est stockée ni envoyée tant que vous ne cliquez pas sur « Enregistrer ».",
+      "title": "🥳 Enregistrez votre premier signet !"
+    },
+    "folders": {
+      "content": "Laissez WebBites organiser automatiquement vos signets, générer des tags, extraire des mots-clés et même la palette de couleurs !",
+      "title": "🔖 Oubliez les dossiers"
+    },
+    "import": {
+      "content": "Importez tous vos signets existants en glissant simplement le fichier depuis votre ordinateur, ou en l’important plus tard depuis le menu des réglages.",
+      "title": "Importez vos signets"
+    },
+    "one_click": {
+      "content": "Téléchargez l’extension [Chrome](https://chromewebstore.google.com/detail/webbites-browser-extensio/kphdbcjcdhecefloameedhhldchhbela) pour enregistrer de nouveaux signets en un seul clic, ou ajoutez-les directement depuis l’app web.",
+      "subcontent": "(Les extensions Safari, Firefox et mobiles arrivent bientôt !)",
+      "title": "À un clic de distance !"
+    },
+    "save_anything": {
+      "content": "Ne vous contentez pas d’enregistrer des sites web : avec WebBites, vous pouvez aussi enregistrer des notes, images, films, jeux et musiques !",
+      "subcontent": "Et les livres arrivent bientôt !",
+      "title": "👾 🎥 Enregistrez tout"
+    },
+    "screenshots": {
+      "content": "Prenez une capture d’écran en pleine page de tous les sites que vous enregistrez, toujours accessible, même si la page est supprimée.",
+      "title": "📸 Captures d’écran en pleine page"
+    },
+    "welcome": {
+      "content": "Travaillons ensemble pour créer le meilleur service de signets qui soit : écrivez-nous sur Twitter pour partager vos demandes de fonctionnalités, les bugs que vous trouvez ou tout autre retour !",
+      "title": "Bienvenue sur WebBites !"
+    }
+  },
+  "wizard_tab": {
+    "back": "Retour",
+    "finish": "Terminer",
+    "import_bookmarks": "Importer des signets",
+    "next": "Suivant",
+    "save": "Enregistrer",
+    "skip": "Passer"
+  },
+  "developers": {
+    "title": "API WebBites",
+    "subtitle": "Lisez et enregistrez des signets depuis vos propres scripts, apps et automatisations."
+  },
+  "tags": {
+    "preview": "Aperçu des signets avec le tag {tag}",
+    "preview_empty": "Aucun signet avec ce tag",
+    "show_all": "Afficher {n} signet | Afficher les {n} signets",
+    "clear_selection": "Effacer la sélection",
+    "manage": "Tags",
+    "subtitle": "Tous les tags que vous utilisez, avec le nombre de signets qui les portent. Sélectionnez des tags pour les renommer, les fusionner ou les retirer partout.",
+    "search": "Rechercher des tags",
+    "sort_count": "Les plus utilisés",
+    "sort_name": "A–Z",
+    "total": "{n} tag | {n} tags",
+    "bookmarks_count": "{n} signet | {n} signets",
+    "selected": "{n} sélectionné(s)",
+    "rename": "Renommer",
+    "merge": "Fusionner",
+    "merge_into": "Fusionner dans",
+    "delete": "Retirer",
+    "confirm_delete": "Retirer les tags sélectionnés de tous les signets ? Les signets eux-mêmes sont conservés.",
+    "protected": "« read-later » alimente la fonction « À lire plus tard » et ne peut pas être modifié.",
+    "empty": "Aucun tag pour l’instant",
+    "no_match": "Aucun tag ne correspond",
+    "updated": "{n} signet mis à jour | {n} signets mis à jour"
+  },
+  "footer": {
+    "product": "Produit",
+    "support": "Assistance",
+    "updates": "Nouveautés",
+    "pricing": "Tarifs",
+    "extension": "Extension de navigateur",
+    "export": "Exporter les signets",
+    "help": "Aide et contact",
+    "feedback": "Retours",
+    "changelog": "Journal des modifications",
+    "privacy": "Confidentialité",
+    "terms": "Conditions",
+    "made_by": "Créé par",
+    "copyright": "WebBites {year}"
+  },
+  "verify_email": {
+    "verifying_title": "Confirmation de votre nouvel e-mail…",
+    "verifying_body": "Cela ne prend qu’un instant.",
+    "success_title": "E-mail modifié",
+    "success_body": "Votre compte WebBites utilise désormais :",
+    "success_hint": "Utilisez cette adresse lors de votre prochaine connexion. Nous avons aussi prévenu votre ancienne adresse.",
+    "open_app": "Ouvrir WebBites",
+    "sign_in": "Se connecter",
+    "expired_title": "Ce lien a expiré",
+    "expired_body": "Les liens sont valables 24 heures. Demandez-en un nouveau depuis les réglages ; votre e-mail restera inchangé d’ici là.",
+    "taken_title": "Cette adresse est déjà utilisée",
+    "taken_body": "Un autre compte a commencé à utiliser cet e-mail après l’envoi du lien. Votre e-mail n’a pas été modifié — essayez une autre adresse depuis les réglages.",
+    "invalid_title": "Ce lien ne fonctionne pas",
+    "invalid_body": "Il a peut-être déjà été utilisé, ou remplacé par un lien plus récent. Consultez votre boîte de réception pour trouver le dernier e-mail, ou recommencez depuis les réglages.",
+    "failed_title": "Une erreur s’est produite",
+    "failed_body": "Votre e-mail n’a pas été modifié. Veuillez réessayer.",
+    "try_again": "Réessayer",
+    "open_settings": "Ouvrir les réglages",
+    "go_home": "Aller à WebBites",
+    "page_title": "Confirmez votre e-mail · WebBites"
+  },
+  "cli_login": {
+    "title": "Connexion à la CLI de WebBites",
+    "body": "N’approuvez que si ce code correspond à celui affiché dans votre terminal.",
+    "signed_in_as": "Connecté en tant que {email}",
+    "approve": "Approuver",
+    "decline": "Annuler",
+    "approved_title": "Vous êtes connecté",
+    "approved_body": "Retournez à votre terminal. Vous pouvez fermer cet onglet.",
+    "declined_title": "Connexion annulée",
+    "declined_body": "La CLI n’a pas obtenu l’accès. Vous pouvez fermer cet onglet.",
+    "expired_title": "Ce code a expiré",
+    "expired_body": "Les codes sont valables 10 minutes et ne fonctionnent qu’une seule fois. Relancez webbites login pour en obtenir un nouveau.",
+    "invalid_title": "Ce lien ne fonctionne pas",
+    "invalid_body": "Ouvrez le lien affiché par votre terminal, ou relancez webbites login.",
+    "failed_title": "Une erreur s’est produite",
+    "failed_body": "La CLI n’a pas été connectée. Veuillez réessayer.",
+    "try_again": "Réessayer",
+    "page_title": "Connexion à la CLI · WebBites"
+  },
+  "oauth_consent": {
+    "page_title": "Connecter une app · WebBites",
+    "title": "{client} souhaite utiliser votre bibliothèque WebBites",
+    "verified": "App vérifiée",
+    "verified_from": "Vérifiée · {host}",
+    "unverified": "App non vérifiée",
+    "unverified_body": "WebBites ne peut pas confirmer qui a créé cette app. Ne continuez que si vous lui faites confiance et que vous êtes à l’origine de cette demande.",
+    "can_heading": "Elle pourra",
+    "can_read": "Rechercher et lire vos signets, notes, tableaux et tags",
+    "allow_changes": "Autoriser les modifications",
+    "allow_changes_body": "Enregistrer, modifier, organiser et mettre des signets à la corbeille",
+    "cannot": "Elle ne peut pas voir votre mot de passe, modifier votre compte ni vider votre corbeille.",
+    "redirect_heading": "Ensuite",
+    "redirect_web": "Vous serez renvoyé vers {target}.",
+    "redirect_app": "L’app {target} s’ouvrira.",
+    "redirect_loopback": "Vous serez renvoyé vers un programme sur cet ordinateur ({target}).",
+    "loopback_warning": "N’approuvez que si vous venez de lancer cette demande depuis une app sur cet ordinateur.",
+    "provider_note": "{client} transmettra ce qu’il lit à son fournisseur d’IA, selon les conditions de ce fournisseur.",
+    "approve": "Approuver",
+    "decline": "Refuser",
+    "signed_in_as": "Connecté en tant que {account}",
+    "switch_account": "Utiliser un autre compte",
+    "revoke_hint": "Vous pouvez la déconnecter à tout moment dans Réglages → Assistants IA.",
+    "done_title": "Connecté",
+    "done_body": "Retour vers {client}…",
+    "declined_title": "Non connecté",
+    "declined_body": "{client} n’a pas obtenu l’accès. Retour vers l’app…",
+    "close_hint": "Vous pouvez fermer cet onglet une fois que {client} s’est ouvert.",
+    "continue": "Continuer",
+    "the_app": "l’app",
+    "invalid_request_title": "Ce lien ne fonctionne pas",
+    "invalid_request_body": "L’app a envoyé une demande incomplète ou invalide, rien n’a donc été connecté. Recommencez depuis l’app.",
+    "invalid_client_title": "WebBites n’a pas pu identifier cette app",
+    "invalid_client_body": "L’app ne s’est pas identifiée correctement et ne peut donc pas être connectée. Recommencez depuis l’app, ou contactez son développeur.",
+    "invalid_redirect_title": "L’adresse de retour de cette app n’est pas autorisée",
+    "invalid_redirect_body": "Pour protéger votre compte, WebBites ne vous renvoie qu’à une adresse enregistrée par l’app. Rien n’a été connecté.",
+    "invalid_scope_title": "L’app a demandé un accès que WebBites ne propose pas",
+    "invalid_scope_body": "Rien n’a été connecté. Recommencez depuis l’app, ou contactez son développeur.",
+    "invalid_server_title": "Un problème est survenu de notre côté",
+    "invalid_server_body": "Rien n’a été connecté. Réessayez depuis l’app dans un instant.",
+    "details": "Détails pour le développeur de l’app",
+    "expired_title": "Cette demande a expiré",
+    "expired_body": "Les demandes de connexion ne sont valables que peu de temps et ne fonctionnent qu’une seule fois. Recommencez depuis l’app que vous connectiez.",
+    "rejected_title": "Cette demande n’a pas pu être confirmée",
+    "rejected_body": "Rien n’a été connecté. Recommencez depuis l’app que vous connectiez.",
+    "failed_title": "Une erreur s’est produite",
+    "failed_body": "Rien n’a été connecté. Veuillez réessayer.",
+    "try_again": "Réessayer"
+  },
+  "automations": {
+    "new": "Nouvelle automatisation",
+    "empty": "Aucune automatisation pour l’instant. Commencez par quelque chose comme : si l’URL contient amazon.com, ajouter le tag Shopping.",
+    "smart_board": "Tableau intelligent",
+    "enable_named": "Activer {name}",
+    "load_failed": "Impossible de charger les automatisations",
+    "update_failed": "Impossible de mettre à jour l’automatisation",
+    "save_failed": "Impossible d’enregistrer l’automatisation",
+    "delete_failed": "Impossible de supprimer l’automatisation",
+    "name_placeholder": "Nommer cette automatisation",
+    "enabled": "Activée",
+    "whenever": "Chaque fois que",
+    "trigger_bookmark_added": "Un signet est ajouté",
+    "no_conditions": "Aucune condition : s’exécute pour chaque nouveau signet.",
+    "actions": "Actions",
+    "remove_action": "Retirer l’action",
+    "choose_board": "Choisir un tableau",
+    "add_action": "Ajouter une action",
+    "action_add_to_board": "Ajouter à un tableau",
+    "action_read_later": "Ajouter à « À lire plus tard »",
+    "action_webhook": "Appeler un webhook",
+    "webhook_help": "Laissez le corps vide pour envoyer le signet au format JSON. Utilisez {title}, {url}, {type} ou {id} entre guillemets, et {tags} sans guillemets.",
+    "webhook_signed": "Chaque requête est signée avec {header}.",
+    "webhook_signed_secret": "Chaque requête est signée avec {header} à l’aide de {secret}.",
+    "smart_board_note": "Il s’agit de la règle d’un tableau intelligent. Ses conditions apparaissent aussi dans les réglages du tableau ; la supprimer ramène le tableau en mode manuel.",
+    "if": "Si",
+    "remove_condition": "Retirer la condition",
+    "topics_placeholder": "Thèmes, appuyez sur Entrée",
+    "minimum_match": "Correspondance minimale",
+    "add_condition": "Ajouter une condition",
+    "match_all": "Toutes celles-ci",
+    "match_any": "N’importe laquelle",
+    "fields": {
+      "url": "URL",
+      "domain": "Domaine",
+      "title": "Titre",
+      "type": "Type",
+      "tag": "Tag",
+      "ai_topic": "Thème IA"
+    },
+    "ops": {
+      "contains": "contient",
+      "not_contains": "ne contient pas",
+      "is": "est",
+      "is_not": "n’est pas"
+    },
+    "describe": {
+      "a_board": "un tableau",
+      "about": "sur {topics}",
+      "condition": "{field} {op} {value}",
+      "tag": "tag {tag}",
+      "add_to_board": "ajouter à {board}",
+      "read_later": "à lire plus tard",
+      "webhook": "appeler un webhook",
+      "joiner_any": " ou ",
+      "joiner_all": " et ",
+      "every_bookmark": "chaque signet",
+      "summary": "{when} → {actions}"
+    }
+  },
+  "notifications": {
+    "title": "Notifications",
+    "aria_unread": "Notifications, {count} non lues",
+    "mark_all_read": "Tout marquer comme lu",
+    "unread": "Non lues",
+    "empty": "Rien de nouveau.",
+    "group_new": "Nouvelles",
+    "group_earlier": "Plus tôt",
+    "someone": "Quelqu’un",
+    "board_unavailable": "Ce tableau n’est plus disponible",
+    "sentence": {
+      "board_shared": "{who} a partagé « {board} » avec vous",
+      "role_changed": "{who} a modifié votre accès à « {board} »",
+      "board_unshared": "{who} vous a retiré de « {board} »",
+      "member_joined": "{who} a rejoint « {board} »",
+      "member_left": "{who} a quitté « {board} »",
+      "default": "{who} a mis à jour « {board} »",
+      "item_added": "{who} a ajouté un signet à « {board} » | {who} a ajouté {count} signets à « {board} »",
+      "item_added_titled": "{who} a ajouté « {title} » à « {board} »",
+      "item_edited": "{who} a modifié un signet dans « {board} » | {who} a modifié {count} signets dans « {board} »",
+      "item_edited_titled": "{who} a modifié « {title} » dans « {board} »",
+      "item_removed": "{who} a retiré un signet de « {board} » | {who} a retiré {count} signets de « {board} »",
+      "item_removed_titled": "{who} a retiré « {title} » de « {board} »"
+    }
+  },
+  "shell": {
+    "login_desktop": {
+      "success": "Connexion réussie"
+    },
+    "apple_callback": {
+      "completing": "Finalisation de la connexion avec Apple…",
+      "invalid_state": "Paramètre d’état invalide - attaque CSRF possible",
+      "no_id_token": "Aucun jeton d’identité reçu d’Apple",
+      "auth_failed": "Échec de l’authentification",
+      "account_exists": "Un compte existe déjà pour cette adresse e-mail. Essayez plutôt de vous connecter avec votre e-mail et votre mot de passe.",
+      "token_expired": "Votre session de connexion Apple a expiré. Veuillez réessayer.",
+      "invalid_token": "Jeton d’authentification Apple invalide. Veuillez réessayer.",
+      "user_creation_failed": "Impossible de créer votre compte. Veuillez réessayer plus tard.",
+      "sign_in_failed": "Échec de la connexion avec Apple. Veuillez réessayer."
+    },
+    "welcome_extension": {
+      "heading": "Bienvenue !",
+      "tagline": "Enregistrez en un clic, et laissez l’IA s’occuper de toute l’organisation.",
+      "right_click_title": "Clic droit pour enregistrer",
+      "right_click_description": "Enregistrez facilement n’importe quel site web ou image d’un simple clic droit.",
+      "quick_menu_title": "Menu rapide",
+      "quick_menu_description": "Appuyez sur « J » pour afficher ou masquer le menu rapide de WebBites. Utilisez Cmd+J (Ctrl sous Windows) pour ouvrir WebBites en petit format pour des enregistrements et recherches rapides.",
+      "reading_title": "Lecture améliorée",
+      "reading_description": "Détectez automatiquement les articles et ouvrez-les dans un mode lecture sans distraction.",
+      "summaries_title": "Résumés instantanés",
+      "summaries_description": "Résumez n’importe quel article ou site web en un clic.",
+      "listen_title": "Écouter les articles",
+      "listen_description": "Convertissez n’importe quel article ou résumé en audio avec une voix réaliste."
+    }
+  },
+  "boards": {
+    "empty": "Aucun tableau pour l’instant",
+    "someone": "quelqu’un",
+    "go_home": "Aller à WebBites",
+    "leave": "Quitter le tableau",
+    "duplicate": "Dupliquer",
+    "archive": "Archiver",
+    "delete_board": "Supprimer le tableau",
+    "added_to": "Ajouté à {board}",
+    "already_in": "Déjà dans {board}",
+    "added_bookmarks": "{count} signet ajouté à {board} | {count} signets ajoutés à {board}",
+    "add_error": "Erreur lors de l’ajout au tableau",
+    "modal": {
+      "edit_title": "Modifier le tableau",
+      "new_title": "Nouveau tableau",
+      "choose_emoji": "Choisir un emoji",
+      "emoji_placeholder": "Saisissez ou collez n’importe quel emoji",
+      "remove_emoji": "Retirer",
+      "emoji_work": "Travail",
+      "emoji_creative": "Créatif",
+      "emoji_life": "Vie",
+      "emoji_misc": "Divers",
+      "name_placeholder": "Nom du tableau",
+      "description_placeholder": "Qu’y a-t-il dans ce tableau ? (facultatif)",
+      "inside": "Emplacement",
+      "inside_help": "Placez ce tableau dans un dossier, ou laissez-le à la racine.",
+      "top_level": "Racine",
+      "how_added": "Comment les signets sont ajoutés",
+      "mode_manual": "Manuel",
+      "mode_manual_help": "Vous ajoutez et retirez les signets vous-même.",
+      "mode_smart": "Intelligent",
+      "mode_smart_help": "Les signets correspondants sont classés automatiquement, et vous pouvez aussi en ajouter à la main.",
+      "ai_topics": "Thèmes IA",
+      "ai_topics_hint": "séparés par des virgules",
+      "ai_topics_help": "L’IA compare les nouveaux signets à ces thèmes. Facultatif si vous ajoutez des conditions ci-dessous.",
+      "topics_placeholder": "Design d’interface, typographie, théorie des couleurs",
+      "confidence": "Confiance minimale de correspondance",
+      "conditions": "Conditions",
+      "conditions_help": "Vérifiées pour chaque nouveau signet. Utilisez-les avec des thèmes IA, ou seules pour se passer complètement de l’IA.",
+      "auto_apply": "Ajouter automatiquement les signets correspondants",
+      "auto_apply_help": "Les nouveaux signets correspondants sont classés ici sans demander.",
+      "include_existing": "Analyser mes signets existants",
+      "include_existing_help": "Remplissez le tableau à partir de ce que vous avez déjà enregistré.",
+      "automations_link": "Ajoutez des tags, des webhooks et plus dans Automatisations",
+      "colour": "Couleur",
+      "no_colour": "Aucune couleur",
+      "save_changes": "Enregistrer les modifications",
+      "create": "Créer le tableau",
+      "updated": "Tableau mis à jour",
+      "created": "Tableau créé",
+      "save_error": "Erreur lors de l’enregistrement du tableau"
+    },
+    "folder": {
+      "rename_title": "Renommer le dossier",
+      "new_title": "Nouveau dossier",
+      "name_placeholder": "Nom du dossier",
+      "create": "Créer",
+      "save_error": "Erreur lors de l’enregistrement du dossier"
+    },
+    "sidebar": {
+      "title": "Tableaux",
+      "new_folder": "Nouveau dossier",
+      "new_board": "Nouveau tableau",
+      "shared": "Partagés",
+      "shared_by": "Partagé par {name}",
+      "share_board": "Partager le tableau",
+      "rename_folder": "Renommer le dossier",
+      "edit_board": "Modifier le tableau",
+      "link_copied": "Lien de partage copié",
+      "link_copy_error": "Impossible de copier le lien de partage",
+      "menu": {
+        "new_board_here": "Nouveau tableau ici…",
+        "new_folder_here": "Nouveau dossier ici…",
+        "rename": "Renommer…",
+        "delete": "Supprimer…",
+        "share": "Partager…",
+        "people_with_access": "Personnes ayant accès…",
+        "edit_board": "Modifier le tableau…",
+        "copy_share_link": "Copier le lien de partage"
+      }
+    },
+    "add_to": {
+      "title": "Ajouter à un tableau",
+      "removed_from": "Retiré de {board}",
+      "update_error": "Erreur lors de la mise à jour du tableau"
+    },
+    "share": {
+      "title": "Partager « {name} »",
+      "people_with_access": "Personnes ayant accès",
+      "description_owner": "Invitez des personnes par e-mail, ou laissez toute personne disposant du lien consulter.",
+      "description_member": "{name} est partagé avec vous.",
+      "this_board": "Ce tableau",
+      "try_again": "Réessayer",
+      "load_error": "Impossible de charger les réglages de partage.",
+      "invite_people": "Inviter des personnes",
+      "add_emails": "Ajouter des e-mails",
+      "invite": "Inviter",
+      "invalid_emails": "{emails} n’est pas un e-mail valide. | {emails} ne sont pas des e-mails valides.",
+      "invite_hint": "Les personnes sans compte WebBites reçoivent un e-mail avec un lien pour rejoindre.",
+      "you": "(vous)",
+      "owner": "Propriétaire",
+      "pending": "En attente",
+      "can_view": "Peut consulter",
+      "can_edit": "Peut modifier",
+      "remove_member": "Retirer {name}",
+      "nobody_else": "Personne d’autre pour l’instant.",
+      "only_other": "Vous êtes la seule autre personne ici.",
+      "general_access": "Accès général",
+      "access_private": "Uniquement les personnes invitées",
+      "access_link": "Toute personne disposant du lien — lecture seule",
+      "link_on": "Toute personne disposant du lien peut consulter, sans se connecter.",
+      "link_off": "Seules les personnes ci-dessus peuvent ouvrir ce tableau.",
+      "link_reset_to_show": "Réinitialisez le lien pour l’afficher ici",
+      "link_unavailable": "Lien indisponible",
+      "copy_link": "Copier le lien",
+      "click_again": "Cliquez à nouveau pour réinitialiser",
+      "create_link": "Créer un lien",
+      "reset_link": "Réinitialiser le lien",
+      "done": "Terminé",
+      "invited": "Invitation envoyée | {count} personnes invitées",
+      "invite_error": "Impossible d’envoyer l’invitation",
+      "role_error": "Impossible de modifier son accès",
+      "remove_error": "Impossible de la retirer",
+      "access_error": "Impossible de modifier qui peut ouvrir ce tableau",
+      "link_copied": "Lien copié",
+      "link_copy_error": "Impossible de copier le lien",
+      "new_link": "Nouveau lien prêt",
+      "reset_error": "Impossible de réinitialiser le lien"
+    },
+    "trash": {
+      "title": "Corbeille",
+      "description": "Les signets supprimés sont conservés 30 jours, puis définitivement effacés.",
+      "empty": "La corbeille est vide",
+      "untitled": "Sans titre",
+      "purges_in": "Suppression définitive dans {count} jours | Suppression définitive dans {count} jour | Suppression définitive dans {count} jours",
+      "restore": "Restaurer"
+    },
+    "public": {
+      "open_webbites": "Ouvrir WebBites",
+      "save_your_own": "Enregistrez les vôtres",
+      "start_free": "Commencer gratuitement",
+      "shared_by": "Partagé par {name}",
+      "bookmark_count": "{count} signet | {count} signets",
+      "empty": "Rien dans ce tableau pour l’instant.",
+      "show_more": "Afficher plus de signets",
+      "footer": "Ce tableau a été partagé depuis WebBites, où vous pouvez enregistrer des pages, les retrouver et partager un tableau avec n’importe qui.",
+      "title": "{name} — WebBites",
+      "title_default": "Tableau partagé — WebBites",
+      "not_found_title": "Tableau introuvable",
+      "not_found_text": "Ce lien ne mène nulle part. Vérifiez que vous l’avez copié en entier.",
+      "forbidden_title": "Ce tableau n’est pas partagé avec vous",
+      "forbidden_text": "Le propriétaire a peut-être désactivé le partage ou réinitialisé le lien. Demandez-lui-en un nouveau.",
+      "error_title": "Impossible de charger ce tableau",
+      "error_text": "Un problème est survenu de notre côté. Réessayez dans un instant."
+    },
+    "invite": {
+      "incomplete_title": "Ce lien d’invitation est incomplet",
+      "incomplete_text": "Rouvrez le lien depuis votre e-mail, en le copiant en entier.",
+      "invited_title": "Vous avez été invité à un tableau",
+      "sign_in_text": "Connectez-vous, ou créez un compte WebBites, pour le rejoindre.",
+      "sign_in_cta": "Se connecter ou créer un compte",
+      "joining": "Ajout au tableau…"
+    }
+  },
+  "editor": {
+    "slash": {
+      "items": {
+        "paragraph": {
+          "title": "Texte",
+          "subtitle": "Commencez simplement à écrire"
+        },
+        "heading1": {
+          "title": "Titre 1",
+          "subtitle": "Grand titre de section"
+        },
+        "heading2": {
+          "title": "Titre 2",
+          "subtitle": "Titre de section moyen"
+        },
+        "heading3": {
+          "title": "Titre 3",
+          "subtitle": "Petit titre de section"
+        },
+        "bulletList": {
+          "title": "Liste à puces",
+          "subtitle": "Une liste simple"
+        },
+        "orderedList": {
+          "title": "Liste numérotée",
+          "subtitle": "Une liste qui compte"
+        },
+        "taskList": {
+          "title": "À faire",
+          "subtitle": "Quelque chose à cocher"
+        },
+        "blockquote": {
+          "title": "Citation",
+          "subtitle": "Mettre un passage en valeur"
+        },
+        "codeBlock": {
+          "title": "Code",
+          "subtitle": "Préformaté, à chasse fixe"
+        },
+        "horizontalRule": {
+          "title": "Séparateur",
+          "subtitle": "Couper la page en deux"
+        },
+        "image": {
+          "title": "Image",
+          "subtitle": "Importer une image"
+        }
+      },
+      "groups": {
+        "basic": "Blocs de base",
+        "media": "Médias"
+      },
+      "no_match": "Aucun bloc nommé « {query} »"
+    },
+    "block_menu": {
+      "duplicate": "Dupliquer",
+      "copy_text": "Copier le texte",
+      "turn_into": "Transformer en"
+    }
+  },
+  "cards": {
+    "everything": "Tout",
+    "media_preview": {
+      "date_unavailable": "Date indisponible",
+      "movie_poster_alt": "Affiche du film",
+      "game_poster_alt": "Jaquette du jeu"
+    },
+    "search_chip": {
+      "remove": "Retirer {label}"
+    },
+    "drawing": {
+      "save_failed": "Impossible d’enregistrer le dessin"
+    }
+  },
+  "faq": {
+    "title_line1": "Vos questions,",
+    "title_emphasis": "mises en signet.",
+    "subtitle": "Tout ce qu’on nous demande, réuni au même endroit. Choisissez un sujet ou ouvrez une bouchée.",
+    "topics_aria": "Sujets",
+    "topics": {
+      "all": "Tous",
+      "start": "Pour commencer",
+      "saving": "Enregistrement et synchronisation",
+      "billing": "Offres et facturation",
+      "privacy": "Confidentialité et données",
+      "dev": "Développeurs"
+    },
+    "still_stuck": {
+      "title": "Toujours bloqué ?",
+      "body": "Une vraie personne lit chaque e-mail, généralement sous deux jours ouvrés. Dites-nous ce que vous avez fait, ce que vous attendiez et ce qui s’est passé à la place.",
+      "email_button": "Écrire à {email}",
+      "feature_button": "Demander une fonctionnalité"
+    },
+    "items": {
+      "what": {
+        "q": "Qu’est-ce que WebBites ?",
+        "a": "Un endroit pour enregistrer n’importe quoi — sites web, images, films, jeux, notes — et le retrouver sans avoir à le classer vous-même. Enregistrez en un clic et WebBites ajoute des tags et organise le tout grâce à l’IA, puis permet de rechercher par titre, couleur, tags et même par le texte de la page."
+      },
+      "platforms": {
+        "q": "Sur quelles plateformes fonctionne-t-il ?",
+        "a": "L’app web, des apps natives pour iPhone, iPad, Mac, Vision Pro, Apple TV et Apple Watch, et une extension de navigateur pour enregistrer où que vous soyez. Tout se synchronise via votre compte."
+      },
+      "account": {
+        "q": "Ai-je besoin d’un compte pour utiliser les apps ?",
+        "a": "Non. Les apps pour iPhone, iPad, Mac et Vision Pro fonctionnent sans connexion, avec une bibliothèque conservée sur votre propre appareil, et rien de ce que vous enregistrez dans ce mode ne nous est envoyé. La synchronisation, le partage, la recherche sémantique et les fonctions cloud nécessitent un compte, et vous pouvez basculer les fonctions d’intelligence vers des modèles sur l’appareil dans les réglages si vous souhaitez aussi les garder en local. Les détails se trouvent dans la <a href=\"/privacy\">Politique de confidentialité</a> §2."
+      },
+      "password": {
+        "q": "J’ai oublié mon mot de passe",
+        "a": "Utilisez <a href=\"/passwordReset\">la page de réinitialisation</a> ou le lien « Mot de passe oublié » sur l’écran de connexion. L’e-mail arrive depuis notre fournisseur de messagerie — vérifiez vos spams s’il n’arrive pas. Si vous vous êtes connecté avec Apple, il n’y a pas de mot de passe à réinitialiser : utilisez à nouveau le bouton Apple."
+      },
+      "sync": {
+        "q": "Mes signets ne se synchronisent pas",
+        "a": "Vérifiez que vous êtes connecté au même compte sur les deux appareils, puis tirez pour actualiser. Un enregistrement fait hors ligne reste dans une file d’attente et est envoyé dès le retour du réseau — l’app les affiche sur l’écran « En attente d’enregistrement » sous Réglages → Données &amp; hors ligne. Si un élément y reste bloqué plus de quelques minutes alors que votre connexion fonctionne, écrivez-nous."
+      },
+      "extension": {
+        "q": "L’extension n’enregistre pas",
+        "a": "L’extension enregistre via votre session connectée, ouvrez donc l’app web une fois et connectez-vous, puis réessayez. Sur Safari, les extensions doivent aussi être activées et autorisées pour le site sur lequel vous vous trouvez, dans Safari → Réglages → Extensions."
+      },
+      "bad_save": {
+        "q": "Une page s’est mal enregistrée — pas d’image, mauvais titre, pas de texte d’article",
+        "a": "Certains sites bloquent la récupération automatisée, affichent tout en JavaScript, ou se trouvent derrière un paywall ou une connexion. Dans ces cas, nous enregistrons ce que nous pouvons atteindre. Modifier le titre, la description ou l’image sur la bouchée règle le problème définitivement. Envoyez-nous l’URL si un site qui vous tient à cœur sort systématiquement mal — nous pouvons en corriger beaucoup au cas par cas."
+      },
+      "export": {
+        "q": "Puis-je exporter ou importer mes signets ?",
+        "a": "Les deux. Réglages → Exporter, sur n’importe quelle plateforme, vous donne votre bibliothèque dans un fichier portable, avec n’importe quelle offre, à tout moment. Pour importer les signets de votre navigateur, suivez le <a href=\"/export-bookmarks\">guide d’importation</a>."
+      },
+      "pricing": {
+        "q": "Combien ça coûte ?",
+        "a": "Il existe une offre gratuite, ainsi que des offres payantes pour davantage de signets et les fonctions avancées. Les offres et tarifs actuels se trouvent dans la <a href=\"/#pricing\">section tarifs</a> de la page d’accueil."
+      },
+      "cancel": {
+        "q": "Comment résilier ou changer mon offre ?",
+        "a": "Résiliez là où vous vous êtes abonné. Si vous vous êtes abonné sur le web ou sur Mac, rendez-vous dans Réglages → Abonnement, qui ouvre le portail de facturation. Si vous vous êtes abonné via l’App Store, c’est dans les réglages d’abonnement Apple de votre appareil (Réglages → votre nom → Abonnements), car Apple les facture directement. Vous conservez les fonctions payantes jusqu’à la fin de la période que vous avez payée."
+      },
+      "privacy": {
+        "q": "Mes données sont-elles privées ?",
+        "a": "Vos signets vous appartiennent. Nous ne vendons pas vos données, et les apps peuvent fonctionner entièrement sur l’appareil si vous ne vous connectez jamais. Ce que nous stockons, pourquoi et pendant combien de temps est détaillé dans la <a href=\"/privacy\">Politique de confidentialité</a>."
+      },
+      "delete": {
+        "q": "Comment supprimer mon compte ?",
+        "a": "Réglages → Supprimer le compte, puis confirmez. Cela supprime avec lui vos signets, vos fichiers et votre abonnement, et c’est irréversible — exportez donc d’abord si vous souhaitez en conserver une copie. Inutile de nous écrire, et nous ne vous opposons aucune offre de rétention."
+      },
+      "api": {
+        "q": "Existe-t-il une API ?",
+        "a": "Oui — la <a href=\"/developers\">page développeurs</a> montre ce qu’elle permet de faire, et la <a href=\"/developers/docs\">documentation</a> contient les guides, vos clés d’API, un bac à sable et tous les endpoints."
+      }
+    }
+  },
+  "help_pages": {
+    "legal": {
+      "last_updated": "Dernière mise à jour : {date}",
+      "questions": "Une question sur cette page ? Écrivez à {email}."
+    },
+    "chat": {
+      "title": "Discuter avec nous",
+      "subtitle": "Une vraie personne de notre équipe vous répond — généralement sous deux jours ouvrés.",
+      "iframe_title": "Chat d’assistance",
+      "not_configured": "Le chat n’est pas encore configuré. Écrivez-nous à {email}.",
+      "sign_in_prompt": "Connectez-vous pour démarrer une conversation et garder votre historique au même endroit.",
+      "sign_in": "Se connecter",
+      "prefer_email": "Vous préférez l’e-mail ? Écrivez à {email}."
+    },
+    "support": {
+      "title": "Assistance",
+      "subtitle": "Quelque chose ne fonctionne pas, manque, ou reste introuvable ? Voici comment joindre une vraie personne.",
+      "email_us": "Écrivez-nous",
+      "email_body": "Une personne lit cette adresse, généralement sous deux jours ouvrés. Dites-nous ce que vous avez fait, ce que vous attendiez et ce qui s’est passé à la place — ainsi que l’app (web, iPhone, iPad, Mac, Vision Pro, TV, Watch ou extension de navigateur) et la version que vous utilisiez. Une capture d’écran fait gagner tout un échange.",
+      "operated_by": "WebBites est exploité par {operator}, {address}.",
+      "where_title": "Où s’adresser",
+      "col_want": "Si vous souhaitez…",
+      "col_go": "Rendez-vous ici",
+      "row_bug": "Signaler un bug ou demander de l’aide",
+      "row_bug_go": "{chat}, ou {email}",
+      "chat_link": "Discuter avec nous",
+      "row_feature": "Demander une fonctionnalité, ou voter pour l’une d’elles",
+      "feedback_board": "Tableau des retours",
+      "row_changes": "Voir ce qui a changé et quand",
+      "changelog": "Journal des modifications",
+      "row_api": "Développer avec l’API",
+      "developer_docs": "Documentation développeur",
+      "row_import": "Importer les signets de votre navigateur",
+      "import_guide": "Guide d’importation",
+      "row_security": "Signaler un problème de sécurité",
+      "row_security_go": "{email}, objet « Sécurité »",
+      "row_rights": "Exercer un droit relatif à la protection des données",
+      "row_rights_go": "{link} §11",
+      "privacy_policy": "Politique de confidentialité",
+      "faq_title": "Réponses aux questions habituelles",
+      "faq_body": "Mots de passe, synchronisation, exports, résiliation, extension et plus encore sont sur la {link}.",
+      "faq_link": "page FAQ",
+      "security_title": "Signaler une faille de sécurité",
+      "security_body": "Écrivez à {email} avec « Sécurité » dans l’objet et suffisamment de détails pour reproduire le problème. Merci de ne pas le publier avant que nous ayons eu l’occasion de le corriger, de ne pas accéder aux données d’autres personnes ni les modifier pendant vos tests, et de ne pas effectuer de tests de charge ou de déni de service contre le service. Nous confirmerons la réception, vous tiendrons informé et, si vous le souhaitez, vous citerons lorsque ce sera corrigé."
+    }
+  },
+  "support_chat": {
+    "replying_to": "Réponse à {email}",
+    "real_person": "Une vraie personne lit ceci",
+    "gate_intro": "Connectez-vous pour conserver tout votre historique, ou laissez un message en tant qu’invité.",
+    "your_email": "Votre e-mail",
+    "continue_as_guest": "Continuer en tant qu’invité",
+    "email_note": "Nous l’utilisons uniquement pour répondre. Votre brouillon reste sur cet appareil.",
+    "we_reply_to": "Nous répondons à {email} — généralement sous deux jours ouvrés.",
+    "tell_us": "Dites-nous ce qui se passe.",
+    "your_message": "Votre message",
+    "send": "Envoyer",
+    "close_chat": "Fermer le chat d’assistance",
+    "open_chat": "Ouvrir le chat d’assistance",
+    "invalid_email": "Saisissez un e-mail valide pour que nous puissions répondre."
+  },
+  "marketing": {
+    "statistics": {
+      "active_users": "Utilisateurs actifs",
+      "bookmarks_saved": "Signets enregistrés",
+      "accuracy_rate": "Taux de précision",
+      "support": "Assistance"
+    }
+  },
+  "import_export": {
+    "time": {
+      "unknown": "Inconnu",
+      "ago_minutes": "il y a {minutes} min {seconds} s",
+      "ago_seconds": "il y a {seconds} s",
+      "hours_minutes": "{hours} h {minutes} min",
+      "minutes_seconds": "{minutes} min {seconds} s",
+      "seconds": "{seconds} s"
+    },
+    "status_labels": {
+      "inactive": "Inactif",
+      "active": "Actif",
+      "processing": "En cours de traitement",
+      "completed": "Terminé",
+      "cancelled": "Annulé",
+      "failed": "Échec"
+    },
+    "activity": {
+      "processing": "Traitement en cours :",
+      "waiting": "En attente du prochain signet…",
+      "last_update": "Dernière mise à jour : {time}"
+    },
+    "failed": {
+      "title": "Importations en échec ({count})",
+      "retry": "Réessayer {count} élément | Réessayer {count} éléments",
+      "retryable": "Peut être relancé",
+      "failed": "Échec"
+    },
+    "metrics": {
+      "title": "Indicateurs de performance",
+      "per_minute": "signets/min",
+      "duration": "durée",
+      "estimated_completion": "fin estimée",
+      "batches": "lots"
+    },
+    "overview": {
+      "title": "État de l’importation",
+      "processing": "Traitement de {done} signets sur {total}",
+      "currently": "En cours : {url}",
+      "no_session": "Aucune session d’importation active"
+    },
+    "progress": {
+      "title": "Progression",
+      "hint": "Cela peut prendre quelques minutes, l’importation se poursuivra même si vous fermez cette fenêtre.",
+      "completed": "{count} terminés",
+      "failed": "{count} en échec"
+    },
+    "queue": {
+      "title": "Aperçu de la file d’attente",
+      "remaining": "{count} restants",
+      "empty": "Aucun élément dans la file d’attente",
+      "batch": "Lot : {batch}",
+      "more": "… et {count} autres"
+    },
+    "modal": {
+      "title": "Progression de l’importation",
+      "cancel_import": "Annuler l’importation",
+      "retry_success": "{count} élément remis dans la file d’attente pour une nouvelle tentative | {count} éléments remis dans la file d’attente pour une nouvelle tentative",
+      "retry_error": "Échec de la nouvelle tentative. Veuillez réessayer.",
+      "cancelled": "L’importation a été annulée",
+      "cancel_error": "Échec de l’annulation de l’importation. Veuillez réessayer."
+    },
+    "user_modal": {
+      "title": "Importer des signets",
+      "subtitle": "Lancer l’importation des signets pour cet utilisateur",
+      "no_email": "Aucun e-mail fourni",
+      "user_id": "ID utilisateur : {id}",
+      "current_bookmarks": "Signets actuels : {count}",
+      "import_status": "État de l’importation",
+      "last_import": "Dernière importation : {date}",
+      "total_imported": "Total importé : {count} signets",
+      "options": "Options d’importation",
+      "force_reimport": "Forcer la réimportation (écraser les signets existants)",
+      "skip_duplicates": "Ignorer les signets en double",
+      "notify_user": "Envoyer une notification à l’utilisateur une fois terminé",
+      "from_parse_class": "Importer depuis la classe Parse",
+      "notice_title": "Avis important",
+      "progress": "Progression de l’importation",
+      "importing": "Importation…",
+      "start_import": "Lancer l’importation",
+      "already_imported_warning": "Cet utilisateur a déjà importé des signets. Activez « Forcer la réimportation » pour écraser les données existantes.",
+      "status_unknown": "Inconnu",
+      "status_imported": "Déjà importé",
+      "status_none": "Aucune importation",
+      "not_available": "N/D",
+      "step_init": "Initialisation de l’importation…",
+      "step_prepare": "Préparation des données de l’utilisateur…",
+      "step_process": "Traitement des signets…",
+      "step_finalize": "Finalisation de l’importation…",
+      "step_done": "Importation terminée avec succès !",
+      "failed_generic": "Échec de l’importation",
+      "failed": "Échec de l’importation : {error}"
+    },
+    "export_guide": {
+      "title": "Comment exporter vos signets",
+      "intro": "Prêt à apporter vos signets dans WebBites ? Suivez ces instructions simples pour exporter vos signets depuis votre navigateur préféré.",
+      "help_title": "Besoin d’aide ?",
+      "help_text": "Si vous avez du mal à exporter vos signets, n’hésitez pas à {link}.",
+      "help_link": "contacter notre équipe d’assistance",
+      "exporting_from": "Exporter depuis {browser}",
+      "note_label": "Remarque :",
+      "next_title": "Et ensuite ?",
+      "next_intro": "Maintenant que vous avez exporté vos signets, vous pouvez les importer dans WebBites :",
+      "next_1": "Rendez-vous sur votre <a href=\"/app\" class=\"text-primary-600 dark:text-primary-400 hover:underline\">tableau de bord WebBites</a> et ouvrez la fenêtre des réglages.",
+      "next_2": "Cliquez sur le bouton « Importer des signets ».",
+      "next_3": "Sélectionnez et importez votre fichier de signets exporté",
+      "next_4": "Sélectionnez ceux que vous voulez importer, cliquez sur « Importer » et laissez WebBites tout organiser pour vous !",
+      "import_alt": "Étape {n} de l’importation dans WebBites",
+      "steps": {
+        "chrome_1": {
+          "title": "Ouvrez le menu Chrome",
+          "description": "Cliquez sur les trois points <strong>⋮</strong> en haut à droite de la fenêtre de votre navigateur pour ouvrir le menu Chrome."
+        },
+        "chrome_2": {
+          "title": "Accédez au gestionnaire de favoris",
+          "description": "Allez dans <strong>Favoris > Gestionnaire de favoris</strong>, ou appuyez simplement sur <kbd class=\"new-kbd\">Ctrl+Maj+O</kbd> (Windows/Linux) ou <kbd class=\"new-kbd\">⌘+Option+B</kbd> (Mac)."
+        },
+        "chrome_3": {
+          "title": "Exportez les favoris",
+          "description": "Cliquez sur les trois points <strong>⋮</strong> en haut à droite du gestionnaire de favoris, puis sélectionnez <strong>Exporter les favoris</strong>."
+        },
+        "chrome_4": {
+          "title": "Enregistrez le fichier HTML",
+          "description": "Choisissez un emplacement sur votre ordinateur pour enregistrer le fichier HTML contenant vos favoris. Le nom par défaut ressemblera à « bookmarks_[date].html ».",
+          "note": "Ce fichier HTML contient tous vos favoris et leur structure de dossiers."
+        },
+        "firefox_1": {
+          "title": "Ouvrez le menu Firefox",
+          "description": "Cliquez sur les trois lignes horizontales (menu hamburger) <strong>☰</strong> en haut à droite de la fenêtre de votre navigateur."
+        },
+        "firefox_2": {
+          "title": "Accédez aux marque-pages",
+          "description": "Allez dans <strong>Marque-pages > Gérer les marque-pages</strong>, ou appuyez sur <kbd class=\"new-kbd\">Ctrl+Maj+B</kbd> (Windows/Linux) ou <kbd class=\"new-kbd\">⌘+Maj+B</kbd> (Mac)."
+        },
+        "firefox_3": {
+          "title": "Exportez les marque-pages",
+          "description": "Dans la fenêtre Bibliothèque qui s’ouvre, cliquez sur <strong>Importation et sauvegarde > Exporter les marque-pages au format HTML</strong>."
+        },
+        "firefox_4": {
+          "title": "Enregistrez le fichier HTML",
+          "description": "Choisissez un emplacement sur votre ordinateur pour enregistrer le fichier HTML. Le nom par défaut sera « bookmarks.html ».",
+          "note": "Pensez à noter où vous avez enregistré ce fichier pour le retrouver facilement lors de l’importation dans WebBites."
+        },
+        "safari_1": {
+          "title": "Ouvrez le menu Safari",
+          "description": "Cliquez sur <strong>Fichier</strong> dans la barre des menus de Safari."
+        },
+        "safari_2": {
+          "title": "Exportez les signets",
+          "description": "Sélectionnez <strong>Exporter</strong> puis <strong>Signets</strong> dans le menu déroulant."
+        },
+        "safari_3": {
+          "title": "Enregistrez le fichier",
+          "description": "Choisissez un emplacement sur votre Mac pour enregistrer le fichier de signets. Cela enregistrera un fichier .zip, que vous devrez décompresser pour obtenir le fichier .html.",
+          "note": "Safari exporte tous vos signets, y compris ceux de la barre des favoris et de tous les dossiers."
+        },
+        "edge_1": {
+          "title": "Ouvrez le menu Edge",
+          "description": "Cliquez sur les trois points <strong>⋯</strong> en haut à droite de la fenêtre de votre navigateur, puis sur <strong>Favoris</strong>."
+        },
+        "edge_2": {
+          "title": "Exportez les favoris",
+          "description": "Cliquez sur <strong>Exporter les favoris</strong>."
+        },
+        "edge_3": {
+          "title": "Enregistrez le fichier HTML",
+          "description": "Choisissez un emplacement sur votre ordinateur pour enregistrer le fichier HTML contenant vos favoris.",
+          "note": "Edge exportera tous vos favoris, y compris ceux des dossiers que vous avez créés."
+        },
+        "opera_1": {
+          "title": "Accédez aux favoris",
+          "description": "Appuyez sur <kbd class=\"new-kbd\">Ctrl+Maj+B</kbd> (Windows/Linux) ou <kbd class=\"new-kbd\">⌘+Option+B</kbd> (Mac) pour ouvrir le gestionnaire de favoris, ou cliquez sur le menu Opera et sélectionnez <strong>Favoris > Favoris</strong>."
+        },
+        "opera_2": {
+          "title": "Ouvrez la vue complète des favoris",
+          "description": "Cliquez sur <strong>Ouvrir la vue complète des favoris</strong>"
+        },
+        "opera_3": {
+          "title": "Exportez les favoris",
+          "description": "Cliquez sur le bouton <strong>Importer/Exporter</strong> en bas à gauche du gestionnaire de favoris, puis sélectionnez <strong>Exporter les favoris au format HTML</strong>."
+        },
+        "opera_4": {
+          "title": "Enregistrez le fichier HTML",
+          "description": "Choisissez un emplacement sur votre ordinateur pour enregistrer le fichier HTML contenant vos favoris.",
+          "note": "L’export des favoris d’Opera inclut tous vos favoris et leur structure de dossiers."
+        },
+        "arc_1": {
+          "title": "Ouvrez la barre latérale d’Arc",
+          "description": "Ouvrez la barre de commandes en appuyant sur <kbd class=\"new-kbd\">⌘+T</kbd>, puis allez sur <strong>arc://bookmarks</strong>."
+        },
+        "arc_2": {
+          "title": "Exportez les favoris",
+          "description": "Cliquez sur les trois points <strong>⋯</strong> en haut à droite du panneau des favoris, puis sélectionnez <strong>Réglages</strong>. Dans le menu des réglages, repérez et cliquez sur <strong>Exporter les favoris</strong>."
+        },
+        "arc_3": {
+          "title": "Enregistrez le fichier HTML",
+          "description": "Choisissez un emplacement sur votre ordinateur pour enregistrer le fichier HTML contenant vos favoris.",
+          "note": "Ce fichier HTML contient tous vos favoris et leur structure de dossiers."
+        },
+        "raindrop_1": {
+          "title": "Connectez-vous à Raindrop.io",
+          "description": "Allez sur <a href='https://app.raindrop.io' target='_blank' rel='noopener noreferrer'>app.raindrop.io</a> et connectez-vous à votre compte."
+        },
+        "raindrop_2": {
+          "title": "Accédez aux réglages",
+          "description": "Cliquez sur votre photo de profil en haut à droite, puis sélectionnez <strong>Réglages</strong> dans le menu déroulant."
+        },
+        "raindrop_3": {
+          "title": "Exportez les signets",
+          "description": "Dans le menu des réglages, allez dans l’onglet <strong>Sauvegarde</strong>. Dans la section « Exporter », sélectionnez votre format préféré (le HTML est recommandé pour la compatibilité avec WebBites)."
+        },
+        "raindrop_4": {
+          "title": "Téléchargez vos signets",
+          "description": "Cliquez sur le bouton <strong>Exporter</strong> pour générer et télécharger votre fichier de signets.",
+          "note": "Raindrop.io permet d’exporter dans plusieurs formats, mais le format HTML est le plus adapté pour l’importation dans WebBites."
+        }
+      }
+    }
+  },
+  "subscription_success": {
+    "title": "Abonnement activé !",
+    "message": "Vous vous êtes abonné avec succès à l’offre {plan}. Profitez de votre expérience premium !",
+    "benefits_title": "Vos avantages premium",
+    "bookmarks": "Signets",
+    "bookmarks_limit": "Enregistrez jusqu’à {limit} signets",
+    "audio": "Pistes audio",
+    "audio_limit": "Accédez à {limit} pistes audio premium",
+    "import_bookmarks": "Importer des signets",
+    "start": "Commencer à explorer",
+    "unlimited": "illimité"
+  },
+  "rss": {
+    "mark_all_read": "Tout marquer comme lu",
+    "mark_read": "Marquer comme lu",
+    "mark_unread": "Marquer comme non lu",
+    "pane": {
+      "articles": "Articles"
+    },
+    "sidebar": {
+      "feeds": "Flux",
+      "all_articles": "Tous les articles",
+      "unread": "Non lus",
+      "import_opml": "Importer des flux (OPML)…",
+      "export_feeds": "Exporter les flux…",
+      "import_added": "{count} flux ajouté | {count} flux ajoutés",
+      "import_queued": "{count} autres en cours d’ajout",
+      "import_failed_rows": "{count} impossibles à lire",
+      "import_failed": "Impossible d’importer ce fichier OPML.",
+      "export_failed": "Impossible d’exporter vos flux."
+    },
+    "add_feed": {
+      "title": "Ajouter un flux",
+      "placeholder": "Adresse ou nom du flux",
+      "hint": "Collez l’adresse d’un site ou d’un flux, ou recherchez par nom.",
+      "nothing_found": "Aucun résultat",
+      "no_match": "Aucun flux ne correspond à « {query} ». Si vous avez l’adresse du flux, collez-la ici.",
+      "readers": "{count} lecteur | {count} lecteurs",
+      "already_subscribed": "Déjà abonné",
+      "add": "Ajouter",
+      "done": "Terminé",
+      "subscribe_failed": "Impossible de s’abonner à ce flux."
+    },
+    "settings": {
+      "name": "Nom",
+      "name_hint": "Utilise le nom de l’éditeur",
+      "fetch_full": "Récupérer les articles complets",
+      "fetch_full_description": "Beaucoup de flux n’envoient qu’un extrait. Lorsque cette option est activée, WebBites récupère chaque nouvel article en entier et le résume pour vous. Disponible avec une offre payante.",
+      "open_website": "Ouvrir le site web",
+      "feed_dead": "Ce flux ne répond plus et n’est plus vérifié.",
+      "unsubscribe": "Se désabonner",
+      "save_failed": "Impossible d’enregistrer ces réglages."
+    },
+    "list": {
+      "filter": "Filtrer les articles",
+      "showing_unread": "Seuls les non lus sont affichés",
+      "show_unread": "Afficher uniquement les non lus",
+      "refresh": "Actualiser le flux",
+      "confirm_feed": "Marquer tout le contenu de « {title} » comme lu ?",
+      "confirm_all": "Marquer tous les articles comme lus ?",
+      "full_text": "Texte intégral disponible",
+      "summary": "Résumé disponible",
+      "no_matches": "Aucun résultat",
+      "no_matches_description": "Rien ici ne correspond à « {query} ».",
+      "no_feeds": "Aucun flux pour l’instant",
+      "no_feeds_description": "Ajoutez un flux pour commencer à lire.",
+      "caught_up": "Vous êtes à jour",
+      "caught_up_description": "Rien de non lu ici.",
+      "no_articles": "Aucun article",
+      "no_articles_description": "Ce flux n’a encore rien publié."
+    },
+    "reader": {
+      "no_article": "Aucun article sélectionné",
+      "pick_article": "Choisissez un élément dans la liste pour commencer à lire.",
+      "original": "Original",
+      "mark_unread": "Marquer comme non lu",
+      "summarise": "Résumer cet article",
+      "listen": "Écouter cet article",
+      "nothing_to_read": "Rien à lire ici",
+      "open_original": "Ouvrir l’original",
+      "save_bookmark": "Enregistrer comme signet",
+      "add_read_later": "Ajouter à « À lire plus tard »",
+      "remove_read_later": "Retirer de « À lire plus tard »",
+      "show_original": "Afficher l’original",
+      "show_extracted": "Afficher le contenu extrait",
+      "empty_failed": "Nous n’avons pas pu récupérer le texte de cet article auprès de l’éditeur.",
+      "empty_pending": "Le texte intégral est encore en cours de récupération. Réessayez dans un instant.",
+      "empty_headlines": "Ce flux ne publie que des titres. Ouvrez l’original pour le lire.",
+      "too_short": "Cet article contient trop peu de texte pour être résumé.",
+      "summary_failed": "Impossible de résumer cet article.",
+      "audio_failed": "Impossible de générer l’audio de cet article.",
+      "saved_read_later": "Enregistré dans « À lire plus tard »",
+      "removed_read_later": "Retiré de « À lire plus tard »",
+      "read_later_failed": "Impossible de mettre à jour « À lire plus tard ».",
+      "extract_failed": "Impossible d’extraire cet article."
+    }
+  },
+  "audio_recorder": {
+    "start_recording": "Commencer l’enregistrement",
+    "pause_recording": "Mettre l’enregistrement en pause",
+    "resume_recording": "Reprendre l’enregistrement"
+  },
+  "audio_voice_picker": {
+    "voices": {
+      "nova": "Chaleureuse et naturelle",
+      "alloy": "Neutre et équilibrée",
+      "ash": "Assurée et claire",
+      "ballad": "Douce et expressive",
+      "coral": "Lumineuse et amicale",
+      "echo": "Posée et grave",
+      "fable": "Conteur tout en douceur",
+      "onyx": "Profonde et posée",
+      "sage": "Calme et mesurée",
+      "shimmer": "Légère et enjouée",
+      "verse": "Vive et dynamique",
+      "marin": "Claire et conversationnelle",
+      "cedar": "Riche et ancrée"
+    },
+    "accents": {
+      "american": "Américain",
+      "british": "Britannique",
+      "australian": "Australien",
+      "irish": "Irlandais",
+      "indian": "Indien",
+      "scottish": "Écossais"
+    }
+  },
+  "auth_modal": {
+    "passwords_mismatch": "Les mots de passe ne correspondent pas",
+    "password_needs_chars": "Il manque {n} caractère au mot de passe | Il manque {n} caractères au mot de passe",
+    "password_needs_number": "Le mot de passe doit contenir au moins un chiffre",
+    "signup_failed": "Échec de l’inscription",
+    "login_after_signup_failed": "Échec de la connexion après l’inscription",
+    "login_failed": "Échec de la connexion"
+  },
+  "bookmark_editor": {
+    "no_results_for": "Aucun résultat pour {query}"
+  },
+  "bookmark_group": {
+    "add_to_board": "Ajouter à un tableau",
+    "board_empty_title": "Ce tableau est vide",
+    "board_empty_message": "Ajoutez des signets à ce tableau depuis votre collection, via le menu d’options de n’importe quelle carte de signet."
+  },
+  "bookmark_options": {
+    "remove_from_board": "Retirer du tableau",
+    "removed_from_board": "Retiré du tableau",
+    "remove_error": "Erreur lors du retrait du tableau",
+    "read_later": "À lire plus tard",
+    "remove_read_later": "Retirer de « À lire plus tard »",
+    "saved_read_later": "Enregistré dans « À lire plus tard »",
+    "removed_read_later": "Retiré de « À lire plus tard »",
+    "add_to_board": "Ajouter à « {board} »",
+    "added_to_board": "Ajouté à {board}",
+    "add_error": "Erreur lors de l’ajout au tableau"
+  },
+  "bookmark_submit": {
+    "save_type": "Enregistrer {type}",
+    "types": {
+      "website": "un site web",
+      "image": "une image",
+      "pdf": "un PDF",
+      "movie": "un film",
+      "game": "un jeu",
+      "drawing": "un dessin",
+      "audio": "un audio",
+      "textNote": "une note"
+    }
+  },
+  "bookmark_card": {
+    "image_alt": "Image de la carte",
+    "favicon_alt": "Favicon du signet",
+    "favicon_replacement_alt": "Favicon de remplacement du signet",
+    "copy_url_failed": "Échec de la copie de l’URL"
+  },
+  "compose_expand": {
+    "save_drawing_error": "Impossible d’enregistrer le dessin"
+  },
+  "feedback_card": {
+    "hidden_title": "Masqué pour tous sauf les administrateurs",
+    "status": {
+      "in_progress": "en cours",
+      "backlog": "backlog",
+      "pending": "en attente",
+      "done": "terminé",
+      "closed": "clos"
+    }
+  },
+  "feedback_comment": {
+    "deleted": "Commentaire supprimé avec succès",
+    "delete_failed": "Échec de la suppression du commentaire"
+  },
+  "feedback_form": {
+    "select_type": "Sélectionner un type",
+    "markdown_supported": "Markdown pris en charge",
+    "sent": "Retour envoyé avec succès",
+    "login_to_submit": "Vous devez être connecté pour envoyer un retour",
+    "send_failed": "Erreur lors de l’envoi du retour, veuillez réessayer plus tard",
+    "types": {
+      "bug_report": "Signalement de bug",
+      "feature_request": "Demande de fonctionnalité",
+      "improvement": "Amélioration",
+      "other": "Autre"
+    }
+  },
+  "feedback_info_modal": {
+    "login_to_comment": "Vous devez être connecté pour commenter",
+    "comment_failed": "Impossible de publier votre commentaire, veuillez réessayer plus tard"
+  },
+  "feedback_up_vote": {
+    "login_to_vote": "Vous devez être connecté pour voter"
+  },
+  "import_modal": {
+    "checking_access": "Vérification de l’accès à l’importation…",
+    "quota_title": "Quota de signets",
+    "plan_active_title": "Offre d’importation active",
+    "plan_active_description": "Vous pouvez importer un nombre illimité de signets une seule fois, avant le {date}",
+    "validate_failed": "Échec de la validation de l’accès à l’importation",
+    "checkout_failed": "Échec de la création de la session de paiement"
+  },
+  "landing_footer": {
+    "api_docs": "Documentation de l’API"
+  },
+  "main_sidebar": {
+    "trash": "Corbeille"
+  },
+  "mobile_top_bar": {
+    "library": "Bibliothèque",
+    "more": "Plus",
+    "trash": "Corbeille",
+    "board": "Tableau",
+    "everything": "Tout"
+  },
+  "onboarding_wizard": {
+    "intro": {
+      "title": "Votre bibliothèque du web",
+      "content": "Enregistrez ce que vous trouvez, suivez vos sites préférés et retrouvez tout facilement.",
+      "subcontent": "Voici la visite en une minute."
+    },
+    "organised": {
+      "title": "Elle s'organise toute seule",
+      "content": "Tout ce que vous enregistrez est étiqueté pour vous, avec une capture de la page entière et une copie lisible conservée au cas où la page changerait.",
+      "subcontent": "Recherchez par mots de la page, étiquettes, texte dans les images, et même par couleur."
+    },
+    "feeds": {
+      "title": "Suivez vos sites préférés",
+      "content": "Les nouveaux articles des sites que vous suivez arrivent dans Flux. Lisez-les, écoutez-les ou enregistrez les meilleurs dans votre bibliothèque.",
+      "add": "Ajouter un flux"
+    },
+    "everywhere": {
+      "title": "Enregistrez depuis n'importe où",
+      "content": "Enregistrez n'importe quelle page en un clic avec l'extension de navigateur, ou depuis le menu Partager sur iPhone, iPad et Mac.",
+      "subcontent": "Dans les apps, connectez-vous avec ce compte. Une bibliothèque sur l'appareil créée sans compte reste séparée.",
+      "chrome": "Extension Chrome",
+      "apps": "iPhone, iPad et Mac"
+    },
+    "import": {
+      "title": "Importer vos signets existants",
+      "content": "Apportez vos signets actuels depuis n’importe quel navigateur, nous les organiserons automatiquement",
+      "subcontent": "Consultez {link} pour savoir comment exporter vos signets.",
+      "this_page": "cette page"
+    },
+    "first_bookmark": {
+      "title": "Enregistrez votre premier signet",
+      "content": "Saisissez une URL ci-dessous ou essayez notre suggestion.",
+      "subcontent": "Plus vous enregistrez, plus votre collection devient puissante."
+    }
+  },
+  "reader_view": {
+    "error_try_again": "Une erreur s’est produite, réessayez plus tard"
+  },
+  "settings_modal": {
+    "view_import_status": "Voir l’état de l’importation",
+    "extensions_title": "Extensions WebBites",
+    "extensions_subtitle": "Enregistrez n’importe quoi, de n’importe où, plus vite.",
+    "extensions_label": "Extensions",
+    "chrome_icon_alt": "Icône de l’extension Chrome de WebBites",
+    "raycast_icon_alt": "Icône de l’extension Raycast de WebBites",
+    "automations_title": "Automatisations",
+    "automations_subtitle": "Chaque fois qu’un signet est ajouté, ajoutez-lui un tag, classez-le ou envoyez-le ailleurs. Les tableaux intelligents se trouvent aussi ici.",
+    "deleting_account": "Suppression du compte…",
+    "account_deleted": "Votre compte a été supprimé avec succès.",
+    "delete_account_failed": "Une erreur s’est produite lors de la suppression de votre compte. Veuillez réessayer."
+  },
+  "shortcuts_modal": {
+    "click": "Clic"
+  },
+  "social_post_view": {
+    "fallback_platform": "Réseau social"
+  },
+  "tag_manager": {
+    "untitled": "Sans titre",
+    "error_generic": "Une erreur s’est produite"
+  },
+  "testimonials_old": {
+    "heading": "Ce que disent les utilisateurs"
+  },
+  "tiptap_editor": {
+    "narrow_view": "Vue étroite",
+    "wide_view": "Vue large",
+    "paste_url": "Coller l’URL",
+    "image_size": {
+      "small": "Petite",
+      "big": "Grande",
+      "biggest": "Très grande"
+    },
+    "url_to_link": "Transformer l’URL en lien",
+    "add_link": "Ajouter un lien",
+    "insert_block_below": "Insérer un bloc en dessous",
+    "block_actions_hint": "Actions du bloc, ou faites glisser pour le déplacer",
+    "block_actions": "Actions du bloc",
+    "errors": {
+      "upload_failed": "Échec de l’envoi de l’image : {error}",
+      "no_file": "Aucun fichier sélectionné",
+      "too_large": "La taille du fichier dépasse la limite de 10 Mo",
+      "not_image": "Le fichier sélectionné n’est pas une image"
+    }
+  },
+  "website_modal_media_view": {
+    "backdrop_alt": "Image de fond pour {title}",
+    "game_cover_alt": "Jaquette de {name}"
+  },
+  "website_screenshot": {
+    "pan_hint": "Maintenez Maj + faites glisser pour déplacer la vue",
+    "undo": "Annuler (Ctrl+Z)",
+    "redo": "Rétablir (Ctrl+Y)"
+  },
+  "import_status_history": {
+    "title": "Historique des importations ({count} session) | Historique des importations ({count} sessions)",
+    "empty": "Aucune session d’importation précédente",
+    "progress": "{processed}/{total} signets",
+    "success_rate": "{rate} % de réussite",
+    "duration": "Durée : {duration}",
+    "more_sessions": "… et {count} autre session | … et {count} autres sessions",
+    "unknown": "Inconnu",
+    "status": {
+      "completed": "Terminé",
+      "active": "Actif",
+      "failed": "Échec",
+      "cancelled": "Annulé"
+    }
+  },
+  "bookmarks_area": {
+    "already_pinned": "Ce site web est déjà épinglé"
+  },
+  "top_bar": {
+    "importing": "Importation en cours"
+  },
+  "search_bar": {
+    "filters": "Filtres",
+    "beta": "(bêta)",
+    "natural_language_description": "Plus lent, mais vous pouvez chercher en langage naturel. Par exemple :",
+    "natural_language_example": "« projets GitHub sur Swift »",
+    "colors": "Couleurs",
+    "find_tag": "Trouver un tag",
+    "tags_loading": "Chargement…",
+    "no_tags": "Aucun tag trouvé",
+    "color_names": {
+      "red": "Rouge",
+      "green": "Vert",
+      "blue": "Bleu",
+      "yellow": "Jaune",
+      "purple": "Violet",
+      "orange": "Orange",
+      "black": "Noir",
+      "white": "Blanc",
+      "pink": "Rose",
+      "brown": "Marron",
+      "gray": "Gris",
+      "cyan": "Cyan",
+      "magenta": "Magenta",
+      "lime": "Vert citron",
+      "olive": "Olive",
+      "navy": "Bleu marine",
+      "teal": "Bleu canard",
+      "maroon": "Bordeaux",
+      "silver": "Argent",
+      "gold": "Or",
+      "indigo": "Indigo",
+      "violet": "Mauve"
+    }
+  },
+  "new_bookmark": {
+    "fetching_preview": "Récupération de l’aperçu du site web…",
+    "clipboard_access": "Vérifiez que vous avez autorisé l’accès au presse-papiers dans votre navigateur.",
+    "saving_note": "Enregistrement de la note",
+    "note_saved": "Note texte enregistrée",
+    "note_error": "Erreur lors de l’enregistrement de la note texte",
+    "saving_drawing": "Enregistrement du dessin",
+    "drawing_saved": "Dessin enregistré",
+    "drawing_error": "Erreur lors de l’enregistrement du dessin",
+    "media_error": "Erreur lors de l’enregistrement du média",
+    "nothing_to_save": "Rien à enregistrer pour l’instant",
+    "saved": "Enregistré",
+    "save_as": {
+      "website": "Enregistrer le site web",
+      "textNote": "Enregistrer la note",
+      "image": "Enregistrer l’image",
+      "pdf": "Enregistrer le PDF",
+      "movie": "Enregistrer le film",
+      "game": "Enregistrer le jeu",
+      "drawing": "Enregistrer le dessin",
+      "audio": "Enregistrer l’audio"
+    }
+  },
+  "landing_page": {
+    "hero": {
+      "title": "Votre bibliothèque",
+      "title_emphasis": "du web",
+      "subtitle": "Enregistrez tout ce que vous trouvez, suivez vos sites préférés et retrouvez tout facilement. WebBites l'organise pour vous.",
+      "logo_alt": "Logo WebBites"
+    },
+    "scroll": {
+      "title": "Tout ce que vous enregistrez,",
+      "title_emphasis": "au même endroit",
+      "browser_alt": "Le mur WebBites dans un navigateur, affichant côte à côte des articles, images, notes et musiques enregistrés"
+    },
+    "native": {
+      "title": "iPhone, iPad, Mac et tous les navigateurs",
+      "description": "Des apps natives pour iPhone, iPad et Mac, chacune avec menu Partager et extension Safari, et l'app web complète partout ailleurs. Connectez-vous avec votre compte WebBites et votre bibliothèque est déjà là.",
+      "mac_alt": "L’app WebBites pour Mac, avec les tableaux et les flux dans la barre latérale à côté d’un mur de signets enregistrés",
+      "phone_alt": "L’app WebBites pour iPhone, affichant les mêmes signets enregistrés sur deux colonnes"
+    },
+    "features": {
+      "ai": {
+        "title": "Organisé pour vous",
+        "description": "Chaque signet est étiqueté et classé dès que vous l'enregistrez. Aucun dossier à entretenir."
+      },
+      "search": {
+        "title": "Retrouvez-le",
+        "description": "Recherchez parmi les mots de la page, les étiquettes, les notes, le texte des images, et même par couleur."
+      },
+      "screenshots": {
+        "title": "Conservé pour de bon",
+        "description": "Une capture de la page entière et une copie lisible de chaque page, au cas où l'original changerait ou disparaîtrait."
+      },
+      "media": {
+        "title": "Enregistrez tout",
+        "description": "Articles, images, vidéos, films, jeux et notes, réunis dans une seule bibliothèque."
+      },
+      "ai_organisation": {
+        "description": "Catégorisez et taguez automatiquement vos signets grâce à une IA avancée."
+      },
+      "cross_platform": {
+        "description": "iPhone, iPad, Mac et le web affichent tous la même bibliothèque une fois connecté."
+      },
+      "reader": {
+        "title": "Mode lecteur",
+        "description": "Les articles seront automatiquement mis en forme pour une meilleure lecture, même ceux derrière un paywall !"
+      },
+      "raycast": {
+        "title": "Compatible Raycast",
+        "description": "Avec notre extension Raycast, tous vos signets sont à une frappe de touche !"
+      },
+      "browsers": {
+        "title": "Enregistrez depuis votre navigateur",
+        "description": "Un clic avec l'extension Chrome, ou avec l'extension Safari fournie avec les apps Mac et iPhone."
+      },
+      "colors": {
+        "title": "Extraction des couleurs",
+        "description": "Les couleurs principales de tous vos signets sont extraites pour vous, ce qui permet de rechercher par couleur !"
+      },
+      "tts": {
+        "title": "Synthèse vocale",
+        "description": "Écoutez tout ce que vous avez enregistré, ou n'importe quel article de vos flux."
+      },
+      "annotate": {
+        "title": "Annotation des captures d’écran",
+        "description": "Cliquez n’importe où sur la capture d’écran pour ajouter une annotation."
+      },
+      "ocr": {
+        "title": "OCR",
+        "description": "La reconnaissance optique de caractères (OCR) sera appliquée à toutes les images enregistrées, ce qui permet de les rechercher par texte."
+      },
+      "pin": {
+        "title": "Épinglez vos signets",
+        "description": "Épinglez vos signets en haut de votre liste pour y accéder facilement."
+      },
+      "multilingual": {
+        "title": "Multilingue",
+        "description": "Prise en charge de plusieurs langues."
+      }
+    },
+    "save_anything": {
+      "sentence": "Enregistrez tout : {websites}{images}{movies}{games} et même {notes} avec notre éditeur façon Notion.",
+      "websites": "sites web",
+      "images": "images",
+      "movies": "films",
+      "games": "jeux",
+      "notes": "notes"
+    },
+    "roadmap_more": {
+      "title": "Et bien plus encore !",
+      "description": "De nouvelles fonctionnalités sont constamment ajoutées, consultez le tableau des retours pour découvrir la suite !"
+    },
+    "developers": {
+      "title": "Une API pour tout ce que vous enregistrez",
+      "description": "Tout ce que fait WebBites, il le fait via HTTP. Enregistrez un lien, recherchez dans votre bibliothèque, recevez un webhook dès que l’IA a terminé de le traiter.",
+      "docs_button": "Lire la documentation développeur",
+      "facts": {
+        "rest": {
+          "title": "REST simple",
+          "text": "Un schéma OpenAPI et un bac à sable dans le navigateur pour essayer chaque appel avant d’écrire la moindre ligne de code."
+        },
+        "webhooks": {
+          "title": "Webhooks",
+          "text": "Indiquez une URL à WebBites et il envoie le signet terminé — capture d’écran, résumé et tags — en POST, signé pour que vous puissiez le vérifier."
+        },
+        "keys": {
+          "title": "Vos clés, vos limites",
+          "text": "Créez des clés, voyez ce que chacune a consommé et lisez la limite de débit dans chaque en-tête de réponse."
+        }
+      },
+      "samples": {
+        "save": "Enregistrer un lien",
+        "search": "Rechercher",
+        "webhook": "Webhook"
+      }
+    },
+    "feeds": {
+      "title": "Suivez vos sites préférés",
+      "description": "Un lecteur intégré pour les blogs, l'actualité et les newsletters, sans algorithme. Lisez, écoutez ou résumez chaque article, et enregistrez les meilleurs dans votre bibliothèque.",
+      "image_alt": "Le lecteur de flux WebBites sur Mac, avec les flux dans la barre latérale et un article ouvert à côté"
+    },
+    "where": {
+      "title": "Où vit votre bibliothèque",
+      "separate": "Un compte WebBites se synchronise partout. Une bibliothèque sur l'appareil reste sur votre iPhone, iPad ou Mac, sans aucun compte. Les deux sont séparées : une bibliothèque sur l'appareil n'apparaît jamais sur le web ni dans un compte, et les achats ne passent pas de l'une à l'autre.",
+      "account": "Compte WebBites :",
+      "account_when": "si vous utilisez le web ou Chrome, ou voulez les flux, les étiquettes IA et les résumés.",
+      "device": "Bibliothèque sur l'appareil :",
+      "device_when": "si vous n'utilisez que des appareils Apple et ne voulez rien sur aucun serveur."
+    }
+  },
+  "login_page": {
+    "not_you": "Ce n’est pas {email} ?"
+  },
+  "password_reset_page": {
+    "chars_needed": "Il manque {count} caractère au mot de passe | Il manque {count} caractères au mot de passe",
+    "number_needed": "Le mot de passe doit contenir au moins un chiffre",
+    "mismatch": "Les mots de passe ne correspondent pas"
+  },
+  "questionnaire": {
+    "eyebrow": "Aidez-nous à façonner WebBites",
+    "step": "{current} sur {total}",
+    "hint": "Choisissez ce qui vous correspond. Passez quand vous voulez.",
+    "q_tools": "Que utilisez-vous aujourd’hui pour enregistrer des liens ?",
+    "q_interest": "Qu’est-ce qui compte le plus pour vous ?",
+    "q_ai": "À quoi ressemblerait pour vous « l’organisation automatique par IA » ?",
+    "browser": "Favoris du navigateur",
+    "raindrop": "Raindrop",
+    "pocket": "Pocket",
+    "notion": "Notion",
+    "notes": "Apple Notes",
+    "pinterest": "Pinterest",
+    "none": "Rien pour l’instant",
+    "find": "Retrouver mes sauvegardes",
+    "organise": "Rester organisé",
+    "devices": "Enregistrer depuis n’importe quel appareil",
+    "visual": "Une archive visuelle",
+    "later": "Lire plus tard",
+    "share": "Partager des tableaux",
+    "tags": "Tags automatiques",
+    "search": "Recherche en langage naturel",
+    "boards": "Classé dans des tableaux",
+    "summaries": "Résumés",
+    "duplicates": "Repérer les doublons",
+    "other": "Autre chose ? (facultatif)",
+    "skip_question": "Passer la question",
+    "thanks": "Merci, cela nous aide beaucoup !"
+  }
+}

@@ -1,0 +1,2424 @@
+{
+  "alerts": {
+    "bookmark": {
+      "duplicate": "你已经保存过这个书签",
+      "duplicate_cancel": "不保存",
+      "duplicate_confirm": "再次保存",
+      "error": "保存书签失败",
+      "export_success": "书签导出成功！",
+      "limit_description": {
+        "other": " 您的计划以保存更多书签"
+      },
+      "limit_reached": "您已达到书签限制",
+      "pin_error": "无法固定网站，请稍后重试",
+      "save_error_note": "保存笔记时出错",
+      "save_success": "书签已保存",
+      "saving": "保存中...",
+      "hide_error": "Could not change that bookmark's visibility",
+      "hide_index_lag": "Hidden, but search may take a moment to catch up"
+    },
+    "clipboard": {
+      "copy_error": "复制到剪贴板失败。",
+      "copy_success": "{text}已复制到剪贴板。"
+    },
+    "editor": {
+      "image_upload_error": "处理上传图片失败：{error}",
+      "image_upload_progress": "正在上传图片..."
+    },
+    "file_upload": {
+      "error": "文件上传失败",
+      "success": "文件上传成功",
+      "uploading_many": "正在上传文件...",
+      "uploading_one": "正在上传文件..."
+    },
+    "image_upload": {
+      "error": "图片上传失败",
+      "success": "图片上传成功"
+    },
+    "import": {
+      "complete": "完成！",
+      "complete_description": "所有书签已导入到WebBites。",
+      "error": "出错了，请重试",
+      "final_success": "您的书签已导入完成。😊",
+      "progress": "请稍等...",
+      "progress_description": "如果您有很多书签，这可能需要几秒钟",
+      "remaining": "剩余导入书签：",
+      "remaining_description": "这可能需要一些时间。您可以关闭应用，完成后我们会发送邮件通知您。",
+      "success": "书签导入成功"
+    },
+    "live_note": {
+      "conflict": "此笔记已从另一台设备更新。已保留您的本地更改。",
+      "merged_with_conflicts": "云端更改已合并。部分重叠编辑已按原样保留。"
+    },
+    "subscription": {
+      "duplicate_plan": "您已经订阅了此计划。请检查您当前的订阅。"
+    },
+    "core_store": {
+      "board_joined": "您已加入“{name}”",
+      "invite_accepted": "已接受邀请",
+      "invite_invalid": "该邀请链接已失效",
+      "board_move_failed": "无法移到这里",
+      "board_duplicated": "已创建副本，复制了 {count} 个书签 | 已创建副本，复制了 {count} 个书签",
+      "board_duplicate_error": "创建看板副本时出错",
+      "board_archived": "看板已归档",
+      "board_archive_error": "归档看板时出错",
+      "board_delete_title": "删除“{name}”？",
+      "folder_delete_description": "其中的看板和文件夹也会一并删除，书签本身不会被删除。",
+      "board_delete_shared_description": "所有被分享的人都将失去访问权限，书签本身不会被删除。",
+      "board_delete_description": "书签本身不会被删除。",
+      "folder_deleted": "文件夹已删除",
+      "board_deleted": "看板已删除",
+      "folder_delete_error": "删除文件夹时出错",
+      "board_delete_error": "删除看板时出错",
+      "board_leave_title": "退出“{name}”？",
+      "board_leave_description": "在有人再次邀请您之前，它将从您的看板中消失。",
+      "board_leave_confirm": "退出",
+      "board_left": "您已退出该看板",
+      "board_leave_error": "退出看板时出错",
+      "trash_load_failed": "无法加载已删除的书签",
+      "trash_restore_failed": "无法恢复书签",
+      "drawing_save_error": "保存手绘时出错",
+      "sign_in_required": "您需要先登录才能执行此操作"
+    },
+    "core_files": {
+      "unsupported_one": "{name} 不是图片、PDF 或音频。",
+      "unsupported_many": "只能上传图片、PDF 和音频。",
+      "heic_one": "此浏览器无法读取 {name}。请导出为 JPEG 后重试。",
+      "heic_many": "此浏览器无法读取 HEIC 照片。请导出为 JPEG 后重试。",
+      "unreadable_one": "{name} 不是此浏览器可读取的图片。",
+      "unreadable_many": "这些不是此浏览器可读取的图片。"
+    }
+  },
+  "auth": {
+    "add_to_waitlist": "加入内测名单",
+    "chrome_extension_auth_detected": "检测到扩展",
+    "chrome_extension_auth_not_detected": "未检测到扩展",
+    "close_tab": "关闭选项卡",
+    "current_bookmarking_manager": "您目前使用什么书签管理器？",
+    "current_bookmarking_manager_placeholder": "例如：Chrome书签，Pocket，Raindrop...",
+    "email_error": "登录失败，提示错误：",
+    "email_success": "您已收到一封电子邮件，内含重置密码的链接",
+    "extension_connected": "已连接的分机",
+    "extension_connected_message": "现在您可以开始使用 WebBites 书签了。",
+    "extension_login_description": "登 录 到 您 的 WebBites 账 户",
+    "go_to_app": "进入应用",
+    "logout": "退出登录",
+    "most_interested": "WebBites的哪些功能最吸引您？",
+    "most_interested_placeholder": "例如：AI组织，跨平台同步...",
+    "notify_me": "通知我",
+    "password_reset_error": "重置您的密码时出现错误。请再试一次。",
+    "password_reset_success": "您的 密码 已 成功 重置 。",
+    "reset_password_description": "输入 新 密码 以 重置 它。",
+    "sign_in": "登录",
+    "signInWithApple": "使用 Apple 继续",
+    "sign_up": "注册",
+    "waitlist_done": "您已在内测名单中！",
+    "waitlist_info": "加入内测名单并在",
+    "waitlist_info_2": "上关注我以获取最新动态。",
+    "waitlist_success": "您已在内测名单中！在",
+    "waitlist_success_2": "上关注我以获取最新动态。",
+    "waitlist_success_alert": "您已被加入候补名单 🥳"
+  },
+  "bookmark": {
+    "audio_generation": "音 频 生成",
+    "image_extracted_text": "💬 从图片中提取的文本"
+  },
+  "bookmark_details": {
+    "added": "已添加",
+    "alerts": {
+      "color_copied": "颜色已复制",
+      "image_downloaded": "图片已下载",
+      "image_download_error": "下载图片时出错"
+    },
+    "bookmark_types": {
+      "article": "文章",
+      "note": "笔记",
+      "tweet": "推文"
+    },
+    "details_title": "页面标题",
+    "download_image": "下载图片",
+    "hide_keywords": "隐藏关键词",
+    "keywords": "关键词",
+    "main_colors": "主要颜色",
+    "media": {
+      "cast": "演员",
+      "crew": "制作组",
+      "developer": "开发商",
+      "director": "导演",
+      "genres": "类型",
+      "publisher": "发行商",
+      "release_date": "发布日期",
+      "screenshots": "截图",
+      "show_more": "显示更多 {count} 个",
+      "videos": "视频"
+    },
+    "notes_placeholder": "您的页面说明",
+    "page_details": "页面详情",
+    "see_all_keywords": "查看所有关键词",
+    "tags": "标签",
+    "time": {
+      "days_ago": "{count}天前",
+      "hours_ago": "{count}小时前",
+      "minutes_ago": "{count}分钟前",
+      "months_ago": "{count}个月前",
+      "seconds_ago": "{count}秒前",
+      "years_ago": "{count}年前"
+    }
+  },
+  "bookmarks": {
+    "add_files": "添加文件",
+    "cards": "书签",
+    "change_files": "更改文件 ({count})",
+    "copy_url": "复制链接",
+    "cover": "封面",
+    "delete": "删除书签",
+    "delete_confirmation_multiple": "确定要删除这 {count} 个书签吗？",
+    "delete_confirmation_single": "确定要删除这个书签吗？",
+    "deselect_hint": "您可以通过点击来取消选择不想导入的书签。",
+    "drawing": {
+      "assets_unavailable": "部分图片无法加载，因此预览不会更新。",
+      "new": "新建手绘",
+      "untitled": "手绘"
+    },
+    "empty_state_message": "为什么不保存一些网站呢？",
+    "empty_state_title": "看起来有点空...",
+    "expand_to_edit": "展开编辑",
+    "free_import_message": "或者您可以免费导入100个书签一次。",
+    "hide": {
+      "label": "Hide",
+      "label_hidden": "Hidden",
+      "from_library": "Hide from library",
+      "everywhere": "Hide everywhere",
+      "unhide": "Unhide",
+      "hidden_from_library": "Hidden from your library. Still in its boards.",
+      "hidden_everywhere": "Hidden everywhere, boards included.",
+      "unhidden": "Back in your library",
+      "private_section": "Private",
+      "private_empty": "Nothing hidden yet",
+      "private_empty_hint": "Hide a bookmark and it will wait for you here.",
+      "unlock_title": "Private",
+      "unlock_description": "Enter your password to see your hidden bookmarks.",
+      "unlock_placeholder": "Password",
+      "unlock_confirm": "Unlock",
+      "unlock_wrong": "That password didn't work.",
+      "unlock_reset": "No password? Email me a link to set one.",
+      "unlock_reset_sent": "Check your email for the link.",
+      "unlock_reset_error": "Could not send the email. Try again in a moment."
+    },
+    "image_count": "{n} 张图片",
+    "image_n_of_m": "第 {n} / {m} 张",
+    "image_order": "图片顺序",
+    "import": "导入书签",
+    "import_error": "导入书签时出错。请稍后重试。",
+    "import_limit": "要导入超过 100 个书签，您需要支付一次性费用，或升级您的计划。",
+    "import_payment_message": "由于WebBites刚刚起步，导入大量书签可能会产生较高成本，为了支付导入{count}个书签的初始成本，我需要收取一次性费用$3来支持项目并帮助支付成本。",
+    "import_progress": "正在导入您的书签",
+    "import_progress_message": "这可能需要一些时间，但您不必保持窗口打开。完成后我们会发送电子邮件通知您。",
+    "import_progress_title": "正在导入您的书签。",
+    "import_success": "书签导入成功",
+    "import_title": "导入书签",
+    "merge": "合并",
+    "merge_confirmation": "将这 {count} 张图片合并为一个书签？",
+    "merge_explainer": "第一个保留其面板和笔记。其余的将移至回收站，可以恢复。",
+    "merge_failed": "无法合并这些书签",
+    "merged": "已合并为包含 {count} 张图片的一个书签",
+    "new": "新建书签",
+    "new_placeholder": {
+      "game": "搜索游戏…",
+      "link": "粘贴链接…",
+      "movie": "搜索电影…",
+      "note": "写点笔记…"
+    },
+    "no_bookmarks": "未找到书签",
+    "no_pinned_bookmarks": "固定一些书签以在此处查看",
+    "payment_button": "一次性费用$3",
+    "pdf_page_count": "{n} 页",
+    "pdf_page_one": "1 页",
+    "pin_success": "书签已固定",
+    "pinned": "已固定",
+    "recorder": {
+      "empty": "没有录到任何内容 — 请检查麦克风是否被静音。",
+      "hint": "点按开始录音",
+      "mic_denied": "WebBites 无法访问你的麦克风。请在浏览器设置中允许，或上传文件。",
+      "pause": "暂停",
+      "paused": "已暂停",
+      "play": "播放",
+      "record_again": "重新录音",
+      "record_instead": "改为录音",
+      "requesting": "正在等待麦克风…",
+      "restart": "重新开始",
+      "stop": "停止录音",
+      "title_placeholder": "为这段录音命名",
+      "unsupported": "此浏览器无法录音。你仍可以上传文件。",
+      "upload": "改为上传文件"
+    },
+    "remaining": "书签 剩余",
+    "reorder_hint": "拖动以重新排序。第一张图片为封面。",
+    "select_all": "选择所有 ({count})",
+    "select_all_visible": "选择所有可见书签 ({count})",
+    "try_searching": "尝试搜索其他内容",
+    "types": {
+      "articles": "文 章",
+      "audio": "音频",
+      "drawing": "手绘",
+      "game": "游戏",
+      "image": "图片",
+      "movie": "电影",
+      "music": "音乐",
+      "pdf": "PDF",
+      "textNote": "笔记",
+      "website": "网站"
+    },
+    "unpin_success": "书签已取消固定",
+    "unselect_all": "取消全选",
+    "url_copied": "链接已复制到剪贴板",
+    "urls_copied": "链接已复制到剪贴板",
+    "what_to_save": "What do you want to save?",
+    "compose": {
+      "add_tag": "添加标签",
+      "board": "看板",
+      "board_create_failed": "无法创建看板",
+      "board_failed": "已保存，但无法添加到 {board}。",
+      "board_label": "看板，{board}",
+      "board_name": "看板名称",
+      "create_board": "创建",
+      "new_board": "新建看板…",
+      "notes": "备注",
+      "notes_placeholder": "添加备注…",
+      "no_board": "无看板",
+      "remove_tag": "移除标签 {tag}",
+      "saved_to_board": "已保存到 {board}",
+      "stop": "停止",
+      "tag": "标签",
+      "tags_count": "标签，{count}"
+    }
+  },
+  "changes": {
+    "body_1": "有关建议或错误报告，请访问",
+    "body_1_link": "反馈页。",
+    "body_2": "注册后即可获得有关新功能和变更的更新信息。",
+    "change_label": "项变更",
+    "changes_label": "项变更",
+    "rss": "或通过 RSS 订阅",
+    "title": "更改日志",
+    "signup_thanks": "感谢您订阅我们的更新",
+    "already_subscribed": "您已经订阅过了",
+    "signup_failed": "无法订阅更新"
+  },
+  "common": {
+    "accept": "接 受",
+    "add_tag": "添加标签",
+    "all": "全部",
+    "ascending": "上升",
+    "bookmarks": "书签",
+    "cancel": "取消",
+    "checking_access": "正在检查访问权限...",
+    "choose_something": "请选择..",
+    "close": "关闭",
+    "continue": "下一步",
+    "dates": {
+      "month": "月",
+      "year": "年"
+    },
+    "decline": "拒绝",
+    "delete": "删除",
+    "descending": "下降",
+    "drop_image": "拖放图片或 PDF",
+    "error_try_again": "出现错误，请稍后再试。",
+    "get_updates": "获取更新",
+    "import": "导入",
+    "import_bookmarks": "导入 {selected} 个书签",
+    "import_bookmarks_remaining": "导入 {selected} 个书签 （还有 {remaining} 个在配额内）",
+    "language_changed_success": "语言 变更 成功",
+    "loading": "加载中...",
+    "month": "月",
+    "new_first": "新的第一次",
+    "no_results": "未找到结果",
+    "old_first": "旧的第一个",
+    "open": "打开",
+    "optional": "选修的",
+    "or": "或",
+    "pin": "置顶",
+    "remaining": "剩余",
+    "remind_later": "稍后再提醒我",
+    "save": "保存",
+    "saved": "已保存",
+    "search": "搜索",
+    "select_file": "选择 文件",
+    "select_new_file": "选择 其他 文件",
+    "shortcuts": {
+      "copy_url": {
+        "description": "按住 ⌥ (option/alt) 键点击书签",
+        "name": "复制URL"
+      },
+      "focus_search": {
+        "description": "按 / 键直接从键盘快速搜索",
+        "name": "快速搜索"
+      },
+      "open_website": {
+        "description": "按住 CMD 键点击书签",
+        "name": "打开网站"
+      },
+      "quick_save": {
+        "description": "按 ⌘ + V 保存剪贴板中的URL",
+        "name": "快速保存"
+      },
+      "select_card": {
+        "description": "按住 ⇧ 键点击书签",
+        "name": "选择书签"
+      }
+    },
+    "show_less": "显示更少",
+    "show_more": "显示更多",
+    "submit": "提交",
+    "tiptap_placeholder": "添加URL或开始输入以创建笔记",
+    "unpin": "取消置顶",
+    "updating": "更新 中...",
+    "upgrade": "升级",
+    "view_more": "查看更多"
+  },
+  "cookies": {
+    "cookie_consent": "饼 干 同 意",
+    "description": "我们 使用 Microsoft Clarity 来 了解 如何 改善 您 的 体验。通过 接受，您 帮助 我们 使 WebBites 对 每个人 更好。"
+  },
+  "feedback": {
+    "bug_reports": "错误报告",
+    "comments": {
+      "no_comments": "暂无评论",
+      "placeholder": "写评论...",
+      "send": "发送",
+      "title": "评论"
+    },
+    "date": "日期",
+    "delete_comment": {
+      "confirmation": "你确定要删除这条评论吗？",
+      "title": "删除评论"
+    },
+    "delete_confirmation": "您确定要删除此反馈吗？",
+    "filter_by": "筛选方式",
+    "form": {
+      "cancel_button": "取消",
+      "changelog_label": "添加到更新日志",
+      "comment_label": "评论",
+      "hide_from_everyone_label": "隐藏 免受 所有人 的 视线",
+      "submit_button": "提交反馈",
+      "title": "提交反馈",
+      "title_label": "标题",
+      "type_label": "类型",
+      "platform_label": "平台"
+    },
+    "least_votes": "票数最少",
+    "most_votes": "得票最多",
+    "my_issues": "我的问题",
+    "no_feedback": "尚无反馈",
+    "order_by": "排序方式",
+    "placeholders": {
+      "search": "搜索功能和错误报告... ({count})"
+    },
+    "status": "状态",
+    "suggestions": "建议",
+    "title": "📨 功能请求、建议和错误报告",
+    "type": "类型",
+    "user": "用户",
+    "votes": "投票",
+    "platform": {
+      "app": "应用",
+      "web": "网页",
+      "extension": "浏览器扩展",
+      "all": "所有平台"
+    },
+    "hero_title": "一起决定",
+    "hero_highlight": "接下来做什么。",
+    "hero_subtitle": "提出功能请求、报告错误，或为你最想要的想法投票。",
+    "comments_count": "{count} 条评论",
+    "page": {
+      "title": "WebBites - 反馈",
+      "kanban_view": "看板视图",
+      "list_view": "列表视图",
+      "login_required": "您需要先登录才能提交反馈",
+      "deleted": "反馈已删除",
+      "delete_failed": "无法删除反馈"
+    },
+    "options": {
+      "status": {
+        "in_progress": "进行中",
+        "backlog": "待办事项",
+        "pending": "待分类",
+        "done": "已完成",
+        "closed": "已关闭"
+      },
+      "type": {
+        "bug_report": "错误报告",
+        "feature_request": "功能请求",
+        "improvement": "改进建议",
+        "other": "其他"
+      },
+      "platform": {
+        "app": "应用",
+        "web": "网页",
+        "extension": "浏览器扩展"
+      }
+    }
+  },
+  "import": {
+    "import_quota_exceeded": "您需要升级您的计划才能导入超过 100 个书签",
+    "import_quota_exceeded_description": "您可以免费导入最多100个书签。升级到付费计划以导入更多。",
+    "connect_title": "或连接一个服务",
+    "connect_fetch": "获取书签",
+    "connect_button": "连接 {name}",
+    "connect_unavailable": "不可用",
+    "connect_error": "无法从 {name} 获取书签",
+    "connect_denied": "访问被拒绝，未导入任何书签",
+    "connect_empty": "在 {name} 中未找到书签"
+  },
+  "landing": {
+    "beta_access": {
+      "changelog_button": "更新日志",
+      "description": "成为最早体验WebBites并帮助塑造其未来的用户之一。早期用户可获得独家特权和高级功能。",
+      "feedback_button": "反馈",
+      "title": "加入书签管理的未来"
+    },
+    "features": {
+      "ai_organization": {
+        "description": "使用先进的AI技术自动分类和标记您的书签",
+        "title": "AI组织"
+      },
+      "cross_platform": {
+        "description": "随时随地在所有设备上访问您的书签",
+        "title": "跨平台同步"
+      },
+      "smart_search": {
+        "description": "通过理解上下文的智能搜索功能即时找到任何内容",
+        "title": "智能搜索"
+      },
+      "subtitle": "通过我们的AI驱动平台体验书签管理的未来",
+      "title": "为什么选择WebBites？"
+    },
+    "hero": {
+      "app_button": "进入应用",
+      "subtitle": "一键保存任何内容，让AI为您处理组织，搜索和查找。",
+      "title": "您的互联网，",
+      "title_emphasis": "完美整理",
+      "waitlist_button": "加入内测名单"
+    },
+    "how_it_works": {
+      "steps": {
+        "install": {
+          "description": "一键添加我们的浏览器扩展程序，立即开始保存内容",
+          "title": "安装扩展程序"
+        },
+        "organize": {
+          "description": "我们的AI自动分类，标记并使您的内容可搜索",
+          "title": "让AI来组织"
+        },
+        "save": {
+          "description": "点击扩展程序或使用键盘快捷键保存任何网页，文章或内容",
+          "title": "保存任何内容"
+        }
+      },
+      "title": "使用方法"
+    },
+    "join_now": "立即加入！",
+    "join_now_free": " 免费 加入！",
+    "more_features": "更多 功能",
+    "roadmap": {
+      "next": "正在处理下一个：",
+      "title": "路线图",
+      "viewFull": "查看 完整 路线 图",
+      "workingOn": "當前正在進行："
+    },
+    "whats_next": "接下来 WebBites 要做什么？"
+  },
+  "navigation": {
+    "feedback": "提交反馈",
+    "help": "帮助",
+    "home": "首页",
+    "login": "登录",
+    "logout_success": "已退出！",
+    "settings": "设置",
+    "developers": "开发者",
+    "faq": "常见问题",
+    "features": "功能",
+    "pricing": "价格"
+  },
+  "plans": {
+    "features": {
+      "auto_tag_bookmarks": "自动标记所有网络书签",
+      "auto_tag_images": "自动标记图片",
+      "plus": {
+        "41": "自由 + 中的一切",
+        "42": "无限量保存书签",
+        "43": "简明摘要",
+        "44": "自动标记图片",
+        "45": "分辨率更高的整页截图",
+        "46": "收听文章并获取摘要",
+        "47": "图像文字识别",
+        "48": "上传多达 10GB 的文件",
+        "49": "自然语言搜索",
+        "50": "智能板",
+        "51": "即将备份到您自己的云"
+      },
+      "cloud_backups": "即将备份到您自己的云",
+      "dark_mode": "黑暗模式",
+      "everything_in_free": "自由 + 中的一切",
+      "free": {
+        "11": "保存多达 100 个书签",
+        "12": "自动标记 所有 网络 书签",
+        "13": "按 页面 标题、颜色、标签 和 页面 文本 搜索",
+        "14": "文章 阅读模式",
+        "15": "保存 网站、图片、笔记、视频游戏、音乐 和 电影",
+        "16": "整页截图",
+        "17": "每月最多收听 5 篇文章",
+        "18": "黑 暗 模式"
+      },
+      "full_page_screenshots": "整页截图",
+      "high_res_screenshots": "分辨率更高的整页截图",
+      "listen_and_summaries": "收听文章并获取摘要",
+      "listen_limit": "每月最多收听 5 篇文章",
+      "natural_language_search": "自然语言搜索",
+      "reading_mode": "文章阅读模式",
+      "save_cards_limit": "保存多达 100 个书签",
+      "save_various_types": "保存网站、图片、笔记、视频游戏、音乐和电影",
+      "search_features": "按页面标题、颜色、标签和页面文本搜索",
+      "smart_boards": "智能板",
+      "text_recognition": "图像文字识别",
+      "tldr_summaries": "简明摘要",
+      "unlimited_bookmarks": "无限量保存书签",
+      "upload_limit": "上传多达 10GB 的文件",
+      "apple": {
+        "61": "书签想存多少存多少",
+        "62": "网页、图片、笔记、手绘等",
+        "63": "按标题、标签和页面文字搜索",
+        "64": "阅读模式",
+        "65": "数据不会离开这台设备"
+      }
+    }
+  },
+  "pricing": {
+    "current_plan": "当前方案",
+    "downgrade": "降级",
+    "downgrade_to_free": "降级为 免费",
+    "free_plan": "免费",
+    "get_started": "开始使用",
+    "monthly_toggle": "月付",
+    "price_monthly": "${price}/月",
+    "price_yearly": "${price}/年 - 节省{percent}%",
+    "sign_up": "立即注册！",
+    "sign_up_now": "免费注册！",
+    "title": "定价",
+    "upgrade_for": "升级至 {price}",
+    "upgrade_plan": "升 级 计 划",
+    "waitlist_free": "免费加入内测名单！",
+    "yearly_toggle": "年付（优惠{percent}%）",
+    "yearly_plain": "年付",
+    "apple": {
+      "title": "设备资料库",
+      "tagline": "仅限 Apple 设备，无需账户。",
+      "lifetime": "或一次性 ${price}",
+      "badge": "App Store",
+      "note": "在 iOS 和 macOS 应用内购买。App Store 价格因地区而异。",
+      "cta": "在 App Store 获取"
+    },
+    "price_yearly_plain": "${price}/年"
+  },
+  "reader": {
+    "ai_generated": "AI生成的音频",
+    "by_author": "作者：{author}",
+    "listen_article": "收听文章",
+    "listen_to_post": "收听 文章",
+    "voice_settings": "朗读声音",
+    "voice_description": "选择朗读文章的声音。点击播放试听示例。",
+    "voice_preview": "试听",
+    "accent_settings": "口音",
+    "accent_description": "英文文章将以此口音朗读。点击即可试听。"
+  },
+  "search": {
+    "alphabetical": "字母顺序",
+    "clear_recent": "清除最近搜索",
+    "date_added": "添加日期",
+    "filter_by_tag": "按标签筛选",
+    "filter_by_type": "按类型筛选",
+    "placeholder": "搜索书签...",
+    "recent_searches": "最近搜索",
+    "sort_by": "排序方式"
+  },
+  "settings": {
+    "ai_language": "AI 语言",
+    "ai_language_description": "摘要和标签使用的语言。",
+    "ai_language_same": "与内容相同",
+    "auth": {
+      "create_account_description": "输入您的电子邮件以登录或创建账户",
+      "email": "电子邮箱",
+      "email_continue": "使用邮箱继续",
+      "email_placeholder": "请输入您的邮箱",
+      "name": "姓名",
+      "name_placeholder": "请输入您的姓名",
+      "password": "密码",
+      "password_placeholder": "请输入密码",
+      "password_requirements": "密码必须至少6个字符且包含至少一个数字",
+      "repeat_password": "重复密码",
+      "welcome_back": "欢迎回来",
+      "welcome_back_description": "输入密码，继续上次的进度。",
+      "create_account": "创建你的账户",
+      "create_account_step_description": "只需一个名字和一个密码。",
+      "create_account_button": "创建账户",
+      "reset_password": "重置密码"
+    },
+    "chrome_extension": {
+      "description": "使用新的浏览器扩展，一键保存任何网站到您的书签！现在从以下位置下载",
+      "store_link": "Chrome网上应用店。",
+      "title": "Chrome扩展"
+    },
+    "compact_view": "紧凑视图",
+    "delete_account": {
+      "confirmation_text": "您确定要删除您的账户吗？此操作无法撤消。",
+      "confirm_button": "永久删除我的账户",
+      "placeholder": "Delete my account",
+      "title": "删除账户",
+      "type_confirmation": "输入'Delete my account'以确认"
+    },
+    "display_mode": "显示模式",
+    "grid_view": "网格视图",
+    "image_ratio": {
+      "original": "原始比例"
+    },
+    "image_ratio_label": "图片比例",
+    "language": "语言",
+    "list_view": "列表视图",
+    "newest_first": "最新优先",
+    "oldest_first": "最早优先",
+    "other_options": {
+      "export_bookmarks": "导出所有书签",
+      "logout": "退出登录",
+      "show_onboarding": "重新显示引导教程",
+      "title": "其他选项"
+    },
+    "personal_info": {
+      "title": "个人信息",
+      "username": "用户名"
+    },
+    "preview_screenshots": "预览页面截图",
+    "preview_tags": "预览标签",
+    "show_description": "显示描述",
+    "show_summary_card": "悬停时显示摘要卡片",
+    "theme": "主题",
+    "title": "设置",
+    "view_as": "查看方式",
+    "viewing_options": "查看选项",
+    "assistants": {
+      "title": "AI 助手",
+      "description": "通过 MCP，让 Claude、ChatGPT、Cursor 等 AI 应用搜索你的资料库并向其中保存内容。",
+      "server_url": "服务器 URL",
+      "server_url_hint": "将它添加到任何支持 MCP 的应用中。你将在 WebBites 上批准，并选择它是否可以进行更改。",
+      "copy": "复制",
+      "setup_title": "设置应用",
+      "connected_title": "已连接的助手",
+      "connected_empty": "还没有连接任何助手。批准一个后，它会显示在这里。",
+      "read_only": "只读",
+      "read_write": "可以进行更改",
+      "unverified": "未验证",
+      "connected_on": "连接于 {date}",
+      "last_used": "上次使用：{date}",
+      "never_used": "尚未使用",
+      "disconnect": "断开连接",
+      "disconnect_confirm": "要断开 {name} 吗？它会立即失去访问权限。",
+      "disconnected": "已断开 {name}",
+      "load_failed": "无法加载已连接的助手。",
+      "revoke_failed": "无法断开 {name}。",
+      "limits": "助手执行的每个操作都会计入你的 API 额度：Free 版每月 {free} 次，Plus 版每月 {plus} 次。",
+      "docs_link": "阅读 MCP 指南",
+      "local_hint": "在 Mac 上不用账户保存资料库？请在 Mac 应用的“设置 → AI 助手”中打开它自带的服务器。",
+      "clients": {
+        "claude": {
+          "open": "在 Claude 中打开 {path}，然后选择 Add custom connector。",
+          "paste": "将其命名为 WebBites，粘贴服务器 URL，然后选择 Add。",
+          "connect": "选择 Connect，然后在打开的 WebBites 页面上批准访问。该连接器也可以在 Claude Desktop 和移动应用中使用。"
+        },
+        "chatgpt": {
+          "developer_mode": "在 ChatGPT 中打开 {path}，然后打开开发者模式（在 Advanced 下）。",
+          "create": "创建一个连接器：将其命名为 WebBites，粘贴服务器 URL，然后选择 OAuth。",
+          "approve": "在打开的 WebBites 页面上批准访问，然后在聊天的工具菜单中开启 WebBites。"
+        },
+        "claude_code": {
+          "add": "在终端中添加服务器：",
+          "sign_in": "启动 Claude Code，运行 /mcp，选择 webbites 并登录。浏览器会打开 WebBites，让你批准访问。"
+        },
+        "cursor": {
+          "add": "将 WebBites 添加到 {file}，或添加到项目中的 .cursor/mcp.json：",
+          "connect": "在 Cursor 的设置中，在 MCP 列表里找到 webbites 并选择 Connect，然后在 WebBites 上批准访问。"
+        },
+        "vscode": {
+          "add": "将 WebBites 添加到工作区中的 {file}：",
+          "start": "在该文件中选择服务器上方的 Start，浏览器打开后在 WebBites 上批准访问。它的工具会出现在 Copilot Chat 的代理模式中。"
+        },
+        "other": {
+          "name": "其他应用",
+          "remote": "支持远程 MCP 服务器的应用可以直接使用服务器 URL。请在其设置中查找“custom connector”“remote server”或“MCP”。",
+          "stdio": "只能启动本地（stdio）服务器的应用可以通过 mcp-remote 桥接访问它，这需要 Node.js：",
+          "sign_in": "首次运行时，浏览器会打开 WebBites，让你批准访问。"
+        },
+        "api_key": {
+          "name": "使用 API 密钥",
+          "when": "允许设置请求头的应用可以跳过登录，改为发送 API 密钥。与 REST API 一样，密钥可以读取和更改你的整个资料库。",
+          "send": "在“设置 → 开发者”中创建密钥，然后将其作为 Bearer 令牌发送："
+        }
+      }
+    },
+    "developer": {
+      "title": "开发者",
+      "description": "用于在 WebBites 之上构建的 API 密钥、Webhook 和用量。",
+      "button": "打开开发者页面"
+    },
+    "backups": {
+      "title": "备份",
+      "description": "将你的书签、截图和保存的页面自动增量备份到你自己的存储。",
+      "plus_only": "自动备份是 WebBites Plus 的功能。",
+      "choose_destination": "备份保存到哪里？",
+      "gdrive": "Google 云端硬盘",
+      "gdrive_hint": "保存到“WebBites Backups”文件夹",
+      "dropbox": "Dropbox",
+      "dropbox_hint": "保存到 Apps/WebBites",
+      "s3": "S3 兼容存储",
+      "s3_hint": "Amazon S3、Cloudflare R2、Backblaze B2、MinIO 等",
+      "endpoint": "端点",
+      "region": "区域",
+      "bucket": "存储桶",
+      "prefix": "文件夹（可选）",
+      "access_key": "访问密钥",
+      "secret_key": "私有密钥",
+      "connect": "连接",
+      "cancel": "取消",
+      "change": "更改",
+      "enabled": "自动备份",
+      "frequency": "频率",
+      "daily": "每天",
+      "weekly": "每周",
+      "last_backup": "上次备份",
+      "never": "尚无",
+      "running": "正在备份…",
+      "next_backup": "下次 {time}",
+      "back_up_now": "立即备份",
+      "disconnect": "断开连接",
+      "reconnect": "重新连接",
+      "needs_reconnect": "{destination} 已不再接受备份。重新连接后即可恢复备份。",
+      "plan_required": "你的套餐已不包含备份，备份已暂停。",
+      "error": "上次备份失败：{error}。系统会自动重试。",
+      "connected": "已连接 {destination}。首次备份将在一小时内开始。",
+      "connect_failed": "无法连接 {destination}。",
+      "connect_denied": "未获得 {destination} 的访问权限。",
+      "queued": "备份已开始。",
+      "load_failed": "无法加载备份设置。",
+      "save_failed": "无法更新备份设置。",
+      "run_failed": "无法开始备份。",
+      "whats_included": "每次备份都是一个 zip，只包含自上次以来的变化：书签数据、笔记、截图、保存的页面文本和文件。每次备份的最后一个 zip 还包含你的看板、订阅源，以及任何浏览器都能导入的 bookmarks.html。"
+    },
+    "email_change": {
+      "change": "更改",
+      "change_again": "换一个",
+      "new_email": "新邮箱",
+      "current_password": "当前密码",
+      "explainer": "我们会向新地址发送一个链接。在你点击之前，你仍使用 {email} 登录。",
+      "send_link": "发送验证链接",
+      "pending_title": "请查收 {email} 以完成更改",
+      "pending_body": "我们已发送链接以确认你的新地址。在你点击之前，你的账户仍使用 {email}。",
+      "expires": "链接将于 {date} 过期。",
+      "resend": "重新发送",
+      "resend_in": "{seconds} 秒后可重新发送",
+      "cancel_change": "取消更改",
+      "sent": "验证链接已发送至 {email}",
+      "cancelled": "已取消邮箱更改",
+      "changed": "你的邮箱已更改为 {email}",
+      "errors": {
+        "invalid_email": "请输入有效的邮箱地址。",
+        "same_email": "这已经是你的邮箱地址。",
+        "email_taken": "另一个账户已在使用该邮箱地址。",
+        "password_required": "请输入当前密码。",
+        "incorrect_password": "密码不正确。",
+        "daily_limit": "你今天请求的验证邮件过多，请明天再试。",
+        "cooldown": "请等待一分钟后再发送邮件。",
+        "send_failed": "无法发送邮件，请稍后重试。"
+      }
+    }
+  },
+  "testimonials": {
+    "emma_davis": {
+      "name": "Emma Davis",
+      "text": "跨平台同步非常流畅，AI功能为我节省了大量手动整理的时间。",
+      "title": "数字营销专家"
+    },
+    "mike_chen": {
+      "name": "Mike Chen",
+      "text": "终于有一个能理解上下文的书签工具了。搜索功能令人惊叹。",
+      "title": "开发者"
+    },
+    "sarah_johnson": {
+      "name": "Sarah Johnson",
+      "text": "WebBites彻底改变了我保存和组织研究资料的方式。AI分类功能非常准确！",
+      "title": "内容创作者"
+    }
+  },
+  "upgrade_modal": {
+    "audios_remaining": "您还可以生成 {count} 个音频。",
+    "audios_upgrade": "要生成更多音频，请升级您的计划。",
+    "bookmarks_count": "您已保存 {count} 个书签",
+    "bookmarks_remaining": "还可以保存 {count} 个。",
+    "bookmarks_upgrade": "但您需要升级计划才能保存更多。",
+    "current_plan": "您当前的计划是 {plan}。",
+    "manage_plan": "管理 计划",
+    "plan_details": "计划 详情",
+    "update_plan": "更新 计划",
+    "updating_plan": "更新 计划",
+    "upgrade_to_add_more": "升级添加更多"
+  },
+  "usage": {
+    "usage_limit_reached": "使用 限制 达到，请 升级 您的 计划"
+  },
+  "website_modal": {
+    "add_note": "添加笔记",
+    "annotations": {
+      "delete": {
+        "delete_all_button": "全部删除",
+        "delete_all_label": "删除所有批注",
+        "delete_all_message": "确定要删除所有批注吗？此操作无法撤消。",
+        "delete_all_title": "删除所有批注",
+        "message": "确定要删除此批注吗？此操作无法撤消。",
+        "title": "删除批注"
+      }
+    },
+    "app": {
+      "age": "年龄",
+      "age_rating": "年龄分级",
+      "and_more": "{first} 及另外 {count} 种",
+      "category": "类别",
+      "compatibility": "兼容性",
+      "copyright": "版权",
+      "developer": "开发者",
+      "developer_website": "开发者网站",
+      "downloads": "下载量",
+      "in_app_purchases": "App 内购买",
+      "information": "信息",
+      "install": "安装",
+      "language": "语言",
+      "languages": "语言",
+      "more": "更多",
+      "more_languages": "+ 另外 {count} 种",
+      "no": "否",
+      "on_store": "在 {store}",
+      "price": "价格",
+      "privacy_policy": "隐私政策",
+      "rating": "评分",
+      "ratings": "{count} 个评分",
+      "requires": "需要 {os} 或更高版本。",
+      "seller": "销售商",
+      "size": "大小",
+      "updated": "更新日期",
+      "version": "版本 {version}",
+      "view": "查看",
+      "whats_new": "新功能",
+      "yes": "是"
+    },
+    "audio": {
+      "download": "下载",
+      "failed": "无法生成文字稿。",
+      "generate": "生成文字稿",
+      "none": "暂无文字稿。",
+      "pause": "暂停",
+      "play": "播放",
+      "quota": "本月的音频额度已用完。",
+      "retry": "重试",
+      "scrub": "跳转",
+      "segments": "1 个片段 | {n} 个片段",
+      "transcribing": "转写中…",
+      "transcribing_long": "正在转写，关闭页面后仍会继续。",
+      "transcript": "文字稿",
+      "unavailable": "此录音不可用"
+    },
+    "details": "细节",
+    "pdf": {
+      "open": "打开 PDF",
+      "unavailable": "此 PDF 不可用"
+    },
+    "sidebar": {
+      "tabs": {
+        "audio": "音频",
+        "drawing": "手绘",
+        "figma": "Figma",
+        "image": "图片",
+        "pdf": "PDF",
+        "reader": "阅读视图",
+        "screenshot": "截图",
+        "text_note": "文字笔记"
+      }
+    },
+    "social": {
+      "enlarge": "放大图片",
+      "next": "下一张图片",
+      "previous": "上一张图片",
+      "saved_post": "已保存的帖子",
+      "video_hint": "打开帖子即可播放",
+      "video_preview": "视频预览",
+      "view_on": "在 {platform} 上查看"
+    },
+    "summary": "摘要"
+  },
+  "wizard": {
+    "annotations": {
+      "content": "直接在网站截图上添加任何批注，并使其可搜索",
+      "title": "📝 页面批注"
+    },
+    "first_bookmark": {
+      "content": "现在就试试保存第一个书签吧！",
+      "subcontent": "注意：如果检测到剪贴板中有URL，将自动粘贴。您可能会收到访问剪贴板的请求，在点击\" 保存\"按钮之前不会存储或发送任何数据。",
+      "title": "🥳 保存第一个书签！"
+    },
+    "folders": {
+      "content": "让WebBites自动整理您的书签，自动生成标签，提取关键词，甚至生成配色方案！",
+      "title": "🔖 告别文件夹"
+    },
+    "import": {
+      "content": "只需将文件从计算机拖放即可导入所有现有书签，或稍后从设置菜单中上传。",
+      "title": "导入书签"
+    },
+    "one_click": {
+      "content": "下载[Chrome](https://chromewebstore.google.com/detail/webbites-browser-extensio/kphdbcjcdhecefloameedhhldchhbela) 扩展程序，一键保存新书签，或直接在网页应用中添加。",
+      "subcontent": "（Safari，Firefox和移动端扩展即将推出！）",
+      "title": "一键保存！"
+    },
+    "save_anything": {
+      "content": "不仅仅是网站，使用WebBites还可以保存笔记，图片，电影，游戏和音乐！",
+      "subcontent": "图书功能即将推出！",
+      "title": "👾 🎥 保存任何内容"
+    },
+    "screenshots": {
+      "content": "为保存的所有网站生成全页面截图，永久保存，即使原页面已被删除也可访问。",
+      "title": "📸 全页面截图"
+    },
+    "welcome": {
+      "content": "我们一起打造最好的书签服务！欢迎在Twitter上分享功能需求，反馈问题或任何建议！",
+      "title": "欢迎使用WebBites！"
+    }
+  },
+  "wizard_tab": {
+    "back": "返回",
+    "finish": "完成",
+    "import_bookmarks": "导入书签",
+    "next": "下一步",
+    "save": "保存",
+    "skip": "跳过"
+  },
+  "developers": {
+    "title": "WebBites API",
+    "subtitle": "通过你自己的脚本、应用和自动化读取并保存书签。"
+  },
+  "tags": {
+    "preview": "预览带有 {tag} 的书签",
+    "preview_empty": "没有带此标签的书签",
+    "show_all": "查看全部 {n} 个书签 | 查看全部 {n} 个书签",
+    "clear_selection": "取消选择",
+    "manage": "Tags",
+    "subtitle": "Every tag you use, with how many bookmarks carry it. Select tags to rename, merge or remove them everywhere.",
+    "search": "Search tags",
+    "sort_count": "Most used",
+    "sort_name": "A–Z",
+    "total": "{n} tag | {n} tags",
+    "bookmarks_count": "{n} bookmark | {n} bookmarks",
+    "selected": "{n} selected",
+    "rename": "Rename",
+    "merge": "Merge",
+    "merge_into": "Merge into",
+    "delete": "Remove",
+    "confirm_delete": "Remove the selected tags from every bookmark? The bookmarks themselves are kept.",
+    "protected": "\"read-later\" powers the Read it later feature and can't be changed.",
+    "empty": "No tags yet",
+    "no_match": "No tags match",
+    "updated": "Updated {n} bookmark | Updated {n} bookmarks"
+  },
+  "footer": {
+    "product": "产品",
+    "support": "支持",
+    "updates": "动态",
+    "pricing": "价格",
+    "extension": "浏览器扩展",
+    "export": "导出书签",
+    "help": "帮助与联系",
+    "feedback": "反馈",
+    "changelog": "更新日志",
+    "privacy": "隐私",
+    "terms": "条款",
+    "made_by": "制作者",
+    "copyright": "WebBites {year}"
+  },
+  "verify_email": {
+    "verifying_title": "正在确认你的新邮箱…",
+    "verifying_body": "请稍候。",
+    "success_title": "邮箱已更改",
+    "success_body": "你的 WebBites 账户现在使用：",
+    "success_hint": "下次登录时请使用此地址。我们也已通知你的旧地址。",
+    "open_app": "打开 WebBites",
+    "sign_in": "登录",
+    "expired_title": "此链接已过期",
+    "expired_body": "链接有效期为 24 小时。请在设置中重新申请，在此之前你的邮箱不会更改。",
+    "taken_title": "该地址已被使用",
+    "taken_body": "在链接发送后，另一个账户开始使用此邮箱。你的邮箱未更改——请在设置中尝试其他地址。",
+    "invalid_title": "此链接无效",
+    "invalid_body": "它可能已被使用，或已被更新的链接取代。请查看收件箱中的最新邮件，或在设置中重新开始。",
+    "failed_title": "出了点问题",
+    "failed_body": "你的邮箱未更改，请重试。",
+    "try_again": "重试",
+    "open_settings": "打开设置",
+    "go_home": "前往 WebBites",
+    "page_title": "确认您的邮箱 · WebBites"
+  },
+  "cli_login": {
+    "title": "登录 WebBites CLI",
+    "body": "仅当此代码与终端中显示的代码一致时才批准。",
+    "signed_in_as": "已登录为 {email}",
+    "approve": "批准",
+    "decline": "取消",
+    "approved_title": "已登录",
+    "approved_body": "请返回终端。你可以关闭此标签页。",
+    "declined_title": "已取消登录",
+    "declined_body": "CLI 未获得访问权限。你可以关闭此标签页。",
+    "expired_title": "此代码已过期",
+    "expired_body": "代码有效期为 10 分钟，且只能使用一次。请重新运行 webbites login 获取新代码。",
+    "invalid_title": "此链接无效",
+    "invalid_body": "请打开终端中显示的链接，或重新运行 webbites login。",
+    "failed_title": "出了点问题",
+    "failed_body": "CLI 未能登录。请重试。",
+    "try_again": "重试",
+    "page_title": "登录 CLI · WebBites"
+  },
+  "oauth_consent": {
+    "page_title": "连接应用 · WebBites",
+    "title": "{client} 想要使用你的 WebBites 资料库",
+    "verified": "已验证的应用",
+    "verified_from": "已验证 · {host}",
+    "unverified": "未验证的应用",
+    "unverified_body": "WebBites 无法确认此应用的开发者。只有在你信任它并且是你自己发起的情况下才继续。",
+    "can_heading": "它将能够",
+    "can_read": "搜索和读取你的书签、笔记、看板和标签",
+    "allow_changes": "允许更改",
+    "allow_changes_body": "保存、编辑、整理书签，并将书签移到废纸篓",
+    "cannot": "它无法查看你的密码、更改你的账户或清空你的废纸篓。",
+    "redirect_heading": "之后",
+    "redirect_web": "你将被送回 {target}。",
+    "redirect_app": "将打开 {target} 应用。",
+    "redirect_loopback": "你将被送回这台电脑上的一个程序（{target}）。",
+    "loopback_warning": "只有在你刚刚从这台电脑上的应用发起此操作时才批准。",
+    "provider_note": "{client} 会把它读取的内容发送给它的 AI 服务提供商，并受该提供商条款的约束。",
+    "approve": "批准",
+    "decline": "拒绝",
+    "signed_in_as": "已登录为 {account}",
+    "switch_account": "使用其他账户",
+    "revoke_hint": "你可以随时在“设置 → AI 助手”中断开它。",
+    "done_title": "已连接",
+    "done_body": "正在返回 {client}…",
+    "declined_title": "未连接",
+    "declined_body": "{client} 未获得访问权限。正在返回…",
+    "close_hint": "{client} 打开后，你可以关闭此标签页。",
+    "continue": "继续",
+    "the_app": "该应用",
+    "invalid_request_title": "此链接无效",
+    "invalid_request_body": "该应用发送的请求不完整或无效，因此没有连接任何内容。请从该应用重新开始。",
+    "invalid_client_title": "WebBites 无法识别此应用",
+    "invalid_client_body": "该应用没有正确标识自己，因此无法连接。请从该应用重新开始，或联系其开发者。",
+    "invalid_redirect_title": "此应用的返回地址不被允许",
+    "invalid_redirect_body": "为了保护你的账户，WebBites 只会把你送回应用注册过的地址。没有连接任何内容。",
+    "invalid_scope_title": "该应用请求了 WebBites 不提供的权限",
+    "invalid_scope_body": "没有连接任何内容。请从该应用重新开始，或联系其开发者。",
+    "invalid_server_title": "我们这边出了点问题",
+    "invalid_server_body": "没有连接任何内容。请稍后从该应用重试。",
+    "details": "供应用开发者参考的详细信息",
+    "expired_title": "此请求已过期",
+    "expired_body": "连接请求的有效时间很短，且只能使用一次。请从你正在连接的应用重新开始。",
+    "rejected_title": "无法确认此请求",
+    "rejected_body": "没有连接任何内容。请从你正在连接的应用重新开始。",
+    "failed_title": "出了点问题",
+    "failed_body": "没有连接任何内容。请重试。",
+    "try_again": "重试"
+  },
+  "automations": {
+    "new": "新建自动化",
+    "empty": "还没有自动化。可以从这样的规则开始：如果网址包含 amazon.com，就添加标签“购物”。",
+    "smart_board": "智能板",
+    "enable_named": "启用 {name}",
+    "load_failed": "无法加载自动化",
+    "update_failed": "无法更新该自动化",
+    "save_failed": "无法保存该自动化",
+    "delete_failed": "无法删除该自动化",
+    "name_placeholder": "为此自动化命名",
+    "enabled": "已启用",
+    "whenever": "每当",
+    "trigger_bookmark_added": "添加了书签",
+    "no_conditions": "无条件：对每个新书签都会运行。",
+    "actions": "操作",
+    "remove_action": "移除操作",
+    "choose_board": "选择看板",
+    "add_action": "添加操作",
+    "action_add_to_board": "添加到看板",
+    "action_read_later": "添加到稍后阅读",
+    "action_webhook": "调用 Webhook",
+    "webhook_help": "正文留空即可以 JSON 格式发送书签。在引号内使用 {title}、{url}、{type} 或 {id}，在引号外使用 {tags}。",
+    "webhook_signed": "每个请求都使用 {header} 签名。",
+    "webhook_signed_secret": "每个请求都使用 {secret} 通过 {header} 签名。",
+    "smart_board_note": "这是智能板的规则，其条件也会显示在看板设置中；删除它会让该看板变回手动看板。",
+    "if": "如果",
+    "remove_condition": "移除条件",
+    "topics_placeholder": "主题，按回车键确认",
+    "minimum_match": "最低匹配度",
+    "add_condition": "添加条件",
+    "match_all": "全部满足",
+    "match_any": "满足任一",
+    "fields": {
+      "url": "网址",
+      "domain": "域名",
+      "title": "标题",
+      "type": "类型",
+      "tag": "标签",
+      "ai_topic": "AI 主题"
+    },
+    "ops": {
+      "contains": "包含",
+      "not_contains": "不包含",
+      "is": "等于",
+      "is_not": "不等于"
+    },
+    "describe": {
+      "a_board": "一个看板",
+      "about": "关于 {topics}",
+      "condition": "{field}{op}{value}",
+      "tag": "标签 {tag}",
+      "add_to_board": "添加到 {board}",
+      "read_later": "稍后阅读",
+      "webhook": "调用 Webhook",
+      "joiner_any": " 或 ",
+      "joiner_all": " 且 ",
+      "every_bookmark": "每个书签",
+      "summary": "{when} → {actions}"
+    }
+  },
+  "notifications": {
+    "title": "通知",
+    "aria_unread": "通知，{count} 条未读",
+    "mark_all_read": "全部标为已读",
+    "unread": "未读",
+    "empty": "暂无新内容。",
+    "group_new": "新的",
+    "group_earlier": "更早",
+    "someone": "某人",
+    "board_unavailable": "该看板已不可用",
+    "sentence": {
+      "board_shared": "{who} 与您分享了“{board}”",
+      "role_changed": "{who} 更改了您对“{board}”的访问权限",
+      "board_unshared": "{who} 已将您从“{board}”中移除",
+      "member_joined": "{who} 加入了“{board}”",
+      "member_left": "{who} 退出了“{board}”",
+      "default": "{who} 更新了“{board}”",
+      "item_added": "{who} 向“{board}”添加了一个书签 | {who} 向“{board}”添加了 {count} 个书签",
+      "item_added_titled": "{who} 将“{title}”添加到了“{board}”",
+      "item_edited": "{who} 编辑了“{board}”中的一个书签 | {who} 编辑了“{board}”中的 {count} 个书签",
+      "item_edited_titled": "{who} 编辑了“{board}”中的“{title}”",
+      "item_removed": "{who} 从“{board}”中移除了一个书签 | {who} 从“{board}”中移除了 {count} 个书签",
+      "item_removed_titled": "{who} 将“{title}”从“{board}”中移除"
+    }
+  },
+  "shell": {
+    "login_desktop": {
+      "success": "登录成功"
+    },
+    "apple_callback": {
+      "completing": "正在完成 Apple 登录...",
+      "invalid_state": "state 参数无效，可能存在 CSRF 攻击",
+      "no_id_token": "未收到 Apple 的 ID 令牌",
+      "auth_failed": "身份验证失败",
+      "account_exists": "此邮箱地址已有账号。请改用邮箱和密码登录。",
+      "token_expired": "您的 Apple 登录会话已过期，请重试。",
+      "invalid_token": "Apple 身份验证令牌无效，请重试。",
+      "user_creation_failed": "创建账号失败，请稍后重试。",
+      "sign_in_failed": "Apple 登录失败，请重试。"
+    },
+    "welcome_extension": {
+      "heading": "欢迎！",
+      "tagline": "一键保存，剩下的整理工作交给 AI。",
+      "right_click_title": "右键保存",
+      "right_click_description": "只需右键单击，即可轻松保存任何网站或图片。",
+      "quick_menu_title": "快捷菜单",
+      "quick_menu_description": "按“J”键可切换 WebBites 快捷菜单。使用 Cmd+J（Windows 上为 Ctrl+J）打开迷你版 WebBites，快速保存和搜索。",
+      "reading_title": "更出色的阅读体验",
+      "reading_description": "自动识别文章，并在无干扰的阅读模式中打开。",
+      "summaries_title": "即时摘要",
+      "summaries_description": "一键总结任何文章或网站。",
+      "listen_title": "收听文章",
+      "listen_description": "用逼真的声音将任何文章或摘要转成语音。"
+    }
+  },
+  "boards": {
+    "empty": "还没有看板",
+    "someone": "某人",
+    "go_home": "前往 WebBites",
+    "leave": "退出看板",
+    "duplicate": "创建副本",
+    "archive": "归档",
+    "delete_board": "删除看板",
+    "added_to": "已添加到 {board}",
+    "already_in": "已在 {board} 中",
+    "added_bookmarks": "已将 {count} 个书签添加到 {board} | 已将 {count} 个书签添加到 {board}",
+    "add_error": "添加到看板时出错",
+    "modal": {
+      "edit_title": "编辑看板",
+      "new_title": "新建看板",
+      "choose_emoji": "选择表情符号",
+      "emoji_placeholder": "输入或粘贴任意表情符号",
+      "remove_emoji": "移除",
+      "emoji_work": "工作",
+      "emoji_creative": "创意",
+      "emoji_life": "生活",
+      "emoji_misc": "其他",
+      "name_placeholder": "看板名称",
+      "description_placeholder": "这个看板放什么内容？（可选）",
+      "inside": "所在位置",
+      "inside_help": "将此看板放入文件夹，或保留在顶层。",
+      "top_level": "顶层",
+      "how_added": "书签的添加方式",
+      "mode_manual": "手动",
+      "mode_manual_help": "由您自己添加和移除书签。",
+      "mode_smart": "智能",
+      "mode_smart_help": "匹配的书签会自动归入，您也可以手动添加自己的书签。",
+      "ai_topics": "AI 主题",
+      "ai_topics_hint": "以逗号分隔",
+      "ai_topics_help": "AI 会根据这些主题匹配新书签。如果下方添加了条件，则此项可选。",
+      "topics_placeholder": "UI 设计，字体排印，色彩理论",
+      "confidence": "最低匹配置信度",
+      "conditions": "条件",
+      "conditions_help": "每个新书签都会进行检查。可与 AI 主题搭配使用，也可单独使用以完全跳过 AI。",
+      "auto_apply": "自动添加匹配的书签",
+      "auto_apply_help": "匹配的新书签会直接归入此处，无需确认。",
+      "include_existing": "扫描我现有的书签",
+      "include_existing_help": "用您已保存的内容填充此看板。",
+      "automations_link": "在“自动化”中添加标签、Webhook 等",
+      "colour": "颜色",
+      "no_colour": "无颜色",
+      "save_changes": "保存更改",
+      "create": "创建看板",
+      "updated": "看板已更新",
+      "created": "看板已创建",
+      "save_error": "保存看板时出错"
+    },
+    "folder": {
+      "rename_title": "重命名文件夹",
+      "new_title": "新建文件夹",
+      "name_placeholder": "文件夹名称",
+      "create": "创建",
+      "save_error": "保存文件夹时出错"
+    },
+    "sidebar": {
+      "title": "看板",
+      "new_folder": "新建文件夹",
+      "new_board": "新建看板",
+      "shared": "已分享",
+      "shared_by": "由 {name} 分享",
+      "share_board": "分享看板",
+      "rename_folder": "重命名文件夹",
+      "edit_board": "编辑看板",
+      "link_copied": "分享链接已复制",
+      "link_copy_error": "无法复制分享链接",
+      "menu": {
+        "new_board_here": "在此新建看板…",
+        "new_folder_here": "在此新建文件夹…",
+        "rename": "重命名…",
+        "delete": "删除…",
+        "share": "分享…",
+        "people_with_access": "有权访问的人…",
+        "edit_board": "编辑看板…",
+        "copy_share_link": "复制分享链接"
+      }
+    },
+    "add_to": {
+      "title": "添加到看板",
+      "removed_from": "已从 {board} 中移除",
+      "update_error": "更新看板时出错"
+    },
+    "share": {
+      "title": "分享“{name}”",
+      "people_with_access": "有权访问的人",
+      "description_owner": "通过邮箱邀请他人，或让任何拥有链接的人查看。",
+      "description_member": "{name} 已与您分享。",
+      "this_board": "此看板",
+      "try_again": "重试",
+      "load_error": "无法加载分享设置。",
+      "invite_people": "邀请他人",
+      "add_emails": "添加邮箱",
+      "invite": "邀请",
+      "invalid_emails": "{emails} 不是有效的邮箱。 | {emails} 不是有效的邮箱。",
+      "invite_hint": "没有 WebBites 账号的用户会收到一封包含加入链接的邮件。",
+      "you": "（您）",
+      "owner": "所有者",
+      "pending": "待接受",
+      "can_view": "可查看",
+      "can_edit": "可编辑",
+      "remove_member": "移除 {name}",
+      "nobody_else": "还没有其他人。",
+      "only_other": "这里只有您和另一个人。",
+      "general_access": "常规访问权限",
+      "access_private": "仅限受邀者",
+      "access_link": "任何拥有链接的人 — 仅可查看",
+      "link_on": "任何拥有链接的人无需登录即可查看。",
+      "link_off": "只有上方列出的人才能打开此看板。",
+      "link_reset_to_show": "重置链接后才会在此显示",
+      "link_unavailable": "链接不可用",
+      "copy_link": "复制链接",
+      "click_again": "再次点击以重置",
+      "create_link": "创建链接",
+      "reset_link": "重置链接",
+      "done": "完成",
+      "invited": "邀请已发送 | 已邀请 {count} 人",
+      "invite_error": "无法发送邀请",
+      "role_error": "无法更改其访问权限",
+      "remove_error": "无法移除该用户",
+      "access_error": "无法更改谁可以打开此看板",
+      "link_copied": "链接已复制",
+      "link_copy_error": "无法复制链接",
+      "new_link": "新链接已就绪",
+      "reset_error": "无法重置链接"
+    },
+    "trash": {
+      "title": "回收站",
+      "description": "已删除的书签会保留 30 天，之后将被永久删除。",
+      "empty": "回收站是空的",
+      "untitled": "无标题",
+      "purges_in": "{count} 天后永久删除 | {count} 天后永久删除 | {count} 天后永久删除",
+      "restore": "恢复"
+    },
+    "public": {
+      "open_webbites": "打开 WebBites",
+      "save_your_own": "保存您自己的内容",
+      "start_free": "免费开始",
+      "shared_by": "由 {name} 分享",
+      "bookmark_count": "{count} 个书签 | {count} 个书签",
+      "empty": "此看板中还没有内容。",
+      "show_more": "显示更多书签",
+      "footer": "此看板由 WebBites 分享。在 WebBites 中，您可以保存网页、轻松再次找到它们，并与任何人分享看板。",
+      "title": "{name} — WebBites",
+      "title_default": "已分享的看板 — WebBites",
+      "not_found_title": "未找到看板",
+      "not_found_text": "此链接无法访问任何内容。请检查是否完整复制了链接。",
+      "forbidden_title": "此看板未与您分享",
+      "forbidden_text": "所有者可能已关闭分享或重置了链接。请向对方索取新链接。",
+      "error_title": "无法加载此看板",
+      "error_text": "我们这边出了点问题，请稍后重试。"
+    },
+    "invite": {
+      "incomplete_title": "此邀请链接不完整",
+      "incomplete_text": "请重新打开邮件中的链接，并确保完整复制。",
+      "invited_title": "您已受邀加入一个看板",
+      "sign_in_text": "请登录或创建 WebBites 账号以加入。",
+      "sign_in_cta": "登录或创建账号",
+      "joining": "正在加入看板…"
+    }
+  },
+  "editor": {
+    "slash": {
+      "items": {
+        "paragraph": {
+          "title": "文本",
+          "subtitle": "直接开始书写"
+        },
+        "heading1": {
+          "title": "标题 1",
+          "subtitle": "大号章节标题"
+        },
+        "heading2": {
+          "title": "标题 2",
+          "subtitle": "中号章节标题"
+        },
+        "heading3": {
+          "title": "标题 3",
+          "subtitle": "小号章节标题"
+        },
+        "bulletList": {
+          "title": "项目符号列表",
+          "subtitle": "简单的列表"
+        },
+        "orderedList": {
+          "title": "编号列表",
+          "subtitle": "带序号的列表"
+        },
+        "taskList": {
+          "title": "待办事项",
+          "subtitle": "可以逐项勾选"
+        },
+        "blockquote": {
+          "title": "引用",
+          "subtitle": "突出一段文字"
+        },
+        "codeBlock": {
+          "title": "代码",
+          "subtitle": "预设格式，等宽字体"
+        },
+        "horizontalRule": {
+          "title": "分隔线",
+          "subtitle": "把页面一分为二"
+        },
+        "image": {
+          "title": "图片",
+          "subtitle": "上传图片"
+        }
+      },
+      "groups": {
+        "basic": "基础块",
+        "media": "媒体"
+      },
+      "no_match": "没有名为“{query}”的块"
+    },
+    "block_menu": {
+      "duplicate": "创建副本",
+      "copy_text": "复制文本",
+      "turn_into": "转换为"
+    }
+  },
+  "cards": {
+    "everything": "全部",
+    "media_preview": {
+      "date_unavailable": "日期不可用",
+      "movie_poster_alt": "电影海报",
+      "game_poster_alt": "游戏海报"
+    },
+    "search_chip": {
+      "remove": "移除 {label}"
+    },
+    "drawing": {
+      "save_failed": "无法保存手绘"
+    }
+  },
+  "faq": {
+    "title_line1": "常见问题，",
+    "title_emphasis": "已加入书签。",
+    "subtitle": "大家问过我们的所有问题，都收在这里。选择一个主题，或展开一条问答。",
+    "topics_aria": "主题",
+    "topics": {
+      "all": "全部",
+      "start": "入门",
+      "saving": "保存与同步",
+      "billing": "方案与账单",
+      "privacy": "隐私与数据",
+      "dev": "开发者"
+    },
+    "still_stuck": {
+      "title": "还是没解决？",
+      "body": "每封邮件都有真人阅读，通常会在两个工作日内回复。请告诉我们您做了什么、期望的结果，以及实际发生了什么。",
+      "email_button": "发送邮件至 {email}",
+      "feature_button": "请求新功能"
+    },
+    "items": {
+      "what": {
+        "q": "WebBites 是什么？",
+        "a": "这是一个可以保存任何内容（网站、图片、电影、游戏、笔记）的地方，无需自己整理就能再次找到它们。一键保存后，WebBites 会用 AI 为其添加标签并整理，之后可以按标题、颜色、标签，甚至页面上的文字来搜索。"
+      },
+      "platforms": {
+        "q": "支持哪些平台？",
+        "a": "网页版、适用于 iPhone、iPad、Mac、Vision Pro、Apple TV 和 Apple Watch 的原生应用，以及可随时随地保存内容的浏览器扩展。所有内容都通过您的账号同步。"
+      },
+      "account": {
+        "q": "使用这些应用需要账号吗？",
+        "a": "不需要。iPhone、iPad、Mac 和 Vision Pro 上的应用在未登录状态下也能使用，数据保存在您自己的设备上，此模式下保存的任何内容都不会发送给我们。同步、分享、语义搜索和云端功能需要账号；如果您也想让智能功能留在本地，可以在“设置”中将其切换为设备端模型。详情请见<a href=\"/privacy\">隐私政策</a>第 2 条。"
+      },
+      "password": {
+        "q": "我忘记了密码",
+        "a": "请使用<a href=\"/passwordReset\">重置页面</a>，或登录界面上的“忘记密码”链接。邮件由我们的邮件服务商发出，如果没收到请检查垃圾邮件。如果您是通过 Apple 登录的，则没有密码可重置，请再次使用 Apple 按钮登录。"
+      },
+      "sync": {
+        "q": "我的书签没有同步",
+        "a": "请确认两台设备登录的是同一个账号，然后下拉刷新。离线时保存的内容会进入队列，网络恢复后自动上传。应用会在“设置 → 数据与离线”下的“等待保存”界面中显示这些内容。如果网络正常但内容在那里卡住超过几分钟，请给我们发邮件。"
+      },
+      "extension": {
+        "q": "扩展无法保存",
+        "a": "扩展通过您已登录的会话来保存，所以请先打开一次网页版并登录，然后再试。在 Safari 中，扩展还需要启用，并获得当前网站的权限，路径为 Safari → 设置 → 扩展。"
+      },
+      "bad_save": {
+        "q": "页面保存得不好：没有图片、标题不对、没有文章正文",
+        "a": "有些网站会阻止自动抓取，或完全依赖 JavaScript 渲染，或设有付费墙或登录限制。遇到这些情况，我们只能保存能获取到的内容。在书签上编辑标题、描述或图片即可永久修正。如果您关心的某个网站总是显示不正确，请把网址发给我们，很多网站我们可以单独修复。"
+      },
+      "export": {
+        "q": "可以导出或导入我的书签吗？",
+        "a": "都可以。在任何平台上，“设置 → 导出”都能随时让您以便携文件的形式取得自己的资料库，任何方案均可使用。要导入浏览器书签，请按照<a href=\"/export-bookmarks\">导入指南</a>操作。"
+      },
+      "pricing": {
+        "q": "费用是多少？",
+        "a": "我们提供免费方案，以及可保存更多书签并包含高级功能的付费方案。当前的方案和价格请见首页的<a href=\"/#pricing\">价格部分</a>。"
+      },
+      "cancel": {
+        "q": "如何取消或更改我的方案？",
+        "a": "请在您订阅的渠道取消。如果是在网页或 Mac 上订阅的，请前往“设置 → 订阅”，会打开账单管理页面。如果是通过 App Store 订阅的，请在设备的 Apple 订阅设置中操作（设置 → 您的姓名 → 订阅），因为这类订阅由 Apple 直接扣费。付费功能会保留到您已付费周期结束。"
+      },
+      "privacy": {
+        "q": "我的数据是私密的吗？",
+        "a": "您的书签属于您自己。我们不会出售您的数据，如果您从不登录，应用还可以完全在设备本地运行。我们存储什么、为什么存储以及存储多久，<a href=\"/privacy\">隐私政策</a>中都有明确说明。"
+      },
+      "delete": {
+        "q": "如何删除我的账号？",
+        "a": "前往“设置 → 删除账号”并确认。您的书签、文件和订阅也会一并删除，且无法恢复，所以如果想要副本，请先导出。无需给我们发邮件，我们也不会设置挽留优惠来阻拦您。"
+      },
+      "api": {
+        "q": "有 API 吗？",
+        "a": "有。<a href=\"/developers\">开发者页面</a>展示了它的功能，<a href=\"/developers/docs\">文档</a>中有指南、您的 API 密钥、试用环境和所有接口。"
+      }
+    }
+  },
+  "help_pages": {
+    "legal": {
+      "last_updated": "最后更新于 {date}",
+      "questions": "对本页内容有疑问？请写信至 {email}。"
+    },
+    "chat": {
+      "title": "与我们聊天",
+      "subtitle": "我们团队的真人会接手处理，通常在两个工作日内回复。",
+      "iframe_title": "支持聊天",
+      "not_configured": "聊天功能尚未配置。请发送邮件至 {email}。",
+      "sign_in_prompt": "登录后即可开始对话，并将记录集中保存在一处。",
+      "sign_in": "登录",
+      "prefer_email": "更喜欢邮件？请写信至 {email}。"
+    },
+    "support": {
+      "title": "支持",
+      "subtitle": "遇到故障、缺少功能，或是找不到什么？以下是联系我们的方式。",
+      "email_us": "给我们发邮件",
+      "email_body": "这个邮箱由专人阅读，通常在两个工作日内回复。请告诉我们您做了什么、期望的结果和实际发生的情况，以及您使用的应用（网页、iPhone、iPad、Mac、Vision Pro、电视、手表或浏览器扩展）及其版本。附上一张截图能省去很多来回沟通。",
+      "operated_by": "WebBites 由 {operator} 运营，地址：{address}。",
+      "where_title": "该去哪里反馈",
+      "col_want": "如果您想…",
+      "col_go": "请前往",
+      "row_bug": "报告错误或寻求帮助",
+      "row_bug_go": "{chat}，或 {email}",
+      "chat_link": "与我们聊天",
+      "row_feature": "请求新功能，或为功能投票",
+      "feedback_board": "反馈看板",
+      "row_changes": "查看更新内容和时间",
+      "changelog": "更新日志",
+      "row_api": "基于 API 进行开发",
+      "developer_docs": "开发者文档",
+      "row_import": "迁移浏览器书签",
+      "import_guide": "导入指南",
+      "row_security": "报告安全问题",
+      "row_security_go": "{email}，邮件主题写“Security”",
+      "row_rights": "行使数据保护权利",
+      "row_rights_go": "{link} 第 11 条",
+      "privacy_policy": "隐私政策",
+      "faq_title": "常见问题解答",
+      "faq_body": "密码、同步、导出、取消订阅、扩展等问题，请见{link}。",
+      "faq_link": "常见问题页面",
+      "security_title": "报告安全问题",
+      "security_body": "请发送邮件至 {email}，主题写“Security”，并附上足以重现问题的详细信息。请不要在我们修复之前公开该问题，测试时不要访问或修改他人的数据，也不要对服务进行负载测试或拒绝服务测试。我们会确认收到、随时向您通报进展，如果您愿意，修复后还会公开致谢。"
+    }
+  },
+  "support_chat": {
+    "replying_to": "回复至 {email}",
+    "real_person": "由真人阅读",
+    "gate_intro": "登录以保留完整的聊天记录，或以访客身份留言。",
+    "your_email": "您的邮箱",
+    "continue_as_guest": "以访客身份继续",
+    "email_note": "我们只会用它来回复您。您的草稿只保存在此设备上。",
+    "we_reply_to": "我们会回复至 {email}，通常在两个工作日内。",
+    "tell_us": "请告诉我们发生了什么。",
+    "your_message": "您的留言",
+    "send": "发送",
+    "close_chat": "关闭支持聊天",
+    "open_chat": "打开支持聊天",
+    "invalid_email": "请输入有效的邮箱，以便我们回复。"
+  },
+  "marketing": {
+    "statistics": {
+      "active_users": "活跃用户",
+      "bookmarks_saved": "已保存书签",
+      "accuracy_rate": "准确率",
+      "support": "支持"
+    }
+  },
+  "import_export": {
+    "time": {
+      "unknown": "未知",
+      "ago_minutes": "{minutes} 分 {seconds} 秒前",
+      "ago_seconds": "{seconds} 秒前",
+      "hours_minutes": "{hours} 小时 {minutes} 分",
+      "minutes_seconds": "{minutes} 分 {seconds} 秒",
+      "seconds": "{seconds} 秒"
+    },
+    "status_labels": {
+      "inactive": "未启用",
+      "active": "进行中",
+      "processing": "处理中",
+      "completed": "已完成",
+      "cancelled": "已取消",
+      "failed": "失败"
+    },
+    "activity": {
+      "processing": "正在处理：",
+      "waiting": "正在等待下一个书签...",
+      "last_update": "最后更新：{time}"
+    },
+    "failed": {
+      "title": "导入失败（{count}）",
+      "retry": "重试 {count} 项 | 重试 {count} 项",
+      "retryable": "可重试",
+      "failed": "失败"
+    },
+    "metrics": {
+      "title": "性能指标",
+      "per_minute": "个书签/分钟",
+      "duration": "时长",
+      "estimated_completion": "预计完成时间",
+      "batches": "批次"
+    },
+    "overview": {
+      "title": "导入状态",
+      "processing": "正在处理 {done}/{total} 个书签",
+      "currently": "当前：{url}",
+      "no_session": "没有正在进行的导入会话"
+    },
+    "progress": {
+      "title": "进度",
+      "hint": "这可能需要几分钟，即使您关闭此窗口，导入也会继续。",
+      "completed": "已完成 {count} 项",
+      "failed": "失败 {count} 项"
+    },
+    "queue": {
+      "title": "队列预览",
+      "remaining": "剩余 {count} 项",
+      "empty": "队列中没有项目",
+      "batch": "批次：{batch}",
+      "more": "... 另有 {count} 项"
+    },
+    "modal": {
+      "title": "导入进度",
+      "cancel_import": "取消导入",
+      "retry_success": "{count} 项已重新加入队列等待重试 | {count} 项已重新加入队列等待重试",
+      "retry_error": "重试失败，请再试一次。",
+      "cancelled": "导入已取消",
+      "cancel_error": "取消导入失败，请再试一次。"
+    },
+    "user_modal": {
+      "title": "导入书签",
+      "subtitle": "为此用户触发书签导入",
+      "no_email": "未提供邮箱",
+      "user_id": "用户 ID：{id}",
+      "current_bookmarks": "当前书签：{count}",
+      "import_status": "导入状态",
+      "last_import": "上次导入：{date}",
+      "total_imported": "共导入：{count} 个书签",
+      "options": "导入选项",
+      "force_reimport": "强制重新导入（覆盖现有书签）",
+      "skip_duplicates": "跳过重复的书签",
+      "notify_user": "完成后通知用户",
+      "from_parse_class": "从 Parse 类导入",
+      "notice_title": "重要提示",
+      "progress": "导入进度",
+      "importing": "正在导入...",
+      "start_import": "开始导入",
+      "already_imported_warning": "此用户已导入过书签。启用“强制重新导入”可覆盖现有数据。",
+      "status_unknown": "未知",
+      "status_imported": "之前已导入",
+      "status_none": "未导入",
+      "not_available": "不适用",
+      "step_init": "正在初始化导入...",
+      "step_prepare": "正在准备用户数据...",
+      "step_process": "正在处理书签...",
+      "step_finalize": "正在完成导入...",
+      "step_done": "导入成功完成！",
+      "failed_generic": "导入失败",
+      "failed": "导入失败：{error}"
+    },
+    "export_guide": {
+      "title": "如何导出您的书签",
+      "intro": "准备把书签带到 WebBites 了吗？按照下面的简单步骤，从您常用的浏览器中导出书签。",
+      "help_title": "需要帮助？",
+      "help_text": "如果导出书签时遇到问题，欢迎{link}。",
+      "help_link": "联系我们的支持团队",
+      "exporting_from": "从 {browser} 导出",
+      "note_label": "注意：",
+      "next_title": "接下来做什么？",
+      "next_intro": "导出书签后，您就可以将它们导入 WebBites：",
+      "next_1": "前往您的 <a href=\"/app\" class=\"text-primary-600 dark:text-primary-400 hover:underline\">WebBites 控制台</a>，并打开设置窗口。",
+      "next_2": "点击“导入书签”按钮。",
+      "next_3": "选择并上传您导出的书签文件",
+      "next_4": "选择要上传的书签，点击“导入”，剩下的整理工作交给 WebBites！",
+      "import_alt": "WebBites 导入步骤 {n}",
+      "steps": {
+        "chrome_1": {
+          "title": "打开 Chrome 菜单",
+          "description": "点击浏览器窗口右上角的三个点 <strong>⋮</strong>，打开 Chrome 菜单。"
+        },
+        "chrome_2": {
+          "title": "打开书签管理器",
+          "description": "前往 <strong>书签 > 书签管理器</strong>，或直接按 <kbd class=\"new-kbd\">Ctrl+Shift+O</kbd>（Windows/Linux）或 <kbd class=\"new-kbd\">⌘+Option+B</kbd>（Mac）。"
+        },
+        "chrome_3": {
+          "title": "导出书签",
+          "description": "点击书签管理器右上角的三个点 <strong>⋮</strong>，然后选择 <strong>导出书签</strong>。"
+        },
+        "chrome_4": {
+          "title": "保存 HTML 文件",
+          "description": "在电脑上选择一个位置，保存包含书签的 HTML 文件。默认文件名类似于“bookmarks_[date].html”。",
+          "note": "此 HTML 文件包含您所有的书签及其文件夹结构。"
+        },
+        "firefox_1": {
+          "title": "打开 Firefox 菜单",
+          "description": "点击浏览器窗口右上角的三条横线（汉堡菜单）<strong>☰</strong>。"
+        },
+        "firefox_2": {
+          "title": "打开书签",
+          "description": "前往 <strong>书签 > 管理书签</strong>，或按 <kbd class=\"new-kbd\">Ctrl+Shift+B</kbd>（Windows/Linux）或 <kbd class=\"new-kbd\">⌘+Shift+B</kbd>（Mac）。"
+        },
+        "firefox_3": {
+          "title": "导出书签",
+          "description": "在打开的“资料库”窗口中，点击 <strong>导入和备份 > 导出书签到 HTML</strong>。"
+        },
+        "firefox_4": {
+          "title": "保存 HTML 文件",
+          "description": "在电脑上选择一个位置保存 HTML 文件。默认文件名为“bookmarks.html”。",
+          "note": "请记住文件的保存位置，以便导入 WebBites 时轻松找到。"
+        },
+        "safari_1": {
+          "title": "打开 Safari 菜单",
+          "description": "点击 Safari 顶部菜单栏中的 <strong>文件</strong>。"
+        },
+        "safari_2": {
+          "title": "导出书签",
+          "description": "在下拉菜单中选择 <strong>导出书签</strong>。"
+        },
+        "safari_3": {
+          "title": "保存文件",
+          "description": "在 Mac 上选择一个位置保存书签文件。保存下来的是一个 .zip 文件，需要解压后才能得到 .html 文件。",
+          "note": "Safari 会导出您所有的书签，包括个人收藏栏和所有文件夹中的书签。"
+        },
+        "edge_1": {
+          "title": "打开 Edge 菜单",
+          "description": "点击浏览器窗口右上角的三个点 <strong>⋯</strong>，然后点击 <strong>收藏夹</strong>。"
+        },
+        "edge_2": {
+          "title": "导出收藏夹",
+          "description": "点击 <strong>导出收藏夹</strong>。"
+        },
+        "edge_3": {
+          "title": "保存 HTML 文件",
+          "description": "在电脑上选择一个位置，保存包含收藏夹/书签的 HTML 文件。",
+          "note": "Edge 会导出您所有的收藏夹，包括您创建的任何文件夹中的内容。"
+        },
+        "opera_1": {
+          "title": "打开书签",
+          "description": "按 <kbd class=\"new-kbd\">Ctrl+Shift+B</kbd>（Windows/Linux）或 <kbd class=\"new-kbd\">⌘+Option+B</kbd>（Mac）打开书签管理器，或点击 Opera 菜单并选择 <strong>书签 > 书签</strong>。"
+        },
+        "opera_2": {
+          "title": "打开完整书签视图",
+          "description": "点击 <strong>打开完整书签视图</strong>"
+        },
+        "opera_3": {
+          "title": "导出书签",
+          "description": "点击书签管理器左下角的 <strong>导入/导出</strong> 按钮，然后选择 <strong>将书签导出为 HTML 文件</strong>。"
+        },
+        "opera_4": {
+          "title": "保存 HTML 文件",
+          "description": "在电脑上选择一个位置，保存包含书签的 HTML 文件。",
+          "note": "Opera 导出的书签包含您所有的书签及其文件夹结构。"
+        },
+        "arc_1": {
+          "title": "打开 Arc 侧边栏",
+          "description": "按 <kbd class=\"new-kbd\">⌘+T</kbd> 打开命令栏，然后前往 <strong>arc://bookmarks</strong>。"
+        },
+        "arc_2": {
+          "title": "导出书签",
+          "description": "点击书签面板右上角的三个点 <strong>⋯</strong>，然后选择 <strong>设置</strong>。在设置菜单中找到并点击 <strong>导出书签</strong>。"
+        },
+        "arc_3": {
+          "title": "保存 HTML 文件",
+          "description": "在电脑上选择一个位置，保存包含书签的 HTML 文件。",
+          "note": "此 HTML 文件包含您所有的书签及其文件夹结构。"
+        },
+        "raindrop_1": {
+          "title": "登录 Raindrop.io",
+          "description": "前往 <a href='https://app.raindrop.io' target='_blank' rel='noopener noreferrer'>app.raindrop.io</a> 并登录您的账号。"
+        },
+        "raindrop_2": {
+          "title": "打开设置",
+          "description": "点击右上角的头像，然后在下拉菜单中选择 <strong>设置</strong>。"
+        },
+        "raindrop_3": {
+          "title": "导出书签",
+          "description": "在设置菜单中，前往 <strong>备份</strong> 标签页。在“导出”部分选择您偏好的格式（为兼容 WebBites，推荐使用 HTML）。"
+        },
+        "raindrop_4": {
+          "title": "下载您的书签",
+          "description": "点击 <strong>导出</strong> 按钮，生成并下载您的书签文件。",
+          "note": "Raindrop.io 支持多种导出格式，但导入 WebBites 时 HTML 格式效果最好。"
+        }
+      }
+    }
+  },
+  "subscription_success": {
+    "title": "订阅已激活！",
+    "message": "您已成功订阅 {plan} 方案。尽情享受高级体验吧！",
+    "benefits_title": "您的高级权益",
+    "bookmarks": "书签",
+    "bookmarks_limit": "最多可保存 {limit} 个书签",
+    "audio": "音频曲目",
+    "audio_limit": "可使用 {limit} 条高级音频",
+    "import_bookmarks": "导入书签",
+    "start": "开始探索",
+    "unlimited": "无限"
+  },
+  "rss": {
+    "mark_all_read": "全部标为已读",
+    "mark_read": "标为已读",
+    "mark_unread": "标为未读",
+    "pane": {
+      "articles": "文章"
+    },
+    "sidebar": {
+      "feeds": "订阅源",
+      "all_articles": "所有文章",
+      "unread": "未读",
+      "import_opml": "导入订阅源（OPML）…",
+      "export_feeds": "导出订阅源…",
+      "import_added": "已添加 {count} 个订阅源 | 已添加 {count} 个订阅源",
+      "import_queued": "另有 {count} 个正在导入",
+      "import_failed_rows": "{count} 个无法读取",
+      "import_failed": "无法导入该 OPML 文件。",
+      "export_failed": "无法导出您的订阅源。"
+    },
+    "add_feed": {
+      "title": "添加订阅源",
+      "placeholder": "订阅源地址或名称",
+      "hint": "粘贴网站或订阅源地址，或按名称搜索。",
+      "nothing_found": "未找到任何内容",
+      "no_match": "没有与“{query}”匹配的订阅源。如果您有订阅源地址，请粘贴到这里。",
+      "readers": "{count} 位读者 | {count} 位读者",
+      "already_subscribed": "已订阅",
+      "add": "添加",
+      "done": "完成",
+      "subscribe_failed": "无法订阅该订阅源。"
+    },
+    "settings": {
+      "name": "名称",
+      "name_hint": "使用发布者的名称",
+      "fetch_full": "获取完整文章",
+      "fetch_full_description": "许多订阅源只提供摘要预告。开启后，WebBites 会获取每篇新文章的完整内容并为您生成摘要。付费方案可用。",
+      "open_website": "打开网站",
+      "feed_dead": "该订阅源已停止响应，不再检查更新。",
+      "unsubscribe": "取消订阅",
+      "save_failed": "无法保存这些设置。"
+    },
+    "list": {
+      "filter": "筛选文章",
+      "showing_unread": "仅显示未读",
+      "show_unread": "仅显示未读",
+      "refresh": "刷新订阅源",
+      "confirm_feed": "将“{title}”中的所有内容标为已读？",
+      "confirm_all": "将所有文章标为已读？",
+      "full_text": "有完整文本",
+      "summary": "有摘要",
+      "no_matches": "没有匹配项",
+      "no_matches_description": "这里没有与“{query}”匹配的内容。",
+      "no_feeds": "还没有订阅源",
+      "no_feeds_description": "添加一个订阅源即可开始阅读。",
+      "caught_up": "已全部读完",
+      "caught_up_description": "这里没有未读内容。",
+      "no_articles": "没有文章",
+      "no_articles_description": "该订阅源尚未发布任何内容。"
+    },
+    "reader": {
+      "no_article": "未选择文章",
+      "pick_article": "从列表中选择一篇即可开始阅读。",
+      "original": "原文",
+      "mark_unread": "标为未读",
+      "summarise": "总结这篇文章",
+      "listen": "收听这篇文章",
+      "nothing_to_read": "这里没有可读的内容",
+      "open_original": "打开原文",
+      "save_bookmark": "保存为书签",
+      "add_read_later": "添加到稍后阅读",
+      "remove_read_later": "从稍后阅读中移除",
+      "show_original": "显示原文",
+      "show_extracted": "显示提取的内容",
+      "empty_failed": "我们无法从发布者处获取这篇文章的文本。",
+      "empty_pending": "完整文本仍在获取中，请稍后再试。",
+      "empty_headlines": "该订阅源只发布标题。请打开原文阅读。",
+      "too_short": "这篇文章的文字太少，无法生成摘要。",
+      "summary_failed": "无法总结这篇文章。",
+      "audio_failed": "无法为这篇文章生成音频。",
+      "saved_read_later": "已保存到稍后阅读",
+      "removed_read_later": "已从稍后阅读中移除",
+      "read_later_failed": "无法更新稍后阅读。",
+      "extract_failed": "无法提取这篇文章。"
+    }
+  },
+  "audio_recorder": {
+    "start_recording": "开始录音",
+    "pause_recording": "暂停录音",
+    "resume_recording": "继续录音"
+  },
+  "audio_voice_picker": {
+    "voices": {
+      "nova": "温暖自然",
+      "alloy": "中性均衡",
+      "ash": "自信清晰",
+      "ballad": "柔和富有表现力",
+      "coral": "明亮友好",
+      "echo": "沉稳低沉",
+      "fable": "温和的讲故事者",
+      "onyx": "深沉权威",
+      "sage": "平静从容",
+      "shimmer": "轻快活泼",
+      "verse": "生动有活力",
+      "marin": "清晰如对话",
+      "cedar": "浑厚踏实"
+    },
+    "accents": {
+      "american": "美式",
+      "british": "英式",
+      "australian": "澳式",
+      "irish": "爱尔兰式",
+      "indian": "印度式",
+      "scottish": "苏格兰式"
+    }
+  },
+  "auth_modal": {
+    "passwords_mismatch": "两次输入的密码不一致",
+    "password_needs_chars": "密码还需要 {n} 个字符 | 密码还需要 {n} 个字符",
+    "password_needs_number": "密码至少需要包含一个数字",
+    "signup_failed": "注册失败",
+    "login_after_signup_failed": "注册后登录失败",
+    "login_failed": "登录失败"
+  },
+  "bookmark_editor": {
+    "no_results_for": "未找到与 {query} 相关的结果"
+  },
+  "bookmark_group": {
+    "add_to_board": "添加到看板",
+    "board_empty_title": "此看板是空的",
+    "board_empty_message": "使用任意书签卡片上的选项菜单，把您收藏中的书签添加到此看板。"
+  },
+  "bookmark_options": {
+    "remove_from_board": "从看板中移除",
+    "removed_from_board": "已从看板中移除",
+    "remove_error": "从看板中移除时出错",
+    "read_later": "稍后阅读",
+    "remove_read_later": "从稍后阅读中移除",
+    "saved_read_later": "已保存到稍后阅读",
+    "removed_read_later": "已从稍后阅读中移除",
+    "add_to_board": "添加到“{board}”",
+    "added_to_board": "已添加到 {board}",
+    "add_error": "添加到看板时出错"
+  },
+  "bookmark_submit": {
+    "save_type": "保存{type}",
+    "types": {
+      "website": "网站",
+      "image": "图片",
+      "pdf": "PDF",
+      "movie": "电影",
+      "game": "游戏",
+      "drawing": "手绘",
+      "audio": "音频",
+      "textNote": "笔记"
+    }
+  },
+  "bookmark_card": {
+    "image_alt": "卡片图片",
+    "favicon_alt": "书签图标",
+    "favicon_replacement_alt": "书签替换图标",
+    "copy_url_failed": "复制网址失败"
+  },
+  "compose_expand": {
+    "save_drawing_error": "无法保存手绘"
+  },
+  "feedback_card": {
+    "hidden_title": "仅管理员可见",
+    "status": {
+      "in_progress": "进行中",
+      "backlog": "待办事项",
+      "pending": "待处理",
+      "done": "已完成",
+      "closed": "已关闭"
+    }
+  },
+  "feedback_comment": {
+    "deleted": "评论已删除",
+    "delete_failed": "删除评论失败"
+  },
+  "feedback_form": {
+    "select_type": "选择类型",
+    "markdown_supported": "支持 Markdown",
+    "sent": "反馈已发送",
+    "login_to_submit": "您需要先登录才能提交反馈",
+    "send_failed": "发送反馈时出错，请稍后重试",
+    "types": {
+      "bug_report": "错误报告",
+      "feature_request": "功能请求",
+      "improvement": "改进建议",
+      "other": "其他"
+    }
+  },
+  "feedback_info_modal": {
+    "login_to_comment": "您需要先登录才能评论",
+    "comment_failed": "无法发表您的评论，请稍后重试"
+  },
+  "feedback_up_vote": {
+    "login_to_vote": "您需要先登录才能投票"
+  },
+  "import_modal": {
+    "checking_access": "正在检查导入权限...",
+    "quota_title": "书签配额",
+    "plan_active_title": "导入方案已生效",
+    "plan_active_description": "在 {date} 之前，您可以一次性导入无限数量的书签",
+    "validate_failed": "验证导入权限失败",
+    "checkout_failed": "创建结账会话失败"
+  },
+  "landing_footer": {
+    "api_docs": "API 文档"
+  },
+  "main_sidebar": {
+    "trash": "回收站"
+  },
+  "mobile_top_bar": {
+    "library": "资料库",
+    "more": "更多",
+    "trash": "回收站",
+    "board": "看板",
+    "everything": "全部"
+  },
+  "onboarding_wizard": {
+    "intro": {
+      "title": "您的网络资料库",
+      "content": "保存您发现的内容，关注您喜爱的网站，随时都能再次找到。",
+      "subcontent": "下面是一分钟导览。"
+    },
+    "organised": {
+      "title": "自动整理",
+      "content": "您保存的每一项都会自动加上标签，并保留整页截图和可读副本，即使原页面变了也不怕。",
+      "subcontent": "可按页面文字、标签、图片中的文字，甚至颜色进行搜索。"
+    },
+    "feeds": {
+      "title": "关注您喜爱的网站",
+      "content": "您关注的网站的新文章会出现在“订阅源”中。您可以阅读、收听，或把好文章保存到资料库。",
+      "add": "添加订阅源"
+    },
+    "everywhere": {
+      "title": "随处保存",
+      "content": "使用浏览器扩展一键保存任意页面，或在 iPhone、iPad 和 Mac 上通过共享菜单保存。",
+      "subcontent": "在应用中请使用此账户登录。不使用账户创建的设备资料库是独立的。",
+      "chrome": "Chrome 扩展",
+      "apps": "iPhone、iPad 和 Mac"
+    },
+    "import": {
+      "title": "导入现有书签",
+      "content": "从任意浏览器带来您现有的书签，我们会自动为您整理",
+      "subcontent": "访问{link}了解如何导出书签。",
+      "this_page": "此页面"
+    },
+    "first_bookmark": {
+      "title": "保存您的第一个书签",
+      "content": "在下方输入网址，或试试我们的推荐。",
+      "subcontent": "保存得越多，您的收藏就越强大。"
+    }
+  },
+  "reader_view": {
+    "error_try_again": "出现错误，请稍后再试"
+  },
+  "settings_modal": {
+    "view_import_status": "查看导入状态",
+    "extensions_title": "WebBites 扩展",
+    "extensions_subtitle": "随时随地更快地保存任何内容。",
+    "extensions_label": "扩展",
+    "chrome_icon_alt": "WebBites Chrome 扩展图标",
+    "raycast_icon_alt": "WebBites Raycast 扩展图标",
+    "automations_title": "自动化",
+    "automations_subtitle": "每当添加书签时，自动为其添加标签、归档或发送到别处。智能板也在这里。",
+    "deleting_account": "正在删除账号...",
+    "account_deleted": "您的账号已成功删除。",
+    "delete_account_failed": "尝试删除账号时出错，请重试。"
+  },
+  "shortcuts_modal": {
+    "click": "点击"
+  },
+  "social_post_view": {
+    "fallback_platform": "社交"
+  },
+  "tag_manager": {
+    "untitled": "无标题",
+    "error_generic": "出了点问题"
+  },
+  "testimonials_old": {
+    "heading": "用户评价"
+  },
+  "tiptap_editor": {
+    "narrow_view": "窄视图",
+    "wide_view": "宽视图",
+    "paste_url": "粘贴网址",
+    "image_size": {
+      "small": "小",
+      "big": "大",
+      "biggest": "最大"
+    },
+    "url_to_link": "网址转链接",
+    "add_link": "添加链接",
+    "insert_block_below": "在下方插入块",
+    "block_actions_hint": "块操作，或拖动以移动",
+    "block_actions": "块操作",
+    "errors": {
+      "upload_failed": "上传图片失败：{error}",
+      "no_file": "未选择文件",
+      "too_large": "文件大小超过 10MB 限制",
+      "not_image": "所选文件不是图片"
+    }
+  },
+  "website_modal_media_view": {
+    "backdrop_alt": "{title} 的背景海报",
+    "game_cover_alt": "{name} 封面"
+  },
+  "website_screenshot": {
+    "pan_hint": "按住 Shift 并拖动即可平移",
+    "undo": "撤销（Ctrl+Z）",
+    "redo": "重做（Ctrl+Y）"
+  },
+  "import_status_history": {
+    "title": "导入历史（{count} 次会话） | 导入历史（{count} 次会话）",
+    "empty": "没有以往的导入会话",
+    "progress": "{processed}/{total} 个书签",
+    "success_rate": "成功率 {rate}%",
+    "duration": "时长：{duration}",
+    "more_sessions": "... 另有 {count} 次会话 | ... 另有 {count} 次会话",
+    "unknown": "未知",
+    "status": {
+      "completed": "已完成",
+      "active": "进行中",
+      "failed": "失败",
+      "cancelled": "已取消"
+    }
+  },
+  "bookmarks_area": {
+    "already_pinned": "此网站已固定"
+  },
+  "top_bar": {
+    "importing": "正在导入"
+  },
+  "search_bar": {
+    "filters": "筛选",
+    "beta": "（测试版）",
+    "natural_language_description": "速度较慢，但可以使用自然语言搜索。例如：",
+    "natural_language_example": "“关于 Swift 的 GitHub 项目”",
+    "colors": "颜色",
+    "find_tag": "查找标签",
+    "tags_loading": "加载中…",
+    "no_tags": "未找到标签",
+    "color_names": {
+      "red": "红色",
+      "green": "绿色",
+      "blue": "蓝色",
+      "yellow": "黄色",
+      "purple": "紫色",
+      "orange": "橙色",
+      "black": "黑色",
+      "white": "白色",
+      "pink": "粉色",
+      "brown": "棕色",
+      "gray": "灰色",
+      "cyan": "青色",
+      "magenta": "洋红色",
+      "lime": "酸橙绿",
+      "olive": "橄榄绿",
+      "navy": "藏青色",
+      "teal": "蓝绿色",
+      "maroon": "栗色",
+      "silver": "银色",
+      "gold": "金色",
+      "indigo": "靛蓝色",
+      "violet": "紫罗兰色"
+    }
+  },
+  "new_bookmark": {
+    "fetching_preview": "正在获取网站预览...",
+    "clipboard_access": "请确保已在浏览器中启用剪贴板访问权限。",
+    "saving_note": "正在保存笔记",
+    "note_saved": "文字笔记已保存",
+    "note_error": "保存文字笔记时出错",
+    "saving_drawing": "正在保存手绘",
+    "drawing_saved": "手绘已保存",
+    "drawing_error": "保存手绘时出错",
+    "media_error": "保存媒体时出错",
+    "nothing_to_save": "暂无可保存的内容",
+    "saved": "已保存",
+    "save_as": {
+      "website": "保存网站",
+      "textNote": "保存笔记",
+      "image": "保存图片",
+      "pdf": "保存 PDF",
+      "movie": "保存电影",
+      "game": "保存游戏",
+      "drawing": "保存手绘",
+      "audio": "保存音频"
+    }
+  },
+  "landing_page": {
+    "hero": {
+      "title": "您的",
+      "title_emphasis": "网络资料库",
+      "subtitle": "保存您发现的一切，关注您喜爱的网站，随时再次找到。整理工作交给 WebBites。",
+      "logo_alt": "WebBites 标志"
+    },
+    "scroll": {
+      "title": "您保存的一切，",
+      "title_emphasis": "集中在一处",
+      "browser_alt": "浏览器中的 WebBites 墙，并排展示已保存的文章、图片、笔记和音乐"
+    },
+    "native": {
+      "title": "iPhone、iPad、Mac 和任意浏览器",
+      "description": "适用于 iPhone、iPad 和 Mac 的原生应用，均带有共享菜单和 Safari 扩展；在其他地方则可使用功能完整的网页应用。用您的 WebBites 账户登录，资料库就已经在那里了。",
+      "mac_alt": "WebBites Mac 应用，侧边栏显示看板和订阅源，旁边是已保存书签的墙",
+      "phone_alt": "WebBites iPhone 应用，以两列显示相同的已保存书签"
+    },
+    "features": {
+      "ai": {
+        "title": "自动整理",
+        "description": "每个书签在保存时就会加上标签并归类，无需维护文件夹。"
+      },
+      "search": {
+        "title": "随时找回",
+        "description": "按页面文字、标签、笔记、图片中的文字，甚至颜色进行搜索。"
+      },
+      "screenshots": {
+        "title": "永久保存",
+        "description": "为每个页面保留整页截图和可读副本，即使原页面改变或消失也不怕。"
+      },
+      "media": {
+        "title": "保存一切",
+        "description": "文章、图片、视频、电影、游戏和笔记，汇聚在同一个资料库中。"
+      },
+      "ai_organisation": {
+        "description": "使用先进的 AI 自动为您的书签分类并添加标签。"
+      },
+      "cross_platform": {
+        "description": "登录后，iPhone、iPad、Mac 和网页都显示同一个资料库。"
+      },
+      "reader": {
+        "title": "阅读模式",
+        "description": "文章会自动排版以获得更好的阅读体验，即使是付费墙后的文章也不例外！"
+      },
+      "raycast": {
+        "title": "支持 Raycast",
+        "description": "有了我们的 Raycast 扩展，您的所有书签都只需一次按键！"
+      },
+      "browsers": {
+        "title": "从浏览器保存",
+        "description": "使用 Chrome 扩展，或 Mac 和 iPhone 应用自带的 Safari 扩展，一键保存。"
+      },
+      "colors": {
+        "title": "提取颜色",
+        "description": "我们会为您提取所有书签的主要颜色，让您可以按颜色搜索！"
+      },
+      "tts": {
+        "title": "文字转语音",
+        "description": "收听您保存的任何内容，或订阅源中的任何文章。"
+      },
+      "annotate": {
+        "title": "批注截图",
+        "description": "点击截图上的任意位置即可添加批注。"
+      },
+      "ocr": {
+        "title": "OCR",
+        "description": "所有保存的图片都会进行光学字符识别（OCR），让您可以按文字搜索它们。"
+      },
+      "pin": {
+        "title": "固定您的书签",
+        "description": "将书签固定在列表顶部，方便随时访问。"
+      },
+      "multilingual": {
+        "title": "多语言",
+        "description": "支持多种语言。"
+      }
+    },
+    "save_anything": {
+      "sentence": "保存任何内容，从{websites}{images}{movies}{games}，甚至是用我们类似 Notion 的编辑器写的{notes}。",
+      "websites": "网站、",
+      "images": "图片、",
+      "movies": "电影、",
+      "games": "游戏",
+      "notes": "笔记"
+    },
+    "roadmap_more": {
+      "title": "还有更多！",
+      "description": "我们一直在添加更多功能，去反馈看板看看接下来会有什么吧！"
+    },
+    "developers": {
+      "title": "为您保存的一切提供 API",
+      "description": "WebBites 的一切功能都可通过 HTTP 调用。保存链接、搜索资料库，在 AI 处理完成的那一刻收到 Webhook。",
+      "docs_button": "阅读开发者文档",
+      "facts": {
+        "rest": {
+          "title": "朴素的 REST",
+          "text": "提供 OpenAPI 模式和浏览器试用环境，让您在写任何代码之前就能试用每个调用。"
+        },
+        "webhooks": {
+          "title": "Webhook",
+          "text": "将一个网址指向 WebBites，它会以 POST 方式发送处理完成的书签（截图、摘要和标签），并附带签名供您验证。"
+        },
+        "keys": {
+          "title": "您的密钥，您的额度",
+          "text": "创建密钥，查看每个密钥的用量，并从每个响应头中读取速率限制。"
+        }
+      },
+      "samples": {
+        "save": "保存链接",
+        "search": "搜索",
+        "webhook": "Webhook"
+      }
+    },
+    "feeds": {
+      "title": "关注您喜爱的网站",
+      "description": "内置阅读器，适用于博客、新闻和电子报，没有算法推荐。每篇文章都可以阅读、收听或生成摘要，并把好文章保存到资料库。",
+      "image_alt": "Mac 上的 WebBites 订阅源阅读器，侧边栏是订阅源，旁边打开着一篇文章"
+    },
+    "where": {
+      "title": "您的资料库存放在哪里",
+      "separate": "WebBites 账户会在所有设备间同步。设备资料库无需账户，只保存在您的 iPhone、iPad 或 Mac 上。两者相互独立：设备资料库永远不会出现在网页或账户中，购买项目也不能互相转移。",
+      "account": "WebBites 账户：",
+      "account_when": "如果您使用网页或 Chrome，或需要订阅源、AI 标签和摘要。",
+      "device": "设备资料库：",
+      "device_when": "如果您只使用 Apple 设备，且不希望任何数据存放在服务器上。"
+    }
+  },
+  "login_page": {
+    "not_you": "不是 {email}？"
+  },
+  "password_reset_page": {
+    "chars_needed": "密码还需要 {count} 个字符 | 密码还需要 {count} 个字符",
+    "number_needed": "密码至少需要包含一个数字",
+    "mismatch": "两次输入的密码不一致"
+  },
+  "questionnaire": {
+    "eyebrow": "帮助我们打造 WebBites",
+    "step": "第 {current} 步，共 {total} 步",
+    "hint": "选择适合您的选项，随时可以跳过。",
+    "q_tools": "您现在用什么保存链接？",
+    "q_interest": "您最看重什么？",
+    "q_ai": "您心目中的“AI 自动整理”是什么样的？",
+    "browser": "浏览器书签",
+    "raindrop": "Raindrop",
+    "pocket": "Pocket",
+    "notion": "Notion",
+    "notes": "Apple Notes",
+    "pinterest": "Pinterest",
+    "none": "还没有用",
+    "find": "能再次找到",
+    "organise": "保持井井有条",
+    "devices": "任何设备都能保存",
+    "visual": "可视化的收藏库",
+    "later": "稍后阅读",
+    "share": "分享看板",
+    "tags": "自动标签",
+    "search": "用日常语言搜索",
+    "boards": "自动归入看板",
+    "summaries": "摘要",
+    "duplicates": "发现重复项",
+    "other": "还有别的吗？（可选）",
+    "skip_question": "跳过此题",
+    "thanks": "谢谢，帮了大忙！"
+  }
+}

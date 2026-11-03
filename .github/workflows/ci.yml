@@ -1,0 +1,134 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  api:
+    name: API tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/api
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.x
+      - run: bun install --frozen-lockfile --ignore-scripts
+      - name: Run every test:* script
+        run: |
+          set -e
+          for name in $(node -e "console.log(Object.keys(require('./package.json').scripts).filter(n => n.startsWith('test:')).join(' '))"); do
+            echo "::group::$name"
+            bun run "$name"
+            echo "::endgroup::"
+          done
+
+  parse:
+    name: Parse tests and build
+    runs-on: ubuntu-latest
+    services:
+      mongo:
+        image: mongo:7
+        ports: ["27017:27017"]
+    env:
+      TEST_MONGO_URI: mongodb://127.0.0.1:27017/wb_settings_test
+    defaults:
+      run:
+        working-directory: apps/parse
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.x
+      - run: bun install --frozen-lockfile
+      - run: bun run build
+      - run: bun run test
+
+  screenshot:
+    name: Screenshot service tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/screenshot
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-audit --no-fund
+      - run: npx playwright install --with-deps chromium
+      - run: npm test
+
+  web:
+    name: Web build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.x
+      - run: bun install --frozen-lockfile --ignore-scripts
+      - run: bunx nuxt prepare
+      - run: bun run build
+        env:
+          NODE_OPTIONS: --max-old-space-size=6144
+          NUXT_DISABLE_SOURCEMAPS: "1"
+
+  deploy-files:
+    name: Compose, installer and workflows
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Parse's settings allow-list matches the admin page's registry
+        run: node scripts/check-settings-keys.mjs
+      - name: shellcheck install.sh
+        run: shellcheck deploy/install.sh apps/web/docker-entrypoint.sh
+      - name: Generate an .env and validate the compose file in every profile combination
+        working-directory: deploy
+        run: |
+          set -e
+          ./install.sh --yes --domain test.example.com --email ci@example.com --rustfs
+          for profiles in "" "screenshots" "rustfs" "screenshots,rustfs"; do
+            echo "profiles: '$profiles'"
+            COMPOSE_PROFILES="$profiles" docker compose config --quiet
+          done
+      - name: Validate the Caddyfile
+        run: |
+          docker run --rm -e SITE_ADDRESS=test.example.com \
+            -v "$PWD/deploy/Caddyfile:/etc/caddy/Caddyfile:ro" caddy:2.8-alpine \
+            caddy validate --config /etc/caddy/Caddyfile
+      - name: Lint workflows
+        run: |
+          bash <(curl -fsSL https://raw.githubusercontent.com/rhysd/actionlint/v1.7.7/scripts/download-actionlint.bash) 1.7.7
+          ./actionlint
+
+  docker-build:
+    name: Docker build (${{ matrix.app }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        app: [api, parse, screenshot]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/build-push-action@v6
+        with:
+          context: apps/${{ matrix.app }}
+          push: false
+          cache-from: type=gha,scope=${{ matrix.app }}
+          cache-to: type=gha,mode=max,scope=${{ matrix.app }}

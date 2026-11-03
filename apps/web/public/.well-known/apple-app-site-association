@@ -1,0 +1,13 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["UC3T83K9FR.io.webbites.app", "5R2964SUJD.io.webbites.app"],
+        "components": [
+          { "/": "/app" },
+          { "/": "/app/*" }
+        ]
+      }
+    ]
+  }
+}

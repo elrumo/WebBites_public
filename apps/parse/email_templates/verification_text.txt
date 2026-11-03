@@ -1,0 +1,9 @@
+Hi {{username}},
+
+Welcome to {{appName}}! Please verify your email address by clicking the link below:
+{{{link}}}
+
+If you didn't create an account, you can safely ignore this email.
+
+Best regards,
+The {{appName}} Team
