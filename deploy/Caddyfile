@@ -1,16 +1,15 @@
 # One address in front of everything. Caddy gets and renews the certificate on its own when
 # SITE_ADDRESS is a real domain; "http://localhost" (the installer's default) stays plain http.
 
-{
-	# Where Let's Encrypt writes to when something is wrong with the certificate. Optional.
-	email {$ACME_EMAIL:}
-	# Behind another proxy (Cloudflare, a load balancer)? Tell Caddy to trust it, or every request
-	# looks like it comes from that proxy, and rate limits and IP rules see the wrong address:
-	#   servers {
-	#       trusted_proxies static <the proxy's address range>
-	#   }
-	# Do not trust private ranges wholesale: a forged X-Forwarded-For would then pass for the real client.
-}
+# Behind another proxy (Cloudflare, a load balancer)? Tell Caddy to trust it, or every request looks
+# like it comes from that proxy, and rate limits and IP rules see the wrong address. Add a global
+# options block at the very top of this file:
+#   {
+#       servers {
+#           trusted_proxies static <the proxy's address range>
+#       }
+#   }
+# Do not trust private ranges wholesale: a forged X-Forwarded-For would then pass for the real client.
 
 {$SITE_ADDRESS:http://localhost} {
 	encode zstd gzip

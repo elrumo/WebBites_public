@@ -27,7 +27,6 @@ services:
       - "${HTTPS_PORT:-443}:443/udp"
     environment:
       SITE_ADDRESS: ${SITE_ADDRESS:-http://localhost}
-      ACME_EMAIL: ${ACME_EMAIL:-}
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
       - caddy_data:/data

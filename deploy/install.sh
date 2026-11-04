@@ -7,8 +7,7 @@
 #
 # Options:
 #   --domain <host>      public hostname (default: localhost, plain http, for trying it out)
-#   --email <address>    contact address for Let's Encrypt, and makes that person the only
-#                        account allowed to become the administrator
+#   --email <address>    makes that address the only one allowed to become the administrator
 #   --rustfs             keep files in the bundled S3-compatible store instead of MongoDB
 #   --no-screenshots     don't run the screenshot service
 #   --yes                accept defaults, ask nothing
@@ -94,7 +93,7 @@ else
   SITE_ADDRESS="$DOMAIN"
 fi
 
-[ -n "$EMAIL" ] || EMAIL="$(ask 'Your email (for the HTTPS certificate and as the administrator; leave empty to skip)' '')"
+[ -n "$EMAIL" ] || EMAIL="$(ask 'Your email (the only address that can become the administrator; leave empty to skip)' '')"
 if [ -z "$RUSTFS" ]; then
   RUSTFS="$(ask_yes_no 'Keep files in a bundled S3 store (RustFS) instead of MongoDB?' no)"
 fi
@@ -120,7 +119,6 @@ PUBLIC_URL=$PUBLIC_URL
 SITE_ADDRESS=$SITE_ADDRESS
 HTTP_PORT=80
 HTTPS_PORT=443
-ACME_EMAIL=$EMAIL
 WEBBITES_VERSION=latest
 COMPOSE_PROFILES=$PROFILES
 INITIAL_ADMIN_EMAIL=$EMAIL

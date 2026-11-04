@@ -25,6 +25,8 @@ jobs:
         with:
           bun-version: 1.x
       - run: bun install --frozen-lockfile --ignore-scripts
+      # tsconfig.json extends .nitro/types/tsconfig.json, which Nitro generates; the `#root/...` imports in the tests need it.
+      - run: bunx nitro prepare
       - name: Run every test:* script
         run: |
           set -e

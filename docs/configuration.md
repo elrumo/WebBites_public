@@ -31,7 +31,7 @@ Things the services need before the page can load, or that must not be editable 
 
 | Variable | Used by | |
 |---|---|---|
-| `PUBLIC_URL`, `SITE_ADDRESS`, `HTTP_PORT`, `HTTPS_PORT`, `ACME_EMAIL` | compose, Caddy | The address people use |
+| `PUBLIC_URL`, `SITE_ADDRESS`, `HTTP_PORT`, `HTTPS_PORT` | compose, Caddy | The address people use |
 | `WEBBITES_VERSION` | compose | Which image tag runs |
 | `COMPOSE_PROFILES` | compose | `screenshots`, `rustfs` |
 | `INITIAL_ADMIN_EMAIL` | parse | Only this address may claim the administrator account |
