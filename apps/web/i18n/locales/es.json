@@ -1,0 +1,2424 @@
+{
+  "alerts": {
+    "bookmark": {
+      "duplicate": "Ya has guardado este marcador",
+      "duplicate_cancel": "No guardar",
+      "duplicate_confirm": "Guardar de nuevo",
+      "error": "Error al guardar el marcador",
+      "export_success": "¡Marcadores exportados!",
+      "limit_description": {
+        "other": " tu plan para guardar más marcadores"
+      },
+      "limit_reached": "Has alcanzado tu límite de marcadores",
+      "pin_error": "No se ha podido fijar el sitio, inténtalo más tarde",
+      "save_error_note": "Error al guardar la nota",
+      "save_success": "Marcador guardado",
+      "saving": "Guardando...",
+      "hide_error": "Could not change that bookmark's visibility",
+      "hide_index_lag": "Hidden, but search may take a moment to catch up"
+    },
+    "clipboard": {
+      "copy_error": "Error al copiar al portapapeles.",
+      "copy_success": "{text} copiado en el portapapeles."
+    },
+    "editor": {
+      "image_upload_error": "No se ha podido guardar la imagen: {error}",
+      "image_upload_progress": "Subiendo la imagen..."
+    },
+    "file_upload": {
+      "error": "Error al subir el archivo",
+      "success": "Archivo subido correctamente",
+      "uploading_many": "Subiendo archivos...",
+      "uploading_one": "Subiendo archivo..."
+    },
+    "image_upload": {
+      "error": "Error al subir la imagen",
+      "success": "Imagen subida correctamente"
+    },
+    "import": {
+      "complete": "¡Hecho!",
+      "complete_description": "Todos tus favoritos se han importado a WebBites.",
+      "error": "Algo ha ido mal, inténtalo de nuevo",
+      "final_success": "Se han importado tus favoritos. 😊",
+      "progress": "Un segundo...",
+      "progress_description": "Esto podría tardar unos segundos si tienes muchos marcadores",
+      "remaining": "Marcadores restantes a importar:",
+      "remaining_description": "Esto puede tardar un rato. Puedes cerrar la aplicación, te enviaremos un correo cuando haya terminado.",
+      "success": "Marcadores importados correctamente"
+    },
+    "live_note": {
+      "conflict": "Esta nota se actualizó desde otro dispositivo. Se conservaron tus cambios locales.",
+      "merged_with_conflicts": "Cambios de la nube fusionados. Algunas ediciones superpuestas se conservaron tal cual."
+    },
+    "subscription": {
+      "duplicate_plan": "Ya estás suscrito a este plan. Por favor, revisa tus suscripciones actuales."
+    },
+    "core_store": {
+      "board_joined": "Te has unido a “{name}”",
+      "invite_accepted": "Invitación aceptada",
+      "invite_invalid": "Ese enlace de invitación ya no es válido",
+      "board_move_failed": "No se ha podido mover aquí",
+      "board_duplicated": "Duplicado: se ha copiado {count} marcador | Duplicado: se han copiado {count} marcadores",
+      "board_duplicate_error": "Error al duplicar el tablero",
+      "board_archived": "Tablero archivado",
+      "board_archive_error": "Error al archivar el tablero",
+      "board_delete_title": "¿Borrar “{name}”?",
+      "folder_delete_description": "También se borran los tableros y las carpetas que contiene. Los marcadores no se borran.",
+      "board_delete_shared_description": "Todas las personas con las que está compartido pierden el acceso. Los marcadores no se borran.",
+      "board_delete_description": "Los marcadores no se borran.",
+      "folder_deleted": "Carpeta borrada",
+      "board_deleted": "Tablero borrado",
+      "folder_delete_error": "Error al borrar la carpeta",
+      "board_delete_error": "Error al borrar el tablero",
+      "board_leave_title": "¿Salir de “{name}”?",
+      "board_leave_description": "Desaparece de tus tableros hasta que alguien te vuelva a invitar.",
+      "board_leave_confirm": "Salir",
+      "board_left": "Has salido del tablero",
+      "board_leave_error": "Error al salir del tablero",
+      "trash_load_failed": "No se han podido cargar los marcadores borrados",
+      "trash_restore_failed": "No se ha podido restaurar el marcador",
+      "drawing_save_error": "Error al guardar el dibujo",
+      "sign_in_required": "Debes iniciar sesión para hacer eso"
+    },
+    "core_files": {
+      "unsupported_one": "{name} no es una imagen, un PDF ni un audio.",
+      "unsupported_many": "Solo se pueden subir imágenes, PDF y audios.",
+      "heic_one": "Este navegador no puede leer {name}. Expórtalo como JPEG e inténtalo de nuevo.",
+      "heic_many": "Este navegador no puede leer fotos HEIC. Expórtalas como JPEG e inténtalo de nuevo.",
+      "unreadable_one": "{name} no es una imagen que este navegador pueda leer.",
+      "unreadable_many": "Esas no son imágenes que este navegador pueda leer."
+    }
+  },
+  "auth": {
+    "add_to_waitlist": "Añadir a la lista de espera",
+    "chrome_extension_auth_detected": "Extensión detectada",
+    "chrome_extension_auth_not_detected": "Extensión no detectada",
+    "close_tab": "Cerrar pestaña",
+    "current_bookmarking_manager": "¿Qué gestor de marcadores utilizas actualmente?",
+    "current_bookmarking_manager_placeholder": "Por ejemplo, marcadores de Chrome, Pocket, Raindrop...",
+    "email_error": "El inicio de sesión ha fallado con el error:",
+    "email_success": "Se ha enviado un correo con un enlace para restablecer tu contraseña",
+    "extension_connected": "Extensión conectada",
+    "extension_connected_message": "Ya puedes empezar a utilizar WebBites con tus marcadores.",
+    "extension_login_description": "Inicia sesión en tu cuenta de WebBites",
+    "go_to_app": "Ir a la App",
+    "logout": "Cerrar sesión",
+    "most_interested": "¿Qué es lo que más te interesa de WebBites?",
+    "most_interested_placeholder": "Por ejemplo, organización de la IA, sincronización entre plataformas...",
+    "notify_me": "Avísame",
+    "password_reset_error": "Se ha producido un error al restablecer tu contraseña. Por favor, inténtalo de nuevo.",
+    "password_reset_success": "Tu contraseña ha sido restablecida con éxito.",
+    "reset_password_description": "Escribe una nueva contraseña para restablecerla.",
+    "sign_in": "Iniciar sesión",
+    "signInWithApple": "Continuar con Apple",
+    "sign_up": "Regístrate",
+    "waitlist_done": "¡Estás en la lista de espera!",
+    "waitlist_info": "Apúntate a la lista de espera y sígueme en",
+    "waitlist_info_2": "para estar al día.",
+    "waitlist_success": "¡Estás en la lista de espera! Sígueme en",
+    "waitlist_success_2": "para estar al día.",
+    "waitlist_success_alert": "Has sido añadido a la lista de espera 🥳"
+  },
+  "bookmark": {
+    "audio_generation": "Generación de Audio",
+    "image_extracted_text": "💬 Texto extraído de la imagen"
+  },
+  "bookmark_details": {
+    "added": "Añadido",
+    "alerts": {
+      "color_copied": "Color copiado",
+      "image_downloaded": "Imagen descargada",
+      "image_download_error": "Error al descargar la imagen"
+    },
+    "bookmark_types": {
+      "article": "Artículo",
+      "note": "Nota",
+      "tweet": "Tweet"
+    },
+    "details_title": "Título de la página",
+    "download_image": "Descargar imagen",
+    "hide_keywords": "Ocultar palabras clave",
+    "keywords": "Palabras clave",
+    "main_colors": "Colores principales",
+    "media": {
+      "cast": "Reparto",
+      "crew": "Equipo",
+      "developer": "Desarrollador",
+      "director": "Director",
+      "genres": "Géneros",
+      "publisher": "Editorial",
+      "release_date": "Fecha de publicación",
+      "screenshots": "Capturas de pantalla",
+      "show_more": "Mostrar {count} Más",
+      "videos": "Vídeos"
+    },
+    "notes_placeholder": "Tus notas",
+    "page_details": "Detalles de la página",
+    "see_all_keywords": "Ver todas las palabras clave",
+    "tags": "Etiquetas",
+    "time": {
+      "days_ago": "hace {count} días",
+      "hours_ago": "Hace {count} horas",
+      "minutes_ago": "hace {count} minutos",
+      "months_ago": "hace {count} meses",
+      "seconds_ago": "hace {count} segundos",
+      "years_ago": "Hace {count} años"
+    }
+  },
+  "bookmarks": {
+    "add_files": "Añadir archivos",
+    "cards": "marcadores",
+    "change_files": "Cambiar archivos ({count})",
+    "copy_url": "Copiar URL",
+    "cover": "Portada",
+    "delete": "Borrar marcador",
+    "delete_confirmation_multiple": "¿Estás seguro de que quieres eliminar {count} marcadores?",
+    "delete_confirmation_single": "¿Estás seguro de que quieres eliminar este marcador?",
+    "deselect_hint": "Puedes deseleccionar los marcadores que no quieras importar haciendo clic sobre ellos.",
+    "drawing": {
+      "assets_unavailable": "No se pudieron cargar algunas imágenes, así que la vista previa no se actualizará.",
+      "new": "Nuevo dibujo",
+      "untitled": "Dibujo"
+    },
+    "empty_state_message": "¿Por qué no guardas algunos favoritos?",
+    "empty_state_title": "Esto parece un poco vacío...",
+    "expand_to_edit": "Expandir para editar",
+    "free_import_message": "O puedes importar 100 marcadores una vez de forma gratuita.",
+    "hide": {
+      "label": "Hide",
+      "label_hidden": "Hidden",
+      "from_library": "Hide from library",
+      "everywhere": "Hide everywhere",
+      "unhide": "Unhide",
+      "hidden_from_library": "Hidden from your library. Still in its boards.",
+      "hidden_everywhere": "Hidden everywhere, boards included.",
+      "unhidden": "Back in your library",
+      "private_section": "Private",
+      "private_empty": "Nothing hidden yet",
+      "private_empty_hint": "Hide a bookmark and it will wait for you here.",
+      "unlock_title": "Private",
+      "unlock_description": "Enter your password to see your hidden bookmarks.",
+      "unlock_placeholder": "Password",
+      "unlock_confirm": "Unlock",
+      "unlock_wrong": "That password didn't work.",
+      "unlock_reset": "No password? Email me a link to set one.",
+      "unlock_reset_sent": "Check your email for the link.",
+      "unlock_reset_error": "Could not send the email. Try again in a moment."
+    },
+    "image_count": "{n} imágenes",
+    "image_n_of_m": "{n} de {m}",
+    "image_order": "Orden de las imágenes",
+    "import": "Importar marcadores",
+    "import_error": "Error al importar marcadores. Vuelve a intentarlo más tarde.",
+    "import_limit": "Para importar más de 100 marcadores, necesitas pagar una tarifa única o actualizar tu plan.",
+    "import_payment_message": "Como estoy empezando con WebBites, importar muchos marcadores puede ser caro, así que para cubrir los costes iniciales de los {count} marcadores que quieres importar, te pido pago único de 3$ para apoyar el proyecto y ayudar a cubrir los costes.",
+    "import_progress": "Se están importando tus marcadores",
+    "import_progress_message": "Esto puede tardar un poco, pero no hace falta que mantengas la ventana abierta. Te enviaremos un correo cuando esté hecho.",
+    "import_progress_title": "Se están importando tus marcadores.",
+    "import_success": "Marcadores importados correctamente",
+    "import_title": "Importa tus marcadores",
+    "merge": "Combinar",
+    "merge_confirmation": "¿Combinar estas {count} imágenes en un solo marcador?",
+    "merge_explainer": "La primera conserva sus tableros y notas. Las demás pasan a la papelera y se pueden restaurar.",
+    "merge_failed": "No se pudieron combinar esos marcadores",
+    "merged": "Combinado en un marcador con {count} imágenes",
+    "new": "Nuevo marcador",
+    "new_placeholder": {
+      "game": "Busca un juego…",
+      "link": "Pega un enlace…",
+      "movie": "Busca una película…",
+      "note": "Escribe una nota…"
+    },
+    "no_bookmarks": "No se han encontrado marcadores",
+    "no_pinned_bookmarks": "Fija algunos marcadores para verlos aquí",
+    "payment_button": "Pago único de €3",
+    "pdf_page_count": "{n} páginas",
+    "pdf_page_one": "1 página",
+    "pin_success": "El marcador ha sido fijado",
+    "pinned": "Fijados",
+    "recorder": {
+      "empty": "No se grabó nada: comprueba que tu micrófono no esté silenciado.",
+      "hint": "Toca para empezar a grabar",
+      "mic_denied": "WebBites no puede acceder a tu micrófono. Permítelo en los ajustes del navegador o sube un archivo.",
+      "pause": "Pausa",
+      "paused": "En pausa",
+      "play": "Reproducir",
+      "record_again": "Grabar otra vez",
+      "record_instead": "Grabar en su lugar",
+      "requesting": "Esperando el micrófono…",
+      "restart": "Empezar de nuevo",
+      "stop": "Detener la grabación",
+      "title_placeholder": "Nombra esta grabación",
+      "unsupported": "Este navegador no puede grabar audio. Aún puedes subir un archivo.",
+      "upload": "Subir un archivo"
+    },
+    "remaining": "marcadores restantes",
+    "reorder_hint": "Arrastra para reordenar. La primera imagen es la portada.",
+    "select_all": "Seleccionar todos ({count})",
+    "select_all_visible": "Seleccionar {count} marcadores visibles",
+    "try_searching": "Intenta buscar otra cosa",
+    "types": {
+      "articles": "Artículos",
+      "audio": "Audio",
+      "drawing": "Dibujo",
+      "game": "Juego",
+      "image": "Imagen",
+      "movie": "Película",
+      "music": "Música",
+      "pdf": "PDF",
+      "textNote": "Nota",
+      "website": "Página web"
+    },
+    "unpin_success": "Marcador no fijado",
+    "unselect_all": "Deselecciona todo",
+    "url_copied": "URL copiada al portapapeles",
+    "urls_copied": "URLs copiadas al portapapeles",
+    "what_to_save": "What do you want to save?",
+    "compose": {
+      "add_tag": "Añadir una etiqueta",
+      "board": "Tablero",
+      "board_create_failed": "No se pudo crear el tablero",
+      "board_failed": "Guardado, pero no se pudo añadir a {board}.",
+      "board_label": "Tablero, {board}",
+      "board_name": "Nombre del tablero",
+      "create_board": "Crear",
+      "new_board": "Nuevo tablero…",
+      "notes": "Notas",
+      "notes_placeholder": "Añadir una nota…",
+      "no_board": "Sin tablero",
+      "remove_tag": "Quitar la etiqueta {tag}",
+      "saved_to_board": "Guardado en {board}",
+      "stop": "Detener",
+      "tag": "Etiqueta",
+      "tags_count": "Etiquetas, {count}"
+    }
+  },
+  "changes": {
+    "body_1": "Para sugerencias o informes de errores, ve a",
+    "body_1_link": "página de feedback.",
+    "body_2": "Regístrate para recibir actualizaciones sobre nuevas funciones y cambios.",
+    "change_label": "cambio",
+    "changes_label": "cambios",
+    "rss": "O suscríbete por RSS",
+    "title": "Registro de cambios",
+    "signup_thanks": "Gracias por suscribirte para recibir nuestras novedades",
+    "already_subscribed": "Ya estás suscrito",
+    "signup_failed": "No se ha podido completar la suscripción a las novedades"
+  },
+  "common": {
+    "accept": "Aceptar",
+    "add_tag": "Añadir etiqueta",
+    "all": "Todos",
+    "ascending": "Ascendente",
+    "bookmarks": "Marcadores",
+    "cancel": "Cancelar",
+    "checking_access": "Verificando acceso...",
+    "choose_something": "Elige algo...",
+    "close": "Cerrar",
+    "continue": "Siguiente",
+    "dates": {
+      "month": "mes",
+      "year": "año"
+    },
+    "decline": "Rechazar",
+    "delete": "Eliminar",
+    "descending": "Descendente",
+    "drop_image": "Suelta una imagen o un PDF",
+    "error_try_again": "Se ha producido un error, inténtalo de nuevo más tarde.",
+    "get_updates": "Ponte al día",
+    "import": "Importar",
+    "import_bookmarks": "Importar {selected} marcadores",
+    "import_bookmarks_remaining": "Importar {selected} marcadores ({remaining} restantes en la cuota)",
+    "language_changed_success": "Idioma cambiado con éxito",
+    "loading": "Cargando...",
+    "month": "mes",
+    "new_first": "Nuevo primero",
+    "no_results": "No se han encontrado resultados",
+    "old_first": "Antiguo primero",
+    "open": "Abrir",
+    "optional": "Opcional",
+    "or": "O",
+    "pin": "Fijar",
+    "remaining": "restantes",
+    "remind_later": "Recuérdamelo más tarde",
+    "save": "Guardar",
+    "saved": "guardados",
+    "search": "Buscar",
+    "select_file": "Seleccionar archivo",
+    "select_new_file": "Seleccionar otro archivo",
+    "shortcuts": {
+      "copy_url": {
+        "description": "Pulsa sobre un marcador mientras mantienes pulsado ⌥ (opción/alt)",
+        "name": "Copiar URL"
+      },
+      "focus_search": {
+        "description": "Pulsa / para abrir la barrar de búsqueda directamente desde el teclado.",
+        "name": "Abrir la búsqueda"
+      },
+      "open_website": {
+        "description": "Pulsa sobre un marcador mientras mantienes pulsada la tecla CMD",
+        "name": "Abrir el sitio web"
+      },
+      "quick_save": {
+        "description": "Pulsa ⌘ + V para guardar la URl en el portapapeles",
+        "name": "Guardar rápidamente"
+      },
+      "select_card": {
+        "description": "Pulsa sobre un marcador mientras mantienes pulsada la tecla ⇧.",
+        "name": "Seleccionar marcador"
+      }
+    },
+    "show_less": "Mostrar menos",
+    "show_more": "Ver más",
+    "submit": "Enviar",
+    "tiptap_placeholder": "Añade una URL o empieza a escribir para crear una nota",
+    "unpin": "No fijar",
+    "updating": "Actualizando...",
+    "upgrade": "Mejorar plan",
+    "view_more": "Ver más"
+  },
+  "cookies": {
+    "cookie_consent": "Consentimiento de Cookies",
+    "description": "Utilizamos Microsoft Clarity para aprender cómo mejorar tu experiencia. Al aceptar, nos ayudas a hacer WebBites mejor para todos."
+  },
+  "feedback": {
+    "bug_reports": "Informes de errores",
+    "comments": {
+      "no_comments": "Aún no hay comentarios",
+      "placeholder": "Escribe un comentario...",
+      "send": "Enviar",
+      "title": "Comentarios"
+    },
+    "date": "Fecha",
+    "delete_comment": {
+      "confirmation": "¿Estás seguro de que quieres borrar este comentario?",
+      "title": "Eliminar comentario"
+    },
+    "delete_confirmation": "¿Estás seguro de que quieres borrar este comentario?",
+    "filter_by": "Filtrar por",
+    "form": {
+      "cancel_button": "Cancelar",
+      "changelog_label": "Registro de cambios",
+      "comment_label": "Tu comentario",
+      "hide_from_everyone_label": "Ocultar de todos",
+      "submit_button": "Envía tus comentarios",
+      "title": "Envía tus comentarios",
+      "title_label": "Título",
+      "type_label": "Tipo",
+      "platform_label": "Plataforma"
+    },
+    "least_votes": "Menos votos",
+    "most_votes": "Más votos",
+    "my_issues": "Mis incidentes",
+    "no_feedback": "Aún no hay comentarios",
+    "order_by": "Ordenar por",
+    "placeholders": {
+      "search": "Buscar funciones e informes de errores... ({count})"
+    },
+    "status": "Estado",
+    "suggestions": "Sugerencias",
+    "title": "📨 Peticiones de funciones, sugerencias e informes de errores",
+    "type": "Tipo",
+    "user": "Usuario",
+    "votes": "Votos",
+    "platform": {
+      "app": "App",
+      "web": "Web",
+      "extension": "Extensión del navegador",
+      "all": "Todas las plataformas"
+    },
+    "hero_title": "Ayúdanos a decidir",
+    "hero_highlight": "qué viene ahora.",
+    "hero_subtitle": "Pide una función, informa de un error o vota las ideas que más quieres.",
+    "comments_count": "{count} comentarios",
+    "page": {
+      "title": "WebBites - Feedback",
+      "kanban_view": "Vista Kanban",
+      "list_view": "Vista de lista",
+      "login_required": "Debes iniciar sesión para enviar feedback",
+      "deleted": "Feedback eliminado correctamente",
+      "delete_failed": "No se ha podido eliminar el feedback"
+    },
+    "options": {
+      "status": {
+        "in_progress": "En curso",
+        "backlog": "Pendiente de planificar",
+        "pending": "Pendiente de revisión",
+        "done": "Hecho",
+        "closed": "Cerrado"
+      },
+      "type": {
+        "bug_report": "Informe de error",
+        "feature_request": "Solicitud de función",
+        "improvement": "Mejora",
+        "other": "Otro"
+      },
+      "platform": {
+        "app": "App",
+        "web": "Web",
+        "extension": "Extensión del navegador"
+      }
+    }
+  },
+  "import": {
+    "import_quota_exceeded": "Necesitas actualizar tu plan para importar más de 100 marcadores",
+    "import_quota_exceeded_description": "Puedes importar hasta 100 marcadores de forma gratuita. Actualiza a un plan de pago para importar más.",
+    "connect_title": "O conecta un servicio",
+    "connect_fetch": "Obtener marcadores",
+    "connect_button": "Conectar {name}",
+    "connect_unavailable": "No disponible",
+    "connect_error": "No se pudieron obtener los marcadores de {name}",
+    "connect_denied": "Se denegó el acceso, no se importó ningún marcador",
+    "connect_empty": "No se encontraron marcadores en {name}"
+  },
+  "landing": {
+    "beta_access": {
+      "changelog_button": "Registro de cambios",
+      "description": "¡Sé de los primeros en probar WebBites y ayuda a dar forma a su futuro!",
+      "feedback_button": "Comentarios",
+      "title": "Únete al futuro de los marcadores"
+    },
+    "features": {
+      "ai_organization": {
+        "description": "Clasifica y etiqueta automáticamente tus marcadores utilizando IA",
+        "title": "Organización por AI"
+      },
+      "cross_platform": {
+        "description": "Accede a tus marcadores desde cualquier lugar, en cualquier momento y en todos tus dispositivos",
+        "title": "Sincronización entre plataformas"
+      },
+      "smart_search": {
+        "description": "Encuentra cualquier marcadores al instante con nuestra búsqueda inteligente que entiende el contexto",
+        "title": "Búsqueda inteligente"
+      },
+      "subtitle": "Experimenta el futuro de los marcadores con nuestra plataforma basada en IA",
+      "title": "¿Por qué elegir WebBites?"
+    },
+    "hero": {
+      "app_button": "Ir a la app",
+      "subtitle": "Guarda cualquier cosa con un clic y deja que la IA se encargue de organizar, buscar y encontrar por ti.",
+      "title": "Tu Internet,",
+      "title_emphasis": "organizado",
+      "waitlist_button": "Apúntate a la lista de espera"
+    },
+    "how_it_works": {
+      "steps": {
+        "install": {
+          "description": "Añade nuestra extensión de navegador con un solo clic para empezar a guardar contenidos al instante",
+          "title": "Instalar Extensión"
+        },
+        "organize": {
+          "description": "Nuestra IA categoriza, etiqueta y hace que tu contenido se pueda buscar automáticamente",
+          "title": "Deja que la IA organice"
+        },
+        "save": {
+          "description": "Haz clic en la extensión o utiliza los atajos de teclado para guardar cualquier página web, artículo o contenido",
+          "title": "Guarda cualquier cosa"
+        }
+      },
+      "title": "Cómo funciona"
+    },
+    "join_now": "¡Únete ahora!",
+    "join_now_free": "¡Únete gratis!",
+    "more_features": "Más funciones",
+    "roadmap": {
+      "next": "Trabajando en el siguiente:",
+      "title": "Roadmap",
+      "viewFull": "Ver Mapa Completo",
+      "workingOn": "Actualmente trabajando en:"
+    },
+    "whats_next": "¿Qué sigue para WebBites?"
+  },
+  "navigation": {
+    "feedback": "Envía tus comentarios",
+    "help": "Ayuda",
+    "home": "Inicio",
+    "login": "Iniciar sesión",
+    "logout_success": "¡Desconectado!",
+    "settings": "Ajustes",
+    "developers": "Desarrolladores",
+    "faq": "Preguntas frecuentes",
+    "features": "Funciones",
+    "pricing": "Precios"
+  },
+  "plans": {
+    "features": {
+      "auto_tag_bookmarks": "Etiquetar automáticamente todos tus marcadores web",
+      "auto_tag_images": "Autoetiqueta tus imágenes",
+      "plus": {
+        "41": "Todo en Gratis +",
+        "42": "Guardar marcadores ilimitados",
+        "43": "Resúmenes TL;DR",
+        "44": "Autoetiqueta tus imágenes",
+        "45": "Capturas de pantalla de página completa de mayor resolución",
+        "46": "Escucha artículos y obtén resúmenes",
+        "47": "Reconocimiento de texto sobre imagen",
+        "48": "Sube hasta 10 GB de archivos",
+        "49": "Búsqueda en lenguaje natural",
+        "50": "Tableros inteligentes",
+        "51": "Copias de seguridad en tu propia nube - pronto"
+      },
+      "cloud_backups": "Copias de seguridad en tu propia nube - pronto",
+      "dark_mode": "Modo oscuro",
+      "everything_in_free": "Todo en Gratis +",
+      "free": {
+        "11": "Guarda hasta 100 marcadores",
+        "12": "Etiquetar automáticamente todos tus marcadores web",
+        "13": "Búsqueda por título de la página, color, etiquetas y texto de la página",
+        "14": "Modo lectura de artículos",
+        "15": "Guarda sitios web, imágenes, notas, videojuegos, música y películas",
+        "16": "Capturas de pantalla a toda página",
+        "17": "Escucha hasta 5 artículos al mes",
+        "18": "Modo oscuro"
+      },
+      "full_page_screenshots": "Capturas de pantalla a toda página",
+      "high_res_screenshots": "Capturas de pantalla de página completa de mayor resolución",
+      "listen_and_summaries": "Escucha artículos y obtén resúmenes",
+      "listen_limit": "Escucha hasta 5 artículos al mes",
+      "natural_language_search": "Búsqueda en lenguaje natural",
+      "reading_mode": "Modo lectura de artículos",
+      "save_cards_limit": "Guarda hasta 100 marcadores",
+      "save_various_types": "Guarda sitios web, imágenes, notas, videojuegos, música y películas",
+      "search_features": "Búsqueda por título de la página, color, etiquetas y texto de la página",
+      "smart_boards": "Tableros inteligentes",
+      "text_recognition": "Reconocimiento de texto sobre imagen",
+      "tldr_summaries": "Resúmenes TL;DR",
+      "unlimited_bookmarks": "Guardar marcadores ilimitados",
+      "upload_limit": "Sube hasta 10 GB de archivos",
+      "apple": {
+        "61": "Tantos marcadores como quieras",
+        "62": "Webs, imágenes, notas, dibujos y más",
+        "63": "Busca por título, etiquetas y texto de la página",
+        "64": "Modo lectura",
+        "65": "Nada sale de este dispositivo"
+      }
+    }
+  },
+  "pricing": {
+    "current_plan": "Plan actual",
+    "downgrade": "Cambiar plan",
+    "downgrade_to_free": "Cambiar al plan gratuito",
+    "free_plan": "Gratis",
+    "get_started": "Empieza",
+    "monthly_toggle": "Mensualmente",
+    "price_monthly": "${price}/mes",
+    "price_yearly": "${price}/año - ahorra un {percent}%",
+    "sign_up": "¡Apúntate!",
+    "sign_up_now": "¡Regístrate gratis!",
+    "title": "Precios",
+    "upgrade_for": "Mejora tu plan por {price}",
+    "upgrade_plan": "Mejorar plan",
+    "waitlist_free": "¡Ponme en lista la de espera!",
+    "yearly_toggle": "Anual ({percent}% de descuento)",
+    "yearly_plain": "Anual",
+    "apple": {
+      "title": "Biblioteca en el dispositivo",
+      "tagline": "Solo dispositivos Apple. Sin cuenta.",
+      "lifetime": "o ${price} una sola vez",
+      "badge": "App Store",
+      "note": "Se compra dentro de la app de iOS y macOS. Los precios de la App Store varían según la región.",
+      "cta": "Consíguela en la App Store"
+    },
+    "price_yearly_plain": "${price}/año"
+  },
+  "reader": {
+    "ai_generated": "Generado por IA",
+    "by_author": "Por {author}",
+    "listen_article": "Escuchar el artículo",
+    "listen_to_post": "Escuchar publicación",
+    "voice_settings": "Voz de lectura",
+    "voice_description": "Elige la voz que leerá tus artículos en voz alta. Pulsa play para escuchar una muestra.",
+    "voice_preview": "Escuchar muestra",
+    "accent_settings": "Acento",
+    "accent_description": "Los artículos en inglés se leen con este acento. Toca uno para escucharlo."
+  },
+  "search": {
+    "alphabetical": "Alfabético",
+    "clear_recent": "Borrar búsquedas recientes",
+    "date_added": "Fecha añadida",
+    "filter_by_tag": "Filtrar por etiqueta",
+    "filter_by_type": "Filtrar por tipo",
+    "placeholder": "Buscar favoritos...",
+    "recent_searches": "Búsquedas recientes",
+    "sort_by": "Ordenar por"
+  },
+  "settings": {
+    "ai_language": "Idioma de la IA",
+    "ai_language_description": "El idioma en el que se escriben los resúmenes y las etiquetas.",
+    "ai_language_same": "El mismo que el contenido",
+    "auth": {
+      "create_account_description": "Ingresa tu correo electrónico para iniciar sesión o crear una cuenta",
+      "email": "Correo electrónico",
+      "email_continue": "Continuar con el correo electrónico",
+      "email_placeholder": "Introduce tu correo electrónico",
+      "name": "Nombre",
+      "name_placeholder": "Introduce tu nombre",
+      "password": "Contraseña",
+      "password_placeholder": "Introduce tu contraseña",
+      "password_requirements": "La contraseña debe tener al menos 6 caracteres y contener al menos un número",
+      "repeat_password": "Repite la contraseña",
+      "welcome_back": "Bienvenido de nuevo",
+      "welcome_back_description": "Introduce tu contraseña para continuar donde lo dejaste.",
+      "create_account": "Crea tu cuenta",
+      "create_account_step_description": "Solo necesitas un nombre y una contraseña.",
+      "create_account_button": "Crear cuenta",
+      "reset_password": "Restablecer contraseña"
+    },
+    "chrome_extension": {
+      "description": "¡Guarda cualquier sitio web en tus marcadores con un solo clic gracias a la nueva extensión del navegador! Descárgala ahora desde",
+      "store_link": "Chrome Web Store.",
+      "title": "Extensión de Chrome"
+    },
+    "compact_view": "Vista compacta",
+    "delete_account": {
+      "confirmation_text": "¿Estás seguro de que quieres eliminar tu cuenta? Esto no se puede deshacer.",
+      "confirm_button": "Eliminar permanentemente mi cuenta",
+      "placeholder": "Eliminar mi cuenta",
+      "title": "Eliminar cuenta",
+      "type_confirmation": "Escribe \"Eliminar mi cuenta\" para confirmar"
+    },
+    "display_mode": "Modo",
+    "grid_view": "Vista en cuadrícula",
+    "image_ratio": {
+      "original": "Original"
+    },
+    "image_ratio_label": "Relación de imagen",
+    "language": "Lengua",
+    "list_view": "Vista de lista",
+    "newest_first": "Lo más nuevo primero",
+    "oldest_first": "El más antiguo primero",
+    "other_options": {
+      "export_bookmarks": "Exportar todos los marcadores",
+      "logout": "Cerrar sesión",
+      "show_onboarding": "Mostrar de nuevo el onboarding",
+      "title": "Otras opciones"
+    },
+    "personal_info": {
+      "title": "Información personal",
+      "username": "Nombre"
+    },
+    "preview_screenshots": "Capturas de pantalla de la página de vista previa",
+    "preview_tags": "Vista previa de etiquetas",
+    "show_description": "Mostrar descripción",
+    "show_summary_card": "Mostrar tarjeta de resumen al pasar el ratón por encima",
+    "theme": "Tema",
+    "title": "Ajustes",
+    "view_as": "Ver como",
+    "viewing_options": "Opciones de visualización",
+    "assistants": {
+      "title": "Asistentes de IA",
+      "description": "Deja que Claude, ChatGPT, Cursor y otras apps de IA busquen en tu biblioteca y guarden en ella, mediante MCP.",
+      "server_url": "URL del servidor",
+      "server_url_hint": "Añádela en cualquier app compatible con MCP. La aprobarás en WebBites y elegirás si puede hacer cambios.",
+      "copy": "Copiar",
+      "setup_title": "Configura una app",
+      "connected_title": "Asistentes conectados",
+      "connected_empty": "Aún no hay asistentes conectados. Cuando apruebes uno, aparecerá aquí.",
+      "read_only": "Solo lectura",
+      "read_write": "Puede hacer cambios",
+      "unverified": "No verificada",
+      "connected_on": "Conectada el {date}",
+      "last_used": "Último uso: {date}",
+      "never_used": "Aún sin usar",
+      "disconnect": "Desconectar",
+      "disconnect_confirm": "¿Desconectar {name}? Perderá el acceso al instante.",
+      "disconnected": "{name} desconectada",
+      "load_failed": "No se han podido cargar tus asistentes conectados.",
+      "revoke_failed": "No se ha podido desconectar {name}.",
+      "limits": "Cada acción de un asistente cuenta para tu cupo de la API: {free} al mes en Free y {plus} en Plus.",
+      "docs_link": "Leer la guía de MCP",
+      "local_hint": "¿Guardas tu biblioteca en un Mac sin cuenta? Activa el servidor propio de la app de Mac en la app, en Ajustes → Asistentes de IA.",
+      "clients": {
+        "claude": {
+          "open": "En Claude, abre {path} y elige Add custom connector.",
+          "paste": "Llámalo WebBites, pega la URL del servidor y selecciona Add.",
+          "connect": "Selecciona Connect y aprueba el acceso en la página de WebBites que se abre. El conector también funciona en Claude Desktop y en las apps móviles."
+        },
+        "chatgpt": {
+          "developer_mode": "En ChatGPT, abre {path} y activa el modo de desarrollador (en Advanced).",
+          "create": "Crea un conector: llámalo WebBites, pega la URL del servidor y elige OAuth.",
+          "approve": "Aprueba el acceso en la página de WebBites que se abre y luego activa WebBites desde el menú de herramientas de un chat."
+        },
+        "claude_code": {
+          "add": "Añade el servidor desde tu terminal:",
+          "sign_in": "Abre Claude Code, ejecuta /mcp, elige webbites e inicia sesión. Tu navegador abrirá WebBites para que apruebes el acceso."
+        },
+        "cursor": {
+          "add": "Añade WebBites a {file}, o a .cursor/mcp.json en un proyecto:",
+          "connect": "En los ajustes de Cursor, busca webbites en la lista de MCP y selecciona Connect; luego aprueba el acceso en WebBites."
+        },
+        "vscode": {
+          "add": "Añade WebBites a {file} en tu espacio de trabajo:",
+          "start": "Selecciona Start encima del servidor en ese archivo y aprueba el acceso en WebBites cuando se abra tu navegador. Sus herramientas aparecen en el modo agente de Copilot Chat."
+        },
+        "other": {
+          "name": "Otras apps",
+          "remote": "Las apps compatibles con servidores MCP remotos aceptan la URL del servidor tal cual. Busca «custom connector», «remote server» o «MCP» en sus ajustes.",
+          "stdio": "Las apps que solo pueden iniciar servidores locales (stdio) pueden llegar a él con el puente mcp-remote, que necesita Node.js:",
+          "sign_in": "La primera vez que se ejecute, tu navegador abrirá WebBites para que apruebes el acceso."
+        },
+        "api_key": {
+          "name": "Con una clave de API",
+          "when": "Las apps que te dejan añadir cabeceras pueden saltarse el inicio de sesión y enviar una clave de API. Una clave puede leer y cambiar toda tu biblioteca, igual que con la API REST.",
+          "send": "Crea una clave en Ajustes → Desarrollador y envíala como token de portador:"
+        }
+      }
+    },
+    "developer": {
+      "title": "Desarrollador",
+      "description": "Claves de API, webhooks y uso para construir sobre WebBites.",
+      "button": "Abrir página de desarrollador"
+    },
+    "backups": {
+      "title": "Copias de seguridad",
+      "description": "Copias de seguridad automáticas e incrementales de tus marcadores, capturas y páginas guardadas en un almacenamiento que es tuyo.",
+      "plus_only": "Las copias de seguridad automáticas forman parte de WebBites Plus.",
+      "choose_destination": "¿Dónde quieres guardar las copias?",
+      "gdrive": "Google Drive",
+      "gdrive_hint": "Se guardan en una carpeta “WebBites Backups”",
+      "dropbox": "Dropbox",
+      "dropbox_hint": "Se guardan en Apps/WebBites",
+      "s3": "Almacenamiento compatible con S3",
+      "s3_hint": "Amazon S3, Cloudflare R2, Backblaze B2, MinIO…",
+      "endpoint": "Endpoint",
+      "region": "Región",
+      "bucket": "Bucket",
+      "prefix": "Carpeta (opcional)",
+      "access_key": "Clave de acceso",
+      "secret_key": "Clave secreta",
+      "connect": "Conectar",
+      "cancel": "Cancelar",
+      "change": "Cambiar",
+      "enabled": "Copias automáticas",
+      "frequency": "Frecuencia",
+      "daily": "Diaria",
+      "weekly": "Semanal",
+      "last_backup": "Última copia",
+      "never": "Todavía no",
+      "running": "Haciendo copia…",
+      "next_backup": "próxima {time}",
+      "back_up_now": "Hacer copia ahora",
+      "disconnect": "Desconectar",
+      "reconnect": "Volver a conectar",
+      "needs_reconnect": "{destination} ha dejado de aceptar copias. Vuelve a conectarlo para reactivarlas.",
+      "plan_required": "Las copias están en pausa porque tu plan ya no las incluye.",
+      "error": "La última copia ha fallado: {error}. Se volverá a intentar automáticamente.",
+      "connected": "{destination} conectado. La primera copia empezará en menos de una hora.",
+      "connect_failed": "No se ha podido conectar {destination}.",
+      "connect_denied": "No se ha concedido acceso a {destination}.",
+      "queued": "Copia iniciada.",
+      "load_failed": "No se han podido cargar los ajustes de copias.",
+      "save_failed": "No se han podido actualizar los ajustes de copias.",
+      "run_failed": "No se ha podido iniciar la copia.",
+      "whats_included": "Cada copia es un zip solo con lo que ha cambiado desde la anterior: datos de los marcadores, notas, capturas, texto de las páginas guardadas y archivos. El último zip de cada copia incluye también tus tableros, tus feeds y un bookmarks.html que puede importar cualquier navegador."
+    },
+    "email_change": {
+      "change": "Cambiar",
+      "change_again": "Usar otro",
+      "new_email": "Nuevo correo",
+      "current_password": "Contraseña actual",
+      "explainer": "Te enviaremos un enlace a la nueva dirección. Hasta que lo abras, seguirás iniciando sesión con {email}.",
+      "send_link": "Enviar enlace de verificación",
+      "pending_title": "Revisa {email} para terminar",
+      "pending_body": "Te hemos enviado un enlace para confirmar tu nueva dirección. Hasta que lo abras, tu cuenta seguirá usando {email}.",
+      "expires": "El enlace caduca el {date}.",
+      "resend": "Reenviar correo",
+      "resend_in": "Reenviar en {seconds} s",
+      "cancel_change": "Cancelar cambio",
+      "sent": "Enlace de verificación enviado a {email}",
+      "cancelled": "Cambio de correo cancelado",
+      "changed": "Tu correo ahora es {email}",
+      "errors": {
+        "invalid_email": "Introduce una dirección de correo válida.",
+        "same_email": "Esa ya es tu dirección de correo.",
+        "email_taken": "Otra cuenta ya usa esa dirección de correo.",
+        "password_required": "Introduce tu contraseña actual.",
+        "incorrect_password": "La contraseña no es correcta.",
+        "daily_limit": "Has pedido demasiados correos de verificación hoy. Inténtalo mañana.",
+        "cooldown": "Espera un minuto antes de enviar otro correo.",
+        "send_failed": "No hemos podido enviar el correo. Inténtalo de nuevo en un momento."
+      }
+    }
+  },
+  "testimonials": {
+    "emma_davis": {
+      "name": "Emma Davis",
+      "text": "La sincronización entre plataformas es perfecta, y las funciones de IA me ahorran horas de organización manual.",
+      "title": "Comercializador digital"
+    },
+    "mike_chen": {
+      "name": "Mike Chen",
+      "text": "Por fin, una herramienta de marcadores que entiende el contexto. La funcionalidad de búsqueda es alucinante.",
+      "title": "Desarrollador"
+    },
+    "sarah_johnson": {
+      "name": "Sarah Johnson",
+      "text": "WebBites ha revolucionado mi forma de guardar y organizar mis investigaciones. La clasificación por IA es increíblemente precisa.",
+      "title": "Creador de contenidos"
+    }
+  },
+  "upgrade_modal": {
+    "audios_remaining": "Puedes generar {count} audios más.",
+    "audios_upgrade": "Para generar más audios, mejora tu plan.",
+    "bookmarks_count": "Has guardado {count} marcadores",
+    "bookmarks_remaining": "y puedes ahorrar {count} más.",
+    "bookmarks_upgrade": "Actualiza tu plan para guardar más favoritos.",
+    "current_plan": "Estás en el plan {plan}.",
+    "manage_plan": "Administrar plan",
+    "plan_details": "Detalles del plan",
+    "update_plan": "Actualizar plan",
+    "updating_plan": "Actualizando plan",
+    "upgrade_to_add_more": "Actualiza tu plan para añadir más "
+  },
+  "usage": {
+    "usage_limit_reached": "Límite de uso alcanzado, por favor actualiza tu plan"
+  },
+  "website_modal": {
+    "add_note": "Añadir nota",
+    "annotations": {
+      "delete": {
+        "delete_all_button": "Borrar todo",
+        "delete_all_label": "Borrar todas las anotaciones",
+        "delete_all_message": "¿Estás seguro de que quieres borrar todas las anotaciones? Esta acción no se puede deshacer.",
+        "delete_all_title": "Borrar todas las anotaciones",
+        "message": "¿Estás seguro de que quieres eliminar esta anotación? Esta acción no se puede deshacer.",
+        "title": "Eliminar anotación"
+      }
+    },
+    "app": {
+      "age": "Edad",
+      "age_rating": "Clasificación por edad",
+      "and_more": "{first} y {count} más",
+      "category": "Categoría",
+      "compatibility": "Compatibilidad",
+      "copyright": "Copyright",
+      "developer": "Desarrollador",
+      "developer_website": "Sitio web del desarrollador",
+      "downloads": "Descargas",
+      "in_app_purchases": "Compras dentro de la app",
+      "information": "Información",
+      "install": "Instalar",
+      "language": "Idioma",
+      "languages": "Idiomas",
+      "more": "más",
+      "more_languages": "+ {count} más",
+      "no": "No",
+      "on_store": "en {store}",
+      "price": "Precio",
+      "privacy_policy": "Política de privacidad",
+      "rating": "Valoración",
+      "ratings": "{count} valoraciones",
+      "requires": "Requiere {os} o posterior.",
+      "seller": "Vendedor",
+      "size": "Tamaño",
+      "updated": "Actualizada",
+      "version": "Versión {version}",
+      "view": "Ver",
+      "whats_new": "Novedades",
+      "yes": "Sí"
+    },
+    "audio": {
+      "download": "Descargar",
+      "failed": "No se pudo crear la transcripción.",
+      "generate": "Generar transcripción",
+      "none": "Todavía no hay transcripción.",
+      "pause": "Pausar",
+      "play": "Reproducir",
+      "quota": "Has agotado tu audio de este mes.",
+      "retry": "Intentar de nuevo",
+      "scrub": "Buscar",
+      "segments": "1 segmento | {n} segmentos",
+      "transcribing": "Transcribiendo…",
+      "transcribing_long": "Transcribiendo: sigue en marcha aunque cierres la página.",
+      "transcript": "Transcripción",
+      "unavailable": "Esta grabación no está disponible"
+    },
+    "details": "Detalles",
+    "pdf": {
+      "open": "Abrir PDF",
+      "unavailable": "Este PDF no está disponible"
+    },
+    "sidebar": {
+      "tabs": {
+        "audio": "Audio",
+        "drawing": "Dibujo",
+        "figma": "Figma",
+        "image": "Imagen",
+        "pdf": "PDF",
+        "reader": "Lector",
+        "screenshot": "Captura de pantalla",
+        "text_note": "Nota de texto"
+      }
+    },
+    "social": {
+      "enlarge": "Ampliar imagen",
+      "next": "Imagen siguiente",
+      "previous": "Imagen anterior",
+      "saved_post": "Publicación guardada",
+      "video_hint": "Abre la publicación para reproducirlo",
+      "video_preview": "Vista previa del vídeo",
+      "view_on": "Ver en {platform}"
+    },
+    "summary": "Resumen"
+  },
+  "wizard": {
+    "annotations": {
+      "content": "Anota lo que quieras directamente en la captura de pantalla del sitio web y haz que se puedan buscar",
+      "title": "📝 Anotaciones de página"
+    },
+    "first_bookmark": {
+      "content": "¡Intenta guardar tu primer favorito ahora!",
+      "subcontent": "Nota: Si se detecta una URL en tu portapapeles, se pegará automáticamente. Es posible que recibas una solicitud para acceder a tu portapapeles, pero no se almacenará ni enviará ningún dato hasta que pulses el botón \"Guardar\".",
+      "title": "🥳 ¡Guarda tu primer favorito!"
+    },
+    "folders": {
+      "content": "Deja que WebBites organice automáticamente tus marcadores, genere automáticamente etiquetas, extraiga palabras clave ¡e incluso la paleta de colores!",
+      "title": "🔖 Olvídate de las carpetas"
+    },
+    "import": {
+      "content": "Importa todos tus marcadores existentes simplemente arrastrando el archivo desde tu ordenador, o cargándolo más tarde desde el menú de configuración.",
+      "title": "Importa tus favoritos"
+    },
+    "one_click": {
+      "content": "Descarga la extensión [Chrome](https://chromewebstore.google.com/detail/webbites-browser-extensio/kphdbcjcdhecefloameedhhldchhbela) para guardar nuevos marcadores con un solo clic, o añádelos directamente desde la aplicación web.",
+      "subcontent": "(¡Extensiones para Safari, Firefox y móviles próximamente!)",
+      "title": "¡A un clic de distancia!"
+    },
+    "save_anything": {
+      "content": "No guardes sólo sitios web, ¡con WebBites también puedes guardar cualquier cosa, desde notas, imágenes, películas, juegos y música!",
+      "subcontent": "¡Y libros próximamente!",
+      "title": "👾 🎥 Guardar cualquier cosa"
+    },
+    "screenshots": {
+      "content": "Haz una captura de pantalla completa de todos los sitios web que guardes, accesible para siempre, incluso si la página se retira.",
+      "title": "📸 Capturas de pantalla a toda página"
+    },
+    "welcome": {
+      "content": "Trabajemos juntos para crear el mejor servicio de marcadores que exista, así que ¡comunícate con nosotros en Twitter para compartir peticiones de funciones, errores que encuentres o cualquier comentario!",
+      "title": "¡Bienvenido a WebBites!"
+    }
+  },
+  "wizard_tab": {
+    "back": "Volver",
+    "finish": "Acabado",
+    "import_bookmarks": "Importar favoritos",
+    "next": "Siguiente",
+    "save": "Guarda",
+    "skip": "Saltar"
+  },
+  "developers": {
+    "title": "API de WebBites",
+    "subtitle": "Lee y guarda marcadores desde tus propios scripts, apps y automatizaciones."
+  },
+  "tags": {
+    "preview": "Ver marcadores con {tag}",
+    "preview_empty": "Ningún marcador con esta etiqueta",
+    "show_all": "Ver {n} marcador | Ver los {n} marcadores",
+    "clear_selection": "Quitar selección",
+    "manage": "Tags",
+    "subtitle": "Every tag you use, with how many bookmarks carry it. Select tags to rename, merge or remove them everywhere.",
+    "search": "Search tags",
+    "sort_count": "Most used",
+    "sort_name": "A–Z",
+    "total": "{n} tag | {n} tags",
+    "bookmarks_count": "{n} bookmark | {n} bookmarks",
+    "selected": "{n} selected",
+    "rename": "Rename",
+    "merge": "Merge",
+    "merge_into": "Merge into",
+    "delete": "Remove",
+    "confirm_delete": "Remove the selected tags from every bookmark? The bookmarks themselves are kept.",
+    "protected": "\"read-later\" powers the Read it later feature and can't be changed.",
+    "empty": "No tags yet",
+    "no_match": "No tags match",
+    "updated": "Updated {n} bookmark | Updated {n} bookmarks"
+  },
+  "footer": {
+    "product": "Producto",
+    "support": "Ayuda",
+    "updates": "Novedades",
+    "pricing": "Precios",
+    "extension": "Extensión del navegador",
+    "export": "Exportar marcadores",
+    "help": "Ayuda y contacto",
+    "feedback": "Comentarios",
+    "changelog": "Novedades",
+    "privacy": "Privacidad",
+    "terms": "Términos",
+    "made_by": "Hecho por",
+    "copyright": "WebBites {year}"
+  },
+  "verify_email": {
+    "verifying_title": "Confirmando tu nuevo correo…",
+    "verifying_body": "Solo tardará un momento.",
+    "success_title": "Correo cambiado",
+    "success_body": "Tu cuenta de WebBites ahora usa:",
+    "success_hint": "Usa esta dirección la próxima vez que inicies sesión. También hemos avisado a tu dirección anterior.",
+    "open_app": "Abrir WebBites",
+    "sign_in": "Iniciar sesión",
+    "expired_title": "Este enlace ha caducado",
+    "expired_body": "Los enlaces duran 24 horas. Pide uno nuevo desde Ajustes; hasta entonces tu correo no cambiará.",
+    "taken_title": "Esa dirección ya está en uso",
+    "taken_body": "Otra cuenta empezó a usar este correo después de enviarse el enlace. Tu correo no ha cambiado: prueba con otra dirección desde Ajustes.",
+    "invalid_title": "Este enlace no funciona",
+    "invalid_body": "Puede que ya se haya usado o que lo haya sustituido otro más reciente. Busca el último correo en tu bandeja de entrada o empieza de nuevo desde Ajustes.",
+    "failed_title": "Algo ha salido mal",
+    "failed_body": "Tu correo no ha cambiado. Inténtalo de nuevo.",
+    "try_again": "Reintentar",
+    "open_settings": "Abrir Ajustes",
+    "go_home": "Ir a WebBites",
+    "page_title": "Confirma tu correo · WebBites"
+  },
+  "cli_login": {
+    "title": "Inicia sesión en la CLI de WebBites",
+    "body": "Aprueba solo si este código coincide con el de tu terminal.",
+    "signed_in_as": "Sesión iniciada como {email}",
+    "approve": "Aprobar",
+    "decline": "Cancelar",
+    "approved_title": "Has iniciado sesión",
+    "approved_body": "Vuelve a tu terminal. Ya puedes cerrar esta pestaña.",
+    "declined_title": "Inicio de sesión cancelado",
+    "declined_body": "La CLI no ha obtenido acceso. Ya puedes cerrar esta pestaña.",
+    "expired_title": "Este código ha caducado",
+    "expired_body": "Los códigos duran 10 minutos y solo funcionan una vez. Ejecuta webbites login de nuevo para obtener otro.",
+    "invalid_title": "Este enlace no funciona",
+    "invalid_body": "Abre el enlace que mostró tu terminal o ejecuta webbites login de nuevo.",
+    "failed_title": "Algo ha salido mal",
+    "failed_body": "La CLI no ha iniciado sesión. Inténtalo de nuevo.",
+    "try_again": "Reintentar",
+    "page_title": "Inicia sesión en la CLI · WebBites"
+  },
+  "oauth_consent": {
+    "page_title": "Conectar una app · WebBites",
+    "title": "{client} quiere usar tu biblioteca de WebBites",
+    "verified": "App verificada",
+    "verified_from": "Verificada · {host}",
+    "unverified": "App no verificada",
+    "unverified_body": "WebBites no puede confirmar quién ha creado esta app. Continúa solo si confías en ella y has iniciado esto tú.",
+    "can_heading": "Podrá",
+    "can_read": "Buscar y leer tus marcadores, notas, tableros y etiquetas",
+    "allow_changes": "Permitir cambios",
+    "allow_changes_body": "Guardar, editar, organizar y mover marcadores a la papelera",
+    "cannot": "No puede ver tu contraseña, cambiar tu cuenta ni vaciar tu papelera.",
+    "redirect_heading": "Después",
+    "redirect_web": "Volverás a {target}.",
+    "redirect_app": "Se abrirá la app {target}.",
+    "redirect_loopback": "Volverás a un programa de este ordenador ({target}).",
+    "loopback_warning": "Aprueba solo si acabas de iniciar esto desde una app de este ordenador.",
+    "provider_note": "{client} enviará lo que lea a su proveedor de IA, según las condiciones de ese proveedor.",
+    "approve": "Aprobar",
+    "decline": "Rechazar",
+    "signed_in_as": "Sesión iniciada como {account}",
+    "switch_account": "Usar otra cuenta",
+    "revoke_hint": "Puedes desconectarla cuando quieras en Ajustes → Asistentes de IA.",
+    "done_title": "Conectada",
+    "done_body": "Volviendo a {client}…",
+    "declined_title": "No conectada",
+    "declined_body": "{client} no ha obtenido acceso. Volviendo a la app…",
+    "close_hint": "Puedes cerrar esta pestaña cuando se haya abierto {client}.",
+    "continue": "Continuar",
+    "the_app": "la app",
+    "invalid_request_title": "Este enlace no funciona",
+    "invalid_request_body": "La app ha enviado una solicitud incompleta o no válida, así que no se ha conectado nada. Vuelve a empezar desde la app.",
+    "invalid_client_title": "WebBites no ha podido identificar esta app",
+    "invalid_client_body": "La app no se ha identificado correctamente, así que no se puede conectar. Vuelve a empezar desde la app o contacta con quien la desarrolla.",
+    "invalid_redirect_title": "La dirección de retorno de esta app no está permitida",
+    "invalid_redirect_body": "Para proteger tu cuenta, WebBites solo te devuelve a una dirección que la app haya registrado. No se ha conectado nada.",
+    "invalid_scope_title": "La app ha pedido un acceso que WebBites no ofrece",
+    "invalid_scope_body": "No se ha conectado nada. Vuelve a empezar desde la app o contacta con quien la desarrolla.",
+    "invalid_server_title": "Algo ha salido mal por nuestra parte",
+    "invalid_server_body": "No se ha conectado nada. Inténtalo de nuevo desde la app dentro de un momento.",
+    "details": "Detalles para quien desarrolla la app",
+    "expired_title": "Esta solicitud ha caducado",
+    "expired_body": "Las solicitudes de conexión duran poco y solo funcionan una vez. Vuelve a empezar desde la app que estabas conectando.",
+    "rejected_title": "No se ha podido confirmar esta solicitud",
+    "rejected_body": "No se ha conectado nada. Vuelve a empezar desde la app que estabas conectando.",
+    "failed_title": "Algo ha salido mal",
+    "failed_body": "No se ha conectado nada. Inténtalo de nuevo.",
+    "try_again": "Reintentar"
+  },
+  "automations": {
+    "new": "Nueva automatización",
+    "empty": "Aún no hay automatizaciones. Empieza por algo como: si la URL contiene amazon.com, añade la etiqueta Compras.",
+    "smart_board": "Tablero inteligente",
+    "enable_named": "Activar {name}",
+    "load_failed": "No se han podido cargar las automatizaciones",
+    "update_failed": "No se ha podido actualizar la automatización",
+    "save_failed": "No se ha podido guardar la automatización",
+    "delete_failed": "No se ha podido borrar la automatización",
+    "name_placeholder": "Ponle nombre a esta automatización",
+    "enabled": "Activada",
+    "whenever": "Cuando",
+    "trigger_bookmark_added": "Se añade un marcador",
+    "no_conditions": "Sin condiciones: se ejecuta con cada marcador nuevo.",
+    "actions": "Acciones",
+    "remove_action": "Quitar acción",
+    "choose_board": "Elige un tablero",
+    "add_action": "Añadir acción",
+    "action_add_to_board": "Añadir al tablero",
+    "action_read_later": "Añadir a Leer más tarde",
+    "action_webhook": "Llamar a un webhook",
+    "webhook_help": "Deja el cuerpo vacío para enviar el marcador como JSON. Usa {title}, {url}, {type} o {id} entre comillas, y {tags} sin comillas.",
+    "webhook_signed": "Cada petición se firma con {header}.",
+    "webhook_signed_secret": "Cada petición se firma con {header} usando {secret}.",
+    "smart_board_note": "Esta es la regla de un tablero inteligente. Sus condiciones también aparecen en los ajustes del tablero; si la borras, el tablero vuelve a ser manual.",
+    "if": "Si",
+    "remove_condition": "Quitar condición",
+    "topics_placeholder": "Temas, pulsa intro",
+    "minimum_match": "Coincidencia mínima",
+    "add_condition": "Añadir condición",
+    "match_all": "Todas estas",
+    "match_any": "Cualquiera de estas",
+    "fields": {
+      "url": "URL",
+      "domain": "Dominio",
+      "title": "Título",
+      "type": "Tipo",
+      "tag": "Etiqueta",
+      "ai_topic": "Tema de IA"
+    },
+    "ops": {
+      "contains": "contiene",
+      "not_contains": "no contiene",
+      "is": "es",
+      "is_not": "no es"
+    },
+    "describe": {
+      "a_board": "un tablero",
+      "about": "sobre {topics}",
+      "condition": "{field} {op} {value}",
+      "tag": "etiqueta {tag}",
+      "add_to_board": "añadir a {board}",
+      "read_later": "leer más tarde",
+      "webhook": "llamar a un webhook",
+      "joiner_any": " o ",
+      "joiner_all": " y ",
+      "every_bookmark": "cada marcador",
+      "summary": "{when} → {actions}"
+    }
+  },
+  "notifications": {
+    "title": "Notificaciones",
+    "aria_unread": "Notificaciones, {count} sin leer",
+    "mark_all_read": "Marcar todo como leído",
+    "unread": "Sin leer",
+    "empty": "No hay nada nuevo.",
+    "group_new": "Nuevas",
+    "group_earlier": "Anteriores",
+    "someone": "Alguien",
+    "board_unavailable": "Ese tablero ya no está disponible",
+    "sentence": {
+      "board_shared": "{who} ha compartido “{board}” contigo",
+      "role_changed": "{who} ha cambiado tu acceso a “{board}”",
+      "board_unshared": "{who} te ha quitado de “{board}”",
+      "member_joined": "{who} se ha unido a “{board}”",
+      "member_left": "{who} ha salido de “{board}”",
+      "default": "{who} ha actualizado “{board}”",
+      "item_added": "{who} ha añadido un marcador a “{board}” | {who} ha añadido {count} marcadores a “{board}”",
+      "item_added_titled": "{who} ha añadido “{title}” a “{board}”",
+      "item_edited": "{who} ha editado un marcador en “{board}” | {who} ha editado {count} marcadores en “{board}”",
+      "item_edited_titled": "{who} ha editado “{title}” en “{board}”",
+      "item_removed": "{who} ha quitado un marcador de “{board}” | {who} ha quitado {count} marcadores de “{board}”",
+      "item_removed_titled": "{who} ha quitado “{title}” de “{board}”"
+    }
+  },
+  "shell": {
+    "login_desktop": {
+      "success": "Inicio de sesión correcto"
+    },
+    "apple_callback": {
+      "completing": "Completando el inicio de sesión con Apple...",
+      "invalid_state": "Parámetro de estado no válido: posible ataque CSRF",
+      "no_id_token": "No se ha recibido ningún token de ID de Apple",
+      "auth_failed": "Error de autenticación",
+      "account_exists": "Ya existe una cuenta con este correo electrónico. Prueba a iniciar sesión con correo y contraseña.",
+      "token_expired": "Tu sesión de inicio con Apple ha caducado. Inténtalo de nuevo.",
+      "invalid_token": "Token de autenticación de Apple no válido. Inténtalo de nuevo.",
+      "user_creation_failed": "No se ha podido crear tu cuenta. Inténtalo de nuevo más tarde.",
+      "sign_in_failed": "No se ha podido iniciar sesión con Apple. Inténtalo de nuevo."
+    },
+    "welcome_extension": {
+      "heading": "¡Te damos la bienvenida!",
+      "tagline": "Guárdalo con un solo clic y deja que la IA se encargue de organizarlo todo por ti.",
+      "right_click_title": "Clic derecho para guardar",
+      "right_click_description": "Guarda fácilmente cualquier sitio web o imagen con un simple clic derecho.",
+      "quick_menu_title": "Menú rápido",
+      "quick_menu_description": "Pulsa 'J' para mostrar u ocultar el menú rápido de WebBites. Usa Cmd+J (Ctrl en Windows) para abrir el WebBites pequeño y hacer guardados y búsquedas rápidas.",
+      "reading_title": "Lectura mejorada",
+      "reading_description": "Detecta artículos automáticamente y ábrelos en un modo de lectura sin distracciones.",
+      "summaries_title": "Resúmenes al instante",
+      "summaries_description": "Resume cualquier artículo o sitio web con un solo clic.",
+      "listen_title": "Escucha artículos",
+      "listen_description": "Convierte cualquier artículo o resumen en audio con una voz realista."
+    }
+  },
+  "boards": {
+    "empty": "Aún no hay tableros",
+    "someone": "alguien",
+    "go_home": "Ir a WebBites",
+    "leave": "Salir del tablero",
+    "duplicate": "Duplicar",
+    "archive": "Archivar",
+    "delete_board": "Borrar tablero",
+    "added_to": "Añadido a {board}",
+    "already_in": "Ya está en {board}",
+    "added_bookmarks": "Se ha añadido {count} marcador a {board} | Se han añadido {count} marcadores a {board}",
+    "add_error": "Error al añadir al tablero",
+    "modal": {
+      "edit_title": "Editar tablero",
+      "new_title": "Nuevo tablero",
+      "choose_emoji": "Elegir emoji",
+      "emoji_placeholder": "Escribe o pega cualquier emoji",
+      "remove_emoji": "Quitar",
+      "emoji_work": "Trabajo",
+      "emoji_creative": "Creatividad",
+      "emoji_life": "Vida",
+      "emoji_misc": "Varios",
+      "name_placeholder": "Nombre del tablero",
+      "description_placeholder": "¿Qué va en este tablero? (opcional)",
+      "inside": "Dentro de",
+      "inside_help": "Pon este tablero en una carpeta o déjalo en el nivel superior.",
+      "top_level": "Nivel superior",
+      "how_added": "Cómo se añaden los marcadores",
+      "mode_manual": "Manual",
+      "mode_manual_help": "Tú mismo añades y quitas los marcadores.",
+      "mode_smart": "Inteligente",
+      "mode_smart_help": "Los marcadores que coinciden se archivan automáticamente, y también puedes añadir los tuyos a mano.",
+      "ai_topics": "Temas de IA",
+      "ai_topics_hint": "separados por comas",
+      "ai_topics_help": "La IA compara los marcadores nuevos con estos temas. Opcional si añades condiciones más abajo.",
+      "topics_placeholder": "Diseño de interfaces, tipografía, teoría del color",
+      "confidence": "Confianza mínima de coincidencia",
+      "conditions": "Condiciones",
+      "conditions_help": "Se comprueban con cada marcador nuevo. Úsalas junto con los temas de IA o solas para prescindir de la IA.",
+      "auto_apply": "Añadir automáticamente los marcadores que coincidan",
+      "auto_apply_help": "Los marcadores nuevos que coincidan se archivan aquí sin preguntar.",
+      "include_existing": "Analizar mis marcadores existentes",
+      "include_existing_help": "Rellena el tablero con lo que ya has guardado.",
+      "automations_link": "Añade etiquetas, webhooks y más en Automatizaciones",
+      "colour": "Color",
+      "no_colour": "Sin color",
+      "save_changes": "Guardar cambios",
+      "create": "Crear tablero",
+      "updated": "Tablero actualizado",
+      "created": "Tablero creado",
+      "save_error": "Error al guardar el tablero"
+    },
+    "folder": {
+      "rename_title": "Renombrar carpeta",
+      "new_title": "Nueva carpeta",
+      "name_placeholder": "Nombre de la carpeta",
+      "create": "Crear",
+      "save_error": "Error al guardar la carpeta"
+    },
+    "sidebar": {
+      "title": "Tableros",
+      "new_folder": "Nueva carpeta",
+      "new_board": "Nuevo tablero",
+      "shared": "Compartidos",
+      "shared_by": "Compartido por {name}",
+      "share_board": "Compartir tablero",
+      "rename_folder": "Renombrar carpeta",
+      "edit_board": "Editar tablero",
+      "link_copied": "Enlace para compartir copiado",
+      "link_copy_error": "No se ha podido copiar el enlace para compartir",
+      "menu": {
+        "new_board_here": "Nuevo tablero aquí…",
+        "new_folder_here": "Nueva carpeta aquí…",
+        "rename": "Renombrar…",
+        "delete": "Borrar…",
+        "share": "Compartir…",
+        "people_with_access": "Personas con acceso…",
+        "edit_board": "Editar tablero…",
+        "copy_share_link": "Copiar enlace para compartir"
+      }
+    },
+    "add_to": {
+      "title": "Añadir al tablero",
+      "removed_from": "Quitado de {board}",
+      "update_error": "Error al actualizar el tablero"
+    },
+    "share": {
+      "title": "Compartir “{name}”",
+      "people_with_access": "Personas con acceso",
+      "description_owner": "Invita a personas por correo o deja que cualquiera con el enlace pueda verlo.",
+      "description_member": "{name} está compartido contigo.",
+      "this_board": "Este tablero",
+      "try_again": "Reintentar",
+      "load_error": "No se han podido cargar los ajustes para compartir.",
+      "invite_people": "Invitar a personas",
+      "add_emails": "Añade correos",
+      "invite": "Invitar",
+      "invalid_emails": "{emails} no es un correo válido. | {emails} no son correos válidos.",
+      "invite_hint": "Las personas sin cuenta de WebBites recibirán un correo con un enlace para unirse.",
+      "you": "(tú)",
+      "owner": "Propietario",
+      "pending": "Pendiente",
+      "can_view": "Puede ver",
+      "can_edit": "Puede editar",
+      "remove_member": "Quitar a {name}",
+      "nobody_else": "Todavía no hay nadie más.",
+      "only_other": "Eres la única otra persona aquí.",
+      "general_access": "Acceso general",
+      "access_private": "Solo personas invitadas",
+      "access_link": "Cualquiera con el enlace: solo lectura",
+      "link_on": "Cualquiera con el enlace puede verlo, sin iniciar sesión.",
+      "link_off": "Solo las personas de arriba pueden abrir este tablero.",
+      "link_reset_to_show": "Restablece el enlace para mostrarlo aquí",
+      "link_unavailable": "Enlace no disponible",
+      "copy_link": "Copiar enlace",
+      "click_again": "Haz clic de nuevo para restablecer",
+      "create_link": "Crear enlace",
+      "reset_link": "Restablecer enlace",
+      "done": "Hecho",
+      "invited": "Invitación enviada | Se ha invitado a {count} personas",
+      "invite_error": "No se ha podido enviar la invitación",
+      "role_error": "No se ha podido cambiar su acceso",
+      "remove_error": "No se ha podido quitar a esa persona",
+      "access_error": "No se ha podido cambiar quién puede abrir este tablero",
+      "link_copied": "Enlace copiado",
+      "link_copy_error": "No se ha podido copiar el enlace",
+      "new_link": "Nuevo enlace listo",
+      "reset_error": "No se ha podido restablecer el enlace"
+    },
+    "trash": {
+      "title": "Papelera",
+      "description": "Los marcadores borrados se conservan 30 días y después se eliminan definitivamente.",
+      "empty": "No hay nada en la papelera",
+      "untitled": "Sin título",
+      "purges_in": "Se borrará definitivamente en {count} días | Se borrará definitivamente en {count} día | Se borrará definitivamente en {count} días",
+      "restore": "Restaurar"
+    },
+    "public": {
+      "open_webbites": "Abrir WebBites",
+      "save_your_own": "Guarda los tuyos",
+      "start_free": "Empieza gratis",
+      "shared_by": "Compartido por {name}",
+      "bookmark_count": "{count} marcador | {count} marcadores",
+      "empty": "Aún no hay nada en este tablero.",
+      "show_more": "Mostrar más marcadores",
+      "footer": "Este tablero se ha compartido desde WebBites, donde puedes guardar páginas, volver a encontrarlas y compartir un tablero con quien quieras.",
+      "title": "{name} — WebBites",
+      "title_default": "Tablero compartido — WebBites",
+      "not_found_title": "Tablero no encontrado",
+      "not_found_text": "Este enlace no lleva a ninguna parte. Comprueba que lo has copiado entero.",
+      "forbidden_title": "Este tablero no está compartido contigo",
+      "forbidden_text": "Puede que el propietario haya desactivado el uso compartido o restablecido el enlace. Pídele uno nuevo.",
+      "error_title": "No se ha podido cargar este tablero",
+      "error_text": "Algo ha fallado por nuestra parte. Inténtalo de nuevo en un momento."
+    },
+    "invite": {
+      "incomplete_title": "Este enlace de invitación está incompleto",
+      "incomplete_text": "Vuelve a abrir el enlace de tu correo, copiándolo entero.",
+      "invited_title": "Te han invitado a un tablero",
+      "sign_in_text": "Inicia sesión o crea una cuenta de WebBites para unirte.",
+      "sign_in_cta": "Inicia sesión o crea una cuenta",
+      "joining": "Uniéndote al tablero…"
+    }
+  },
+  "editor": {
+    "slash": {
+      "items": {
+        "paragraph": {
+          "title": "Texto",
+          "subtitle": "Empieza a escribir"
+        },
+        "heading1": {
+          "title": "Título 1",
+          "subtitle": "Título de sección grande"
+        },
+        "heading2": {
+          "title": "Título 2",
+          "subtitle": "Título de sección mediano"
+        },
+        "heading3": {
+          "title": "Título 3",
+          "subtitle": "Título de sección pequeño"
+        },
+        "bulletList": {
+          "title": "Lista con viñetas",
+          "subtitle": "Una lista sencilla"
+        },
+        "orderedList": {
+          "title": "Lista numerada",
+          "subtitle": "Una lista que cuenta"
+        },
+        "taskList": {
+          "title": "Tareas",
+          "subtitle": "Algo que ir tachando"
+        },
+        "blockquote": {
+          "title": "Cita",
+          "subtitle": "Destaca un pasaje"
+        },
+        "codeBlock": {
+          "title": "Código",
+          "subtitle": "Con formato previo, monoespaciado"
+        },
+        "horizontalRule": {
+          "title": "Separador",
+          "subtitle": "Divide la página en dos"
+        },
+        "image": {
+          "title": "Imagen",
+          "subtitle": "Sube una imagen"
+        }
+      },
+      "groups": {
+        "basic": "Bloques básicos",
+        "media": "Multimedia"
+      },
+      "no_match": "Ningún bloque llamado “{query}”"
+    },
+    "block_menu": {
+      "duplicate": "Duplicar",
+      "copy_text": "Copiar texto",
+      "turn_into": "Convertir en"
+    }
+  },
+  "cards": {
+    "everything": "Todo",
+    "media_preview": {
+      "date_unavailable": "Fecha no disponible",
+      "movie_poster_alt": "Cartel de la película",
+      "game_poster_alt": "Carátula del juego"
+    },
+    "search_chip": {
+      "remove": "Quitar {label}"
+    },
+    "drawing": {
+      "save_failed": "No se ha podido guardar el dibujo"
+    }
+  },
+  "faq": {
+    "title_line1": "Preguntas,",
+    "title_emphasis": "guardadas.",
+    "subtitle": "Todo lo que nos preguntan, guardado en un solo sitio. Elige un tema o abre una pregunta.",
+    "topics_aria": "Temas",
+    "topics": {
+      "all": "Todos",
+      "start": "Primeros pasos",
+      "saving": "Guardado y sincronización",
+      "billing": "Planes y facturación",
+      "privacy": "Privacidad y datos",
+      "dev": "Desarrolladores"
+    },
+    "still_stuck": {
+      "title": "¿Sigues atascado?",
+      "body": "Una persona lee cada correo, normalmente en un plazo de dos días laborables. Cuéntanos qué hiciste, qué esperabas y qué ocurrió en su lugar.",
+      "email_button": "Escribir a {email}",
+      "feature_button": "Solicitar una función"
+    },
+    "items": {
+      "what": {
+        "q": "¿Qué es WebBites?",
+        "a": "Un lugar donde guardar lo que sea (sitios web, imágenes, películas, juegos, notas) y volver a encontrarlo sin tener que archivarlo tú. Lo guardas con un clic y WebBites lo etiqueta y lo organiza con IA; después puedes buscarlo por título, color, etiquetas e incluso por el texto de la página."
+      },
+      "platforms": {
+        "q": "¿En qué plataformas funciona?",
+        "a": "En la app web, en apps nativas para iPhone, iPad, Mac, Vision Pro, Apple TV y Apple Watch, y con una extensión de navegador para guardar desde donde estés. Todo se sincroniza a través de tu cuenta."
+      },
+      "account": {
+        "q": "¿Necesito una cuenta para usar las apps?",
+        "a": "No. Las apps para iPhone, iPad, Mac y Vision Pro funcionan sin iniciar sesión, con una biblioteca guardada en tu propio dispositivo, y nada de lo que guardes en ese modo se nos envía. La sincronización, el uso compartido, la búsqueda semántica y las funciones en la nube sí necesitan una cuenta, y en Ajustes puedes cambiar las funciones de inteligencia a modelos en el dispositivo si quieres mantenerlas también en local. Los detalles están en la <a href=\"/privacy\">Política de privacidad</a> §2."
+      },
+      "password": {
+        "q": "He olvidado mi contraseña",
+        "a": "Usa <a href=\"/passwordReset\">la página de restablecimiento</a> o el enlace «Olvidé mi contraseña» de la pantalla de inicio de sesión. El correo llega desde nuestro proveedor de correo: mira en el spam si no lo ves. Si iniciaste sesión con Apple, no hay contraseña que restablecer: vuelve a usar el botón de Apple."
+      },
+      "sync": {
+        "q": "Mis marcadores no se sincronizan",
+        "a": "Comprueba que has iniciado sesión con la misma cuenta en ambos dispositivos y desliza hacia abajo para actualizar. Lo que guardes sin conexión espera en una cola y se envía cuando vuelve la red; la app lo muestra en la pantalla «Pendiente de guardar», en Ajustes → Datos &amp; sin conexión. Si algo se queda atascado ahí más de unos minutos con una conexión que funciona, escríbenos."
+      },
+      "extension": {
+        "q": "La extensión no guarda",
+        "a": "La extensión guarda a través de tu sesión iniciada, así que abre la app web una vez, inicia sesión y vuelve a intentarlo. En Safari, además, las extensiones deben estar activadas y tener permiso para el sitio en el que estás, en Safari → Ajustes → Extensiones."
+      },
+      "bad_save": {
+        "q": "Una página se ha guardado mal: sin imagen, con el título equivocado o sin texto del artículo",
+        "a": "Algunos sitios bloquean la descarga automática, lo renderizan todo con JavaScript o están detrás de un muro de pago o de un inicio de sesión. En esos casos guardamos lo que podemos alcanzar. Editar el título, la descripción o la imagen del marcador lo soluciona para siempre. Si un sitio que te importa sale mal una y otra vez, envíanos la URL: muchos podemos arreglarlos de forma individual."
+      },
+      "export": {
+        "q": "¿Puedo exportar o importar mis marcadores?",
+        "a": "Ambas cosas. Ajustes → Exportar, en cualquier plataforma, te da tu biblioteca en un archivo portátil, con cualquier plan y en cualquier momento. Para traer los marcadores del navegador, sigue la <a href=\"/export-bookmarks\">guía de importación</a>."
+      },
+      "pricing": {
+        "q": "¿Cuánto cuesta?",
+        "a": "Hay un plan gratuito y planes de pago con más marcadores y funciones avanzadas. Los planes y precios actuales están en la <a href=\"/#pricing\">sección de precios</a> de la página de inicio."
+      },
+      "cancel": {
+        "q": "¿Cómo cancelo o cambio mi plan?",
+        "a": "Cancela en el sitio donde te suscribiste. Si te suscribiste en la web o en el Mac, ve a Ajustes → Suscripción, que abre el portal de facturación. Si te suscribiste a través de la App Store, está en los ajustes de suscripciones de Apple de tu dispositivo (Ajustes → tu nombre → Suscripciones), porque Apple factura esas suscripciones directamente. Conservas las funciones de pago hasta el final del periodo que has pagado."
+      },
+      "privacy": {
+        "q": "¿Mis datos son privados?",
+        "a": "Tus marcadores son tuyos. No vendemos tus datos, y las apps pueden funcionar íntegramente en el dispositivo si nunca inicias sesión. Lo que almacenamos, por qué y durante cuánto tiempo está detallado en la <a href=\"/privacy\">Política de privacidad</a>."
+      },
+      "delete": {
+        "q": "¿Cómo borro mi cuenta?",
+        "a": "Ajustes → Borrar cuenta, y confirma. Se borran también tus marcadores, archivos y suscripción, y no se puede deshacer, así que exporta antes si quieres una copia. No hace falta que nos escribas y no te ponemos ninguna oferta de retención por el camino."
+      },
+      "api": {
+        "q": "¿Hay una API?",
+        "a": "Sí: la <a href=\"/developers\">página para desarrolladores</a> muestra lo que puede hacer, y la <a href=\"/developers/docs\">documentación</a> tiene las guías, tus claves de API, un playground y todos los endpoints."
+      }
+    }
+  },
+  "help_pages": {
+    "legal": {
+      "last_updated": "Última actualización: {date}",
+      "questions": "¿Dudas sobre esta página? Escribe a {email}."
+    },
+    "chat": {
+      "title": "Chatea con nosotros",
+      "subtitle": "Una persona real de nuestro equipo lo atenderá, normalmente en un plazo de dos días laborables.",
+      "iframe_title": "Chat de soporte",
+      "not_configured": "El chat aún no está configurado. Escríbenos a {email}.",
+      "sign_in_prompt": "Inicia sesión para empezar una conversación y tener todo tu historial en un solo lugar.",
+      "sign_in": "Iniciar sesión",
+      "prefer_email": "¿Prefieres el correo? Escribe a {email}."
+    },
+    "support": {
+      "title": "Soporte",
+      "subtitle": "¿Algo roto, algo que falta o algo que no encuentras? Así puedes contactar con una persona.",
+      "email_us": "Escríbenos",
+      "email_body": "Una persona lee esta dirección, normalmente en un plazo de dos días laborables. Cuéntanos qué hiciste, qué esperabas y qué ocurrió en su lugar, y qué app (web, iPhone, iPad, Mac, Vision Pro, TV, Watch o la extensión de navegador) y qué versión usabas. Una captura de pantalla ahorra todo un intercambio de mensajes.",
+      "operated_by": "WebBites está operado por {operator}, {address}.",
+      "where_title": "Dónde dirigirte",
+      "col_want": "Si quieres…",
+      "col_go": "Ve aquí",
+      "row_bug": "Informar de un error o pedir ayuda",
+      "row_bug_go": "{chat}, o {email}",
+      "chat_link": "Chatea con nosotros",
+      "row_feature": "Solicitar una función o votar una",
+      "feedback_board": "Tablero de feedback",
+      "row_changes": "Ver qué ha cambiado y cuándo",
+      "changelog": "Registro de cambios",
+      "row_api": "Construir sobre la API",
+      "developer_docs": "Documentación para desarrolladores",
+      "row_import": "Traer los marcadores de tu navegador",
+      "import_guide": "Guía de importación",
+      "row_security": "Informar de un problema de seguridad",
+      "row_security_go": "{email}, con el asunto «Security»",
+      "row_rights": "Ejercer un derecho de protección de datos",
+      "row_rights_go": "{link} §11",
+      "privacy_policy": "Política de privacidad",
+      "faq_title": "Respuestas a las preguntas habituales",
+      "faq_body": "Contraseñas, sincronización, exportaciones, cancelaciones, la extensión y más están en la {link}.",
+      "faq_link": "página de preguntas frecuentes",
+      "security_title": "Informar de un problema de seguridad",
+      "security_body": "Escribe a {email} con «Security» en el asunto y los detalles suficientes para reproducir el problema. Te pedimos que no lo publiques antes de que podamos arreglarlo, que no accedas a datos de otras personas ni los modifiques mientras haces pruebas, y que no hagas pruebas de carga ni de denegación de servicio contra el servicio. Confirmaremos que lo hemos recibido, te mantendremos al tanto y, si quieres, te mencionaremos cuando esté solucionado."
+    }
+  },
+  "support_chat": {
+    "replying_to": "Respondiendo a {email}",
+    "real_person": "Lo lee una persona real",
+    "gate_intro": "Inicia sesión para conservar todo tu historial o deja un mensaje como invitado.",
+    "your_email": "Tu correo",
+    "continue_as_guest": "Continuar como invitado",
+    "email_note": "Solo lo usamos para responderte. Tu borrador se queda en este dispositivo.",
+    "we_reply_to": "Te respondemos a {email}, normalmente en un plazo de dos días laborables.",
+    "tell_us": "Cuéntanos qué está pasando.",
+    "your_message": "Tu mensaje",
+    "send": "Enviar",
+    "close_chat": "Cerrar el chat de soporte",
+    "open_chat": "Abrir el chat de soporte",
+    "invalid_email": "Introduce un correo válido para que podamos responderte."
+  },
+  "marketing": {
+    "statistics": {
+      "active_users": "Usuarios activos",
+      "bookmarks_saved": "Marcadores guardados",
+      "accuracy_rate": "Tasa de acierto",
+      "support": "Soporte"
+    }
+  },
+  "import_export": {
+    "time": {
+      "unknown": "Desconocido",
+      "ago_minutes": "hace {minutes} min {seconds} s",
+      "ago_seconds": "hace {seconds} s",
+      "hours_minutes": "{hours} h {minutes} min",
+      "minutes_seconds": "{minutes} min {seconds} s",
+      "seconds": "{seconds} s"
+    },
+    "status_labels": {
+      "inactive": "Inactivo",
+      "active": "Activo",
+      "processing": "Procesando",
+      "completed": "Completado",
+      "cancelled": "Cancelado",
+      "failed": "Fallido"
+    },
+    "activity": {
+      "processing": "Procesando:",
+      "waiting": "Esperando el siguiente marcador...",
+      "last_update": "Última actualización: {time}"
+    },
+    "failed": {
+      "title": "Importaciones fallidas ({count})",
+      "retry": "Reintentar {count} elemento | Reintentar {count} elementos",
+      "retryable": "Reintentable",
+      "failed": "Fallido"
+    },
+    "metrics": {
+      "title": "Métricas de rendimiento",
+      "per_minute": "marcadores/min",
+      "duration": "duración",
+      "estimated_completion": "finalización estimada",
+      "batches": "lotes"
+    },
+    "overview": {
+      "title": "Estado de la importación",
+      "processing": "Procesando {done} de {total} marcadores",
+      "currently": "Ahora: {url}",
+      "no_session": "No hay ninguna importación activa"
+    },
+    "progress": {
+      "title": "Progreso",
+      "hint": "Esto puede tardar unos minutos; la importación continuará aunque cierres esta ventana.",
+      "completed": "{count} completados",
+      "failed": "{count} fallidos"
+    },
+    "queue": {
+      "title": "Vista previa de la cola",
+      "remaining": "{count} restantes",
+      "empty": "No hay elementos en la cola",
+      "batch": "Lote: {batch}",
+      "more": "... y {count} más"
+    },
+    "modal": {
+      "title": "Progreso de la importación",
+      "cancel_import": "Cancelar importación",
+      "retry_success": "Se ha devuelto {count} elemento a la cola para reintentarlo | Se han devuelto {count} elementos a la cola para reintentarlo",
+      "retry_error": "No se han podido reintentar los elementos. Inténtalo de nuevo.",
+      "cancelled": "Se ha cancelado el proceso de importación",
+      "cancel_error": "No se ha podido cancelar la importación. Inténtalo de nuevo."
+    },
+    "user_modal": {
+      "title": "Importar marcadores",
+      "subtitle": "Lanzar la importación de marcadores para este usuario",
+      "no_email": "Sin correo electrónico",
+      "user_id": "ID de usuario: {id}",
+      "current_bookmarks": "Marcadores actuales: {count}",
+      "import_status": "Estado de la importación",
+      "last_import": "Última importación: {date}",
+      "total_imported": "Total importado: {count} marcadores",
+      "options": "Opciones de importación",
+      "force_reimport": "Forzar reimportación (sobrescribir los marcadores existentes)",
+      "skip_duplicates": "Omitir marcadores duplicados",
+      "notify_user": "Enviar una notificación al usuario al terminar",
+      "from_parse_class": "Importar desde una clase de Parse",
+      "notice_title": "Aviso importante",
+      "progress": "Progreso de la importación",
+      "importing": "Importando...",
+      "start_import": "Iniciar importación",
+      "already_imported_warning": "Este usuario ya ha importado marcadores. Activa «Forzar reimportación» para sobrescribir los datos existentes.",
+      "status_unknown": "Desconocido",
+      "status_imported": "Importado anteriormente",
+      "status_none": "Sin importaciones",
+      "not_available": "N/D",
+      "step_init": "Iniciando la importación...",
+      "step_prepare": "Preparando los datos del usuario...",
+      "step_process": "Procesando marcadores...",
+      "step_finalize": "Finalizando la importación...",
+      "step_done": "¡Importación completada correctamente!",
+      "failed_generic": "La importación ha fallado",
+      "failed": "La importación ha fallado: {error}"
+    },
+    "export_guide": {
+      "title": "Cómo exportar tus marcadores",
+      "intro": "¿Listo para traer tus marcadores a WebBites? Sigue estas sencillas instrucciones para exportar tus marcadores desde tu navegador favorito.",
+      "help_title": "¿Necesitas ayuda?",
+      "help_text": "Si tienes problemas para exportar tus marcadores, puedes {link}.",
+      "help_link": "contactar con nuestro equipo de soporte",
+      "exporting_from": "Exportar desde {browser}",
+      "note_label": "Nota:",
+      "next_title": "¿Y ahora qué?",
+      "next_intro": "Ahora que has exportado tus marcadores, puedes importarlos a WebBites:",
+      "next_1": "Ve a tu <a href=\"/app\" class=\"text-primary-600 dark:text-primary-400 hover:underline\">panel de WebBites</a> y abre la ventana de ajustes.",
+      "next_2": "Haz clic en el botón «Importar marcadores».",
+      "next_3": "Selecciona y sube el archivo de marcadores que has exportado",
+      "next_4": "Selecciona los que quieras subir, haz clic en 'Importar' y deja que WebBites lo organice todo por ti.",
+      "import_alt": "Paso {n} de la importación en WebBites",
+      "steps": {
+        "chrome_1": {
+          "title": "Abre el menú de Chrome",
+          "description": "Haz clic en los tres puntos <strong>⋮</strong> de la esquina superior derecha de la ventana del navegador para abrir el menú de Chrome."
+        },
+        "chrome_2": {
+          "title": "Accede al administrador de marcadores",
+          "description": "Ve a <strong>Marcadores > Administrador de marcadores</strong>, o simplemente pulsa <kbd class=\"new-kbd\">Ctrl+Shift+O</kbd> (Windows/Linux) o <kbd class=\"new-kbd\">⌘+Option+B</kbd> (Mac)."
+        },
+        "chrome_3": {
+          "title": "Exporta los marcadores",
+          "description": "Haz clic en los tres puntos <strong>⋮</strong> de la esquina superior derecha del administrador de marcadores y selecciona <strong>Exportar marcadores</strong>."
+        },
+        "chrome_4": {
+          "title": "Guarda el archivo HTML",
+          "description": "Elige un lugar de tu ordenador donde guardar el archivo HTML con tus marcadores. El nombre por defecto será algo como 'bookmarks_[fecha].html'.",
+          "note": "Este archivo HTML contiene todos tus marcadores y la estructura de tus carpetas."
+        },
+        "firefox_1": {
+          "title": "Abre el menú de Firefox",
+          "description": "Haz clic en las tres líneas horizontales (menú de hamburguesa) <strong>☰</strong> de la esquina superior derecha de la ventana del navegador."
+        },
+        "firefox_2": {
+          "title": "Accede a los marcadores",
+          "description": "Ve a <strong>Marcadores > Administrar marcadores</strong>, o pulsa <kbd class=\"new-kbd\">Ctrl+Shift+B</kbd> (Windows/Linux) o <kbd class=\"new-kbd\">⌘+Shift+B</kbd> (Mac)."
+        },
+        "firefox_3": {
+          "title": "Exporta los marcadores",
+          "description": "En la ventana Biblioteca que se abre, haz clic en <strong>Importar y respaldar > Exportar marcadores a HTML</strong>."
+        },
+        "firefox_4": {
+          "title": "Guarda el archivo HTML",
+          "description": "Elige un lugar de tu ordenador donde guardar el archivo HTML. El nombre por defecto será 'bookmarks.html'.",
+          "note": "Acuérdate de dónde guardas este archivo para encontrarlo fácilmente al importarlo a WebBites."
+        },
+        "safari_1": {
+          "title": "Abre el menú de Safari",
+          "description": "Haz clic en <strong>Archivo</strong> en la barra de menús superior de Safari."
+        },
+        "safari_2": {
+          "title": "Exporta los marcadores",
+          "description": "Selecciona <strong>Exportar marcadores</strong> en el menú desplegable."
+        },
+        "safari_3": {
+          "title": "Guarda el archivo",
+          "description": "Elige un lugar de tu Mac donde guardar el archivo de marcadores. Se guardará un archivo .zip que tendrás que descomprimir para obtener el archivo .html.",
+          "note": "Safari exporta todos tus marcadores, incluidos los de la barra de favoritos y los de todas las carpetas."
+        },
+        "edge_1": {
+          "title": "Abre el menú de Edge",
+          "description": "Haz clic en los tres puntos <strong>⋯</strong> de la esquina superior derecha de la ventana del navegador y después en <strong>Favoritos</strong>."
+        },
+        "edge_2": {
+          "title": "Exporta los favoritos",
+          "description": "Haz clic en <strong>Exportar favoritos</strong>."
+        },
+        "edge_3": {
+          "title": "Guarda el archivo HTML",
+          "description": "Elige un lugar de tu ordenador donde guardar el archivo HTML con tus favoritos/marcadores.",
+          "note": "Edge exportará todos tus favoritos, incluidos los de las carpetas que hayas creado."
+        },
+        "opera_1": {
+          "title": "Accede a los marcadores",
+          "description": "Pulsa <kbd class=\"new-kbd\">Ctrl+Shift+B</kbd> (Windows/Linux) o <kbd class=\"new-kbd\">⌘+Option+B</kbd> (Mac) para abrir el administrador de marcadores, o haz clic en el menú de Opera y selecciona <strong>Marcadores > Marcadores</strong>."
+        },
+        "opera_2": {
+          "title": "Abre la vista completa de marcadores",
+          "description": "Haz clic en <strong>Abrir vista completa de marcadores</strong>"
+        },
+        "opera_3": {
+          "title": "Exporta los marcadores",
+          "description": "Haz clic en el botón <strong>Importar/Exportar</strong> de la esquina inferior izquierda del administrador de marcadores y selecciona <strong>Exportar marcadores como archivo HTML</strong>."
+        },
+        "opera_4": {
+          "title": "Guarda el archivo HTML",
+          "description": "Elige un lugar de tu ordenador donde guardar el archivo HTML con tus marcadores.",
+          "note": "La exportación de marcadores de Opera incluye todos tus marcadores y la estructura de tus carpetas."
+        },
+        "arc_1": {
+          "title": "Abre la barra lateral de Arc",
+          "description": "Abre la barra de comandos pulsando <kbd class=\"new-kbd\">⌘+T</kbd> y ve a <strong>arc://bookmarks</strong>."
+        },
+        "arc_2": {
+          "title": "Exporta los marcadores",
+          "description": "Haz clic en los tres puntos <strong>⋯</strong> de la esquina superior derecha del panel de marcadores y selecciona <strong>Ajustes</strong>. En el menú de ajustes, busca y haz clic en <strong>Exportar marcadores</strong>."
+        },
+        "arc_3": {
+          "title": "Guarda el archivo HTML",
+          "description": "Elige un lugar de tu ordenador donde guardar el archivo HTML con tus marcadores.",
+          "note": "Este archivo HTML contiene todos tus marcadores y la estructura de tus carpetas."
+        },
+        "raindrop_1": {
+          "title": "Inicia sesión en Raindrop.io",
+          "description": "Ve a <a href='https://app.raindrop.io' target='_blank' rel='noopener noreferrer'>app.raindrop.io</a> e inicia sesión en tu cuenta."
+        },
+        "raindrop_2": {
+          "title": "Accede a los ajustes",
+          "description": "Haz clic en tu foto de perfil de la esquina superior derecha y selecciona <strong>Ajustes</strong> en el menú desplegable."
+        },
+        "raindrop_3": {
+          "title": "Exporta los marcadores",
+          "description": "En el menú de ajustes, ve a la pestaña <strong>Copia de seguridad</strong>. En la sección 'Exportar', selecciona el formato que prefieras (se recomienda HTML por compatibilidad con WebBites)."
+        },
+        "raindrop_4": {
+          "title": "Descarga tus marcadores",
+          "description": "Haz clic en el botón <strong>Exportar</strong> para generar y descargar el archivo con tus marcadores.",
+          "note": "Raindrop.io permite exportar en varios formatos, pero el formato HTML es el que mejor funciona para importar a WebBites."
+        }
+      }
+    }
+  },
+  "subscription_success": {
+    "title": "¡Suscripción activada!",
+    "message": "Te has suscrito correctamente al plan {plan}. ¡Disfruta de la experiencia premium!",
+    "benefits_title": "Tus ventajas premium",
+    "bookmarks": "Marcadores",
+    "bookmarks_limit": "Guarda hasta {limit} marcadores",
+    "audio": "Pistas de audio",
+    "audio_limit": "Accede a {limit} pistas de audio premium",
+    "import_bookmarks": "Importar marcadores",
+    "start": "Empezar a explorar",
+    "unlimited": "ilimitados"
+  },
+  "rss": {
+    "mark_all_read": "Marcar todo como leído",
+    "mark_read": "Marcar como leído",
+    "mark_unread": "Marcar como no leído",
+    "pane": {
+      "articles": "Artículos"
+    },
+    "sidebar": {
+      "feeds": "Feeds",
+      "all_articles": "Todos los artículos",
+      "unread": "Sin leer",
+      "import_opml": "Importar feeds (OPML)…",
+      "export_feeds": "Exportar feeds…",
+      "import_added": "Se ha añadido {count} feed | Se han añadido {count} feeds",
+      "import_queued": "Llegan {count} más",
+      "import_failed_rows": "No se han podido leer {count}",
+      "import_failed": "No se ha podido importar ese archivo OPML.",
+      "export_failed": "No se han podido exportar tus feeds."
+    },
+    "add_feed": {
+      "title": "Añadir feed",
+      "placeholder": "Dirección o nombre del feed",
+      "hint": "Pega la dirección de un sitio o de un feed, o busca por nombre.",
+      "nothing_found": "No se ha encontrado nada",
+      "no_match": "Ningún feed coincide con “{query}”. Si tienes la dirección del feed, pégala aquí.",
+      "readers": "{count} lector | {count} lectores",
+      "already_subscribed": "Ya estás suscrito",
+      "add": "Añadir",
+      "done": "Hecho",
+      "subscribe_failed": "No se ha podido suscribir a ese feed."
+    },
+    "settings": {
+      "name": "Nombre",
+      "name_hint": "Usando el nombre del editor",
+      "fetch_full": "Obtener artículos completos",
+      "fetch_full_description": "Muchos feeds solo incluyen un adelanto. Con esto activado, WebBites obtiene cada artículo nuevo completo y te lo resume. Disponible en un plan de pago.",
+      "open_website": "Abrir sitio web",
+      "feed_dead": "Este feed ha dejado de responder y ya no se comprueba.",
+      "unsubscribe": "Cancelar suscripción",
+      "save_failed": "No se han podido guardar esos ajustes."
+    },
+    "list": {
+      "filter": "Filtrar artículos",
+      "showing_unread": "Mostrando solo los no leídos",
+      "show_unread": "Mostrar solo los no leídos",
+      "refresh": "Actualizar feed",
+      "confirm_feed": "¿Marcar todo en “{title}” como leído?",
+      "confirm_all": "¿Marcar todos los artículos como leídos?",
+      "full_text": "Texto completo disponible",
+      "summary": "Resumen disponible",
+      "no_matches": "Sin coincidencias",
+      "no_matches_description": "Nada aquí coincide con “{query}”.",
+      "no_feeds": "Aún no hay feeds",
+      "no_feeds_description": "Añade un feed para empezar a leer.",
+      "caught_up": "Todo al día",
+      "caught_up_description": "No hay nada sin leer aquí.",
+      "no_articles": "Sin artículos",
+      "no_articles_description": "Este feed aún no ha publicado nada."
+    },
+    "reader": {
+      "no_article": "Ningún artículo seleccionado",
+      "pick_article": "Elige algo de la lista para empezar a leer.",
+      "original": "Original",
+      "mark_unread": "Marcar como no leído",
+      "summarise": "Resumir este artículo",
+      "listen": "Escuchar este artículo",
+      "nothing_to_read": "No hay nada que leer aquí",
+      "open_original": "Abrir original",
+      "save_bookmark": "Guardar como marcador",
+      "add_read_later": "Añadir a Leer más tarde",
+      "remove_read_later": "Quitar de Leer más tarde",
+      "show_original": "Mostrar original",
+      "show_extracted": "Mostrar contenido extraído",
+      "empty_failed": "No hemos podido obtener el texto de este artículo del editor.",
+      "empty_pending": "El texto completo aún se está obteniendo. Inténtalo de nuevo en un momento.",
+      "empty_headlines": "Este feed solo publica titulares. Abre el original para leerlo.",
+      "too_short": "Este artículo tiene muy poco texto para resumirlo.",
+      "summary_failed": "No se ha podido resumir este artículo.",
+      "audio_failed": "No se ha podido generar el audio de este artículo.",
+      "saved_read_later": "Guardado en Leer más tarde",
+      "removed_read_later": "Quitado de Leer más tarde",
+      "read_later_failed": "No se ha podido actualizar Leer más tarde.",
+      "extract_failed": "No se ha podido extraer este artículo."
+    }
+  },
+  "audio_recorder": {
+    "start_recording": "Empezar a grabar",
+    "pause_recording": "Pausar la grabación",
+    "resume_recording": "Reanudar la grabación"
+  },
+  "audio_voice_picker": {
+    "voices": {
+      "nova": "Cálida y natural",
+      "alloy": "Neutra y equilibrada",
+      "ash": "Segura y clara",
+      "ballad": "Suave y expresiva",
+      "coral": "Brillante y amigable",
+      "echo": "Firme y grave",
+      "fable": "Narrador amable",
+      "onyx": "Profunda y autoritaria",
+      "sage": "Tranquila y mesurada",
+      "shimmer": "Ligera y animada",
+      "verse": "Viva y dinámica",
+      "marin": "Clara y conversacional",
+      "cedar": "Rica y serena"
+    },
+    "accents": {
+      "american": "Estadounidense",
+      "british": "Británico",
+      "australian": "Australiano",
+      "irish": "Irlandés",
+      "indian": "Indio",
+      "scottish": "Escocés"
+    }
+  },
+  "auth_modal": {
+    "passwords_mismatch": "Las contraseñas no coinciden",
+    "password_needs_chars": "A la contraseña le falta {n} carácter | A la contraseña le faltan {n} caracteres",
+    "password_needs_number": "La contraseña necesita al menos un número",
+    "signup_failed": "Error al registrarte",
+    "login_after_signup_failed": "Error al iniciar sesión tras el registro",
+    "login_failed": "Error al iniciar sesión"
+  },
+  "bookmark_editor": {
+    "no_results_for": "No se han encontrado resultados para {query}"
+  },
+  "bookmark_group": {
+    "add_to_board": "Añadir al tablero",
+    "board_empty_title": "Este tablero está vacío",
+    "board_empty_message": "Añade marcadores a este tablero desde tu colección con el menú de opciones de cualquier tarjeta de marcador."
+  },
+  "bookmark_options": {
+    "remove_from_board": "Quitar del tablero",
+    "removed_from_board": "Quitado del tablero",
+    "remove_error": "Error al quitar del tablero",
+    "read_later": "Leer más tarde",
+    "remove_read_later": "Quitar de Leer más tarde",
+    "saved_read_later": "Guardado en Leer más tarde",
+    "removed_read_later": "Quitado de Leer más tarde",
+    "add_to_board": "Añadir a \"{board}\"",
+    "added_to_board": "Añadido a {board}",
+    "add_error": "Error al añadir al tablero"
+  },
+  "bookmark_submit": {
+    "save_type": "Guardar {type}",
+    "types": {
+      "website": "sitio web",
+      "image": "imagen",
+      "pdf": "PDF",
+      "movie": "película",
+      "game": "juego",
+      "drawing": "dibujo",
+      "audio": "audio",
+      "textNote": "Nota"
+    }
+  },
+  "bookmark_card": {
+    "image_alt": "Imagen de la tarjeta",
+    "favicon_alt": "Favicon del marcador",
+    "favicon_replacement_alt": "Favicon alternativo del marcador",
+    "copy_url_failed": "No se ha podido copiar la URL"
+  },
+  "compose_expand": {
+    "save_drawing_error": "No se ha podido guardar el dibujo"
+  },
+  "feedback_card": {
+    "hidden_title": "Oculto para todos salvo para los administradores",
+    "status": {
+      "in_progress": "en curso",
+      "backlog": "pendiente de planificar",
+      "pending": "pendiente",
+      "done": "hecho",
+      "closed": "cerrado"
+    }
+  },
+  "feedback_comment": {
+    "deleted": "Comentario eliminado correctamente",
+    "delete_failed": "No se ha podido eliminar el comentario"
+  },
+  "feedback_form": {
+    "select_type": "Selecciona el tipo",
+    "markdown_supported": "Compatible con Markdown",
+    "sent": "Feedback enviado correctamente",
+    "login_to_submit": "Debes iniciar sesión para enviar feedback",
+    "send_failed": "Error al enviar el feedback, inténtalo de nuevo más tarde",
+    "types": {
+      "bug_report": "Informe de error",
+      "feature_request": "Solicitud de función",
+      "improvement": "Mejora",
+      "other": "Otro"
+    }
+  },
+  "feedback_info_modal": {
+    "login_to_comment": "Debes iniciar sesión para comentar",
+    "comment_failed": "No se ha podido publicar tu comentario, inténtalo de nuevo más tarde"
+  },
+  "feedback_up_vote": {
+    "login_to_vote": "Debes iniciar sesión para votar"
+  },
+  "import_modal": {
+    "checking_access": "Comprobando el acceso a la importación...",
+    "quota_title": "Cuota de marcadores",
+    "plan_active_title": "Plan de importación activo",
+    "plan_active_description": "Puedes importar marcadores ilimitados una vez, siempre que sea antes del {date}",
+    "validate_failed": "No se ha podido validar el acceso a la importación",
+    "checkout_failed": "No se ha podido crear la sesión de pago"
+  },
+  "landing_footer": {
+    "api_docs": "Documentación de la API"
+  },
+  "main_sidebar": {
+    "trash": "Papelera"
+  },
+  "mobile_top_bar": {
+    "library": "Biblioteca",
+    "more": "Más",
+    "trash": "Papelera",
+    "board": "Tablero",
+    "everything": "Todo"
+  },
+  "onboarding_wizard": {
+    "intro": {
+      "title": "Tu biblioteca de la web",
+      "content": "Guarda lo que encuentres, sigue tus sitios favoritos y vuelve a encontrarlo todo.",
+      "subcontent": "Aquí tienes el recorrido de un minuto."
+    },
+    "organised": {
+      "title": "Se organiza sola",
+      "content": "Todo lo que guardas se etiqueta automáticamente, con una captura de la página completa y una copia legible por si la página cambia.",
+      "subcontent": "Busca por palabras de la página, etiquetas, texto en imágenes e incluso por color."
+    },
+    "feeds": {
+      "title": "Sigue tus sitios favoritos",
+      "content": "Los artículos nuevos de los sitios que sigues llegan a Feeds. Léelos, escúchalos o guarda los mejores en tu biblioteca.",
+      "add": "Añadir un feed"
+    },
+    "everywhere": {
+      "title": "Guarda desde cualquier sitio",
+      "content": "Guarda cualquier página con un clic con la extensión del navegador, o desde el menú Compartir en iPhone, iPad y Mac.",
+      "subcontent": "En las apps, inicia sesión con esta cuenta. Una biblioteca en el dispositivo creada sin cuenta va por separado.",
+      "chrome": "Extensión para Chrome",
+      "apps": "iPhone, iPad y Mac"
+    },
+    "import": {
+      "title": "Importa tus marcadores existentes",
+      "content": "Trae tus marcadores actuales desde cualquier navegador y los organizaremos automáticamente",
+      "subcontent": "Visita {link} para aprender a exportar tus marcadores.",
+      "this_page": "esta página"
+    },
+    "first_bookmark": {
+      "title": "Guarda tu primer marcador",
+      "content": "Introduce una URL abajo o prueba nuestra sugerencia.",
+      "subcontent": "Cuanto más guardes, más potente será tu colección."
+    }
+  },
+  "reader_view": {
+    "error_try_again": "Se ha producido un error, inténtalo de nuevo más tarde"
+  },
+  "settings_modal": {
+    "view_import_status": "Ver el estado de la importación",
+    "extensions_title": "Extensiones de WebBites",
+    "extensions_subtitle": "Guarda cualquier cosa desde cualquier sitio, más rápido.",
+    "extensions_label": "Extensiones",
+    "chrome_icon_alt": "Icono de la extensión de WebBites para Chrome",
+    "raycast_icon_alt": "Icono de la extensión de WebBites para Raycast",
+    "automations_title": "Automatizaciones",
+    "automations_subtitle": "Cada vez que se añada un marcador, etiquétalo, archívalo o envíalo a otro sitio. Los tableros inteligentes también viven aquí.",
+    "deleting_account": "Borrando la cuenta...",
+    "account_deleted": "Tu cuenta se ha borrado correctamente.",
+    "delete_account_failed": "Se ha producido un error al intentar borrar tu cuenta. Inténtalo de nuevo."
+  },
+  "shortcuts_modal": {
+    "click": "Clic"
+  },
+  "social_post_view": {
+    "fallback_platform": "Social"
+  },
+  "tag_manager": {
+    "untitled": "Sin título",
+    "error_generic": "Algo ha salido mal"
+  },
+  "testimonials_old": {
+    "heading": "Lo que dicen los usuarios"
+  },
+  "tiptap_editor": {
+    "narrow_view": "Vista estrecha",
+    "wide_view": "Vista ancha",
+    "paste_url": "Pegar URL",
+    "image_size": {
+      "small": "Pequeña",
+      "big": "Grande",
+      "biggest": "Muy grande"
+    },
+    "url_to_link": "Convertir URL en enlace",
+    "add_link": "Añadir enlace",
+    "insert_block_below": "Insertar un bloque debajo",
+    "block_actions_hint": "Acciones del bloque, o arrastra para moverlo",
+    "block_actions": "Acciones del bloque",
+    "errors": {
+      "upload_failed": "No se ha podido subir la imagen: {error}",
+      "no_file": "Ningún archivo seleccionado",
+      "too_large": "El archivo supera el límite de 10 MB",
+      "not_image": "El archivo seleccionado no es una imagen"
+    }
+  },
+  "website_modal_media_view": {
+    "backdrop_alt": "Fondo de {title}",
+    "game_cover_alt": "Carátula de {name}"
+  },
+  "website_screenshot": {
+    "pan_hint": "Mantén Shift y arrastra para desplazar",
+    "undo": "Deshacer (Ctrl+Z)",
+    "redo": "Rehacer (Ctrl+Y)"
+  },
+  "import_status_history": {
+    "title": "Historial de importaciones ({count} sesión) | Historial de importaciones ({count} sesiones)",
+    "empty": "No hay sesiones de importación anteriores",
+    "progress": "{processed}/{total} marcadores",
+    "success_rate": "{rate}% de éxito",
+    "duration": "Duración: {duration}",
+    "more_sessions": "... y {count} sesión más | ... y {count} sesiones más",
+    "unknown": "Desconocido",
+    "status": {
+      "completed": "Completado",
+      "active": "Activo",
+      "failed": "Fallido",
+      "cancelled": "Cancelado"
+    }
+  },
+  "bookmarks_area": {
+    "already_pinned": "Este sitio web ya está fijado"
+  },
+  "top_bar": {
+    "importing": "Importación en curso"
+  },
+  "search_bar": {
+    "filters": "Filtros",
+    "beta": "(beta)",
+    "natural_language_description": "Es más lento, pero puedes buscar con lenguaje natural. Por ejemplo:",
+    "natural_language_example": "\"Proyectos de GitHub sobre Swift\"",
+    "colors": "Colores",
+    "find_tag": "Buscar una etiqueta",
+    "tags_loading": "Cargando…",
+    "no_tags": "No se han encontrado etiquetas",
+    "color_names": {
+      "red": "Rojo",
+      "green": "Verde",
+      "blue": "Azul",
+      "yellow": "Amarillo",
+      "purple": "Morado",
+      "orange": "Naranja",
+      "black": "Negro",
+      "white": "Blanco",
+      "pink": "Rosa",
+      "brown": "Marrón",
+      "gray": "Gris",
+      "cyan": "Cian",
+      "magenta": "Magenta",
+      "lime": "Lima",
+      "olive": "Oliva",
+      "navy": "Azul marino",
+      "teal": "Verde azulado",
+      "maroon": "Granate",
+      "silver": "Plateado",
+      "gold": "Dorado",
+      "indigo": "Índigo",
+      "violet": "Violeta"
+    }
+  },
+  "new_bookmark": {
+    "fetching_preview": "Obteniendo la vista previa del sitio web...",
+    "clipboard_access": "Asegúrate de haber activado el acceso al portapapeles en tu navegador.",
+    "saving_note": "Guardando nota",
+    "note_saved": "Nota de texto guardada",
+    "note_error": "Error al guardar la nota de texto",
+    "saving_drawing": "Guardando dibujo",
+    "drawing_saved": "Dibujo guardado",
+    "drawing_error": "Error al guardar el dibujo",
+    "media_error": "Error al guardar el contenido multimedia",
+    "nothing_to_save": "Todavía no hay nada que guardar",
+    "saved": "Guardado",
+    "save_as": {
+      "website": "Guardar sitio web",
+      "textNote": "Guardar nota",
+      "image": "Guardar imagen",
+      "pdf": "Guardar PDF",
+      "movie": "Guardar película",
+      "game": "Guardar juego",
+      "drawing": "Guardar dibujo",
+      "audio": "Guardar audio"
+    }
+  },
+  "landing_page": {
+    "hero": {
+      "title": "Tu biblioteca",
+      "title_emphasis": "de la web",
+      "subtitle": "Guarda todo lo que encuentres, sigue tus sitios favoritos y vuelve a encontrarlo todo. WebBites lo organiza por ti.",
+      "logo_alt": "Logotipo de WebBites"
+    },
+    "scroll": {
+      "title": "Todo lo que guardas,",
+      "title_emphasis": "en un solo lugar",
+      "browser_alt": "El muro de WebBites en un navegador, mostrando artículos, imágenes, notas y música guardados uno junto a otro"
+    },
+    "native": {
+      "title": "iPhone, iPad, Mac y cualquier navegador",
+      "description": "Apps nativas para iPhone, iPad y Mac, cada una con menú Compartir y extensión de Safari, y la app web completa en todo lo demás. Inicia sesión con tu cuenta de WebBites y tu biblioteca ya estará allí.",
+      "mac_alt": "La app de WebBites para Mac, con tableros y feeds en la barra lateral junto a un muro de marcadores guardados",
+      "phone_alt": "La app de WebBites para iPhone, mostrando los mismos marcadores guardados en dos columnas"
+    },
+    "features": {
+      "ai": {
+        "title": "Organizado por ti",
+        "description": "Cada marcador se etiqueta y se ordena al guardarlo. Sin carpetas que mantener."
+      },
+      "search": {
+        "title": "Encuéntralo de nuevo",
+        "description": "Busca por las palabras de la página, etiquetas, notas, texto dentro de imágenes e incluso por color."
+      },
+      "screenshots": {
+        "title": "Guardado para siempre",
+        "description": "Una captura de la página completa y una copia legible de cada página, por si el original cambia o desaparece."
+      },
+      "media": {
+        "title": "Guarda lo que sea",
+        "description": "Artículos, imágenes, vídeos, películas, juegos y notas, juntos en una sola biblioteca."
+      },
+      "ai_organisation": {
+        "description": "Categoriza y etiqueta automáticamente tus marcadores con IA avanzada."
+      },
+      "cross_platform": {
+        "description": "iPhone, iPad, Mac y la web, todos con la misma biblioteca al iniciar sesión."
+      },
+      "reader": {
+        "title": "Modo lector",
+        "description": "Los artículos se formatean automáticamente para leerlos mejor, ¡incluso los que están tras un muro de pago!"
+      },
+      "raycast": {
+        "title": "Listo para Raycast",
+        "description": "Con nuestra extensión de Raycast, todos tus marcadores están a una sola pulsación de distancia."
+      },
+      "browsers": {
+        "title": "Guarda desde tu navegador",
+        "description": "Un clic con la extensión para Chrome, o con la extensión de Safari que incluyen las apps de Mac y iPhone."
+      },
+      "colors": {
+        "title": "Extracción de colores",
+        "description": "Extraemos por ti los colores principales de todos tus marcadores, para que puedas buscar por color."
+      },
+      "tts": {
+        "title": "Texto a voz",
+        "description": "Escucha cualquier cosa que hayas guardado, o cualquier artículo de tus feeds."
+      },
+      "annotate": {
+        "title": "Anota capturas de pantalla",
+        "description": "Haz clic en cualquier punto de la captura para añadir una anotación."
+      },
+      "ocr": {
+        "title": "OCR",
+        "description": "Se aplicará el reconocimiento óptico de caracteres (OCR) a todas las imágenes que guardes, para que puedas buscarlas por su texto."
+      },
+      "pin": {
+        "title": "Fija tus marcadores",
+        "description": "Fija tus marcadores al principio de la lista para acceder a ellos fácilmente."
+      },
+      "multilingual": {
+        "title": "Multilingüe",
+        "description": "Compatible con varios idiomas."
+      }
+    },
+    "save_anything": {
+      "sentence": "Guarda lo que quieras, desde {websites}{images}{movies}{games} e incluso {notes} con nuestro editor tipo Notion.",
+      "websites": "sitios web",
+      "images": "imágenes",
+      "movies": "películas",
+      "games": "juegos",
+      "notes": "notas"
+    },
+    "roadmap_more": {
+      "title": "¡Y mucho más!",
+      "description": "Siempre se están añadiendo más funciones. ¡Echa un vistazo al tablero de feedback para ver qué viene después!"
+    },
+    "developers": {
+      "title": "Una API para todo lo que guardas",
+      "description": "Todo lo que hace WebBites lo hace por HTTP. Guarda un enlace, busca en tu biblioteca y recibe un webhook en cuanto la IA termine con él.",
+      "docs_button": "Leer la documentación para desarrolladores",
+      "facts": {
+        "rest": {
+          "title": "REST sin complicaciones",
+          "text": "Un esquema OpenAPI y un playground en el navegador para probar cada llamada antes de escribir una línea de código."
+        },
+        "webhooks": {
+          "title": "Webhooks",
+          "text": "Apunta una URL a WebBites y enviará por POST el marcador terminado (captura, resumen y etiquetas), firmado para que puedas verificarlo."
+        },
+        "keys": {
+          "title": "Tus claves, tus límites",
+          "text": "Crea claves, consulta lo que ha gastado cada una y lee el límite de peticiones en las cabeceras de cada respuesta."
+        }
+      },
+      "samples": {
+        "save": "Guardar un enlace",
+        "search": "Buscar",
+        "webhook": "Webhook"
+      }
+    },
+    "feeds": {
+      "title": "Sigue tus sitios favoritos",
+      "description": "Un lector integrado para blogs, noticias y newsletters, sin algoritmos. Lee, escucha o resume cada artículo, y guarda los mejores en tu biblioteca.",
+      "image_alt": "El lector de feeds de WebBites en un Mac, con los feeds en la barra lateral y un artículo abierto al lado"
+    },
+    "where": {
+      "title": "Dónde vive tu biblioteca",
+      "separate": "Una cuenta de WebBites se sincroniza en todas partes. Una biblioteca en el dispositivo se queda en tu iPhone, iPad o Mac, sin cuenta. Son independientes: una biblioteca en el dispositivo nunca aparece en la web ni en una cuenta, y las compras no se trasladan de una a otra.",
+      "account": "Cuenta de WebBites:",
+      "account_when": "si usas la web o Chrome, o quieres feeds, etiquetas con IA y resúmenes.",
+      "device": "Biblioteca en el dispositivo:",
+      "device_when": "si solo usas dispositivos Apple y no quieres nada en ningún servidor."
+    }
+  },
+  "login_page": {
+    "not_you": "¿No eres {email}?"
+  },
+  "password_reset_page": {
+    "chars_needed": "A la contraseña le falta {count} carácter | A la contraseña le faltan {count} caracteres",
+    "number_needed": "La contraseña necesita al menos un número",
+    "mismatch": "Las contraseñas no coinciden"
+  },
+  "questionnaire": {
+    "eyebrow": "Ayuda a dar forma a WebBites",
+    "step": "{current} de {total}",
+    "hint": "Elige las que te encajen. Sáltalo cuando quieras.",
+    "q_tools": "¿Qué usas hoy para guardar enlaces?",
+    "q_interest": "¿Qué es lo que más te importa?",
+    "q_ai": "¿Cómo sería para ti “organizar automáticamente con IA”?",
+    "browser": "Marcadores del navegador",
+    "raindrop": "Raindrop",
+    "pocket": "Pocket",
+    "notion": "Notion",
+    "notes": "Apple Notes",
+    "pinterest": "Pinterest",
+    "none": "Nada todavía",
+    "find": "Volver a encontrar cosas",
+    "organise": "Mantener el orden",
+    "devices": "Guardar desde cualquier dispositivo",
+    "visual": "Un archivo visual",
+    "later": "Leer más tarde",
+    "share": "Compartir tableros",
+    "tags": "Etiquetas automáticas",
+    "search": "Buscar con tus propias palabras",
+    "boards": "Ordenado en tableros",
+    "summaries": "Resúmenes",
+    "duplicates": "Detectar duplicados",
+    "other": "¿Algo más? (opcional)",
+    "skip_question": "Omitir pregunta",
+    "thanks": "¡Gracias, nos ayuda mucho!"
+  }
+}

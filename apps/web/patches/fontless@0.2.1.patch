@@ -1,0 +1,14 @@
+diff --git a/dist/index.mjs b/dist/index.mjs
+index eef9899c6ebf2d0a0e13ffb31e300a144ef25ce5..107bb238c2ac7a83d80ca957cde47bba81463a56 100644
+--- a/dist/index.mjs
++++ b/dist/index.mjs
+@@ -503,8 +503,7 @@ async function transformCSS(options, code, id, opts = {}) {
+ 			enter(node) {
+ 				const nestedRaw = parse(node.value, { positions: true });
+ 				if (!nestedRaw.children.some((child) => child.type === "Rule")) return;
+-				parentOffset += node.loc.start.offset;
+-				processNode(nestedRaw, parentOffset);
++				processNode(nestedRaw, parentOffset + node.loc.start.offset);
+ 			}
+ 		});
+ 	}

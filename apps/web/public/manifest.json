@@ -1,0 +1,42 @@
+{
+"name": "WebBites",
+"short_name": "WebBites",
+"start_url": "/",
+"display": "standalone",
+"description": "The bookmarking tool of the future",
+"lang": "en-US",
+"dir": "auto",
+"theme_color": "#5ec26a",
+"background_color": "#ffffff",
+"orientation": "any",
+"icons": [
+    {
+        "src": "/icon512x512.png",
+        "sizes": "512x512",
+        "type": "image/png",
+        "purpose": "maskable"
+    },
+    {
+        "src": "/icon192x192.png",
+        "sizes": "192x192",
+        "type": "image/png",
+        "purpose": "any"
+    }
+],
+"screenshots": [
+    {
+        "src": "/og_webbites.jpg",
+        "sizes": "2056x3784",
+        "type": "image/jpeg",
+        "description": "A screenshot of the landing page"
+    }
+],
+"prefer_related_applications": false,
+"shortcuts": [
+    {
+        "name":"The name you would like to be displayed for your shortcut",
+        "url":"The url you would like to open when the user chooses this shortcut. This must be a URL local to your PWA. For example: If my start_url is /, this URL must be something like /shortcut",
+        "description":"A description of the functionality of this shortcut"
+    }
+]
+}

@@ -1,0 +1,27 @@
+node_modules
+.output
+dist
+.data
+.nitro
+.cache
+.env
+_prod_.env
+.aider*
+*.pem
+_prod_.env
+.cert
+.claude
+.trae
+.claude/settings.local.json
+
+# Sentry Config File
+.env.sentry-build-plugin
+
+# Nginx logs (dev load balancer)
+logs/
+*.log
+error.log
+access.log
+/benchmark-results
+/benchmark-results
+.DS_Store

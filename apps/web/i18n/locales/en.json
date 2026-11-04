@@ -1,0 +1,2424 @@
+{
+  "alerts": {
+    "bookmark": {
+      "duplicate": "You already saved this bookmark",
+      "duplicate_cancel": "Don't save",
+      "duplicate_confirm": "Save again",
+      "error": "Error saving bookmark",
+      "export_success": "Bookmarks exported!",
+      "limit_description": {
+        "other": " your plan to save more bookmarks"
+      },
+      "limit_reached": "You have reached your bookmark limit",
+      "pin_error": "Site could not be pinned, try again later",
+      "save_error_note": "Error saving note",
+      "save_success": "Bookmark saved",
+      "saving": "Saving...",
+      "hide_error": "Could not change that bookmark's visibility",
+      "hide_index_lag": "Hidden, but search may take a moment to catch up"
+    },
+    "clipboard": {
+      "copy_error": "Failed to copy to clipboard.",
+      "copy_success": "{text} copied to clipboard."
+    },
+    "editor": {
+      "image_upload_error": "Failed to handle dropped image: {error}",
+      "image_upload_progress": "Uploading image..."
+    },
+    "file_upload": {
+      "error": "Error uploading file",
+      "success": "File uploaded successfully",
+      "uploading_many": "Uploading files...",
+      "uploading_one": "Uploading file..."
+    },
+    "image_upload": {
+      "error": "Error uploading image",
+      "success": "Image uploaded successfully"
+    },
+    "import": {
+      "complete": "Done!",
+      "complete_description": "All your bookmarks have been imported to WebBites.",
+      "error": "Something went wrong, please try again",
+      "final_success": "Your bookmarks have been imported. 😊",
+      "progress": "One second...",
+      "progress_description": "If you have a lot of bookmarks, this could take a few seconds",
+      "remaining": "Bookmarks left to import:",
+      "remaining_description": "This may take a while. You can close the app, we'll email you when it's done.",
+      "success": "Bookmarks imported successfully"
+    },
+    "live_note": {
+      "conflict": "This note was updated from another device. Your local changes were kept.",
+      "merged_with_conflicts": "Cloud changes merged. Some overlapping edits were kept as-is."
+    },
+    "subscription": {
+      "duplicate_plan": "You're already subscribed to this plan. Please check your current subscriptions."
+    },
+    "core_store": {
+      "board_joined": "You joined “{name}”",
+      "invite_accepted": "Invitation accepted",
+      "invite_invalid": "That invitation link is no longer valid",
+      "board_move_failed": "Could not move that here",
+      "board_duplicated": "Duplicated — {count} bookmark copied | Duplicated — {count} bookmarks copied",
+      "board_duplicate_error": "Error duplicating board",
+      "board_archived": "Board archived",
+      "board_archive_error": "Error archiving board",
+      "board_delete_title": "Delete “{name}”?",
+      "folder_delete_description": "The boards and folders inside it are deleted too. The bookmarks themselves are not deleted.",
+      "board_delete_shared_description": "Everyone it is shared with loses access. The bookmarks themselves are not deleted.",
+      "board_delete_description": "The bookmarks themselves are not deleted.",
+      "folder_deleted": "Folder deleted",
+      "board_deleted": "Board deleted",
+      "folder_delete_error": "Error deleting folder",
+      "board_delete_error": "Error deleting board",
+      "board_leave_title": "Leave “{name}”?",
+      "board_leave_description": "It disappears from your boards until someone invites you again.",
+      "board_leave_confirm": "Leave",
+      "board_left": "You left the board",
+      "board_leave_error": "Error leaving board",
+      "trash_load_failed": "Could not load deleted bookmarks",
+      "trash_restore_failed": "Could not restore bookmark",
+      "drawing_save_error": "Error saving drawing",
+      "sign_in_required": "You must be logged in to do that"
+    },
+    "core_files": {
+      "unsupported_one": "{name} isn’t an image, a PDF or audio.",
+      "unsupported_many": "Only images, PDFs and audio can be uploaded.",
+      "heic_one": "This browser can’t read {name}. Export it as JPEG and try again.",
+      "heic_many": "This browser can’t read HEIC photos. Export them as JPEG and try again.",
+      "unreadable_one": "{name} isn’t an image this browser can read.",
+      "unreadable_many": "Those aren’t images this browser can read."
+    }
+  },
+  "auth": {
+    "add_to_waitlist": "Add to waitlist",
+    "chrome_extension_auth_detected": "Extension Detected",
+    "chrome_extension_auth_not_detected": "Extension Not Detected",
+    "close_tab": "Close tab",
+    "current_bookmarking_manager": "What bookmarking manager do you currently use?",
+    "current_bookmarking_manager_placeholder": "e.g. Chrome bookmarks, Pocket, Raindrop...",
+    "email_error": "The login failed with error: ",
+    "email_success": "An email has been sent with a link to reset your password",
+    "extension_connected": "Extension connected",
+    "extension_connected_message": "You can now start using WebBites with your bookmarks.",
+    "extension_login_description": "Sign in to your WebBites account",
+    "go_to_app": "Go to App",
+    "logout": "Logout",
+    "most_interested": "What interests you most about WebBites?",
+    "most_interested_placeholder": "e.g. AI organisation, cross-platform sync...",
+    "notify_me": "Notify me",
+    "password_reset_error": "There was an error resetting your password. Please try again.",
+    "password_reset_success": "Your password has been reset successfully.",
+    "reset_password_description": "Enter a new password to reset it.",
+    "sign_in": "Sign In",
+    "signInWithApple": "Continue with Apple",
+    "sign_up": "Sign Up",
+    "waitlist_done": "You're on the waitlist!",
+    "waitlist_info": "Join the waitlist and follow me on",
+    "waitlist_info_2": "to stay up to date.",
+    "waitlist_success": "You're on the waitlist! Follow me on",
+    "waitlist_success_2": "to stay up to date.",
+    "waitlist_success_alert": "You've been added to the waitlist 🥳"
+  },
+  "bookmark": {
+    "audio_generation": "Audio Generation",
+    "image_extracted_text": "💬 Extracted text from image"
+  },
+  "bookmark_details": {
+    "added": "Added",
+    "alerts": {
+      "color_copied": "Color copied",
+      "image_downloaded": "Image downloaded",
+      "image_download_error": "Error downloading image"
+    },
+    "bookmark_types": {
+      "article": "Article",
+      "note": "Note",
+      "tweet": "Tweet"
+    },
+    "details_title": "Page title",
+    "download_image": "Download image",
+    "hide_keywords": "Hide keywords",
+    "keywords": "Keywords",
+    "main_colors": "Main colors",
+    "media": {
+      "cast": "Cast",
+      "crew": "Crew",
+      "developer": "Developer",
+      "director": "Director",
+      "genres": "Genres",
+      "publisher": "Publisher",
+      "release_date": "Release date",
+      "screenshots": "Screenshots",
+      "show_more": "Show {count} More",
+      "videos": "Videos"
+    },
+    "notes_placeholder": "Your page notes",
+    "page_details": "Page details",
+    "see_all_keywords": "See all keywords",
+    "tags": "Tags",
+    "time": {
+      "days_ago": "{count} days ago",
+      "hours_ago": "{count} hours ago",
+      "minutes_ago": "{count} minutes ago",
+      "months_ago": "{count} months ago",
+      "seconds_ago": "{count} seconds ago",
+      "years_ago": "{count} years ago"
+    }
+  },
+  "bookmarks": {
+    "add_files": "Add files",
+    "cards": "bookmarks",
+    "change_files": "Change files ({count})",
+    "copy_url": "Copy URL",
+    "cover": "Cover",
+    "delete": "Delete bookmark",
+    "delete_confirmation_multiple": "Are you sure you want to delete these {count} bookmarks?",
+    "delete_confirmation_single": "Are you sure you want to delete this bookmark?",
+    "deselect_hint": "Click on a bookmark to select/deselect it.",
+    "drawing": {
+      "assets_unavailable": "Some images couldn't be loaded, so the preview won't update.",
+      "new": "New drawing",
+      "untitled": "Drawing"
+    },
+    "empty_state_message": "Why don't you save some sites?",
+    "empty_state_title": "This is looking a little empty...",
+    "expand_to_edit": "Expand to edit",
+    "free_import_message": "Or you can import 100 bookmarks once for free.",
+    "hide": {
+      "label": "Hide",
+      "label_hidden": "Hidden",
+      "from_library": "Hide from library",
+      "everywhere": "Hide everywhere",
+      "unhide": "Unhide",
+      "hidden_from_library": "Hidden from your library. Still in its boards.",
+      "hidden_everywhere": "Hidden everywhere, boards included.",
+      "unhidden": "Back in your library",
+      "private_section": "Private",
+      "private_empty": "Nothing hidden yet",
+      "private_empty_hint": "Hide a bookmark and it will wait for you here.",
+      "unlock_title": "Private",
+      "unlock_description": "Enter your password to see your hidden bookmarks.",
+      "unlock_placeholder": "Password",
+      "unlock_confirm": "Unlock",
+      "unlock_wrong": "That password didn't work.",
+      "unlock_reset": "No password? Email me a link to set one.",
+      "unlock_reset_sent": "Check your email for the link.",
+      "unlock_reset_error": "Could not send the email. Try again in a moment."
+    },
+    "image_count": "{n} images",
+    "image_n_of_m": "{n} of {m}",
+    "image_order": "Image order",
+    "import": "Import bookmarks",
+    "import_error": "Error importing bookmarks. Please try again later.",
+    "import_limit": "To import more than 100 bookmarks, yuo need to pay a one time fee, or upgrade your plan.",
+    "import_payment_message": "As I'm getting started with WebBites, importing a lot of bookmarks can be expensive, so to cover the initial costs of the {count} bookmarks you want to import, I ask for a one time fee of $3 to support the project and help cover the costs.",
+    "import_progress": "Your bookmarks are being imported",
+    "import_progress_message": "This could take a while, but you don't have to keep the window open. We'll email you when it's done.",
+    "import_progress_title": "Your bookmarks are being imported.",
+    "import_success": "Bookmarks imported successfully",
+    "import_title": "Import your bookmarks",
+    "merge": "Merge",
+    "merge_confirmation": "Merge these {count} images into one bookmark?",
+    "merge_explainer": "The first one keeps its boards and notes. The others move to Trash and can be restored.",
+    "merge_failed": "Couldn't merge those bookmarks",
+    "merged": "Merged into one bookmark with {count} images",
+    "new": "New bookmark",
+    "new_placeholder": {
+      "game": "Search for a game…",
+      "link": "Paste a link…",
+      "movie": "Search for a movie…",
+      "note": "Write a note…"
+    },
+    "no_bookmarks": "No bookmarks found",
+    "no_pinned_bookmarks": "Pin some bookmarks to view them here",
+    "payment_button": "One time fee of $3",
+    "pdf_page_count": "{n} pages",
+    "pdf_page_one": "1 page",
+    "pin_success": "Bookmark pinned",
+    "pinned": "Pinned",
+    "recorder": {
+      "empty": "Nothing was recorded — check that your microphone isn’t muted.",
+      "hint": "Tap to start recording",
+      "mic_denied": "WebBites can’t reach your microphone. Allow it in your browser settings, or upload a file.",
+      "pause": "Pause",
+      "paused": "Paused",
+      "play": "Play",
+      "record_again": "Record again",
+      "record_instead": "Record instead",
+      "requesting": "Waiting for the microphone…",
+      "restart": "Start over",
+      "stop": "Stop recording",
+      "title_placeholder": "Name this recording",
+      "unsupported": "This browser can’t record audio. You can still upload a file.",
+      "upload": "Upload a file instead"
+    },
+    "remaining": "bookmarks remaining",
+    "reorder_hint": "Drag to reorder. The first image is the cover.",
+    "select_all": "Select all ({count})",
+    "select_all_visible": "Select all {count} visible",
+    "try_searching": "Try searching for something else",
+    "types": {
+      "articles": "Articles",
+      "audio": "Audio",
+      "drawing": "Drawing",
+      "game": "Game",
+      "image": "Image",
+      "movie": "Movie",
+      "music": "Music",
+      "pdf": "PDF",
+      "textNote": "Note",
+      "website": "Website"
+    },
+    "unpin_success": "Bookmark unpinned",
+    "unselect_all": "Deselect all",
+    "url_copied": "URL copied to clipboard",
+    "urls_copied": "URLs copied to clipboard",
+    "what_to_save": "What do you want to save?",
+    "compose": {
+      "add_tag": "Add a tag",
+      "board": "Board",
+      "board_create_failed": "Couldn’t create the board",
+      "board_failed": "Saved, but couldn’t add it to {board}.",
+      "board_label": "Board, {board}",
+      "board_name": "Board name",
+      "create_board": "Create",
+      "new_board": "New board…",
+      "notes": "Notes",
+      "notes_placeholder": "Add a note…",
+      "no_board": "No board",
+      "remove_tag": "Remove tag {tag}",
+      "saved_to_board": "Saved to {board}",
+      "stop": "Stop",
+      "tag": "Tag",
+      "tags_count": "Tags, {count}"
+    }
+  },
+  "changes": {
+    "body_1": "For suggestions or bug reports, go to the",
+    "body_1_link": "feedback page.",
+    "body_2": "Sign up to get updates about new features and changes.",
+    "change_label": "change",
+    "changes_label": "changes",
+    "rss": "Or subscribe via RSS",
+    "title": "Change log",
+    "signup_thanks": "Thank you for signing up to receive our updates",
+    "already_subscribed": "You're already subscribed",
+    "signup_failed": "Could not sign up to receive updates"
+  },
+  "common": {
+    "accept": "Accept",
+    "add_tag": "Add tag",
+    "all": "All",
+    "ascending": "Ascending",
+    "bookmarks": "Bookmarks",
+    "cancel": "Cancel",
+    "checking_access": "Checking Access...",
+    "choose_something": "Choose something...",
+    "close": "Close",
+    "continue": "Next",
+    "dates": {
+      "month": "month",
+      "year": "year"
+    },
+    "decline": "Decline",
+    "delete": "Delete",
+    "descending": "Descending",
+    "drop_image": "Drop an image or PDF",
+    "error_try_again": "There was an error, please try again later.",
+    "get_updates": "Get updates",
+    "import": "Import",
+    "import_bookmarks": "Import {selected} bookmarks",
+    "import_bookmarks_remaining": "Import {selected} bookmarks ({remaining} remaining in quota)",
+    "language_changed_success": "Language changed successfully",
+    "loading": "Loading...",
+    "month": "month",
+    "new_first": "New first",
+    "no_results": "No results found",
+    "old_first": "Old first",
+    "open": "Open",
+    "optional": "Optional",
+    "or": "Or",
+    "pin": "Pin",
+    "remaining": "remaining",
+    "remind_later": "Remind me again later",
+    "save": "Save",
+    "saved": "saved",
+    "search": "Search",
+    "select_file": "Select file",
+    "select_new_file": "Select other file",
+    "shortcuts": {
+      "copy_url": {
+        "description": "Click on a bookmark while holding ⌥ (option/alt)",
+        "name": "Copy URL"
+      },
+      "focus_search": {
+        "description": "Press / to focus on the search for directly from your keyboard.",
+        "name": "Focus search"
+      },
+      "open_website": {
+        "description": "Click on a bookmark while holding the CMD key",
+        "name": "Open website"
+      },
+      "quick_save": {
+        "description": "Press ⌘ + V to save URl in your clipboard",
+        "name": "Quick save"
+      },
+      "select_card": {
+        "description": "Click on a bookmark while holding the ⇧ key",
+        "name": "Select bookmark"
+      }
+    },
+    "show_less": "Show Less",
+    "show_more": "Show More",
+    "submit": "Submit",
+    "tiptap_placeholder": "Add a URL or start typing to create a note",
+    "unpin": "Unpin",
+    "updating": "Updating...",
+    "upgrade": "Upgrade",
+    "view_more": "View more"
+  },
+  "cookies": {
+    "cookie_consent": "Cookie Consent",
+    "description": "We use Microsoft Clarity to learn how to improve your experience. By accepting, you help us make WebBites better for everyone."
+  },
+  "feedback": {
+    "bug_reports": "Bug Reports",
+    "comments": {
+      "no_comments": "No comments yet",
+      "placeholder": "Write a comment...",
+      "send": "Send",
+      "title": "Comments"
+    },
+    "date": "Date",
+    "delete_comment": {
+      "confirmation": "Are you sure you want to delete this comment?",
+      "title": "Delete comment"
+    },
+    "delete_confirmation": "Are you sure you want to delete this feedback?",
+    "filter_by": "Filter by",
+    "form": {
+      "cancel_button": "Cancel",
+      "changelog_label": "To Changelog",
+      "comment_label": "Your comment",
+      "hide_from_everyone_label": "Hide from everyone",
+      "submit_button": "Send feedback",
+      "title": "Submit Feedback",
+      "title_label": "Title",
+      "type_label": "Type",
+      "platform_label": "Platform"
+    },
+    "least_votes": "Least votes",
+    "most_votes": "Most votes",
+    "my_issues": "My issues",
+    "no_feedback": "No feedback yet",
+    "order_by": "Order by",
+    "placeholders": {
+      "search": "Search for features and bug reports... ({count})"
+    },
+    "status": "Status",
+    "suggestions": "Suggestions",
+    "title": "📨 Feature requests, suggestions and bug reports",
+    "type": "Type",
+    "user": "User",
+    "votes": "Votes",
+    "platform": {
+      "app": "App",
+      "web": "Web",
+      "extension": "Browser extension",
+      "all": "All platforms"
+    },
+    "hero_title": "Help shape",
+    "hero_highlight": "what comes next.",
+    "hero_subtitle": "Request a feature, report a bug, or upvote the ideas you want most.",
+    "comments_count": "{count} comments",
+    "page": {
+      "title": "WebBites - Feedback",
+      "kanban_view": "Kanban view",
+      "list_view": "List view",
+      "login_required": "You must be logged in to submit feedback",
+      "deleted": "Feedback deleted successfully",
+      "delete_failed": "Feedback could not be deleted"
+    },
+    "options": {
+      "status": {
+        "in_progress": "In Progress",
+        "backlog": "Backlog",
+        "pending": "Pending Triage",
+        "done": "Done",
+        "closed": "Closed"
+      },
+      "type": {
+        "bug_report": "Bug report",
+        "feature_request": "Feature request",
+        "improvement": "Improvement",
+        "other": "Other"
+      },
+      "platform": {
+        "app": "App",
+        "web": "Web",
+        "extension": "Browser extension"
+      }
+    }
+  },
+  "import": {
+    "import_quota_exceeded": "You need to upgrade your plan to import more than 100 bookmarks",
+    "import_quota_exceeded_description": "You can import up to 100 bookmarks for free. Upgrade to a paid plan to import more.",
+    "connect_title": "Or connect a service",
+    "connect_fetch": "Fetch bookmarks",
+    "connect_button": "Connect {name}",
+    "connect_unavailable": "Not available",
+    "connect_error": "Could not fetch bookmarks from {name}",
+    "connect_denied": "Access was denied, no bookmarks were imported",
+    "connect_empty": "No bookmarks found in {name}"
+  },
+  "landing": {
+    "beta_access": {
+      "changelog_button": "Changelog",
+      "description": "Be among the first to experience WebBites and help shape its future!",
+      "feedback_button": "Feedback",
+      "title": "Join the Future of Bookmarking"
+    },
+    "features": {
+      "ai_organization": {
+        "description": "Automatically categorise and tag your bookmarks using advanced AI technology",
+        "title": "AI Organisation"
+      },
+      "cross_platform": {
+        "description": "Access your bookmarks anywhere, anytime, across all your devices",
+        "title": "Cross-Platform Sync"
+      },
+      "smart_search": {
+        "description": "Find anything instantly with our intelligent search that understands context",
+        "title": "Smart Search"
+      },
+      "subtitle": "Experience the future of bookmarking with our AI-powered platform",
+      "title": "Why choose WebBites?"
+    },
+    "hero": {
+      "app_button": "Go to app",
+      "subtitle": "Save anything with one click and let AI handle the organising, searching, and finding for you.",
+      "title": "Your internet,",
+      "title_emphasis": "organised",
+      "waitlist_button": "Join the waitlist"
+    },
+    "how_it_works": {
+      "steps": {
+        "install": {
+          "description": "Add our browser extension with a single click to start saving content instantly",
+          "title": "Install the Extension"
+        },
+        "organize": {
+          "description": "Our AI automatically categorises, tags, and makes your content searchable",
+          "title": "Let AI Organise"
+        },
+        "save": {
+          "description": "Click the extension or use keyboard shortcuts to save any webpage, article, or content",
+          "title": "Save Anything"
+        }
+      },
+      "title": "How It Works"
+    },
+    "join_now": "Join now!",
+    "join_now_free": "Join for free!",
+    "more_features": "More features",
+    "roadmap": {
+      "next": "Working on next:",
+      "title": "Roadmap",
+      "viewFull": "View Full Roadmap",
+      "workingOn": "Currently working on:"
+    },
+    "whats_next": "What's next for WebBites?"
+  },
+  "navigation": {
+    "feedback": "Submit feedback",
+    "help": "Help",
+    "home": "Home",
+    "login": "Login",
+    "logout_success": "Logged out!",
+    "settings": "Settings",
+    "developers": "Developers",
+    "faq": "FAQ",
+    "features": "Features",
+    "pricing": "Pricing"
+  },
+  "plans": {
+    "features": {
+      "auto_tag_bookmarks": "Auto tag all your web bookmarks",
+      "auto_tag_images": "Auto tag your images",
+      "plus": {
+        "41": "Everything in Free +",
+        "42": "Save unlimited bookmarks",
+        "43": "TL;DR summaries",
+        "44": "Auto tag your images",
+        "45": "Higher resolution full page screenshots",
+        "46": "Listen to articles and get summaries",
+        "47": "Text recognition on image",
+        "48": "Upload up to 10GB of files",
+        "49": "Natural language search",
+        "50": "Smart boards",
+        "51": "Backups to your own cloud - soon"
+      },
+      "cloud_backups": "Backups to your own cloud - soon",
+      "dark_mode": "Dark mode",
+      "everything_in_free": "Everything in Free +",
+      "free": {
+        "11": "Save up to 100 bookmarks",
+        "12": "Auto tag all your web bookmarks",
+        "13": "Search by page title, color, tags and page text",
+        "14": "Reading mode for articles",
+        "15": "Save websites, images, notes, video games, music and movies",
+        "16": "Full page screenshots",
+        "17": "Listen to up to 5 articles a month",
+        "18": "Dark mode"
+      },
+      "full_page_screenshots": "Full page screenshots",
+      "high_res_screenshots": "Higher resolution full page screenshots",
+      "listen_and_summaries": "Listen to articles and get summaries",
+      "listen_limit": "Listen to up to 5 articles a month",
+      "natural_language_search": "Natural language search",
+      "reading_mode": "Reading mode for articles",
+      "save_cards_limit": "Save up to 100 bookmarks",
+      "save_various_types": "Save websites, images, notes, video games, music and movies",
+      "search_features": "Search by page title, color, tags and page text",
+      "smart_boards": "Smart boards",
+      "text_recognition": "Text recognition on image",
+      "tldr_summaries": "TL;DR summaries",
+      "unlimited_bookmarks": "Save unlimited bookmarks",
+      "upload_limit": "Upload up to 10GB of files",
+      "apple": {
+        "61": "As many bookmarks as you like",
+        "62": "Websites, images, notes, drawings and more",
+        "63": "Search titles, tags and page text",
+        "64": "Reading mode",
+        "65": "Nothing leaves this device"
+      }
+    }
+  },
+  "pricing": {
+    "current_plan": "Current plan",
+    "downgrade": "Downgrade",
+    "downgrade_to_free": "Downgrade to free",
+    "free_plan": "Free",
+    "get_started": "Get started",
+    "monthly_toggle": "Monthly",
+    "price_monthly": "${price}/month",
+    "price_yearly": "${price}/year - save {percent}%",
+    "sign_up": "Sign up!",
+    "sign_up_now": "Sign up for free!",
+    "title": "Pricing",
+    "upgrade_for": "Upgrade for {price}",
+    "upgrade_plan": "Upgrade plan",
+    "waitlist_free": "Waitlist me for free!",
+    "yearly_toggle": "Yearly ({percent}% discount)",
+    "yearly_plain": "Yearly",
+    "apple": {
+      "title": "Device library",
+      "tagline": "Apple devices only. No account.",
+      "lifetime": "or ${price} once",
+      "badge": "App Store",
+      "note": "Bought inside the iOS and macOS app. App Store prices vary by region.",
+      "cta": "Get it on the App Store"
+    },
+    "price_yearly_plain": "${price}/year"
+  },
+  "reader": {
+    "ai_generated": "Generated by AI",
+    "by_author": "By {author}",
+    "listen_article": "Listen to article",
+    "listen_to_post": "Listen to post",
+    "voice_settings": "Reading voice",
+    "voice_description": "Pick the voice that reads your articles aloud. Press play to hear a sample.",
+    "voice_preview": "Preview voice",
+    "accent_settings": "Accent",
+    "accent_description": "English articles are read with this accent. Tap one to hear it."
+  },
+  "search": {
+    "alphabetical": "Alphabetical",
+    "clear_recent": "Clear",
+    "date_added": "Date added",
+    "filter_by_tag": "Filter by tag",
+    "filter_by_type": "Filter by type",
+    "placeholder": "Search bookmarks...",
+    "recent_searches": "Recent Searches",
+    "sort_by": "Sort by"
+  },
+  "settings": {
+    "ai_language": "AI language",
+    "ai_language_description": "The language summaries and tags are written in.",
+    "ai_language_same": "Same as the content",
+    "auth": {
+      "create_account_description": "Enter your email to sign in or to create an account",
+      "email": "Email",
+      "email_continue": "Continue with email",
+      "email_placeholder": "Enter your email",
+      "name": "Name",
+      "name_placeholder": "Enter your name",
+      "password": "Password",
+      "password_placeholder": "Enter your password",
+      "password_requirements": "Password must be at least 6 characters long and contain at least one number",
+      "repeat_password": "Repeat Password",
+      "welcome_back": "Welcome back",
+      "welcome_back_description": "Enter your password to pick up where you left off.",
+      "create_account": "Create your account",
+      "create_account_step_description": "A name and a password is all it takes.",
+      "create_account_button": "Create account",
+      "reset_password": "Reset Password"
+    },
+    "chrome_extension": {
+      "description": "Save any website to your bookmarks with a single click with the new browser extension! Download now from the",
+      "store_link": "Chrome Web Store.",
+      "title": "Chrome Extension"
+    },
+    "compact_view": "Compact view",
+    "delete_account": {
+      "confirmation_text": "Are you sure you want to delete your account? This cannot be undone.",
+      "confirm_button": "Permanently delete my account",
+      "placeholder": "Delete my account",
+      "title": "Delete account",
+      "type_confirmation": "Type 'Delete my account' to confirm"
+    },
+    "display_mode": "Display Mode",
+    "grid_view": "Grid view",
+    "image_ratio": {
+      "original": "Original"
+    },
+    "image_ratio_label": "Image ratio",
+    "language": "Language",
+    "list_view": "List view",
+    "newest_first": "Newest first",
+    "oldest_first": "Oldest first",
+    "other_options": {
+      "export_bookmarks": "Export all bookmarks",
+      "logout": "Logout",
+      "show_onboarding": "Show onboarding again",
+      "title": "Other options"
+    },
+    "personal_info": {
+      "title": "Personal info",
+      "username": "Name"
+    },
+    "preview_screenshots": "Preview page screenshots",
+    "preview_tags": "Preview tags",
+    "show_description": "Show description",
+    "show_summary_card": "Show summary card on hover",
+    "theme": "Theme",
+    "title": "Settings",
+    "view_as": "View as",
+    "viewing_options": "Viewing Options",
+    "assistants": {
+      "title": "AI assistants",
+      "description": "Let Claude, ChatGPT, Cursor and other AI apps search your library and save to it, over MCP.",
+      "server_url": "Server URL",
+      "server_url_hint": "Add this to any app that supports MCP. You’ll approve it on WebBites and choose whether it can make changes.",
+      "copy": "Copy",
+      "setup_title": "Set up an app",
+      "connected_title": "Connected assistants",
+      "connected_empty": "No assistants connected yet. Once you approve one, it shows up here.",
+      "read_only": "Read only",
+      "read_write": "Can make changes",
+      "unverified": "Unverified",
+      "connected_on": "Connected {date}",
+      "last_used": "Last used {date}",
+      "never_used": "Not used yet",
+      "disconnect": "Disconnect",
+      "disconnect_confirm": "Disconnect {name}? It loses access straight away.",
+      "disconnected": "{name} disconnected",
+      "load_failed": "Could not load your connected assistants.",
+      "revoke_failed": "Could not disconnect {name}.",
+      "limits": "Every action an assistant takes counts towards your API allowance: {free} a month on Free, {plus} on Plus.",
+      "docs_link": "Read the MCP guide",
+      "local_hint": "Keeping your library on a Mac without an account? Turn on the Mac app’s own server in the app, under Settings → AI assistants.",
+      "clients": {
+        "claude": {
+          "open": "In Claude, open {path} and choose Add custom connector.",
+          "paste": "Name it WebBites, paste the server URL and select Add.",
+          "connect": "Select Connect, then approve access on the WebBites page that opens. The connector works in Claude Desktop and the mobile apps too."
+        },
+        "chatgpt": {
+          "developer_mode": "In ChatGPT, open {path} and turn on developer mode (under Advanced).",
+          "create": "Create a connector: name it WebBites, paste the server URL and choose OAuth.",
+          "approve": "Approve access on the WebBites page that opens, then turn WebBites on from the tools menu in a chat."
+        },
+        "claude_code": {
+          "add": "Add the server from your terminal:",
+          "sign_in": "Start Claude Code, run /mcp, choose webbites and sign in. Your browser opens WebBites so you can approve access."
+        },
+        "cursor": {
+          "add": "Add WebBites to {file}, or to .cursor/mcp.json in a project:",
+          "connect": "In Cursor’s settings, find webbites in the MCP list and select Connect, then approve access on WebBites."
+        },
+        "vscode": {
+          "add": "Add WebBites to {file} in your workspace:",
+          "start": "Select Start above the server in that file, then approve access on WebBites when your browser opens. Its tools appear in Copilot Chat’s agent mode."
+        },
+        "other": {
+          "name": "Other apps",
+          "remote": "Apps that support remote MCP servers take the server URL as it is. Look for “custom connector”, “remote server” or “MCP” in their settings.",
+          "stdio": "Apps that can only start local (stdio) servers can reach it through the mcp-remote bridge, which needs Node.js:",
+          "sign_in": "The first time it runs, your browser opens WebBites so you can approve access."
+        },
+        "api_key": {
+          "name": "With an API key",
+          "when": "Apps that let you set request headers can skip the sign-in and send an API key instead. A key can read and change your whole library, like it can over the REST API.",
+          "send": "Create a key in Settings → Developer, then send it as a bearer token:"
+        }
+      }
+    },
+    "developer": {
+      "title": "Developer",
+      "description": "API keys, webhooks and usage for building on top of WebBites.",
+      "button": "Open developer page"
+    },
+    "backups": {
+      "title": "Backups",
+      "description": "Automatic, incremental backups of your bookmarks, screenshots and saved pages to storage you own.",
+      "plus_only": "Automatic backups are part of WebBites Plus.",
+      "choose_destination": "Where should backups go?",
+      "gdrive": "Google Drive",
+      "gdrive_hint": "Saved to a “WebBites Backups” folder",
+      "dropbox": "Dropbox",
+      "dropbox_hint": "Saved to Apps/WebBites",
+      "s3": "S3-compatible storage",
+      "s3_hint": "Amazon S3, Cloudflare R2, Backblaze B2, MinIO…",
+      "endpoint": "Endpoint",
+      "region": "Region",
+      "bucket": "Bucket",
+      "prefix": "Folder (optional)",
+      "access_key": "Access key",
+      "secret_key": "Secret key",
+      "connect": "Connect",
+      "cancel": "Cancel",
+      "change": "Change",
+      "enabled": "Automatic backups",
+      "frequency": "Frequency",
+      "daily": "Daily",
+      "weekly": "Weekly",
+      "last_backup": "Last backup",
+      "never": "Not yet",
+      "running": "Backing up…",
+      "next_backup": "next {time}",
+      "back_up_now": "Back up now",
+      "disconnect": "Disconnect",
+      "reconnect": "Reconnect",
+      "needs_reconnect": "{destination} stopped accepting backups. Reconnect it to turn backups back on.",
+      "plan_required": "Backups are paused because your plan no longer includes them.",
+      "error": "The last backup failed: {error}. It will be retried automatically.",
+      "connected": "{destination} connected. The first backup starts within the hour.",
+      "connect_failed": "Could not connect {destination}.",
+      "connect_denied": "{destination} access was not granted.",
+      "queued": "Backup started.",
+      "load_failed": "Could not load your backup settings.",
+      "save_failed": "Could not update your backup settings.",
+      "run_failed": "Could not start a backup.",
+      "whats_included": "Each backup is a zip with only what changed since the last one: bookmark data, notes, screenshots, saved page text and files. The last zip of every backup also has your boards, your feeds, and a bookmarks.html any browser can import."
+    },
+    "email_change": {
+      "change": "Change",
+      "change_again": "Use another",
+      "new_email": "New email",
+      "current_password": "Current password",
+      "explainer": "We'll email a link to the new address. Until you click it, you keep signing in with {email}.",
+      "send_link": "Send verification link",
+      "pending_title": "Check {email} to finish",
+      "pending_body": "We sent a link to confirm your new address. Until you click it, your account keeps using {email}.",
+      "expires": "The link expires {date}.",
+      "resend": "Resend email",
+      "resend_in": "Resend in {seconds}s",
+      "cancel_change": "Cancel change",
+      "sent": "Verification link sent to {email}",
+      "cancelled": "Email change cancelled",
+      "changed": "Your email is now {email}",
+      "errors": {
+        "invalid_email": "Enter a valid email address.",
+        "same_email": "That's already your email address.",
+        "email_taken": "Another account already uses that email address.",
+        "password_required": "Enter your current password.",
+        "incorrect_password": "That password is incorrect.",
+        "daily_limit": "You've asked for too many verification emails today. Try again tomorrow.",
+        "cooldown": "Wait a minute before sending another email.",
+        "send_failed": "We couldn't send the email. Please try again in a moment."
+      }
+    }
+  },
+  "testimonials": {
+    "emma_davis": {
+      "name": "Emma Davis",
+      "text": "The cross-platform sync is seamless, and the AI features save me hours of manual organisation.",
+      "title": "Digital Marketer"
+    },
+    "mike_chen": {
+      "name": "Mike Chen",
+      "text": "Finally, a bookmarking tool that understands context. The search functionality is mind-blowing.",
+      "title": "Developer"
+    },
+    "sarah_johnson": {
+      "name": "Sarah Johnson",
+      "text": "WebBites has revolutionised how I save and organize my research. The AI categorisation is incredibly accurate!",
+      "title": "Content Creator"
+    }
+  },
+  "upgrade_modal": {
+    "audios_remaining": "You can generate {count} more audios.",
+    "audios_upgrade": "To generate more audios, upgrade your plan.",
+    "bookmarks_count": "You have saved {count} bookmarks",
+    "bookmarks_remaining": "and can save {count} more.",
+    "bookmarks_upgrade": "Upgrade your plan to save more bookmarks.",
+    "current_plan": "You're on the {plan} plan.",
+    "manage_plan": "Manage plan",
+    "plan_details": "Plan details",
+    "update_plan": "Update Plan",
+    "updating_plan": "Updating Plan",
+    "upgrade_to_add_more": "Upgrade to add more"
+  },
+  "usage": {
+    "usage_limit_reached": "Usage limit reached, please upgrade your plan"
+  },
+  "website_modal": {
+    "add_note": "Add note",
+    "annotations": {
+      "delete": {
+        "delete_all_button": "Delete All",
+        "delete_all_label": "Delete all annotations",
+        "delete_all_message": "Are you sure you want to delete all annotations? This action cannot be undone.",
+        "delete_all_title": "Delete All Annotations",
+        "message": "Are you sure you want to delete this annotation? This action cannot be undone.",
+        "title": "Delete Annotation"
+      }
+    },
+    "app": {
+      "age": "Age rating",
+      "age_rating": "Age Rating",
+      "and_more": "{first} and {count} more",
+      "category": "Category",
+      "compatibility": "Compatibility",
+      "copyright": "Copyright",
+      "developer": "Developer",
+      "developer_website": "Developer Website",
+      "downloads": "Downloads",
+      "in_app_purchases": "In-App Purchases",
+      "information": "Information",
+      "install": "Install",
+      "language": "Language",
+      "languages": "Languages",
+      "more": "more",
+      "more_languages": "+ {count} more",
+      "no": "No",
+      "on_store": "on {store}",
+      "price": "Price",
+      "privacy_policy": "Privacy Policy",
+      "rating": "Rating",
+      "ratings": "{count} ratings",
+      "requires": "Requires {os} or later.",
+      "seller": "Seller",
+      "size": "Size",
+      "updated": "Updated",
+      "version": "Version {version}",
+      "view": "View",
+      "whats_new": "What’s New",
+      "yes": "Yes"
+    },
+    "audio": {
+      "download": "Download",
+      "failed": "The transcript couldn’t be made.",
+      "generate": "Generate transcript",
+      "none": "No transcript yet.",
+      "pause": "Pause",
+      "play": "Play",
+      "quota": "You’ve used your audio for this month.",
+      "retry": "Try again",
+      "scrub": "Seek",
+      "segments": "1 segment | {n} segments",
+      "transcribing": "Transcribing…",
+      "transcribing_long": "Transcribing — this keeps running if you close the page.",
+      "transcript": "Transcript",
+      "unavailable": "This recording isn’t available"
+    },
+    "details": "Details",
+    "pdf": {
+      "open": "Open PDF",
+      "unavailable": "This PDF isn’t available"
+    },
+    "sidebar": {
+      "tabs": {
+        "audio": "Audio",
+        "drawing": "Drawing",
+        "figma": "Figma",
+        "image": "Image",
+        "pdf": "PDF",
+        "reader": "Reader",
+        "screenshot": "Screenshot",
+        "text_note": "Text note"
+      }
+    },
+    "social": {
+      "enlarge": "Enlarge picture",
+      "next": "Next picture",
+      "previous": "Previous picture",
+      "saved_post": "Saved post",
+      "video_hint": "Open the post to play it",
+      "video_preview": "Video preview",
+      "view_on": "View on {platform}"
+    },
+    "summary": "Summary"
+  },
+  "wizard": {
+    "annotations": {
+      "content": "Annotate anything you want directly on the website's screenshot and make them searchable",
+      "title": "📝 Page annotations"
+    },
+    "first_bookmark": {
+      "content": "Try saving your first bookmark now!",
+      "subcontent": "Note: If a URL is detected in your clipboard, it will automatically get pasted. You may get a request to access your clipboard, no data is being stored or send until you click on the 'save' button.",
+      "title": "🥳 Saving your first bookmark!"
+    },
+    "folders": {
+      "content": "Let WebBites automatically organise your bookmarks, auto generate tags, extract keywords and even the colour palette!",
+      "title": "🔖 Forget about folders"
+    },
+    "import": {
+      "content": "Import all your existing bookmarks just by dragging the file from your computer, or by uploading it later from the settings menu.",
+      "title": "Import your bookmarks"
+    },
+    "one_click": {
+      "content": "Download the [Chrome](https://chromewebstore.google.com/detail/webbites-browser-extensio/kphdbcjcdhecefloameedhhldchhbela) extension to save new bookmarks with just one click, or add them directly from the web app.",
+      "subcontent": "(Safari, Firefox and mobile extensions coming soon!)",
+      "title": "One click away!"
+    },
+    "save_anything": {
+      "content": "Don't just save websites, with WebBites you can also save anything from notes, images, movies, games and music!",
+      "subcontent": "And books coming soon!",
+      "title": "👾 🎥 Save anything"
+    },
+    "screenshots": {
+      "content": "Take a full-page screenshot of all websites you save, forever accessible, even if the page is taken down.",
+      "title": "📸 Full-page screenshots"
+    },
+    "welcome": {
+      "content": "Let's work together to create the best bookmarking service out there, so reach out on Twitter to share feature requests, bugs you find or have any feedback!",
+      "title": "Welcome to WebBites!"
+    }
+  },
+  "wizard_tab": {
+    "back": "Back",
+    "finish": "Finish",
+    "import_bookmarks": "Import bookmarks",
+    "next": "Next",
+    "save": "Save",
+    "skip": "Skip"
+  },
+  "developers": {
+    "title": "WebBites API",
+    "subtitle": "Read and save bookmarks from your own scripts, apps and automations."
+  },
+  "tags": {
+    "preview": "Preview bookmarks tagged {tag}",
+    "preview_empty": "No bookmarks with this tag",
+    "show_all": "Show all {n} bookmark | Show all {n} bookmarks",
+    "clear_selection": "Clear selection",
+    "manage": "Tags",
+    "subtitle": "Every tag you use, with how many bookmarks carry it. Select tags to rename, merge or remove them everywhere.",
+    "search": "Search tags",
+    "sort_count": "Most used",
+    "sort_name": "A–Z",
+    "total": "{n} tag | {n} tags",
+    "bookmarks_count": "{n} bookmark | {n} bookmarks",
+    "selected": "{n} selected",
+    "rename": "Rename",
+    "merge": "Merge",
+    "merge_into": "Merge into",
+    "delete": "Remove",
+    "confirm_delete": "Remove the selected tags from every bookmark? The bookmarks themselves are kept.",
+    "protected": "\"read-later\" powers the Read it later feature and can't be changed.",
+    "empty": "No tags yet",
+    "no_match": "No tags match",
+    "updated": "Updated {n} bookmark | Updated {n} bookmarks"
+  },
+  "footer": {
+    "product": "Product",
+    "support": "Support",
+    "updates": "Updates",
+    "pricing": "Pricing",
+    "extension": "Browser extension",
+    "export": "Export bookmarks",
+    "help": "Help and contact",
+    "feedback": "Feedback",
+    "changelog": "Changelog",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "made_by": "Made by",
+    "copyright": "WebBites {year}"
+  },
+  "verify_email": {
+    "verifying_title": "Confirming your new email…",
+    "verifying_body": "This only takes a moment.",
+    "success_title": "Email changed",
+    "success_body": "Your WebBites account now uses:",
+    "success_hint": "Use this address the next time you sign in. We let your old address know too.",
+    "open_app": "Open WebBites",
+    "sign_in": "Sign in",
+    "expired_title": "This link has expired",
+    "expired_body": "Links last 24 hours. Request a new one from Settings and your email will stay the same until then.",
+    "taken_title": "That address is taken",
+    "taken_body": "Another account started using this email after the link was sent. Your email was not changed — try a different address from Settings.",
+    "invalid_title": "This link doesn’t work",
+    "invalid_body": "It may have been used already, or replaced by a newer link. Check your inbox for the latest email, or start again from Settings.",
+    "failed_title": "Something went wrong",
+    "failed_body": "Your email was not changed. Please try again.",
+    "try_again": "Try again",
+    "open_settings": "Open Settings",
+    "go_home": "Go to WebBites",
+    "page_title": "Confirm your email · WebBites"
+  },
+  "cli_login": {
+    "title": "Sign in to the WebBites CLI",
+    "body": "Approve only if this code matches the one in your terminal.",
+    "signed_in_as": "Signed in as {email}",
+    "approve": "Approve",
+    "decline": "Cancel",
+    "approved_title": "You’re signed in",
+    "approved_body": "Head back to your terminal. You can close this tab.",
+    "declined_title": "Sign-in cancelled",
+    "declined_body": "The CLI didn’t get access. You can close this tab.",
+    "expired_title": "This code has expired",
+    "expired_body": "Codes last 10 minutes and work once. Run webbites login again for a new one.",
+    "invalid_title": "This link doesn’t work",
+    "invalid_body": "Open the link your terminal printed, or run webbites login again.",
+    "failed_title": "Something went wrong",
+    "failed_body": "The CLI wasn’t signed in. Please try again.",
+    "try_again": "Try again",
+    "page_title": "Sign in to the CLI · WebBites"
+  },
+  "oauth_consent": {
+    "page_title": "Connect an app · WebBites",
+    "title": "{client} wants to use your WebBites library",
+    "verified": "Verified app",
+    "verified_from": "Verified · {host}",
+    "unverified": "Unverified app",
+    "unverified_body": "WebBites can’t confirm who made this app. Only continue if you trust it and started this yourself.",
+    "can_heading": "It will be able to",
+    "can_read": "Search and read your bookmarks, notes, boards and tags",
+    "allow_changes": "Allow changes",
+    "allow_changes_body": "Save, edit, organise and move bookmarks to the trash",
+    "cannot": "It can’t see your password, change your account or empty your trash.",
+    "redirect_heading": "Afterwards",
+    "redirect_web": "You’ll be sent back to {target}.",
+    "redirect_app": "The {target} app will open.",
+    "redirect_loopback": "You’ll be sent back to a program on this computer ({target}).",
+    "loopback_warning": "Only approve if you just started this from an app on this computer.",
+    "provider_note": "{client} will pass what it reads to its AI provider, under that provider’s terms.",
+    "approve": "Approve",
+    "decline": "Decline",
+    "signed_in_as": "Signed in as {account}",
+    "switch_account": "Use another account",
+    "revoke_hint": "You can disconnect it at any time in Settings → AI assistants.",
+    "done_title": "Connected",
+    "done_body": "Returning you to {client}…",
+    "declined_title": "Not connected",
+    "declined_body": "{client} didn’t get access. Returning you to it…",
+    "close_hint": "You can close this tab once {client} has opened.",
+    "continue": "Continue",
+    "the_app": "the app",
+    "invalid_request_title": "This link doesn’t work",
+    "invalid_request_body": "The app sent an incomplete or invalid request, so nothing was connected. Start again from the app.",
+    "invalid_client_title": "WebBites couldn’t identify this app",
+    "invalid_client_body": "The app didn’t identify itself properly, so it can’t be connected. Start again from the app, or contact its developer.",
+    "invalid_redirect_title": "This app’s return address isn’t allowed",
+    "invalid_redirect_body": "To keep your account safe, WebBites only sends you back to an address the app registered. Nothing was connected.",
+    "invalid_scope_title": "The app asked for access WebBites doesn’t offer",
+    "invalid_scope_body": "Nothing was connected. Start again from the app, or contact its developer.",
+    "invalid_server_title": "Something went wrong on our side",
+    "invalid_server_body": "Nothing was connected. Try again from the app in a moment.",
+    "details": "Details for the app’s developer",
+    "expired_title": "This request has expired",
+    "expired_body": "Connection requests only last a short while and work once. Start again from the app you were connecting.",
+    "rejected_title": "This request couldn’t be confirmed",
+    "rejected_body": "Nothing was connected. Start again from the app you were connecting.",
+    "failed_title": "Something went wrong",
+    "failed_body": "Nothing was connected. Please try again.",
+    "try_again": "Try again"
+  },
+  "automations": {
+    "new": "New automation",
+    "empty": "No automations yet. Start with something like: if the URL contains amazon.com, add the tag Shopping.",
+    "smart_board": "Smart board",
+    "enable_named": "Enable {name}",
+    "load_failed": "Could not load automations",
+    "update_failed": "Could not update the automation",
+    "save_failed": "Could not save the automation",
+    "delete_failed": "Could not delete the automation",
+    "name_placeholder": "Name this automation",
+    "enabled": "Enabled",
+    "whenever": "Whenever",
+    "trigger_bookmark_added": "A bookmark is added",
+    "no_conditions": "No conditions: runs on every new bookmark.",
+    "actions": "Actions",
+    "remove_action": "Remove action",
+    "choose_board": "Choose a board",
+    "add_action": "Add action",
+    "action_add_to_board": "Add to board",
+    "action_read_later": "Add to Read later",
+    "action_webhook": "Call webhook",
+    "webhook_help": "Leave the body empty to send the bookmark as JSON. Use {title}, {url}, {type} or {id} inside quotes, and {tags} without quotes.",
+    "webhook_signed": "Each request is signed with {header}.",
+    "webhook_signed_secret": "Each request is signed with {header} using {secret}.",
+    "smart_board_note": "This is a smart board’s rule. Its conditions also show in the board’s settings; deleting it turns the board back into a manual one.",
+    "if": "If",
+    "remove_condition": "Remove condition",
+    "topics_placeholder": "Topics, press enter",
+    "minimum_match": "Minimum match",
+    "add_condition": "Add condition",
+    "match_all": "All of these",
+    "match_any": "Any of these",
+    "fields": {
+      "url": "URL",
+      "domain": "Domain",
+      "title": "Title",
+      "type": "Type",
+      "tag": "Tag",
+      "ai_topic": "AI topic"
+    },
+    "ops": {
+      "contains": "contains",
+      "not_contains": "doesn’t contain",
+      "is": "is",
+      "is_not": "is not"
+    },
+    "describe": {
+      "a_board": "a board",
+      "about": "about {topics}",
+      "condition": "{field} {op} {value}",
+      "tag": "tag {tag}",
+      "add_to_board": "add to {board}",
+      "read_later": "read later",
+      "webhook": "call webhook",
+      "joiner_any": " or ",
+      "joiner_all": " and ",
+      "every_bookmark": "every bookmark",
+      "summary": "{when} → {actions}"
+    }
+  },
+  "notifications": {
+    "title": "Notifications",
+    "aria_unread": "Notifications, {count} unread",
+    "mark_all_read": "Mark all as read",
+    "unread": "Unread",
+    "empty": "Nothing new.",
+    "group_new": "New",
+    "group_earlier": "Earlier",
+    "someone": "Someone",
+    "board_unavailable": "That board is no longer available",
+    "sentence": {
+      "board_shared": "{who} shared “{board}” with you",
+      "role_changed": "{who} changed your access to “{board}”",
+      "board_unshared": "{who} removed you from “{board}”",
+      "member_joined": "{who} joined “{board}”",
+      "member_left": "{who} left “{board}”",
+      "default": "{who} updated “{board}”",
+      "item_added": "{who} added a bookmark to “{board}” | {who} added {count} bookmarks to “{board}”",
+      "item_added_titled": "{who} added “{title}” to “{board}”",
+      "item_edited": "{who} edited a bookmark in “{board}” | {who} edited {count} bookmarks in “{board}”",
+      "item_edited_titled": "{who} edited “{title}” in “{board}”",
+      "item_removed": "{who} removed a bookmark from “{board}” | {who} removed {count} bookmarks from “{board}”",
+      "item_removed_titled": "{who} removed “{title}” from “{board}”"
+    }
+  },
+  "shell": {
+    "login_desktop": {
+      "success": "Login Successful"
+    },
+    "apple_callback": {
+      "completing": "Completing sign in with Apple...",
+      "invalid_state": "Invalid state parameter - possible CSRF attack",
+      "no_id_token": "No ID token received from Apple",
+      "auth_failed": "Authentication failed",
+      "account_exists": "An account already exists for this email address. Please try signing in with email/password instead.",
+      "token_expired": "Your Apple sign-in session has expired. Please try again.",
+      "invalid_token": "Invalid Apple authentication token. Please try again.",
+      "user_creation_failed": "Failed to create your account. Please try again later.",
+      "sign_in_failed": "Failed to sign in with Apple. Please try again."
+    },
+    "welcome_extension": {
+      "heading": "Welcome!",
+      "tagline": "Save it with the click of a button, and let AI do all the organising for you.",
+      "right_click_title": "Right-click to Save",
+      "right_click_description": "Easily save any website or image with a simple right-click.",
+      "quick_menu_title": "Quick Menu",
+      "quick_menu_description": "Press 'J' to toggle the WebBites quick menu. Use Cmd+J (Ctrl on Windows) to open small WebBites for quick saves and searches.",
+      "reading_title": "Enhanced Reading Experience",
+      "reading_description": "Automatically detect articles and open them in a distraction-free reading mode.",
+      "summaries_title": "Instant Summaries",
+      "summaries_description": "Summarize any article or website with just a click.",
+      "listen_title": "Listen to Articles",
+      "listen_description": "Convert any article or summary to speech using a realistic voice."
+    }
+  },
+  "boards": {
+    "empty": "No boards yet",
+    "someone": "someone",
+    "go_home": "Go to WebBites",
+    "leave": "Leave board",
+    "duplicate": "Duplicate",
+    "archive": "Archive",
+    "delete_board": "Delete board",
+    "added_to": "Added to {board}",
+    "already_in": "Already in {board}",
+    "added_bookmarks": "Added {count} bookmark to {board} | Added {count} bookmarks to {board}",
+    "add_error": "Error adding to board",
+    "modal": {
+      "edit_title": "Edit board",
+      "new_title": "New board",
+      "choose_emoji": "Choose emoji",
+      "emoji_placeholder": "Type or paste any emoji",
+      "remove_emoji": "Remove",
+      "emoji_work": "Work",
+      "emoji_creative": "Creative",
+      "emoji_life": "Life",
+      "emoji_misc": "Misc",
+      "name_placeholder": "Board name",
+      "description_placeholder": "What goes in this board? (optional)",
+      "inside": "Inside",
+      "inside_help": "Put this board in a folder, or leave it at the top level.",
+      "top_level": "Top level",
+      "how_added": "How bookmarks get added",
+      "mode_manual": "Manual",
+      "mode_manual_help": "You add and remove bookmarks yourself.",
+      "mode_smart": "Smart",
+      "mode_smart_help": "Matching bookmarks are filed automatically, and you can add your own by hand too.",
+      "ai_topics": "AI topics",
+      "ai_topics_hint": "comma separated",
+      "ai_topics_help": "The AI matches new bookmarks against these. Optional if you add conditions below.",
+      "topics_placeholder": "UI design, typography, colour theory",
+      "confidence": "Minimum match confidence",
+      "conditions": "Conditions",
+      "conditions_help": "Checked on every new bookmark. Use them with AI topics, or on their own to skip AI entirely.",
+      "auto_apply": "Add matching bookmarks automatically",
+      "auto_apply_help": "New bookmarks that match are filed here without asking.",
+      "include_existing": "Scan my existing bookmarks",
+      "include_existing_help": "Fill the board from what you have already saved.",
+      "automations_link": "Add tags, webhooks and more in Automations",
+      "colour": "Colour",
+      "no_colour": "No colour",
+      "save_changes": "Save changes",
+      "create": "Create board",
+      "updated": "Board updated",
+      "created": "Board created",
+      "save_error": "Error saving board"
+    },
+    "folder": {
+      "rename_title": "Rename folder",
+      "new_title": "New folder",
+      "name_placeholder": "Folder name",
+      "create": "Create",
+      "save_error": "Error saving folder"
+    },
+    "sidebar": {
+      "title": "Boards",
+      "new_folder": "New folder",
+      "new_board": "New board",
+      "shared": "Shared",
+      "shared_by": "Shared by {name}",
+      "share_board": "Share board",
+      "rename_folder": "Rename folder",
+      "edit_board": "Edit board",
+      "link_copied": "Share link copied",
+      "link_copy_error": "Could not copy the share link",
+      "menu": {
+        "new_board_here": "New board here…",
+        "new_folder_here": "New folder here…",
+        "rename": "Rename…",
+        "delete": "Delete…",
+        "share": "Share…",
+        "people_with_access": "People with access…",
+        "edit_board": "Edit board…",
+        "copy_share_link": "Copy share link"
+      }
+    },
+    "add_to": {
+      "title": "Add to Board",
+      "removed_from": "Removed from {board}",
+      "update_error": "Error updating board"
+    },
+    "share": {
+      "title": "Share “{name}”",
+      "people_with_access": "People with access",
+      "description_owner": "Invite people by email, or let anyone with the link look.",
+      "description_member": "{name} is shared with you.",
+      "this_board": "This board",
+      "try_again": "Try again",
+      "load_error": "Could not load sharing settings.",
+      "invite_people": "Invite people",
+      "add_emails": "Add emails",
+      "invite": "Invite",
+      "invalid_emails": "{emails} is not a valid email. | {emails} are not valid emails.",
+      "invite_hint": "People without a WebBites account get an email with a link to join.",
+      "you": "(you)",
+      "owner": "Owner",
+      "pending": "Pending",
+      "can_view": "Can view",
+      "can_edit": "Can edit",
+      "remove_member": "Remove {name}",
+      "nobody_else": "Nobody else yet.",
+      "only_other": "You are the only other person here.",
+      "general_access": "General access",
+      "access_private": "Only invited people",
+      "access_link": "Anyone with the link — view only",
+      "link_on": "Anyone with the link can look, without signing in.",
+      "link_off": "Only the people above can open this board.",
+      "link_reset_to_show": "Reset the link to show it here",
+      "link_unavailable": "Link unavailable",
+      "copy_link": "Copy link",
+      "click_again": "Click again to reset",
+      "create_link": "Create link",
+      "reset_link": "Reset link",
+      "done": "Done",
+      "invited": "Invitation sent | Invited {count} people",
+      "invite_error": "Could not send the invitation",
+      "role_error": "Could not change their access",
+      "remove_error": "Could not remove them",
+      "access_error": "Could not change who can open this board",
+      "link_copied": "Link copied",
+      "link_copy_error": "Could not copy the link",
+      "new_link": "New link ready",
+      "reset_error": "Could not reset the link"
+    },
+    "trash": {
+      "title": "Trash",
+      "description": "Deleted bookmarks are kept for 30 days, then permanently removed.",
+      "empty": "Nothing in the trash",
+      "untitled": "Untitled",
+      "purges_in": "Deleted permanently in {count} days | Deleted permanently in {count} day | Deleted permanently in {count} days",
+      "restore": "Restore"
+    },
+    "public": {
+      "open_webbites": "Open WebBites",
+      "save_your_own": "Save your own",
+      "start_free": "Start for free",
+      "shared_by": "Shared by {name}",
+      "bookmark_count": "{count} bookmark | {count} bookmarks",
+      "empty": "Nothing in this board yet.",
+      "show_more": "Show more bookmarks",
+      "footer": "This board was shared from WebBites, where you can save pages, find them again and share a board with anyone.",
+      "title": "{name} — WebBites",
+      "title_default": "Shared board — WebBites",
+      "not_found_title": "Board not found",
+      "not_found_text": "This link doesn’t lead anywhere. Check that you copied all of it.",
+      "forbidden_title": "This board isn’t shared with you",
+      "forbidden_text": "The owner may have turned sharing off or reset the link. Ask them for a new one.",
+      "error_title": "Couldn’t load this board",
+      "error_text": "Something went wrong on our side. Try again in a moment."
+    },
+    "invite": {
+      "incomplete_title": "This invitation link is incomplete",
+      "incomplete_text": "Open the link from your email again, copying all of it.",
+      "invited_title": "You’ve been invited to a board",
+      "sign_in_text": "Sign in, or create a WebBites account, to join it.",
+      "sign_in_cta": "Sign in or create account",
+      "joining": "Joining the board…"
+    }
+  },
+  "editor": {
+    "slash": {
+      "items": {
+        "paragraph": {
+          "title": "Text",
+          "subtitle": "Just start writing"
+        },
+        "heading1": {
+          "title": "Heading 1",
+          "subtitle": "Big section heading"
+        },
+        "heading2": {
+          "title": "Heading 2",
+          "subtitle": "Medium section heading"
+        },
+        "heading3": {
+          "title": "Heading 3",
+          "subtitle": "Small section heading"
+        },
+        "bulletList": {
+          "title": "Bulleted list",
+          "subtitle": "A simple list"
+        },
+        "orderedList": {
+          "title": "Numbered list",
+          "subtitle": "A list that counts"
+        },
+        "taskList": {
+          "title": "To-do",
+          "subtitle": "Something to tick off"
+        },
+        "blockquote": {
+          "title": "Quote",
+          "subtitle": "Set a passage apart"
+        },
+        "codeBlock": {
+          "title": "Code",
+          "subtitle": "Preformatted, monospaced"
+        },
+        "horizontalRule": {
+          "title": "Divider",
+          "subtitle": "Break the page in two"
+        },
+        "image": {
+          "title": "Image",
+          "subtitle": "Upload a picture"
+        }
+      },
+      "groups": {
+        "basic": "Basic blocks",
+        "media": "Media"
+      },
+      "no_match": "No block called “{query}”"
+    },
+    "block_menu": {
+      "duplicate": "Duplicate",
+      "copy_text": "Copy text",
+      "turn_into": "Turn into"
+    }
+  },
+  "cards": {
+    "everything": "Everything",
+    "media_preview": {
+      "date_unavailable": "Date unavailable",
+      "movie_poster_alt": "Movie poster",
+      "game_poster_alt": "Game poster"
+    },
+    "search_chip": {
+      "remove": "Remove {label}"
+    },
+    "drawing": {
+      "save_failed": "Could not save drawing"
+    }
+  },
+  "faq": {
+    "title_line1": "Questions,",
+    "title_emphasis": "bookmarked.",
+    "subtitle": "Everything people ask us, saved in one place. Pick a topic or open a bite.",
+    "topics_aria": "Topics",
+    "topics": {
+      "all": "All",
+      "start": "Getting started",
+      "saving": "Saving & syncing",
+      "billing": "Plans & billing",
+      "privacy": "Privacy & data",
+      "dev": "Developers"
+    },
+    "still_stuck": {
+      "title": "Still stuck?",
+      "body": "A person reads every email, usually within two working days. Tell us what you did, what you expected and what happened instead.",
+      "email_button": "Email {email}",
+      "feature_button": "Request a feature"
+    },
+    "items": {
+      "what": {
+        "q": "What is WebBites?",
+        "a": "A place to save anything — websites, images, movies, games, notes — and find it again without doing the filing yourself. Save with one click and WebBites tags and organises it using AI, then searches by title, colour, tags and even the text on the page."
+      },
+      "platforms": {
+        "q": "Which platforms does it run on?",
+        "a": "The web app, native apps for iPhone, iPad, Mac, Vision Pro, Apple TV and Apple Watch, and a browser extension for saving from wherever you are. Everything syncs through your account."
+      },
+      "account": {
+        "q": "Do I need an account to use the apps?",
+        "a": "No. The apps for iPhone, iPad, Mac and Vision Pro work signed out, against a library kept on your own device, and nothing you save in that mode is sent to us. Sync, sharing, semantic search and the cloud features need an account, and you can switch the intelligence features to on-device models in Settings if you want to keep them local too. The details are in the <a href=\"/privacy\">Privacy Policy</a> §2."
+      },
+      "password": {
+        "q": "I forgot my password",
+        "a": "Use <a href=\"/passwordReset\">the reset page</a> or the \"Forgot password\" link on the sign-in screen. The email arrives from our mail provider — check spam if it doesn't. If you signed in with Apple there is no password to reset: use the Apple button again."
+      },
+      "sync": {
+        "q": "My bookmarks aren't syncing",
+        "a": "Check you're signed into the same account on both devices, then pull to refresh. A save made while offline sits in a queue and flushes when the network returns — the app shows those on the \"Waiting to save\" screen under Settings → Data &amp; Offline. If something is stuck there for more than a few minutes with a working connection, email us."
+      },
+      "extension": {
+        "q": "The extension isn't saving",
+        "a": "The extension saves through your signed-in session, so open the web app once and sign in, then try again. On Safari, extensions also need to be enabled and granted permission for the site you're on, in Safari → Settings → Extensions."
+      },
+      "bad_save": {
+        "q": "A page saved badly — no image, wrong title, no article text",
+        "a": "Some sites block automated fetching, render everything in JavaScript, or sit behind a paywall or a login. In those cases we save what we can reach. Editing the title, description or image on the bite fixes it for good. Send us the URL if a site you care about consistently comes out wrong — a lot of them we can fix individually."
+      },
+      "export": {
+        "q": "Can I export or import my bookmarks?",
+        "a": "Both. Settings → Export, on any platform, gives you your library in a portable file, on any plan, at any time. To bring browser bookmarks in, follow the <a href=\"/export-bookmarks\">import guide</a>."
+      },
+      "pricing": {
+        "q": "What does it cost?",
+        "a": "There's a free plan, and paid plans for more bookmarks and the advanced features. The current plans and prices are on the <a href=\"/#pricing\">pricing section</a> of the home page."
+      },
+      "cancel": {
+        "q": "How do I cancel or change my plan?",
+        "a": "Cancel where you subscribed. If you subscribed on the web or on the Mac, it's Settings → Subscription, which opens the billing portal. If you subscribed through the App Store, it's in your Apple subscription settings on your device (Settings → your name → Subscriptions), because Apple bills those directly. You keep paid features until the end of the period you've paid for."
+      },
+      "privacy": {
+        "q": "Is my data private?",
+        "a": "Your bookmarks are yours. We don't sell your data, and the apps can run entirely on-device if you never sign in. What we store, why, and for how long is spelled out in the <a href=\"/privacy\">Privacy Policy</a>."
+      },
+      "delete": {
+        "q": "How do I delete my account?",
+        "a": "Settings → Delete account, and confirm. It deletes your bookmarks, files and subscription along with it, and it is not reversible — so export first if you want a copy. No email to us is needed, and we don't put a retention offer in the way."
+      },
+      "api": {
+        "q": "Is there an API?",
+        "a": "Yes — the <a href=\"/developers\">developer page</a> shows what it can do, and the <a href=\"/developers/docs\">documentation</a> has the guides, your API keys, a playground and every endpoint."
+      }
+    }
+  },
+  "help_pages": {
+    "legal": {
+      "last_updated": "Last updated {date}",
+      "questions": "Questions about this page? Write to {email}."
+    },
+    "chat": {
+      "title": "Chat with us",
+      "subtitle": "A real person on our team picks this up — usually within two working days.",
+      "iframe_title": "Support chat",
+      "not_configured": "Chat isn't configured yet. Email us at {email}.",
+      "sign_in_prompt": "Sign in to start a conversation and keep your history in one place.",
+      "sign_in": "Sign in",
+      "prefer_email": "Prefer email? Write to {email}."
+    },
+    "support": {
+      "title": "Support",
+      "subtitle": "Something broken, something missing, or something you just can't find? Here's how to reach a person.",
+      "email_us": "Email us",
+      "email_body": "One person reads this address, usually within two working days. Tell us what you did, what you expected and what happened instead — and which app (web, iPhone, iPad, Mac, Vision Pro, TV, Watch or the browser extension) and version you were on. A screenshot saves a whole exchange.",
+      "operated_by": "WebBites is operated by {operator}, {address}.",
+      "where_title": "Where to put things",
+      "col_want": "If you want to…",
+      "col_go": "Go here",
+      "row_bug": "Report a bug or ask for help",
+      "row_bug_go": "{chat}, or {email}",
+      "chat_link": "Chat with us",
+      "row_feature": "Request a feature, or vote on one",
+      "feedback_board": "Feedback board",
+      "row_changes": "See what changed and when",
+      "changelog": "Changelog",
+      "row_api": "Build against the API",
+      "developer_docs": "Developer docs",
+      "row_import": "Move your browser bookmarks in",
+      "import_guide": "Import guide",
+      "row_security": "Report a security problem",
+      "row_security_go": "{email}, subject line \"Security\"",
+      "row_rights": "Exercise a data protection right",
+      "row_rights_go": "{link} §11",
+      "privacy_policy": "Privacy Policy",
+      "faq_title": "Answers to the usual questions",
+      "faq_body": "Passwords, syncing, exports, cancelling, the extension and more are on the {link}.",
+      "faq_link": "FAQ page",
+      "security_title": "Reporting a security issue",
+      "security_body": "Email {email} with \"Security\" in the subject and enough detail to reproduce the problem. Please don't publish it before we've had a chance to fix it, don't access or modify other people's data while testing, and don't run load or denial-of-service tests against the service. We'll confirm we've received it, keep you posted, and credit you when it's fixed if you'd like that."
+    }
+  },
+  "support_chat": {
+    "replying_to": "Replying to {email}",
+    "real_person": "A real person reads this",
+    "gate_intro": "Sign in to keep your full history, or leave a message as a guest.",
+    "your_email": "Your email",
+    "continue_as_guest": "Continue as guest",
+    "email_note": "We only use it to reply. Your draft stays on this device.",
+    "we_reply_to": "We reply to {email} — usually within two working days.",
+    "tell_us": "Tell us what's going on.",
+    "your_message": "Your message",
+    "send": "Send",
+    "close_chat": "Close support chat",
+    "open_chat": "Open support chat",
+    "invalid_email": "Enter a valid email so we can reply."
+  },
+  "marketing": {
+    "statistics": {
+      "active_users": "Active Users",
+      "bookmarks_saved": "Bookmarks Saved",
+      "accuracy_rate": "Accuracy Rate",
+      "support": "Support"
+    }
+  },
+  "import_export": {
+    "time": {
+      "unknown": "Unknown",
+      "ago_minutes": "{minutes}m {seconds}s ago",
+      "ago_seconds": "{seconds}s ago",
+      "hours_minutes": "{hours}h {minutes}m",
+      "minutes_seconds": "{minutes}m {seconds}s",
+      "seconds": "{seconds}s"
+    },
+    "status_labels": {
+      "inactive": "Inactive",
+      "active": "Active",
+      "processing": "Processing",
+      "completed": "Completed",
+      "cancelled": "Cancelled",
+      "failed": "Failed"
+    },
+    "activity": {
+      "processing": "Processing:",
+      "waiting": "Waiting for next bookmark...",
+      "last_update": "Last update: {time}"
+    },
+    "failed": {
+      "title": "Failed Imports ({count})",
+      "retry": "Retry {count} item | Retry {count} items",
+      "retryable": "Retryable",
+      "failed": "Failed"
+    },
+    "metrics": {
+      "title": "Performance Metrics",
+      "per_minute": "bookmarks/min",
+      "duration": "duration",
+      "estimated_completion": "estimated completion",
+      "batches": "batches"
+    },
+    "overview": {
+      "title": "Import Status",
+      "processing": "Processing {done} of {total} bookmarks",
+      "currently": "Currently: {url}",
+      "no_session": "No active import session"
+    },
+    "progress": {
+      "title": "Progress",
+      "hint": "This could take a few minutes, the import will continue even if you close this window.",
+      "completed": "{count} completed",
+      "failed": "{count} failed"
+    },
+    "queue": {
+      "title": "Queue Preview",
+      "remaining": "{count} remaining",
+      "empty": "No items in queue",
+      "batch": "Batch: {batch}",
+      "more": "... and {count} more"
+    },
+    "modal": {
+      "title": "Import Progress",
+      "cancel_import": "Cancel Import",
+      "retry_success": "{count} item added back to queue for retry | {count} items added back to queue for retry",
+      "retry_error": "Failed to retry items. Please try again.",
+      "cancelled": "Import process has been cancelled",
+      "cancel_error": "Failed to cancel import. Please try again."
+    },
+    "user_modal": {
+      "title": "Import Bookmarks",
+      "subtitle": "Trigger bookmark import for this user",
+      "no_email": "No email provided",
+      "user_id": "User ID: {id}",
+      "current_bookmarks": "Current bookmarks: {count}",
+      "import_status": "Import Status",
+      "last_import": "Last import: {date}",
+      "total_imported": "Total imported: {count} bookmarks",
+      "options": "Import Options",
+      "force_reimport": "Force re-import (override existing bookmarks)",
+      "skip_duplicates": "Skip duplicate bookmarks",
+      "notify_user": "Send notification to user when complete",
+      "from_parse_class": "Import from Parse class",
+      "notice_title": "Important Notice",
+      "progress": "Import Progress",
+      "importing": "Importing...",
+      "start_import": "Start Import",
+      "already_imported_warning": "This user has already imported bookmarks. Enable \"Force re-import\" to override existing data.",
+      "status_unknown": "Unknown",
+      "status_imported": "Previously imported",
+      "status_none": "No imports",
+      "not_available": "N/A",
+      "step_init": "Initializing import...",
+      "step_prepare": "Preparing user data...",
+      "step_process": "Processing bookmarks...",
+      "step_finalize": "Finalizing import...",
+      "step_done": "Import completed successfully!",
+      "failed_generic": "Import failed",
+      "failed": "Import failed: {error}"
+    },
+    "export_guide": {
+      "title": "How to Export Your Bookmarks",
+      "intro": "Ready to bring your bookmarks to WebBites? Follow these simple instructions to export your bookmarks from your favorite browser.",
+      "help_title": "Need Help?",
+      "help_text": "If you're having trouble exporting your bookmarks, feel free to {link}.",
+      "help_link": "contact our support team",
+      "exporting_from": "Exporting from {browser}",
+      "note_label": "Note:",
+      "next_title": "What's Next?",
+      "next_intro": "Now that you've exported your bookmarks, you can import them into WebBites:",
+      "next_1": "Go to your <a href=\"/app\" class=\"text-primary-600 dark:text-primary-400 hover:underline\">WebBites dashboard</a> and open the settings modal.",
+      "next_2": "Click on the \"Import bookmarks\" button.",
+      "next_3": "Select and upload your exported bookmarks file",
+      "next_4": "Select the ones you want to upload, click on 'Import' and let WebBites organize everything for you!",
+      "import_alt": "WebBites import step {n}",
+      "steps": {
+        "chrome_1": {
+          "title": "Open the Chrome Menu",
+          "description": "Click on the three dots <strong>⋮</strong> in the top-right corner of your browser window to open the Chrome menu."
+        },
+        "chrome_2": {
+          "title": "Access Bookmarks Manager",
+          "description": "Navigate to <strong>Bookmarks > Bookmark Manager</strong>, or simply press <kbd class=\"new-kbd\">Ctrl+Shift+O</kbd> (Windows/Linux) or <kbd class=\"new-kbd\">⌘+Option+B</kbd> (Mac)."
+        },
+        "chrome_3": {
+          "title": "Export Bookmarks",
+          "description": "Click on the three dots <strong>⋮</strong> in the top-right corner of the Bookmark Manager, then select <strong>Export bookmarks</strong>."
+        },
+        "chrome_4": {
+          "title": "Save the HTML File",
+          "description": "Choose a location on your computer to save the HTML file containing your bookmarks. The default name will be something like 'bookmarks_[date].html'.",
+          "note": "This HTML file contains all your bookmarks and their folder structure."
+        },
+        "firefox_1": {
+          "title": "Open the Firefox Menu",
+          "description": "Click on the three horizontal lines (hamburger menu) <strong>☰</strong> in the top-right corner of your browser window."
+        },
+        "firefox_2": {
+          "title": "Access Bookmarks",
+          "description": "Navigate to <strong>Bookmarks > Manage Bookmarks</strong>, or press <kbd class=\"new-kbd\">Ctrl+Shift+B</kbd> (Windows/Linux) or <kbd class=\"new-kbd\">⌘+Shift+B</kbd> (Mac)."
+        },
+        "firefox_3": {
+          "title": "Export Bookmarks",
+          "description": "In the Library window that opens, click on <strong>Import and Backup > Export Bookmarks to HTML</strong>."
+        },
+        "firefox_4": {
+          "title": "Save the HTML File",
+          "description": "Choose a location on your computer to save the HTML file. The default name will be 'bookmarks.html'.",
+          "note": "Make sure to remember where you saved this file for easy access when importing to WebBites."
+        },
+        "safari_1": {
+          "title": "Open Safari Menu",
+          "description": "Click on <strong>File</strong> in the top menu bar of Safari."
+        },
+        "safari_2": {
+          "title": "Export Bookmarks",
+          "description": "Select <strong>Export Bookmarks</strong> from the dropdown menu."
+        },
+        "safari_3": {
+          "title": "Save the File",
+          "description": "Choose a location on your Mac to save the bookmarks file. This will save a .zip file, you'll need to unzip it to get the .html file.",
+          "note": "Safari exports all your bookmarks, including those in the Favorites bar and all folders."
+        },
+        "edge_1": {
+          "title": "Open Edge Menu",
+          "description": "Click on the three dots <strong>⋯</strong> in the top-right corner of your browser window, then click on <strong>Favorites</strong>."
+        },
+        "edge_2": {
+          "title": "Export Favorites",
+          "description": "Click on <strong>Export favorites</strong>."
+        },
+        "edge_3": {
+          "title": "Save the HTML File",
+          "description": "Choose a location on your computer to save the HTML file containing your favorites/bookmarks.",
+          "note": "Edge will export all your favorites, including those in any folders you've created."
+        },
+        "opera_1": {
+          "title": "Access Bookmarks",
+          "description": "Press <kbd class=\"new-kbd\">Ctrl+Shift+B</kbd> (Windows/Linux) or <kbd class=\"new-kbd\">⌘+Option+B</kbd> (Mac) to open the Bookmark Manager, or click on the Opera menu and select <strong>Bookmarks > Bookmarks</strong>."
+        },
+        "opera_2": {
+          "title": "Open full bookmark view",
+          "description": "Click on <strong>Open full Bookmarks view</strong>"
+        },
+        "opera_3": {
+          "title": "Export Bookmarks",
+          "description": "Click on the <strong>Import/Export</strong> button in the bottom-left corner of the Bookmark Manager, then select <strong>Export bookmarks as HTML file</strong>."
+        },
+        "opera_4": {
+          "title": "Save the HTML File",
+          "description": "Choose a location on your computer to save the HTML file containing your bookmarks.",
+          "note": "Opera's bookmark export includes all your bookmarks and their folder structure."
+        },
+        "arc_1": {
+          "title": "Open Arc Sidebar",
+          "description": "Open the command bar by pressing <kbd class=\"new-kbd\">⌘+T</kbd>, and go to <strong>arc://bookmarks</strong>."
+        },
+        "arc_2": {
+          "title": "Export Bookmarks",
+          "description": "Click on the three dots <strong>⋯</strong> in the top-right corner of the Bookmarks panel, then select <strong>Settings</strong>. In the settings menu, find and click on <strong>Export Bookmarks</strong>."
+        },
+        "arc_3": {
+          "title": "Save the HTML File",
+          "description": "Choose a location on your computer to save the HTML file containing your bookmarks.",
+          "note": "This HTML file contains all your bookmarks and their folder structure."
+        },
+        "raindrop_1": {
+          "title": "Log into Raindrop.io",
+          "description": "Go to <a href='https://app.raindrop.io' target='_blank' rel='noopener noreferrer'>app.raindrop.io</a> and log into your account."
+        },
+        "raindrop_2": {
+          "title": "Access Settings",
+          "description": "Click on your profile picture in the top-right corner, then select <strong>Settings</strong> from the dropdown menu."
+        },
+        "raindrop_3": {
+          "title": "Export Bookmarks",
+          "description": "In the Settings menu, navigate to the <strong>Backup</strong> tab. Under the 'Export' section, select your preferred format (HTML is recommended for WebBites compatibility)."
+        },
+        "raindrop_4": {
+          "title": "Download Your Bookmarks",
+          "description": "Click the <strong>Export</strong> button to generate and download your bookmarks file.",
+          "note": "Raindrop.io allows you to export in multiple formats, but HTML format works best for importing into WebBites."
+        }
+      }
+    }
+  },
+  "subscription_success": {
+    "title": "Subscription Activated!",
+    "message": "You've successfully subscribed to the {plan} plan. Enjoy your premium experience!",
+    "benefits_title": "Your Premium Benefits",
+    "bookmarks": "Bookmarks",
+    "bookmarks_limit": "Save up to {limit} bookmarks",
+    "audio": "Audio Tracks",
+    "audio_limit": "Access {limit} premium audio tracks",
+    "import_bookmarks": "Import Bookmarks",
+    "start": "Start Exploring",
+    "unlimited": "unlimited"
+  },
+  "rss": {
+    "mark_all_read": "Mark all as read",
+    "mark_read": "Mark as read",
+    "mark_unread": "Mark as unread",
+    "pane": {
+      "articles": "Articles"
+    },
+    "sidebar": {
+      "feeds": "Feeds",
+      "all_articles": "All Articles",
+      "unread": "Unread",
+      "import_opml": "Import feeds (OPML)…",
+      "export_feeds": "Export feeds…",
+      "import_added": "Added {count} feed | Added {count} feeds",
+      "import_queued": "{count} more arriving",
+      "import_failed_rows": "{count} couldn’t be read",
+      "import_failed": "Couldn’t import that OPML file.",
+      "export_failed": "Couldn’t export your feeds."
+    },
+    "add_feed": {
+      "title": "Add feed",
+      "placeholder": "Feed address or name",
+      "hint": "Paste a site or feed address, or search by name.",
+      "nothing_found": "Nothing found",
+      "no_match": "No feed matched “{query}”. If you have the feed’s address, paste it here.",
+      "readers": "{count} reader | {count} readers",
+      "already_subscribed": "Already subscribed",
+      "add": "Add",
+      "done": "Done",
+      "subscribe_failed": "Couldn’t subscribe to that feed."
+    },
+    "settings": {
+      "name": "Name",
+      "name_hint": "Using the publisher’s name",
+      "fetch_full": "Fetch full articles",
+      "fetch_full_description": "Many feeds ship only a teaser. With this on, WebBites fetches each new article in full and summarises it for you. Available on a paid plan.",
+      "open_website": "Open website",
+      "feed_dead": "This feed has stopped responding and is no longer being checked.",
+      "unsubscribe": "Unsubscribe",
+      "save_failed": "Couldn’t save those settings."
+    },
+    "list": {
+      "filter": "Filter articles",
+      "showing_unread": "Showing unread only",
+      "show_unread": "Show unread only",
+      "refresh": "Refresh feed",
+      "confirm_feed": "Mark everything in “{title}” as read?",
+      "confirm_all": "Mark all articles as read?",
+      "full_text": "Full text available",
+      "summary": "Summary available",
+      "no_matches": "No matches",
+      "no_matches_description": "Nothing here matches “{query}”.",
+      "no_feeds": "No feeds yet",
+      "no_feeds_description": "Add a feed to start reading.",
+      "caught_up": "All caught up",
+      "caught_up_description": "Nothing unread here.",
+      "no_articles": "No articles",
+      "no_articles_description": "This feed hasn’t published anything yet."
+    },
+    "reader": {
+      "no_article": "No article selected",
+      "pick_article": "Pick something from the list to start reading.",
+      "original": "Original",
+      "mark_unread": "Mark unread",
+      "summarise": "Summarise this article",
+      "listen": "Listen to this article",
+      "nothing_to_read": "Nothing to read here",
+      "open_original": "Open original",
+      "save_bookmark": "Save as bookmark",
+      "add_read_later": "Add to Read it later",
+      "remove_read_later": "Remove from Read it later",
+      "show_original": "Show original",
+      "show_extracted": "Show extracted content",
+      "empty_failed": "We couldn’t pull this article’s text from the publisher.",
+      "empty_pending": "The full text is still being fetched. Try again in a moment.",
+      "empty_headlines": "This feed publishes headlines only. Open the original to read it.",
+      "too_short": "This article has too little text to summarise.",
+      "summary_failed": "Couldn’t summarise this article.",
+      "audio_failed": "Couldn’t generate audio for this article.",
+      "saved_read_later": "Saved to Read it later",
+      "removed_read_later": "Removed from Read it later",
+      "read_later_failed": "Couldn’t update Read it later.",
+      "extract_failed": "Couldn’t extract this article."
+    }
+  },
+  "audio_recorder": {
+    "start_recording": "Start recording",
+    "pause_recording": "Pause recording",
+    "resume_recording": "Resume recording"
+  },
+  "audio_voice_picker": {
+    "voices": {
+      "nova": "Warm and natural",
+      "alloy": "Neutral and balanced",
+      "ash": "Confident and clear",
+      "ballad": "Soft and expressive",
+      "coral": "Bright and friendly",
+      "echo": "Steady and low",
+      "fable": "Gentle storyteller",
+      "onyx": "Deep and authoritative",
+      "sage": "Calm and measured",
+      "shimmer": "Light and upbeat",
+      "verse": "Lively and dynamic",
+      "marin": "Clear and conversational",
+      "cedar": "Rich and grounded"
+    },
+    "accents": {
+      "american": "American",
+      "british": "British",
+      "australian": "Australian",
+      "irish": "Irish",
+      "indian": "Indian",
+      "scottish": "Scottish"
+    }
+  },
+  "auth_modal": {
+    "passwords_mismatch": "Passwords do not match",
+    "password_needs_chars": "Password needs {n} more character | Password needs {n} more characters",
+    "password_needs_number": "Password needs at least one number",
+    "signup_failed": "Signup failed",
+    "login_after_signup_failed": "Login after signup failed",
+    "login_failed": "Login failed"
+  },
+  "bookmark_editor": {
+    "no_results_for": "No results found for {query}"
+  },
+  "bookmark_group": {
+    "add_to_board": "Add to Board",
+    "board_empty_title": "This board is empty",
+    "board_empty_message": "Add bookmarks to this board from your collection using the options menu on any bookmark card."
+  },
+  "bookmark_options": {
+    "remove_from_board": "Remove from Board",
+    "removed_from_board": "Removed from board",
+    "remove_error": "Error removing from board",
+    "read_later": "Read it later",
+    "remove_read_later": "Remove from Read it later",
+    "saved_read_later": "Saved to Read it later",
+    "removed_read_later": "Removed from Read it later",
+    "add_to_board": "Add to \"{board}\"",
+    "added_to_board": "Added to {board}",
+    "add_error": "Error adding to board"
+  },
+  "bookmark_submit": {
+    "save_type": "Save {type}",
+    "types": {
+      "website": "website",
+      "image": "image",
+      "pdf": "pdf",
+      "movie": "movie",
+      "game": "game",
+      "drawing": "drawing",
+      "audio": "audio",
+      "textNote": "Note"
+    }
+  },
+  "bookmark_card": {
+    "image_alt": "Card image",
+    "favicon_alt": "Bookmark favicon",
+    "favicon_replacement_alt": "Bookmark replacement favicon",
+    "copy_url_failed": "Failed to copy URL"
+  },
+  "compose_expand": {
+    "save_drawing_error": "Could not save drawing"
+  },
+  "feedback_card": {
+    "hidden_title": "Hidden from everyone but admins",
+    "status": {
+      "in_progress": "in progress",
+      "backlog": "backlog",
+      "pending": "pending",
+      "done": "done",
+      "closed": "closed"
+    }
+  },
+  "feedback_comment": {
+    "deleted": "Comment deleted successfully",
+    "delete_failed": "Failed to delete comment"
+  },
+  "feedback_form": {
+    "select_type": "Select type",
+    "markdown_supported": "Markdown supported",
+    "sent": "Feedback sent successfully",
+    "login_to_submit": "You must be logged in to submit feedback",
+    "send_failed": "Error sending feedback, please try again later",
+    "types": {
+      "bug_report": "Bug report",
+      "feature_request": "Feature request",
+      "improvement": "Improvement",
+      "other": "Other"
+    }
+  },
+  "feedback_info_modal": {
+    "login_to_comment": "You must be logged in to comment",
+    "comment_failed": "Could not post your comment, please try again later"
+  },
+  "feedback_up_vote": {
+    "login_to_vote": "You must be logged in to vote"
+  },
+  "import_modal": {
+    "checking_access": "Checking import access...",
+    "quota_title": "Bookmark Quota",
+    "plan_active_title": "Import plan active",
+    "plan_active_description": "You can import unlimited bookmarks once, as long as it's before {date}",
+    "validate_failed": "Failed to validate import access",
+    "checkout_failed": "Failed to create checkout session"
+  },
+  "landing_footer": {
+    "api_docs": "API docs"
+  },
+  "main_sidebar": {
+    "trash": "Trash"
+  },
+  "mobile_top_bar": {
+    "library": "Library",
+    "more": "More",
+    "trash": "Trash",
+    "board": "Board",
+    "everything": "Everything"
+  },
+  "onboarding_wizard": {
+    "intro": {
+      "title": "Your library for the web",
+      "content": "Save what you find, follow the sites you love, and find it all again.",
+      "subcontent": "Here's the one-minute tour."
+    },
+    "organised": {
+      "title": "It organises itself",
+      "content": "Everything you save is tagged for you, with a full-page screenshot and a readable copy kept in case the page changes.",
+      "subcontent": "Search by words on the page, tags, text in images, even colour."
+    },
+    "feeds": {
+      "title": "Follow the sites you love",
+      "content": "New articles from the sites you follow arrive under Feeds. Read them, listen, or save the best to your library.",
+      "add": "Add a feed"
+    },
+    "everywhere": {
+      "title": "Save from anywhere",
+      "content": "Save any page in one click with the browser extension, or from the share sheet on iPhone, iPad and Mac.",
+      "subcontent": "In the apps, sign in with this account. A device library made without one is kept separate.",
+      "chrome": "Chrome extension",
+      "apps": "iPhone, iPad & Mac"
+    },
+    "import": {
+      "title": "Import Existing Bookmarks",
+      "content": "Bring your current bookmarks from any browser, and we'll organize them automatically",
+      "subcontent": "Visit {link} to learn how to export your bookmarks.",
+      "this_page": "this page"
+    },
+    "first_bookmark": {
+      "title": "Save Your First Bookmark",
+      "content": "Enter a URL below or try our suggestion.",
+      "subcontent": "The more you save, the more powerful your collection becomes."
+    }
+  },
+  "reader_view": {
+    "error_try_again": "There was an error, try again later"
+  },
+  "settings_modal": {
+    "view_import_status": "View import status",
+    "extensions_title": "WebBites extensions",
+    "extensions_subtitle": "Save anything from anywhere, faster.",
+    "extensions_label": "Extensions",
+    "chrome_icon_alt": "Webbites Chrome Extension Icon",
+    "raycast_icon_alt": "Webbites Raycast Extension Icon",
+    "automations_title": "Automations",
+    "automations_subtitle": "Whenever a bookmark is added, tag it, file it or send it somewhere. Smart boards live here too.",
+    "deleting_account": "Deleting account...",
+    "account_deleted": "Your account has been successfully deleted.",
+    "delete_account_failed": "An error occurred while trying to delete your account. Please try again."
+  },
+  "shortcuts_modal": {
+    "click": "Click"
+  },
+  "social_post_view": {
+    "fallback_platform": "Social"
+  },
+  "tag_manager": {
+    "untitled": "Untitled",
+    "error_generic": "Something went wrong"
+  },
+  "testimonials_old": {
+    "heading": "What Users Say"
+  },
+  "tiptap_editor": {
+    "narrow_view": "Narrow view",
+    "wide_view": "Wide view",
+    "paste_url": "Paste URL",
+    "image_size": {
+      "small": "Small",
+      "big": "Big",
+      "biggest": "Biggest"
+    },
+    "url_to_link": "URL to link",
+    "add_link": "Add Link",
+    "insert_block_below": "Insert a block below",
+    "block_actions_hint": "Block actions, or drag to move",
+    "block_actions": "Block actions",
+    "errors": {
+      "upload_failed": "Failed to upload image: {error}",
+      "no_file": "No file selected",
+      "too_large": "File size exceeds 10MB limit",
+      "not_image": "Selected file is not an image"
+    }
+  },
+  "website_modal_media_view": {
+    "backdrop_alt": "Backdrop poster for {title}",
+    "game_cover_alt": "{name} cover"
+  },
+  "website_screenshot": {
+    "pan_hint": "Hold Shift + drag to pan",
+    "undo": "Undo (Ctrl+Z)",
+    "redo": "Redo (Ctrl+Y)"
+  },
+  "import_status_history": {
+    "title": "Import History ({count} session) | Import History ({count} sessions)",
+    "empty": "No previous import sessions",
+    "progress": "{processed}/{total} bookmarks",
+    "success_rate": "{rate}% success",
+    "duration": "Duration: {duration}",
+    "more_sessions": "... and {count} more session | ... and {count} more sessions",
+    "unknown": "Unknown",
+    "status": {
+      "completed": "Completed",
+      "active": "Active",
+      "failed": "Failed",
+      "cancelled": "Cancelled"
+    }
+  },
+  "bookmarks_area": {
+    "already_pinned": "This website is already pinned"
+  },
+  "top_bar": {
+    "importing": "Importing in progress"
+  },
+  "search_bar": {
+    "filters": "Filters",
+    "beta": "(beta)",
+    "natural_language_description": "Slower, but you can search using natural language. For example:",
+    "natural_language_example": "\"GitHub projects about Swift\"",
+    "colors": "Colors",
+    "find_tag": "Find a tag",
+    "tags_loading": "Loading…",
+    "no_tags": "No tags found",
+    "color_names": {
+      "red": "Red",
+      "green": "Green",
+      "blue": "Blue",
+      "yellow": "Yellow",
+      "purple": "Purple",
+      "orange": "Orange",
+      "black": "Black",
+      "white": "White",
+      "pink": "Pink",
+      "brown": "Brown",
+      "gray": "Gray",
+      "cyan": "Cyan",
+      "magenta": "Magenta",
+      "lime": "Lime",
+      "olive": "Olive",
+      "navy": "Navy",
+      "teal": "Teal",
+      "maroon": "Maroon",
+      "silver": "Silver",
+      "gold": "Gold",
+      "indigo": "Indigo",
+      "violet": "Violet"
+    }
+  },
+  "new_bookmark": {
+    "fetching_preview": "Fetching website preview...",
+    "clipboard_access": "Make sure you have enabled clipboard access in your browser.",
+    "saving_note": "Saving note",
+    "note_saved": "Text note saved",
+    "note_error": "Error saving text note",
+    "saving_drawing": "Saving drawing",
+    "drawing_saved": "Drawing saved",
+    "drawing_error": "Error saving drawing",
+    "media_error": "Error saving media",
+    "nothing_to_save": "Nothing to save yet",
+    "saved": "Saved",
+    "save_as": {
+      "website": "Save website",
+      "textNote": "Save note",
+      "image": "Save image",
+      "pdf": "Save pdf",
+      "movie": "Save movie",
+      "game": "Save game",
+      "drawing": "Save drawing",
+      "audio": "Save audio"
+    }
+  },
+  "landing_page": {
+    "hero": {
+      "title": "Your library",
+      "title_emphasis": "for the web",
+      "subtitle": "Save anything you find, follow the sites you love, and find it all again. WebBites organises it for you.",
+      "logo_alt": "WebBites Logo"
+    },
+    "scroll": {
+      "title": "Everything you save,",
+      "title_emphasis": "in one place",
+      "browser_alt": "The WebBites wall in a browser, showing saved articles, images, notes and music side by side"
+    },
+    "native": {
+      "title": "iPhone, iPad, Mac and any browser",
+      "description": "Native apps for iPhone, iPad and Mac, each with a share sheet and Safari extension, and the full web app everywhere else. Sign in with your WebBites account and your library is already there.",
+      "mac_alt": "The WebBites Mac app, with boards and feeds in the sidebar beside a wall of saved bookmarks",
+      "phone_alt": "The WebBites iPhone app, showing the same saved bookmarks in two columns"
+    },
+    "features": {
+      "ai": {
+        "title": "Organised for you",
+        "description": "Every bookmark is tagged and sorted as you save it. No folders to keep tidy."
+      },
+      "search": {
+        "title": "Find it again",
+        "description": "Search the words on the page, tags, notes, text inside images, even colour."
+      },
+      "screenshots": {
+        "title": "Kept for good",
+        "description": "A full-page screenshot and a readable copy of every page, in case the original changes or disappears."
+      },
+      "media": {
+        "title": "Save anything",
+        "description": "Articles, images, videos, films, games and notes, side by side in one library."
+      },
+      "ai_organisation": {
+        "description": "Automatically categorise and tag your bookmarks using advanced AI."
+      },
+      "cross_platform": {
+        "description": "iPhone, iPad, Mac and the web, all showing the same library once you sign in."
+      },
+      "reader": {
+        "title": "Reader mode",
+        "description": "Articles will automatically be formatted for better reading experience, even those behind paywalls!"
+      },
+      "raycast": {
+        "title": "Raycast ready",
+        "description": "With our Raycast extension, all your bookmarks are just one keystroke away!"
+      },
+      "browsers": {
+        "title": "Save from your browser",
+        "description": "One click with the Chrome extension, or the Safari extension that comes with the Mac and iPhone apps."
+      },
+      "colors": {
+        "title": "Extract colors",
+        "description": "The main colors of all your bookmarks are extracted for you, making it possible to search by color!"
+      },
+      "tts": {
+        "title": "Text to speech",
+        "description": "Listen to anything you've saved, or any article from your feeds."
+      },
+      "annotate": {
+        "title": "Annotate screenshots",
+        "description": "Click anywhere on the screenshot to add an annotation."
+      },
+      "ocr": {
+        "title": "OCR",
+        "description": "Optical Character Recognition (OCR) will be applied to all images saved, making it possible to search them by text."
+      },
+      "pin": {
+        "title": "Pin your bookmarks",
+        "description": "Pin your bookmarks to the top of your list for easy access."
+      },
+      "multilingual": {
+        "title": "Multilingual",
+        "description": "Support for multiple languages."
+      }
+    },
+    "save_anything": {
+      "sentence": "Save anything, from {websites}{images}{movies}{games} and even {notes} with our Notion-like editor.",
+      "websites": "websites",
+      "images": "images",
+      "movies": "movies",
+      "games": "games",
+      "notes": "notes"
+    },
+    "roadmap_more": {
+      "title": "Plus many more!",
+      "description": "More features are always being added, check out the feedback board to see what's coming next!"
+    },
+    "developers": {
+      "title": "An API for everything you save",
+      "description": "Everything WebBites does, it does over HTTP. Save a link, search your library, get a webhook the moment the AI has finished with it.",
+      "docs_button": "Read the developer docs",
+      "facts": {
+        "rest": {
+          "title": "Plain REST",
+          "text": "An OpenAPI schema and a browser playground to try every call before you write any code."
+        },
+        "webhooks": {
+          "title": "Webhooks",
+          "text": "Point a URL at WebBites and it POSTs the finished bookmark — screenshot, summary and tags — signed so you can verify it."
+        },
+        "keys": {
+          "title": "Your keys, your limits",
+          "text": "Create keys, see what each one has spent, and read the rate limit off every response header."
+        }
+      },
+      "samples": {
+        "save": "Save a link",
+        "search": "Search",
+        "webhook": "Webhook"
+      }
+    },
+    "feeds": {
+      "title": "Follow the sites you love",
+      "description": "A built-in reader for blogs, news and newsletters, with no algorithm. Read, listen to or summarise each article, and save the best to your library.",
+      "image_alt": "The WebBites feed reader on a Mac, with feeds in the sidebar and an article open beside them"
+    },
+    "where": {
+      "title": "Where your library lives",
+      "separate": "A WebBites account syncs everywhere. A device library stays on your iPhone, iPad or Mac, with no account at all. The two are separate: a device library never shows up on the web or in an account, and purchases don't carry over between them.",
+      "account": "WebBites account:",
+      "account_when": "if you use the web or Chrome, or want feeds, AI tags and summaries.",
+      "device": "Device library:",
+      "device_when": "if you only use Apple devices and want nothing on anyone's server."
+    }
+  },
+  "login_page": {
+    "not_you": "Not {email}?"
+  },
+  "password_reset_page": {
+    "chars_needed": "Password needs {count} more character | Password needs {count} more characters",
+    "number_needed": "Password needs at least one number",
+    "mismatch": "Passwords do not match"
+  },
+  "questionnaire": {
+    "eyebrow": "Help shape WebBites",
+    "step": "{current} of {total}",
+    "hint": "Pick any that fit. Skip whenever you like.",
+    "q_tools": "What do you use to save links today?",
+    "q_interest": "What matters most to you?",
+    "q_ai": "What would “auto-organise with AI” look like?",
+    "browser": "Browser bookmarks",
+    "raindrop": "Raindrop",
+    "pocket": "Pocket",
+    "notion": "Notion",
+    "notes": "Apple Notes",
+    "pinterest": "Pinterest",
+    "none": "Nothing yet",
+    "find": "Finding things again",
+    "organise": "Staying organised",
+    "devices": "Saving from any device",
+    "visual": "A visual archive",
+    "later": "Reading later",
+    "share": "Sharing boards",
+    "tags": "Automatic tags",
+    "search": "Search in plain words",
+    "boards": "Sorted into boards",
+    "summaries": "Summaries",
+    "duplicates": "Spotting duplicates",
+    "other": "Anything else? (optional)",
+    "skip_question": "Skip question",
+    "thanks": "Thanks, that really helps!"
+  }
+}

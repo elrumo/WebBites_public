@@ -1,0 +1,67 @@
+# One address in front of everything. Caddy gets and renews the certificate on its own when
+# SITE_ADDRESS is a real domain; "http://localhost" (the installer's default) stays plain http.
+
+# Behind another proxy (Cloudflare, a load balancer)? Tell Caddy to trust it, or every request looks
+# like it comes from that proxy, and rate limits and IP rules see the wrong address. Add a global
+# options block at the very top of this file:
+#   {
+#       servers {
+#           trusted_proxies static <the proxy's address range>
+#       }
+#   }
+# Do not trust private ranges wholesale: a forged X-Forwarded-For would then pass for the real client.
+
+{$SITE_ADDRESS:http://localhost} {
+	encode zstd gzip
+
+	# Uploads (PDF, audio, imports) go through here.
+	request_body {
+		max_size 600MB
+	}
+
+	header {
+		X-Content-Type-Options nosniff
+		Referrer-Policy strict-origin-when-cross-origin
+		-Server
+	}
+
+	# --- the API -------------------------------------------------------------------------------
+	# The consent page of the MCP sign-in lives in the web app at the same path as the API's
+	# starting endpoint; only the API's carries a client_id.
+	@oauth_start {
+		path /oauth/authorize
+		query client_id=*
+	}
+	handle @oauth_start {
+		reverse_proxy api:3000
+	}
+
+	@api {
+		path /v1/* /mcp /mcp/* /oauth/* /.well-known/oauth-* /extension-auth /verify-extension-token
+		path /deleteSession /isPageSaved /saveUserImage /saveUserPdf /saveUserAudio /batchDelete
+		path /removeDuplicates /validateImportAccess /raycast /raycast-user /health /_docs/*
+	}
+	handle @api {
+		reverse_proxy api:3000 {
+			# Long audio streams and imports.
+			transport http {
+				response_header_timeout 120s
+			}
+		}
+	}
+
+	# --- Parse Server (REST, LiveQuery websocket and the files it serves) ------------------------
+	handle /parse* {
+		reverse_proxy parse:1337
+	}
+
+	# --- object storage, when the `rustfs` profile is on -----------------------------------------
+	handle_path /s3/* {
+		reverse_proxy rustfs:9000
+	}
+
+	# --- everything else is the web app ----------------------------------------------------------
+	handle {
+		reverse_proxy web:3000
+	}
+}

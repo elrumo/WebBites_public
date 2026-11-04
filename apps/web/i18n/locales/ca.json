@@ -1,0 +1,2424 @@
+{
+  "alerts": {
+    "bookmark": {
+      "duplicate": "Ja has desat aquest marcador",
+      "duplicate_cancel": "No el desis",
+      "duplicate_confirm": "Desa'l de nou",
+      "error": "Error en desar el marcador",
+      "export_success": "Marcadors exportats!",
+      "limit_description": {
+        "other": " el teu pla per desar més marcadors"
+      },
+      "limit_reached": "Has arribat al límit de marcadors",
+      "pin_error": "No s'ha pogut fixar la marcador, torna-ho a provar més tard",
+      "save_error_note": "Error en desar la nota",
+      "save_success": "Marcador desat",
+      "saving": "Desant...",
+      "hide_error": "Could not change that bookmark's visibility",
+      "hide_index_lag": "Hidden, but search may take a moment to catch up"
+    },
+    "clipboard": {
+      "copy_error": "Error en copiar al porta-retalls.",
+      "copy_success": "{text} copiat al porta-retalls."
+    },
+    "editor": {
+      "image_upload_error": "Error en gestionar la imatge: {error}",
+      "image_upload_progress": "Pujant imatge..."
+    },
+    "file_upload": {
+      "error": "Error en pujar el fitxer",
+      "success": "Fitxer pujat correctament",
+      "uploading_many": "Pujant els fitxers...",
+      "uploading_one": "Pujant el fitxer..."
+    },
+    "image_upload": {
+      "error": "Error en pujar la imatge",
+      "success": "Imatge pujada amb èxit"
+    },
+    "import": {
+      "complete": "Fet!",
+      "complete_description": "Tots els teus marcadors s'han importat a WebBites.",
+      "error": "Alguna cosa ha anat malament, si us plau torna-ho a provar",
+      "final_success": "Els teus marcadors s'han importat. 😊",
+      "progress": "Un moment...",
+      "progress_description": "Si tens molts marcadors, això podria trigar uns segons",
+      "remaining": "Marcadors pendents d'importar:",
+      "remaining_description": "Això pot trigar una estona. Pots tancar l'aplicació, t'enviarem un correu electrònic quan s'hagi acabat.",
+      "success": "Marcadors importats amb èxit"
+    },
+    "live_note": {
+      "conflict": "Aquesta nota s'ha actualitzat des d'un altre dispositiu. S'han conservat els teus canvis locals.",
+      "merged_with_conflicts": "Canvis del núvol fusionats. Algunes edicions superposades s'han conservat tal qual."
+    },
+    "subscription": {
+      "duplicate_plan": "Ja estàs subscrit a aquest pla. Si us plau, comprova les teves subscripcions actuals."
+    },
+    "core_store": {
+      "board_joined": "T’has unit a “{name}”",
+      "invite_accepted": "Invitació acceptada",
+      "invite_invalid": "Aquest enllaç d’invitació ja no és vàlid",
+      "board_move_failed": "No s’ha pogut moure allà",
+      "board_duplicated": "Duplicat — {count} marcador copiat | Duplicat — {count} marcadors copiats",
+      "board_duplicate_error": "Error en duplicar el tauler",
+      "board_archived": "Tauler arxivat",
+      "board_archive_error": "Error en arxivar el tauler",
+      "board_delete_title": "Vols eliminar “{name}”?",
+      "folder_delete_description": "Els taulers i carpetes que conté també s’eliminen. Els marcadors en si no s’eliminen.",
+      "board_delete_shared_description": "Tothom amb qui es comparteix en perd l’accés. Els marcadors en si no s’eliminen.",
+      "board_delete_description": "Els marcadors en si no s’eliminen.",
+      "folder_deleted": "Carpeta eliminada",
+      "board_deleted": "Tauler eliminat",
+      "folder_delete_error": "Error en eliminar la carpeta",
+      "board_delete_error": "Error en eliminar el tauler",
+      "board_leave_title": "Vols sortir de “{name}”?",
+      "board_leave_description": "Desapareix dels teus taulers fins que algú et torni a convidar.",
+      "board_leave_confirm": "Surt",
+      "board_left": "Has sortit del tauler",
+      "board_leave_error": "Error en sortir del tauler",
+      "trash_load_failed": "No s’han pogut carregar els marcadors eliminats",
+      "trash_restore_failed": "No s’ha pogut restaurar el marcador",
+      "drawing_save_error": "Error en desar el dibuix",
+      "sign_in_required": "Has d’haver iniciat sessió per fer-ho"
+    },
+    "core_files": {
+      "unsupported_one": "{name} no és una imatge, un PDF ni un àudio.",
+      "unsupported_many": "Només es poden pujar imatges, PDF i àudios.",
+      "heic_one": "Aquest navegador no pot llegir {name}. Exporta’l com a JPEG i torna-ho a provar.",
+      "heic_many": "Aquest navegador no pot llegir fotos HEIC. Exporta-les com a JPEG i torna-ho a provar.",
+      "unreadable_one": "{name} no és una imatge que aquest navegador pugui llegir.",
+      "unreadable_many": "Aquestes no són imatges que aquest navegador pugui llegir."
+    }
+  },
+  "auth": {
+    "add_to_waitlist": "Afegeix-me a la llista d'espera",
+    "chrome_extension_auth_detected": "Extensió detectada",
+    "chrome_extension_auth_not_detected": "Extensió no detectada",
+    "close_tab": "Tancar pestanya",
+    "current_bookmarking_manager": "Quin gestor de marcadors utilitzes actualment?",
+    "current_bookmarking_manager_placeholder": "p. ex. Marcadors de Chrome, Pocket, Raindrop...",
+    "email_error": "L'inici de sessió ha fallat amb un error:",
+    "email_success": "S'ha enviat un correu electrònic amb un enllaç per restablir la contrasenya",
+    "extension_connected": "Extensió connectada",
+    "extension_connected_message": "Ja podeu començar a utilitzar WebBites amb els vostres marcadors.",
+    "extension_login_description": "Inicieu sessió al vostre compte de WebBites",
+    "go_to_app": "Ves a l'aplicació",
+    "logout": "Tanca la sessió",
+    "most_interested": "Què t'interessa més de WebBites?",
+    "most_interested_placeholder": "p. ex. organització amb IA, sincronització multiplataforma...",
+    "notify_me": "Notifica'm",
+    "password_reset_error": "S'ha produït un error en restablir la vostra contrasenya. Torneu-ho a provar.",
+    "password_reset_success": "La teva contrasenya ha estat restablerta correctament.",
+    "reset_password_description": "Introduïu una nova contrasenya per restablir-la.",
+    "sign_in": "Inicia sessió",
+    "signInWithApple": "Continua amb Apple",
+    "sign_up": "Registra't",
+    "waitlist_done": "Ets a la llista d'espera!",
+    "waitlist_info": "Uneix-te a la llista d'espera i segueix-me a",
+    "waitlist_info_2": "per mantenir-te al dia.",
+    "waitlist_success": "Ets a la llista d'espera! Segueix-me a",
+    "waitlist_success_2": "per mantenir-te al dia.",
+    "waitlist_success_alert": "T'han afegit a la llista d'espera 🥳"
+  },
+  "bookmark": {
+    "audio_generation": "Generació d'Àudio",
+    "image_extracted_text": "💬 Text extret de la imatge"
+  },
+  "bookmark_details": {
+    "added": "Afegit",
+    "alerts": {
+      "color_copied": "Color copiat",
+      "image_downloaded": "Imatge descarregada",
+      "image_download_error": "Error en descarregar la imatge"
+    },
+    "bookmark_types": {
+      "article": "Article",
+      "note": "Nota",
+      "tweet": "Tweet"
+    },
+    "details_title": "Títol de la pàgina",
+    "download_image": "Descarregar la imatge",
+    "hide_keywords": "Amaga les paraules clau",
+    "keywords": "Paraules clau",
+    "main_colors": "Colors principals",
+    "media": {
+      "cast": "Repartiment",
+      "crew": "Equip",
+      "developer": "Desenvolupador",
+      "director": "Director",
+      "genres": "Gèneres",
+      "publisher": "Editor",
+      "release_date": "Data de llançament",
+      "screenshots": "Captures de pantalla",
+      "show_more": "Mostra'n {count} més",
+      "videos": "Vídeos"
+    },
+    "notes_placeholder": "Les teves notes",
+    "page_details": "Detalls de la pàgina",
+    "see_all_keywords": "Veure totes les paraules clau",
+    "tags": "Etiquetes",
+    "time": {
+      "days_ago": "fa {count} dies",
+      "hours_ago": "fa {count} hores",
+      "minutes_ago": "fa {count} minuts",
+      "months_ago": "fa {count} mesos",
+      "seconds_ago": "fa {count} segons",
+      "years_ago": "fa {count} anys"
+    }
+  },
+  "bookmarks": {
+    "add_files": "Afegeix fitxers",
+    "cards": "marcadors",
+    "change_files": "Canvia els fitxers ({count})",
+    "copy_url": "Copia l'URL",
+    "cover": "Portada",
+    "delete": "Elimina marcador",
+    "delete_confirmation_multiple": "Estàs segur que vols eliminar aquests {count} marcadors?",
+    "delete_confirmation_single": "Estàs segur que vols eliminar aquest marcador?",
+    "deselect_hint": "Pots desseleccionar els marcadors que no vulguis importar fent clic sobre ells.",
+    "drawing": {
+      "assets_unavailable": "No s'han pogut carregar algunes imatges, així que la previsualització no s'actualitzarà.",
+      "new": "Nou dibuix",
+      "untitled": "Dibuix"
+    },
+    "empty_state_message": "Per què no deses alguns llocs?",
+    "empty_state_title": "Això està una mica buit...",
+    "expand_to_edit": "Amplia per editar",
+    "free_import_message": "O pots importar 100 marcadors una vegada de forma gratuïta.",
+    "hide": {
+      "label": "Hide",
+      "label_hidden": "Hidden",
+      "from_library": "Hide from library",
+      "everywhere": "Hide everywhere",
+      "unhide": "Unhide",
+      "hidden_from_library": "Hidden from your library. Still in its boards.",
+      "hidden_everywhere": "Hidden everywhere, boards included.",
+      "unhidden": "Back in your library",
+      "private_section": "Private",
+      "private_empty": "Nothing hidden yet",
+      "private_empty_hint": "Hide a bookmark and it will wait for you here.",
+      "unlock_title": "Private",
+      "unlock_description": "Enter your password to see your hidden bookmarks.",
+      "unlock_placeholder": "Password",
+      "unlock_confirm": "Unlock",
+      "unlock_wrong": "That password didn't work.",
+      "unlock_reset": "No password? Email me a link to set one.",
+      "unlock_reset_sent": "Check your email for the link.",
+      "unlock_reset_error": "Could not send the email. Try again in a moment."
+    },
+    "image_count": "{n} imatges",
+    "image_n_of_m": "{n} de {m}",
+    "image_order": "Ordre de les imatges",
+    "import": "Importa marcadors",
+    "import_error": "Error important els marcadors. Si us plau, torna-ho a provar més tard.",
+    "import_limit": "Per importar més de 100 marcadors, cal pagar una tarifa única, o actualitzar el seu pla.",
+    "import_payment_message": "Com que estic començant amb WebBites, importar molts marcadors pot ser costós, així que per cobrir els costos inicials dels {count} marcadors que vols importar, demano un pagament únic de 3 € per donar suport al projecte i ajudar a cobrir els costos.",
+    "import_progress": "S'estan important els teus marcadors",
+    "import_progress_message": "Això pot trigar una estona, però no cal que mantinguis la finestra oberta. T'enviarem un correu electrònic quan s'hagi acabat.",
+    "import_progress_title": "S'estan important els teus marcadors.",
+    "import_success": "Marcadors importats amb èxit",
+    "import_title": "Importa els teus marcadors",
+    "merge": "Combina",
+    "merge_confirmation": "Vols combinar aquestes {count} imatges en una sola adreça d’interès?",
+    "merge_explainer": "La primera conserva els taulers i les notes. La resta van a la paperera i es poden restaurar.",
+    "merge_failed": "No s’han pogut combinar aquestes adreces d’interès",
+    "merged": "Combinat en una adreça d’interès amb {count} imatges",
+    "new": "Nou marcador",
+    "new_placeholder": {
+      "game": "Cerca un joc…",
+      "link": "Enganxa un enllaç…",
+      "movie": "Cerca una pel·lícula…",
+      "note": "Escriu una nota…"
+    },
+    "no_bookmarks": "No s'han trobat marcadors",
+    "no_pinned_bookmarks": "Fixa alguns marcadors per veure'ls aquí",
+    "payment_button": "Quota única de 3$",
+    "pdf_page_count": "{n} pàgines",
+    "pdf_page_one": "1 pàgina",
+    "pin_success": "Marcador fixat",
+    "pinned": "Fixat",
+    "recorder": {
+      "empty": "No s’ha gravat res: comprova que el micròfon no estigui silenciat.",
+      "hint": "Toca per començar a gravar",
+      "mic_denied": "WebBites no pot accedir al teu micròfon. Permet-ho als ajustos del navegador o puja un fitxer.",
+      "pause": "Pausa",
+      "paused": "En pausa",
+      "play": "Reproduir",
+      "record_again": "Gravar una altra vegada",
+      "record_instead": "Gravar-ne una",
+      "requesting": "Esperant el micròfon…",
+      "restart": "Tornar a començar",
+      "stop": "Aturar la gravació",
+      "title_placeholder": "Posa nom a aquesta gravació",
+      "unsupported": "Aquest navegador no pot gravar àudio. Encara pots pujar un fitxer.",
+      "upload": "Pujar un fitxer"
+    },
+    "remaining": "marcadors restants",
+    "reorder_hint": "Arrossega per reordenar. La primera imatge és la portada.",
+    "select_all": "Selecciona tots ({count})",
+    "select_all_visible": "Selecciona tots els {count} visibles",
+    "try_searching": "Prova de cercar alguna altra cosa",
+    "types": {
+      "articles": "Articles",
+      "audio": "Àudio",
+      "drawing": "Dibuix",
+      "game": "Jocs",
+      "image": "Imatge",
+      "movie": "Pel·lícula",
+      "music": "Música",
+      "pdf": "PDF",
+      "textNote": "Nota",
+      "website": "Lloc web"
+    },
+    "unpin_success": "Marcador desfixat",
+    "unselect_all": "Desselecciona-ho tot",
+    "url_copied": "URL copiada al porta-retalls",
+    "urls_copied": "URLs copiades al porta-retalls",
+    "what_to_save": "What do you want to save?",
+    "compose": {
+      "add_tag": "Afegir una etiqueta",
+      "board": "Tauler",
+      "board_create_failed": "No s’ha pogut crear el tauler",
+      "board_failed": "Desat, però no s’ha pogut afegir a {board}.",
+      "board_label": "Tauler, {board}",
+      "board_name": "Nom del tauler",
+      "create_board": "Crear",
+      "new_board": "Tauler nou…",
+      "notes": "Notes",
+      "notes_placeholder": "Afegeix una nota…",
+      "no_board": "Sense tauler",
+      "remove_tag": "Treure l’etiqueta {tag}",
+      "saved_to_board": "Desat a {board}",
+      "stop": "Aturar",
+      "tag": "Etiqueta",
+      "tags_count": "Etiquetes, {count}"
+    }
+  },
+  "changes": {
+    "body_1": "Per obtenir suggeriments o informes d'errors, aneu a",
+    "body_1_link": "pàgina de comentaris.",
+    "body_2": "Registra't per rebre actualitzacions sobre noves funcions i canvis.",
+    "change_label": "canvi",
+    "changes_label": "canvis",
+    "rss": "O subscriu-te per RSS",
+    "title": "Registre de canvis",
+    "signup_thanks": "Gràcies per subscriure’t per rebre les nostres novetats",
+    "already_subscribed": "Ja estàs subscrit",
+    "signup_failed": "No s’ha pogut fer la subscripció per rebre novetats"
+  },
+  "common": {
+    "accept": "Acceptar",
+    "add_tag": "Afegeix una etiqueta",
+    "all": "Tots",
+    "ascending": "Ascendent",
+    "bookmarks": "Marcadors",
+    "cancel": "Cancel·la",
+    "checking_access": "Comprovant accés...",
+    "choose_something": "Tria alguna cosa..",
+    "close": "Tanca",
+    "continue": "Següent",
+    "dates": {
+      "month": "mes",
+      "year": "any"
+    },
+    "decline": "Rebutjar",
+    "delete": "Elimina",
+    "descending": "Descendent",
+    "drop_image": "Deixa anar una imatge o un PDF",
+    "error_try_again": "S'ha produït un error, torneu-ho a provar més tard.",
+    "get_updates": "Obteniu actualitzacions",
+    "import": "Importar",
+    "import_bookmarks": "Importa {selected} marcadors",
+    "import_bookmarks_remaining": "Importa {selected} marcadors ({remaining} restants del quocient)",
+    "language_changed_success": "L'idioma s'ha canviat correctament",
+    "loading": "Carregant...",
+    "month": "mes",
+    "new_first": "Nou primer",
+    "no_results": "No s'han trobat resultats",
+    "old_first": "Antic primer",
+    "open": "Obre",
+    "optional": "Opcional",
+    "or": "O",
+    "pin": "Fixa",
+    "remaining": "restants",
+    "remind_later": "Recorda-m'ho més tard",
+    "save": "Desa",
+    "saved": "desats",
+    "search": "Cerca",
+    "select_file": "Selecciona fitxer",
+    "select_new_file": "Selecciona un altre fitxer",
+    "shortcuts": {
+      "copy_url": {
+        "description": "Fes clic en un marcador mentre mantens premuda la tecla ⌥ (opció/alt)",
+        "name": "Copia l'URL"
+      },
+      "focus_search": {
+        "description": "Prem / per centrar-te en la cerca directament des del teclat.",
+        "name": "Focalitza la cerca"
+      },
+      "open_website": {
+        "description": "Fes clic en un marcador mentre mantens premuda la tecla CMD",
+        "name": "Obre el lloc web"
+      },
+      "quick_save": {
+        "description": "Prem ⌘ + V per desar l'URL del porta-retalls",
+        "name": "Desat ràpid"
+      },
+      "select_card": {
+        "description": "Fes clic en un marcador mentre mantens premuda la tecla ⇧",
+        "name": "Selecciona el marcador"
+      }
+    },
+    "show_less": "Mostra menys",
+    "show_more": "Mostra més",
+    "submit": "Envia",
+    "tiptap_placeholder": "Afegeix una URL o comença a escriure per crear una nota",
+    "unpin": "Desfixa",
+    "updating": "Actualitzant...",
+    "upgrade": "Amplia pla",
+    "view_more": "Veure més"
+  },
+  "cookies": {
+    "cookie_consent": "Consentiment de les galetes",
+    "description": "Utilitzem Microsoft Clarity per aprendre com millorar la teva experiència. En acceptar, ens ajudes a fer que WebBites sigui millor per a tothom."
+  },
+  "feedback": {
+    "bug_reports": "Informes d'errors",
+    "comments": {
+      "no_comments": "Encara no hi ha comentaris",
+      "placeholder": "Escriu un comentari...",
+      "send": "Envia",
+      "title": "Comentaris"
+    },
+    "date": "Data",
+    "delete_comment": {
+      "confirmation": "Estàs segur que vols eliminar aquest comentari?",
+      "title": "Elimina el comentari"
+    },
+    "delete_confirmation": "Estàs segur que vols eliminar aquest comentari?",
+    "filter_by": "Filtrar per",
+    "form": {
+      "cancel_button": "Cancel·la",
+      "changelog_label": "Al registre de canvis",
+      "comment_label": "El teu comentari",
+      "hide_from_everyone_label": "Amagar de tothom",
+      "submit_button": "Envia comentaris",
+      "title": "Envia comentaris",
+      "title_label": "Títol",
+      "type_label": "Tipus",
+      "platform_label": "Plataforma"
+    },
+    "least_votes": "Menys vots",
+    "most_votes": "Més vots",
+    "my_issues": "Els meus suggeriments",
+    "no_feedback": "Encara no hi ha comentaris",
+    "order_by": "Ordenar per",
+    "placeholders": {
+      "search": "Cerca funcions i informes d'errors... ({count})"
+    },
+    "status": "Estat",
+    "suggestions": "Suggeriments",
+    "title": "📨 Sol·licituds de funcions, suggeriments i informes d'errors",
+    "type": "Tipus",
+    "user": "Usuari",
+    "votes": "Vots",
+    "platform": {
+      "app": "App",
+      "web": "Web",
+      "extension": "Extensió del navegador",
+      "all": "Totes les plataformes"
+    },
+    "hero_title": "Ajuda’ns a decidir",
+    "hero_highlight": "què ve ara.",
+    "hero_subtitle": "Demana una funció, informa d’un error o vota les idees que més vols.",
+    "comments_count": "{count} comentaris",
+    "page": {
+      "title": "WebBites - Comentaris",
+      "kanban_view": "Vista Kanban",
+      "list_view": "Vista de llista",
+      "login_required": "Has d’haver iniciat sessió per enviar comentaris",
+      "deleted": "Comentari eliminat correctament",
+      "delete_failed": "No s’ha pogut eliminar el comentari"
+    },
+    "options": {
+      "status": {
+        "in_progress": "En curs",
+        "backlog": "Pendent de planificar",
+        "pending": "Pendent de triatge",
+        "done": "Fet",
+        "closed": "Tancat"
+      },
+      "type": {
+        "bug_report": "Informe d’error",
+        "feature_request": "Sol·licitud de funcionalitat",
+        "improvement": "Millora",
+        "other": "Altres"
+      },
+      "platform": {
+        "app": "Aplicació",
+        "web": "Web",
+        "extension": "Extensió del navegador"
+      }
+    }
+  },
+  "import": {
+    "import_quota_exceeded": "Has de millorar el teu pla per importar més de 100 marcadors",
+    "import_quota_exceeded_description": "Pots importar fins a 100 marcadors de forma gratuïta. Actualitza a un pla de pagament per importar més.",
+    "connect_title": "O connecta un servei",
+    "connect_fetch": "Obtén els marcadors",
+    "connect_button": "Connecta {name}",
+    "connect_unavailable": "No disponible",
+    "connect_error": "No s'han pogut obtenir els marcadors de {name}",
+    "connect_denied": "S'ha denegat l'accés, no s'ha importat cap marcador",
+    "connect_empty": "No s'han trobat marcadors a {name}"
+  },
+  "landing": {
+    "beta_access": {
+      "changelog_button": "Registre de canvis",
+      "description": "Sigues dels primers en experimentar WebBites i ajuda a donar forma al seu futur. Els usuaris primerencs obtenen avantatges exclusius i funcions premium.",
+      "feedback_button": "Comentaris",
+      "title": "Uneix-te al Futur dels Marcadors"
+    },
+    "features": {
+      "ai_organization": {
+        "description": "Categoritza i etiqueta automàticament els teus marcadors utilitzant tecnologia d'IA avançada",
+        "title": "Organització IA"
+      },
+      "cross_platform": {
+        "description": "Accedeix als teus marcadors a qualsevol lloc, en qualsevol moment, en tots els teus dispositius",
+        "title": "Sincronització Multiplataforma"
+      },
+      "smart_search": {
+        "description": "Troba qualsevol cosa instantàniament amb la nostra cerca intel·ligent que entén el context",
+        "title": "Cerca Intel·ligent"
+      },
+      "subtitle": "Experimenta el futur dels marcadors amb la nostra plataforma impulsada per IA",
+      "title": "Per què triar WebBites?"
+    },
+    "hero": {
+      "app_button": "Ves a l'aplicació",
+      "subtitle": "Desa qualsevol cosa amb un clic i deixa que la IA s'encarregui d'organitzar, cercar i trobar per tu.",
+      "title": "El teu internet,",
+      "title_emphasis": "organitzat",
+      "waitlist_button": "Uneix-te a la llista d'espera"
+    },
+    "how_it_works": {
+      "steps": {
+        "install": {
+          "description": "Afegeix la nostra extensió del navegador amb un sol clic per començar a desar contingut instantàniament",
+          "title": "Instal·la l'extensió"
+        },
+        "organize": {
+          "description": "La nostra IA categoritza automàticament, etiqueta i fa que el teu contingut sigui cercable",
+          "title": "Deixa que la IA ho organitzi"
+        },
+        "save": {
+          "description": "Fes clic a l'extensió o utilitza dreceres de teclat per desar qualsevol pàgina web, article o contingut",
+          "title": "Desa qualsevol cosa"
+        }
+      },
+      "title": "Com funciona"
+    },
+    "join_now": "Uneix-te ara!",
+    "join_now_free": "Uneix-te gratis!",
+    "more_features": "Més funcions",
+    "roadmap": {
+      "next": "Treballant en el següent:",
+      "title": "Roadmap",
+      "viewFull": "Veure full de ruta complet",
+      "workingOn": "Treballant actualment en:"
+    },
+    "whats_next": "Què ve després per WebBites?"
+  },
+  "navigation": {
+    "feedback": "Envia comentaris",
+    "help": "Ajuda",
+    "home": "Inici",
+    "login": "Inicia sessió",
+    "logout_success": "Sessió tancada!",
+    "settings": "Configuració",
+    "developers": "Desenvolupadors",
+    "faq": "Preguntes freqüents",
+    "features": "Funcions",
+    "pricing": "Preus"
+  },
+  "plans": {
+    "features": {
+      "auto_tag_bookmarks": "Etiquetatge automàtic de tots els teus marcadors web",
+      "auto_tag_images": "Etiquetatge automàtic d'imatges",
+      "plus": {
+        "41": "Tot el que hi ha a Free +",
+        "42": "Desa marcadors il·limitats",
+        "43": "Resums TL;DR",
+        "44": "Etiquetatge automàtic d'imatges",
+        "45": "Captures de pantalla completa en alta resolució",
+        "46": "Escolta articles i obté resums",
+        "47": "Reconeixement de text en imatges",
+        "48": "Puja fins a 10GB d'arxius",
+        "49": "Cerca en llenguatge natural",
+        "50": "Taulers intel·ligents",
+        "51": "Còpies de seguretat al teu propi núvol - properament"
+      },
+      "cloud_backups": "Còpies de seguretat al teu propi núvol - properament",
+      "dark_mode": "Mode fosc",
+      "everything_in_free": "Tot el que hi ha a Free +",
+      "free": {
+        "11": "Desa fins a 100 marcadors",
+        "12": "Etiquetatge automàtic de tots els teus marcadors web",
+        "13": "Cerca per títol, color, etiquetes i text de la pàgina",
+        "14": "Mode lectura per articles",
+        "15": "Desa llocs web, imatges, notes, videojocs, música i pel·lícules",
+        "16": "Captures de pantalla completes",
+        "17": "Escolta fins a 5 articles al mes",
+        "18": "Mode fosc"
+      },
+      "full_page_screenshots": "Captures de pantalla completa",
+      "high_res_screenshots": "Captures de pantalla completa en alta resolució",
+      "listen_and_summaries": "Escolta articles i obté resums",
+      "listen_limit": "Escolta fins a 5 articles al mes",
+      "natural_language_search": "Cerca en llenguatge natural",
+      "reading_mode": "Mode lectura per articles",
+      "save_cards_limit": "Desa fins a 100 marcadors",
+      "save_various_types": "Desa llocs web, imatges, notes, videojocs, música i pel·lícules",
+      "search_features": "Cerca per títol, color, etiquetes i text de la pàgina",
+      "smart_boards": "Taulers intel·ligents",
+      "text_recognition": "Reconeixement de text en imatges",
+      "tldr_summaries": "Resums TL;DR",
+      "unlimited_bookmarks": "Desa marcadors il·limitats",
+      "upload_limit": "Puja fins a 10GB d'arxius",
+      "apple": {
+        "61": "Tants marcadors com vulguis",
+        "62": "Webs, imatges, notes, dibuixos i més",
+        "63": "Cerca per títol, etiquetes i text de la pàgina",
+        "64": "Mode lectura",
+        "65": "Res no surt d'aquest dispositiu"
+      }
+    }
+  },
+  "pricing": {
+    "current_plan": "Pla actual",
+    "downgrade": "Baixar",
+    "downgrade_to_free": "Canviar al pla gratuït",
+    "free_plan": "Gratuït",
+    "get_started": "Comença",
+    "monthly_toggle": "Mensual",
+    "price_monthly": "${price}/mes",
+    "price_yearly": "${price}/any - estalvia {percent}%",
+    "sign_up": "Registra't!",
+    "sign_up_now": "Registra’t gratis!",
+    "title": "Preus",
+    "upgrade_for": "Actualitza per {price}",
+    "upgrade_plan": "Amplia pla",
+    "waitlist_free": "Afegeix-me a la llista d'espera gratuïtament!",
+    "yearly_toggle": "Anual ({percent}% de descompte)",
+    "yearly_plain": "Anual",
+    "apple": {
+      "title": "Biblioteca al dispositiu",
+      "tagline": "Només dispositius Apple. Sense compte.",
+      "lifetime": "o ${price} un sol cop",
+      "badge": "App Store",
+      "note": "Es compra dins l'app d'iOS i macOS. Els preus de l'App Store varien segons la regió.",
+      "cta": "Descarrega-la a l'App Store"
+    },
+    "price_yearly_plain": "${price}/any"
+  },
+  "reader": {
+    "ai_generated": "Generat per IA",
+    "by_author": "Per {author}",
+    "listen_article": "Escolta l'article",
+    "listen_to_post": "Escolta la publicació",
+    "voice_settings": "Veu de lectura",
+    "voice_description": "Tria la veu que llegirà els teus articles en veu alta. Prem play per escoltar una mostra.",
+    "voice_preview": "Escoltar mostra",
+    "accent_settings": "Accent",
+    "accent_description": "Els articles en anglès es llegeixen amb aquest accent. Toca’n un per escoltar-lo."
+  },
+  "search": {
+    "alphabetical": "Alfabèticament",
+    "clear_recent": "Neteja les cerques recents",
+    "date_added": "Data d'addició",
+    "filter_by_tag": "Filtra per etiqueta",
+    "filter_by_type": "Filtra per tipus",
+    "placeholder": "Cerca marcadors...",
+    "recent_searches": "Cerques recents",
+    "sort_by": "Ordena per"
+  },
+  "settings": {
+    "ai_language": "Idioma de la IA",
+    "ai_language_description": "L'idioma en què s'escriuen els resums i les etiquetes.",
+    "ai_language_same": "El mateix que el contingut",
+    "auth": {
+      "create_account_description": "Introdueix el teu correu electrònic per iniciar sessió o crear un compte",
+      "email": "Correu electrònic",
+      "email_continue": "Continua amb el correu electrònic",
+      "email_placeholder": "Introdueix el teu correu electrònic",
+      "name": "Nom",
+      "name_placeholder": "Introdueix el teu nom",
+      "password": "Contrasenya",
+      "password_placeholder": "Introdueix la teva contrasenya",
+      "password_requirements": "La contrasenya ha de tenir almenys 6 caràcters i contenir almenys un número",
+      "repeat_password": "Repeteix la contrasenya",
+      "welcome_back": "Benvingut de nou",
+      "welcome_back_description": "Introdueix la contrasenya per continuar on ho vas deixar.",
+      "create_account": "Crea el teu compte",
+      "create_account_step_description": "Només cal un nom i una contrasenya.",
+      "create_account_button": "Crear compte",
+      "reset_password": "Restableix la contrasenya"
+    },
+    "chrome_extension": {
+      "description": "Desa qualsevol lloc web als teus marcadors amb un sol clic amb la nova extensió del navegador! Descarrega-la ara des de la",
+      "store_link": "Chrome Web Store.",
+      "title": "Extensió de Chrome"
+    },
+    "compact_view": "Vista compacta",
+    "delete_account": {
+      "confirmation_text": "Estàs segur que vols eliminar el teu compte? Això no es pot desfer.",
+      "confirm_button": "Elimina permanentment el meu compte",
+      "placeholder": "Elimina el meu compte",
+      "title": "Elimina el compte",
+      "type_confirmation": "Escriu 'Elimina el meu compte' per confirmar"
+    },
+    "display_mode": "Mode de visualització",
+    "grid_view": "Vista de quadrícula",
+    "image_ratio": {
+      "original": "Original"
+    },
+    "image_ratio_label": "Relació d'aspecte de la imatge",
+    "language": "Idioma",
+    "list_view": "Vista de llista",
+    "newest_first": "Els més nous primer",
+    "oldest_first": "Els més antics primer",
+    "other_options": {
+      "export_bookmarks": "Exporta tots els marcadors",
+      "logout": "Tanca la sessió",
+      "show_onboarding": "Mostra de nou l'orientació inicial",
+      "title": "Altres opcions"
+    },
+    "personal_info": {
+      "title": "Informació personal",
+      "username": "Nom d'usuari"
+    },
+    "preview_screenshots": "Previsualitza captures de pantalla de la pàgina",
+    "preview_tags": "Previsualitza etiquetes",
+    "show_description": "Mostra la descripció",
+    "show_summary_card": "Mostra la targeta resum en passar el ratolí per sobre",
+    "theme": "Tema",
+    "title": "Configuració",
+    "view_as": "Veure com",
+    "viewing_options": "Opcions de visualització",
+    "assistants": {
+      "title": "Assistents d’IA",
+      "description": "Deixa que Claude, ChatGPT, Cursor i altres apps d’IA cerquin a la teva biblioteca i hi desin coses, mitjançant MCP.",
+      "server_url": "URL del servidor",
+      "server_url_hint": "Afegeix-la a qualsevol app compatible amb MCP. L’aprovaràs a WebBites i triaràs si pot fer canvis.",
+      "copy": "Copia",
+      "setup_title": "Configura una app",
+      "connected_title": "Assistents connectats",
+      "connected_empty": "Encara no hi ha cap assistent connectat. Quan n’aprovis un, apareixerà aquí.",
+      "read_only": "Només lectura",
+      "read_write": "Pot fer canvis",
+      "unverified": "No verificada",
+      "connected_on": "Connectada el {date}",
+      "last_used": "Últim ús: {date}",
+      "never_used": "Encara sense fer servir",
+      "disconnect": "Desconnecta",
+      "disconnect_confirm": "Vols desconnectar {name}? Perdrà l’accés a l’instant.",
+      "disconnected": "{name} desconnectada",
+      "load_failed": "No s’han pogut carregar els teus assistents connectats.",
+      "revoke_failed": "No s’ha pogut desconnectar {name}.",
+      "limits": "Cada acció d’un assistent compta per a la teva quota de l’API: {free} al mes a Free i {plus} a Plus.",
+      "docs_link": "Llegeix la guia de MCP",
+      "local_hint": "Guardes la teva biblioteca en un Mac sense compte? Activa el servidor propi de l’app de Mac a l’app, a Configuració → Assistents d’IA.",
+      "clients": {
+        "claude": {
+          "open": "A Claude, obre {path} i tria Add custom connector.",
+          "paste": "Anomena’l WebBites, enganxa la URL del servidor i selecciona Add.",
+          "connect": "Selecciona Connect i aprova l’accés a la pàgina de WebBites que s’obre. El connector també funciona a Claude Desktop i a les apps mòbils."
+        },
+        "chatgpt": {
+          "developer_mode": "A ChatGPT, obre {path} i activa el mode de desenvolupador (a Advanced).",
+          "create": "Crea un connector: anomena’l WebBites, enganxa la URL del servidor i tria OAuth.",
+          "approve": "Aprova l’accés a la pàgina de WebBites que s’obre i després activa WebBites des del menú d’eines d’un xat."
+        },
+        "claude_code": {
+          "add": "Afegeix el servidor des del teu terminal:",
+          "sign_in": "Obre Claude Code, executa /mcp, tria webbites i inicia la sessió. El navegador obrirà WebBites perquè aprovis l’accés."
+        },
+        "cursor": {
+          "add": "Afegeix WebBites a {file}, o a .cursor/mcp.json en un projecte:",
+          "connect": "A la configuració de Cursor, busca webbites a la llista de MCP i selecciona Connect; després aprova l’accés a WebBites."
+        },
+        "vscode": {
+          "add": "Afegeix WebBites a {file} al teu espai de treball:",
+          "start": "Selecciona Start a sobre del servidor en aquell fitxer i aprova l’accés a WebBites quan s’obri el navegador. Les seves eines apareixen al mode agent de Copilot Chat."
+        },
+        "other": {
+          "name": "Altres apps",
+          "remote": "Les apps compatibles amb servidors MCP remots accepten la URL del servidor tal com és. Busca «custom connector», «remote server» o «MCP» a la seva configuració.",
+          "stdio": "Les apps que només poden iniciar servidors locals (stdio) hi poden arribar amb el pont mcp-remote, que necessita Node.js:",
+          "sign_in": "La primera vegada que s’executi, el navegador obrirà WebBites perquè aprovis l’accés."
+        },
+        "api_key": {
+          "name": "Amb una clau d’API",
+          "when": "Les apps que et deixen afegir capçaleres es poden saltar l’inici de sessió i enviar una clau d’API. Una clau pot llegir i canviar tota la teva biblioteca, igual que amb l’API REST.",
+          "send": "Crea una clau a Configuració → Desenvolupador i envia-la com a testimoni de portador:"
+        }
+      }
+    },
+    "developer": {
+      "title": "Desenvolupador",
+      "description": "Claus d'API, webhooks i ús per construir sobre WebBites.",
+      "button": "Obre la pàgina de desenvolupador"
+    },
+    "backups": {
+      "title": "Còpies de seguretat",
+      "description": "Còpies de seguretat automàtiques i incrementals dels teus marcadors, captures i pàgines desades en un emmagatzematge que és teu.",
+      "plus_only": "Les còpies de seguretat automàtiques formen part de WebBites Plus.",
+      "choose_destination": "On vols desar les còpies?",
+      "gdrive": "Google Drive",
+      "gdrive_hint": "Es desen en una carpeta “WebBites Backups”",
+      "dropbox": "Dropbox",
+      "dropbox_hint": "Es desen a Apps/WebBites",
+      "s3": "Emmagatzematge compatible amb S3",
+      "s3_hint": "Amazon S3, Cloudflare R2, Backblaze B2, MinIO…",
+      "endpoint": "Endpoint",
+      "region": "Regió",
+      "bucket": "Bucket",
+      "prefix": "Carpeta (opcional)",
+      "access_key": "Clau d'accés",
+      "secret_key": "Clau secreta",
+      "connect": "Connecta",
+      "cancel": "Cancel·la",
+      "change": "Canvia",
+      "enabled": "Còpies automàtiques",
+      "frequency": "Freqüència",
+      "daily": "Diària",
+      "weekly": "Setmanal",
+      "last_backup": "Última còpia",
+      "never": "Encara no",
+      "running": "Fent la còpia…",
+      "next_backup": "propera {time}",
+      "back_up_now": "Fes una còpia ara",
+      "disconnect": "Desconnecta",
+      "reconnect": "Torna a connectar",
+      "needs_reconnect": "{destination} ha deixat d'acceptar còpies. Torna'l a connectar per reactivar-les.",
+      "plan_required": "Les còpies estan en pausa perquè el teu pla ja no les inclou.",
+      "error": "L'última còpia ha fallat: {error}. Es tornarà a provar automàticament.",
+      "connected": "{destination} connectat. La primera còpia començarà en menys d'una hora.",
+      "connect_failed": "No s'ha pogut connectar {destination}.",
+      "connect_denied": "No s'ha concedit accés a {destination}.",
+      "queued": "Còpia iniciada.",
+      "load_failed": "No s'han pogut carregar els ajustos de còpies.",
+      "save_failed": "No s'han pogut actualitzar els ajustos de còpies.",
+      "run_failed": "No s'ha pogut iniciar la còpia.",
+      "whats_included": "Cada còpia és un zip només amb el que ha canviat des de l'anterior: dades dels marcadors, notes, captures, text de les pàgines desades i fitxers. L'últim zip de cada còpia inclou també els teus taulers, els teus feeds i un bookmarks.html que pot importar qualsevol navegador."
+    },
+    "email_change": {
+      "change": "Canvia",
+      "change_again": "Fes servir un altre",
+      "new_email": "Correu nou",
+      "current_password": "Contrasenya actual",
+      "explainer": "T'enviarem un enllaç a la nova adreça. Fins que no l'obris, continuaràs iniciant sessió amb {email}.",
+      "send_link": "Envia l'enllaç de verificació",
+      "pending_title": "Revisa {email} per acabar",
+      "pending_body": "T'hem enviat un enllaç per confirmar la nova adreça. Fins que no l'obris, el teu compte continuarà fent servir {email}.",
+      "expires": "L'enllaç caduca el {date}.",
+      "resend": "Torna a enviar el correu",
+      "resend_in": "Torna a enviar en {seconds} s",
+      "cancel_change": "Cancel·la el canvi",
+      "sent": "Enllaç de verificació enviat a {email}",
+      "cancelled": "Canvi de correu cancel·lat",
+      "changed": "El teu correu ara és {email}",
+      "errors": {
+        "invalid_email": "Introdueix una adreça de correu vàlida.",
+        "same_email": "Aquesta ja és la teva adreça de correu.",
+        "email_taken": "Un altre compte ja fa servir aquesta adreça.",
+        "password_required": "Introdueix la contrasenya actual.",
+        "incorrect_password": "La contrasenya no és correcta.",
+        "daily_limit": "Avui has demanat massa correus de verificació. Torna-ho a provar demà.",
+        "cooldown": "Espera un minut abans d'enviar un altre correu.",
+        "send_failed": "No hem pogut enviar el correu. Torna-ho a provar d'aquí a un moment."
+      }
+    }
+  },
+  "testimonials": {
+    "emma_davis": {
+      "name": "Emma Davis",
+      "text": "La sincronització multiplataforma és perfecta, i les funcions d'IA m'estalvien hores d'organització manual.",
+      "title": "Màrqueting Digital"
+    },
+    "mike_chen": {
+      "name": "Mike Chen",
+      "text": "Finalment, una eina de marcadors que entén el context. La funcionalitat de cerca és impressionant.",
+      "title": "Desenvolupador"
+    },
+    "sarah_johnson": {
+      "name": "Sarah Johnson",
+      "text": "WebBites ha revolucionat la manera com deso i organitzo la meva recerca. La categorització per IA és increïblement precisa!",
+      "title": "Creadora de contingut"
+    }
+  },
+  "upgrade_modal": {
+    "audios_remaining": "Pots generar {count} àudios més.",
+    "audios_upgrade": "Per generar més àudios, actualitza el teu pla.",
+    "bookmarks_count": "Has desat {count} marcadors",
+    "bookmarks_remaining": "i pots desar-ne {count} més.",
+    "bookmarks_upgrade": "però necessites actualitzar el teu pla per desar-ne més.",
+    "current_plan": "Tens el pla {plan}.",
+    "manage_plan": "Gestiona el pla",
+    "plan_details": "Detalls del pla",
+    "update_plan": "Actualitzar pla",
+    "updating_plan": "Actualitzant pla",
+    "upgrade_to_add_more": "Millora per afegir-ne més"
+  },
+  "usage": {
+    "usage_limit_reached": "Límite d'ús assolit, si us plau, actualitza el teu pla"
+  },
+  "website_modal": {
+    "add_note": "Afegeix una nota",
+    "annotations": {
+      "delete": {
+        "delete_all_button": "Elimina-ho tot",
+        "delete_all_label": "Elimina totes les anotacions",
+        "delete_all_message": "Estàs segur que vols eliminar totes les anotacions? Aquesta acció no es pot desfer.",
+        "delete_all_title": "Elimina totes les anotacions",
+        "message": "Estàs segur que vols eliminar aquesta anotació? Aquesta acció no es pot desfer.",
+        "title": "Elimina l'anotació"
+      }
+    },
+    "app": {
+      "age": "Edat",
+      "age_rating": "Classificació per edat",
+      "and_more": "{first} i {count} més",
+      "category": "Categoria",
+      "compatibility": "Compatibilitat",
+      "copyright": "Copyright",
+      "developer": "Desenvolupador",
+      "developer_website": "Lloc web del desenvolupador",
+      "downloads": "Descàrregues",
+      "in_app_purchases": "Compres dins de l’app",
+      "information": "Informació",
+      "install": "Instal·la",
+      "language": "Idioma",
+      "languages": "Idiomes",
+      "more": "més",
+      "more_languages": "+ {count} més",
+      "no": "No",
+      "on_store": "a {store}",
+      "price": "Preu",
+      "privacy_policy": "Política de privacitat",
+      "rating": "Valoració",
+      "ratings": "{count} valoracions",
+      "requires": "Requereix {os} o posterior.",
+      "seller": "Venedor",
+      "size": "Mida",
+      "updated": "Actualitzada",
+      "version": "Versió {version}",
+      "view": "Veure",
+      "whats_new": "Novetats",
+      "yes": "Sí"
+    },
+    "audio": {
+      "download": "Descarregar",
+      "failed": "No s’ha pogut crear la transcripció.",
+      "generate": "Generar transcripció",
+      "none": "Encara no hi ha transcripció.",
+      "pause": "Pausar",
+      "play": "Reproduir",
+      "quota": "Has esgotat l’àudio d’aquest mes.",
+      "retry": "Tornar-ho a provar",
+      "scrub": "Cercar",
+      "segments": "1 segment | {n} segments",
+      "transcribing": "Transcrivint…",
+      "transcribing_long": "Transcrivint: continua encara que tanquis la pàgina.",
+      "transcript": "Transcripció",
+      "unavailable": "Aquesta gravació no està disponible"
+    },
+    "details": "Detalls",
+    "pdf": {
+      "open": "Obre el PDF",
+      "unavailable": "Aquest PDF no està disponible"
+    },
+    "sidebar": {
+      "tabs": {
+        "audio": "Àudio",
+        "drawing": "Dibuix",
+        "figma": "Figma",
+        "image": "Imatge",
+        "pdf": "PDF",
+        "reader": "Lector",
+        "screenshot": "Captura de pantalla",
+        "text_note": "Nota de text"
+      }
+    },
+    "social": {
+      "enlarge": "Amplia la imatge",
+      "next": "Imatge següent",
+      "previous": "Imatge anterior",
+      "saved_post": "Publicació desada",
+      "video_hint": "Obre la publicació per reproduir-lo",
+      "video_preview": "Vista prèvia del vídeo",
+      "view_on": "Mostra a {platform}"
+    },
+    "summary": "Resum"
+  },
+  "wizard": {
+    "annotations": {
+      "content": "Anota qualsevol cosa que vulguis directament a la captura de pantalla del lloc web i fes-les cercables",
+      "title": "📝 Anotacions de pàgina"
+    },
+    "first_bookmark": {
+      "content": "Prova de desar el teu primer marcador ara!",
+      "subcontent": "Nota: Si es detecta una URL al teu porta-retalls, s'enganxarà automàticament. Pot ser que rebis una sol·licitud per accedir al porta-retalls, no es desa ni s'envia cap dada fins que facis clic al botó 'desa'.",
+      "title": "🥳 Desant el teu primer marcador!"
+    },
+    "folders": {
+      "content": "Deixa que WebBites organitzi automàticament els teus marcadors, generi etiquetes automàticament, extregui paraules clau i fins i tot la paleta de colors!",
+      "title": "🔖 Oblida't de les carpetes"
+    },
+    "import": {
+      "content": "Importa tots els teus marcadors existents simplement arrossegant el fitxer des del teu ordinador, o pujant-lo més tard des del menú de configuració.",
+      "title": "Importa els teus marcadors"
+    },
+    "one_click": {
+      "content": "Descarrega l'extensió de [Chrome](https://chromewebstore.google.com/detail/webbites-browser-extensio/kphdbcjcdhecefloameedhhldchhbela) per desar nous marcadors amb un sol clic, o afegeix-los directament des de l'aplicació web.",
+      "subcontent": "(Extensions per a Safari, Firefox i mòbils properament!)",
+      "title": "A un clic de distància!"
+    },
+    "save_anything": {
+      "content": "No només desis llocs web, amb WebBites també pots desar notes, imatges, pel·lícules, jocs i música!",
+      "subcontent": "I els llibres aviat!",
+      "title": "👾 🎥 Desa qualsevol cosa"
+    },
+    "screenshots": {
+      "content": "Fes una captura de pantalla completa de tots els llocs web que desis, accessible per sempre, fins i tot si la pàgina es dona de baixa.",
+      "title": "📸 Captures de pantalla completes"
+    },
+    "welcome": {
+      "content": "Treballem junts per crear el millor servei de marcadors possible, així que contacta a Twitter per compartir sol·licituds de funcions, errors que trobis o qualsevol comentari!",
+      "title": "Benvingut a WebBites!"
+    }
+  },
+  "wizard_tab": {
+    "back": "Enrere",
+    "finish": "Finalitza",
+    "import_bookmarks": "Importa marcadors",
+    "next": "Següent",
+    "save": "Desa",
+    "skip": "Salta"
+  },
+  "developers": {
+    "title": "API de WebBites",
+    "subtitle": "Llegeix i desa marcadors des dels teus propis scripts, apps i automatitzacions."
+  },
+  "tags": {
+    "preview": "Mostra els marcadors amb {tag}",
+    "preview_empty": "Cap marcador amb aquesta etiqueta",
+    "show_all": "Mostra {n} marcador | Mostra els {n} marcadors",
+    "clear_selection": "Esborra la selecció",
+    "manage": "Tags",
+    "subtitle": "Every tag you use, with how many bookmarks carry it. Select tags to rename, merge or remove them everywhere.",
+    "search": "Search tags",
+    "sort_count": "Most used",
+    "sort_name": "A–Z",
+    "total": "{n} tag | {n} tags",
+    "bookmarks_count": "{n} bookmark | {n} bookmarks",
+    "selected": "{n} selected",
+    "rename": "Rename",
+    "merge": "Merge",
+    "merge_into": "Merge into",
+    "delete": "Remove",
+    "confirm_delete": "Remove the selected tags from every bookmark? The bookmarks themselves are kept.",
+    "protected": "\"read-later\" powers the Read it later feature and can't be changed.",
+    "empty": "No tags yet",
+    "no_match": "No tags match",
+    "updated": "Updated {n} bookmark | Updated {n} bookmarks"
+  },
+  "footer": {
+    "product": "Producte",
+    "support": "Ajuda",
+    "updates": "Novetats",
+    "pricing": "Preus",
+    "extension": "Extensió del navegador",
+    "export": "Exporta marcadors",
+    "help": "Ajuda i contacte",
+    "feedback": "Comentaris",
+    "changelog": "Novetats",
+    "privacy": "Privadesa",
+    "terms": "Termes",
+    "made_by": "Fet per",
+    "copyright": "WebBites {year}"
+  },
+  "verify_email": {
+    "verifying_title": "Confirmant el teu correu nou…",
+    "verifying_body": "Només trigarà un moment.",
+    "success_title": "Correu canviat",
+    "success_body": "El teu compte de WebBites ara fa servir:",
+    "success_hint": "Fes servir aquesta adreça el proper cop que iniciïs sessió. També hem avisat l'adreça anterior.",
+    "open_app": "Obre WebBites",
+    "sign_in": "Inicia sessió",
+    "expired_title": "Aquest enllaç ha caducat",
+    "expired_body": "Els enllaços duren 24 hores. Demana'n un de nou des de Configuració; fins llavors el correu no canviarà.",
+    "taken_title": "Aquesta adreça ja està en ús",
+    "taken_body": "Un altre compte va començar a fer servir aquest correu després d'enviar l'enllaç. El teu correu no ha canviat: prova una altra adreça des de Configuració.",
+    "invalid_title": "Aquest enllaç no funciona",
+    "invalid_body": "Potser ja s'ha fet servir o l'ha substituït un de més recent. Busca l'últim correu a la safata d'entrada o torna a començar des de Configuració.",
+    "failed_title": "Alguna cosa ha fallat",
+    "failed_body": "El teu correu no ha canviat. Torna-ho a provar.",
+    "try_again": "Torna-ho a provar",
+    "open_settings": "Obre Configuració",
+    "go_home": "Ves a WebBites",
+    "page_title": "Confirma el teu correu electrònic · WebBites"
+  },
+  "cli_login": {
+    "title": "Inicia la sessió a la CLI de WebBites",
+    "body": "Aprova-ho només si aquest codi coincideix amb el del teu terminal.",
+    "signed_in_as": "Sessió iniciada com a {email}",
+    "approve": "Aprova",
+    "decline": "Cancel·la",
+    "approved_title": "Has iniciat la sessió",
+    "approved_body": "Torna al teu terminal. Ja pots tancar aquesta pestanya.",
+    "declined_title": "Inici de sessió cancel·lat",
+    "declined_body": "La CLI no ha obtingut accés. Ja pots tancar aquesta pestanya.",
+    "expired_title": "Aquest codi ha caducat",
+    "expired_body": "Els codis duren 10 minuts i només funcionen una vegada. Executa webbites login de nou per obtenir-ne un altre.",
+    "invalid_title": "Aquest enllaç no funciona",
+    "invalid_body": "Obre l’enllaç que ha mostrat el teu terminal o executa webbites login de nou.",
+    "failed_title": "Alguna cosa ha anat malament",
+    "failed_body": "La CLI no ha iniciat la sessió. Torna-ho a provar.",
+    "try_again": "Torna-ho a provar",
+    "page_title": "Inicia la sessió a la CLI · WebBites"
+  },
+  "oauth_consent": {
+    "page_title": "Connecta una app · WebBites",
+    "title": "{client} vol fer servir la teva biblioteca de WebBites",
+    "verified": "App verificada",
+    "verified_from": "Verificada · {host}",
+    "unverified": "App no verificada",
+    "unverified_body": "WebBites no pot confirmar qui ha creat aquesta app. Continua només si hi confies i ho has iniciat tu.",
+    "can_heading": "Podrà",
+    "can_read": "Cercar i llegir els teus marcadors, notes, taulers i etiquetes",
+    "allow_changes": "Permet canvis",
+    "allow_changes_body": "Desar, editar, organitzar i moure marcadors a la paperera",
+    "cannot": "No pot veure la teva contrasenya, canviar el teu compte ni buidar la teva paperera.",
+    "redirect_heading": "Després",
+    "redirect_web": "Tornaràs a {target}.",
+    "redirect_app": "S’obrirà l’app {target}.",
+    "redirect_loopback": "Tornaràs a un programa d’aquest ordinador ({target}).",
+    "loopback_warning": "Aprova-ho només si acabes d’iniciar això des d’una app d’aquest ordinador.",
+    "provider_note": "{client} enviarà el que llegeixi al seu proveïdor d’IA, segons les condicions d’aquest proveïdor.",
+    "approve": "Aprova",
+    "decline": "Rebutja",
+    "signed_in_as": "Sessió iniciada com a {account}",
+    "switch_account": "Fes servir un altre compte",
+    "revoke_hint": "La pots desconnectar quan vulguis a Configuració → Assistents d’IA.",
+    "done_title": "Connectada",
+    "done_body": "Tornant a {client}…",
+    "declined_title": "No connectada",
+    "declined_body": "{client} no ha obtingut accés. Tornant a l’app…",
+    "close_hint": "Pots tancar aquesta pestanya quan s’hagi obert {client}.",
+    "continue": "Continua",
+    "the_app": "l’app",
+    "invalid_request_title": "Aquest enllaç no funciona",
+    "invalid_request_body": "L’app ha enviat una sol·licitud incompleta o no vàlida, així que no s’ha connectat res. Torna a començar des de l’app.",
+    "invalid_client_title": "WebBites no ha pogut identificar aquesta app",
+    "invalid_client_body": "L’app no s’ha identificat correctament, així que no es pot connectar. Torna a començar des de l’app o contacta amb qui la desenvolupa.",
+    "invalid_redirect_title": "L’adreça de retorn d’aquesta app no està permesa",
+    "invalid_redirect_body": "Per protegir el teu compte, WebBites només et retorna a una adreça que l’app hagi registrat. No s’ha connectat res.",
+    "invalid_scope_title": "L’app ha demanat un accés que WebBites no ofereix",
+    "invalid_scope_body": "No s’ha connectat res. Torna a començar des de l’app o contacta amb qui la desenvolupa.",
+    "invalid_server_title": "Alguna cosa ha anat malament per la nostra banda",
+    "invalid_server_body": "No s’ha connectat res. Torna-ho a provar des de l’app d’aquí a un moment.",
+    "details": "Detalls per a qui desenvolupa l’app",
+    "expired_title": "Aquesta sol·licitud ha caducat",
+    "expired_body": "Les sol·licituds de connexió duren poc i només funcionen una vegada. Torna a començar des de l’app que estaves connectant.",
+    "rejected_title": "No s’ha pogut confirmar aquesta sol·licitud",
+    "rejected_body": "No s’ha connectat res. Torna a començar des de l’app que estaves connectant.",
+    "failed_title": "Alguna cosa ha anat malament",
+    "failed_body": "No s’ha connectat res. Torna-ho a provar.",
+    "try_again": "Torna-ho a provar"
+  },
+  "automations": {
+    "new": "Automatització nova",
+    "empty": "Encara no hi ha automatitzacions. Comença amb alguna cosa com: si l’URL conté amazon.com, afegeix l’etiqueta Compres.",
+    "smart_board": "Tauler intel·ligent",
+    "enable_named": "Activa {name}",
+    "load_failed": "No s’han pogut carregar les automatitzacions",
+    "update_failed": "No s’ha pogut actualitzar l’automatització",
+    "save_failed": "No s’ha pogut desar l’automatització",
+    "delete_failed": "No s’ha pogut eliminar l’automatització",
+    "name_placeholder": "Posa nom a aquesta automatització",
+    "enabled": "Activada",
+    "whenever": "Quan",
+    "trigger_bookmark_added": "S’afegeix un marcador",
+    "no_conditions": "Sense condicions: s’executa a cada marcador nou.",
+    "actions": "Accions",
+    "remove_action": "Treu l’acció",
+    "choose_board": "Tria un tauler",
+    "add_action": "Afegeix una acció",
+    "action_add_to_board": "Afegeix a un tauler",
+    "action_read_later": "Afegeix a Llegeix més tard",
+    "action_webhook": "Crida un webhook",
+    "webhook_help": "Deixa el cos buit per enviar el marcador com a JSON. Fes servir {title}, {url}, {type} o {id} entre cometes, i {tags} sense cometes.",
+    "webhook_signed": "Cada sol·licitud es signa amb {header}.",
+    "webhook_signed_secret": "Cada sol·licitud es signa amb {header} mitjançant {secret}.",
+    "smart_board_note": "Aquesta és la regla d’un tauler intel·ligent. Les seves condicions també es veuen a la configuració del tauler; si l’elimines, el tauler torna a ser manual.",
+    "if": "Si",
+    "remove_condition": "Treu la condició",
+    "topics_placeholder": "Temes, prem Retorn",
+    "minimum_match": "Coincidència mínima",
+    "add_condition": "Afegeix una condició",
+    "match_all": "Totes aquestes",
+    "match_any": "Qualsevol d’aquestes",
+    "fields": {
+      "url": "URL",
+      "domain": "Domini",
+      "title": "Títol",
+      "type": "Tipus",
+      "tag": "Etiqueta",
+      "ai_topic": "Tema de la IA"
+    },
+    "ops": {
+      "contains": "conté",
+      "not_contains": "no conté",
+      "is": "és",
+      "is_not": "no és"
+    },
+    "describe": {
+      "a_board": "un tauler",
+      "about": "sobre {topics}",
+      "condition": "{field} {op} {value}",
+      "tag": "etiqueta {tag}",
+      "add_to_board": "afegeix a {board}",
+      "read_later": "llegeix més tard",
+      "webhook": "crida un webhook",
+      "joiner_any": " o ",
+      "joiner_all": " i ",
+      "every_bookmark": "cada marcador",
+      "summary": "{when} → {actions}"
+    }
+  },
+  "notifications": {
+    "title": "Notificacions",
+    "aria_unread": "Notificacions, {count} per llegir",
+    "mark_all_read": "Marca-ho tot com a llegit",
+    "unread": "Sense llegir",
+    "empty": "Res de nou.",
+    "group_new": "Noves",
+    "group_earlier": "Anteriors",
+    "someone": "Algú",
+    "board_unavailable": "Aquest tauler ja no està disponible",
+    "sentence": {
+      "board_shared": "{who} ha compartit “{board}” amb tu",
+      "role_changed": "{who} ha canviat el teu accés a “{board}”",
+      "board_unshared": "{who} t’ha tret de “{board}”",
+      "member_joined": "{who} s’ha unit a “{board}”",
+      "member_left": "{who} ha sortit de “{board}”",
+      "default": "{who} ha actualitzat “{board}”",
+      "item_added": "{who} ha afegit un marcador a “{board}” | {who} ha afegit {count} marcadors a “{board}”",
+      "item_added_titled": "{who} ha afegit “{title}” a “{board}”",
+      "item_edited": "{who} ha editat un marcador a “{board}” | {who} ha editat {count} marcadors a “{board}”",
+      "item_edited_titled": "{who} ha editat “{title}” a “{board}”",
+      "item_removed": "{who} ha tret un marcador de “{board}” | {who} ha tret {count} marcadors de “{board}”",
+      "item_removed_titled": "{who} ha tret “{title}” de “{board}”"
+    }
+  },
+  "shell": {
+    "login_desktop": {
+      "success": "Inici de sessió correcte"
+    },
+    "apple_callback": {
+      "completing": "Completant l’inici de sessió amb Apple...",
+      "invalid_state": "Paràmetre d’estat no vàlid - possible atac CSRF",
+      "no_id_token": "No s’ha rebut cap token d’ID d’Apple",
+      "auth_failed": "L’autenticació ha fallat",
+      "account_exists": "Ja existeix un compte amb aquesta adreça electrònica. Prova d’iniciar sessió amb el correu i la contrasenya.",
+      "token_expired": "La teva sessió d’inici amb Apple ha caducat. Torna-ho a provar.",
+      "invalid_token": "El token d’autenticació d’Apple no és vàlid. Torna-ho a provar.",
+      "user_creation_failed": "No s’ha pogut crear el teu compte. Torna-ho a provar més tard.",
+      "sign_in_failed": "No s’ha pogut iniciar la sessió amb Apple. Torna-ho a provar."
+    },
+    "welcome_extension": {
+      "heading": "Et donem la benvinguda!",
+      "tagline": "Desa-ho amb un clic i deixa que la IA t’ho organitzi tot.",
+      "right_click_title": "Clic dret per desar",
+      "right_click_description": "Desa fàcilment qualsevol web o imatge amb un simple clic dret.",
+      "quick_menu_title": "Menú ràpid",
+      "quick_menu_description": "Prem ‘J’ per mostrar o amagar el menú ràpid de WebBites. Fes servir Cmd+J (Ctrl a Windows) per obrir un WebBites petit per desar i cercar ràpidament.",
+      "reading_title": "Una lectura millor",
+      "reading_description": "Detecta els articles automàticament i obre’ls en un mode de lectura sense distraccions.",
+      "summaries_title": "Resums instantanis",
+      "summaries_description": "Resumeix qualsevol article o web amb un sol clic.",
+      "listen_title": "Escolta articles",
+      "listen_description": "Converteix qualsevol article o resum en àudio amb una veu realista."
+    }
+  },
+  "boards": {
+    "empty": "Encara no hi ha taulers",
+    "someone": "algú",
+    "go_home": "Ves a WebBites",
+    "leave": "Surt del tauler",
+    "duplicate": "Duplica",
+    "archive": "Arxiva",
+    "delete_board": "Elimina el tauler",
+    "added_to": "Afegit a {board}",
+    "already_in": "Ja és a {board}",
+    "added_bookmarks": "S’ha afegit {count} marcador a {board} | S’han afegit {count} marcadors a {board}",
+    "add_error": "Error en afegir al tauler",
+    "modal": {
+      "edit_title": "Edita el tauler",
+      "new_title": "Tauler nou",
+      "choose_emoji": "Tria un emoji",
+      "emoji_placeholder": "Escriu o enganxa qualsevol emoji",
+      "remove_emoji": "Treu",
+      "emoji_work": "Feina",
+      "emoji_creative": "Creatiu",
+      "emoji_life": "Vida",
+      "emoji_misc": "Diversos",
+      "name_placeholder": "Nom del tauler",
+      "description_placeholder": "Què hi va, en aquest tauler? (opcional)",
+      "inside": "Dins de",
+      "inside_help": "Posa aquest tauler dins d’una carpeta o deixa’l al nivell superior.",
+      "top_level": "Nivell superior",
+      "how_added": "Com s’afegeixen els marcadors",
+      "mode_manual": "Manual",
+      "mode_manual_help": "Tu mateix afegeixes i treus els marcadors.",
+      "mode_smart": "Intel·ligent",
+      "mode_smart_help": "Els marcadors que coincideixen s’arxiven automàticament, i també en pots afegir de teus a mà.",
+      "ai_topics": "Temes de la IA",
+      "ai_topics_hint": "separats per comes",
+      "ai_topics_help": "La IA hi compara els marcadors nous. Opcional si afegeixes condicions a sota.",
+      "topics_placeholder": "Disseny d’interfícies, tipografia, teoria del color",
+      "confidence": "Confiança mínima de coincidència",
+      "conditions": "Condicions",
+      "conditions_help": "Es comproven a cada marcador nou. Fes-les servir amb temes de la IA, o soles per no fer servir la IA.",
+      "auto_apply": "Afegeix automàticament els marcadors que coincideixen",
+      "auto_apply_help": "Els marcadors nous que coincideixen s’hi arxiven sense preguntar.",
+      "include_existing": "Analitza els meus marcadors existents",
+      "include_existing_help": "Omple el tauler amb el que ja has desat.",
+      "automations_link": "Afegeix etiquetes, webhooks i més a Automatitzacions",
+      "colour": "Color",
+      "no_colour": "Sense color",
+      "save_changes": "Desa els canvis",
+      "create": "Crea el tauler",
+      "updated": "Tauler actualitzat",
+      "created": "Tauler creat",
+      "save_error": "Error en desar el tauler"
+    },
+    "folder": {
+      "rename_title": "Canvia el nom de la carpeta",
+      "new_title": "Carpeta nova",
+      "name_placeholder": "Nom de la carpeta",
+      "create": "Crea",
+      "save_error": "Error en desar la carpeta"
+    },
+    "sidebar": {
+      "title": "Taulers",
+      "new_folder": "Carpeta nova",
+      "new_board": "Tauler nou",
+      "shared": "Compartits",
+      "shared_by": "Compartit per {name}",
+      "share_board": "Comparteix el tauler",
+      "rename_folder": "Canvia el nom de la carpeta",
+      "edit_board": "Edita el tauler",
+      "link_copied": "Enllaç per compartir copiat",
+      "link_copy_error": "No s’ha pogut copiar l’enllaç per compartir",
+      "menu": {
+        "new_board_here": "Tauler nou aquí…",
+        "new_folder_here": "Carpeta nova aquí…",
+        "rename": "Canvia el nom…",
+        "delete": "Elimina…",
+        "share": "Comparteix…",
+        "people_with_access": "Persones amb accés…",
+        "edit_board": "Edita el tauler…",
+        "copy_share_link": "Copia l’enllaç per compartir"
+      }
+    },
+    "add_to": {
+      "title": "Afegeix a un tauler",
+      "removed_from": "Tret de {board}",
+      "update_error": "Error en actualitzar el tauler"
+    },
+    "share": {
+      "title": "Comparteix “{name}”",
+      "people_with_access": "Persones amb accés",
+      "description_owner": "Convida persones per correu electrònic o deixa que qualsevol amb l’enllaç ho pugui mirar.",
+      "description_member": "{name} s’ha compartit amb tu.",
+      "this_board": "Aquest tauler",
+      "try_again": "Torna-ho a provar",
+      "load_error": "No s’ha pogut carregar la configuració de compartició.",
+      "invite_people": "Convida persones",
+      "add_emails": "Afegeix correus",
+      "invite": "Convida",
+      "invalid_emails": "{emails} no és un correu electrònic vàlid. | {emails} no són correus electrònics vàlids.",
+      "invite_hint": "Les persones sense compte de WebBites reben un correu amb un enllaç per unir-s’hi.",
+      "you": "(tu)",
+      "owner": "Propietari",
+      "pending": "Pendent",
+      "can_view": "Pot veure",
+      "can_edit": "Pot editar",
+      "remove_member": "Treu {name}",
+      "nobody_else": "Encara no hi ha ningú més.",
+      "only_other": "Ets l’única altra persona aquí.",
+      "general_access": "Accés general",
+      "access_private": "Només persones convidades",
+      "access_link": "Qualsevol amb l’enllaç — només lectura",
+      "link_on": "Qualsevol amb l’enllaç ho pot mirar, sense iniciar sessió.",
+      "link_off": "Només les persones de dalt poden obrir aquest tauler.",
+      "link_reset_to_show": "Restableix l’enllaç per mostrar-lo aquí",
+      "link_unavailable": "Enllaç no disponible",
+      "copy_link": "Copia l’enllaç",
+      "click_again": "Torna a fer clic per restablir",
+      "create_link": "Crea un enllaç",
+      "reset_link": "Restableix l’enllaç",
+      "done": "Fet",
+      "invited": "Invitació enviada | S’han convidat {count} persones",
+      "invite_error": "No s’ha pogut enviar la invitació",
+      "role_error": "No s’ha pogut canviar el seu accés",
+      "remove_error": "No s’ha pogut treure aquesta persona",
+      "access_error": "No s’ha pogut canviar qui pot obrir aquest tauler",
+      "link_copied": "Enllaç copiat",
+      "link_copy_error": "No s’ha pogut copiar l’enllaç",
+      "new_link": "Enllaç nou a punt",
+      "reset_error": "No s’ha pogut restablir l’enllaç"
+    },
+    "trash": {
+      "title": "Paperera",
+      "description": "Els marcadors eliminats es conserven durant 30 dies i després s’eliminen definitivament.",
+      "empty": "No hi ha res a la paperera",
+      "untitled": "Sense títol",
+      "purges_in": "S’eliminarà definitivament d’aquí a {count} dies | S’eliminarà definitivament d’aquí a {count} dia | S’eliminarà definitivament d’aquí a {count} dies",
+      "restore": "Restaura"
+    },
+    "public": {
+      "open_webbites": "Obre WebBites",
+      "save_your_own": "Desa els teus",
+      "start_free": "Comença gratis",
+      "shared_by": "Compartit per {name}",
+      "bookmark_count": "{count} marcador | {count} marcadors",
+      "empty": "Encara no hi ha res en aquest tauler.",
+      "show_more": "Mostra més marcadors",
+      "footer": "Aquest tauler s’ha compartit des de WebBites, on pots desar pàgines, tornar-les a trobar i compartir un tauler amb qui vulguis.",
+      "title": "{name} — WebBites",
+      "title_default": "Tauler compartit — WebBites",
+      "not_found_title": "Tauler no trobat",
+      "not_found_text": "Aquest enllaç no porta enlloc. Comprova que l’hagis copiat sencer.",
+      "forbidden_title": "Aquest tauler no està compartit amb tu",
+      "forbidden_text": "Pot ser que el propietari hagi desactivat la compartició o hagi restablert l’enllaç. Demana-li’n un de nou.",
+      "error_title": "No s’ha pogut carregar aquest tauler",
+      "error_text": "Alguna cosa ha anat malament per la nostra banda. Torna-ho a provar d’aquí a un moment."
+    },
+    "invite": {
+      "incomplete_title": "Aquest enllaç d’invitació està incomplet",
+      "incomplete_text": "Torna a obrir l’enllaç del teu correu, copiant-lo sencer.",
+      "invited_title": "T’han convidat a un tauler",
+      "sign_in_text": "Inicia sessió o crea un compte de WebBites per unir-t’hi.",
+      "sign_in_cta": "Inicia sessió o crea un compte",
+      "joining": "Unint-te al tauler…"
+    }
+  },
+  "editor": {
+    "slash": {
+      "items": {
+        "paragraph": {
+          "title": "Text",
+          "subtitle": "Només cal començar a escriure"
+        },
+        "heading1": {
+          "title": "Encapçalament 1",
+          "subtitle": "Encapçalament de secció gran"
+        },
+        "heading2": {
+          "title": "Encapçalament 2",
+          "subtitle": "Encapçalament de secció mitjà"
+        },
+        "heading3": {
+          "title": "Encapçalament 3",
+          "subtitle": "Encapçalament de secció petit"
+        },
+        "bulletList": {
+          "title": "Llista amb punts",
+          "subtitle": "Una llista senzilla"
+        },
+        "orderedList": {
+          "title": "Llista numerada",
+          "subtitle": "Una llista que compta"
+        },
+        "taskList": {
+          "title": "Tasques",
+          "subtitle": "Alguna cosa per marcar"
+        },
+        "blockquote": {
+          "title": "Cita",
+          "subtitle": "Destaca un passatge"
+        },
+        "codeBlock": {
+          "title": "Codi",
+          "subtitle": "Preformatat, amb lletra monoespaiada"
+        },
+        "horizontalRule": {
+          "title": "Separador",
+          "subtitle": "Divideix la pàgina en dos"
+        },
+        "image": {
+          "title": "Imatge",
+          "subtitle": "Puja una imatge"
+        }
+      },
+      "groups": {
+        "basic": "Blocs bàsics",
+        "media": "Contingut multimèdia"
+      },
+      "no_match": "Cap bloc anomenat “{query}”"
+    },
+    "block_menu": {
+      "duplicate": "Duplica",
+      "copy_text": "Copia el text",
+      "turn_into": "Converteix en"
+    }
+  },
+  "cards": {
+    "everything": "Tot",
+    "media_preview": {
+      "date_unavailable": "Data no disponible",
+      "movie_poster_alt": "Cartell de la pel·lícula",
+      "game_poster_alt": "Cartell del joc"
+    },
+    "search_chip": {
+      "remove": "Treu {label}"
+    },
+    "drawing": {
+      "save_failed": "No s’ha pogut desar el dibuix"
+    }
+  },
+  "faq": {
+    "title_line1": "Preguntes,",
+    "title_emphasis": "desades.",
+    "subtitle": "Tot el que ens pregunta la gent, desat en un sol lloc. Tria un tema o obre un bite.",
+    "topics_aria": "Temes",
+    "topics": {
+      "all": "Tots",
+      "start": "Primers passos",
+      "saving": "Desar i sincronitzar",
+      "billing": "Plans i facturació",
+      "privacy": "Privadesa i dades",
+      "dev": "Desenvolupadors"
+    },
+    "still_stuck": {
+      "title": "Encara et trobes encallat?",
+      "body": "Una persona llegeix tots els correus, normalment en dos dies laborables. Explica’ns què has fet, què esperaves i què ha passat en lloc d’això.",
+      "email_button": "Escriu a {email}",
+      "feature_button": "Demana una funcionalitat"
+    },
+    "items": {
+      "what": {
+        "q": "Què és WebBites?",
+        "a": "Un lloc per desar qualsevol cosa — webs, imatges, pel·lícules, jocs, notes — i tornar-la a trobar sense haver-ho d’arxivar tu mateix. Ho deses amb un clic i WebBites ho etiqueta i ho organitza amb IA, i després ho pots cercar per títol, color, etiquetes i fins i tot pel text de la pàgina."
+      },
+      "platforms": {
+        "q": "En quines plataformes funciona?",
+        "a": "L’aplicació web, aplicacions natives per a iPhone, iPad, Mac, Vision Pro, Apple TV i Apple Watch, i una extensió del navegador per desar des d’on siguis. Tot se sincronitza amb el teu compte."
+      },
+      "account": {
+        "q": "Necessito un compte per fer servir les aplicacions?",
+        "a": "No. Les aplicacions per a iPhone, iPad, Mac i Vision Pro funcionen sense iniciar sessió, amb una biblioteca guardada al teu dispositiu, i res del que desis d’aquesta manera ens arriba. La sincronització, la compartició, la cerca semàntica i les funcions al núvol necessiten un compte, i a Configuració pots canviar les funcions d’intel·ligència a models al dispositiu si també vols mantenir-les en local. Els detalls són a la <a href=\"/privacy\">Política de privadesa</a>, apartat 2."
+      },
+      "password": {
+        "q": "He oblidat la contrasenya",
+        "a": "Fes servir <a href=\"/passwordReset\">la pàgina de restabliment</a> o l’enllaç \"Has oblidat la contrasenya\" de la pantalla d’inici de sessió. El correu arriba des del nostre proveïdor de correu — mira a la carpeta de correu brossa si no el veus. Si has iniciat sessió amb Apple, no hi ha cap contrasenya per restablir: torna a fer servir el botó d’Apple."
+      },
+      "sync": {
+        "q": "Els meus marcadors no se sincronitzen",
+        "a": "Comprova que has iniciat sessió amb el mateix compte als dos dispositius i després llisca cap avall per actualitzar. Un desat fet sense connexió es queda en una cua i s’envia quan torna la xarxa — l’aplicació els mostra a la pantalla \"Pendent de desar\" a Configuració → Dades i sense connexió. Si alguna cosa hi queda encallada més d’uns minuts amb una connexió que funciona, escriu-nos."
+      },
+      "extension": {
+        "q": "L’extensió no desa",
+        "a": "L’extensió desa mitjançant la teva sessió iniciada, així que obre l’aplicació web una vegada, inicia sessió i torna-ho a provar. A Safari, les extensions també s’han d’activar i tenir permís per al lloc on ets, a Safari → Configuració → Extensions."
+      },
+      "bad_save": {
+        "q": "Una pàgina s’ha desat malament — sense imatge, amb un títol equivocat, sense text de l’article",
+        "a": "Alguns llocs bloquegen la recuperació automàtica, ho renderitzen tot amb JavaScript o estan darrere d’un mur de pagament o d’un inici de sessió. En aquests casos desem el que podem abastar. Editar el títol, la descripció o la imatge del bite ho soluciona per sempre. Envia’ns l’URL si un lloc que t’importa surt sempre malament — molts els podem arreglar un per un."
+      },
+      "export": {
+        "q": "Puc exportar o importar els meus marcadors?",
+        "a": "Totes dues coses. Configuració → Exporta, a qualsevol plataforma, et dona la teva biblioteca en un fitxer portàtil, amb qualsevol pla i en qualsevol moment. Per portar els marcadors del navegador, segueix la <a href=\"/export-bookmarks\">guia d’importació</a>."
+      },
+      "pricing": {
+        "q": "Quant costa?",
+        "a": "Hi ha un pla gratuït i plans de pagament per a més marcadors i les funcions avançades. Els plans i preus actuals són a la <a href=\"/#pricing\">secció de preus</a> de la pàgina d’inici."
+      },
+      "cancel": {
+        "q": "Com cancel·lo o canvio el meu pla?",
+        "a": "Cancel·la-ho allà on t’has subscrit. Si t’has subscrit a la web o al Mac, és a Configuració → Subscripció, que obre el portal de facturació. Si t’has subscrit mitjançant l’App Store, és a la configuració de subscripcions d’Apple al teu dispositiu (Configuració → el teu nom → Subscripcions), perquè Apple les factura directament. Mantens les funcions de pagament fins al final del període que has pagat."
+      },
+      "privacy": {
+        "q": "Les meves dades són privades?",
+        "a": "Els teus marcadors són teus. No venem les teves dades, i les aplicacions poden funcionar completament al dispositiu si no inicies mai sessió. Què desem, per què i durant quant de temps s’explica a la <a href=\"/privacy\">Política de privadesa</a>."
+      },
+      "delete": {
+        "q": "Com elimino el meu compte?",
+        "a": "Configuració → Elimina el compte, i confirma. S’eliminen també els teus marcadors, fitxers i subscripció, i no es pot desfer — així que exporta primer si en vols una còpia. No cal escriure’ns cap correu, i no et posem cap oferta de retenció pel mig."
+      },
+      "api": {
+        "q": "Hi ha una API?",
+        "a": "Sí — la <a href=\"/developers\">pàgina de desenvolupadors</a> mostra què pot fer, i la <a href=\"/developers/docs\">documentació</a> té les guies, les teves claus d’API, un espai de proves i tots els endpoints."
+      }
+    }
+  },
+  "help_pages": {
+    "legal": {
+      "last_updated": "Darrera actualització: {date}",
+      "questions": "Tens preguntes sobre aquesta pàgina? Escriu a {email}."
+    },
+    "chat": {
+      "title": "Xateja amb nosaltres",
+      "subtitle": "Una persona real del nostre equip s’hi posarà — normalment en dos dies laborables.",
+      "iframe_title": "Xat de suport",
+      "not_configured": "El xat encara no està configurat. Escriu-nos a {email}.",
+      "sign_in_prompt": "Inicia sessió per començar una conversa i tenir tot l’historial en un sol lloc.",
+      "sign_in": "Inicia sessió",
+      "prefer_email": "Prefereixes el correu? Escriu a {email}."
+    },
+    "support": {
+      "title": "Suport",
+      "subtitle": "Alguna cosa no funciona, alguna cosa et falta o no trobes alguna cosa? Aquí tens com contactar amb una persona.",
+      "email_us": "Escriu-nos",
+      "email_body": "Una persona llegeix aquesta adreça, normalment en dos dies laborables. Explica’ns què has fet, què esperaves i què ha passat en lloc d’això — i quina aplicació (web, iPhone, iPad, Mac, Vision Pro, TV, Watch o l’extensió del navegador) i versió feies servir. Una captura de pantalla estalvia tot un intercanvi.",
+      "operated_by": "WebBites és gestionat per {operator}, {address}.",
+      "where_title": "On posar cada cosa",
+      "col_want": "Si vols…",
+      "col_go": "Ves aquí",
+      "row_bug": "Informar d’un error o demanar ajuda",
+      "row_bug_go": "{chat}, o {email}",
+      "chat_link": "Xateja amb nosaltres",
+      "row_feature": "Demanar una funcionalitat o votar-ne una",
+      "feedback_board": "Tauler de comentaris",
+      "row_changes": "Veure què ha canviat i quan",
+      "changelog": "Registre de canvis",
+      "row_api": "Crear alguna cosa amb l’API",
+      "developer_docs": "Documentació per a desenvolupadors",
+      "row_import": "Portar els marcadors del navegador",
+      "import_guide": "Guia d’importació",
+      "row_security": "Informar d’un problema de seguretat",
+      "row_security_go": "{email}, amb l’assumpte \"Seguretat\"",
+      "row_rights": "Exercir un dret de protecció de dades",
+      "row_rights_go": "{link}, apartat 11",
+      "privacy_policy": "Política de privadesa",
+      "faq_title": "Respostes a les preguntes habituals",
+      "faq_body": "Contrasenyes, sincronització, exportacions, cancel·lacions, l’extensió i més coses són a la {link}.",
+      "faq_link": "pàgina de preguntes freqüents",
+      "security_title": "Informar d’un problema de seguretat",
+      "security_body": "Escriu a {email} amb \"Seguretat\" a l’assumpte i prou detall per reproduir el problema. Si us plau, no el publiquis abans que haguem pogut arreglar-lo, no accedeixis a dades d’altres persones ni les modifiquis mentre fas proves, i no facis proves de càrrega ni de denegació de servei contra el servei. Et confirmarem que ho hem rebut, et mantindrem informat i, si vols, t’ho reconeixerem públicament quan estigui solucionat."
+    }
+  },
+  "support_chat": {
+    "replying_to": "Responent a {email}",
+    "real_person": "Una persona real ho llegeix",
+    "gate_intro": "Inicia sessió per conservar tot l’historial o deixa un missatge com a convidat.",
+    "your_email": "El teu correu electrònic",
+    "continue_as_guest": "Continua com a convidat",
+    "email_note": "Només l’utilitzem per respondre’t. L’esborrany es queda en aquest dispositiu.",
+    "we_reply_to": "Et responem a {email} — normalment en dos dies laborables.",
+    "tell_us": "Explica’ns què passa.",
+    "your_message": "El teu missatge",
+    "send": "Envia",
+    "close_chat": "Tanca el xat de suport",
+    "open_chat": "Obre el xat de suport",
+    "invalid_email": "Introdueix un correu electrònic vàlid perquè et puguem respondre."
+  },
+  "marketing": {
+    "statistics": {
+      "active_users": "Usuaris actius",
+      "bookmarks_saved": "Marcadors desats",
+      "accuracy_rate": "Taxa d’encert",
+      "support": "Suport"
+    }
+  },
+  "import_export": {
+    "time": {
+      "unknown": "Desconegut",
+      "ago_minutes": "fa {minutes} min {seconds} s",
+      "ago_seconds": "fa {seconds} s",
+      "hours_minutes": "{hours} h {minutes} min",
+      "minutes_seconds": "{minutes} min {seconds} s",
+      "seconds": "{seconds} s"
+    },
+    "status_labels": {
+      "inactive": "Inactiu",
+      "active": "Actiu",
+      "processing": "Processant",
+      "completed": "Completat",
+      "cancelled": "Cancel·lat",
+      "failed": "Fallit"
+    },
+    "activity": {
+      "processing": "Processant:",
+      "waiting": "Esperant el marcador següent...",
+      "last_update": "Darrera actualització: {time}"
+    },
+    "failed": {
+      "title": "Importacions fallides ({count})",
+      "retry": "Reintenta {count} element | Reintenta {count} elements",
+      "retryable": "Es pot reintentar",
+      "failed": "Fallit"
+    },
+    "metrics": {
+      "title": "Mètriques de rendiment",
+      "per_minute": "marcadors/min",
+      "duration": "durada",
+      "estimated_completion": "finalització estimada",
+      "batches": "lots"
+    },
+    "overview": {
+      "title": "Estat de la importació",
+      "processing": "Processant {done} de {total} marcadors",
+      "currently": "Ara: {url}",
+      "no_session": "No hi ha cap sessió d’importació activa"
+    },
+    "progress": {
+      "title": "Progrés",
+      "hint": "Això pot trigar uns minuts; la importació continuarà encara que tanquis aquesta finestra.",
+      "completed": "{count} completats",
+      "failed": "{count} fallits"
+    },
+    "queue": {
+      "title": "Vista prèvia de la cua",
+      "remaining": "{count} pendents",
+      "empty": "No hi ha elements a la cua",
+      "batch": "Lot: {batch}",
+      "more": "... i {count} més"
+    },
+    "modal": {
+      "title": "Progrés de la importació",
+      "cancel_import": "Cancel·la la importació",
+      "retry_success": "{count} element s’ha tornat a afegir a la cua per reintentar-lo | {count} elements s’han tornat a afegir a la cua per reintentar-los",
+      "retry_error": "No s’han pogut reintentar els elements. Torna-ho a provar.",
+      "cancelled": "S’ha cancel·lat el procés d’importació",
+      "cancel_error": "No s’ha pogut cancel·lar la importació. Torna-ho a provar."
+    },
+    "user_modal": {
+      "title": "Importa marcadors",
+      "subtitle": "Inicia la importació de marcadors d’aquest usuari",
+      "no_email": "No s’ha indicat cap correu electrònic",
+      "user_id": "ID d’usuari: {id}",
+      "current_bookmarks": "Marcadors actuals: {count}",
+      "import_status": "Estat de la importació",
+      "last_import": "Darrera importació: {date}",
+      "total_imported": "Total importat: {count} marcadors",
+      "options": "Opcions d’importació",
+      "force_reimport": "Força la reimportació (sobreescriu els marcadors existents)",
+      "skip_duplicates": "Omet els marcadors duplicats",
+      "notify_user": "Envia una notificació a l’usuari quan acabi",
+      "from_parse_class": "Importa d’una classe de Parse",
+      "notice_title": "Avís important",
+      "progress": "Progrés de la importació",
+      "importing": "Important...",
+      "start_import": "Inicia la importació",
+      "already_imported_warning": "Aquest usuari ja ha importat marcadors. Activa \"Força la reimportació\" per sobreescriure les dades existents.",
+      "status_unknown": "Desconegut",
+      "status_imported": "Importat anteriorment",
+      "status_none": "Cap importació",
+      "not_available": "N/D",
+      "step_init": "Inicialitzant la importació...",
+      "step_prepare": "Preparant les dades de l’usuari...",
+      "step_process": "Processant marcadors...",
+      "step_finalize": "Finalitzant la importació...",
+      "step_done": "Importació completada correctament!",
+      "failed_generic": "La importació ha fallat",
+      "failed": "La importació ha fallat: {error}"
+    },
+    "export_guide": {
+      "title": "Com exportar els teus marcadors",
+      "intro": "Estàs a punt de portar els teus marcadors a WebBites? Segueix aquestes instruccions senzilles per exportar els marcadors del teu navegador preferit.",
+      "help_title": "Necessites ajuda?",
+      "help_text": "Si tens problemes per exportar els teus marcadors, no dubtis a {link}.",
+      "help_link": "contactar amb el nostre equip de suport",
+      "exporting_from": "Exportar des de {browser}",
+      "note_label": "Nota:",
+      "next_title": "I ara què?",
+      "next_intro": "Ara que has exportat els marcadors, ja els pots importar a WebBites:",
+      "next_1": "Ves al teu <a href=\"/app\" class=\"text-primary-600 dark:text-primary-400 hover:underline\">tauler de WebBites</a> i obre la finestra de configuració.",
+      "next_2": "Fes clic al botó \"Importa marcadors\".",
+      "next_3": "Selecciona i puja el fitxer de marcadors exportat",
+      "next_4": "Selecciona els que vulguis pujar, fes clic a 'Importa' i deixa que WebBites t'ho organitzi tot!",
+      "import_alt": "Pas {n} de la importació a WebBites",
+      "steps": {
+        "chrome_1": {
+          "title": "Obre el menú de Chrome",
+          "description": "Fes clic als tres punts <strong>⋮</strong> de la cantonada superior dreta de la finestra del navegador per obrir el menú de Chrome."
+        },
+        "chrome_2": {
+          "title": "Accedeix al gestor de marcadors",
+          "description": "Ves a <strong>Marcadors > Gestor de marcadors</strong>, o simplement prem <kbd class=\"new-kbd\">Ctrl+Maj+O</kbd> (Windows/Linux) o <kbd class=\"new-kbd\">⌘+Option+B</kbd> (Mac)."
+        },
+        "chrome_3": {
+          "title": "Exporta els marcadors",
+          "description": "Fes clic als tres punts <strong>⋮</strong> de la cantonada superior dreta del gestor de marcadors i selecciona <strong>Exporta els marcadors</strong>."
+        },
+        "chrome_4": {
+          "title": "Desa el fitxer HTML",
+          "description": "Tria una ubicació a l’ordinador per desar el fitxer HTML amb els teus marcadors. El nom per defecte serà alguna cosa com 'bookmarks_[date].html'.",
+          "note": "Aquest fitxer HTML conté tots els teus marcadors i l’estructura de carpetes."
+        },
+        "firefox_1": {
+          "title": "Obre el menú de Firefox",
+          "description": "Fes clic a les tres línies horitzontals (menú d’hamburguesa) <strong>☰</strong> de la cantonada superior dreta de la finestra del navegador."
+        },
+        "firefox_2": {
+          "title": "Accedeix als marcadors",
+          "description": "Ves a <strong>Marcadors > Gestiona els marcadors</strong>, o prem <kbd class=\"new-kbd\">Ctrl+Maj+B</kbd> (Windows/Linux) o <kbd class=\"new-kbd\">⌘+Maj+B</kbd> (Mac)."
+        },
+        "firefox_3": {
+          "title": "Exporta els marcadors",
+          "description": "A la finestra Biblioteca que s’obre, fes clic a <strong>Importació i còpia de seguretat > Exporta els marcadors a HTML</strong>."
+        },
+        "firefox_4": {
+          "title": "Desa el fitxer HTML",
+          "description": "Tria una ubicació a l’ordinador per desar el fitxer HTML. El nom per defecte serà 'bookmarks.html'.",
+          "note": "Recorda on has desat aquest fitxer per trobar-lo fàcilment quan l’importis a WebBites."
+        },
+        "safari_1": {
+          "title": "Obre el menú de Safari",
+          "description": "Fes clic a <strong>Fitxer</strong> a la barra de menús superior de Safari."
+        },
+        "safari_2": {
+          "title": "Exporta els marcadors",
+          "description": "Selecciona <strong>Exporta els marcadors</strong> al menú desplegable."
+        },
+        "safari_3": {
+          "title": "Desa el fitxer",
+          "description": "Tria una ubicació al Mac per desar el fitxer de marcadors. Es desarà un fitxer .zip; l’hauràs de descomprimir per obtenir el fitxer .html.",
+          "note": "Safari exporta tots els teus marcadors, inclosos els de la barra de preferits i totes les carpetes."
+        },
+        "edge_1": {
+          "title": "Obre el menú d’Edge",
+          "description": "Fes clic als tres punts <strong>⋯</strong> de la cantonada superior dreta de la finestra del navegador i després a <strong>Preferits</strong>."
+        },
+        "edge_2": {
+          "title": "Exporta els preferits",
+          "description": "Fes clic a <strong>Exporta els preferits</strong>."
+        },
+        "edge_3": {
+          "title": "Desa el fitxer HTML",
+          "description": "Tria una ubicació a l’ordinador per desar el fitxer HTML amb els teus preferits/marcadors.",
+          "note": "Edge exportarà tots els teus preferits, inclosos els de les carpetes que hagis creat."
+        },
+        "opera_1": {
+          "title": "Accedeix als marcadors",
+          "description": "Prem <kbd class=\"new-kbd\">Ctrl+Maj+B</kbd> (Windows/Linux) o <kbd class=\"new-kbd\">⌘+Option+B</kbd> (Mac) per obrir el gestor de marcadors, o fes clic al menú d’Opera i selecciona <strong>Marcadors > Marcadors</strong>."
+        },
+        "opera_2": {
+          "title": "Obre la vista completa de marcadors",
+          "description": "Fes clic a <strong>Obre la vista completa de marcadors</strong>"
+        },
+        "opera_3": {
+          "title": "Exporta els marcadors",
+          "description": "Fes clic al botó <strong>Importa/Exporta</strong> de la cantonada inferior esquerra del gestor de marcadors i selecciona <strong>Exporta els marcadors com a fitxer HTML</strong>."
+        },
+        "opera_4": {
+          "title": "Desa el fitxer HTML",
+          "description": "Tria una ubicació a l’ordinador per desar el fitxer HTML amb els teus marcadors.",
+          "note": "L’exportació de marcadors d’Opera inclou tots els teus marcadors i l’estructura de carpetes."
+        },
+        "arc_1": {
+          "title": "Obre la barra lateral d’Arc",
+          "description": "Obre la barra d’ordres prement <kbd class=\"new-kbd\">⌘+T</kbd> i ves a <strong>arc://bookmarks</strong>."
+        },
+        "arc_2": {
+          "title": "Exporta els marcadors",
+          "description": "Fes clic als tres punts <strong>⋯</strong> de la cantonada superior dreta del tauler de marcadors i selecciona <strong>Configuració</strong>. Al menú de configuració, busca i fes clic a <strong>Exporta els marcadors</strong>."
+        },
+        "arc_3": {
+          "title": "Desa el fitxer HTML",
+          "description": "Tria una ubicació a l’ordinador per desar el fitxer HTML amb els teus marcadors.",
+          "note": "Aquest fitxer HTML conté tots els teus marcadors i l’estructura de carpetes."
+        },
+        "raindrop_1": {
+          "title": "Inicia sessió a Raindrop.io",
+          "description": "Ves a <a href='https://app.raindrop.io' target='_blank' rel='noopener noreferrer'>app.raindrop.io</a> i inicia sessió al teu compte."
+        },
+        "raindrop_2": {
+          "title": "Accedeix a la configuració",
+          "description": "Fes clic a la teva foto de perfil de la cantonada superior dreta i selecciona <strong>Settings</strong> al menú desplegable."
+        },
+        "raindrop_3": {
+          "title": "Exporta els marcadors",
+          "description": "Al menú de configuració, ves a la pestanya <strong>Backup</strong>. A la secció 'Export', selecciona el format que prefereixis (es recomana HTML per a la compatibilitat amb WebBites)."
+        },
+        "raindrop_4": {
+          "title": "Descarrega els marcadors",
+          "description": "Fes clic al botó <strong>Export</strong> per generar i descarregar el fitxer de marcadors.",
+          "note": "Raindrop.io permet exportar en diversos formats, però el format HTML és el que millor funciona per importar a WebBites."
+        }
+      }
+    }
+  },
+  "subscription_success": {
+    "title": "Subscripció activada!",
+    "message": "T’has subscrit correctament al pla {plan}. Gaudeix de l’experiència premium!",
+    "benefits_title": "Els teus avantatges premium",
+    "bookmarks": "Marcadors",
+    "bookmarks_limit": "Desa fins a {limit} marcadors",
+    "audio": "Pistes d’àudio",
+    "audio_limit": "Accedeix a {limit} pistes d’àudio premium",
+    "import_bookmarks": "Importa marcadors",
+    "start": "Comença a explorar",
+    "unlimited": "il·limitats"
+  },
+  "rss": {
+    "mark_all_read": "Marca-ho tot com a llegit",
+    "mark_read": "Marca com a llegit",
+    "mark_unread": "Marca com a no llegit",
+    "pane": {
+      "articles": "Articles"
+    },
+    "sidebar": {
+      "feeds": "Canals",
+      "all_articles": "Tots els articles",
+      "unread": "Sense llegir",
+      "import_opml": "Importa canals (OPML)…",
+      "export_feeds": "Exporta canals…",
+      "import_added": "S’ha afegit {count} canal | S’han afegit {count} canals",
+      "import_queued": "{count} més en camí",
+      "import_failed_rows": "{count} no s’han pogut llegir",
+      "import_failed": "No s’ha pogut importar aquest fitxer OPML.",
+      "export_failed": "No s’han pogut exportar els teus canals."
+    },
+    "add_feed": {
+      "title": "Afegeix un canal",
+      "placeholder": "Adreça o nom del canal",
+      "hint": "Enganxa l’adreça d’un lloc o d’un canal, o cerca per nom.",
+      "nothing_found": "No s’ha trobat res",
+      "no_match": "Cap canal coincideix amb “{query}”. Si tens l’adreça del canal, enganxa-la aquí.",
+      "readers": "{count} lector | {count} lectors",
+      "already_subscribed": "Ja estàs subscrit",
+      "add": "Afegeix",
+      "done": "Fet",
+      "subscribe_failed": "No s’ha pogut subscriure a aquest canal."
+    },
+    "settings": {
+      "name": "Nom",
+      "name_hint": "S’utilitza el nom de l’editor",
+      "fetch_full": "Obtén els articles complets",
+      "fetch_full_description": "Molts canals només envien un avanç. Amb això activat, WebBites obté cada article nou complet i te’l resumeix. Disponible amb un pla de pagament.",
+      "open_website": "Obre el lloc web",
+      "feed_dead": "Aquest canal ha deixat de respondre i ja no es comprova.",
+      "unsubscribe": "Cancel·la la subscripció",
+      "save_failed": "No s’ha pogut desar aquesta configuració."
+    },
+    "list": {
+      "filter": "Filtra els articles",
+      "showing_unread": "Es mostren només els no llegits",
+      "show_unread": "Mostra només els no llegits",
+      "refresh": "Actualitza el canal",
+      "confirm_feed": "Vols marcar tot de “{title}” com a llegit?",
+      "confirm_all": "Vols marcar tots els articles com a llegits?",
+      "full_text": "Text complet disponible",
+      "summary": "Resum disponible",
+      "no_matches": "Cap coincidència",
+      "no_matches_description": "Res d’aquí coincideix amb “{query}”.",
+      "no_feeds": "Encara no hi ha canals",
+      "no_feeds_description": "Afegeix un canal per començar a llegir.",
+      "caught_up": "Tot al dia",
+      "caught_up_description": "Aquí no hi ha res per llegir.",
+      "no_articles": "Cap article",
+      "no_articles_description": "Aquest canal encara no ha publicat res."
+    },
+    "reader": {
+      "no_article": "Cap article seleccionat",
+      "pick_article": "Tria alguna cosa de la llista per començar a llegir.",
+      "original": "Original",
+      "mark_unread": "Marca com a no llegit",
+      "summarise": "Resumeix aquest article",
+      "listen": "Escolta aquest article",
+      "nothing_to_read": "Aquí no hi ha res per llegir",
+      "open_original": "Obre l’original",
+      "save_bookmark": "Desa com a marcador",
+      "add_read_later": "Afegeix a Llegeix més tard",
+      "remove_read_later": "Treu de Llegeix més tard",
+      "show_original": "Mostra l’original",
+      "show_extracted": "Mostra el contingut extret",
+      "empty_failed": "No hem pogut obtenir el text d’aquest article de l’editor.",
+      "empty_pending": "El text complet encara s’està obtenint. Torna-ho a provar d’aquí a un moment.",
+      "empty_headlines": "Aquest canal només publica titulars. Obre l’original per llegir-lo.",
+      "too_short": "Aquest article té massa poc text per resumir-lo.",
+      "summary_failed": "No s’ha pogut resumir aquest article.",
+      "audio_failed": "No s’ha pogut generar l’àudio d’aquest article.",
+      "saved_read_later": "Desat a Llegeix més tard",
+      "removed_read_later": "Tret de Llegeix més tard",
+      "read_later_failed": "No s’ha pogut actualitzar Llegeix més tard.",
+      "extract_failed": "No s’ha pogut extreure aquest article."
+    }
+  },
+  "audio_recorder": {
+    "start_recording": "Inicia la gravació",
+    "pause_recording": "Posa en pausa la gravació",
+    "resume_recording": "Reprèn la gravació"
+  },
+  "audio_voice_picker": {
+    "voices": {
+      "nova": "Càlida i natural",
+      "alloy": "Neutra i equilibrada",
+      "ash": "Segura i clara",
+      "ballad": "Suau i expressiva",
+      "coral": "Brillant i amigable",
+      "echo": "Estable i greu",
+      "fable": "Narrador afable",
+      "onyx": "Profunda i autoritària",
+      "sage": "Calmada i mesurada",
+      "shimmer": "Lleugera i animada",
+      "verse": "Viva i dinàmica",
+      "marin": "Clara i conversacional",
+      "cedar": "Rica i sòlida"
+    },
+    "accents": {
+      "american": "Americà",
+      "british": "Britànic",
+      "australian": "Australià",
+      "irish": "Irlandès",
+      "indian": "Indi",
+      "scottish": "Escocès"
+    }
+  },
+  "auth_modal": {
+    "passwords_mismatch": "Les contrasenyes no coincideixen",
+    "password_needs_chars": "A la contrasenya li falta {n} caràcter més | A la contrasenya li falten {n} caràcters més",
+    "password_needs_number": "La contrasenya necessita almenys un número",
+    "signup_failed": "El registre ha fallat",
+    "login_after_signup_failed": "L’inici de sessió després del registre ha fallat",
+    "login_failed": "L’inici de sessió ha fallat"
+  },
+  "bookmark_editor": {
+    "no_results_for": "No s’ha trobat cap resultat per a {query}"
+  },
+  "bookmark_group": {
+    "add_to_board": "Afegeix a un tauler",
+    "board_empty_title": "Aquest tauler és buit",
+    "board_empty_message": "Afegeix marcadors a aquest tauler des de la teva col·lecció amb el menú d’opcions de qualsevol targeta de marcador."
+  },
+  "bookmark_options": {
+    "remove_from_board": "Treu del tauler",
+    "removed_from_board": "Tret del tauler",
+    "remove_error": "Error en treure del tauler",
+    "read_later": "Llegeix més tard",
+    "remove_read_later": "Treu de Llegeix més tard",
+    "saved_read_later": "Desat a Llegeix més tard",
+    "removed_read_later": "Tret de Llegeix més tard",
+    "add_to_board": "Afegeix a \"{board}\"",
+    "added_to_board": "Afegit a {board}",
+    "add_error": "Error en afegir al tauler"
+  },
+  "bookmark_submit": {
+    "save_type": "Desa {type}",
+    "types": {
+      "website": "lloc web",
+      "image": "imatge",
+      "pdf": "PDF",
+      "movie": "pel·lícula",
+      "game": "joc",
+      "drawing": "dibuix",
+      "audio": "àudio",
+      "textNote": "Nota"
+    }
+  },
+  "bookmark_card": {
+    "image_alt": "Imatge de la targeta",
+    "favicon_alt": "Favicon del marcador",
+    "favicon_replacement_alt": "Favicon alternatiu del marcador",
+    "copy_url_failed": "No s’ha pogut copiar l’URL"
+  },
+  "compose_expand": {
+    "save_drawing_error": "No s’ha pogut desar el dibuix"
+  },
+  "feedback_card": {
+    "hidden_title": "Amagat per a tothom excepte els administradors",
+    "status": {
+      "in_progress": "en curs",
+      "backlog": "pendent de planificar",
+      "pending": "pendent",
+      "done": "fet",
+      "closed": "tancat"
+    }
+  },
+  "feedback_comment": {
+    "deleted": "Comentari eliminat correctament",
+    "delete_failed": "No s’ha pogut eliminar el comentari"
+  },
+  "feedback_form": {
+    "select_type": "Selecciona el tipus",
+    "markdown_supported": "Admet Markdown",
+    "sent": "Comentaris enviats correctament",
+    "login_to_submit": "Has d’haver iniciat sessió per enviar comentaris",
+    "send_failed": "Error en enviar els comentaris, torna-ho a provar més tard",
+    "types": {
+      "bug_report": "Informe d’error",
+      "feature_request": "Sol·licitud de funcionalitat",
+      "improvement": "Millora",
+      "other": "Altres"
+    }
+  },
+  "feedback_info_modal": {
+    "login_to_comment": "Has d’haver iniciat sessió per comentar",
+    "comment_failed": "No s’ha pogut publicar el teu comentari, torna-ho a provar més tard"
+  },
+  "feedback_up_vote": {
+    "login_to_vote": "Has d’haver iniciat sessió per votar"
+  },
+  "import_modal": {
+    "checking_access": "Comprovant l’accés a la importació...",
+    "quota_title": "Quota de marcadors",
+    "plan_active_title": "Pla d’importació actiu",
+    "plan_active_description": "Pots importar marcadors il·limitats una vegada, sempre que sigui abans del {date}",
+    "validate_failed": "No s’ha pogut validar l’accés a la importació",
+    "checkout_failed": "No s’ha pogut crear la sessió de pagament"
+  },
+  "landing_footer": {
+    "api_docs": "Documentació de l’API"
+  },
+  "main_sidebar": {
+    "trash": "Paperera"
+  },
+  "mobile_top_bar": {
+    "library": "Biblioteca",
+    "more": "Més",
+    "trash": "Paperera",
+    "board": "Tauler",
+    "everything": "Tot"
+  },
+  "onboarding_wizard": {
+    "intro": {
+      "title": "La teva biblioteca del web",
+      "content": "Desa el que trobis, segueix els teus llocs preferits i torna-ho a trobar tot.",
+      "subcontent": "Aquí tens el recorregut d'un minut."
+    },
+    "organised": {
+      "title": "S'organitza sola",
+      "content": "Tot el que desis s'etiqueta automàticament, amb una captura de la pàgina sencera i una còpia llegible per si la pàgina canvia.",
+      "subcontent": "Cerca per paraules de la pàgina, etiquetes, text a les imatges i fins i tot per color."
+    },
+    "feeds": {
+      "title": "Segueix els teus llocs preferits",
+      "content": "Els articles nous dels llocs que segueixes arriben a Canals. Llegeix-los, escolta'ls o desa els millors a la teva biblioteca.",
+      "add": "Afegeix un canal"
+    },
+    "everywhere": {
+      "title": "Desa des de qualsevol lloc",
+      "content": "Desa qualsevol pàgina amb un clic amb l'extensió del navegador, o des del full de compartir a l'iPhone, l'iPad i el Mac.",
+      "subcontent": "A les apps, inicia la sessió amb aquest compte. Una biblioteca al dispositiu creada sense compte va per separat.",
+      "chrome": "Extensió per a Chrome",
+      "apps": "iPhone, iPad i Mac"
+    },
+    "import": {
+      "title": "Importa els marcadors existents",
+      "content": "Porta els teus marcadors actuals de qualsevol navegador i els organitzarem automàticament",
+      "subcontent": "Visita {link} per saber com exportar els teus marcadors.",
+      "this_page": "aquesta pàgina"
+    },
+    "first_bookmark": {
+      "title": "Desa el teu primer marcador",
+      "content": "Introdueix un URL a sota o prova el nostre suggeriment.",
+      "subcontent": "Com més desis, més potent es torna la teva col·lecció."
+    }
+  },
+  "reader_view": {
+    "error_try_again": "S’ha produït un error, torna-ho a provar més tard"
+  },
+  "settings_modal": {
+    "view_import_status": "Mostra l’estat de la importació",
+    "extensions_title": "Extensions de WebBites",
+    "extensions_subtitle": "Desa qualsevol cosa des de qualsevol lloc, més de pressa.",
+    "extensions_label": "Extensions",
+    "chrome_icon_alt": "Icona de l’extensió de WebBites per a Chrome",
+    "raycast_icon_alt": "Icona de l’extensió de WebBites per a Raycast",
+    "automations_title": "Automatitzacions",
+    "automations_subtitle": "Cada vegada que s’afegeix un marcador, etiqueta’l, arxiva’l o envia’l a algun lloc. Els taulers intel·ligents també són aquí.",
+    "deleting_account": "Eliminant el compte...",
+    "account_deleted": "El teu compte s’ha eliminat correctament.",
+    "delete_account_failed": "S’ha produït un error en intentar eliminar el teu compte. Torna-ho a provar."
+  },
+  "shortcuts_modal": {
+    "click": "Clic"
+  },
+  "social_post_view": {
+    "fallback_platform": "Xarxes socials"
+  },
+  "tag_manager": {
+    "untitled": "Sense títol",
+    "error_generic": "Alguna cosa ha anat malament"
+  },
+  "testimonials_old": {
+    "heading": "Què diuen els usuaris"
+  },
+  "tiptap_editor": {
+    "narrow_view": "Vista estreta",
+    "wide_view": "Vista àmplia",
+    "paste_url": "Enganxa un URL",
+    "image_size": {
+      "small": "Petita",
+      "big": "Gran",
+      "biggest": "Molt gran"
+    },
+    "url_to_link": "Converteix l’URL en enllaç",
+    "add_link": "Afegeix un enllaç",
+    "insert_block_below": "Insereix un bloc a sota",
+    "block_actions_hint": "Accions del bloc, o arrossega per moure",
+    "block_actions": "Accions del bloc",
+    "errors": {
+      "upload_failed": "No s’ha pogut pujar la imatge: {error}",
+      "no_file": "No s’ha seleccionat cap fitxer",
+      "too_large": "La mida del fitxer supera el límit de 10 MB",
+      "not_image": "El fitxer seleccionat no és una imatge"
+    }
+  },
+  "website_modal_media_view": {
+    "backdrop_alt": "Fons del cartell de {title}",
+    "game_cover_alt": "Coberta de {name}"
+  },
+  "website_screenshot": {
+    "pan_hint": "Mantén premut Maj i arrossega per desplaçar-te",
+    "undo": "Desfés (Ctrl+Z)",
+    "redo": "Refés (Ctrl+Y)"
+  },
+  "import_status_history": {
+    "title": "Historial d’importacions ({count} sessió) | Historial d’importacions ({count} sessions)",
+    "empty": "No hi ha sessions d’importació anteriors",
+    "progress": "{processed}/{total} marcadors",
+    "success_rate": "{rate}% d’èxit",
+    "duration": "Durada: {duration}",
+    "more_sessions": "... i {count} sessió més | ... i {count} sessions més",
+    "unknown": "Desconegut",
+    "status": {
+      "completed": "Completada",
+      "active": "Activa",
+      "failed": "Fallida",
+      "cancelled": "Cancel·lada"
+    }
+  },
+  "bookmarks_area": {
+    "already_pinned": "Aquest lloc web ja està fixat"
+  },
+  "top_bar": {
+    "importing": "Importació en curs"
+  },
+  "search_bar": {
+    "filters": "Filtres",
+    "beta": "(beta)",
+    "natural_language_description": "Més lenta, però pots cercar amb llenguatge natural. Per exemple:",
+    "natural_language_example": "\"Projectes de GitHub sobre Swift\"",
+    "colors": "Colors",
+    "find_tag": "Troba una etiqueta",
+    "tags_loading": "Carregant…",
+    "no_tags": "No s’ha trobat cap etiqueta",
+    "color_names": {
+      "red": "Vermell",
+      "green": "Verd",
+      "blue": "Blau",
+      "yellow": "Groc",
+      "purple": "Porpra",
+      "orange": "Taronja",
+      "black": "Negre",
+      "white": "Blanc",
+      "pink": "Rosa",
+      "brown": "Marró",
+      "gray": "Gris",
+      "cyan": "Cian",
+      "magenta": "Magenta",
+      "lime": "Llima",
+      "olive": "Oliva",
+      "navy": "Blau marí",
+      "teal": "Verd blavós",
+      "maroon": "Granat",
+      "silver": "Plata",
+      "gold": "Or",
+      "indigo": "Indi",
+      "violet": "Violeta"
+    }
+  },
+  "new_bookmark": {
+    "fetching_preview": "Obtenint la vista prèvia del lloc web...",
+    "clipboard_access": "Assegura’t d’haver activat l’accés al porta-retalls al navegador.",
+    "saving_note": "Desant la nota",
+    "note_saved": "Nota de text desada",
+    "note_error": "Error en desar la nota de text",
+    "saving_drawing": "Desant el dibuix",
+    "drawing_saved": "Dibuix desat",
+    "drawing_error": "Error en desar el dibuix",
+    "media_error": "Error en desar el contingut multimèdia",
+    "nothing_to_save": "Encara no hi ha res per desar",
+    "saved": "Desat",
+    "save_as": {
+      "website": "Desa el lloc web",
+      "textNote": "Desa la nota",
+      "image": "Desa la imatge",
+      "pdf": "Desa el PDF",
+      "movie": "Desa la pel·lícula",
+      "game": "Desa el joc",
+      "drawing": "Desa el dibuix",
+      "audio": "Desa l’àudio"
+    }
+  },
+  "landing_page": {
+    "hero": {
+      "title": "La teva biblioteca",
+      "title_emphasis": "del web",
+      "subtitle": "Desa tot el que trobis, segueix els teus llocs preferits i torna-ho a trobar tot. WebBites ho organitza per tu.",
+      "logo_alt": "Logotip de WebBites"
+    },
+    "scroll": {
+      "title": "Tot el que deses,",
+      "title_emphasis": "en un sol lloc",
+      "browser_alt": "El mur de WebBites en un navegador, amb articles, imatges, notes i música desats un al costat de l’altre"
+    },
+    "native": {
+      "title": "iPhone, iPad, Mac i qualsevol navegador",
+      "description": "Apps natives per a iPhone, iPad i Mac, cadascuna amb full de compartir i extensió de Safari, i l'app web completa a tota la resta. Inicia la sessió amb el teu compte de WebBites i la teva biblioteca ja hi serà.",
+      "mac_alt": "L’aplicació de WebBites per a Mac, amb taulers i canals a la barra lateral al costat d’un mur de marcadors desats",
+      "phone_alt": "L’aplicació de WebBites per a iPhone, mostrant els mateixos marcadors desats en dues columnes"
+    },
+    "features": {
+      "ai": {
+        "title": "Organitzat per tu",
+        "description": "Cada marcador s'etiqueta i s'ordena quan el deses. Sense carpetes per mantenir."
+      },
+      "search": {
+        "title": "Torna-ho a trobar",
+        "description": "Cerca per les paraules de la pàgina, etiquetes, notes, text dins de les imatges i fins i tot per color."
+      },
+      "screenshots": {
+        "title": "Guardat per sempre",
+        "description": "Una captura de la pàgina sencera i una còpia llegible de cada pàgina, per si l'original canvia o desapareix."
+      },
+      "media": {
+        "title": "Desa qualsevol cosa",
+        "description": "Articles, imatges, vídeos, pel·lícules, jocs i notes, junts en una sola biblioteca."
+      },
+      "ai_organisation": {
+        "description": "Categoritza i etiqueta automàticament els teus marcadors amb IA avançada."
+      },
+      "cross_platform": {
+        "description": "iPhone, iPad, Mac i el web, tots amb la mateixa biblioteca quan inicies la sessió."
+      },
+      "reader": {
+        "title": "Mode lector",
+        "description": "Els articles es formataran automàticament per millorar la lectura, fins i tot els que són darrere d’un mur de pagament!"
+      },
+      "raycast": {
+        "title": "A punt per a Raycast",
+        "description": "Amb la nostra extensió de Raycast, tots els teus marcadors són a una sola drecera de teclat!"
+      },
+      "browsers": {
+        "title": "Desa des del navegador",
+        "description": "Un clic amb l'extensió per a Chrome, o amb l'extensió de Safari que inclouen les apps per a Mac i iPhone."
+      },
+      "colors": {
+        "title": "Extreu colors",
+        "description": "Els colors principals de tots els teus marcadors s’extreuen per tu, i així es pot cercar per color!"
+      },
+      "tts": {
+        "title": "Text a veu",
+        "description": "Escolta qualsevol cosa que hagis desat, o qualsevol article dels teus canals."
+      },
+      "annotate": {
+        "title": "Anota captures",
+        "description": "Fes clic a qualsevol lloc de la captura per afegir-hi una anotació."
+      },
+      "ocr": {
+        "title": "OCR",
+        "description": "S’aplicarà el reconeixement òptic de caràcters (OCR) a totes les imatges desades, i així es podran cercar pel text."
+      },
+      "pin": {
+        "title": "Fixa els teus marcadors",
+        "description": "Fixa els teus marcadors a dalt de la llista per accedir-hi fàcilment."
+      },
+      "multilingual": {
+        "title": "Multilingüe",
+        "description": "Compatible amb diversos idiomes."
+      }
+    },
+    "save_anything": {
+      "sentence": "Desa qualsevol cosa, des de {websites}{images}{movies}{games} i fins i tot {notes} amb el nostre editor estil Notion.",
+      "websites": "llocs web",
+      "images": "imatges",
+      "movies": "pel·lícules",
+      "games": "jocs",
+      "notes": "notes"
+    },
+    "roadmap_more": {
+      "title": "I moltes més!",
+      "description": "Sempre s’afegeixen més funcions; mira el tauler de comentaris per veure què ve!"
+    },
+    "developers": {
+      "title": "Una API per a tot el que desis",
+      "description": "Tot el que fa WebBites, ho fa per HTTP. Desa un enllaç, cerca a la teva biblioteca, rep un webhook en el moment que la IA hagi acabat amb ell.",
+      "docs_button": "Llegeix la documentació per a desenvolupadors",
+      "facts": {
+        "rest": {
+          "title": "REST pur",
+          "text": "Un esquema OpenAPI i un espai de proves al navegador per provar cada crida abans d’escriure cap codi."
+        },
+        "webhooks": {
+          "title": "Webhooks",
+          "text": "Apunta un URL a WebBites i et farà un POST amb el marcador acabat — captura, resum i etiquetes — signat perquè el puguis verificar."
+        },
+        "keys": {
+          "title": "Les teves claus, els teus límits",
+          "text": "Crea claus, mira què ha gastat cadascuna i llegeix el límit de peticions a cada capçalera de resposta."
+        }
+      },
+      "samples": {
+        "save": "Desa un enllaç",
+        "search": "Cerca",
+        "webhook": "Webhook"
+      }
+    },
+    "feeds": {
+      "title": "Segueix els teus llocs preferits",
+      "description": "Un lector integrat per a blogs, notícies i butlletins, sense algoritmes. Llegeix, escolta o resumeix cada article, i desa els millors a la teva biblioteca.",
+      "image_alt": "El lector de canals de WebBites en un Mac, amb els canals a la barra lateral i un article obert al costat"
+    },
+    "where": {
+      "title": "On viu la teva biblioteca",
+      "separate": "Un compte de WebBites se sincronitza a tot arreu. Una biblioteca al dispositiu es queda al teu iPhone, iPad o Mac, sense cap compte. Són independents: una biblioteca al dispositiu no apareix mai al web ni en un compte, i les compres no passen d'una a l'altra.",
+      "account": "Compte de WebBites:",
+      "account_when": "si fas servir el web o Chrome, o vols canals, etiquetes amb IA i resums.",
+      "device": "Biblioteca al dispositiu:",
+      "device_when": "si només fas servir dispositius Apple i no vols res a cap servidor."
+    }
+  },
+  "login_page": {
+    "not_you": "No ets {email}?"
+  },
+  "password_reset_page": {
+    "chars_needed": "A la contrasenya li falta {count} caràcter més | A la contrasenya li falten {count} caràcters més",
+    "number_needed": "La contrasenya necessita almenys un número",
+    "mismatch": "Les contrasenyes no coincideixen"
+  },
+  "questionnaire": {
+    "eyebrow": "Ajuda a donar forma a WebBites",
+    "step": "{current} de {total}",
+    "hint": "Tria les que t'encaixin. Salta-ho quan vulguis.",
+    "q_tools": "Què fas servir ara per desar enllaços?",
+    "q_interest": "Què t'importa més?",
+    "q_ai": "Com seria per a tu “organitzar automàticament amb IA”?",
+    "browser": "Adreces d'interès del navegador",
+    "raindrop": "Raindrop",
+    "pocket": "Pocket",
+    "notion": "Notion",
+    "notes": "Apple Notes",
+    "pinterest": "Pinterest",
+    "none": "Res encara",
+    "find": "Tornar a trobar coses",
+    "organise": "Mantenir l'ordre",
+    "devices": "Desar des de qualsevol dispositiu",
+    "visual": "Un arxiu visual",
+    "later": "Llegir més tard",
+    "share": "Compartir taulers",
+    "tags": "Etiquetes automàtiques",
+    "search": "Cercar amb les teves paraules",
+    "boards": "Ordenat en taulers",
+    "summaries": "Resums",
+    "duplicates": "Detectar duplicats",
+    "other": "Alguna cosa més? (opcional)",
+    "skip_question": "Omet la pregunta",
+    "thanks": "Gràcies, ens ajuda molt!"
+  }
+}

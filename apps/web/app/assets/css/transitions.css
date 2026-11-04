@@ -1,0 +1,331 @@
+@import "tailwindcss";
+
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.4s;
+}
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(40px);
+  filter: blur(1rem);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: 0.1s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0 !important;
+}
+
+.curtain-down-enter-active,
+.curtain-down-leave-active {
+    transition: translate 0.4s ease, opacity 0.4s ease;
+}
+
+.curtain-down-enter-from,
+.curtain-down-leave-to {
+    translate: 0px 40px;
+    opacity: 0;
+}
+
+.curtain-up-enter-active,
+.curtain-up-leave-active {
+    transition: translate 0.4s ease, opacity 0.4s ease;
+}
+
+.curtain-up-enter-from,
+.curtain-up-leave-to {
+    translate: 0px -40px;
+    opacity: 0;
+}
+
+.shrink-enter-active,
+.shrink-leave-active {
+    transition: 0.2s ease;
+}
+
+.shrink-enter-from,
+.shrink-leave-to {
+    opacity: 0;
+    transform: scale(0.5);
+    filter: blur(10px);
+}
+
+.blur-enter-active,
+.blur-leave-active {
+    transition: 0.2s ease;
+}
+
+.blur-leave-to {
+  position: absolute;
+}
+
+.blur-enter-from,
+.blur-leave-to {
+    opacity: 0;
+    filter: blur(20px);
+    height: 0px;
+}
+
+.move-in-move,
+.move-in-enter-active,
+.move-in-leave-active {
+    transition: 0.2s ease;
+}
+
+
+.move-in-leave-to,
+.move-in-enter-from {
+    @media (prefers-reduced-motion: no-preference) {
+        opacity: 0;
+        filter: blur(10px);
+    }
+}
+
+.move-in-leave-to {
+    @media (prefers-reduced-motion: no-preference) {
+        transform: translateX(50px);
+    }
+}
+
+.move-in-enter-from {
+    @media (prefers-reduced-motion: no-preference) {
+        transform: translateX(-50px);
+    }
+}
+
+.slide-in-left-move,
+.slide-in-left-enter-active,
+.slide-in-left-leave-active {
+    transition: 0.2s cubic-bezier(0.62, 0, 0.46, 1);
+}
+
+.slide-in-left-enter-from,
+.slide-in-left-leave-to {
+    translate: -100%;
+    transform-origin: 0% 100%;
+    filter: blur(30px);
+    opacity: 0;
+
+    @media screen and (max-width: 768px) {
+        translate: 100%;
+    }
+}
+
+.slide-in-right-move,
+.slide-in-right-enter-active,
+.slide-in-right-leave-active {
+    transition: 0.2s cubic-bezier(0.62, 0, 0.46, 1);
+}
+
+.slide-in-right-enter-from,
+.slide-in-right-leave-to {
+    translate: 100%;
+    transform-origin: 0% 100%;
+    filter: blur(10px);
+    opacity: 0;
+
+    @media screen and (max-width: 768px) {
+        translate: 100%;
+    }
+}
+
+.slide-up-move,
+.slide-up-enter-active,
+.slide-up-leave-active {
+    transition: transform 0.15s, opacity 0.15s, filter 0.15s !important;
+    will-change: transform, opacity, filter;
+}
+
+.slide-up-leave-active {
+    position: absolute;
+}
+
+.slide-up-enter-from,
+.slide-up-leave-to {
+    /* Use transform instead of translate/scale for GPU acceleration */
+    transform: translate3d(0, 1.5rem, 0) scale3d(0.8, 0.8, 1);
+    opacity: 0 !important;
+    filter: blur(2px);
+}
+
+.scale-top-left-move,
+.scale-top-left-enter-active,
+.scale-top-left-leave-active {
+    transition: 0.2s cubic-bezier(0.62, 0, 0.46, 1);
+}
+.scale-top-left-enter-from,
+.scale-top-left-leave-to {
+    scale: 0.5;
+    opacity: 0;
+    transform-origin: top left;
+}
+
+.slide-down-move,
+.slide-down-enter-active,
+.slide-down-leave-active {
+    transition: 0.2s cubic-bezier(0.62, 0, 0.46, 1);
+}
+
+.slide-down-enter-from,
+.slide-down-leave-to {
+    transform: translateY(-25px);
+    transform-origin: 0% 100%;
+    opacity: 0;
+}
+
+/* apply transition to moving elements */
+.list-move,
+.list-enter-active,
+.list-leave-active {
+    transition: all 2s ease;
+}
+
+.list-enter-from,
+.list-leave-to {
+    opacity: 0;
+    transform: translateX(-30px);
+}
+
+/* ensure leaving items are taken out of layout flow so that moving
+   animations can be calculated correctly. */
+.list-leave-active {
+    position: absolute;
+}
+
+
+.tags-move,
+.tags-enter-active,
+.tags-leave-active {
+    transition: all 0.3s ease !important;
+}
+
+.tags-enter-from,
+.tags-leave-to {
+    transform: translateX(-100%);
+    filter: blur(10px);
+    opacity: 0;
+}
+
+.tags-leave-active {
+    position: absolute !important;
+    left: 0;
+    top: 0;
+}
+
+.slide-right-enter-active,
+.slide-right-leave-active,
+.slide-left-enter-active,
+.slide-left-leave-active{
+    transition: 0.2s cubic-bezier(0.62, 0, 0.46, 1);
+}
+
+.slide-left-enter-from,
+.slide-left-leave-to {
+    opacity: 0;
+    transform: translate(-50%, 4rem) !important;
+}
+
+.slide-right-enter-from,
+.slide-right-leave-to {
+    opacity: 0;
+    translate: 25% 0px;
+}
+
+.move-list-move,
+.move-list-enter-active,
+.move-list-leave-active {
+    transition: all 0.2s;
+}
+
+.move-list-leave-active {
+    position: absolute;
+}
+
+.move-list-enter-from,
+.move-list-leave-to {
+    opacity: 0;
+}
+
+.masonry-move,
+.masonry-enter-active,
+.masonry-leave-active {
+    transition: transform 0.2s, opacity 0.2s;
+    will-change: transform, opacity;
+}
+
+.masonry-enter-from,
+.masonry-leave-to {
+    opacity: 0;
+    transform: translate3d(0, -10px, 0);
+}
+
+.masonry-fade-move,
+.masonry-fade-enter-active,
+.masonry-fade-leave-active {
+    transition: all 0.6s;
+}
+
+.masonry-fade-enter-from,
+.masonry-fade-leave-to {
+    position: absolute;
+    opacity: 0;
+    transform: translateY(-60px);
+}
+
+.scale-up-enter-active,
+.scale-up-leave-active {
+    transition: all 40s;
+}
+
+.scale-up-enter-from,
+.scale-up-leave-to {
+    opacity: 0;
+    transform: scale(0);
+}
+
+.website-modal-enter-active,
+.website-modal-leave-active {
+    /* Specific properties for better Safari performance */
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+    will-change: transform, opacity;
+}
+
+.website-modal-enter-from,
+.website-modal-leave-to {
+    /* Initial/final state handled by JavaScript for better control */
+    pointer-events: none;
+}
+
+/* Base transition properties */
+.wizard-slide-in-out-enter-active,
+.wizard-slide-out-in-enter-active,
+.wizard-slide-in-out-leave-active,
+.wizard-slide-out-in-leave-active {
+  top: 25px;
+  position: absolute;
+  transition: all 0.3s ease-out;
+  max-height: 492px;
+}
+
+/* Slide Left transition (moving from right to left) */
+.wizard-slide-in-out-enter-from {
+  @apply opacity-0 translate-x-[100%] scale-50 blur-sm;
+}
+
+.wizard-slide-in-out-leave-to {
+  @apply opacity-0 -translate-x-[100%] scale-50 blur-sm;
+}
+
+/* Slide Right transition (moving from left to right) */
+.wizard-slide-out-in-enter-from {
+  @apply opacity-0 -translate-x-[100%] scale-50 blur-sm;
+}
+
+.wizard-slide-out-in-leave-to {
+  @apply opacity-0 translate-x-[100%] scale-50 blur-sm;
+}
