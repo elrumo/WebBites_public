@@ -69,5 +69,6 @@ backup connectors), `WELCOME_BOOKMARKS=false` (no sample bookmark for new accoun
 | `PARSE_MASTER_KEY_IPS` | private ranges and CGNAT | Where the master key may be used from |
 | `ACCOUNT_LOCKOUT_THRESHOLD`, `ACCOUNT_LOCKOUT_MINUTES` | 10, 5 | Wrong passwords before an account is locked, and for how long |
 | `PARSE_BIND_HOST` | every interface | The address Parse listens on (set it when Parse runs with `network_mode: host`) |
+| `PARSE_CLIENT_ADD_FIELD` | on | `false`: leave `addField` shut on the client-written classes that already exist (Parse shuts it at every start); only for a database that has all its columns |
 | `INTERNAL_API_URL` | `http://127.0.0.1:$PORT` | The API's address for calls to itself |
 | `BACKEND_INTERNAL_URL`, `PARSE_INTERNAL_URL` | set by compose | How `web` reaches the API and Parse |
