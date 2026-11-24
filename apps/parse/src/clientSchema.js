@@ -20,7 +20,41 @@ const CLP = {
   addField: { requiresAuthentication: true },
 };
 
+/**
+ * Columns on `_User` that sign-up (cloud code, without the master key) and the signed-in app
+ * write. `_User` keeps `addField` shut, which is right, but then a fresh database could not
+ * create its first account: the sign-up hook sets `websiteUrls` and `bookmarksToImport`, and
+ * Parse refused to add the columns. A long-running database already has them; for a fresh one
+ * they are added here, with the master key, before anyone signs up. Existing columns are left
+ * exactly as they are.
+ */
+const USER_FIELDS = {
+  websiteUrls: { type: 'Pointer', targetClass: 'websiteUrls' },
+  bookmarksToImport: { type: 'Array' },
+  currentPlan: { type: 'Pointer', targetClass: 'plans' },
+  role: { type: 'Pointer', targetClass: '_Role' },
+  userOptions: { type: 'Pointer', targetClass: 'userOptions' },
+  importedBookmarks: { type: 'File' },
+  failedToImport: { type: 'Array' },
+  questionnaire: { type: 'Object' },
+};
+
+async function ensureUserFields(Parse, log = console) {
+  const schema = new Parse.Schema('_User');
+  const existing = (await schema.get({ useMasterKey: true })).fields || {};
+  const missing = Object.keys(USER_FIELDS).filter((name) => !existing[name]);
+  if (missing.length === 0) return;
+  for (const name of missing) {
+    const { type, targetClass } = USER_FIELDS[name];
+    if (type === 'Pointer') schema.addPointer(name, targetClass);
+    else schema.addField(name, type);
+  }
+  await schema.update({ useMasterKey: true });
+  log.log(`Added user columns: ${missing.join(', ')}`);
+}
+
 async function ensureClientClasses(Parse, log = console) {
+  await ensureUserFields(Parse, log);
   for (const name of CLIENT_CLASSES) {
     const schema = new Parse.Schema(name);
     schema.setCLP(CLP);
@@ -34,4 +68,4 @@ async function ensureClientClasses(Parse, log = console) {
   log.log(`Client-writable classes ready: ${CLIENT_CLASSES.join(', ')}`);
 }
 
-module.exports = { ensureClientClasses, CLIENT_CLASSES, CLP };
+module.exports = { ensureClientClasses, ensureUserFields, CLIENT_CLASSES, CLP, USER_FIELDS };

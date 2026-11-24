@@ -7,7 +7,8 @@
  * by hand, so the first account created claims it:
  *
  *   - INITIAL_ADMIN_EMAIL set: only a user signing up with that address becomes admin.
- *   - otherwise: the very first user to sign up does.
+ *   - otherwise: the very first user to sign up does, provided no account existed before it
+ *     (so a database that already has users never hands the role to its next sign-up).
  *
  * "First" has to survive two sign-ups landing at once. Parse keeps `_Role.name` unique, so
  * creating a role called `instance-owner` succeeds exactly once; whoever's create succeeds
@@ -50,6 +51,15 @@ async function claimOwnership() {
   }
 }
 
+/** Whether any account was created before this one. */
+async function hasEarlierUser(user) {
+  const query = new Parse.Query(Parse.User);
+  query.notEqualTo('objectId', user.id);
+  const createdAt = user.createdAt || user.get('createdAt');
+  if (createdAt) query.lessThan('createdAt', createdAt);
+  return Boolean(await query.first({ useMasterKey: true }));
+}
+
 async function makeAdmin(user) {
   const admin = await ensureAdminRole();
   user.set('role', admin);
@@ -66,10 +76,14 @@ async function assignAdminToNewUser(user) {
       if (email === wanted) await makeAdmin(user);
       return;
     }
+    // Only the first account of a fresh install. A database that already has users (an install
+    // moved onto this version, or the hosted service) has no `instance-owner` role either, and
+    // without this check whoever signed up next would have become its administrator.
+    if (await hasEarlierUser(user)) return;
     if (await claimOwnership()) await makeAdmin(user);
   } catch (error) {
     console.error('[instance] could not assign the administrator:', error);
   }
 }
 
-module.exports = { ADMIN_ROLE, CLAIM_ROLE, ensureAdminRole, claimOwnership, makeAdmin, assignAdminToNewUser };
+module.exports = { ADMIN_ROLE, CLAIM_ROLE, ensureAdminRole, claimOwnership, hasEarlierUser, makeAdmin, assignAdminToNewUser };
