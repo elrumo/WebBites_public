@@ -63,7 +63,11 @@ backup connectors), `WELCOME_BOOKMARKS=false` (no sample bookmark for new accoun
 | `QUEUE_DRIVER` | `redis` | `qstash` only for a deployment that uses Upstash |
 | `JOB_WORKER` | on | `false` keeps the API enqueue-only |
 | `MEILISEARCH_AUTO_SETUP` | on | `false`: do not create the search index and its settings at start-up |
+| `RENDER_PROVIDER` | automatic | `screenshot` or `siterelic`: who renders JavaScript-heavy pages when both a screenshot service and `SITERELIC_KEY` are set (default: the screenshot service) |
+| `STORAGE_LEGACY_HOSTS` | none | Extra hosts (comma separated) whose file URLs count as this install's when an account's files are deleted, for a store that moved |
 | `MAX_UPLOAD_MB` | 500 | Parse upload limit |
-| `PARSE_MASTER_KEY_IPS` | private ranges | Where the master key may be used from |
+| `PARSE_MASTER_KEY_IPS` | private ranges and CGNAT | Where the master key may be used from |
+| `ACCOUNT_LOCKOUT_THRESHOLD`, `ACCOUNT_LOCKOUT_MINUTES` | 10, 5 | Wrong passwords before an account is locked, and for how long |
+| `PARSE_BIND_HOST` | every interface | The address Parse listens on (set it when Parse runs with `network_mode: host`) |
 | `INTERNAL_API_URL` | `http://127.0.0.1:$PORT` | The API's address for calls to itself |
 | `BACKEND_INTERNAL_URL`, `PARSE_INTERNAL_URL` | set by compose | How `web` reaches the API and Parse |
