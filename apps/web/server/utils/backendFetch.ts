@@ -1,4 +1,5 @@
 import { log } from './useDevLog'
+import { createApiKey, setApiKeyCookie } from './apiKeys'
 
 /**
  * Server-side utility for making authenticated requests to the backend
@@ -52,7 +53,6 @@ export async function backendFetch<T = any>(
   const baseUrl = backendUrl.endsWith('/') ? backendUrl : `${backendUrl}/`
   let fullUrl = `${baseUrl}${cleanEndpoint}`
 
-  log('[Backend Fetch] authToken:', authToken)
   log('[Backend Fetch] using:', wbApiKey ? 'API key' : 'Parse session')
   log('[Backend Fetch] cleanEndpoint:', cleanEndpoint)
   log('[Backend Fetch] Endpoint:', fullUrl)
@@ -87,20 +87,13 @@ export async function backendFetch<T = any>(
       if (parseSession) {
         log('🔄 [Backend Fetch] Attempting to regenerate API key...')
         try {
-          // Try to generate a new API key (with timeout to prevent hanging)
-          const newKeyResponse = await Promise.race([
-            $fetch('/api/auth/generateKey', {
-              method: 'POST',
-              headers: {
-                'Cookie': `parse.session=${parseSession}`
-              }
-            }),
-            new Promise((_, reject) =>
-              setTimeout(() => reject(new Error('Key generation timeout')), 5000)
-            )
-          ]) as any
+          // Generate the key here rather than through POST /api/auth/generateKey,
+          // which no longer puts the key in its response. The new key also goes
+          // into this response's cookie, so the browser stops sending the dead one.
+          const { key: newKey } = await createApiKey(parseSession)
+          setApiKeyCookie(event, newKey)
 
-          if (newKeyResponse?.success && newKeyResponse?.key) {
+          if (newKey) {
             log('✅ [Backend Fetch] New API key generated, retrying request...')
 
             // Retry the request with new API key
@@ -108,7 +101,7 @@ export async function backendFetch<T = any>(
               ...requestOptions,
               headers: {
                 ...requestOptions.headers,
-                'Authorization': `Bearer ${newKeyResponse.key}`
+                'Authorization': `Bearer ${newKey}`
               }
             })
 

@@ -9,7 +9,7 @@ import { captureException } from '#root/server/utils/sentry.js';
 import { createError } from 'h3';
 import Parse from 'parse/node.js'
 import { log } from '../bookmarkLogger';
-import { sendToQstash, callBackendEndpoint, updateUsage, incrementBookmarkUsage, saveWebsiteToSearchIndices, getPartitionedQueue, createFileName, isUrlAnImage } from '../serverUtils.js';
+import { withFailedImport, sendToQstash, callBackendEndpoint, updateUsage, incrementBookmarkUsage, saveWebsiteToSearchIndices, getPartitionedQueue, createFileName, isUrlAnImage } from '../serverUtils.js';
 import { ImportSessionManager } from '../ImportSessionManager.ts';
 import { processScreenshots } from '../../routes/v1/content/getScreenshots.ts';
 import { removeBookmarkFromQueue } from '../../routes/v1/import/removeFromQueue.post.ts';
@@ -19,6 +19,8 @@ import { pollFeed, extractItemContent, subscribeToUrl } from '../rssService.ts';
 import { initParseForRss } from '../rssUtils.ts';
 import { enrichmentContext, immediateMessages, aiMessages, automationMessage, queueBase, isEnrichmentContext } from '../enrichmentMessages.ts';
 import { runAutomations } from '../automations.ts';
+import { safeFetch } from '../safeUrl.ts';
+import { trackBackground } from '../inflight.ts';
 
 Parse.initialize(process.env.VITE_PARSE_ID, process.env.VITE_PARSE_JS_KEY, process.env.VITE_PARSE_MASTER_KEY)
 Parse.serverURL = process.env.VITE_PARSE_URL;
@@ -36,7 +38,9 @@ Parse.serverURL = process.env.VITE_PARSE_URL;
  * already awaited stay awaited either way, and still throw.
  */
 export async function processJob(body, { awaitBackground = false } = {}) {
-  const tracked = (promise) => (awaitBackground ? promise : undefined);
+  // Detached work is still registered, so a shutdown waits for it
+  // (utils/inflight.ts) instead of killing it after the queue was told it ran.
+  const tracked = (promise) => (awaitBackground ? promise : (trackBackground(promise), undefined));
   const type = body?.body?.type || body?.type || 'unknown';
 
   // log('[QSTASH-WEBHOOK] body:', body)
@@ -489,6 +493,10 @@ const processPageContent = async (data) => {
       // AI endpoint - needs longer timeout for queue + processing
       result = await callBackendEndpoint('v1/content/getAiSummary', body, { timeout: 120000, retries: 3 });
       break;
+    case 'extractRecipe':
+      // Recipe pages become recipe bookmarks. Redelivery is harmless: a row that has its recipe is skipped.
+      result = await callBackendEndpoint('v1/content/extractRecipe', body, { timeout: 120000, retries: 3 });
+      break;
     case 'checkForAdultContent':
       // Not enqueued any more (it was a no-op message per bookmark). Handler
       // kept so in-flight messages and a future re-enable still route here.
@@ -655,15 +663,12 @@ const isValidUrl = (url) => {
 const logFailedImport = async (savedSite, funcName, error, user) => {
   try {
     const isString = typeof savedSite === 'string';
-    const failedToImport = user.get('failedToImport') || [];
-    failedToImport.push({
+    user.set('failedToImport', withFailedImport(user.get('failedToImport'), {
       url: isString ? savedSite : savedSite.get('url'),
       websiteId: isString ? 'n/a' : savedSite.id,
-      error: error,
-      funcName: funcName,
-      date: new Date().toString()
-    });
-    user.set('failedToImport', failedToImport);
+      error,
+      funcName,
+    }));
     await user.save(null, { useMasterKey: true });
   } catch (error) {
     console.error(`Error logging failed import: ${error}`);
@@ -671,15 +676,25 @@ const logFailedImport = async (savedSite, funcName, error, user) => {
 }
 
 // BACKGROUND FILE PROCESSING HANDLERS
+const MAX_JOB_IMAGE_BYTES = 25 * 1024 * 1024;
+
 export const processLargeImageFile = async ({ websiteId, imageData, url, fileExtension, fileName }) => {
   try {
     log(`Processing large image file for website ${websiteId}`);
     
     if (url) {
       log(`Downloading image from URL: ${url}`);
-      const response = await fetch(url);
+      // The URL arrives in the job message, which a signed-in user can shape
+      // (the website forwards client-chosen job data). A plain fetch followed
+      // it anywhere: Bun's fetch reads `file://` paths, and internal services
+      // and the cloud metadata address answer too, and the bytes were then
+      // stored as this bookmark's image for the user to download.
+      const response = await safeFetch(String(url), { signal: AbortSignal.timeout(30_000) });
       if (!response.ok) throw new Error(`Failed to download image: ${response.statusText}`);
+      const declared = Number(response.headers.get('content-length') || 0);
+      if (declared > MAX_JOB_IMAGE_BYTES) throw new Error('Image too large');
       const buffer = await response.arrayBuffer();
+      if (buffer.byteLength > MAX_JOB_IMAGE_BYTES) throw new Error('Image too large');
       imageData = Buffer.from(buffer).toString('base64');
     }
 

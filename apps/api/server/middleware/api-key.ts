@@ -1,4 +1,4 @@
-import { defineEventHandler, getHeader, createError, getCookie, getRequestURL, getRequestIP } from 'h3'
+import { defineEventHandler, getHeader, createError, getCookie, getRequestURL, getRequestIP, setResponseStatus } from 'h3'
 import { validateParseToken } from '../utils/raycast-auth.js'
 import { validateApiKey, validateInternalApiKey } from '../utils/api-keys'
 import { routeAccess, normalisePath } from '../utils/apiRouteAccess'
@@ -18,8 +18,6 @@ import { routeAccess, normalisePath } from '../utils/apiRouteAccess'
  */
 
 export default defineEventHandler(async (event) => {
-  if (event.method === 'OPTIONS') return
-
   let path: string
   try {
     path = normalisePath(getRequestURL(event).pathname)
@@ -29,6 +27,18 @@ export default defineEventHandler(async (event) => {
 
   const access = routeAccess(path)
   if (access === 'none' || access === 'public') return
+
+  // A preflight carries no credential, so it cannot be asked for one, but it
+  // must not reach a handler either. This used to be `return` for every
+  // OPTIONS request, before the path was even looked at: a route file with no
+  // method suffix answers every method, so `OPTIONS /setACL` (or any other
+  // suffix-less route that does not read a body) ran with no credential at
+  // all. The `cors` route rule only adds headers, it never ends the request.
+  // Answer here instead; those headers are already on the response.
+  if (event.method === 'OPTIONS') {
+    setResponseStatus(event, 204)
+    return ''
+  }
 
   if (validateInternalApiKey(event)) {
     event.context.internal = true
@@ -44,6 +54,9 @@ export default defineEventHandler(async (event) => {
   if (authHeader?.startsWith('Bearer r:')) {
     // Throws 401 itself on a bad/expired session.
     await validateParseToken(event)
+    // For the rate limiter: this token is a real session, so it may name a
+    // bucket of its own (see middleware/api-rate-limit.ts).
+    event.context.verifiedCredential = authHeader.substring(7)
     return
   }
 
@@ -64,4 +77,5 @@ export default defineEventHandler(async (event) => {
   }
 
   event.context.apiKey = { key: apiKey, userId }
+  event.context.verifiedCredential = apiKey
 })

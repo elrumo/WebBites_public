@@ -1,184 +1,165 @@
 import { getRedisClient, ensureRedisConnected } from './redis'
-import { randomBytes, timingSafeEqual } from 'crypto'
+import { createHash, randomBytes, timingSafeEqual } from 'crypto'
 import { H3Event, getHeader } from 'h3'
 
+/**
+ * API keys (`wb_live_…`), stored as SHA-256 hashes.
+ *
+ * Keys used to be stored as they are: as Redis key names (`api_key:<key>`),
+ * as members of the per-user index, and as usage field names, and
+ * `GET /v1/keys/list` returned every one of them in full to any credential on
+ * the account. Anyone who could read Redis, or any one key, held them all.
+ *
+ *   api_key_hash:<sha256>       → userId
+ *   api_key_meta:h:<sha256>     → { userId, name, createdAt, display, kind }
+ *   user_api_key_hashes:<user>  → set of <sha256>
+ *
+ * The full key exists only in the response that creates it. Lists show
+ * `display` (`wb_live_AbCd…wxyz`), which revoke also accepts.
+ *
+ * Old plaintext entries (`api_key:<key>`, `api_key_meta:<key>`,
+ * `user_api_keys:<user>`) still validate, and are moved to the hashed layout
+ * the first time they are used or listed.
+ *
+ * `kind: 'session'` marks the keys the web app mints at sign-in. They expire
+ * (SESSION_KEY_TTL_SECONDS) and are pruned among themselves, so signing in
+ * often never pushes out a developer's own keys.
+ */
 
-// In-memory cache for API key validation
-// Reduces Redis lookups from ~800ms (REST) or ~20-50ms (TCP) to <1ms
 interface CachedApiKey {
   userId: string
   expiresAt: number
 }
 
-const apiKeyCache = new Map<string, CachedApiKey>()
-// Revoking a key only clears the cache on the instance that handled the
-// revoke, so this is how long a revoked key can keep working on the others.
-// It used to be 5 hours under a comment saying 5 minutes.
-const CACHE_TTL = 5 * 60 * 1000 // 5 minutes
+export type ApiKeyKind = 'developer' | 'session' | 'device'
 
-const isDev = process.env.NODE_ENV === 'development'
-
-// Cleanup expired cache entries every 10 minutes
-setInterval(() => {
-  const now = Date.now()
-  for (const [key, value] of apiKeyCache.entries()) {
-    if (value.expiresAt < now) {
-      apiKeyCache.delete(key)
-    }
-  }
-}, 10 * 60 * 1000)
-
-/**
- * Generate a secure random API key
- */
-export function generateApiKey(): string {
-  // Format: wb_live_xxxxxxxxxxxxxxxxxxxx (32 chars after prefix)
-  const randomPart = randomBytes(24).toString('base64url')
-  return `wb_live_${randomPart}`
+export interface ApiKeyInfo {
+  /** The masked key, for display; revoke accepts it. */
+  key: string
+  /** The key's hash: a stable id. */
+  id: string
+  name?: string
+  createdAt?: string
+  kind?: ApiKeyKind
 }
 
-/**
- * Create a new API key for a user
- */
-export async function createApiKey(userId: string, name?: string): Promise<{ key: string, userId: string, name?: string }> {
+// In-memory cache, keyed by the key's hash. Revoking a key clears the entry
+// only on the instance that handled the revoke, so this is how long a revoked
+// key can keep working on the others.
+const apiKeyCache = new Map<string, CachedApiKey>()
+const CACHE_TTL = 5 * 60 * 1000
+const MAX_CACHE_ENTRIES = 50_000
+
+/** How long a key minted at web sign-in lasts (the cookie that holds it lasts as long). */
+export const SESSION_KEY_TTL_SECONDS = 60 * 60 * 24 * 365
+/** Sign-in keys kept per user; older ones are revoked when a new one is minted. */
+export const MAX_SESSION_KEYS = 5
+
+setInterval(() => {
+  const now = Date.now()
+  for (const [hash, value] of apiKeyCache.entries()) {
+    if (value.expiresAt < now) apiKeyCache.delete(hash)
+  }
+}, 10 * 60 * 1000).unref?.()
+
+export function hashApiKey(apiKey: string): string {
+  return createHash('sha256').update(apiKey).digest('hex')
+}
+
+/** `wb_live_AbCd…wxyz`: enough to recognise a key, not enough to use it. */
+export function displayApiKey(apiKey: string): string {
+  return apiKey.length > 20 ? `${apiKey.slice(0, 12)}…${apiKey.slice(-4)}` : '…'
+}
+
+const hashKeyName = (hash: string) => `api_key_hash:${hash}`
+const metaKeyName = (hash: string) => `api_key_meta:h:${hash}`
+const userSetName = (userId: string) => `user_api_key_hashes:${userId}`
+const legacyKeyName = (apiKey: string) => `api_key:${apiKey}`
+const legacyMetaName = (apiKey: string) => `api_key_meta:${apiKey}`
+const legacyUserSetName = (userId: string) => `user_api_keys:${userId}`
+
+function asRecord(value: unknown): Record<string, string> {
+  if (!value) return {}
+  if (value instanceof Map) return Object.fromEntries(value) as Record<string, string>
+  if (Array.isArray(value)) return Object.fromEntries(value as any)
+  return value as Record<string, string>
+}
+
+function asStrings(value: unknown): string[] {
+  const items = Array.isArray(value) ? value : value ? Array.from(value as Set<string | Buffer>) : []
+  return items.map((item) => (typeof item === 'string' ? item : (item as Buffer).toString()))
+}
+
+function remember(hash: string, userId: string) {
+  if (apiKeyCache.size >= MAX_CACHE_ENTRIES) {
+    const oldest = apiKeyCache.keys().next().value
+    if (oldest !== undefined) apiKeyCache.delete(oldest)
+  }
+  apiKeyCache.set(hash, { userId, expiresAt: Date.now() + CACHE_TTL })
+}
+
+/** Generate a secure random API key: `wb_live_` and 32 characters. */
+export function generateApiKey(): string {
+  return `wb_live_${randomBytes(24).toString('base64url')}`
+}
+
+async function storeKey(
+  userId: string,
+  apiKey: string,
+  meta: { name?: string; createdAt?: string; kind?: ApiKeyKind },
+  ttlSeconds?: number
+) {
   const redis = getRedisClient()
   await ensureRedisConnected()
-
-  const apiKey = generateApiKey()
-
-  // Store the API key with the user ID
-  await redis.set(`api_key:${apiKey}`, userId)
-
-  // Optionally store metadata about the key
-  if (name) {
-    await redis.hSet(`api_key_meta:${apiKey}`, {
-      userId,
-      name,
-      createdAt: new Date().toISOString()
-    })
-  }
-
-  // Add to user's list of API keys (for listing/management)
-  await redis.sAdd(`user_api_keys:${userId}`, apiKey)
-
-  // Pre-warm the cache so first use is instant
-  apiKeyCache.set(apiKey, {
+  const hash = hashApiKey(apiKey)
+  const fields: Record<string, string> = {
     userId,
-    expiresAt: Date.now() + CACHE_TTL
-  })
+    createdAt: meta.createdAt || new Date().toISOString(),
+    display: displayApiKey(apiKey),
+    kind: meta.kind || 'developer',
+  }
+  if (meta.name) fields.name = meta.name
 
+  if (ttlSeconds) await redis.set(hashKeyName(hash), userId, { EX: ttlSeconds })
+  else await redis.set(hashKeyName(hash), userId)
+  await redis.hSet(metaKeyName(hash), fields)
+  if (ttlSeconds) await redis.expire(metaKeyName(hash), ttlSeconds)
+  await redis.sAdd(userSetName(userId), hash)
+  return hash
+}
+
+/** Create a key. The full key is in the result and nowhere else, ever. */
+export async function createApiKey(
+  userId: string,
+  name?: string,
+  options: { kind?: ApiKeyKind; ttlSeconds?: number } = {}
+): Promise<{ key: string; userId: string; name?: string }> {
+  const apiKey = generateApiKey()
+  const hash = await storeKey(userId, apiKey, { name, kind: options.kind }, options.ttlSeconds)
+  remember(hash, userId)
   return { key: apiKey, userId, name }
 }
 
-/**
- * Validate API key from H3 event headers
- */
+/** Moves one plaintext key to the hashed layout. */
+async function migrateLegacyKey(apiKey: string, userId: string) {
+  const redis = getRedisClient()
+  await ensureRedisConnected()
+  const meta = asRecord(await redis.hGetAll(legacyMetaName(apiKey)).catch(() => null))
+  await storeKey(userId, apiKey, { name: meta.name, createdAt: meta.createdAt })
+  await redis.del(legacyKeyName(apiKey))
+  await redis.del(legacyMetaName(apiKey))
+  await redis.sRem(legacyUserSetName(userId), apiKey)
+}
+
 export async function validateApiKeyFromEvent(event: H3Event): Promise<string | null> {
   const apiKey = await getApiKeyFromEvent(event)
-  if (!apiKey) {
-    return null
-  }
-
+  if (!apiKey) return null
   return validateApiKey(apiKey)
 }
 
-/**
- * Extract API key from event headers or cookie
- */ 
 export async function getApiKeyFromEvent(event: H3Event): Promise<string | null> {
   const apiKey = getHeader(event, 'Authorization')?.replace('Bearer ', '')
-  if (!apiKey) {
-    return null
-  }
-
-  return apiKey
-}
-
-/**
- * Revoke/delete an API key
- */
-export async function revokeApiKey(apiKey: string): Promise<boolean> {
-  const redis = getRedisClient()
-  await ensureRedisConnected()
-
-  // Get userId before deleting
-  const userId = await redis.get(`api_key:${apiKey}`)
-
-  if (!userId) {
-    return false
-  }
-
-  // Delete the key
-  await redis.del(`api_key:${apiKey}`)
-  await redis.del(`api_key_meta:${apiKey}`)
-
-  // Remove from user's list
-  await redis.sRem(`user_api_keys:${userId}`, apiKey)
-
-  // Invalidate cache immediately
-  invalidateApiKeyCache(apiKey)
-
-  return true
-}
-
-/**
- * Revoke every key a user holds, and the index that lists them.
- *
- * For account deletion: the keys live in Redis rather than Parse, so nothing
- * that deletes the user's rows would ever reach them, and a key left behind
- * still authenticates as a user who no longer exists.
- */
-export async function revokeAllApiKeys(userId: string): Promise<number> {
-  const redis = getRedisClient()
-  await ensureRedisConnected()
-
-  const keys = await listUserApiKeys(userId)
-  for (const { key } of keys) {
-    await revokeApiKey(key)
-  }
-
-  await redis.del(`user_api_keys:${userId}`)
-  return keys.length
-}
-
-/**
- * List all API keys for a user
- */
-export async function listUserApiKeys(userId: string): Promise<Array<{ key: string, name?: string, createdAt?: string }>> {
-  const redis = getRedisClient()
-  await ensureRedisConnected()
-
-  const apiKeys = await redis.sMembers(`user_api_keys:${userId}`)
-
-  if (!apiKeys || (Array.isArray(apiKeys) && apiKeys.length === 0)) {
-    return []
-  }
-
-  // Get metadata for each key
-  const keysArray = Array.isArray(apiKeys) ? apiKeys : Array.from(apiKeys as Set<string | Buffer>)
-  const normalizedKeys = keysArray.map(k => (typeof k === 'string' ? k : (k as Buffer).toString()))
-
-  const keysWithMeta = await Promise.all(
-    normalizedKeys.map(async (key) => {
-      const meta = await redis.hGetAll(`api_key_meta:${key}`)
-      const metaObj = meta instanceof Map
-        ? Object.fromEntries(meta)
-        : Array.isArray(meta)
-          ? Object.fromEntries(meta as any)
-          : (meta as Record<string, string>)
-      return {
-        key,
-        name: metaObj?.name,
-        createdAt: metaObj?.createdAt
-      }
-    })
-  )
-
-  return keysWithMeta.map(k => ({
-    key: k.key,
-    name: k.name as string | undefined,
-    createdAt: k.createdAt as string | undefined
-  }))
+  return apiKey || null
 }
 
 /** Constant-time string compare that doesn't leak the length by throwing. */
@@ -208,85 +189,140 @@ export function validateInternalApiKey(event: H3Event): boolean {
   return secretsMatch(apiKey, process.env.CUSTOM_API_KEY)
 }
 
-/**
- * Validate if an API key exists and return the associated userId
- * Uses in-memory cache to reduce Redis lookups
- */
+/** The user an API key belongs to, or null. */
 export async function validateApiKey(apiKey: string): Promise<string | null> {
-  // if (isDev) console.log('[validateApiKey] apiKey: ', apiKey)
-  const startTime = performance.now()
-
-  if (apiKey === process.env.CUSTOM_API_KEY) {
-    return 'custom'
-  }
+  if (typeof apiKey !== 'string' || !apiKey) return null
+  if (process.env.CUSTOM_API_KEY && secretsMatch(apiKey, process.env.CUSTOM_API_KEY)) return 'custom'
   // MCP OAuth tokens (`wbo_…`) are issued for /mcp alone and never work as an
   // API key, whatever Redis holds. Their own check is in utils/oauthStore.ts.
   if (apiKey.startsWith('wbo_')) return null
-  // Check cache first
-  const cached = apiKeyCache.get(apiKey)
-  if (cached && cached.expiresAt > Date.now()) {
-    if (isDev) console.log(`[API_KEYS] Cached Time: ${performance.now() - startTime}ms`)
-    return cached.userId
-  }
 
+  const hash = hashApiKey(apiKey)
+  const cached = apiKeyCache.get(hash)
+  if (cached && cached.expiresAt > Date.now()) return cached.userId
 
-  // Cache miss - fetch from Redis
   const redis = getRedisClient()
   await ensureRedisConnected()
 
-  const userId = await redis.get(`api_key:${apiKey}`)
+  let userId = (await redis.get(hashKeyName(hash))) as string | null
+  if (!userId) {
+    userId = (await redis.get(legacyKeyName(apiKey))) as string | null
+    if (userId) {
+      await migrateLegacyKey(apiKey, userId).catch((error: any) =>
+        console.warn('[api-keys] could not migrate a legacy key:', error?.message)
+      )
+    }
+  }
 
-  // Cache the result if valid
-  if (userId) {
-    apiKeyCache.set(apiKey, {
-      userId: userId as string,
-      expiresAt: Date.now() + CACHE_TTL
+  if (userId) remember(hash, userId)
+  return userId
+}
+
+export function invalidateApiKeyCache(apiKey: string): void {
+  apiKeyCache.delete(hashApiKey(apiKey))
+}
+
+async function revokeHash(userId: string, hash: string): Promise<boolean> {
+  const redis = getRedisClient()
+  await ensureRedisConnected()
+  const owner = await redis.get(hashKeyName(hash))
+  const removed = await redis.sRem(userSetName(userId), hash)
+  if (owner && owner !== userId) return false
+  await redis.del(hashKeyName(hash))
+  await redis.del(metaKeyName(hash))
+  apiKeyCache.delete(hash)
+  return Boolean(owner) || Number(removed) > 0
+}
+
+/** Revoke a key, given the key itself. */
+export async function revokeApiKey(apiKey: string): Promise<boolean> {
+  const redis = getRedisClient()
+  await ensureRedisConnected()
+  const hash = hashApiKey(apiKey)
+  let userId = (await redis.get(hashKeyName(hash))) as string | null
+  if (!userId) {
+    userId = (await redis.get(legacyKeyName(apiKey))) as string | null
+    if (!userId) return false
+    await migrateLegacyKey(apiKey, userId)
+  }
+  return revokeHash(userId, hash)
+}
+
+/**
+ * Revoke one of `userId`'s keys, named by what a client has: the full key,
+ * the masked form from the list, or its id. False when it isn't theirs.
+ */
+export async function revokeUserApiKey(userId: string, handle: string): Promise<boolean> {
+  if (typeof handle !== 'string' || !handle) return false
+  const keys = await listUserApiKeys(userId)
+  const hashOfHandle = hashApiKey(handle)
+  const match = keys.find((k) => k.id === hashOfHandle || k.id === handle || k.key === handle)
+  return match ? revokeHash(userId, match.id) : false
+}
+
+/** Every key a user holds, masked. Moves any plaintext ones to the hashed layout first. */
+export async function listUserApiKeys(userId: string): Promise<ApiKeyInfo[]> {
+  const redis = getRedisClient()
+  await ensureRedisConnected()
+
+  for (const legacy of asStrings(await redis.sMembers(legacyUserSetName(userId)))) {
+    const owner = await redis.get(legacyKeyName(legacy))
+    if (owner === userId) await migrateLegacyKey(legacy, userId)
+    else await redis.sRem(legacyUserSetName(userId), legacy)
+  }
+
+  const hashes = asStrings(await redis.sMembers(userSetName(userId)))
+  const keys: ApiKeyInfo[] = []
+  for (const hash of hashes) {
+    const meta = asRecord(await redis.hGetAll(metaKeyName(hash)))
+    if (!meta.userId) {
+      // Expired (sign-in keys have a TTL) or half-written: drop it from the index.
+      await redis.sRem(userSetName(userId), hash)
+      continue
+    }
+    keys.push({
+      key: meta.display || '…',
+      id: hash,
+      name: meta.name,
+      createdAt: meta.createdAt,
+      kind: (meta.kind as ApiKeyKind) || 'developer',
     })
   }
-  
-  if (isDev) console.log(`[API_KEYS] Cache miss - Time: ${performance.now() - startTime}ms`)
-
-  return userId as string | null
+  return keys
 }
 
-/**
- * Invalidate cache for a specific API key
- */
-export function invalidateApiKeyCache(apiKey: string): void {
-  apiKeyCache.delete(apiKey)
+/** Revoke every key a user holds (account deletion). */
+export async function revokeAllApiKeys(userId: string): Promise<number> {
+  const keys = await listUserApiKeys(userId)
+  for (const { id } of keys) await revokeHash(userId, id)
+  const redis = getRedisClient()
+  await redis.del(userSetName(userId))
+  await redis.del(legacyUserSetName(userId))
+  return keys.length
 }
 
+const byAge = (a: ApiKeyInfo, b: ApiKeyInfo) =>
+  new Date(a.createdAt || 0).getTime() - new Date(b.createdAt || 0).getTime()
+
 /**
- * Clean up old API keys when user reaches the limit
- * Deletes the oldest keys to make room for new ones
+ * Make room for one more key: revoke the oldest until fewer than `maxKeys`
+ * remain. Sign-in keys are not counted or touched, so a developer's own keys
+ * are never pushed out by the web app signing in.
  */
 export async function cleanupOldApiKeys(userId: string, maxKeys: number): Promise<number> {
-  const keys = await listUserApiKeys(userId)
+  const keys = (await listUserApiKeys(userId)).filter((k) => k.kind !== 'session')
+  const excess = keys.length - maxKeys + 1
+  if (excess <= 0) return 0
+  const doomed = keys.sort(byAge).slice(0, excess)
+  for (const k of doomed) await revokeHash(userId, k.id)
+  return doomed.length
+}
 
-  if (keys.length < maxKeys) {
-    return 0 // No cleanup needed
-  }
-
-  // Sort by creation date (oldest first)
-  const sortedKeys = keys.sort((a, b) => {
-    const dateA = new Date(a.createdAt || 0).getTime()
-    const dateB = new Date(b.createdAt || 0).getTime()
-    return dateA - dateB
-  })
-
-  // Calculate how many keys to delete (keep room for 1 new key)
-  const keysToDelete = keys.length - maxKeys + 1
-
-  if (keysToDelete <= 0) {
-    return 0
-  }
-
-  // Delete oldest keys
-  const keysToRemove = sortedKeys.slice(0, keysToDelete)
-
-  for (const keyInfo of keysToRemove) {
-    await revokeApiKey(keyInfo.key)
-  }
-
-  return keysToRemove.length
+/** Keep at most `keep - 1` sign-in keys, so the one about to be minted makes `keep`. */
+export async function pruneSessionKeys(userId: string, keep = MAX_SESSION_KEYS): Promise<number> {
+  const keys = (await listUserApiKeys(userId)).filter((k) => k.kind === 'session').sort(byAge)
+  const excess = keys.length - keep + 1
+  if (excess <= 0) return 0
+  for (const k of keys.slice(0, excess)) await revokeHash(userId, k.id)
+  return excess
 }

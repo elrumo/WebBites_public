@@ -26,3 +26,17 @@ export function screenshotServiceKey(): string {
 export function siterelicKey(): string | null {
     return (process.env.VITE_SITERELIC_KEY || process.env.SITERELIC_KEY || '').trim() || null;
 }
+
+/**
+ * Which service renders JavaScript-heavy pages for content extraction: RENDER_PROVIDER=screenshot
+ * (the screenshot service's /render), siterelic (needs SITERELIC_KEY), or unset for the screenshot
+ * service when one is configured and Siterelic otherwise. Screenshots always use the screenshot
+ * service.
+ */
+export function renderProvider(): 'screenshot' | 'siterelic' | null {
+    const explicit = (process.env.RENDER_PROVIDER || '').trim().toLowerCase();
+    if (explicit === 'siterelic') return siterelicKey() ? 'siterelic' : null;
+    if (explicit === 'screenshot') return screenshotServiceBase() ? 'screenshot' : null;
+    if (screenshotServiceBase()) return 'screenshot';
+    return siterelicKey() ? 'siterelic' : null;
+}

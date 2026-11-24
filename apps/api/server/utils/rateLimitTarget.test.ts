@@ -9,7 +9,7 @@
  * Run with:  npm run test:rateLimitTarget
  */
 
-import { isRateLimitExempt, resolveClientIp, rateLimitIdentifier, bearerToken } from './rateLimitTarget';
+import { isRateLimitExempt, resolveClientIp, rateLimitIdentifier, bearerToken, rateLimitCredential } from './rateLimitTarget';
 
 let pass = 0, fail = 0;
 const check = (name: string, cond: boolean) => {
@@ -85,6 +85,30 @@ check('bearer: a Parse session token is still a token', bearerToken('Bearer r:se
 check('bearer: no header is no token', bearerToken(undefined) === undefined);
 check('bearer: another scheme is no token', bearerToken('Basic dXNlcjpwYXNz') === undefined);
 check('bearer: an empty bearer is no token', bearerToken('Bearer    ') === undefined);
+
+// ─── Which credential names a bucket ─────────────────────────────────────────
+
+check('credential: a verified token names its own bucket',
+    rateLimitCredential({ verified: 'wb_live_abc', presented: 'wb_live_abc', path: '/v1/boards' }) === 'wb_live_abc');
+check('credential: an unverified token on a public route does not',
+    rateLimitCredential({ presented: 'made-up-1', path: '/v1/auth/login' }) === undefined);
+check('credential: so rotating made-up tokens stays in one address bucket',
+    rateLimitIdentifier(rateLimitCredential({ presented: 'made-up-1', path: '/v1/auth/login' }), '203.0.113.7') ===
+    rateLimitIdentifier(rateLimitCredential({ presented: 'made-up-2', path: '/v1/auth/login' }), '203.0.113.7'));
+check('credential: /mcp checks its own token, so the token still buckets there',
+    rateLimitCredential({ presented: 'wbo_token', path: '/mcp' }) === 'wbo_token');
+check('credential: /mcp with no token falls back to the address',
+    rateLimitCredential({ path: '/mcp' }) === undefined);
+check('credential: a path that merely starts with /mcp is not /mcp',
+    rateLimitCredential({ presented: 'x', path: '/mcpx' }) === undefined);
+
+// ─── Cloudflare ──────────────────────────────────────────────────────────────
+
+check('ip: CF-Connecting-IP wins over a client-written X-Forwarded-For',
+    resolveClientIp({ 'cf-connecting-ip': '203.0.113.7', 'x-forwarded-for': '1.2.3.4, 203.0.113.7' }, '10.0.0.2') === '203.0.113.7');
+check('ip: spoofing X-Forwarded-For behind Cloudflare does not change the bucket',
+    resolveClientIp({ 'cf-connecting-ip': '203.0.113.7', 'x-forwarded-for': '9.9.9.9, 203.0.113.7' }, '10.0.0.2') ===
+    resolveClientIp({ 'cf-connecting-ip': '203.0.113.7', 'x-forwarded-for': '8.8.8.8, 203.0.113.7' }, '10.0.0.2'));
 
 console.log(`\nrateLimitTarget: ${pass} passed, ${fail} failed`);
 process.exit(fail > 0 ? 1 : 0);

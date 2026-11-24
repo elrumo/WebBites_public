@@ -14,7 +14,7 @@
         "properties": {
           "query": { "type": "string", "maxLength": 500, "description": "Words to look for in titles, descriptions, notes, page text and tags. The cloud library also matches by meaning." },
           "tags": { "type": "array", "maxItems": 20, "items": { "type": "string", "maxLength": 64 }, "description": "Only bookmarks carrying every one of these tags." },
-          "type": { "type": "string", "enum": ["website", "textNote", "drawing", "image", "movie", "game", "music", "pdf", "audio"], "description": "Only bookmarks of this kind." },
+          "type": { "type": "string", "enum": ["website", "textNote", "drawing", "image", "movie", "game", "music", "pdf", "audio", "recipe"], "description": "Only bookmarks of this kind." },
           "saved_after": { "type": "string", "format": "date-time", "description": "Only bookmarks saved at or after this time (ISO 8601)." },
           "saved_before": { "type": "string", "format": "date-time", "description": "Only bookmarks saved before this time (ISO 8601)." },
           "sort": { "type": "string", "enum": ["relevance", "newest", "oldest"], "description": "Defaults to relevance with a query, newest without." },

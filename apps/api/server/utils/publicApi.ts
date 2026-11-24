@@ -1,6 +1,6 @@
 import { H3Event, createError, getHeader, setHeaders } from 'h3'
 import Parse from 'parse/node.js'
-import { validateApiKey } from './api-keys'
+import { validateApiKey, hashApiKey, displayApiKey } from './api-keys'
 import { getRedisClient, ensureRedisConnected } from './redis'
 import { getUserWithPlan, getPlanTier } from './plans'
 import { initParseForBoards } from './boardUtils'
@@ -120,7 +120,9 @@ export async function requireApiCaller(event: H3Event): Promise<ApiCaller> {
   const { user, plan } = await getUserWithPlan(userId)
   const tier = getPlanTier(plan)
 
-  const outcome = await meterApiCall({ userId, tier, rateBucket: `api_rate:${apiKey}`, usageField: `key:${apiKey}` })
+  // Hashed in the rate bucket and masked in the usage field: both used to carry
+  // the full key in a Redis name, and usage is shown back to the account.
+  const outcome = await meterApiCall({ userId, tier, rateBucket: `api_rate:${hashApiKey(apiKey).slice(0, 32)}`, usageField: `key:${displayApiKey(apiKey)}` })
   setHeaders(event, outcome.headers)
   if (outcome.ok === false) {
     throw createError({
@@ -153,7 +155,12 @@ export async function readUsage(userId: string): Promise<{
     const byKey: Record<string, number> = {}
     const byGrant: Record<string, number> = {}
     for (const [field, value] of Object.entries(entries || {})) {
-      if (field.startsWith('key:')) byKey[field.slice(4)] = Number(value)
+      if (field.startsWith('key:')) {
+        // Rows written before keys were masked carry the whole key.
+        const name = field.slice(4)
+        const label = name.startsWith('wb_live_') && !name.includes('…') ? displayApiKey(name) : name
+        byKey[label] = (byKey[label] || 0) + Number(value)
+      }
       else if (field.startsWith('grant:')) byGrant[field.slice(6)] = Number(value)
     }
     return { month, total: Number(entries?.total || 0), byKey, byGrant }
@@ -178,6 +185,8 @@ export function serializeBookmark(row: Parse.Object) {
     image: row.get('OGImage') || file('OGImageFile') || file('siteScreenshot') || null,
     screenshot: file('fullPageScreenshot') || file('siteScreenshot') || null,
     favicon: row.get('siteLogo') ?? null,
+    // A recipe bookmark's ingredients, steps and times (see docs/recipes-feature-architecture.md).
+    ...(row.get('recipe') ? { recipe: row.get('recipe') } : {}),
     author: row.get('siteAuthor') ?? null,
     publisher: row.get('sitePublisher') ?? null,
     favorited: row.get('favorited') || false,

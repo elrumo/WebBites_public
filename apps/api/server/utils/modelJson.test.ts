@@ -17,6 +17,8 @@ check('plain JSON', parseModelJson(json).tags.length === 2);
 check('```json fence', parseModelJson('```json\n' + json + '\n```').tags[1] === 'B');
 check('bare ``` fence', parseModelJson('```\n' + json + '\n```').tags[0] === 'A');
 check('text around the fence', parseModelJson('Here you go:\n```json\n' + json + '\n```\nDone.').tags.length === 2);
+check('stray token after the object', parseModelJson(json + '<').tags[1] === 'B');
+check('prose before the object', parseModelJson('Sure: ' + json).tags[0] === 'A');
 check('truncated reply still throws', (() => { try { parseModelJson('{"tags":["A",'); return false; } catch { return true; } })());
 
 console.log(`\n${pass} passed, ${fail} failed`);

@@ -266,6 +266,7 @@
       "movie": "영화",
       "music": "음악",
       "pdf": "PDF",
+      "recipe": "레시피",
       "textNote": "메모",
       "website": "웹사이트"
     },
@@ -678,6 +679,8 @@
       "type_confirmation": "확인을 위해 '계정 삭제'를 입력하세요"
     },
     "display_mode": "화면 모드",
+    "grid_columns": "열 수",
+    "grid_columns_auto": "자동",
     "grid_view": "그리드 보기",
     "image_ratio": {
       "original": "원본"
@@ -2017,8 +2020,44 @@
       "game": "게임",
       "drawing": "그림",
       "audio": "오디오",
+      "recipe": "레시피",
       "textNote": "메모"
     }
+  },
+  "recipe": {
+    "unit_hour": "시간",
+    "unit_minute": "분",
+    "ingredient_count": "재료 {count}개 | 재료 {count}개",
+    "ingredients": "재료",
+    "steps": "조리 방법",
+    "notes": "메모",
+    "prep": "준비",
+    "cook": "조리",
+    "total": "총",
+    "servings": "분량",
+    "by": "{author} 님",
+    "open_original": "원본 열기",
+    "edit": "레시피 편집",
+    "extracting": "레시피를 가져오는 중…",
+    "extracting_hint": "페이지에서 재료와 조리 단계를 읽고 있어요. 보통 몇 초면 끝나요.",
+    "show_page": "대신 페이지 보기",
+    "write": "직접 쓰기",
+    "write_title": "레시피 쓰기",
+    "save": "레시피 저장",
+    "saved": "레시피를 저장했어요",
+    "save_error": "레시피를 저장하지 못했어요",
+    "field_title": "제목",
+    "field_yield": "분량",
+    "field_yield_placeholder": "예: 4인분",
+    "field_prep": "준비 시간(분)",
+    "field_cook": "조리 시간(분)",
+    "field_ingredients": "재료",
+    "field_steps": "조리 방법",
+    "field_notes": "메모",
+    "field_source": "출처 링크(선택)",
+    "field_group_hint": "한 줄에 하나씩 적어 주세요. 줄 끝에 콜론을 붙이면 “소스:”처럼 그룹이 시작돼요.",
+    "error_title": "레시피 제목을 입력해 주세요.",
+    "error_content": "재료나 조리 단계를 하나 이상 입력해 주세요."
   },
   "bookmark_card": {
     "image_alt": "카드 이미지",
@@ -2253,7 +2292,8 @@
       "movie": "영화 저장",
       "game": "게임 저장",
       "drawing": "그림 저장",
-      "audio": "오디오 저장"
+      "audio": "오디오 저장",
+      "recipe": "레시피 저장"
     }
   },
   "landing_page": {
@@ -2382,6 +2422,15 @@
       "account_when": "웹이나 Chrome을 쓰거나 피드, AI 태그, 요약이 필요하다면.",
       "device": "기기 라이브러리:",
       "device_when": "Apple 기기만 쓰고 어떤 서버에도 데이터를 두고 싶지 않다면."
+    },
+    "self_host": {
+      "title": "직접 호스팅하고 싶으신가요?",
+      "description": "WebBites는 오픈 소스입니다. 같은 앱을 Docker Compose로 내 서버에서 실행하세요. 데이터베이스도 AI 엔드포인트도 직접 정하고, 요금제와 사용 제한이 없습니다.",
+      "point_start": "명령어 한 줄로 시작하고, 내 도메인에서 HTTPS를 제공합니다.",
+      "point_private": "원격 측정이 없습니다. 직접 설정하지 않는 한 어떤 데이터도 서버 밖으로 나가지 않습니다.",
+      "point_license": "AGPL-3.0 자유 소프트웨어입니다.",
+      "guide": "셀프 호스팅 가이드",
+      "github": "GitHub에서 보기"
     }
   },
   "login_page": {

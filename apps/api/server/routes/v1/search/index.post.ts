@@ -63,6 +63,8 @@ const DEFAULT_ATTRIBUTES = [
   // An app bookmark's card: store, rating, category and price. The full
   // listing stays out of the index.
   'appCard',
+  // A recipe bookmark's card: picture, time, yield and counts. The full recipe stays out of the index.
+  'recipeCard',
   // Retrieved, not just filtered on: until Meilisearch has been told the
   // attribute is filterable the hits are filtered here instead, and that needs
   // the value in hand. See `dropOutOfScopeHits`.
@@ -95,7 +97,11 @@ const isDev = process.env.NODE_ENV === 'development'
 // In-memory cache configuration for search results
 const SEARCH_CACHE_TTL_MS = 1000 // 30 seconds for search results with query
 const EMPTY_SEARCH_CACHE_TTL_MS = 1000 // 1 seconds for empty searches (more dynamic)
-const SEARCH_CACHE_MAX_SIZE = 10000 // Max number of search queries to cache
+// Was 10,000. With a 1-second TTL the hit rate is close to zero, and
+// lru-cache keeps expired entries until the cap pushes them out, so every
+// distinct query held a full result page in memory for the life of the
+// process. A small cap and autopurge keep the burst de-duplication without that.
+const SEARCH_CACHE_MAX_SIZE = 200
 
 interface CachedSearchResult {
   results: any
@@ -106,6 +112,7 @@ interface CachedSearchResult {
 const searchResultCache = new LRUCache<string, CachedSearchResult>({
   max: SEARCH_CACHE_MAX_SIZE,
   ttl: SEARCH_CACHE_TTL_MS,
+  ttlAutopurge: true,
 })
 
 
@@ -452,8 +459,17 @@ async function handleMeilisearch(body: SearchBody, userId: string) {
       });
     }
 
-    searchResults = await performEmbeddingSearch(index, query, userId, filters, effectiveLimit, effectiveOffset, attributesToRetrieve, scope);
-    searchType = 'embedding';
+    try {
+      searchResults = await performEmbeddingSearch(index, query, userId, filters, effectiveLimit, effectiveOffset, attributesToRetrieve, scope);
+      searchType = 'embedding';
+    } catch (error: any) {
+      // The query embedding or the embedder failed (no OpenAI credit, an
+      // outage). Keywords still work — and are all a bookmark saved during the
+      // outage can be found by — so answer with those rather than an error.
+      console.warn('[SEARCH:MEILISEARCH] Semantic search failed, using keywords:', error?.message);
+      searchResults = await performRegularSearch(index, query, userId, filters, effectiveLimit, effectiveOffset, orderBy as string, attributesToRetrieve, scope);
+      searchType = 'regular';
+    }
   } else {
     // Perform regular text search
     searchResults = await performRegularSearch(index, query, userId, filters, effectiveLimit, effectiveOffset, orderBy as string, attributesToRetrieve, scope);

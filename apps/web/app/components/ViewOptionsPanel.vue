@@ -20,6 +20,19 @@
                     />
                 </div>
 
+                <!-- Columns (grid only) -->
+                <div v-if="userOptions.displayMode?.toLowerCase() === 'grid'" class="toggle-wrapper">
+                    <label>{{ $t('settings.grid_columns') }}</label>
+                    <USelectMenu
+                        class="min-w-40"
+                        v-model="selectedColumns"
+                        :items="columnOptions"
+                        size="sm"
+                        color="neutral"
+                        :search-input="false"
+                    />
+                </div>
+
                 <div class="toggle-wrapper !mt-3">
                     <label>{{ $t('settings.show_summary_card') }}</label>
                     <USwitch v-model="userOptions.summaryCardOnHover" @update:model-value="saveUserOptions('Show sumary card on hover')" size="lg" />
@@ -81,6 +94,23 @@ const selectedDisplayMode = computed({
             userOptions.value.displayMode = newValue.id.toLowerCase()
             saveUserOptions('selectedDisplayMode')
         }
+    }
+})
+
+const { t } = useI18n()
+
+const columnOptions = computed(() => [
+    { id: 'auto', label: t('settings.grid_columns_auto') },
+    ...[2, 3, 4, 5, 6].map(n => ({ id: n, label: String(n) }))
+])
+
+// Accounts saved before this option existed have no value: that means auto.
+const selectedColumns = computed({
+    get: () => columnOptions.value.find(o => o.id === (userOptions.value.gridColumns ?? 'auto')) ?? columnOptions.value[0],
+    set: (option) => {
+        if (!option) return
+        userOptions.value.gridColumns = option.id
+        saveUserOptions('gridColumns')
     }
 })
 

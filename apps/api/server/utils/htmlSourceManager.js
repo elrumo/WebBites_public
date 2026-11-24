@@ -1,5 +1,6 @@
 import Parse from 'parse/node.js';
 import { getHtmlContent, isLocalUrl } from './serverUtils.js';
+import { fetchStoredFile } from './clientMetadata.ts';
 
 // HTML Source Manager - Ensures single source of truth for HTML content
 export class HtmlSourceManager {
@@ -75,8 +76,14 @@ export class HtmlSourceManager {
             if (htmlFileUrl) {
                 // log(`[HtmlSourceManager] Found existing HTML file: ${htmlFileUrl}`);
                 
-                // Fetch the stored HTML file
-                const response = await fetch(htmlFileUrl);
+                // Fetch the stored HTML file. Our own storage as-is; any other
+                // URL (the column is one a client can write on its own row)
+                // only if it is a public address.
+                const response = await fetchStoredFile(
+                    htmlFileUrl,
+                    [savedSite.get('siteHtmlFile')?.url?.(), savedSite.get('siteBodyFile')?.url?.()],
+                    { signal: AbortSignal.timeout(30_000) }
+                );
                 if (response.ok) {
                     const htmlContent = await response.text();
                     
@@ -240,6 +247,9 @@ export class HtmlSourceManager {
             // Update savedSite with HTML file reference
             savedSite.set("siteHtmlFile", htmlFile);
             savedSite.set("siteHtmlFileUrl", htmlFile.url());
+            // Fetched by us, so cacheable unless device or client content is
+            // on this row (see applyDeviceEnrichment in saveBookmark.ts).
+            if (savedSite.get('serverExtracted') !== false) savedSite.set('serverExtracted', true);
             await savedSite.save(null, { useMasterKey: true });
             
             log(`[HtmlSourceManager] HTML file stored: ${htmlFile.url()}`);

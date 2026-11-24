@@ -1,5 +1,5 @@
 import { requireUserId } from '../../../utils/requireUser'
-import { listUserApiKeys } from '../../../utils/api-keys'
+import { revokeUserApiKey } from '../../../utils/api-keys'
 defineRouteMeta({
   openAPI: {
     tags: ['API Keys'],
@@ -68,8 +68,8 @@ export default defineEventHandler(async (event) => {
   }
 
   // Only the owner may revoke a key; otherwise any session could revoke any key.
-  const owned = (await listUserApiKeys(userId)).some(k => k.key === keyToRevoke)
-  const revoked = owned && await revokeApiKey(keyToRevoke)
+  // `key` may be the full key, the masked form the list shows, or its id.
+  const revoked = await revokeUserApiKey(userId, String(keyToRevoke))
 
   if (!revoked) {
     throw createError({

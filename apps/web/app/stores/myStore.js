@@ -266,6 +266,9 @@ export const useStore = defineStore('websitesStore', {
       // An app page's listing: description, release notes and screenshot URLs.
       // Cards never need it; queryModalWebsite pulls it when the modal opens.
       'appListing',
+      // A recipe's ingredients, steps and notes. Cards read the small `recipeCard`
+      // that rides in the search hit; queryModalWebsite pulls this on open.
+      'recipe',
       'savedFrom',
       'siteBodyFile',
       'siteHtmlFile',
@@ -416,6 +419,7 @@ export const useStore = defineStore('websitesStore', {
       { label: 'Audio', value: 'audio', icon: 'i-heroicons-microphone' },
       { label: 'Movie', value: 'movie', icon: 'i-heroicons-film' },
       { label: 'Game', value: 'game', icon: 'i-tabler-device-gamepad' },
+      { label: 'Recipe', value: 'recipe', icon: 'i-tabler-chef-hat' },
     ],
     bookmarkTypes: [
       { label: 'Website', value: 'website', icon: 'link', filterType: 'mainType' },
@@ -428,6 +432,7 @@ export const useStore = defineStore('websitesStore', {
       { label: 'Music', value: 'music', icon: 'music', filterType: 'mainType' },
       { label: 'Movie', value: 'movie', icon: 'movie', filterType: 'mainType' },
       { label: 'Game', value: 'game', icon: 'games', filterType: 'mainType' },
+      { label: 'Recipe', value: 'recipe', icon: 'recipe', filterType: 'mainType' },
     ],
     filterOptions: [...filterOptions],
     viewingOptions: [
@@ -1683,7 +1688,7 @@ export const useStore = defineStore('websitesStore', {
       // `images` was not, so the carousel of a multi-image bookmark only ever
       // had its cover to show — every other picture the user had just
       // uploaded was excluded on the way in and could not be seen at all.
-      const modalOnlyColumns = ['drawing', 'images', 'audioTranscript', 'appListing'];
+      const modalOnlyColumns = ['drawing', 'images', 'audioTranscript', 'appListing', 'recipe'];
       query.exclude(this.websiteColumnsToExclude.filter((column) => !modalOnlyColumns.includes(column)));
       return query.first();
     },
@@ -3017,6 +3022,46 @@ export const useStore = defineStore('websitesStore', {
         console.error("error saving note: ", error);
         this.showAlert({ message: useNuxtApp().$i18n.t('alerts.bookmark.save_error_note'), type: 'danger' })
         return 'Error'
+      }
+    },
+
+    /**
+     * Create (no `id`) or edit (`id`) a recipe row by hand. A new one puts a
+     * placeholder card in the grid first, then the backend writes the row and
+     * the placeholder reconciles by `customId`. Returns the backend's
+     * `{ success, id }`, with `customId` on a create, or `{ success: false }`.
+     */
+    async saveRecipe(toSave = { recipe: null, tags: [], savedFrom: 'website', id: '' }) {
+      const t = useNuxtApp().$i18n.t;
+      if (!toSave.recipe) return { success: false };
+
+      const isNew = !toSave.id;
+      let customId = '';
+      if (isNew) {
+        customId = this.generateCustomId();
+        this.addToFilteredSites({ customId, isPlaceholder: true });
+        if (!(await this.canSaveNewBookmark(true))) {
+          this.removePlaceholder(customId);
+          return { success: false };
+        }
+      }
+
+      try {
+        const recipeToSave = {
+          recipe: toSave.recipe,
+          tags: Array.isArray(toSave.tags) ? toSave.tags : [],
+          savedFrom: toSave.savedFrom || 'website',
+          userId: Parse.User.current().id,
+          ...(isNew ? { customId } : { id: toSave.id }),
+        };
+        const saved = await $fetch('/api/saveRecipe', { method: 'post', body: { recipeToSave } });
+        if (!saved?.success) throw new Error(saved?.error?.message || 'saveRecipe failed');
+        return { ...saved, customId };
+      } catch (error) {
+        console.error('error saving recipe: ', error);
+        if (isNew) this.removePlaceholder(customId);
+        this.showAlert({ message: t('recipe.save_error'), type: 'danger' });
+        return { success: false };
       }
     },
 

@@ -1,10 +1,9 @@
 <template>
   <div class="shared-board dark relative min-h-screen overflow-x-clip bg-neutral-800 text-neutral-100">
-    <img
-      class="pointer-events-none fixed left-0 top-0 h-screen w-screen opacity-40 mix-blend-multiply"
-      src="/images/grain_2.webp"
-      alt=""
-    >
+    <div
+      aria-hidden="true"
+      class="grain-overlay pointer-events-none fixed left-0 top-0 h-screen w-screen opacity-40 mix-blend-multiply"
+    />
     <!-- The board's own color is the one loud thing on the page. -->
     <div
       class="pointer-events-none absolute inset-x-0 top-0 h-[26rem]"

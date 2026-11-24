@@ -1,5 +1,6 @@
 import { defineEventHandler, readBody, createError } from 'h3'
 import Parse from 'parse/node.js';
+import { verifySession } from '../utils/sessionCache.js'
 
 // Initialize Parse
 Parse.initialize(import.meta.env.VITE_PARSE_ID, import.meta.env.VITE_PARSE_JS_KEY, import.meta.env.VITE_PARSE_MASTER_KEY);
@@ -162,24 +163,16 @@ export default defineEventHandler(async (event) => {
     // Verify the token using a server-safe approach
     let user
     try {
-      // Query the session by token
-      const sessionQuery = new Parse.Query(Parse.Session);
-      sessionQuery.equalTo('sessionToken', sessionToken);
-      const session = await sessionQuery.first({ useMasterKey: true });
-      
-      if (!session) {
-        throw new Error('Session not found');
-      }
-      
-      // Get the user pointer from the session
-      const userPointer = session.get('user');
-      
-      // Query the user directly by ID
-      const userQuery = new Parse.Query(Parse.User);
-      user = await userQuery.get(userPointer.id, { useMasterKey: true });
-      
+      // This route needs no credential, and it used to put the body value
+      // straight into a master-key `_Session` query. Sent as an object
+      // (`{"$regex": "^r:0"}`) it became the query constraint, and the 200 or
+      // 401 that came back told the caller whether some live session token
+      // started that way. verifySession accepts a well-formed string only,
+      // and checks the session has not expired.
+      user = await verifySession(sessionToken)
+
       if (!user) {
-        throw new Error('User not found');
+        throw new Error('Session not found');
       }
       
       console.log("Successfully validated token and found user");

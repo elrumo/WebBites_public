@@ -266,6 +266,7 @@
       "movie": "Film",
       "music": "Musik",
       "pdf": "PDF",
+      "recipe": "Rezept",
       "textNote": "Notiz",
       "website": "Website"
     },
@@ -678,6 +679,8 @@
       "type_confirmation": "Gib „Meinen Account löschen“ zur Bestätigung ein"
     },
     "display_mode": "Anzeigemodus",
+    "grid_columns": "Spalten",
+    "grid_columns_auto": "Automatisch",
     "grid_view": "Rasteransicht",
     "image_ratio": {
       "original": "Original"
@@ -2017,8 +2020,44 @@
       "game": "Spiel",
       "drawing": "Zeichnung",
       "audio": "Audio",
+      "recipe": "Rezept",
       "textNote": "Notiz"
     }
+  },
+  "recipe": {
+    "unit_hour": "Std.",
+    "unit_minute": "Min.",
+    "ingredient_count": "{count} Zutat | {count} Zutaten",
+    "ingredients": "Zutaten",
+    "steps": "Zubereitung",
+    "notes": "Notizen",
+    "prep": "Vorbereitung",
+    "cook": "Kochen",
+    "total": "Gesamt",
+    "servings": "Portionen",
+    "by": "Von {author}",
+    "open_original": "Original öffnen",
+    "edit": "Rezept bearbeiten",
+    "extracting": "Rezept wird ausgelesen …",
+    "extracting_hint": "Die Seite wird nach Zutaten und Schritten durchsucht. Das dauert meist nur ein paar Sekunden.",
+    "show_page": "Stattdessen die Seite anzeigen",
+    "write": "Selbst schreiben",
+    "write_title": "Rezept schreiben",
+    "save": "Rezept speichern",
+    "saved": "Rezept gespeichert",
+    "save_error": "Das Rezept konnte nicht gespeichert werden",
+    "field_title": "Titel",
+    "field_yield": "Portionen",
+    "field_yield_placeholder": "z. B. 4 Portionen",
+    "field_prep": "Vorbereitungszeit (Min.)",
+    "field_cook": "Kochzeit (Min.)",
+    "field_ingredients": "Zutaten",
+    "field_steps": "Zubereitung",
+    "field_notes": "Notizen",
+    "field_source": "Quelllink (optional)",
+    "field_group_hint": "Eine pro Zeile. Eine Zeile mit Doppelpunkt am Ende beginnt eine Gruppe, z. B. „Für die Soße:“.",
+    "error_title": "Gib dem Rezept einen Titel.",
+    "error_content": "Füge mindestens eine Zutat oder einen Schritt hinzu."
   },
   "bookmark_card": {
     "image_alt": "Kartenbild",
@@ -2253,7 +2292,8 @@
       "movie": "Film speichern",
       "game": "Spiel speichern",
       "drawing": "Zeichnung speichern",
-      "audio": "Audio speichern"
+      "audio": "Audio speichern",
+      "recipe": "Rezept speichern"
     }
   },
   "landing_page": {
@@ -2382,6 +2422,15 @@
       "account_when": "wenn du das Web oder Chrome nutzt oder Feeds, KI-Tags und Zusammenfassungen willst.",
       "device": "Gerätebibliothek:",
       "device_when": "wenn du nur Apple-Geräte nutzt und nichts auf einem fremden Server haben willst."
+    },
+    "self_host": {
+      "title": "Lieber selbst hosten?",
+      "description": "WebBites ist Open Source. Betreibe dieselbe App auf deinem eigenen Server mit Docker Compose: deine Datenbank, dein KI-Endpunkt, keine Tarife und keine Limits.",
+      "point_start": "Startet mit einem einzigen Befehl, mit HTTPS auf deiner eigenen Domain.",
+      "point_private": "Keine Telemetrie. Nichts verlässt deinen Server, es sei denn, du richtest es so ein.",
+      "point_license": "Freie Software unter der AGPL-3.0.",
+      "guide": "Anleitung zum Selbsthosten",
+      "github": "Auf GitHub ansehen"
     }
   },
   "login_page": {

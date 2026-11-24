@@ -1,6 +1,6 @@
 import { setHeaders } from 'h3'
 import { validateParseToken } from '../../../utils/raycast-auth'
-import { createApiKey } from '../../../utils/api-keys'
+import { createApiKey, pruneSessionKeys, SESSION_KEY_TTL_SECONDS } from '../../../utils/api-keys'
 
 defineRouteMeta({
   openAPI: {
@@ -159,7 +159,10 @@ export default defineEventHandler(async (event) => {
       console.log(`[AUTH:SESSION-LOGIN:${requestId}] 🔑 Generating API key with name: "${keyName}"`)
     }
 
-    const apiKeyData = await createApiKey(user.user.id, keyName)
+    // Every sign-in minted another key that never expired. Now each one lasts
+    // as long as its cookie, and only the newest few are kept.
+    await pruneSessionKeys(user.user.id)
+    const apiKeyData = await createApiKey(user.user.id, keyName, { kind: 'session', ttlSeconds: SESSION_KEY_TTL_SECONDS })
 
     if (isDev) {
       console.log(`[AUTH:SESSION-LOGIN:${requestId}] ✅ API key generated:`, {

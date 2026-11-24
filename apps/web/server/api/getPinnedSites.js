@@ -20,7 +20,10 @@ export default defineEventHandler(async (event) => {
 
   // The signed-in user's own pins. (This used to take any `userId` from the body and answer it
   // with the master key, i.e. anyone could read anyone's pinned bookmarks.)
-  const sessionUser = await verifySession(getCookie(event, 'parse.session'))
+  // The cookie on the web; the native apps send the session as a Bearer token.
+  const authHeader = getHeader(event, 'authorization')
+  const bearerToken = authHeader?.startsWith('Bearer ') ? authHeader.substring(7) : null
+  const sessionUser = await verifySession(getCookie(event, 'parse.session') || bearerToken)
   if (!sessionUser) {
     throw createError({ statusCode: 401, statusMessage: 'Not authenticated' })
   }

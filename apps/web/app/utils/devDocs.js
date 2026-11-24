@@ -15,6 +15,14 @@ export const DOC_GROUPS = [
     ],
   },
   {
+    title: 'Self-hosting',
+    icon: 'i-heroicons-server-stack',
+    items: [
+      { slug: 'self-hosting', title: 'Self-hosting WebBites', description: 'Run the open-source edition on your own server with Docker Compose: requirements, install, first account and what runs.', keywords: 'self host selfhost docker compose install open source server vps domain caddy agpl own' },
+      { slug: 'self-hosting-operations', title: 'Configuration, backups & upgrades', description: 'Configure, back up, restore and upgrade a self-hosted WebBites, plus security notes and moving from webbites.io.', keywords: 'self host configuration env backup restore upgrade update security migrate import admin settings mongo redis' },
+    ],
+  },
+  {
     title: 'Guides',
     icon: 'i-heroicons-book-open',
     items: [

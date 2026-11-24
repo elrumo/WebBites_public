@@ -351,6 +351,12 @@ export default defineNuxtConfig({
     // the feedback board (GET /api/support/token). Server only. Optional: with no
     // HELPBITES_* the support chat and feedback board are simply not shown.
     helpbitesPrivateKey: process.env.HELPBITES_PRIVATE_KEY || '',
+    // Media search relays (server/api/searchMovie.post.js, searchGame.post.js).
+    // TMDB v4 read-access token, and the Twitch app whose client-credentials
+    // token IGDB takes. Server only; the routes answer an error when unset.
+    tmdbApiToken: process.env.TMDB_API_TOKEN || '',
+    twitchClientId: process.env.TWITCH_CLIENT_ID || '',
+    twitchClientSecret: process.env.TWITCH_CLIENT_SECRET || '',
 
     // Keys within public are also exposed client-side
     public: {

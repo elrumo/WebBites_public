@@ -1,17 +1,16 @@
 <template>
   <div class="dev-landing dark">
     <LandingNavBar :isLandingPage="false" />
-    <img
-      class="pointer-events-none fixed left-0 top-0 h-screen w-screen opacity-40 mix-blend-multiply"
-      src="/images/grain_2.webp"
-      alt=""
-    >
+    <div
+      aria-hidden="true"
+      class="grain-overlay pointer-events-none fixed left-0 top-0 h-screen w-screen opacity-40 mix-blend-multiply"
+    />
 
     <!-- Hero -->
     <header class="dev-hero">
       <span class="dev-eyebrow">
-        <span class="dev-dot" aria-hidden="true" />
-        WebBites API
+        <!-- <span class="dev-dot" aria-hidden="true" /> -->
+        API & self-hosting
       </span>
 
       <h1 class="dev-hero-title">
@@ -178,6 +177,40 @@
       </div>
     </section>
 
+    <!-- Self-hosting -->
+    <section class="dev-section">
+      <div class="dev-split">
+        <div class="flex flex-col gap-4">
+          <h2 class="dev-h2">Or run the whole thing yourself</h2>
+          <p class="dev-p">
+            WebBites is open source. The self-hosted edition is the same app and the same API, on a
+            server you own, with no plans and no limits. The API, the webhooks and the MCP server all
+            work against your own domain.
+          </p>
+          <ul class="dev-list">
+            <li v-for="line in SELF_HOST_POINTS" :key="line">{{ line }}</li>
+          </ul>
+          <div class="flex flex-wrap gap-3">
+            <UButton to="/developers/docs/self-hosting" color="neutral" variant="soft" class="font-semibold">
+              Self-hosting guide
+            </UButton>
+            <UButton
+              :to="SELF_HOST_REPO_URL"
+              target="_blank"
+              color="neutral"
+              variant="ghost"
+              icon="i-heroicons-code-bracket"
+              class="font-semibold"
+            >
+              GitHub
+            </UButton>
+          </div>
+        </div>
+
+        <DevCode :code="SELF_HOST_INSTALL" language="bash" label="Terminal" />
+      </div>
+    </section>
+
     <!-- Docs entry points -->
     <section class="dev-section">
       <div class="dev-section-head">
@@ -218,7 +251,7 @@
 </template>
 
 <script setup>
-import { API_BASE_URL, OPENAPI_URL, RATE_LIMITS, WEBHOOK_PAYLOAD, MCP_URL } from '~/utils/devApi'
+import { API_BASE_URL, OPENAPI_URL, RATE_LIMITS, WEBHOOK_PAYLOAD, MCP_URL, SELF_HOST_REPO_URL, SELF_HOST_COMPOSE_URL } from '~/utils/devApi'
 import DevCode from '~/components/developers/DevCode.vue'
 
 useHead({
@@ -336,11 +369,24 @@ const IDEAS = [
   { emoji: '💾', title: 'Nightly backups', text: 'Walk the cursor once a night and keep your whole library as JSON on a disk you own.', uses: 'GET /bookmarks' },
 ]
 
+const SELF_HOST_POINTS = [
+  'One Docker Compose file: web, API, Parse, MongoDB, Redis, Meilisearch and Caddy.',
+  'HTTPS on your domain, handled by Caddy.',
+  'No telemetry. Your AI endpoint, your email, your files.',
+  'AGPL-3.0, with images on Docker Hub for amd64 and arm64.',
+]
+
+const SELF_HOST_INSTALL = `mkdir webbites && cd webbites
+curl -fsSLO ${SELF_HOST_COMPOSE_URL}
+# write .env: your address and fresh secrets (see the guide)
+docker compose up -d`
+
 const DOC_LINKS = [
   { to: '/developers/docs/quickstart', icon: 'i-heroicons-rocket-launch', title: 'Quickstart', text: 'A key, a curl and a saved bookmark in about two minutes.' },
   { to: '/developers/docs/recipes', icon: 'i-heroicons-beaker', title: 'Recipes', text: 'Six complete programs in JavaScript and Python: a Slack command, a digest, a reading list, a star mirror, a notes sync, a backup.' },
   { to: '/developers/docs/endpoints', icon: 'i-heroicons-command-line', title: 'Endpoints', text: 'Every route, its parameters and a sample response.' },
   { to: '/developers/docs/playground', icon: 'i-heroicons-play', title: 'Playground', text: 'Send a real request from the browser and read what comes back.' },
+  { to: '/developers/docs/self-hosting', icon: 'i-heroicons-server-stack', title: 'Self-hosting', text: 'Run the open-source edition on your own server with Docker Compose.' },
 ]
 </script>
 
@@ -359,7 +405,7 @@ const DOC_LINKS = [
 }
 
 .dev-eyebrow {
-  @apply flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-neutral-300;
+  @apply flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold text-neutral-300;
 }
 .dev-dot { @apply size-1.5 rounded-full bg-green-400; box-shadow: 0 0 12px rgba(65, 217, 118, 0.8); }
 

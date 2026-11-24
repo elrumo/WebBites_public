@@ -4,7 +4,7 @@ import { validateInternalApiKey } from '#root/server/utils/api-keys';
 import { fetchUrlWithProgressiveTimeout } from '#root/server/utils/serverUtils.js';
 import { extractContent, findAmpUrl, MIN_CONTENT_LENGTH, SITE_BODY_TEXT_LIMIT, BROWSER_HEADERS, type ExtractedContent } from '#root/server/utils/contentExtraction.js';
 import { assertPublicUrl } from '#root/server/utils/safeUrl';
-import { screenshotServiceUrl, screenshotServiceKey, siterelicKey } from '#root/server/utils/renderService';
+import { screenshotServiceUrl, screenshotServiceKey, renderProvider } from '#root/server/utils/renderService';
 import { askJev } from '#root/server/utils/aiClients';
 import { jevOn, pageCheckRequest, readPageCheck, type PageCheck } from '#root/server/utils/jevJudgments';
 
@@ -474,12 +474,13 @@ async function fetchPageHtml(url: string, label: string, headers?: Record<string
 // Rendered HTML fetching
 //
 // Which renderer is used is up to the operator: the bundled screenshot service
-// (SCREENSHOT_SERVICE_URL, its /render endpoint), or their own Siterelic key. With neither
-// configured there is no JS rendering, and null is returned so the caller keeps whatever the
-// plain fetches produced.
+// (SCREENSHOT_SERVICE_URL, its /render endpoint), or their own Siterelic key; RENDER_PROVIDER picks
+// one when both are set (utils/renderService.ts). With neither configured there is no JS
+// rendering, and null is returned so the caller keeps whatever the plain fetches produced.
 async function fetchRenderedHtml(url: string, geoLocation = 'us') {
     try {
-        const renderUrl = screenshotServiceUrl('render');
+        const provider = renderProvider();
+        const renderUrl = provider === 'screenshot' ? screenshotServiceUrl('render') : null;
         if (renderUrl) {
             const preflight = await assertPublicUrl(url);
             if ('error' in preflight) {
@@ -505,7 +506,7 @@ async function fetchRenderedHtml(url: string, geoLocation = 'us') {
             }
         }
 
-        if (!siterelicKey()) return null;
+        if (provider !== 'siterelic') return null;
 
         const response = await fetchUrlWithProgressiveTimeout(
             url,

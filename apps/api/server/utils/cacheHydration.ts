@@ -141,6 +141,7 @@ export async function findCachedWebsite(url: string): Promise<Parse.Object | nul
     const websiteQuery = new Parse.Query(Websites);
     websiteQuery.equalTo('url', url);
     websiteQuery.exists('siteHtmlFile');
+    websiteQuery.equalTo('serverExtracted', true);
     websiteQuery.descending('createdAt');
 
     const existingWebsite = await websiteQuery.first({ useMasterKey: true });
@@ -171,6 +172,9 @@ export async function batchFindCachedWebsites(urls: string[]): Promise<Map<strin
     const websiteQuery = new Parse.Query(Websites);
     websiteQuery.containedIn('url', urls);
     websiteQuery.exists('siteHtmlFile');
+    // Only rows whose content this server fetched (see applyDeviceEnrichment
+    // in routes/v1/content/saveBookmark.ts).
+    websiteQuery.equalTo('serverExtracted', true);
     // A row that only ever got a wall must not hand it to the next saver.
     websiteQuery.notEqualTo('contentWalled', true);
     websiteQuery.descending('createdAt');

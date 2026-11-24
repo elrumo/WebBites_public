@@ -13,6 +13,7 @@
  */
 
 import type { ClientPlatform } from '../clientMetadata';
+import { safeFetch } from '../safeUrl';
 
 /** The un-sanitized shape a resolver returns — mirrors `extract.js`'s output. */
 export interface RawExtraction {
@@ -64,16 +65,35 @@ export async function attempt<T>(
   }
 }
 
+let publicFetch: (url: string, init: any) => Promise<Response> = (url, init) => safeFetch(url, init);
+
+/** For the hermetic tests, which stub `fetch` and have no DNS to check against. */
+export function setPublicFetchForTests(fetcher: (url: string, init: any) => Promise<Response>) {
+  publicFetch = fetcher;
+}
+
+/**
+ * `getJson` for a host the *user* chose rather than one we configured: the
+ * address is checked to be public first, and so is every redirect hop. The
+ * Mastodon resolver needs this, because any URL shaped like a status makes it
+ * request `<that origin>/api/v1/statuses/<id>`, and with a plain fetch that
+ * origin could be an internal service.
+ */
+export function getPublicJson<T = any>(url: string, init: RequestInit = {}, timeoutMs = RESOLVER_TIMEOUT_MS): Promise<T | null> {
+  return getJson<T>(url, init, timeoutMs, publicFetch);
+}
+
 /** `fetch` with a timeout and a JSON body, or null on anything unexpected. */
 export async function getJson<T = any>(
   url: string,
   init: RequestInit = {},
-  timeoutMs = RESOLVER_TIMEOUT_MS
+  timeoutMs = RESOLVER_TIMEOUT_MS,
+  fetcher: (url: string, init: any) => Promise<Response> = (target, options) => fetch(target, options)
 ): Promise<T | null> {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), timeoutMs);
   try {
-    const response = await fetch(url, {
+    const response = await fetcher(url, {
       ...init,
       signal: controller.signal,
       headers: {

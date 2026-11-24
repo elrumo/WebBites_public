@@ -41,10 +41,16 @@ for (const p of [
 
 // Authenticate themselves or are public
 for (const p of [
-    '/v1/auth/login', '/v1/auth/session-login', '/v1/auth/verifyEmailChange', '/v1/search/saveToSearchIndex',
+    '/v1/auth/login', '/v1/auth/session-login', '/v1/auth/verifyEmailChange',
     '/v1/public/boards/abc', '/v1/audio/streamAudio',
     '/v1/backups/connect/dropbox/callback', '/v1/import/connect/raindrop/callback',
 ]) expect(p, 'public');
+
+// Re-indexing a bookmark by id costs a master-key read, index writes and
+// an embedding; it was public and is called only by our own services.
+for (const p of ['/v1/search/saveToSearchIndex', '/V1/search/saveToSearchIndex/']) expect(p, 'internal');
+// ...without taking the user-facing search route with it.
+expect('/v1/search', 'user');
 
 // A deployment's own webhooks are internal until it registers them as public (the hosted overlay does)
 for (const p of ['/v1/payments/confirmPayment', '/v1/plans', '/v1/webhooks/appstore']) expect(p, 'user');

@@ -183,7 +183,9 @@ const SEARCH_RELEVANT_KEYS = new Set([
     // `siteBody`, which is already above.
     'fileUrl', 'audioDuration', 'audioPeaks', 'transcriptStatus',
     // An app bookmark's card: store, rating, category and price.
-    'appCard'
+    'appCard',
+    // A recipe bookmark's card (the full `recipe` is not indexed, but it changes with it).
+    'recipe', 'recipeCard'
 ]);
 
 async function afterSaveWebsites(websiteId: string, userId: string, isNewWebsite: boolean, changedKeys?: string[]) {

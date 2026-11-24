@@ -578,6 +578,8 @@
                 return t('bookmarks.types.pdf')
             case 'audio':
                 return t('bookmarks.types.audio')
+            case 'recipe':
+                return t('bookmarks.types.recipe')
             default:
                 return type.value ? type.value.charAt(0).toUpperCase() + type.value.slice(1) : type.value
         }

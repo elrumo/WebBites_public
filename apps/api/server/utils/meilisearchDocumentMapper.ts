@@ -35,6 +35,7 @@ interface WebsiteInput {
   createdAt?: Date | string;
   updatedAt?: Date | string;
   mediaTypeObject?: any;
+  recipeCard?: any;
   images?: any[];
   textNote?: string;
   siteNotes?: string;
@@ -107,6 +108,8 @@ interface MeilisearchDocument {
   /** `none` | `pending` | `done` | `failed` | `quota`, `''` for a non-audio bite. */
   transcriptStatus: string;
   /** An app bookmark's card summary (`appListing.ts`), `null` for every other bite. */
+  /** A recipe bookmark's card summary (`recipe.ts`); the full `recipe` stays out of the index. `null` for every other bite. */
+  recipeCard: { image: string; totalMinutes: number | null; yield: string; ingredientCount: number; stepCount: number } | null;
   appCard: { store: string; rating?: number; ratingCount?: number; category?: string; price?: string; subtitle?: string; screenshots?: string[] } | null;
   /**
    * Whether the bookmark sits in the trash. The document stays in the index
@@ -301,6 +304,7 @@ export function prepareMeilisearchDocument(site: WebsiteInput): MeilisearchDocum
     audioPeaks: Array.isArray(site.audioPeaks) ? site.audioPeaks : [],
     transcriptStatus: site.transcriptStatus || '',
     appCard: site.appCard || null,
+    recipeCard: site.recipeCard || null,
 
     // Additional fields
     textNote: site.textNote || site.siteNotes || '',
@@ -326,5 +330,20 @@ export function prepareMeilisearchDocument(site: WebsiteInput): MeilisearchDocum
   delete (document as any).acl;
   delete (document as any).ACL;
 
-  return document;
+  return wellFormed(document);
+}
+
+/**
+ * Every string with lone surrogates replaced (U+FFFD). A text cut mid-emoji —
+ * `removeHtmlTags`' `substring`, a truncated title — keeps half a surrogate
+ * pair, which JSON carries as `"\ud83d"` and Meilisearch refuses with
+ * "unexpected end of hex escape", failing the whole batch it came in.
+ */
+function wellFormed<T>(value: T): T {
+  if (typeof value === 'string') return value.toWellFormed() as T;
+  if (Array.isArray(value)) return value.map(wellFormed) as T;
+  if (value && Object.getPrototypeOf(value) === Object.prototype) {
+    return Object.fromEntries(Object.entries(value).map(([key, v]) => [key, wellFormed(v)])) as T;
+  }
+  return value;
 }

@@ -152,6 +152,13 @@
                     :key="webToShow.objectId"
                   />
 
+                  <!-- Saved recipe: ingredients and method, laid out to cook from -->
+                  <RecipeView
+                    v-else-if="activeTab == 'readerMode' && showRecipe"
+                    :key="webToShow.objectId"
+                    @show-reader="recipeReader = true"
+                  />
+
                   <!-- Saved social post: pictures at full size in a carousel -->
                   <SocialPostView
                     v-else-if="activeTab == 'readerMode' && socialPost"
@@ -243,11 +250,17 @@ const props = defineProps({
 const typesWithoutUrl = ['textNote', 'drawing', 'game', 'movie', 'audio']
 
 const canOpenExternally = computed(() =>
-  Boolean(webToShow.value.url) && !typesWithoutUrl.includes(webToShow.value.type)
+  Boolean(webToShow.value.url?.trim()) && !typesWithoutUrl.includes(webToShow.value.type)
 )
 
 const socialPost = computed(() => socialPostOf(webToShow.value))
 const appListing = computed(() => appListingOf(webToShow.value))
+
+// A recipe row, even before the backend has read the page (RecipeView says so).
+// `recipeReader` is the way out to the saved page when it never does.
+const recipeReader = ref(false)
+watch(() => webToShow.value?.objectId, () => { recipeReader.value = false })
+const showRecipe = computed(() => !recipeReader.value && (webToShow.value?.type === 'recipe' || !!recipeOf(webToShow.value)))
 
 const mobileTitle = computed(() =>
   webToShow.value.siteTitle || webToShow.value.url || ''

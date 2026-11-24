@@ -49,6 +49,8 @@
     "test:aiLanguage": "tsx server/utils/aiLanguage.test.ts",
     "test:jobs": "tsx server/utils/jobs/jobs.test.ts",
     "test:enrichmentMessages": "tsx server/utils/enrichmentMessages.test.ts",
+    "test:recipe": "tsx server/utils/recipeJsonLd.test.ts",
+    "test:recipeModel": "tsx server/utils/recipe.test.ts",
     "test:socialResolvers": "tsx server/utils/socialResolvers.test.ts",
     "test:socialImages": "tsx server/utils/socialImages.test.ts",
     "test:meiliScope": "tsx server/utils/meilisearchScope.test.ts",
@@ -71,6 +73,9 @@
     "test:userStorageKeys": "tsx server/utils/userStorageKeys.test.ts",
     "test:apiMetrics": "tsx server/utils/apiMetrics.test.ts",
     "test:appleTokens": "tsx server/utils/appleTokens.test.ts",
+    "test:meiliEmbedder": "tsx server/utils/meilisearchEmbedder.test.ts",
+    "test:meiliTask": "tsx server/utils/meilisearchTask.test.ts",
+    "test:meiliSyncControl": "tsx server/utils/meilisearchSyncControl.test.ts",
     "test:meiliSyncPlan": "tsx server/utils/meilisearchSyncPlan.test.ts",
     "test:helpbites": "tsx server/utils/helpbites.test.ts",
     "test:jevTopics": "tsx server/utils/jevTopics.test.ts",
@@ -89,7 +94,7 @@
     "@types/archiver": "^7",
     "@types/nodemailer": "^8.0.2",
     "concurrently": "^9.2.1",
-    "nitropack": "^2.11.12",
+    "nitropack": "2.13.6",
     "tsx": "^4.23.15"
   },
   "dependencies": {

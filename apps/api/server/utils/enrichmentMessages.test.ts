@@ -24,7 +24,7 @@ const subTypes = (messages: { body: { subType: string } }[]) => messages.map(m =
     check('plain: page content goes immediately', pageContent?.body.subType === 'getPageContent');
     check('plain: regular save reuses cache regardless of client flag', ctx.fromCache === true);
     check('plain: page content message carries the context for the next hop', isEnrichmentContext(pageContent?.body.data));
-    check('plain: AI hop = categorise, summary (automations follow categorise)', subTypes(aiMessages(ctx)).join() === 'categoriseSite,getAiSummary');
+    check('plain: AI hop = categorise, summary, recipe (automations follow categorise)', subTypes(aiMessages(ctx)).join() === 'categoriseSite,getAiSummary,extractRecipe');
     check('plain: no adult-content no-op message', !subTypes(aiMessages(ctx)).includes('checkForAdultContent'));
     check('plain: regular queues', queueBase(ctx, 'getPageContent') === 'getPageContent' && queueBase(ctx, 'getBookmarkContent') === 'getBookmarkContent');
 }
@@ -40,7 +40,7 @@ const subTypes = (messages: { body: { subType: string } }[]) => messages.map(m =
 // Device sent a summary: no server summary
 {
     const ctx = enrichmentContext('site3', { url: 'https://a.com', userId: 'u1', deviceEnrichment: { aiSummary: { tldr: 'x' } } });
-    check('device summary: getAiSummary dropped', subTypes(aiMessages(ctx)).join() === 'categoriseSite');
+    check('device summary: getAiSummary dropped', subTypes(aiMessages(ctx)).join() === 'categoriseSite,extractRecipe');
 }
 
 // Import: low-priority queues, client cache flag honoured
@@ -58,6 +58,8 @@ const subTypes = (messages: { body: { subType: string } }[]) => messages.map(m =
     const summary = ai.find(m => m.body.subType === 'getAiSummary')!.body.data as any;
     const categorise = ai.find(m => m.body.subType === 'categoriseSite')!.body.data as any;
     const automations = automationMessage(categorise.savedSiteId, categorise.websiteData.userId).body.data as any;
+    const recipe = ai.find(m => m.body.subType === 'extractRecipe')!.body.data as any;
+    check('extractRecipe reads savedSiteId and websiteData.userId', recipe.savedSiteId === 'site5' && recipe.websiteData.userId === 'u1');
     check('getAiSummary reads websiteData.savedSiteId/userId', summary.websiteData.savedSiteId === 'site5' && summary.websiteData.userId === 'u1');
     check('categoriseSite reads savedSiteId', categorise.savedSiteId === 'site5');
     check('runAutomations is built from the categoriseSite message', automations.savedSiteId === 'site5' && automations.userId === 'u1');

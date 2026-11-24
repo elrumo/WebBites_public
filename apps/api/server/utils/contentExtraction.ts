@@ -325,6 +325,9 @@ export interface ExtractedContent {
  * are not thrown away — the longest one is kept as a candidate, so a genuinely
  * brief page still gets its real text instead of nothing.
  */
+/** The most HTML extractContent parses (characters). */
+const MAX_EXTRACT_HTML_CHARS = 3_000_000;
+
 export function extractContent(html: string, url: string): ExtractedContent {
     const empty: ExtractedContent = {
         html: '', text: '', title: null, byline: null, excerpt: null,
@@ -332,6 +335,11 @@ export function extractContent(html: string, url: string): ExtractedContent {
     };
 
     if (!html) return empty;
+
+    // jsdom on a multi-megabyte page blocks this process (every request on the
+    // replica) for seconds, and its memory grows with the input. Article text
+    // is in the first few megabytes of any real page.
+    if (html.length > MAX_EXTRACT_HTML_CHARS) html = html.slice(0, MAX_EXTRACT_HTML_CHARS);
 
     let dom: JSDOM;
     try {
@@ -341,6 +349,9 @@ export function extractContent(html: string, url: string): ExtractedContent {
         return empty;
     }
 
+    // The window is closed whichever way this returns: it was never closed,
+    // so every extraction left its document, timers and listeners to the GC.
+    try {
     const document = dom.window.document;
 
     // Read metadata before anything mutates the DOM — the last-resort branch
@@ -479,6 +490,9 @@ export function extractContent(html: string, url: string): ExtractedContent {
     }
 
     return { ...best, isReadable };
+    } finally {
+        try { dom.window.close(); } catch { /* already gone */ }
+    }
 }
 
 /** Drops inline styles and any script/style that survived Readability. */

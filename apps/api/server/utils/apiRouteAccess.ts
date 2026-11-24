@@ -5,7 +5,6 @@
 
 const PUBLIC = [
   '/v1/auth',
-  '/v1/search/saveToSearchIndex',
   '/v1/public',
   '/v1/audio/streamAudio',
 ]
@@ -26,6 +25,10 @@ const INTERNAL_ONLY = [
   '/v1/sync',
   '/v1/triggers',
   '/v1/search/dev',
+  // Re-indexes any bookmark by id: a master-key read, an Algolia write, two
+  // Meilisearch writes and an embedding. It was public; the only callers are
+  // the job queue and the website's admin route, both with the internal key.
+  '/v1/search/saveToSearchIndex',
   '/v1/content',
   '/v1/import',
   '/v1/example',

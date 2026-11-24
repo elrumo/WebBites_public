@@ -124,8 +124,9 @@ async function checkLoginStatus() {
     if (activeCurrentUser || sessionToken) { 
       log('[app] user already logged in: ');
       
-      console.log('[app] Parse.User.current(): ', activeCurrentUser);
-      console.log('[app] sessionToken: ', sessionToken);
+      // Neither the session token nor the Parse user (whose attributes carry
+      // it) goes to the console.
+      log('[app] Parse.User.current(): ', activeCurrentUser?.id ?? null);
 
       if (!sessionToken && activeCurrentUser) {
         currentUser.value = activeCurrentUser?.attributes ?? activeCurrentUser ?? null;
@@ -134,14 +135,14 @@ async function checkLoginStatus() {
       } else {
         try {
           const user = await Parse.User.become(sessionToken);
-          log('[app] currentUser.value: ', currentUser.value)
+          log('[app] currentUser: ', user?.id ?? null)
           currentUser.value = user?.attributes ?? user ?? null;
           store.userId = user?.id ?? '';
-          document.cookie = `parse.session=${sessionToken}; path=/`;
+          writeSessionCookie(sessionToken);
           isLoggedIn.value = true;
         } catch (error) {
           console.error('[app] Error setting user: ', error);
-          document.cookie = 'parse.session=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+          clearSessionCookie();
           currentUser.value = null;
           store.userId = '';
           isLoggedIn.value = false;

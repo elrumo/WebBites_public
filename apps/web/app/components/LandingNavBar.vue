@@ -131,7 +131,7 @@ const {
 } = storeToRefs(store)
 
 watch(currentUser, (newVal) => {
-  log('[LandingNavBar] currentUser: ', newVal);
+  log('[LandingNavBar] currentUser: ', newVal ? 'set' : newVal);
   if (newVal === null) {
     // console.log('Before Logged out: ', document.cookie);
     // document.cookie = 'parse.session=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;';

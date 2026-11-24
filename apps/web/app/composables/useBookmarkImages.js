@@ -64,6 +64,8 @@ export function bookmarkImageSources(site, preferScreenshot = false) {
   if (site.type === 'image') list.push(['file', bookmarkCoverUrl(site)])
   list.push(
     ['OGImage', cleanUrl(site.OGImage)],
+    // A recipe's own picture, when the page's og:image was missing or failed.
+    ['recipeCard', site.recipeCard?.image],
     ['OGImageFile', resolveFileUrl(site.OGImageFile)],
     ['siteScreenshot', screenshot],
   )

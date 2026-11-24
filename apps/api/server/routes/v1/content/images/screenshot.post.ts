@@ -2,6 +2,7 @@ import Parse from 'parse/node.js';
 import { defineEventHandler, readBody, H3Event, createError } from 'h3';
 import { fetchUrl, isUrlReachable } from '#root/server/utils/serverUtils.js';
 import { screenshotServiceBase, screenshotServiceUrl, screenshotServiceKey } from '#root/server/utils/renderService.js';
+import { assertPublicUrl } from '#root/server/utils/safeUrl';
 
 Parse.initialize(process.env.VITE_PARSE_ID as string, process.env.VITE_PARSE_JS_KEY as string, process.env.VITE_PARSE_MASTER_KEY as string);
 Parse.serverURL = process.env.VITE_PARSE_URL as string;
@@ -244,8 +245,13 @@ export async function captureScreenshot(params: CaptureParams): Promise<Screensh
     // behind Cloudflare, or simply has a slow TTFB was written off as
     // `unreachable_url` before Chromium ever saw it -- even though Chromium
     // would have loaded it fine.
-    const urlCheck = await isUrlReachable(urlToScreenshot);
-    if (urlCheck.error) {
+    // assertPublicUrl, not isUrlReachable: this resolves the name and checks
+    // every address (the tailnet range, link-local, IPv4-mapped IPv6 and
+    // single-label service names included), where the old check matched the
+    // hostname text. The screenshot service follows the page's own redirects
+    // and frames, so it needs egress filtering of its own as well.
+    const urlCheck = await assertPublicUrl(urlToScreenshot);
+    if ('error' in urlCheck) {
         return {
             status: 'error',
             message: 'unreachable_url',

@@ -142,12 +142,14 @@ export default defineEventHandler(async (event) => {
     query.notEqualTo('isDeleted', true)
 
     if (search) {
-      query.matches('title', search, 'i')
+      // Escaped: this went to MongoDB as a regular expression the caller
+      // wrote, and a pathological one ties up a database core.
+      query.matches('title', String(search).slice(0, 200).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i')
     }
 
     query.descending('createdAt')
-    query.limit(parseInt(limit))
-    query.skip(parseInt(skip))
+    query.limit(Math.min(Math.max(parseInt(limit) || 50, 1), 200))
+    query.skip(Math.max(parseInt(skip) || 0, 0))
 
     const bookmarks = await query.find({ useMasterKey: true })
 

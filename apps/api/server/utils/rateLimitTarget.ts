@@ -53,8 +53,15 @@ export function resolveClientIp(
     return (Array.isArray(value) ? value[0] : value) || ''
   }
 
+  // Behind Cloudflare, `CF-Connecting-IP` is the address Cloudflare itself saw.
+  // The left-most `X-Forwarded-For` entry is whatever the client put there
+  // (proxies append to the header, they do not replace it), so on its own it
+  // let a caller pick a fresh bucket per request.
   const forwarded = header('x-forwarded-for').split(',')[0]
-  const candidate = forwarded.trim() || header('x-real-ip').trim() || (socketAddress || '').trim()
+  const candidate = header('cf-connecting-ip').trim()
+    || forwarded.trim()
+    || header('x-real-ip').trim()
+    || (socketAddress || '').trim()
 
   return normaliseIp(candidate) || 'unknown'
 }
@@ -87,6 +94,39 @@ function normaliseIp(value: string): string {
 export function rateLimitIdentifier(apiKey: string | undefined | null, clientIp: string): string {
   const key = (apiKey || '').trim()
   return key ? `key:${createHash('sha256').update(key).digest('hex').slice(0, 32)}` : `ip:${clientIp || 'unknown'}`
+}
+
+/**
+ * Routes that check a bearer token themselves, after this middleware has run.
+ * Their callers (hosted MCP clients) share a handful of addresses between all
+ * of their users, so the token has to stay the bucket there even though it is
+ * not known to be valid yet.
+ */
+const SELF_AUTHENTICATING = ['/mcp']
+
+/**
+ * The credential a request is rate limited as, or undefined to fall back to
+ * its address.
+ *
+ * A token only names a bucket once the auth gate has verified it. It used to
+ * be whatever followed `Bearer`, valid or not, so an unauthenticated caller
+ * got a brand-new bucket by sending a different made-up token each time, and
+ * the public routes (sign-in, the device flow, the OAuth token endpoint) were
+ * in effect not rate limited.
+ */
+export function rateLimitCredential(input: {
+  verified?: string | null
+  presented?: string | null
+  path?: string
+}): string | undefined {
+  const verified = (input.verified || '').trim()
+  if (verified) return verified
+
+  const path = (input.path || '').split('?')[0].toLowerCase()
+  if (SELF_AUTHENTICATING.some(prefix => path === prefix || path.startsWith(`${prefix}/`))) {
+    return (input.presented || '').trim() || undefined
+  }
+  return undefined
 }
 
 /** The bearer token on the request, if it carries one. */

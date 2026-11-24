@@ -35,6 +35,8 @@ export const filterOptions = [
 export const defaultUserOptions = {
   screenshotAsThumbnail: false,
   displayMode: 'grid',
+  // Grid columns: 'auto' follows the screen width, otherwise a fixed count.
+  gridColumns: 'auto',
   imageRatio: 'original',
   previewTags: true,
   summaryCardOnHover: false,
@@ -110,6 +112,7 @@ export const useStoreConstants = () => {
     { label: $i18n.t('bookmarks.types.music'), value: 'music', icon: 'music', filterType: 'mainType' },
     { label: $i18n.t('bookmarks.types.movie'), value: 'movie', icon: 'movie', filterType: 'mainType' },
     { label: $i18n.t('bookmarks.types.game'), value: 'game', icon: 'games', filterType: 'mainType' },
+    { label: $i18n.t('bookmarks.types.recipe'), value: 'recipe', icon: 'recipe', filterType: 'mainType' },
   ];
 
   const typeOptions = [
@@ -121,6 +124,7 @@ export const useStoreConstants = () => {
     { label: $i18n.t('bookmarks.types.audio'), value: 'audio', icon: 'i-heroicons-microphone' },
     { label: $i18n.t('bookmarks.types.movie'), value: 'movie', icon: 'i-heroicons-film' },
     { label: $i18n.t('bookmarks.types.game'), value: 'game', icon: 'i-tabler-device-gamepad' },
+    { label: $i18n.t('bookmarks.types.recipe'), value: 'recipe', icon: 'i-tabler-chef-hat' },
   ];
 
   const viewingOptions = [

@@ -1,0 +1,239 @@
+# WebBites, self-hosted, in one file. Guide: https://www.webbites.io/developers/docs/self-hosting
+#
+# Put this next to a .env holding PUBLIC_URL and the secrets (the guide has a command that writes
+# it), then run:  docker compose up -d
+#
+# Only Caddy publishes ports (80 and 443). Email, AI, file storage and the rest are set from
+# /admin -> Settings, so they are not here. Needs Docker Compose 2.23 or newer.
+
+name: webbites
+
+x-defaults: &defaults
+  restart: unless-stopped
+  logging:
+    driver: json-file
+    options:
+      max-size: "10m"
+      max-file: "3"
+
+services:
+  caddy:
+    image: caddy:2.8-alpine
+    <<: *defaults
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    configs:
+      - source: caddyfile
+        target: /etc/caddy/Caddyfile
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      web:
+        condition: service_healthy
+      api:
+        condition: service_healthy
+      parse:
+        condition: service_healthy
+
+  web:
+    image: elrumo/webbites-web:${WEBBITES_VERSION:-latest}
+    <<: *defaults
+    environment:
+      SELF_HOSTED: "true"
+      VITE_APP_URL: ${PUBLIC_URL:?set PUBLIC_URL in .env, e.g. https://notes.example.com}
+      VITE_BACKEND_URL: ${PUBLIC_URL}/
+      VITE_PARSE_URL: ${PUBLIC_URL}/parse
+      VITE_PARSE_ID: ${PARSE_APP_ID:?}
+      VITE_PARSE_JS_KEY: ${PARSE_JS_KEY:?}
+      BACKEND_INTERNAL_URL: http://api:3000/
+      PARSE_INTERNAL_URL: http://parse:1337/parse
+      PARSE_MASTER_KEY: ${PARSE_MASTER_KEY:?}
+      CUSTOM_API_KEY: ${CUSTOM_API_KEY:?}
+    depends_on:
+      api:
+        condition: service_healthy
+      parse:
+        condition: service_healthy
+
+  api:
+    image: elrumo/webbites-api:${WEBBITES_VERSION:-latest}
+    <<: *defaults
+    environment:
+      PORT: "3000"
+      NODE_ENV: production
+      BILLING_PROVIDER: none
+      QUEUE_DRIVER: redis
+      SITE_URL: ${PUBLIC_URL}
+      VITE_WEBSITE_URL: ${PUBLIC_URL}
+      VITE_BACKEND_URL: ${PUBLIC_URL}/
+      VITE_PARSE_URL: http://parse:1337/parse
+      VITE_PARSE_ID: ${PARSE_APP_ID}
+      VITE_PARSE_JS_KEY: ${PARSE_JS_KEY}
+      VITE_PARSE_MASTER_KEY: ${PARSE_MASTER_KEY}
+      REDIS_URL: redis://redis:6379
+      MEILISEARCH_HOST: http://meilisearch:7700
+      MEILISEARCH_API_KEY: ${MEILI_MASTER_KEY:?}
+      CUSTOM_API_KEY: ${CUSTOM_API_KEY}
+      VITE_AUDIO_TOKEN_SECRET: ${AUDIO_TOKEN_SECRET:?}
+      SHARE_LINK_SECRET: ${SHARE_LINK_SECRET:?}
+      BACKUP_ENCRYPTION_KEY: ${BACKUP_ENCRYPTION_KEY:?}
+      SETTINGS_ENCRYPTION_KEY: ${SETTINGS_ENCRYPTION_KEY:?}
+      # Delete these two lines along with the screenshot service to run without it.
+      SCREENSHOT_SERVICE_URL: http://screenshot:3000
+      SCREENSHOT_API_KEY: ${SCREENSHOT_API_KEY:?}
+    networks: [default, screenshots]
+    depends_on:
+      redis:
+        condition: service_healthy
+      parse:
+        condition: service_healthy
+      meilisearch:
+        condition: service_started
+    healthcheck:
+      test: ["CMD", "bun", "-e", "fetch('http://127.0.0.1:3000/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 15s
+      timeout: 5s
+      start_period: 30s
+      retries: 8
+
+  parse:
+    image: elrumo/webbites-parse:${WEBBITES_VERSION:-latest}
+    <<: *defaults
+    environment:
+      PORT: "1337"
+      PARSE_APP_ID: ${PARSE_APP_ID}
+      PARSE_JS_KEY: ${PARSE_JS_KEY}
+      PARSE_MASTER_KEY: ${PARSE_MASTER_KEY}
+      DATABASE_URI: mongodb://webbites:${MONGO_PASSWORD:?}@mongo:27017/parse?authSource=admin
+      PARSE_PUBLIC_URL: ${PUBLIC_URL}/parse
+      SITE_URL: ${PUBLIC_URL}
+      BACKEND_URL: http://api:3000/
+      CUSTOM_API_KEY: ${CUSTOM_API_KEY}
+      BILLING_PROVIDER: none
+      # The first account becomes the administrator. Set this so only that address can claim it.
+      INITIAL_ADMIN_EMAIL: ${INITIAL_ADMIN_EMAIL:-}
+      SETTINGS_ENCRYPTION_KEY: ${SETTINGS_ENCRYPTION_KEY}
+    depends_on:
+      mongo:
+        condition: service_healthy
+
+  mongo:
+    image: mongo:7
+    <<: *defaults
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: webbites
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+    volumes:
+      - mongo_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 10s
+      timeout: 5s
+      start_period: 20s
+      retries: 10
+
+  redis:
+    # Not just a cache: developer API keys and queued jobs live here, hence the append-only file.
+    image: redis:7-alpine
+    <<: *defaults
+    command: ["redis-server", "--appendonly", "yes", "--appendfsync", "everysec", "--save", "60", "1000"]
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+
+  meilisearch:
+    image: getmeili/meilisearch:v1.12
+    <<: *defaults
+    environment:
+      MEILI_ENV: production
+      MEILI_MASTER_KEY: ${MEILI_MASTER_KEY}
+      MEILI_NO_ANALYTICS: "true"
+    volumes:
+      - meili_data:/meili_data
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --spider http://127.0.0.1:7700/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      start_period: 10s
+      retries: 10
+
+  # Optional, about 1 GB of RAM: screenshots pages and renders JavaScript-heavy sites. It sits on its
+  # own network, shared with the API only, so a hostile page can't reach Mongo, Redis or Parse.
+  screenshot:
+    image: elrumo/webbites-screenshot:${WEBBITES_VERSION:-latest}
+    <<: *defaults
+    environment:
+      SCREENSHOT_API_KEY: ${SCREENSHOT_API_KEY}
+      MAX_CONCURRENCY: "2"
+    networks: [screenshots]
+    shm_size: 1gb
+
+configs:
+  caddyfile:
+    # Behind another proxy (Cloudflare, a load balancer)? Trust it, or rate limits see its address
+    # instead of the client's. Add this above the site block, with the proxy's address range:
+    #   { servers { trusted_proxies static 203.0.113.0/24 } }
+    content: |
+      ${PUBLIC_URL} {
+        encode zstd gzip
+
+        # Uploads (PDF, audio, imports) go through here.
+        request_body {
+          max_size 600MB
+        }
+
+        header {
+          X-Content-Type-Options nosniff
+          Referrer-Policy strict-origin-when-cross-origin
+          -Server
+        }
+
+        # The MCP sign-in consent page lives in the web app at the API's starting path;
+        # only the API's request carries a client_id.
+        @oauth_start {
+          path /oauth/authorize
+          query client_id=*
+        }
+        handle @oauth_start {
+          reverse_proxy api:3000
+        }
+
+        @api {
+          path /v1/* /mcp /mcp/* /oauth/* /.well-known/oauth-* /extension-auth /verify-extension-token
+          path /deleteSession /isPageSaved /saveUserImage /saveUserPdf /saveUserAudio /batchDelete
+          path /removeDuplicates /validateImportAccess /raycast /raycast-user /health /_docs/*
+        }
+        handle @api {
+          reverse_proxy api:3000 {
+            transport http {
+              response_header_timeout 120s
+            }
+          }
+        }
+
+        handle /parse* {
+          reverse_proxy parse:1337
+        }
+
+        handle {
+          reverse_proxy web:3000
+        }
+      }
+
+networks:
+  default: {}
+  screenshots: {}
+
+volumes:
+  caddy_data:
+  caddy_config:
+  mongo_data:
+  redis_data:
+  meili_data:

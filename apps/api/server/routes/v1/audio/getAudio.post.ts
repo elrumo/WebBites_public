@@ -289,6 +289,20 @@ interface GetAudioRequestBody {
   accent?: string
 }
 
+/** True when `websiteId` is a bookmark that belongs to `userId`. */
+async function ownsWebsite(userId: string, websiteId: string): Promise<boolean> {
+  if (websiteId === 'none' || !/^[A-Za-z0-9]{6,32}$/.test(websiteId)) return false
+  try {
+    const query = new Parse.Query('websites')
+    query.equalTo('user', { __type: 'Pointer', className: '_User', objectId: userId })
+    query.select('objectId')
+    await query.get(websiteId, { useMasterKey: true })
+    return true
+  } catch {
+    return false
+  }
+}
+
 export default defineEventHandler(async (event) => {
   try {
     let body: Partial<GetAudioRequestBody> = await readBody(event)
@@ -313,6 +327,18 @@ export default defineEventHandler(async (event) => {
     if (!rawText || !websiteID) {
       throw new ValidationError('Missing required parameters: text and websiteID')
     }
+    if (typeof websiteID !== 'string' || typeof rawText !== 'string') {
+      throw new ValidationError('text and websiteID must be strings')
+    }
+
+    // The stream route reads the bookmark's full text from the row named in
+    // the token, and saves the finished audio back onto it, with the master
+    // key. Nothing checked whose row that was: any signed-in user could name
+    // someone else's bookmark, have its text read to them, and write a file
+    // onto it. For a row the caller does not own (a bookmark on a board shared
+    // with them, say) the token now names no row, so the audio is made from
+    // the text the client sent and nothing is read or written.
+    const ownedWebsiteId = await ownsWebsite(userId, websiteID) ? websiteID : 'none'
 
     const { user, plan } = await getUserWithPlan(userId)
       .catch(() => { throw new ValidationError('Invalid user ID') })
@@ -326,7 +352,7 @@ export default defineEventHandler(async (event) => {
     const endpoint = buildAudioStreamEndpoint({
       text: rawText,
       userId,
-      websiteId: websiteID,
+      websiteId: ownedWebsiteId,
       url,
       voice,
       accent,

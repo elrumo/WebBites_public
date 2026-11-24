@@ -1,7 +1,7 @@
 <template>
   <div class="faq-page">
     <LandingNavBar :isLandingPage="true" />
-    <img class="fixed top-0 left-0 w-screen h-screen mix-blend-multiply opacity-40 pointer-events-none" src="/images/grain_2.webp" alt="" />
+    <div aria-hidden="true" class="grain-overlay fixed top-0 left-0 w-screen h-screen mix-blend-multiply opacity-40 pointer-events-none" />
 
     <header class="faq-hero">
       <h1 class="faq-title">

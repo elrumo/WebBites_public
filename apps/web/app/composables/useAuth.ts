@@ -126,7 +126,7 @@ export const useAuth = () => {
       console.error('Logout error:', error)
       // Fallback: clear Parse session cookie manually (wb_api_key is httpOnly and cleared server-side)
       if (process.client) {
-        document.cookie = 'parse.session=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;'
+        clearSessionCookie()
       }
       throw error
     }
@@ -191,8 +191,6 @@ export const useAuth = () => {
           return { isLoggedIn: false }
         }
         const sessionToken = getCookie(event, 'parse.session')
-        
-        if (process.dev) console.log('sessionToken:', sessionToken)
 
         if (!sessionToken) {
           console.log('No session cookie found')
@@ -246,7 +244,10 @@ export const useAuth = () => {
      }
   }
 
-  const generateApiKey = async (): Promise<string | null> => {
+  // Resolves true once the server has put a working key in the HttpOnly
+  // `wb_api_key` cookie. The key itself never reaches page scripts: the
+  // endpoint does not return it.
+  const generateApiKey = async (): Promise<boolean> => {
     try {
       // Call the generate key endpoint - it will check if key exists and return it,
       // or generate a new one. The cookie is set server-side as httpOnly.
@@ -258,18 +259,16 @@ export const useAuth = () => {
 
       // Handle the response format
       const res = response as any
-      if (res?.success && res?.key) {
-        // log('[useAuth] 🔑 API key generated and saved by server')
-        // Note: The cookie is set server-side as httpOnly, so we cannot read it client-side
-        // but it will be automatically sent with requests
-        return res.key
+      if (res?.success) {
+        // The cookie is set server-side as httpOnly and sent with every request.
+        return true
       } else {
-        console.warn('[useAuth] Failed to generate API key:', response)
-        return null
+        console.warn('[useAuth] Failed to generate API key:', res?.error)
+        return false
       }
     } catch (error) {
       console.error('[useAuth] Error generating API key:', error)
-      return null
+      return false
     }
   }
 
@@ -278,7 +277,7 @@ export const useAuth = () => {
    * Note: API key is stored in httpOnly cookie on server, so we can't read it directly.
    * We always call the server endpoint which checks if the cookie exists or generates a new one.
    */
-  const ensureApiKey = async (): Promise<string | null> => {
+  const ensureApiKey = async (): Promise<boolean> => {
     try {
       // Check if we have a valid Parse session
       const parseSession = useCookie('parse.session')
@@ -287,7 +286,7 @@ export const useAuth = () => {
 
       if (!parseSession.value) {
         console.log('No Parse session available for API key generation')
-        return null
+        return false
       }
 
       // Call the generate key endpoint - it will check if key exists in the httpOnly cookie
@@ -297,18 +296,16 @@ export const useAuth = () => {
 
       // Note: We cannot read wb_api_key cookie client-side because it's httpOnly.
       // The server endpoint will check if a valid key exists and either return it or generate a new one.
-      const apiKey = await generateApiKey()
+      const hasApiKey = await generateApiKey()
 
-      // log('[useAuth] 🔑 API key:', apiKey)
-
-      if (apiKey) {
-        return apiKey
+      if (hasApiKey) {
+        return true
       } else {
         throw new Error('Failed to generate API key')
       }
     } catch (error) {
       console.error('Error ensuring API key:', error)
-      return null
+      return false
     }
   }
 

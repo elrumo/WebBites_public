@@ -53,7 +53,9 @@ check('vector round-trips', JSON.stringify(decodeVector(encodeVector(f32))) === 
     const now = doc('a', { siteTitle: 'renamed' });
     const plan = planTarget([now], new Map(), new Map([['a', backupOf(old)]]), KEY);
     check('stale backup not handed back', plan.write.length === 1 && plan.write[0].vector === undefined);
-    check('no _vectors without a backup', !('_vectors' in toIndexDocument(plan.write[0])));
+    // Sent to be embedded as normal: `regenerate: true`, and no embedding of its own.
+    const sent = toIndexDocument(plan.write[0]);
+    check('no embedding handed back without a backup', sent._vectors?.openai?.embeddings === undefined && sent._vectors?.openai?.regenerate === true);
 }
 
 // A backup from an embedder set up differently is never handed back.

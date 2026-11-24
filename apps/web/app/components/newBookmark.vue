@@ -82,6 +82,11 @@
                                 </button>
                             </div>
 
+                            <button v-if="selectedType === 'recipe'" type="button" class="nb-write-recipe" @click="openRecipeForm">
+                                <UIcon name="i-tabler-pencil" class="size-4 shrink-0" />
+                                <span>{{ $t('recipe.write') }}</span>
+                            </button>
+
                             <div class="nb-card-actions">
                                 <!-- Tags and the board it lands on, on the same row
                                      as Save for every kind of bookmark — the native
@@ -194,6 +199,13 @@
         </div>
     </Transition>
 
+    <!-- A recipe typed in by hand. Outside the popover, which closes when this opens. -->
+    <UModal v-model:open="recipeFormOpen" :title="$t('recipe.write_title')" :ui="{ content: 'sm:max-w-2xl' }">
+        <template #body>
+            <RecipeForm :saving="savingRecipe" @submit="saveWrittenRecipe" @cancel="recipeFormOpen = false" />
+        </template>
+    </UModal>
+
     <!-- ===================================================================
          Inline mode (wizard / onboarding) - always shows the editor
     ==================================================================== -->
@@ -205,7 +217,7 @@
                         v-for="option in typeChoices"
                         :key="option.value"
                         @click="setType(option.value)"
-                        :variant="typeOfNewBookmark == option.value ? 'clickableSelected' : 'clickable'"
+                        :variant="(isRecipeMode ? 'recipe' : typeOfNewBookmark) == option.value ? 'clickableSelected' : 'clickable'"
                     >
                         <UIcon :name="option.icon" class="w-4 h-4 mr-1" />
                         {{ option.label }}
@@ -344,7 +356,6 @@
   const showMediaDropdown = ref(false);
   const searchResultsMovies = ref([]);
   const searchResultsGames = ref([]);
-  const gameToken = ref(null);
   const loadingSave = ref(false);
 
   // A voice note that is still recording or paused has no file yet. The
@@ -357,10 +368,10 @@
   const isStoppingTake = computed(() => typeOfNewBookmark.value === 'audio' && !!composeAudioTake.value);
 
   /** "Save note", "Save image"… on the inline composer's button. */
-  const SAVE_LABEL_TYPES = ['website', 'textNote', 'image', 'pdf', 'movie', 'game', 'drawing', 'audio'];
+  const SAVE_LABEL_TYPES = ['website', 'recipe', 'textNote', 'image', 'pdf', 'movie', 'game', 'drawing', 'audio'];
   const inlineSaveLabel = computed(() =>
-      SAVE_LABEL_TYPES.includes(typeOfNewBookmark.value)
-          ? t(`new_bookmark.save_as.${typeOfNewBookmark.value}`)
+      SAVE_LABEL_TYPES.includes(selectedType.value)
+          ? t(`new_bookmark.save_as.${selectedType.value}`)
           : t('common.save')
   );
 
@@ -647,11 +658,21 @@
    * resting state shows as the one it will resolve to the moment a link lands.
    */
   const selectedType = computed(() =>
-      typeOfNewBookmark.value === 'empty' ? 'website' : typeOfNewBookmark.value
+      isRecipeMode.value ? 'recipe' : typeOfNewBookmark.value === 'empty' ? 'website' : typeOfNewBookmark.value
   );
 
+  /**
+   * "Recipe" is a link saved as a recipe: the composer takes a URL exactly as
+   * it does for a website (preview, notes, tags), and only the type sent to
+   * the save differs, so the backend reads the page for ingredients and steps.
+   * That is why it rides on the website type rather than being a type of its
+   * own in the editor. The other way in is "Write it yourself" (a form).
+   */
+  const recipeMode = ref(false);
+  const isRecipeMode = computed(() => recipeMode.value && typeOfNewBookmark.value === 'website');
+
   /** A note is what a collected bookmark has; the others are the writing themselves. */
-  const canAddNotes = computed(() => ['website', 'movie', 'game'].includes(selectedType.value));
+  const canAddNotes = computed(() => ['website', 'recipe', 'movie', 'game'].includes(selectedType.value));
 
   // The popover is sized for a text field; a drawing board needs elbow room, so the
   // drawing step widens it. Anything larger belongs in the detail modal, which opens
@@ -850,6 +871,10 @@
   const setType = async (type) => {
       try {
           await nextTick();
+
+          // Recipe is a website link saved as a recipe (see `recipeMode`).
+          recipeMode.value = type === 'recipe';
+          if (type === 'recipe') type = 'website';
 
           // Picking a type by hand pins it, "Website" included: what you type
           // is no longer allowed to move the selection out from under you.
@@ -1282,7 +1307,8 @@
 
       try {
           let url = removeHtml(newUrlValue.value);
-          let savedBookmark = await saveBookmark({ url, tags: tagsForSave(), siteNotes: pickedNotes.value.trim() })
+          let savedBookmark = await saveBookmark({ url, tags: tagsForSave(), siteNotes: pickedNotes.value.trim(), type: isRecipeMode.value ? 'recipe' : 'website' })
+          recipeMode.value = false;
 
           if(savedBookmark?.success) {
               newUrlValue.value = '';
@@ -1297,6 +1323,33 @@
       }
       return null;
   };
+
+  const recipeFormOpen = ref(false);
+  const savingRecipe = ref(false);
+
+  function openRecipeForm() {
+      desktopModal.value = false;
+      recipeFormOpen.value = true;
+  }
+
+  async function saveWrittenRecipe(recipe) {
+      if (savingRecipe.value) return;
+      savingRecipe.value = true;
+      try {
+          const board = selectedBoard.value;
+          const res = await store.saveRecipe({ recipe, tags: tagsForSave() });
+          if (!res.success) return;
+          recipeFormOpen.value = false;
+          recipeMode.value = false;
+          pickedTags.value = [];
+          pickedNotes.value = '';
+          selectedBoard.value = null;
+          showAlert({ message: t('recipe.saved') });
+          fileSaved(board, { customIds: [res.customId], objectIds: [res.id] });
+      } finally {
+          savingRecipe.value = false;
+      }
+  }
 
   async function saveFiles() {
       // The uploads read their tags off the store.
@@ -1331,8 +1384,8 @@
   async function searchGame(gameToSearch)  {
       try {
           loadingMedia.value = true;
-          const games = await $fetch('/api/searchGame', { method: 'post', body: { gameToSearch, gameToken: gameToken.value } });
-          gameToken.value = games.token;
+          // The IGDB token stays on the server; the route no longer returns it.
+          const games = await $fetch('/api/searchGame', { method: 'post', body: { gameToSearch } });
           if (games.error) return []
           return games.games;
       } catch (err) {
@@ -1802,6 +1855,18 @@
   background: color-mix(in srgb, var(--ui-primary) 14%, transparent);
 }
 .dark .nb-pill { box-shadow: inset 0 0 0 0.5px rgba(255, 255, 255, 0.08); }
+
+/* "Write it yourself", under a recipe link's field. */
+.nb-write-recipe {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ui-text-muted, #6b7280);
+}
+.nb-write-recipe:hover { color: var(--ui-text, inherit); }
 
 /* The note, between the editor and the row of pills. */
 .nb-notes {

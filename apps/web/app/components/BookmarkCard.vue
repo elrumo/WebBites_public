@@ -44,6 +44,7 @@
                 'pdf': type == 'pdf',
                 'audio': type == 'audio',
                 'app': isApp,
+                'recipe': type == 'recipe',
                 'stack': imageCount > 1 && isGridView,
                 'media': type == 'movie' || type == 'game',
                 'movie': type == 'movie',
@@ -198,6 +199,7 @@
                                 </p>
                             </div>
                             <a
+                                v-if="false"
                                 :href="website.url"
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -408,6 +410,13 @@
                       <h4 class="card-title" v-if="website.siteTitle && type != 'game'">
                         {{ website.siteTitle }}
                       </h4>
+
+                      <!-- A recipe's facts at a glance: time, servings, how much there is to buy. -->
+                      <p v-if="recipeMeta.length && !isCompact" class="mt-1 flex flex-wrap items-center gap-x-3 gap-y-0.5 text-xs opacity-70">
+                        <span v-for="item in recipeMeta" :key="item.icon" class="inline-flex items-center gap-1">
+                          <UIcon :name="item.icon" class="size-3.5" />{{ item.label }}
+                        </span>
+                      </p>
 
                       <p
                           class="card-description"
@@ -905,7 +914,7 @@ const imageCount = computed(() =>
 // A social post that came with pictures. Grid view only: list and compact rows
 // are a title and a thumbnail, and a post's title is what makes its row legible.
 // A saved tweet that still carries its oEmbed markup keeps the embed card.
-const NOT_SOCIAL_MEDIA = ['image', 'textNote', 'drawing', 'pdf', 'audio', 'game', 'movie', 'music', 'spotify', 'youtube'];
+const NOT_SOCIAL_MEDIA = ['image', 'textNote', 'drawing', 'pdf', 'audio', 'game', 'movie', 'music', 'spotify', 'youtube', 'recipe'];
 const socialPlatform = computed(() => socialPlatformFromUrl(props.website?.url));
 const socialBrand = computed(() => SOCIAL_BRANDS[socialPlatform.value]);
 const isSocialMedia = computed(() => {
@@ -958,6 +967,19 @@ const appRatingCount = computed(() => {
     return count ? new Intl.NumberFormat(locale.value, { notation: 'compact' }).format(count).replace(/(\d)([a-z]+)$/, (_m, d, unit) => d + unit.toUpperCase()) : '';
 });
 const appShots = computed(() => (Array.isArray(appCard.value?.screenshots) ? appCard.value.screenshots.filter(Boolean).slice(0, 3) : []));
+
+// ---- Recipe ---------------------------------------------------------------
+// The summary rides on `recipeCard` (search document and Parse row alike); the
+// full recipe is only fetched when the modal opens. Pure, so safe to render on the server.
+const recipeMeta = computed(() => {
+    const card = props.website?.type === 'recipe' ? recipeCardOf(props.website) : null;
+    if (!card) return [];
+    return [
+        card.totalMinutes && { icon: 'i-tabler-clock', label: formatMinutes(card.totalMinutes, { h: t('recipe.unit_hour'), m: t('recipe.unit_minute') }) },
+        card.yield && { icon: 'i-tabler-users', label: card.yield },
+        card.ingredientCount && { icon: 'i-tabler-salad', label: t('recipe.ingredient_count', { count: card.ingredientCount }, card.ingredientCount) },
+    ].filter(Boolean);
+});
 
 const isAudio = computed(() => props.website?.type === 'audio');
 const audioIsVoiceNote = computed(() => isVoiceNote(props.website));
@@ -1173,18 +1195,6 @@ onMounted(() => {
         translate: none !important;
     }
 
-    /* An app card is its own height: header row plus screenshots, not the
-       grid's 4:3 default. */
-    .bookmark-card-base.app.grid-item{
-        aspect-ratio: auto !important;
-        height: auto !important;
-    }
-
-    .bookmark-card-base.app > .card-header{
-        height: auto !important;
-        /* aspect-ratio: auto !important; */
-    }
-
     .bookmark-card-base.readonly .card-body-content{
         transform: none !important;
         translate: none !important;
@@ -1306,7 +1316,7 @@ onMounted(() => {
     }
 
     .card-app-title{
-        @apply m-0 text-[15px] font-semibold leading-tight text-neutral-900 dark:text-neutral-50 line-clamp-2;
+        @apply m-0 text-[15px] font-semibold leading-tight text-neutral-900 dark:text-neutral-50 line-clamp-1;
     }
 
     .card-app-tagline{
@@ -1335,10 +1345,18 @@ onMounted(() => {
         @apply grid gap-2;
     }
 
+    /* The card is the grid's 16:12 tile, so the screenshots run off its
+       bottom edge and the card clips them, as the store does. */
     .card-app-shot{
         @apply aspect-[9/19] w-full select-none rounded-xl bg-neutral-100 object-cover object-top;
         @apply ring-1 ring-black/10 dark:bg-neutral-800 dark:ring-white/15;
+        transition: translate 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
     }
+
+    /* Hover: the screenshots rise into the gap, one after the other. */
+    .card-app-shot:nth-child(2){ transition-delay: 40ms; }
+    .card-app-shot:nth-child(3){ transition-delay: 80ms; }
+    .bookmark-card-base.app:not(.mobile):hover .card-app-shot{ translate: 0 -6px; }
 
     /* The body is the card's own, so the grid's hover lift (which makes room
        for a title rising from below) has nothing to clear. */

@@ -15,6 +15,7 @@ import {
   Boards, Websites,
 } from './boardUtils';
 import { signPayload } from './webhooks';
+import { safeFetch } from './safeUrl';
 import { notifyBoardAudience } from './boardNotifications';
 import { askClaude, mapWithConcurrency } from '#root/server/utils/serverUtils';
 import { askJev, withImageFallback } from './aiClients';
@@ -416,7 +417,8 @@ Only include matches above the confidence threshold.`;
 async function postWebhook(row: Parse.Object, url: string, template: string | undefined, bookmark: AutomationBookmark) {
   const body = template ? renderTemplate(template, bookmark) : JSON.stringify(defaultWebhookBody(bookmark));
   try {
-    const response = await fetch(url, {
+    // safeFetch for the same reason as utils/webhooks.ts `deliver`.
+    const response = await safeFetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -428,7 +430,7 @@ async function postWebhook(row: Parse.Object, url: string, template: string | un
       },
       body,
       signal: AbortSignal.timeout(WEBHOOK_TIMEOUT_MS),
-    });
+    }, 3);
     if (!response.ok) console.error(`[automations] webhook ${row.id} → ${response.status}`);
   } catch (error: any) {
     console.error(`[automations] webhook ${row.id} failed:`, error?.message);

@@ -4,7 +4,7 @@
  * Jev outside smart boards: the page check, picking from the user's tags,
  * merging tags, and reranking search hits. No network.
  */
-import { jevOn, pageCheckRequest, readPageCheck, tagRequest, pickTags, mergeTags, rerankRequest, rerankBy } from './jevJudgments';
+import { jevOn, pageCheckRequest, readPageCheck, tagRequest, pickTags, mergeTags, rerankRequest, rerankBy, recipeRequest, readRecipeCheck } from './jevJudgments';
 import type { JevResponse } from '../types/jev.types';
 
 let pass = 0;
@@ -101,6 +101,15 @@ const reply = (answers: JevResponse['answers']): JevResponse => ({ model: 'jev-1
   check('rerank: ordered by probability, unanswered last', order === 'b,c,a,d');
   const ties = rerankBy(hits, reply({ h0: noul(0.5), h1: noul(0.5), h2: noul(0.5), h3: noul(0.5) })).map((h) => h.objectId).join();
   check('rerank: ties keep the search order', ties === 'a,b,c,d');
+}
+
+// Recipe
+{
+  const request = recipeRequest('https://x.test/r', 'Toast', 'Ingredients: bread. Method: toast it.');
+  check('recipe: one noul question', Object.keys(request.questions).join() === 'recipe' && request.questions.recipe.type === 'noul');
+  check('recipe: reads the probability', readRecipeCheck(reply({ recipe: noul(0.9) })) === 0.9);
+  check('recipe: missing or malformed is undefined', readRecipeCheck(reply({})) === undefined && readRecipeCheck(reply({ recipe: noul(2) })) === undefined);
+  check('recipe: flag on by default', jevOn('JEV_RECIPE'));
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);

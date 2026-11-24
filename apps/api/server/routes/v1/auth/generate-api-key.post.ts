@@ -1,5 +1,5 @@
 import { validateParseToken } from '../../../utils/raycast-auth'
-import { createApiKey, listUserApiKeys, cleanupOldApiKeys } from '../../../utils/api-keys'
+import { createApiKey, listUserApiKeys, pruneSessionKeys, SESSION_KEY_TTL_SECONDS } from '../../../utils/api-keys'
 
 defineRouteMeta({
   openAPI: {
@@ -148,8 +148,9 @@ export default defineEventHandler(async (event) => {
         console.log(`[AUTH:GENERATE-API-KEY:${requestId}] 🧹 Auto-cleaning oldest keys to make room...`)
       }
 
-      // Automatically delete oldest keys to make room for new one
-      const deletedCount = await cleanupOldApiKeys(user.user.id, MAX_KEYS_PER_USER)
+      // Automatically delete the oldest sign-in keys to make room. Only keys
+      // minted here and at sign-in count; a developer's own keys stay.
+      const deletedCount = await pruneSessionKeys(user.user.id)
 
       if (isDev) {
         console.log(`[AUTH:GENERATE-API-KEY:${requestId}] ✅ Deleted ${deletedCount} old key(s)`)
@@ -166,7 +167,10 @@ export default defineEventHandler(async (event) => {
     }
 
     // Create new API key for this user
-    const apiKeyData = await createApiKey(user.user.id, name)
+    // The web app and the native apps mint their working credential here.
+    // It expires, and is pruned among its own kind (see utils/api-keys.ts).
+    await pruneSessionKeys(user.user.id)
+    const apiKeyData = await createApiKey(user.user.id, name, { kind: 'session', ttlSeconds: SESSION_KEY_TTL_SECONDS })
 
     if (isDev) {
       console.log(`[AUTH:GENERATE-API-KEY:${requestId}] ✅ API key created successfully:`, {

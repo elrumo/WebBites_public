@@ -4,6 +4,7 @@
       Makes Meilisearch match Parse (use it after switching to a new Meilisearch, or to rebuild search from scratch): writes bookmarks that are missing or out of date,
       removes ones Parse no longer has, and backs up the embeddings to Parse (<code>SearchEmbedding</code>).
       A bookmark written to an index that lacks its embedding gets the backup instead of a new embedding call.
+      <strong>One way</strong> only writes the indexes from Parse: it still uses the backups, but writes nothing to Parse.
     </p>
 
     <div class="flex flex-wrap items-center gap-2">
@@ -13,10 +14,26 @@
       <UButton size="sm" color="primary" :loading="starting === 'real'" :disabled="isRunning || !!starting" @click="start(false)">
         Sync now
       </UButton>
+      <UButton size="sm" color="primary" variant="soft" :loading="starting === 'oneWay'" :disabled="isRunning || !!starting" @click="startOneWay">
+        One way: Parse → both
+      </UButton>
+      <UButton v-if="isRunning" size="sm" color="error" variant="soft" :loading="stopping" :disabled="run.cancelRequested" @click="stop">
+        {{ run.cancelRequested ? 'Stopping…' : 'Stop run' }}
+      </UButton>
+      <UButton v-if="run?.canResume && !isRunning" size="sm" color="primary" variant="outline" :loading="starting === 'resume'" :disabled="!!starting" @click="resume">
+        Resume from user {{ (summary.usersDone ?? 0) + 1 }}
+      </UButton>
       <UButton size="sm" variant="ghost" :loading="loading" @click="load">
         <UIcon name="heroicons:arrow-path-solid" class="w-4 h-4" />
       </UButton>
     </div>
+
+    <form class="flex flex-wrap items-center gap-2" @submit.prevent="startUser">
+      <UInput v-model="userInput" size="sm" placeholder="User id or email" class="w-64" :disabled="isRunning" />
+      <UButton type="submit" size="sm" color="neutral" variant="outline" :loading="starting === 'user'" :disabled="isRunning || !!starting || !userInput.trim()">
+        Sync this user
+      </UButton>
+    </form>
 
     <p v-if="error" class="text-sm text-red-600">{{ error }}</p>
 
@@ -26,11 +43,18 @@
       <div class="flex flex-wrap items-center gap-2">
         <UBadge :color="badge.color" variant="soft">{{ badge.label }}</UBadge>
         <span class="text-sm font-medium">{{ summary.dryRun ? 'Dry run' : 'Sync' }}</span>
+        <span v-if="summary.oneWay" class="text-sm opacity-60">· one way (Parse → Meilisearch)</span>
+        <span v-if="summary.userId" class="text-sm opacity-60">· one user ({{ summary.userId }})</span>
+        <span v-if="summary.resumedFrom" class="text-sm opacity-60">· resumed at user {{ summary.resumedFrom.atUser + 1 }}</span>
         <span class="text-sm opacity-60">started {{ new Date(run.startedAt).toLocaleString() }}</span>
         <span v-if="run.executionTimeMs" class="text-sm opacity-60">· {{ duration(run.executionTimeMs) }}</span>
       </div>
 
-      <p v-if="run.result !== 'running' && run.message" class="text-sm">{{ run.message }}</p>
+      <p v-if="run.stale" class="text-sm">
+        No progress since {{ new Date(run.updatedAt).toLocaleTimeString() }}: the backend process running it ended (a deploy or a restart).
+        Resume it from where it stopped, or start a new run.
+      </p>
+      <p v-else-if="run.result !== 'running' && run.message" class="text-sm">{{ run.message }}</p>
 
       <div class="text-sm">
         Users {{ summary.usersDone ?? 0 }} / {{ summary.usersTotal || '…' }}
@@ -83,17 +107,25 @@ import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 const run = ref(null)
 const loading = ref(false)
 const starting = ref(null)
+const stopping = ref(false)
+const userInput = ref('')
 const error = ref('')
 let timer = null
 
 const summary = computed(() => run.value?.summary ?? {})
-const isRunning = computed(() => run.value?.result === 'running')
+// A row that still says "running" but stopped beating is a dead run, not a live one.
+const isRunning = computed(() => run.value?.result === 'running' && !run.value?.stale)
 const targets = computed(() => Object.entries(summary.value.targets ?? {}))
-const badge = computed(() => ({
-  running: { color: 'info', label: 'Running' },
-  success: { color: 'success', label: 'Finished' },
-  error: { color: 'error', label: 'Failed' },
-}[run.value?.result] ?? { color: 'neutral', label: run.value?.result }))
+const badge = computed(() => {
+  if (run.value?.stale) return { color: 'warning', label: 'Not responding' }
+  if (isRunning.value && run.value?.cancelRequested) return { color: 'warning', label: 'Stopping' }
+  return {
+    running: { color: 'info', label: 'Running' },
+    success: { color: 'success', label: 'Finished' },
+    error: { color: 'error', label: 'Failed' },
+    cancelled: { color: 'neutral', label: 'Stopped' },
+  }[run.value?.result] ?? { color: 'neutral', label: run.value?.result }
+})
 
 const verb = (done, planned) => (summary.value.dryRun ? planned : done)
 const duration = (ms) => (ms < 60_000 ? `${Math.round(ms / 1000)}s` : `${Math.round(ms / 60_000)} min`)
@@ -116,17 +148,49 @@ const load = async () => {
   }
 }
 
-const start = async (dryRun) => {
-  if (!dryRun && !confirm('Write to Meilisearch now? Run a dry run first if you haven\'t.')) return
-  starting.value = dryRun ? 'dry' : 'real'
+const post = async (kind, body) => {
+  starting.value = kind
   try {
-    run.value = (await $fetch('/api/admin/meilisearchSync', { method: 'POST', body: { dryRun } })).run
+    run.value = (await $fetch('/api/admin/meilisearchSync', { method: 'POST', body })).run
     error.value = ''
     poll()
   } catch (e) {
     error.value = e?.data?.statusMessage || e?.message || 'Could not start the sync'
   } finally {
     starting.value = null
+  }
+}
+
+const start = (dryRun) => {
+  if (!dryRun && !confirm('Write to both Meilisearch instances now? Run a dry run first if you haven\'t.')) return
+  return post(dryRun ? 'dry' : 'real', { dryRun })
+}
+
+const startOneWay = () => {
+  if (!confirm('Write Parse to both Meilisearch instances now, without backing up embeddings to Parse?')) return
+  return post('oneWay', { dryRun: false, oneWay: true })
+}
+
+// Keeps the stopped run's mode: a dry run resumes as a dry run, a one-way run as one way.
+const resume = () => post('resume', { resume: true })
+
+const startUser = () => {
+  const user = userInput.value.trim()
+  if (!user || !confirm(`Write ${user}'s bookmarks to both Meilisearch instances now?`)) return
+  return post('user', { dryRun: false, user })
+}
+
+const stop = async () => {
+  if (!confirm('Stop the sync? Writes already sent to Meilisearch for the current user are cancelled.')) return
+  stopping.value = true
+  try {
+    run.value = (await $fetch('/api/admin/meilisearchSync', { method: 'DELETE' })).run
+    error.value = ''
+    poll()
+  } catch (e) {
+    error.value = e?.data?.statusMessage || e?.message || 'Could not stop the sync'
+  } finally {
+    stopping.value = false
   }
 }
 

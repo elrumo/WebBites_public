@@ -446,7 +446,7 @@ const signUp = async () => {
       // Use Parse.User.become() to set the current user with the session token
       const signedUpUser = await Parse.User.become(signupResponse.sessionToken);
       store.userId = signedUpUser.id;
-      console.log("signUpUser: ", signedUpUser);
+      log("signUpUser: ", signedUpUser.id);
 
       // After successful signup, login with the new auth system using session token
       const loginResponse = await $fetch('/api/auth/login', {
@@ -502,9 +502,9 @@ const login = async () => {
 
     const parseSession = useCookie('parse.session')
     
-    log('[authModal] loginResponse: ', loginResponse)
-    log('[authModal] parseSession: ', parseSession.value)
-    log('[authModal] user: ', user)
+    // No session token in the console: not the login response that carries
+    // it, the cookie, or the Parse user whose attributes hold it.
+    log('[authModal] parseSession cookie: ', parseSession.value ? 'present' : 'missing')
     log('[authModal] user.id: ', user.id)
     
     // Emit auth success event for extension auth
@@ -531,7 +531,7 @@ const login = async () => {
     }
 
     currentUser.value = user;
-    console.log('[authModal] currentUser.value: ', currentUser.value);
+    log('[authModal] currentUser: ', user?.id);
     loading.value = false;
     return true;
   } catch (error) {

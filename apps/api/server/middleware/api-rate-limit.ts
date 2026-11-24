@@ -1,6 +1,7 @@
 import { defineEventHandler, setHeaders, createError, getRequestIP, getRequestURL } from 'h3'
 import { getRedisClient, ensureRedisConnected } from '../utils/redis'
-import { isRateLimitExempt, resolveClientIp, rateLimitIdentifier, bearerToken } from '../utils/rateLimitTarget'
+import { isRateLimitExempt, resolveClientIp, rateLimitCredential, rateLimitIdentifier, bearerToken } from '../utils/rateLimitTarget'
+import { validateInternalApiKey } from '../utils/api-keys'
 
 /**
  * Optimized Redis-based Rate Limiting Middleware
@@ -34,7 +35,19 @@ export default defineEventHandler(async (event) => {
   try {
     // The docs UI, the OpenAPI document and the health check are never worth
     // throttling, and a 429 on them looks like the whole API is down.
-    if (isRateLimitExempt(getRequestURL(event).pathname, event.method)) return
+    const pathname = getRequestURL(event).pathname
+    if (isRateLimitExempt(pathname, event.method)) return
+
+    // Our own services are not rate limited. Every one of them presents the
+    // same internal key, so they all landed in a single bucket: the website's
+    // server routes for every signed-in visitor, each queued job QStash
+    // delivers, and each step of the save pipeline calling the next. An
+    // import of a few hundred bookmarks spends that bucket on its own, and
+    // from then on jobs and page loads were answered 429 until the window
+    // rolled over. The key is checked here rather than read from
+    // `event.context.internal`, because public routes (/qstash-webhook) pass
+    // the auth gate before it looks at the key.
+    if (validateInternalApiKey(event)) return
 
     const redis = getRedisClient()
 
@@ -49,9 +62,13 @@ export default defineEventHandler(async (event) => {
     // Use API key if authenticated, otherwise use the client's own address —
     // read from the proxy headers, because every production request reaches
     // this process through the load balancer.
-    const apiKey = event.context.apiKey?.key || bearerToken(event.node.req.headers.authorization)
+    const credential = rateLimitCredential({
+      verified: event.context.verifiedCredential,
+      presented: bearerToken(event.node.req.headers.authorization),
+      path: pathname,
+    })
     const clientIp = resolveClientIp(event.node.req.headers, getRequestIP(event))
-    const identifier = rateLimitIdentifier(apiKey, clientIp)
+    const identifier = rateLimitIdentifier(credential, clientIp)
 
     const rateLimitKey = `rate_limit:${identifier}`
     const result = await redis.eval(RATE_LIMIT_LUA, {

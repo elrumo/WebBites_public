@@ -63,7 +63,7 @@ export default defineEventHandler(async (event) => {
     const approved = body.approve === true;
     if (approved) {
         await cleanupOldApiKeys(userId, MAX_KEYS_PER_USER);
-        request.apiKey = (await createApiKey(userId, request.clientName)).key;
+        request.apiKey = (await createApiKey(userId, request.clientName, { kind: 'device' })).key;
     }
     request.status = approved ? 'approved' : 'denied';
     // XX: if the request expired meanwhile, don't recreate it without a TTL.
