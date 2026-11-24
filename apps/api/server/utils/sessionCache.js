@@ -1,4 +1,5 @@
 import Parse from 'parse/node.js'
+import { createHash } from 'node:crypto'
 import { captureException } from '#root/server/utils/sentry.js'
 import { getRedisClient, ensureRedisConnected, isRedisAvailable } from './redis.ts'
 
@@ -9,6 +10,20 @@ const MAX_CACHE_SIZE = 1000 // Prevent unbounded memory growth
 
 // L2 Cache: Redis session cache (shared across replicas)
 const REDIS_CACHE_TTL = 60 * 60 // 1 hour in seconds (Redis uses seconds)
+
+// What a Parse session token looks like (`r:` and 32 hex characters). The
+// pattern is looser than that on purpose, but it is a string and nothing else.
+const SESSION_TOKEN_PATTERN = /^r:[A-Za-z0-9]{8,128}$/
+
+/**
+ * The Redis key for a session. A hash of the token, not the token: the key
+ * names used to be the live session tokens themselves, so anything that could
+ * list keys (a dump, a replica, MONITOR, a misdirected `KEYS session:*`) held
+ * every signed-in user's session.
+ */
+function redisSessionKey(sessionToken) {
+  return `session:v3:${createHash('sha256').update(sessionToken).digest('hex')}`
+}
 
 // Cleanup old cache entries periodically
 const cleanupInterval = setInterval(() => {
@@ -36,7 +51,13 @@ if (cleanupInterval.unref) {
  * @returns {Promise<Object|null>} The Parse User object or null if invalid
  */
 export async function verifySession(sessionToken) {
-  if (!sessionToken) {
+  // A token is a string of a known shape. Several routes hand this function a
+  // value straight out of a JSON body, and Parse's `equalTo` takes an object
+  // as a query constraint: `{"$regex": "^r:0"}` matched whichever session
+  // began that way, under the master key, which made any such route a
+  // yes/no oracle for reading other people's session tokens a character at a
+  // time.
+  if (typeof sessionToken !== 'string' || !SESSION_TOKEN_PATTERN.test(sessionToken)) {
     return null
   }
 
@@ -52,7 +73,7 @@ export async function verifySession(sessionToken) {
       const redis = getRedisClient()
       await ensureRedisConnected()
 
-      const redisKey = `session:v2:${sessionToken}`
+      const redisKey = redisSessionKey(sessionToken)
       const cachedData = await redis.get(redisKey)
 
       if (cachedData) {
@@ -104,6 +125,12 @@ export async function verifySession(sessionToken) {
     const user = session.get('user')
     if (!user) return null
 
+    // Parse rejects an expired session but leaves the row in place, and this
+    // lookup uses the master key, so without this check a token Parse itself
+    // had stopped honouring kept working here indefinitely.
+    const expiresAt = session.get('expiresAt')
+    if (expiresAt instanceof Date && expiresAt.getTime() <= Date.now()) return null
+
     // Store in L1 cache (in-memory)
     if (sessionCache.size >= MAX_CACHE_SIZE) {
       const firstKey = sessionCache.keys().next().value
@@ -120,9 +147,12 @@ export async function verifySession(sessionToken) {
         const redis = getRedisClient()
         await ensureRedisConnected()
 
-        const redisKey = `session:v2:${sessionToken}`
-        // Use setEx for automatic expiration
-        await redis.setEx(redisKey, REDIS_CACHE_TTL, JSON.stringify(user.toJSON()))
+        // Never cached past the session's own expiry.
+        const secondsLeft = expiresAt instanceof Date
+          ? Math.floor((expiresAt.getTime() - Date.now()) / 1000)
+          : REDIS_CACHE_TTL
+        const ttl = Math.max(1, Math.min(REDIS_CACHE_TTL, secondsLeft))
+        await redis.setEx(redisSessionKey(sessionToken), ttl, JSON.stringify(user.toJSON()))
       }
     } catch (redisError) {
       // Don't fail the request if Redis caching fails
@@ -154,6 +184,8 @@ export async function verifySession(sessionToken) {
  * @param {string} sessionToken - The session token to invalidate
  */
 export async function invalidateSession(sessionToken) {
+  if (typeof sessionToken !== 'string' || !sessionToken) return
+
   // Remove from L1 cache (in-memory)
   sessionCache.delete(sessionToken)
 
@@ -162,7 +194,7 @@ export async function invalidateSession(sessionToken) {
     if (isRedisAvailable()) {
       const redis = getRedisClient()
       await ensureRedisConnected()
-      await redis.del(`session:v2:${sessionToken}`)
+      await redis.del(redisSessionKey(sessionToken))
     }
   } catch (error) {
     console.warn('[SessionCache] Failed to invalidate session in Redis:', error.message)

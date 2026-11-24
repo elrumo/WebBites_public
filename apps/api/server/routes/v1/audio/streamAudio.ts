@@ -3,7 +3,8 @@ import { Readable } from 'stream'
 import { getOpenAIAudio } from '#root/server/utils/aiClients'
 import LZString from 'lz-string'
 import Parse from 'parse/node.js'
-import { createHmac } from 'crypto'
+import { createHmac, timingSafeEqual } from 'crypto'
+import { fetchStoredFile } from '../../../utils/clientMetadata'
 import { sendToQstash, getPartitionedQueue, createFileName } from '../../../utils/serverUtils.js'
 import { getUserWithPlan, getAudioQuota } from '../../../utils/plans'
 import { normaliseVoice, speechInstructions, splitForSpeech, stripHtmlForSpeech, SPEECH_TEXT_LIMIT } from '../../../utils/audio-auth'
@@ -117,7 +118,9 @@ export default defineEventHandler(async (event) => {
     const expectedSignature = createHmac('sha256', audioTokenSecret())
       .update(payloadBase64)
       .digest('base64url')
-    if (signature !== expectedSignature) throw new TokenError('Invalid token signature')
+    const given = Buffer.from(signature)
+    const expected = Buffer.from(expectedSignature)
+    if (given.length !== expected.length || !timingSafeEqual(given, expected)) throw new TokenError('Invalid token signature')
 
     let payload: any
     try {
@@ -148,7 +151,7 @@ export default defineEventHandler(async (event) => {
     // The query text is what the client had on hand, which for a bookmark is a
     // 1000-char preview and for anything is capped by URL length. The row holds
     // the full extraction, so read from there and keep the query as a fallback.
-    const article = await resolveArticleText({ targetType, websiteId, rssItemId }).catch((error: any) => {
+    const article = await resolveArticleText({ targetType, websiteId, rssItemId, userId }).catch((error: any) => {
       console.error('[streamAudio] could not read article text from row:', error?.message)
       return { text: '', language: undefined }
     })
@@ -241,7 +244,8 @@ export default defineEventHandler(async (event) => {
           }
         } else {
           const website = await new Parse.Query('websites').get(websiteId, { useMasterKey: true })
-          if (website) {
+          // Only ever onto the caller's own bookmark.
+          if (website && website.get('user')?.id === userId) {
             website.set('articleAudio', parseFile)
             await website.save(null, { useMasterKey: true })
           }
@@ -304,18 +308,24 @@ async function resolveArticleText(target: {
   targetType: string
   websiteId?: string
   rssItemId?: string
+  userId?: string
 }): Promise<{ text: string; language?: string }> {
-  const { targetType, websiteId, rssItemId } = target
+  const { targetType, websiteId, rssItemId, userId } = target
   let html = ''
   let plain = ''
   let language: string | undefined
   if (targetType === 'rssItem' && rssItemId) {
     const item = await new Parse.Query('rssItems').get(rssItemId, { useMasterKey: true })
     plain = item.get('extractedText') || item.get('rssContentText') || ''
-    html = plain ? '' : await fetchText(item.get('extractedFileUrl') || item.get('extractedFile')?.url?.())
+    const itemFileUrl = item.get('extractedFile')?.url?.()
+    html = plain ? '' : await fetchText(item.get('extractedFileUrl') || itemFileUrl, itemFileUrl)
   } else if (targetType === 'website' && websiteId && websiteId !== 'none') {
     const website = await new Parse.Query('websites').get(websiteId, { useMasterKey: true })
-    html = await fetchText(website.get('siteBodyFileUrl') || website.get('siteBodyFile')?.url?.())
+    // getAudio only signs a token for the caller's own bookmark; checked again
+    // here because this is where the row is actually read.
+    if (website.get('user')?.id !== userId) return { text: '', language: undefined }
+    const bodyFileUrl = website.get('siteBodyFile')?.url?.()
+    html = await fetchText(website.get('siteBodyFileUrl') || bodyFileUrl, bodyFileUrl)
     plain = website.get('siteBody') || ''
     language = website.get('language')
   }
@@ -326,9 +336,14 @@ async function resolveArticleText(target: {
   return { text: best.slice(0, SPEECH_TEXT_LIMIT), language }
 }
 
-async function fetchText(url?: string | null): Promise<string> {
+/**
+ * The text of a stored extraction file. `parseFileUrl` is the URL Parse
+ * generated for the row's File column, which fetchStoredFile uses to tell our
+ * own storage from a URL a client put in the string column.
+ */
+async function fetchText(url?: string | null, parseFileUrl?: string | null): Promise<string> {
   if (!url) return ''
-  const response = await fetch(url)
+  const response = await fetchStoredFile(url, [parseFileUrl], { signal: AbortSignal.timeout(20_000) })
   return response.ok ? await response.text() : ''
 }
 

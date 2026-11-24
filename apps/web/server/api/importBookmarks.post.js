@@ -33,7 +33,10 @@ export default defineEventHandler(async (event) => {
                 'Content-Type': 'application/json',
                 'Authorization': internalAuthHeader(),
             },
-            body: JSON.stringify({ userId: userId, ...options })
+            // userId last: spread first, `options.userId` replaced the id
+            // taken from the session, and this call carries the internal key,
+            // so a signed-in user could import into anyone's library.
+            body: JSON.stringify({ ...options, userId: userId })
         });
 
         console.log("response: ", response)

@@ -1,11 +1,24 @@
 import { verifySession } from '../utils/sessionCache'
 
+// The jobs a client may start. The backend's queue also runs its own pipeline
+// steps (`image-processing-requests`, `update-usage`, `page-content-requests`,
+// ...), which trust the ids and URLs in the message because only the backend
+// was meant to send them. `topic` came straight from the body, so a signed-in
+// user could run any of them: fetch an arbitrary URL from inside the network
+// and keep the result, write files onto another user's bookmark, or reset
+// their own usage counters.
+const CLIENT_TOPICS = new Set(['website-save-requests', 'batch-delete', 'image-save-requests'])
+
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig()
   const body = await readBody(event)
   const data = body.data;
   let topic = body.topic
   let queueName = body.queueName
+
+  if (typeof topic !== 'string' || !CLIENT_TOPICS.has(topic)) {
+    throw createError({ statusCode: 400, statusMessage: 'Unknown job type' })
+  }
 
   // Authenticate the caller. This route can create ('website-save-requests')
   // and delete ('batch-delete') bookmarks, so it must never trust a raw

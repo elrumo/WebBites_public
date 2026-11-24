@@ -1,5 +1,3 @@
-const fs = require('fs');
-const path = require('path');
 const fetch = require('node-fetch');
 const Sentry = require("@sentry/node");
 // const { nodeProfilingIntegration } = require("@sentry/profiling-node");
@@ -7,6 +5,13 @@ const Sentry = require("@sentry/node");
 
 
 const AUTH_HEADER = process.env.CUSTOM_API_KEY
+
+// How long a trigger waits for the API. node-fetch has no default timeout, so an API that
+// accepted the connection and then stalled held the request (and, for the awaited calls, the
+// Parse write behind it) open for good. Account deletion gets longer: it waits on a cascade
+// across Parse, Meilisearch, object storage and the billing provider.
+const BACKEND_TIMEOUT_MS = Number(process.env.BACKEND_TIMEOUT_MS) || 15000;
+const BACKEND_DELETE_USER_TIMEOUT_MS = Number(process.env.BACKEND_DELETE_USER_TIMEOUT_MS) || 120000;
 
 // Error reporting is opt-in: nothing leaves this server unless SENTRY_DSN is set.
 if (process.env.SENTRY_DSN) {
@@ -42,7 +47,12 @@ function getCurrentMonthString(date = new Date()) {
     return `${date.getMonth() + 1}/${date.getFullYear()}`;
 }
 
-// Debounce map to track pending user updates
+// Debounce map to track pending user updates.
+//
+// Per process. The flush below is a read-modify-write of `_User.usage`,
+// serialised by `flushLocks` within one process only, so running Parse as
+// several processes (USE_CLUSTER) lets two flushes for one user race and lose
+// an update. Switch the `usage` writes to atomic increments before doing that.
 const pendingUserUpdates = new Map();
 // Mutex map to prevent concurrent flushes for the same user
 const flushLocks = new Map();
@@ -251,7 +261,33 @@ const Websites = Parse.Object.extend("websites");
 const Users = Parse.Object.extend("User");
 
 
+// Columns the backend copies from one user's bookmark into another user's save
+// of the same URL, when the row is marked `serverExtracted` (webbites-backend,
+// utils/cacheHydration.ts). The mark means "this server fetched this page
+// itself", so a client may never set it, and a client write to any of these
+// columns takes it away: otherwise anyone could plant content in everyone's
+// later save of a popular URL.
+const CACHE_COPIED_FIELDS = new Set([
+    'siteHtml', 'siteHtmlFile', 'siteHtmlFileUrl', 'siteHtmlUrl', 'siteBody', 'siteBodyFile', 'siteBodyFileUrl',
+    'baseUrl', 'siteTitle', 'siteDescription', 'siteAuthor', 'siteDate', 'siteLogo', 'sitePublisher', 'aiSummary',
+    'language', 'siteColors', 'embedCode', 'fullPageScreenshot', 'siteScreenshot', 'containsAdultContent', 'metaData',
+    'articleAudio', 'OGImage', 'OGImageFile',
+]);
+
+function guardServerExtracted(request) {
+    if (request.master) return;
+    const website = request.object;
+    const keys = website.dirtyKeys().map((key) => key.split('.')[0]);
+    if (keys.includes('serverExtracted') || keys.some((key) => CACHE_COPIED_FIELDS.has(key))) {
+        website.set('serverExtracted', false);
+    }
+}
+
 Parse.Cloud.beforeSave("websites", async (request) => {
+    // Not inside the try below: unlike the title default, this must not be
+    // skipped by an error.
+    guardServerExtracted(request);
+
     // beforeSaveWebsites/setSiteTitle existed but were never registered.
     // Never throw from here — a failure to default the title must not block the save.
     try {
@@ -292,7 +328,6 @@ Parse.Cloud.beforeDelete("websites", async (request) => {
         try {
             let userQuery = new Parse.Query(Parse.User);
             userQuery.equalTo('objectId', user.id);
-            userQuery.include('websiteUrls');
             user = await userQuery.first({useMasterKey: true});
         } catch (error) {
             console.log("Error finding user: ", error);
@@ -305,24 +340,13 @@ Parse.Cloud.beforeDelete("websites", async (request) => {
         try {
             let websiteUrlsPointer = user.get('websiteUrls');
 
-            if (websiteUrlsPointer != undefined) {
-                const urls = websiteUrlsPointer.get('urls') || [];
-
-                if (urls != undefined && urls.length > 0) {
-                    const websiteUrl = savedWebsite.get('url');
-                    const urlIndex = urls.indexOf(websiteUrl);
-                    if (urlIndex !== -1) {
-                        urls.splice(urlIndex, 1);
-                        websiteUrlsPointer.set('urls', urls);
-                        await websiteUrlsPointer.save(null, {
-                            useMasterKey: true
-                        });
-                    } else {
-                        // console.log("No websiteUrlsPointer found for the deleted website 1.");
-                    }
-                }
-            } else {
-                // console.log("No websiteUrlsPointer found for the deleted website 2.");
+            // A Remove operation, not a read-modify-write of the whole array:
+            // that loaded every URL the user had saved on each delete, and two
+            // deletes at once could put one of the URLs back.
+            const websiteUrl = savedWebsite.get('url');
+            if (websiteUrlsPointer != undefined && websiteUrl) {
+                websiteUrlsPointer.remove('urls', websiteUrl);
+                await websiteUrlsPointer.save(null, { useMasterKey: true });
             }
         } catch (error) {
             console.log("Error setting websiteUrls 1: ", error);
@@ -370,7 +394,8 @@ Parse.Cloud.afterDelete("websites", async (request) => {
                     'Content-Type': 'application/json',
                     'Authorization': `${process.env.CUSTOM_API_KEY}`
                 },
-                body: JSON.stringify({ websiteId: objectId, userId: user?.id, wasCounted: false })
+                body: JSON.stringify({ websiteId: objectId, userId: user?.id, wasCounted: false }),
+                timeout: BACKEND_TIMEOUT_MS
             }).catch(error => {
                 console.log("Error cleaning search index in afterDelete: ", error);
                 Sentry.captureException(error);
@@ -445,7 +470,8 @@ Parse.Cloud.beforeDelete(Parse.User, async (request) => {
             'Content-Type': 'application/json',
             'Authorization': `${process.env.CUSTOM_API_KEY}`
         },
-        body: JSON.stringify({ userId: user.id, email: user.get('email') })
+        body: JSON.stringify({ userId: user.id, email: user.get('email') }),
+        timeout: BACKEND_DELETE_USER_TIMEOUT_MS
     });
 
     if (!response.ok) {
@@ -672,7 +698,8 @@ async function afterSaveWebsites(request) {
                 'Content-Type': 'application/json',
                 'Authorization': `${process.env.CUSTOM_API_KEY}`
             },
-            body: JSON.stringify(payload)
+            body: JSON.stringify(payload),
+            timeout: BACKEND_TIMEOUT_MS
         }).catch(error => {
             console.error('[afterSave] Error calling afterSave endpoint:', JSON.stringify(error), 'savedWebsiteId:', savedWebsiteId );
             Sentry.captureException(error);
@@ -885,7 +912,7 @@ async function enqueueJob(message, {
                 'Authorization': AUTH_HEADER
             },
             body: JSON.stringify({ message, isBatch, queueName }),
-            timeout: 15000
+            timeout: BACKEND_TIMEOUT_MS
         });
 
         if (!response.ok) {

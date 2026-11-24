@@ -3,11 +3,15 @@ import type { EnqueuedTask, Index } from 'meilisearch'
 import { MEILISEARCH_CONFIG } from '#root/server/config/meilisearchConfig'
 import { meilisearchTargets, type MeiliTarget } from '#root/server/utils/meilisearchTrash'
 import { buildMeilisearchDocument } from '#root/server/utils/serverUtils'
+import { embedderHealth } from '#root/server/utils/meilisearchEmbedder'
 import { initParseForBoards } from '#root/server/utils/boardUtils'
 import {
   EMBEDDER, embedderKey, encodeVector, planTarget, toIndexDocument,
   type Backup, type SearchDocument,
 } from '#root/server/utils/meilisearchSyncPlan'
+import {
+  HEARTBEAT_MS, SyncCancelled, forEachConcurrently, isLive, resumeIndex, waitForSyncTasks, type UserRef,
+} from '#root/server/utils/meilisearchSyncControl'
 
 /** Every user id, paged so a large install does not load them all in one query. */
 async function getAllUsersEfficient(): Promise<string[]> {
@@ -40,21 +44,26 @@ async function getAllUsersEfficient(): Promise<string[]> {
  * do per index is decided in `meilisearchSyncPlan.ts`; this is the IO.
  *
  * Started from the admin page (`POST /v1/sync/meilisearch`), runs in the
- * background, and reports into a `TaskExecution` row that the page polls.
+ * background, and reports into a `TaskExecution` row that the page polls. The
+ * row is also how a run is stopped (`DELETE`) from whichever instance the
+ * request lands on, and how a run killed by a deploy is noticed: see
+ * `meilisearchSyncControl.ts`.
  *
- * ponytail: one user at a time. A few thousand users is minutes; run users in
- * parallel if it gets slow.
+ * Users go `USERS_AT_ONCE` at a time. Meilisearch spends ~2 s on every batch
+ * however small, and one user's write is a few documents: one user at a time
+ * made a batch per user per index, ~6 s a user. With several users' writes
+ * queued together Meilisearch folds them into one batch (autobatching).
+ *
+ * A one-way run (`oneWay`) only writes the indexes: it still hands back the
+ * embeddings Parse holds, but backs none up and leaves `SearchEmbedding` alone.
  */
 
 export const BACKUP_CLASS = 'SearchEmbedding'
 const TASK_NAME = 'meilisearch:sync'
 const PAGE = 1000
 const WRITE_BATCH = 200
-const TASK_WAIT = { timeout: 60 * 60_000, interval: 1000 }
-const PROGRESS_EVERY_MS = 15_000
-// A run saves progress between users. One that hasn't for this long died with
-// its process (a deploy mid-run), so another may start.
-const STALE_MS = 3 * 60 * 60_000
+// ponytail: fixed; raise it if Meilisearch batches stay small, lower it if Parse struggles.
+const USERS_AT_ONCE = 8
 const MAX_ERRORS = 50
 
 type Target = MeiliTarget & { index: Index; key: string }
@@ -62,6 +71,14 @@ type Counts = { written: number; restored: number; removed: number; backedUp: nu
 
 export interface SyncSummary {
   dryRun: boolean
+  /** Parse → the indexes only: no embedding backups written to Parse. */
+  oneWay?: boolean
+  /** Set when the run covers one account only. */
+  userId?: string
+  /** Set when the run picked up where an earlier, unfinished one stopped. */
+  resumedFrom?: { runId: string; atUser: number }
+  /** The last user this run finished, so a resume starts just after it. */
+  lastUserId?: string
   usersTotal: number
   usersDone: number
   backupsRemoved: number
@@ -122,8 +139,15 @@ async function rowsOf(className: string, userId: string): Promise<Parse.Object[]
   }
 }
 
-async function syncUser(userId: string, targets: Target[], summary: SyncSummary) {
-  const { dryRun } = summary
+/** Shared between the run's loop and its heartbeat. */
+interface RunControl { cancelled: boolean }
+
+/** Thrown past the per-user and per-target catches, which only record ordinary errors. */
+const rethrowCancel = (error: unknown) => { if (error instanceof SyncCancelled) throw error }
+
+async function syncUser(userId: string, targets: Target[], summary: SyncSummary, control: RunControl) {
+  const { dryRun, oneWay } = summary
+  const stopped = () => control.cancelled
 
   // The indexes are read before Parse. A bookmark saved in between is then
   // only missing from an index and gets written; read the other way round, it
@@ -152,6 +176,7 @@ async function syncUser(userId: string, targets: Target[], summary: SyncSummary)
     const counts = summary.targets[target.label]!
     try {
       const plan = planTarget(docs, indexDocs, backups, target.key)
+      if (oneWay) plan.backUp = []
       counts.written += plan.write.length
       counts.restored += plan.write.filter((w) => w.vector !== undefined).length
       counts.removed += plan.remove.length
@@ -184,17 +209,28 @@ async function syncUser(userId: string, targets: Target[], summary: SyncSummary)
         }
       }
 
+      // Asked once per bookmark list rather than per batch; cached for a minute anyway.
+      const embed = plan.write.length > 0 ? await embedderHealth.isUp() : true
       const tasks: EnqueuedTask[] = []
-      for (const batch of chunks(plan.write, WRITE_BATCH)) {
-        tasks.push(await target.index.addDocuments(batch.map(toIndexDocument), { primaryKey: 'id' }))
+      try {
+        for (const batch of chunks(plan.write, WRITE_BATCH)) {
+          if (stopped()) throw new SyncCancelled()
+          tasks.push(await target.index.addDocuments(batch.map((entry) => toIndexDocument(entry, embed)), { primaryKey: 'id' }))
+        }
+        if (plan.remove.length && !stopped()) tasks.push(await target.index.deleteDocuments(plan.remove))
+      } catch (error) {
+        // Stopped between batches: the ones already queued are cancelled below.
+        if (!(error instanceof SyncCancelled)) throw error
       }
-      if (plan.remove.length) tasks.push(await target.index.deleteDocuments(plan.remove))
-      for (const task of tasks.length ? await target.client.tasks.waitForTasks(tasks, TASK_WAIT) : []) {
+      const uids = tasks.map((task) => task.taskUid)
+      for (const task of uids.length ? await waitForSyncTasks(target.client, uids, stopped) : []) {
         if (task.status === 'succeeded') continue
         counts.failedTasks++
         recordError(summary, task.error?.message || `task ${task.uid} ${task.status}`, { userId, target: target.label })
       }
+      if (stopped()) throw new SyncCancelled()
     } catch (error) {
+      rethrowCancel(error)
       recordError(summary, error, { userId, target: target.label })
     }
   }
@@ -202,6 +238,7 @@ async function syncUser(userId: string, targets: Target[], summary: SyncSummary)
   // Backups of bookmarks that are gone from Parse go too.
   const live = new Set(docs.map((doc) => doc.id))
   const gone = [...rows].filter(([id]) => !live.has(id)).map(([, row]) => row)
+  if (oneWay) return
   summary.backupsRemoved += gone.length
   if (dryRun) return
   for (const batch of chunks([...changed], 50)) await Parse.Object.saveAll(batch, { useMasterKey: true })
@@ -209,7 +246,7 @@ async function syncUser(userId: string, targets: Target[], summary: SyncSummary)
 }
 
 /** Documents of users who no longer exist, e.g. from a deletion that missed the index. */
-async function removeOrphanUsers(target: Target, users: Set<string>, summary: SyncSummary) {
+async function removeOrphanUsers(target: Target, users: Set<string>, summary: SyncSummary, control: RunControl) {
   // ponytail: facets stop at maxValuesPerFacet (10k users); past that some orphans wait for a later run.
   const { facetDistribution } = await target.index.search('', { facets: ['userId'], limit: 0 })
   const candidates = Object.keys(facetDistribution?.userId ?? {}).filter((id) => !users.has(id))
@@ -223,39 +260,51 @@ async function removeOrphanUsers(target: Target, users: Set<string>, summary: Sy
   if (summary.dryRun) return
 
   for (const id of orphans) {
-    await target.index.deleteDocuments({ filter: `userId = ${JSON.stringify(id)}` }).waitTask(TASK_WAIT)
+    const task = await target.index.deleteDocuments({ filter: `userId = ${JSON.stringify(id)}` })
+    await waitForSyncTasks(target.client, [task.taskUid], () => control.cancelled)
   }
 }
 
-async function run(summary: SyncSummary, saveProgress: () => Promise<void>) {
+interface RunPlan {
+  /** Every user, oldest account first: the orphan check needs the whole list. */
+  users: string[]
+  /** Where in `users` to start: past 0 for a resumed run. */
+  startAt: number
+  /** One account only: the rest of the index, orphans included, is left alone. */
+  single: boolean
+}
+
+async function run(summary: SyncSummary, control: RunControl, plan: RunPlan) {
   const targets = await Promise.all(meilisearchTargets().map(openTarget))
   for (const target of targets) {
     summary.targets[target.label] = { written: 0, restored: 0, removed: 0, backedUp: 0, orphanUsers: 0, failedTasks: 0 }
   }
 
-  const users = await getAllUsersEfficient()
-  summary.usersTotal = users.length
-  await saveProgress()
+  summary.usersTotal = plan.users.length
+  summary.usersDone = plan.startAt
 
-  let savedAt = Date.now()
-  for (const userId of users) {
+  await forEachConcurrently(plan.users.length, plan.startAt, USERS_AT_ONCE, async (i) => {
+    const userId = plan.users[i]
     try {
-      await syncUser(userId, targets, summary)
+      await syncUser(userId, targets, summary, control)
     } catch (error) {
+      rethrowCancel(error)
       recordError(summary, error, { userId })
     }
     summary.usersDone++
-    if (Date.now() - savedAt > PROGRESS_EVERY_MS) {
-      await saveProgress()
-      savedAt = Date.now()
-    }
-  }
+  }, {
+    isCancelled: () => control.cancelled,
+    // Users finish out of order: a resume starts after the last of an unbroken run of them.
+    onDone: (upTo) => { if (upTo > plan.startAt) summary.lastUserId = plan.users[upTo - 1] },
+  })
 
-  const userSet = new Set(users)
+  if (plan.single) return
+  const userSet = new Set(plan.users)
   for (const target of targets) {
     try {
-      await removeOrphanUsers(target, userSet, summary)
+      await removeOrphanUsers(target, userSet, summary, control)
     } catch (error) {
+      rethrowCancel(error)
       recordError(summary, error, { target: target.label })
     }
   }
@@ -275,60 +324,187 @@ export async function latestRun(): Promise<Parse.Object | undefined> {
 
 export function describeRun(run?: Parse.Object) {
   if (!run) return null
+  const result = run.get('result') as 'running' | 'success' | 'error' | 'cancelled'
+  const summary = run.get('payload') as SyncSummary
+  // Still says "running" but stopped beating: its process ended (a deploy, a crash).
+  const stale = result === 'running' && !isLive(rowOf(run), Date.now())
   return {
     id: run.id,
-    result: run.get('result') as 'running' | 'success' | 'error',
+    result,
+    stale,
+    cancelRequested: run.get('cancelRequested') === true,
+    canResume: (stale || result === 'error' || result === 'cancelled')
+      && !summary?.userId && (summary?.usersDone ?? 0) < (summary?.usersTotal ?? 0),
     message: run.get('message') as string,
     startedAt: run.createdAt,
     updatedAt: run.updatedAt,
     executionTimeMs: run.get('executionTimeMs') as number | undefined,
-    summary: run.get('payload') as SyncSummary,
+    summary,
   }
 }
 
-/** Starts a run in the background, or returns null while one is going. */
-export async function startMeilisearchSync(dryRun: boolean): Promise<Parse.Object | null> {
-  if (running) return null
+const rowOf = (run: Parse.Object) => ({
+  result: run.get('result'),
+  updatedAt: run.updatedAt,
+  cancelRequested: run.get('cancelRequested') === true,
+})
+
+/** A start or stop that can't go ahead, with the status the route should answer. */
+export class SyncRequestError extends Error {
+  constructor(public statusCode: number, message: string) {
+    super(message)
+  }
+}
+
+/** The run going in this process, so a stop that lands here takes effect at once. */
+const localRuns = new Map<string, RunControl>()
+
+async function resolveUser(ref: UserRef): Promise<string> {
+  if ('userId' in ref) {
+    const user = await new Parse.Query(Parse.User).get(ref.userId, { useMasterKey: true }).catch(() => null)
+    if (!user) throw new SyncRequestError(404, `No user with id ${ref.userId}`)
+    return user.id
+  }
+  const user = await new Parse.Query(Parse.User).equalTo('email', ref.email).first({ useMasterKey: true })
+    ?? await new Parse.Query(Parse.User).equalTo('username', ref.email).first({ useMasterKey: true })
+  if (!user) throw new SyncRequestError(404, `No user with email ${ref.email}`)
+  return user.id
+}
+
+export interface StartOptions {
+  dryRun: boolean
+  /** Write the indexes from Parse without backing up embeddings into Parse. */
+  oneWay?: boolean
+  /** One account instead of all of them. */
+  user?: UserRef
+  /** Pick up where the latest, unfinished run stopped — in that run's mode. */
+  resume?: boolean
+}
+
+/** Starts a run in the background. Throws `SyncRequestError` when it can't. */
+export async function startMeilisearchSync(options: StartOptions): Promise<Parse.Object> {
+  if (running) throw new SyncRequestError(409, 'A Meilisearch sync is already running')
   running = true
   try {
     const last = await latestRun()
-    if (last?.get('result') === 'running' && Date.now() - last.updatedAt.getTime() < STALE_MS) {
-      running = false
-      return null
+    if (last && isLive(rowOf(last), Date.now())) {
+      throw new SyncRequestError(409, last.get('cancelRequested') ? 'The last run is still stopping; try again in a few seconds' : 'A Meilisearch sync is already running')
+    }
+
+    let dryRun = options.dryRun
+    let oneWay = options.oneWay === true
+    let plan: RunPlan
+    let resumedFrom: SyncSummary['resumedFrom']
+    if (options.user) {
+      plan = { users: [await resolveUser(options.user)], startAt: 0, single: true }
+    } else if (options.resume) {
+      const previous = describeRun(last)
+      if (!previous?.canResume) throw new SyncRequestError(409, 'There is no unfinished run to resume')
+      // A dry run looked at users without writing them: resuming it as a real
+      // run would skip them for good. So a resume keeps the earlier run's mode.
+      dryRun = previous.summary.dryRun
+      oneWay = previous.summary.oneWay === true
+      const users = await getAllUsersEfficient()
+      const startAt = resumeIndex(users, previous.summary)
+      plan = { users, startAt, single: false }
+      resumedFrom = { runId: previous.id, atUser: startAt }
+    } else {
+      plan = { users: await getAllUsersEfficient(), startAt: 0, single: false }
+    }
+
+    // The row the earlier run left saying "running" is closed off, so the page
+    // stops showing a run that is long dead.
+    if (last?.get('result') === 'running') {
+      await last.save({ result: 'cancelled', message: 'Stopped responding (its process ended, e.g. a deploy)' }, { useMasterKey: true })
     }
 
     const summary: SyncSummary = {
-      dryRun, usersTotal: 0, usersDone: 0, backupsRemoved: 0, targets: {}, errorCount: 0, errors: [],
+      dryRun, usersTotal: plan.users.length, usersDone: plan.startAt, backupsRemoved: 0, targets: {}, errorCount: 0, errors: [],
+      ...(oneWay ? { oneWay } : {}),
+      ...(plan.single ? { userId: plan.users[0] } : {}),
+      ...(resumedFrom ? { resumedFrom } : {}),
     }
     const record = new Parse.Object('TaskExecution')
     record.set({
-      taskName: TASK_NAME, result: 'running', message: dryRun ? 'Dry run' : 'Sync',
+      taskName: TASK_NAME, result: 'running',
+      message: `${dryRun ? 'Dry run' : 'Sync'}${oneWay ? ' (one way)' : ''}${plan.single ? ' of one user' : ''}${resumedFrom ? ' (resumed)' : ''}`,
       executionDate: new Date(), triggerSource: 'manual', payload: summary,
     })
     record.setACL(new Parse.ACL())
     await record.save(null, { useMasterKey: true })
 
+    const control: RunControl = { cancelled: false }
+    localRuns.set(record.id, control)
     const started = Date.now()
-    const save = (fields: Record<string, any> = {}) =>
-      record.save({ payload: summary, executionTimeMs: Date.now() - started, ...fields }, { useMasterKey: true }).then(() => {})
 
-    run(summary, save)
+    // One save at a time: the heartbeat and the final save share the row.
+    let saving: Promise<void> = Promise.resolve()
+    const save = (fields: Record<string, any> = {}) => {
+      saving = saving
+        .then(() => record.save({ payload: summary, executionTimeMs: Date.now() - started, ...fields }, { useMasterKey: true }))
+        .then(() => {}, (error) => console.error('[meilisearchSync] Could not save progress:', error))
+      return saving
+    }
+
+    // Progress, a sign of life, and the place a stop from another instance is heard.
+    let beating = false
+    const heartbeat = setInterval(async () => {
+      if (beating) return
+      beating = true
+      try {
+        await save()
+        const flags = await new Parse.Query('TaskExecution').select('cancelRequested').get(record.id, { useMasterKey: true })
+        if (flags.get('cancelRequested') === true) control.cancelled = true
+      } catch (error) {
+        console.error('[meilisearchSync] Heartbeat failed:', error)
+      } finally {
+        beating = false
+      }
+    }, HEARTBEAT_MS)
+
+    run(summary, control, plan)
       .then(() => save({
         result: 'success',
         message: `${dryRun ? 'Dry run' : 'Sync'} finished${summary.errorCount ? ` with ${summary.errorCount} errors` : ''}`,
       }))
       .catch((error) => {
+        if (error instanceof SyncCancelled) {
+          return save({ result: 'cancelled', message: `Stopped after ${summary.usersDone} of ${summary.usersTotal} users` })
+        }
         recordError(summary, error)
         return save({ result: 'error', message: error?.message || String(error) })
       })
-      .catch((error) => console.error('[meilisearchSync] Could not record the result:', error))
-      .finally(() => { running = false })
+      .finally(() => {
+        clearInterval(heartbeat)
+        localRuns.delete(record.id)
+        running = false
+      })
 
     return record
   } catch (error) {
     running = false
     throw error
   }
+}
+
+/**
+ * Stops the latest run. A live one is flagged and stops within a heartbeat —
+ * at once if it runs in this process — cancelling its queued Meilisearch tasks
+ * on the way out. One that died without saying so is simply closed off.
+ */
+export async function cancelMeilisearchSync(): Promise<Parse.Object> {
+  const last = await latestRun()
+  if (!last || last.get('result') !== 'running') throw new SyncRequestError(409, 'No sync is running')
+
+  const local = localRuns.get(last.id)
+  if (local) local.cancelled = true
+
+  if (isLive(rowOf(last), Date.now())) {
+    await last.save({ cancelRequested: true }, { useMasterKey: true })
+  } else {
+    await last.save({ result: 'cancelled', cancelRequested: true, message: 'Stopped responding (its process ended, e.g. a deploy)' }, { useMasterKey: true })
+  }
+  return last
 }
 
 /** For the afterDelete trigger: a bookmark that is gone takes its embedding backup with it. */

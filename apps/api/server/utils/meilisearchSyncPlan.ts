@@ -21,8 +21,9 @@
  */
 
 import { createHash } from 'node:crypto'
+import { EMBEDDER, withEmbedding } from './meilisearchEmbedder'
 
-export const EMBEDDER = 'openai'
+export { EMBEDDER }
 
 // The fields `MEILISEARCH_CONFIG.embedderConfig.documentTemplate` reads. A
 // field here that the template doesn't use only means an occasional backup
@@ -113,8 +114,16 @@ export function planTarget(
   return { hashes, write, remove, backUp }
 }
 
-export function toIndexDocument({ doc, vector }: TargetPlan['write'][number]): SearchDocument {
-  return vector
-    ? { ...doc, _vectors: { [EMBEDDER]: { embeddings: [decodeVector(vector)], regenerate: true } } }
-    : doc
+/**
+ * What to send for one planned write. A backup goes back as the embedding.
+ * Otherwise the document is sent to be embedded as normal (which also heals a
+ * document an outage left without one, see `meilisearchEmbedder.ts`) — or, while
+ * the embedder is down (`embed: false`), without one, so the write can't fail.
+ */
+export function toIndexDocument({ doc, vector }: TargetPlan['write'][number], embed = true): SearchDocument {
+  if (vector) {
+    const { embeddingSkipped: _dropped, ...rest } = doc
+    return { ...rest, _vectors: { [EMBEDDER]: { embeddings: [decodeVector(vector)], regenerate: true } } }
+  }
+  return withEmbedding(doc, embed ? 'embed' : 'skip')
 }

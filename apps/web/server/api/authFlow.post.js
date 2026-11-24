@@ -54,6 +54,15 @@ export default defineEventHandler(async (event) => {
       let password = body.password ? body.password : null;
       let isNewUser = true;
 
+      // Strings only. These go into master-key queries, and an object such as
+      // `{"$regex": "^a"}` became the query: it listed waitlist rows (name,
+      // email, questionnaire) and told the caller which emails have accounts.
+      for (const value of [funcName, email, name, password]) {
+          if (value !== null && typeof value !== 'string') {
+              throw createError({ statusCode: 400, statusMessage: 'Invalid request' })
+          }
+      }
+
       const query = new Parse.Query(Parse.User);
       if (funcName == 'signup'){
           console.log("funcName: ", funcName);

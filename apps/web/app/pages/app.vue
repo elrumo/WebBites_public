@@ -442,7 +442,7 @@ onMounted(async () => {
   //   return
   // }
 
-  log('[APP] currentUser: ', currentUser)
+  log('[APP] currentUser: ', currentUser?.id ?? null)
 
   if (!currentUser && !sessionToken) {
     router.push({ name: 'index' })

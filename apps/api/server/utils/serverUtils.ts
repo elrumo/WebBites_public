@@ -11,13 +11,16 @@ import { applyBrand } from './emailBrand';
 import { ImportSessionManager } from './ImportSessionManager.js';
 import { prepareMeilisearchDocument } from './meilisearchDocumentMapper.js';
 import { MEILISEARCH_CONFIG } from '../config/meilisearchConfig.js';
+import { watchMeilisearchTask } from './meilisearchTask';
+import { embedderHealth, withEmbedding } from './meilisearchEmbedder';
 import getPixels from 'get-pixels';
 import { extractColors } from 'extract-colors';
 import Coloraze from 'coloraze';
 import { claudeQueue } from './ClaudeRequestQueue.js';
 import { resolveUserPlan, getResolvedPlan, getBookmarkQuota, isPaidPlan, currentUsageMonth } from './plans';
 import { isBillingEnabled } from './billing';
-import { assertPublicUrl, safeFetch } from './safeUrl';
+import { assertPublicUrl, safeFetch, readCappedBody } from './safeUrl';
+import { fetchImageBytes } from './clientMetadata';
 import { siterelicKey } from './renderService';
 import { selfUrl } from './site';
 
@@ -429,22 +432,58 @@ export function calculateCosts(gptModelUsed, tokensUsed) {
     return Number((modelCosts[gptModelUsed].input * (tokensUsed / 1000)).toFixed(8));
 }
 
+/**
+ * `_User.failedToImport` with one more entry, keeping only the newest
+ * FAILED_IMPORT_LIMIT. Every failed AI call or import step appended an entry
+ * with a full stack trace and nothing ever removed one, so an outage during a
+ * large import pushed the user row toward MongoDB's 16 MB document limit
+ * (past which the user can no longer be saved) and made every read of the user
+ * carry it. The stack is dropped: it is in the logs and Sentry already.
+ */
+export const FAILED_IMPORT_LIMIT = 50;
+export function withFailedImport(existing: unknown, entry: { url?: string; websiteId?: string; error?: unknown; funcName?: string }) {
+    const list = Array.isArray(existing) ? existing : [];
+    const error: any = entry.error;
+    const message = error instanceof Error ? error.message : (typeof error === 'string' ? error : error?.message ?? (error === undefined ? undefined : String(error)));
+    list.push({
+        url: entry.url,
+        websiteId: entry.websiteId,
+        error: { message: message ? String(message).slice(0, 500) : undefined, name: error?.name },
+        funcName: entry.funcName,
+        date: new Date().toString(),
+    });
+    return list.slice(-FAILED_IMPORT_LIMIT);
+}
+
+/**
+ * Add URLs to the user's `websiteUrls` row (the duplicate-check list) with an
+ * AddUnique operation. This used to fetch the whole array, append in memory and
+ * write it all back on every save: the cost grew with the library, and two
+ * saves at once lost one of the URLs.
+ */
+export async function addToWebsiteUrls(user: Parse.User, urls: string[]): Promise<void> {
+    const unique = Array.from(new Set(urls.filter((u) => typeof u === 'string' && u)));
+    if (!unique.length) return;
+    const pointer = user.get('websiteUrls');
+    if (pointer) {
+        pointer.addAllUnique('urls', unique);
+        await pointer.save(null, { useMasterKey: true });
+        return;
+    }
+    const WebsiteUrls = Parse.Object.extend('websiteUrls');
+    const row = new WebsiteUrls();
+    row.set('urls', unique);
+    user.set('websiteUrls', row);
+    await user.save(null, { useMasterKey: true });
+}
+
 export async function logFailedImport(savedSite, funcName, error){
     try {
         savedSite = await savedSite.fetch({useMasterKey: true});
 
         let user = savedSite.get('user');
         user = await user.fetch({useMasterKey: true});
-        let failedToImport = user.get('failedToImport');
-        if(failedToImport == undefined) failedToImport = [];
-
-        // Convert error to a serializable format
-        const serializableError = error instanceof Error
-            ? { message: error.message, stack: error.stack, name: error.name }
-            : { message: String(error) };
-
-        failedToImport.push({url: savedSite.get('url'), websiteId: savedSite.id, error: serializableError, funcName: funcName, date: new Date().toString()});
-        user.set('failedToImport', failedToImport);
+        user.set('failedToImport', withFailedImport(user.get('failedToImport'), { url: savedSite.get('url'), websiteId: savedSite.id, error, funcName }));
 
         // Update import session failedBookmarks counter using ImportSessionManager
         const session = await ImportSessionManager.getActiveSession(user);
@@ -551,6 +590,9 @@ export async function fetchUrl(url: string, options: any = {}, funcName: string 
 }
 
 // Progressive timeout fetch with smart retry logic
+/** The most of any one web page the pipeline reads (MAX_PAGE_BYTES env to change). */
+const MAX_PAGE_BYTES = Number(process.env.MAX_PAGE_BYTES) || 5 * 1024 * 1024;
+
 export async function fetchUrlWithProgressiveTimeout(
     url: string,
     options: any = {},
@@ -662,9 +704,21 @@ export async function fetchUrlWithProgressiveTimeout(
                 ...options
             });
 
+            // Read the body here, under the same timer, and at most
+            // MAX_PAGE_BYTES of it. The timer used to be cleared as soon as
+            // the headers arrived and callers then read the body with
+            // `.text()`, unbounded and with no deadline: a bookmark of a large
+            // file or a stream held memory until the process died.
+            const contentType = (response.headers.get('content-type') || '').toLowerCase();
+            if (/^(video|audio)\//.test(contentType) || /^application\/(zip|gzip|x-tar|x-7z|x-rar|octet-stream)/.test(contentType)) {
+                await response.body?.cancel().catch(() => {});
+                clearTimeout(timeoutId);
+                return { error: `Not a web page (${contentType})`, attempts: attempt + 1 };
+            }
+            const body = await readCappedBody(response, MAX_PAGE_BYTES, { truncate: true });
             clearTimeout(timeoutId);
             log(`✅ Success for ${url} on attempt ${attempt + 1}`);
-            return response;
+            return new Response(body ? new Uint8Array(body) : null, { status: response.status, statusText: response.statusText, headers: response.headers });
         } catch (error) {
             clearTimeout(timeoutId);
 
@@ -1491,25 +1545,11 @@ export function categorizeColor(color, colorName) {
 export async function getImageBuffer(screenshotUrl: string, siteId: string) {
     let outputBuffer: string | null = null;
 
-    const response = await fetchUrl(screenshotUrl, {}, 'getImageBuffer');
-    if ('error' in response) return outputBuffer;
-
-    // console.log(`[getImageBuffer] response: ${response}`);
-
-    // fetchUrl now returns data directly, so response is already the buffer/data
-    // Handle different response types: ArrayBuffer, Blob, or Buffer
-    let imageBuffer: Buffer;
-    if (response instanceof ArrayBuffer) {
-        imageBuffer = Buffer.from(response);
-    } else if (response instanceof Blob) {
-        // Convert Blob to Buffer
-        const arrayBuffer = await response.arrayBuffer();
-        imageBuffer = Buffer.from(arrayBuffer);
-    } else if (Buffer.isBuffer(response)) {
-        imageBuffer = response;
-    } else {
-        imageBuffer = Buffer.from(response);
-    }
+    // The URL can be the row's OGImage, which a client writes: public
+    // addresses only, redirects checked, size capped.
+    const fetched = await fetchImageBytes(screenshotUrl);
+    if (!fetched) return outputBuffer;
+    const imageBuffer: Buffer = fetched.buffer;
 
     outputBuffer = await convertImageForProcessing(imageBuffer, screenshotUrl, siteId);
     return outputBuffer;
@@ -1680,28 +1720,18 @@ export async function saveBookmarkToUser(user: Parse.User, savedSite: Parse.Obje
         // Update the websiteUrls cache before saving the user, so a single
         // user.save() persists both the relation and (if new) the pointer.
         const url = savedSite?.get('url');
-        let websiteUrlsPointer;
         try {
-            if (url) {
-                websiteUrlsPointer = user.get('websiteUrls') ? await user.get('websiteUrls').fetch({ useMasterKey: true }) : undefined;
-
-                if (!websiteUrlsPointer) {
-                    websiteUrlsPointer = new WebsiteUrls();
-                    websiteUrlsPointer.set('urls', [url]);
-                    user.set('websiteUrls', websiteUrlsPointer);
-                } else {
-                    const urls = websiteUrlsPointer.get('urls') || [];
-                    if (!urls.includes(url)) {
-                        urls.push(url);
-                        websiteUrlsPointer.set('urls', urls);
-                        await websiteUrlsPointer.save(null, { useMasterKey: true });
-                    }
-                }
+            const pointer = user.get('websiteUrls');
+            if (url && pointer) {
+                pointer.addUnique('urls', url);
+                await pointer.save(null, { useMasterKey: true });
+            } else if (url) {
+                const row = new WebsiteUrls();
+                row.set('urls', [url]);
+                user.set('websiteUrls', row);
             }
         } catch (error) {
             console.log("Error setting websiteUrls 2: ", error);
-        } finally {
-            websiteUrlsPointer = null;
         }
 
         await user.save(null, { useMasterKey: true });
@@ -1808,13 +1838,42 @@ export async function saveWebsiteToSearchIndices(websiteId: string, funcName: st
             try {
                 log(`[DEBUG] Starting saveToMeilisearch(${target}) for ${site.id}`);
 
-                const document = buildMeilisearchDocument(site);
+                // While the embedder is down (OpenAI out of credit, an outage) a
+                // normal write fails after ~8 minutes and the bookmark never
+                // reaches the index. Write it without an embedding instead, so
+                // keyword search works; a later save or the sync adds it back.
+                const embedderUp = await embedderHealth.isUp();
+                const document = withEmbedding(buildMeilisearchDocument(site), embedderUp ? 'embed' : 'skip');
                 size = getObjectSize(document);
 
                 const index = client.index(MEILISEARCH_CONFIG.INDEX_NAME);
 
                 try {
-                    await index.addDocuments([document], { primaryKey: 'id' });
+                    const enqueued = await index.addDocuments([document], { primaryKey: 'id' });
+                    // Queued is not indexed: the embedder can still fail the
+                    // write (no OpenAI credit did, for days, with nothing
+                    // logged). Follow it in the background so that shows up.
+                    void watchMeilisearchTask(
+                        client,
+                        enqueued.taskUid,
+                        `${target} ${site.id} via ${funcName}`,
+                        (taskError, task) => {
+                            console.error('[saveToMeilisearch] Index write failed after being queued:', taskError.message);
+                            Sentry.captureException(taskError);
+
+                            // The embedder failed a write the probe thought was fine.
+                            // Stop sending it work and put this bookmark in without an
+                            // embedding. A re-read, not the document above: minutes
+                            // have passed and the row may have changed since.
+                            if (task.error?.code === 'vector_embedding_error') {
+                                embedderHealth.markDown();
+                                saveWebsiteToSearchIndices(site.id, `${funcName}:embedderFallback`).catch((fallbackError) => {
+                                    console.error('[saveToMeilisearch] Fallback index write failed:', fallbackError);
+                                    Sentry.captureException(fallbackError);
+                                });
+                            }
+                        }
+                    );
                 } catch (e: any) {
                     const msg = e?.message || String(e);
                     if (e instanceof SyntaxError || /JSON Parse/i.test(msg)) {

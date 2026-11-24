@@ -6,6 +6,12 @@ const settings = require('./settings');
 const { ensureClientClasses } = require('./clientSchema');
 
 const BASE_PORT = parseInt(process.env.PORT || '1337', 10);
+// How long a shutdown waits for requests in flight before it closes what is left. Docker sends
+// SIGKILL 10 seconds after SIGTERM by default.
+const SHUTDOWN_GRACE_MS = parseInt(process.env.SHUTDOWN_GRACE_MS || '8000', 10);
+// The address Parse listens on. Default: every interface. Set it when the container runs with
+// `network_mode: host`, so ports 1337+ are not open in plain HTTP on the host's public address.
+const BIND_HOST = (process.env.PARSE_BIND_HOST || '').trim() || undefined;
 
 async function startServer(port) {
   // Settings saved on the admin page go into process.env first, because config.js reads the
@@ -154,7 +160,7 @@ async function startServer(port) {
   // Start the Express server
   const httpServer = require('http').createServer(app);
 
-  httpServer.listen(port, function() {
+  httpServer.listen(port, BIND_HOST, function() {
     console.log(`Parse Server running on port ${port} (PID: ${process.pid})`);
     console.log(`Server URL: ${instanceConfig.serverURL}`);
     console.log(`Public Server URL: ${instanceConfig.publicServerURL}`);
@@ -170,17 +176,29 @@ async function startServer(port) {
 
   console.log(`LiveQuery server initialized on port ${port}${instanceConfig.liveQuery.redisURL ? ' with Redis pub/sub' : ''}`);
 
-  // Handle graceful shutdown
-  const shutdown = () => {
-    console.log(`Shutting down server on port ${port} (PID: ${process.pid})`);
+  // Graceful shutdown: stop accepting connections, let requests in flight finish, then exit.
+  // A LiveQuery socket keeps `close()` from ever calling back on its own, hence the deadline.
+  let shuttingDown = false;
+  const shutdown = (signal) => {
+    if (shuttingDown) return;
+    shuttingDown = true;
+    console.log(`${signal} received: draining the server on port ${port} (PID: ${process.pid})`);
+    const force = setTimeout(() => {
+      console.log('Shutdown grace period over, closing remaining connections');
+      if (typeof httpServer.closeAllConnections === 'function') httpServer.closeAllConnections();
+      process.exit(0);
+    }, SHUTDOWN_GRACE_MS);
     httpServer.close(() => {
+      clearTimeout(force);
       console.log('HTTP server closed');
       process.exit(0);
     });
+    // Idle keep-alive sockets would otherwise hold the listener open.
+    if (typeof httpServer.closeIdleConnections === 'function') httpServer.closeIdleConnections();
   };
 
-  process.on('SIGTERM', shutdown);
-  process.on('SIGINT', shutdown);
+  process.on('SIGTERM', () => shutdown('SIGTERM'));
+  process.on('SIGINT', () => shutdown('SIGINT'));
 
   return httpServer;
 }

@@ -266,6 +266,7 @@
       "movie": "Película",
       "music": "Música",
       "pdf": "PDF",
+      "recipe": "Receta",
       "textNote": "Nota",
       "website": "Página web"
     },
@@ -678,6 +679,8 @@
       "type_confirmation": "Escribe \"Eliminar mi cuenta\" para confirmar"
     },
     "display_mode": "Modo de visualización",
+    "grid_columns": "Columnas",
+    "grid_columns_auto": "Automático",
     "grid_view": "Vista en cuadrícula",
     "image_ratio": {
       "original": "Original"
@@ -2017,8 +2020,44 @@
       "game": "juego",
       "drawing": "dibujo",
       "audio": "audio",
+      "recipe": "receta",
       "textNote": "Nota"
     }
+  },
+  "recipe": {
+    "unit_hour": "h",
+    "unit_minute": "min",
+    "ingredient_count": "{count} ingrediente | {count} ingredientes",
+    "ingredients": "Ingredientes",
+    "steps": "Preparación",
+    "notes": "Notas",
+    "prep": "Preparación previa",
+    "cook": "Cocción",
+    "total": "Total",
+    "servings": "Porciones",
+    "by": "Por {author}",
+    "open_original": "Abrir original",
+    "edit": "Editar receta",
+    "extracting": "Extrayendo receta…",
+    "extracting_hint": "Leyendo la página para sacar los ingredientes y los pasos. Suele tardar unos segundos.",
+    "show_page": "Ver la página",
+    "write": "Escríbela tú",
+    "write_title": "Escribir una receta",
+    "save": "Guardar receta",
+    "saved": "Receta guardada",
+    "save_error": "No se pudo guardar la receta",
+    "field_title": "Título",
+    "field_yield": "Porciones",
+    "field_yield_placeholder": "p. ej. 4 porciones",
+    "field_prep": "Tiempo de preparación (min)",
+    "field_cook": "Tiempo de cocción (min)",
+    "field_ingredients": "Ingredientes",
+    "field_steps": "Preparación",
+    "field_notes": "Notas",
+    "field_source": "Enlace de origen (opcional)",
+    "field_group_hint": "Uno por línea. Termina una línea con dos puntos para empezar un grupo, como «Para la salsa:».",
+    "error_title": "Ponle un título a la receta.",
+    "error_content": "Agrega al menos un ingrediente o un paso."
   },
   "bookmark_card": {
     "image_alt": "Imagen de la tarjeta",
@@ -2253,7 +2292,8 @@
       "movie": "Guardar película",
       "game": "Guardar juego",
       "drawing": "Guardar dibujo",
-      "audio": "Guardar audio"
+      "audio": "Guardar audio",
+      "recipe": "Guardar receta"
     }
   },
   "landing_page": {
@@ -2382,6 +2422,15 @@
       "account_when": "si usas la web o Chrome, o quieres feeds, etiquetas con IA y resúmenes.",
       "device": "Biblioteca en el dispositivo:",
       "device_when": "si solo usas dispositivos Apple y no quieres nada en ningún servidor."
+    },
+    "self_host": {
+      "title": "¿Prefieres hospedarlo tú mismo?",
+      "description": "WebBites es de código abierto. Ejecuta la misma app en tu propio servidor con Docker Compose: tu base de datos, tu endpoint de IA, sin planes ni límites.",
+      "point_start": "Se inicia con un solo comando, con HTTPS en tu propio dominio.",
+      "point_private": "Sin telemetría. Nada sale de tu servidor a menos que tú lo configures.",
+      "point_license": "Software libre bajo la AGPL-3.0.",
+      "guide": "Guía de autohospedaje",
+      "github": "Ver en GitHub"
     }
   },
   "login_page": {

@@ -95,7 +95,8 @@ const sendAuthToExtension = (authData) => {
     return false;
   }
 
-  console.log("[sendAuthToExtension] authData: ", authData);
+  // authData carries the session token, so only who it is for is logged.
+  console.log("[sendAuthToExtension] userId: ", authData?.userId);
   
   // Send via DOM event
   document.dispatchEvent(new CustomEvent('webbites-send-auth', {
@@ -111,7 +112,7 @@ const handleAuthSuccess = async () => {
   authSuccess.value = true;
   const user = Parse.User?.current?.() ?? null;
 
-  console.log("user: ", user);
+  console.log("user: ", user?.id);
   if(user) navigateTo('/app')
   
 };

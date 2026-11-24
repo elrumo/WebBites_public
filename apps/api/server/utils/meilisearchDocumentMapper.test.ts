@@ -88,5 +88,15 @@ check(
     doc({ hiddenFrom: 'library', siteTitle: 'a new title', tags: ['fresh'] }).hiddenFrom === 'library'
 );
 
+// A title cut mid-emoji keeps half a surrogate pair; Meilisearch refuses the
+// whole batch over it ("unexpected end of hex escape").
+{
+    const cut = doc({ siteTitle: 'Tea 🍵'.slice(0, 5), tags: ['ok', '\ud83d'], aiSummary: { tldr: 'x\udc35' } });
+    check('a lone surrogate is replaced, not sent', !/\\ud[89a-f]/i.test(JSON.stringify(cut)));
+    check('the rest of the text is kept', cut.siteTitle === 'Tea �' && cut.tags[0] === 'ok');
+    check('whole emoji survive', doc({ siteTitle: 'Tea 🍵' }).siteTitle === 'Tea 🍵');
+    check('dates stay dates', doc({ createdAt: new Date(0) }).createdAt instanceof Date);
+}
+
 console.log(`\nmeilisearch document mapper: ${pass} passed, ${fail} failed`);
 process.exit(fail > 0 ? 1 : 0);

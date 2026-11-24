@@ -23,7 +23,10 @@ const port = env.int('PORT', env.int('BASE_PORT', 1337));
 // client address from X-Forwarded-For (trustProxy), otherwise every request would look
 // like it comes from the proxy's private address.
 const masterKeyIps = env.list('PARSE_MASTER_KEY_IPS', [
-  '127.0.0.1', '::1', '10.0.0.0/8', '172.16.0.0/12', '192.168.0.0/16', 'fc00::/7',
+  '127.0.0.1', '::1', '10.0.0.0/8', '172.16.0.0/12', '192.168.0.0/16',
+  // CGNAT, which VPN overlays such as Tailscale use between servers.
+  '100.64.0.0/10',
+  'fc00::/7',
 ]);
 
 // Redis is optional for Parse: it only shares cache and LiveQuery pub/sub between
@@ -64,6 +67,17 @@ const config = {
   masterKeyIps,
   trustProxy: env.int('PARSE_TRUST_PROXY', 1),
   allowClientClassCreation: env.bool('PARSE_ALLOW_CLIENT_CLASS_CREATION', false),
+  // No client signs in anonymously, and an anonymous account is a session with no email that
+  // anyone can mint with the public keys.
+  enableAnonymousUsers: false,
+  // Clients sign in directly against Parse. This counts failed passwords per account, so it
+  // works whatever address the attempts appear to come from: ten wrong passwords lock that
+  // account for five minutes, and a password reset unlocks it.
+  accountLockout: {
+    threshold: env.int('ACCOUNT_LOCKOUT_THRESHOLD', 10),
+    duration: env.int('ACCOUNT_LOCKOUT_MINUTES', 5),
+    unlockOnPasswordReset: true,
+  },
   preserveFileName: true,
   maxUploadSize: env.int('MAX_UPLOAD_MB', 500) * 1024 * 1024,
   fileUpload: {
@@ -112,11 +126,10 @@ if (mailer.isEnabled()) {
   };
 }
 
-// Parse's public pages (the page a password-reset link opens) are off unless the router is enabled.
+// Parse's public pages (the page a password-reset link opens). The router is always on in Parse 9.11+.
 // The link opens the web app's own "choose a new password" page, which posts the new password back
 // to Parse, instead of Parse's bare built-in form.
 config.pages = {
-  enableRouter: true,
   ...(mailer.siteUrl()
     ? {
         customUrls: {

@@ -270,10 +270,10 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  return {
-    ...getAudio,
-    apiKey: getCookie(event, 'wb_api_key')
-  };
+  // The HttpOnly `wb_api_key` cookie used to be echoed back here as `apiKey`,
+  // readable by any page script. ReaderView only reads `endpoint`, and
+  // streamAudio reads the key from the cookie itself.
+  return getAudio;
 });
 
 function removeHtmlTags(htmlString, stringLimit = 1000) {

@@ -2,7 +2,7 @@
   <div>
     <LandingNavBar/>
 
-    <img class="fixed top-0 left-0 w-screen h-screen mix-blend-multiply opacity-40 pointer-events-none" src="/images/grain_2.webp"/>
+    <div aria-hidden="true" class="grain-overlay fixed top-0 left-0 w-screen h-screen mix-blend-multiply opacity-40 pointer-events-none" />
 
       <!-- Hero Section -->
       <div class="parallax relative">
@@ -370,6 +370,40 @@
             <li><span class="text-white font-semibold">{{ $t('landing_page.where.device') }}</span> {{ $t('landing_page.where.device_when') }}</li>
           </ul>
         </div>
+
+        <!-- Self-hosting: the open-source edition, one command away. -->
+        <section id="self-host" class="self-host-section">
+          <div class="flex flex-col gap-4 md:max-w-[46%]">
+            <h2 class="text-3xl md:text-4xl landing-page-title text-shadow-green">{{ $t('landing_page.self_host.title') }}</h2>
+            <p class="text-neutral-400 text-lg">{{ $t('landing_page.self_host.description') }}</p>
+            <ul class="self-host-points">
+              <li>{{ $t('landing_page.self_host.point_start') }}</li>
+              <li>{{ $t('landing_page.self_host.point_private') }}</li>
+              <li>{{ $t('landing_page.self_host.point_license') }}</li>
+            </ul>
+            <div class="flex flex-wrap gap-3 pt-1">
+              <UButton to="/developers/docs/self-hosting" color="neutral" size="lg" class="font-bold rounded-xl">
+                {{ $t('landing_page.self_host.guide') }}
+              </UButton>
+              <UButton
+                to="https://github.com/elrumo/webbites_public"
+                target="_blank"
+                color="neutral"
+                variant="outline"
+                size="lg"
+                icon="i-fa6-brands-github"
+                class="font-bold rounded-xl"
+              >
+                {{ $t('landing_page.self_host.github') }}
+              </UButton>
+            </div>
+          </div>
+          <pre class="self-host-code"><code>git clone https://github.com/elrumo/webbites_public.git webbites
+cd webbites/deploy
+./install.sh
+docker compose pull
+docker compose up -d</code></pre>
+        </section>
 
         <!-- How it works timeline -->
         <!-- <div class="h-fit w-full relative -mt-10">
@@ -1044,6 +1078,18 @@ onBeforeUnmount(() => {
 /* "Where your library lives", under the pricing cards. */
 .where-section {
   @apply w-full max-w-3xl flex flex-col gap-3 text-left mt-6 mb-10 px-6 py-5 rounded-2xl border border-neutral-700 bg-neutral-900/60;
+}
+
+.self-host-section {
+  @apply w-[90%] max-w-5xl mx-auto my-10 md:my-16 flex flex-col md:flex-row md:items-center gap-8 md:gap-12 px-6 py-8 md:px-10 md:py-10 rounded-3xl border border-neutral-700 bg-neutral-900/60 text-left;
+}
+
+.self-host-points {
+  @apply flex list-disc flex-col gap-1.5 pl-5 text-neutral-400;
+}
+
+.self-host-code {
+  @apply flex-1 min-w-0 overflow-x-auto rounded-xl border border-white/10 bg-black/40 p-5 font-mono text-sm leading-relaxed text-green-200;
 }
 
 .where-rules {

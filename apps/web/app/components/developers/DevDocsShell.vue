@@ -1,11 +1,10 @@
 <template>
   <div class="dev-docs dark">
     <LandingNavBar :isLandingPage="false" />
-    <img
-      class="pointer-events-none fixed left-0 top-0 h-screen w-screen opacity-30 mix-blend-multiply"
-      src="/images/grain_2.webp"
-      alt=""
-    >
+    <div
+      aria-hidden="true"
+      class="grain-overlay pointer-events-none fixed left-0 top-0 h-screen w-screen opacity-30 mix-blend-multiply"
+    />
 
     <!-- Phones and small tablets get the sidebar behind a button. -->
     <div class="dev-docs-mobilebar">
@@ -124,6 +123,8 @@ import DevSectionUsage from '~/components/developers/DevSectionUsage.vue'
 import DevSectionPlayground from '~/components/developers/DevSectionPlayground.vue'
 import DevSectionEndpoints from '~/components/developers/DevSectionEndpoints.vue'
 import DevSectionBookmarkObject from '~/components/developers/DevSectionBookmarkObject.vue'
+import DevSectionSelfHosting from '~/components/developers/DevSectionSelfHosting.vue'
+import DevSectionSelfHostingOperations from '~/components/developers/DevSectionSelfHostingOperations.vue'
 
 const props = defineProps({
   slug: { type: String, default: '' },
@@ -145,6 +146,8 @@ const SECTIONS = {
   playground: DevSectionPlayground,
   endpoints: DevSectionEndpoints,
   'bookmark-object': DevSectionBookmarkObject,
+  'self-hosting': DevSectionSelfHosting,
+  'self-hosting-operations': DevSectionSelfHostingOperations,
 }
 
 const doc = computed(() => findDoc(props.slug))

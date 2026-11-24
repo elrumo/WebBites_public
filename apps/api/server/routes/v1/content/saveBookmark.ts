@@ -17,7 +17,7 @@ import metascraperPublisher from 'metascraper-publisher';
 import metascraperTitle from 'metascraper-title';
 import metascraperUrl from 'metascraper-url';
 import metascrapperShopping from '@samirrayani/metascraper-shopping';
-import { sendToQstash, fetchUrlWithProgressiveTimeout, callBackendEndpoint, isLocalUrl, getHtmlContent, isUrlAnImage, getPartitionedQueue } from '#root/server/utils/serverUtils.js';
+import { withFailedImport, addToWebsiteUrls, sendToQstash, fetchUrlWithProgressiveTimeout, callBackendEndpoint, isLocalUrl, getHtmlContent, isUrlAnImage, getPartitionedQueue } from '#root/server/utils/serverUtils.js';
 import { processLargeImageFile } from '#root/server/utils/jobs/processJob.js';
 
 // Import new utilities for refactoring improvements
@@ -26,6 +26,7 @@ import { batchFindCachedWebsites } from '#root/server/utils/cacheHydration';
 import { getUserWithPlan, getBookmarkQuota } from '#root/server/utils/plans';
 import { sanitizeMetadata, shouldQueueImageProcessing, getBase64SizeKB } from '#root/server/utils/metadataUtils';
 import { sanitizeClientMetadata, mergeClientMetadata, isLoginWalledHost, ownStorageURL, type ClientMetadata } from '#root/server/utils/clientMetadata';
+import { safeFetch } from '#root/server/utils/safeUrl';
 import { carouselImages, applyRehosted } from '#root/server/utils/socialImages';
 import type { BookmarkImage } from '#root/server/utils/bookmarkImages';
 import { resolveSocialUrl, hasSocialResolver } from '#root/server/utils/socialResolvers';
@@ -35,6 +36,7 @@ import { BROWSER_HEADERS } from '#root/server/utils/contentExtraction';
 import { enrichmentContext, immediateMessages } from '#root/server/utils/enrichmentMessages';
 import { detectPdfUrl, looksLikePdfUrl, pdfTargetUrl } from '#root/server/utils/pdfUrl';
 import { resolveMediaBookmark, resolveMediaBookmarks, pool } from '#root/server/utils/mediaUrl';
+import { getRedisClient, ensureRedisConnected } from '#root/server/utils/redis';
 
 const Websites = Parse.Object.extend("websites");
 const WebsiteUrls = Parse.Object.extend('websiteUrls');
@@ -284,8 +286,15 @@ export function sanitizeDeviceEnrichment(raw: unknown): DeviceEnrichment | null 
     return Object.values(enrichment).some(value => Array.isArray(value) ? value.length : Boolean(value)) ? enrichment : null;
 }
 
+// `serverExtracted` marks a row whose page content this server fetched itself.
+// Only such rows are copied into another user's save of the same URL
+// (utils/cacheHydration.ts). Content from a device, an extension or a client
+// write clears it: before this, any row with a `siteHtmlFile` was copied,
+// and a client can write those columns on its own row, so one user could plant
+// a body, description and embed code in everyone's later save of a popular URL.
 export function applyDeviceEnrichment(website: Parse.Object, enrichment: DeviceEnrichment | null) {
     if (!enrichment) return;
+    website.set('serverExtracted', false);
     if (enrichment.title) website.set('siteTitle', enrichment.title);
     if (enrichment.description) website.set('siteDescription', enrichment.description);
     if (enrichment.author) website.set('siteAuthor', enrichment.author);
@@ -378,6 +387,7 @@ function withTimeout<T>(promise: Promise<T>, timeoutMs: number, operationName: s
  */
 export function applyClientMetadata(website: Parse.Object, clientMetadata: ClientMetadata | null) {
     if (!clientMetadata) return;
+    website.set('serverExtracted', false);
     website.set("clientMetadata", clientMetadata);
     website.set("extractedBy", clientMetadata.extractedBy || null);
     if (clientMetadata.authorHandle) website.set("siteAuthor", clientMetadata.authorHandle);
@@ -445,7 +455,10 @@ export async function rehostCarousel(websiteId: string, images: BookmarkImage[])
         // before the save. Copying them again would be pure cost.
         if (ownStorageURL(image.url)) return null;
         try {
-            const response = await withTimeout(fetch(image.url), 20_000, 'carousel image fetch');
+            // safeFetch, not fetch: these URLs come from the client, and the
+            // allowlist they pass includes the bookmark's own host, which the
+            // user also chose. Each redirect hop is checked as well.
+            const response = await withTimeout(safeFetch(image.url, { signal: AbortSignal.timeout(20_000) }), 20_000, 'carousel image fetch');
             if (!response.ok) return null;
             const buffer = Buffer.from(await response.arrayBuffer());
             // A picture this large is a decompression bomb or a mistake, not a
@@ -664,6 +677,37 @@ export default defineEventHandler(async (event) => {
     }
 })
 
+/** The live bookmark this user already saved under `customId`, if any. */
+async function findSavedByCustomId(userId: string, customId: string): Promise<Parse.Object | undefined> {
+    try {
+        const query = new Parse.Query(Websites);
+        query.equalTo('user', Parse.User.createWithoutData(userId));
+        query.equalTo('customId', customId);
+        query.notEqualTo('isDeleted', true);
+        return await query.first({ useMasterKey: true });
+    } catch {
+        return undefined;
+    }
+}
+
+/**
+ * A two-minute claim on one save, so two deliveries arriving together do not
+ * both create the row. Returns its release, or null if another delivery holds
+ * it. Without Redis it lets the save through: a rare duplicate beats a lost save.
+ */
+async function claimSave(userId: string, customId: string): Promise<(() => Promise<void>) | null> {
+    const key = `save-claim:${userId}:${customId}`;
+    try {
+        const redis = getRedisClient();
+        await ensureRedisConnected();
+        const claimed = await redis.set(key, '1', { NX: true, EX: 120 });
+        if (claimed !== 'OK') return null;
+        return async () => { await redis.del(key).catch(() => {}); };
+    } catch {
+        return async () => {};
+    }
+}
+
 class SaveBookmark {
     async saveBookmarksBatch(bodies: SaveBookmarkBody[]) {
         const validBodies = bodies.filter(b => b && typeof b === 'object' && b.userId && (b.url || b.textNote))
@@ -782,7 +826,7 @@ class SaveBookmark {
                                 w.set('siteHtmlUrl', existingWebsite.get('siteHtmlUrl'))
                                 w.set('siteBody', existingWebsite.get('siteBody') ? existingWebsite.get('siteBody') : '')
                                 w.set('siteBodyFile', existingWebsite.get('siteBodyFile') ? existingWebsite.get('siteBodyFile') : null)
-                                w.set('siteBodyFileUrl', existingWebsite.get('siteBodyFileUrl') ? existingWebsite.get('siteBodyFileUrl') : null)
+                                w.set('siteBodyFileUrl', existingWebsite.get('siteBodyFile')?.url?.() || null)
                                 w.set('baseUrl', existingWebsite.get('baseUrl'))
                                 w.set('siteTitle', existingWebsite.get('siteTitle') ? existingWebsite.get('siteTitle') : undefined)
                                 w.set('siteDescription', existingWebsite.get('siteDescription'))
@@ -792,7 +836,7 @@ class SaveBookmark {
                                 w.set('sitePublisher', existingWebsite.get('sitePublisher') ? existingWebsite.get('sitePublisher').substring(0, 500) : null)
                                 w.set('aiSummary', existingWebsite.get('aiSummary'))
                                 w.set('siteColors', existingWebsite.get('siteColors'))
-                                w.set('embedCode', existingWebsite.get('embedCode'))
+                                // embedCode is not copied: it is markup that gets rendered
                                 w.set('fullPageScreenshot', existingWebsite.get('fullPageScreenshot'))
                                 w.set('siteScreenshot', existingWebsite.get('siteScreenshot'))
                                 w.set('containsAdultContent', existingWebsite.get('containsAdultContent'))
@@ -800,6 +844,7 @@ class SaveBookmark {
                                 w.set('OGImageFile', existingWebsite.get('OGImageFile'))
                                 w.set('OGImage', OGImage)
                                 w.set('fromCache', true)
+                                w.set('serverExtracted', true)
 
                                 if (computedSubType.includes('spotify')) {
                                     try {
@@ -997,23 +1042,7 @@ class SaveBookmark {
             // import flow for duplicate detection). This previously only happened for
             // single saves.
             try {
-                const savedUrls = websiteObjs.map(w => w.get('url')).filter(Boolean)
-                if (savedUrls.length > 0) {
-                    let websiteUrlsPointer = user.get('websiteUrls')
-                        ? await user.get('websiteUrls').fetch({ useMasterKey: true })
-                        : undefined
-                    if (!websiteUrlsPointer) {
-                        websiteUrlsPointer = new WebsiteUrls()
-                        websiteUrlsPointer.set('urls', Array.from(new Set(savedUrls)))
-                        user.set('websiteUrls', websiteUrlsPointer)
-                        await user.save(null, { useMasterKey: true })
-                    } else {
-                        const urls = websiteUrlsPointer.get('urls') || []
-                        for (const u of savedUrls) if (!urls.includes(u)) urls.push(u)
-                        websiteUrlsPointer.set('urls', urls)
-                        await websiteUrlsPointer.save(null, { useMasterKey: true })
-                    }
-                }
+                await addToWebsiteUrls(user, websiteObjs.map(w => w.get('url')).filter(Boolean))
             } catch (e) {
                 errorLog('[saveBookmarksBatch] Error updating websiteUrls cache:', e)
             }
@@ -1021,7 +1050,42 @@ class SaveBookmark {
         return { status: 'ok', savedCount: savedIds.length, queuedCount: savedIds.length, savedSiteIds: savedIds, skipped }
     }
 
+    /**
+     * One bookmark per (user, customId), however many times the save arrives.
+     *
+     * `customId` is generated on the device for each save, and a save gets
+     * delivered more than once: a client retries a POST whose answer it never
+     * saw, the native queue could flush twice, and the job queue redelivers.
+     * Each delivery used to create another bookmark, run enrichment again and
+     * take another quota slot. A delivery that finds the row already there
+     * returns it; one that finds another delivery of the same save in flight
+     * waits briefly for it instead of racing it.
+     */
     async saveBookmark(body: SaveBookmarkBody) {
+        const userId = typeof body?.userId === 'string' ? body.userId : '';
+        const customId = typeof body?.customId === 'string' && /^[A-Za-z0-9_-]{6,128}$/.test(body.customId) ? body.customId : null;
+        if (!userId || !customId) return this.saveBookmarkOnce(body);
+
+        const existing = await findSavedByCustomId(userId, customId);
+        if (existing) return { status: 'ok', savedSite: existing, duplicate: true };
+
+        const release = await claimSave(userId, customId);
+        if (!release) {
+            // Another delivery of this save is running. Give it a moment.
+            for (let i = 0; i < 15; i++) {
+                await new Promise((resolve) => setTimeout(resolve, 1000));
+                const saved = await findSavedByCustomId(userId, customId);
+                if (saved) return { status: 'ok', savedSite: saved, duplicate: true };
+            }
+        }
+        try {
+            return await this.saveBookmarkOnce(body);
+        } finally {
+            if (release) await release();
+        }
+    }
+
+    async saveBookmarkOnce(body: SaveBookmarkBody) {
         let user: Parse.Object | undefined;
         let userId: string = body.userId;
         let urlToSave: string = body.url;
@@ -1416,6 +1480,8 @@ class SaveBookmark {
                     const websiteQuery = new Parse.Query(Websites);
                     websiteQuery.equalTo("url", url);
                     websiteQuery.exists("siteHtmlFile");
+                    // Only rows whose content we fetched ourselves (see applyDeviceEnrichment).
+                    websiteQuery.equalTo("serverExtracted", true);
                     // A row that only ever got a wall must not hand it to the next saver.
                     websiteQuery.notEqualTo("contentWalled", true);
                     websiteQuery.descending("createdAt");
@@ -1433,11 +1499,12 @@ class SaveBookmark {
                         website.set("siteHtmlFile", existingWebsite.get("siteHtmlFile"));
                         website.set("siteHtmlUrl", existingWebsite.get("siteHtmlUrl"));
                         // The AI stages look for this URL; without it they re-fetched the live page.
-                        website.set("siteHtmlFileUrl", existingWebsite.get("siteHtmlFileUrl") || existingWebsite.get("siteHtmlFile")?.url());
+                        // From the File, never the string column, which a client can write.
+                        website.set("siteHtmlFileUrl", existingWebsite.get("siteHtmlFile")?.url());
                         website.set("siteBody", existingWebsite.get("siteBody") ? existingWebsite.get("siteBody") : '');
                         // website.set("siteBody", existingWebsite.get("siteBody") ? existingWebsite.get("siteBody") : 'We could not find the content of this website.');
                         website.set("siteBodyFile", existingWebsite.get("siteBodyFile") ? existingWebsite.get("siteBodyFile") : null);
-                        website.set("siteBodyFileUrl", existingWebsite.get("siteBodyFileUrl") ? existingWebsite.get("siteBodyFileUrl") : null);
+                        website.set("siteBodyFileUrl", existingWebsite.get("siteBodyFile")?.url?.() || null);
                         website.set("baseUrl", existingWebsite.get("baseUrl"));
                         website.set("siteTitle", existingWebsite.get("siteTitle") ? existingWebsite.get("siteTitle") : undefined);
                         website.set("siteDescription", existingWebsite.get("siteDescription"));
@@ -1448,13 +1515,14 @@ class SaveBookmark {
                         website.set("aiSummary", existingWebsite.get("aiSummary"));
                         website.set("language", existingWebsite.get("language"));
                         website.set("siteColors", existingWebsite.get("siteColors"));
-                        website.set("embedCode", existingWebsite.get("embedCode"));
+                        // embedCode is not copied: it is markup that gets rendered.
                         website.set("fullPageScreenshot", existingWebsite.get("fullPageScreenshot"));
                         website.set("siteScreenshot", existingWebsite.get("siteScreenshot"));
                         website.set("containsAdultContent", existingWebsite.get("containsAdultContent"));
                         website.set("metaData", existingWebsite.get("metaData") ? existingWebsite.get("metaData") : undefined);
                         website.set("articleAudio", existingWebsite.get("articleAudio"));
                         website.set("fromCache", true);
+                        website.set("serverExtracted", true);
                         website.set("OGImageFile", existingWebsite.get("OGImageFile"));
                         website.set("OGImage", OGImage);
     
@@ -1727,6 +1795,9 @@ class SaveBookmark {
                             website.set("siteHtmlFile", htmlFile);
                             website.set("siteHtmlFileUrl", htmlFile.url());
                             website.set("siteHtml", "");
+                            // Fetched by us; cacheable unless device or client
+                            // content went onto this row too.
+                            if (website.get('serverExtracted') !== false) website.set('serverExtracted', true);
                         } catch (error) {
                             console.error('[saveBookmark - html-processing-requests] Error in HTML processing ---- ', "fileName: ", fileName,'--- ERROR:', error);
                         }
@@ -2039,11 +2110,7 @@ class SaveBookmark {
     
             let user = savedSite.get('user');
             user = await user.fetch({useMasterKey: true});
-            let failedToImport = user.get('failedToImport');
-            if(failedToImport == undefined) failedToImport = [];
-    
-            failedToImport.push({url: savedSite.get('url'), websiteId: savedSite.id, error: error, funcName: funcName, date: new Date().toString()});
-            user.set('failedToImport', failedToImport);
+            user.set('failedToImport', withFailedImport(user.get('failedToImport'), { url: savedSite.get('url'), websiteId: savedSite.id, error, funcName }));
             await user.save(null, { useMasterKey: true });
         } catch (error) {
             errorLog(`Error logging failed import: ${error}`);

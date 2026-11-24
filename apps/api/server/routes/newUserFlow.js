@@ -1,5 +1,6 @@
 import Parse from 'parse/node.js'
 import { runBillingHook } from '../utils/billing'
+import { welcomeBookmarks } from '../utils/welcomeBookmarks'
 import { sendToQstash, callBackendEndpoint } from '../utils/serverUtils.js'
 
 Parse.initialize(process.env.VITE_PARSE_ID, process.env.VITE_PARSE_JS_KEY, process.env.VITE_PARSE_MASTER_KEY)
@@ -52,18 +53,9 @@ async function getParseUser(userId){
 }
 
 async function firstSitesToSave(userId){
-    // A note to start the library with. WELCOME_BOOKMARKS=false leaves new libraries empty.
-    if (process.env.WELCOME_BOOKMARKS === 'false') return 'Welcome bookmarks disabled'
-
-    const appName = process.env.APP_NAME || 'WebBites'
-    const sitesToSave = [
-        {
-            savedFrom: 'firstLogin',
-            type: 'textNote',
-            textNote: `<h2>Welcome to ${appName}</h2><p>Save anything you want to keep: pages, articles, images, notes, PDFs. ` +
-                `Install the browser extension to save as you browse, then search across everything you have saved.</p>`
-        }
-    ]
+    // A note to start the library with, or what the deployment registered (utils/welcomeBookmarks.ts).
+    const sitesToSave = welcomeBookmarks()
+    if (sitesToSave.length === 0) return 'Welcome bookmarks disabled'
 
     log("Saving first sites")
 

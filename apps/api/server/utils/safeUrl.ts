@@ -163,3 +163,51 @@ export async function safeFetch(
 
   throw new Error(`Refusing to fetch ${url}: too many redirects`)
 }
+
+/**
+ * The body of `response`, read at most `maxBytes` far.
+ *
+ * `await response.text()` / `.arrayBuffer()` on a URL a user chose reads
+ * whatever the other end sends: a bookmark of a video, an archive or an
+ * endless stream was buffered until the process ran out of memory, taking
+ * every request and job on that replica with it. With `truncate` the first
+ * `maxBytes` are returned (fine for HTML, whose metadata is at the top);
+ * without it an over-size body returns null. A declared Content-Length over
+ * the cap is refused before anything is read.
+ */
+export async function readCappedBody(
+  response: Response,
+  maxBytes: number,
+  { truncate = false }: { truncate?: boolean } = {}
+): Promise<Buffer | null> {
+  const declared = Number(response.headers.get('content-length') || 0)
+  if (!truncate && declared > maxBytes) {
+    await response.body?.cancel().catch(() => {})
+    return null
+  }
+
+  if (!response.body) {
+    const buffer = Buffer.from(await response.arrayBuffer())
+    if (buffer.length <= maxBytes) return buffer
+    return truncate ? buffer.subarray(0, maxBytes) : null
+  }
+
+  const reader = (response.body as ReadableStream<Uint8Array>).getReader()
+  const chunks: Buffer[] = []
+  let total = 0
+  while (true) {
+    const { done, value } = await reader.read()
+    if (done) break
+    if (!value) continue
+    if (total + value.byteLength > maxBytes) {
+      await reader.cancel().catch(() => {})
+      if (!truncate) return null
+      chunks.push(Buffer.from(value.subarray(0, maxBytes - total)))
+      total = maxBytes
+      break
+    }
+    chunks.push(Buffer.from(value))
+    total += value.byteLength
+  }
+  return Buffer.concat(chunks, total)
+}

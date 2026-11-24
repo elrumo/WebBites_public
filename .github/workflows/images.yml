@@ -1,7 +1,8 @@
 name: Publish images
 
-# Builds multi-arch images and pushes them to Docker Hub when a version tag is pushed (v1.2.3),
-# or when run by hand. Needs the repository secrets DOCKERHUB_USERNAME and DOCKERHUB_TOKEN.
+# Builds multi-arch images and pushes them to Docker Hub when a version tag is pushed (v1.2.3), or
+# when run by hand; a version tag then also gets a GitHub release (the `release` job below).
+# Needs the repository secrets DOCKERHUB_USERNAME and DOCKERHUB_TOKEN.
 
 on:
   push:
@@ -54,7 +55,7 @@ jobs:
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern={{major}},enable=${{ !startsWith(github.ref, 'refs/tags/v0.') }}
-            type=raw,value=latest,enable=${{ startsWith(github.ref, 'refs/tags/v') }}
+            type=raw,value=latest,enable=${{ startsWith(github.ref, 'refs/tags/v') && !contains(github.ref, '-') }}
             type=raw,value=${{ inputs.tag }},enable=${{ github.event_name == 'workflow_dispatch' && inputs.tag != '' }}
             type=sha,format=short
           labels: |
@@ -70,3 +71,25 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha,scope=${{ matrix.app }}
           cache-to: type=gha,mode=max,scope=${{ matrix.app }}
+
+  release:
+    # A version tag also gets a GitHub release, once every image is on Docker Hub: notes generated
+    # from the merged pull requests since the previous tag, and the images to pull.
+    name: GitHub release
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          # v1.2.0-rc.1 and the like are marked as pre-releases.
+          prerelease: ${{ contains(github.ref_name, '-') }}
+          body: |
+            Images on Docker Hub, tagged with this version without the `v` (a final release also moves `latest`):
+            `elrumo/webbites-web`, `elrumo/webbites-api`, `elrumo/webbites-parse`, `elrumo/webbites-screenshot`.
+
+            Upgrading: set `WEBBITES_VERSION` in `deploy/.env`, then `docker compose pull && docker compose up -d`
+            (see [docs/upgrade.md](https://github.com/${{ github.repository }}/blob/${{ github.ref_name }}/docs/upgrade.md)).

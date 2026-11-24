@@ -266,6 +266,7 @@
       "movie": "Pel·lícula",
       "music": "Música",
       "pdf": "PDF",
+      "recipe": "Recepta",
       "textNote": "Nota",
       "website": "Lloc web"
     },
@@ -678,6 +679,8 @@
       "type_confirmation": "Escriu 'Elimina el meu compte' per confirmar"
     },
     "display_mode": "Mode de visualització",
+    "grid_columns": "Columnes",
+    "grid_columns_auto": "Automàtic",
     "grid_view": "Vista de quadrícula",
     "image_ratio": {
       "original": "Original"
@@ -2017,8 +2020,44 @@
       "game": "joc",
       "drawing": "dibuix",
       "audio": "àudio",
+      "recipe": "recepta",
       "textNote": "Nota"
     }
+  },
+  "recipe": {
+    "unit_hour": "h",
+    "unit_minute": "min",
+    "ingredient_count": "{count} ingredient | {count} ingredients",
+    "ingredients": "Ingredients",
+    "steps": "Preparació",
+    "notes": "Notes",
+    "prep": "Preparació prèvia",
+    "cook": "Cocció",
+    "total": "Total",
+    "servings": "Racions",
+    "by": "Per {author}",
+    "open_original": "Obre l'original",
+    "edit": "Edita la recepta",
+    "extracting": "S'està extraient la recepta…",
+    "extracting_hint": "S'està llegint la pàgina per trobar-hi els ingredients i els passos. Sol trigar uns segons.",
+    "show_page": "Mostra la pàgina",
+    "write": "Escriu-la tu",
+    "write_title": "Escriu una recepta",
+    "save": "Desa la recepta",
+    "saved": "Recepta desada",
+    "save_error": "No s'ha pogut desar la recepta",
+    "field_title": "Títol",
+    "field_yield": "Racions",
+    "field_yield_placeholder": "p. ex. 4 racions",
+    "field_prep": "Temps de preparació (min)",
+    "field_cook": "Temps de cocció (min)",
+    "field_ingredients": "Ingredients",
+    "field_steps": "Preparació",
+    "field_notes": "Notes",
+    "field_source": "Enllaç d'origen (opcional)",
+    "field_group_hint": "Un per línia. Acaba una línia amb dos punts per començar un grup, com «Per a la salsa:».",
+    "error_title": "Posa un títol a la recepta.",
+    "error_content": "Afegeix almenys un ingredient o un pas."
   },
   "bookmark_card": {
     "image_alt": "Imatge de la targeta",
@@ -2253,7 +2292,8 @@
       "movie": "Desa la pel·lícula",
       "game": "Desa el joc",
       "drawing": "Desa el dibuix",
-      "audio": "Desa l’àudio"
+      "audio": "Desa l’àudio",
+      "recipe": "Desa la recepta"
     }
   },
   "landing_page": {
@@ -2382,6 +2422,15 @@
       "account_when": "si fas servir el web o Chrome, o vols canals, etiquetes amb IA i resums.",
       "device": "Biblioteca al dispositiu:",
       "device_when": "si només fas servir dispositius Apple i no vols res a cap servidor."
+    },
+    "self_host": {
+      "title": "Prefereixes allotjar-lo tu mateix?",
+      "description": "WebBites és de codi obert. Executa la mateixa app al teu propi servidor amb Docker Compose: la teva base de dades, el teu endpoint d'IA, sense plans ni límits.",
+      "point_start": "S'inicia amb una sola ordre, amb HTTPS al teu propi domini.",
+      "point_private": "Sense telemetria. Res surt del teu servidor tret que tu ho configuris.",
+      "point_license": "Programari lliure sota l'AGPL-3.0.",
+      "guide": "Guia d'autoallotjament",
+      "github": "Veure a GitHub"
     }
   },
   "login_page": {

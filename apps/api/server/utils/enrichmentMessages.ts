@@ -7,7 +7,7 @@
  * Two hops:
  *   1. `immediate` — screenshots (slowest, independent of everything) and, unless
  *      the device already sent a page body, content extraction.
- *   2. `ai` — categorise / summarise / boards. These read `siteBody`, so the
+ *   2. `ai` — categorise / summarise / recipe extraction / boards. These read `siteBody`, so the
  *      getPageContent worker enqueues them when extraction has finished (or
  *      given up), instead of after a guessed delay.
  */
@@ -69,6 +69,8 @@ export function aiMessages(ctx: EnrichmentContext): QstashMessage[] {
     return [
         { body: { type: TYPE, subType: 'categoriseSite', data: { savedSiteId, websiteData } } },
         ...(hasDeviceSummary ? [] : [{ body: { type: TYPE, subType: 'getAiSummary', data: { websiteData } } }]),
+        // Turns a recipe page into a recipe bookmark. Most pages are no recipe and it ends at a text check.
+        { body: { type: TYPE, subType: 'extractRecipe', data: { savedSiteId, websiteData } } },
     ];
 }
 

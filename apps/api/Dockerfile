@@ -52,7 +52,9 @@ ENV NODE_ENV=production
 # ffmpeg transcodes uploaded audio to AAC and reads its length and waveform
 # (server/utils/audioFile.ts). Without it a voice note recorded in Chrome stays
 # WebM/Opus, which no Apple client can play.
-RUN apk add --no-cache ffmpeg
+# tini as PID 1 forwards SIGTERM to Bun and reaps children (ffmpeg), so the
+# graceful shutdown in server/plugins/shutdown.ts actually gets the signal.
+RUN apk add --no-cache ffmpeg tini
 
 # Create a non-root user in a single layer
 RUN addgroup -g 1001 -S nodejs && \
@@ -75,7 +77,14 @@ EXPOSE 3000
 ENV PORT=3000
 ENV HOST=0.0.0.0
 
+# Requests taking longer than 10 s were cut off by Bun's default idle timeout
+# while the handler kept running (the save pipeline's internal calls wait up to
+# 120 s). 255 s is Bun's maximum.
+ENV NITRO_BUN_IDLE_TIMEOUT=255
+
+# /health answers 503 while draining on shutdown.
 HEALTHCHECK --interval=15s --timeout=5s --start-period=30s --retries=8 \
   CMD bun -e "fetch('http://127.0.0.1:'+(process.env.PORT||3000)+'/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
 
+ENTRYPOINT ["/sbin/tini", "--"]
 CMD ["bun", ".output/server/index.mjs"]

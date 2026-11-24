@@ -16,7 +16,7 @@
  * attachments pass and a third-party bucket is dropped rather than fetched.
  */
 
-import { attempt, firstText, getJson, type RawExtraction, type ResolverContext } from './types';
+import { attempt, firstText, type RawExtraction, type ResolverContext, getPublicJson } from './types';
 
 /** Hosts that look Mastodon-shaped but are something else entirely. */
 const NOT_MASTODON = /(^|\.)(medium\.com|twitter\.com|x\.com|threads\.(net|com)|instagram\.com|tiktok\.com|facebook\.com|linkedin\.com|youtube\.com|reddit\.com|bsky\.app|pinterest\.[a-z.]+)$/;
@@ -84,7 +84,7 @@ export async function resolveMastodon(context: ResolverContext): Promise<RawExtr
     const id = statusId(context.parsed);
     if (!id || NOT_MASTODON.test(context.host)) return null;
 
-    const status = await getJson<any>(`${context.parsed.origin}/api/v1/statuses/${id}`);
+    const status = await getPublicJson<any>(`${context.parsed.origin}/api/v1/statuses/${id}`);
     // Anything that isn't a status record means this host is not an instance.
     if (!status?.account || !status?.id) return null;
 

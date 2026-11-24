@@ -69,6 +69,8 @@ function extractMetadata($, url) {
     };
 }
 
+const MAX_PREVIEW_BYTES = 2 * 1024 * 1024;
+
 export default defineEventHandler(async (event) => {
     // Fetches an arbitrary address on the user's behalf, so only for signed-in users, and only
     // public ones (see safeFetch).
@@ -122,7 +124,9 @@ export default defineEventHandler(async (event) => {
 async function fetchHtml(url) {
     try {
         const response = await fetchUrl(url, {}, 'fetchHtml');
-        return await response.text();
+        if (!response || typeof response.text !== 'function') throw new Error('Could not fetch the page');
+        // The metadata is all in <head>; nothing past the first couple of MB matters.
+        return (await response.text()).slice(0, MAX_PREVIEW_BYTES);
     } catch (error) {
         console.log('Error fetching HTML:', error);
         throw error;
@@ -136,6 +140,8 @@ async function fetchUrl(url, options = {}, funcName = 'fetchUrl') {
     try {
         const response = await safeFetch(url, { signal: controller.signal, ...options });
         clearTimeout(timeoutId);
+        const declared = Number(response.headers.get('content-length') || 0);
+        if (declared > MAX_PREVIEW_BYTES) throw new Error('Page too large to preview');
         return response;
     } catch (error) {
         clearTimeout(timeoutId);

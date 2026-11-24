@@ -21,6 +21,11 @@ export function setApiOrigin(origin) {
   MCP_RESOURCE_METADATA_URL = `${base}/.well-known/oauth-protected-resource/mcp`
 }
 
+// The open-source, self-hosted edition (the landing page and the self-hosting docs link to it).
+export const SELF_HOST_REPO_URL = 'https://github.com/elrumo/webbites_public'
+// The single compose file self-hosters download (public/self-hosting/compose.yaml).
+export const SELF_HOST_COMPOSE_URL = 'https://www.webbites.io/self-hosting/compose.yaml'
+
 // Mirrors `API_LIMITS` in the backend's `server/utils/publicApi.ts`.
 export const RATE_LIMITS = [
   { plan: 'free', perMinute: 60, perMonth: 1000 },

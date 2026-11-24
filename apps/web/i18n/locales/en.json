@@ -266,6 +266,7 @@
       "movie": "Movie",
       "music": "Music",
       "pdf": "PDF",
+      "recipe": "Recipe",
       "textNote": "Note",
       "website": "Website"
     },
@@ -678,6 +679,8 @@
       "type_confirmation": "Type 'Delete my account' to confirm"
     },
     "display_mode": "Display Mode",
+    "grid_columns": "Columns",
+    "grid_columns_auto": "Auto",
     "grid_view": "Grid view",
     "image_ratio": {
       "original": "Original"
@@ -2017,8 +2020,44 @@
       "game": "game",
       "drawing": "drawing",
       "audio": "audio",
+      "recipe": "recipe",
       "textNote": "Note"
     }
+  },
+  "recipe": {
+    "unit_hour": "h",
+    "unit_minute": "min",
+    "ingredient_count": "{count} ingredient | {count} ingredients",
+    "ingredients": "Ingredients",
+    "steps": "Method",
+    "notes": "Notes",
+    "prep": "Prep",
+    "cook": "Cook",
+    "total": "Total",
+    "servings": "Servings",
+    "by": "By {author}",
+    "open_original": "Open original",
+    "edit": "Edit recipe",
+    "extracting": "Extracting recipe…",
+    "extracting_hint": "Reading the page for ingredients and steps. This usually takes a few seconds.",
+    "show_page": "Show the page instead",
+    "write": "Write it yourself",
+    "write_title": "Write a recipe",
+    "save": "Save recipe",
+    "saved": "Recipe saved",
+    "save_error": "Couldn't save the recipe",
+    "field_title": "Title",
+    "field_yield": "Servings",
+    "field_yield_placeholder": "e.g. 4 servings",
+    "field_prep": "Prep time (min)",
+    "field_cook": "Cook time (min)",
+    "field_ingredients": "Ingredients",
+    "field_steps": "Method",
+    "field_notes": "Notes",
+    "field_source": "Source link (optional)",
+    "field_group_hint": "One per line. End a line with a colon to start a group, like “For the sauce:”.",
+    "error_title": "Give the recipe a title.",
+    "error_content": "Add at least one ingredient or step."
   },
   "bookmark_card": {
     "image_alt": "Card image",
@@ -2253,7 +2292,8 @@
       "movie": "Save movie",
       "game": "Save game",
       "drawing": "Save drawing",
-      "audio": "Save audio"
+      "audio": "Save audio",
+      "recipe": "Save recipe"
     }
   },
   "landing_page": {
@@ -2382,6 +2422,15 @@
       "account_when": "if you use the web or Chrome, or want feeds, AI tags and summaries.",
       "device": "Device library:",
       "device_when": "if you only use Apple devices and want nothing on anyone's server."
+    },
+    "self_host": {
+      "title": "Prefer to run it yourself?",
+      "description": "WebBites is open source. Run the same app on your own server with Docker Compose: your database, your AI endpoint, no plans and no limits.",
+      "point_start": "Starts with one command, with HTTPS on your own domain.",
+      "point_private": "No telemetry. Nothing leaves your server unless you point it somewhere.",
+      "point_license": "Free software under the AGPL-3.0.",
+      "guide": "Self-hosting guide",
+      "github": "View on GitHub"
     }
   },
   "login_page": {

@@ -1,6 +1,6 @@
-import { defineEventHandler, readBody, createError } from 'h3'
+import { defineEventHandler, readBody, createError, getHeader } from 'h3'
 import Parse from 'parse/node.js'
-import { invalidateSession } from '../utils/sessionCache.js'
+import { invalidateSession, verifySession } from '../utils/sessionCache.js'
 
 // Initialize Parse
 Parse.initialize(import.meta.env.VITE_PARSE_ID, import.meta.env.VITE_PARSE_JS_KEY, import.meta.env.VITE_PARSE_MASTER_KEY)
@@ -155,14 +155,37 @@ export default defineEventHandler(async (event) => {
       return
     }
     
+    // Who is asking comes from their own session, not the body. The route
+    // compared the session's owner with a `userId` the caller supplied, so
+    // anyone holding a session id and its user's id could sign that user out.
+    // Either header works: Authorization: Bearer r:… or X-Parse-Session-Token.
+    const authHeader = getHeader(event, 'authorization') || ''
+    const callerToken = (authHeader.startsWith('Bearer ') ? authHeader.substring(7) : '') || getHeader(event, 'x-parse-session-token') || ''
+    const caller = await verifySession(callerToken.trim())
+    if (!caller) {
+      throw createError({ statusCode: 401, statusMessage: 'Sign in to manage your sessions' })
+    }
+
     // Get parameters from request body
     const body = await readBody(event)
-    const { sessionId, userId } = body
+    const { sessionId } = body
+    const userId = caller.id
     
     if (!sessionId || !userId) {
       throw createError({
         statusCode: 400,
         statusMessage: 'Missing sessionId or userId'
+      })
+    }
+
+    // Parse object ids, and nothing else. An object here became a query
+    // constraint under the master key, and the 403-or-404 answer was an
+    // oracle over other users' sessions.
+    const objectId = /^[A-Za-z0-9]{6,32}$/
+    if (typeof sessionId !== 'string' || typeof userId !== 'string' || !objectId.test(sessionId) || !objectId.test(userId)) {
+      throw createError({
+        statusCode: 400,
+        statusMessage: 'Invalid sessionId or userId'
       })
     }
     

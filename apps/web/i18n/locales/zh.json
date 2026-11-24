@@ -266,6 +266,7 @@
       "movie": "电影",
       "music": "音乐",
       "pdf": "PDF",
+      "recipe": "食谱",
       "textNote": "笔记",
       "website": "网站"
     },
@@ -678,6 +679,8 @@
       "type_confirmation": "输入'Delete my account'以确认"
     },
     "display_mode": "显示模式",
+    "grid_columns": "列数",
+    "grid_columns_auto": "自动",
     "grid_view": "网格视图",
     "image_ratio": {
       "original": "原始比例"
@@ -2017,8 +2020,44 @@
       "game": "游戏",
       "drawing": "手绘",
       "audio": "音频",
+      "recipe": "食谱",
       "textNote": "笔记"
     }
+  },
+  "recipe": {
+    "unit_hour": "小时",
+    "unit_minute": "分钟",
+    "ingredient_count": "{count} 种食材 | {count} 种食材",
+    "ingredients": "食材",
+    "steps": "做法",
+    "notes": "备注",
+    "prep": "准备",
+    "cook": "烹饪",
+    "total": "总计",
+    "servings": "份量",
+    "by": "作者：{author}",
+    "open_original": "打开原文",
+    "edit": "编辑食谱",
+    "extracting": "正在提取食谱…",
+    "extracting_hint": "正在从页面读取食材和步骤，通常只需几秒钟。",
+    "show_page": "改为查看页面",
+    "write": "自己写",
+    "write_title": "写一份食谱",
+    "save": "保存食谱",
+    "saved": "食谱已保存",
+    "save_error": "无法保存食谱",
+    "field_title": "标题",
+    "field_yield": "份量",
+    "field_yield_placeholder": "例如：4 人份",
+    "field_prep": "准备时间（分钟）",
+    "field_cook": "烹饪时间（分钟）",
+    "field_ingredients": "食材",
+    "field_steps": "做法",
+    "field_notes": "备注",
+    "field_source": "来源链接（可选）",
+    "field_group_hint": "每行一项。以冒号结尾的行会开始一个分组，例如“酱汁：”。",
+    "error_title": "请为食谱起个标题。",
+    "error_content": "请至少添加一种食材或一个步骤。"
   },
   "bookmark_card": {
     "image_alt": "卡片图片",
@@ -2253,7 +2292,8 @@
       "movie": "保存电影",
       "game": "保存游戏",
       "drawing": "保存手绘",
-      "audio": "保存音频"
+      "audio": "保存音频",
+      "recipe": "保存食谱"
     }
   },
   "landing_page": {
@@ -2382,6 +2422,15 @@
       "account_when": "如果您使用网页或 Chrome，或需要订阅源、AI 标签和摘要。",
       "device": "设备资料库：",
       "device_when": "如果您只使用 Apple 设备，且不希望任何数据存放在服务器上。"
+    },
+    "self_host": {
+      "title": "想自己托管吗？",
+      "description": "WebBites 是开源的。您可以用 Docker Compose 在自己的服务器上运行同一个应用：数据库和 AI 端点都由您掌控，没有套餐，也没有限制。",
+      "point_start": "一条命令即可启动，并在您自己的域名上提供 HTTPS。",
+      "point_private": "没有遥测。除非您另行配置，否则任何数据都不会离开您的服务器。",
+      "point_license": "基于 AGPL-3.0 的自由软件。",
+      "guide": "自托管指南",
+      "github": "在 GitHub 上查看"
     }
   },
   "login_page": {

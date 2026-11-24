@@ -35,7 +35,8 @@ onMounted(async () => {
       throw new Error(t('shell.apple_callback.no_id_token'))
     }
 
-    console.log('Apple callback received:', { code, id_token, user })
+    // `code` and `id_token` are credentials: only their presence is logged.
+    console.log('Apple callback received:', { hasCode: Boolean(code), hasIdToken: Boolean(id_token), hasUser: Boolean(user) })
 
     // Send to signup endpoint which will forward to backend
     const authResponse = await $fetch('/api/auth/signup', {

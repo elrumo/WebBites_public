@@ -132,7 +132,8 @@ const sendAuthToExtension = (authData) => {
     return false;
   }
 
-  console.log("[sendAuthToExtension] authData: ", authData);
+  // authData carries the session token, so only who it is for is logged.
+  console.log("[sendAuthToExtension] userId: ", authData?.userId);
   
   // Send via DOM event
   document.dispatchEvent(new CustomEvent('webbites-send-auth', {
@@ -150,7 +151,7 @@ const handleAuthSuccess = async () => {
   if (isExtensionAuth.value) {
     const user = Parse.User?.current?.() ?? null;
     
-    console.log("user: ", user);
+    console.log("user: ", user?.id);
     if (user) {
       currentUser.value = user;
       
@@ -224,11 +225,10 @@ watch(() => authSuccess.value, (val) => {
     
     // Check if current user session is valid
     currentUser.value = Parse.User?.current?.() ?? null;
-    console.log('[login] currentUser.value: ', currentUser.value);
+    console.log('[login] currentUser: ', currentUser.value?.id);
     showAuthModal.value = false;
     authSuccess.value = true;
     
-    console.log("[login] currentUser: ", currentUser);
 
     // If user is already logged in and this is extension auth,
     // trigger success state automatically

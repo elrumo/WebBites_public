@@ -1,5 +1,10 @@
 import Parse from 'parse/node';
+import { createError, getCookie } from 'h3'
 import { ensureParseInitialized } from './parseRuntime'
+
+// What a Parse session token looks like: `r:` and 32 hex characters. Looser
+// than that on purpose, but a string of that shape and nothing else.
+const SESSION_TOKEN_PATTERN = /^r:[A-Za-z0-9]{8,128}$/
 
 // In-memory session cache
 const sessionCache = new Map();
@@ -30,7 +35,12 @@ function cleanupExpiredEntries() {
  * @returns {Promise<Object|null>} The Parse User object or null if invalid
  */
 export async function verifySession(sessionToken: string): Promise<Parse.User | null> {
-  if (!sessionToken) {
+  // `/api/auth/login` hands this the `sessionToken` field of a JSON body, and
+  // Parse's `equalTo` takes an object as a query constraint. Sent as
+  // `{"$regex": "^r:ab"}` it matched whichever session began that way, under
+  // the master key, and the 200-or-401 answer let anyone read a live session
+  // token out a character at a time. A token is a string of a known shape.
+  if (typeof sessionToken !== 'string' || !SESSION_TOKEN_PATTERN.test(sessionToken)) {
     return null;
   }
 
@@ -66,6 +76,13 @@ export async function verifySession(sessionToken: string): Promise<Parse.User | 
       return null;
     }
 
+    // Parse rejects an expired session but keeps the row, and this lookup uses
+    // the master key, so an expired token kept working here.
+    const sessionExpiry = session.get('expiresAt');
+    if (sessionExpiry instanceof Date && sessionExpiry.getTime() <= Date.now()) {
+      return null;
+    }
+
     // Cache the user data
     // Limit cache size to prevent memory issues
     if (sessionCache.size >= MAX_CACHE_SIZE) {
@@ -83,6 +100,19 @@ export async function verifySession(sessionToken: string): Promise<Parse.User | 
   } catch (error) {
     console.error('Error validating session token:', error);
     return null;
+  }
+}
+
+/**
+ * Throws 403 unless the request's `parse.session` cookie belongs to an admin.
+ * For server routes that read or write other people's data with the master
+ * key: who is asking is decided here, from the session, never from an id in
+ * the request body.
+ */
+export async function requireAdmin(event: any): Promise<void> {
+  const sessionToken = getCookie(event, 'parse.session')
+  if (!sessionToken || !(await checkIsAdmin(sessionToken))) {
+    throw createError({ statusCode: 403, message: 'Forbidden' })
   }
 }
 

@@ -7771,3 +7771,14 @@ kbd{
 .feature-grid {
     @apply grid gap-8 max-w-6xl mx-auto;
 }
+/*
+ * Film grain over the marketing pages. A 10 KB seamless tile repeated at 1:1
+ * (scripts/generate-grain-tile.mjs) in place of the 541 KB grain_2.webp that
+ * used to be stretched over the viewport as an <img>. Position, opacity and
+ * `mix-blend-mode: multiply` stay on the element as Tailwind classes, as before.
+ */
+.grain-overlay {
+    background-image: url('/images/grain-tile.png');
+    background-repeat: repeat;
+    background-size: 128px 128px;
+}

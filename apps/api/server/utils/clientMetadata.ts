@@ -1,3 +1,5 @@
+import { safeFetch, readCappedBody } from './safeUrl';
+
 /**
  * Client-extracted post metadata.
  *
@@ -163,6 +165,65 @@ const httpUrl = (value: unknown, allowedHosts?: RegExp[]): string | undefined =>
  * file reference without asking the server to fetch an arbitrary client URL. */
 export const ownStorageURL = (value: unknown): string | undefined =>
   httpUrl(value, OWN_STORAGE_HOSTS);
+
+/**
+ * fetch() for a file URL read off a row's `…FileUrl` string column.
+ *
+ * Those columns are ones a client can write on its own row, so the value is
+ * only fetched as-is when it is recognisably ours: on our storage host, or on
+ * the same origin as a URL Parse itself generated for one of the row's File
+ * columns (`trusted`; Parse rebuilds a File's URL from its name on every read,
+ * so a client cannot choose it). Anything else has to pass the
+ * public-address check, hop by hop. A plain `fetch` here followed the column
+ * anywhere, `file://` paths and internal services included.
+ */
+export async function fetchStoredFile(
+  url: string,
+  trusted: Array<string | null | undefined> = [],
+  options: any = {}
+): Promise<Response> {
+  const origin = (value: unknown): string | undefined => {
+    try {
+      const parsed = new URL(String(value));
+      return parsed.protocol === 'https:' || parsed.protocol === 'http:' ? parsed.origin : undefined;
+    } catch {
+      return undefined;
+    }
+  };
+  const own = origin(url);
+  const isOurs = Boolean(ownStorageURL(url)) || (own !== undefined && trusted.some((t) => t && origin(t) === own));
+  return isOurs ? fetch(url, options) : safeFetch(url, options);
+}
+
+/** The largest image any server-side image fetch will read. */
+export const MAX_IMAGE_FETCH_BYTES = 25 * 1024 * 1024;
+
+/**
+ * The bytes of an image URL that is stored on a row or came from a client
+ * (OGImage, a screenshot file URL, a pasted image link): our own storage
+ * as-is, anything else only at a public address with every redirect checked,
+ * and never more than `maxBytes`. Null on any failure.
+ */
+export async function fetchImageBytes(
+  url: unknown,
+  { signal, maxBytes = MAX_IMAGE_FETCH_BYTES, timeoutMs = 30_000 }: { signal?: AbortSignal; maxBytes?: number; timeoutMs?: number } = {}
+): Promise<{ buffer: Buffer; contentType: string } | null> {
+  if (typeof url !== 'string' || !url) return null;
+  const deadline = AbortSignal.timeout(timeoutMs);
+  const combined = signal ? AbortSignal.any([signal, deadline]) : deadline;
+  try {
+    const response = await fetchStoredFile(url, [], { signal: combined });
+    if (!response.ok) {
+      await response.body?.cancel().catch(() => {});
+      return null;
+    }
+    const buffer = await readCappedBody(response, maxBytes);
+    if (!buffer || buffer.length === 0) return null;
+    return { buffer, contentType: response.headers.get('content-type') || '' };
+  } catch {
+    return null;
+  }
+}
 
 /** ISO-8601 only, and only dates that are actually plausible. */
 const isoDate = (value: unknown): string | undefined => {

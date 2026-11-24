@@ -18,6 +18,7 @@ import {
   hasSocialResolver,
   clearSocialResolverCache
 } from './socialResolvers';
+import { setPublicFetchForTests } from './socialResolvers/types';
 
 let pass = 0, fail = 0;
 const check = (name: string, cond: boolean) => {
@@ -43,6 +44,10 @@ globalThis.fetch = (async (input: any, _init?: any) => {
     headers: { 'content-type': 'application/json' }
   });
 }) as any;
+
+// The Mastodon resolver checks that the host it was handed is public before it
+// fetches. There is no DNS here, so that fetch goes to the stub like the rest.
+setPublicFetchForTests((url, init) => globalThis.fetch(url, init));
 
 const withRoutes = async <T>(next: Route[], fn: () => Promise<T>): Promise<T> => {
   routes = next;

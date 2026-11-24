@@ -3,6 +3,7 @@ import Parse from 'parse/node.js'
 import { createError } from 'h3'
 import { initParseForBoards, makeOwnerAcl } from './boardUtils'
 import { assertPublicHttpsUrl } from './automationRules'
+import { safeFetch } from './safeUrl'
 
 /**
  * Developer webhooks: a `apiWebhooks` row per endpoint, signed deliveries.
@@ -101,7 +102,11 @@ export async function deliver(row: Parse.Object, event: WebhookEvent, data: unkn
   const body = JSON.stringify({ id: randomUUID(), event, createdAt: new Date().toISOString(), data })
   let status: number | null = null
   try {
-    const response = await fetch(row.get('url'), {
+    // The URL was checked when the endpoint was created, but only as text: a
+    // public name can resolve to a private address, and a public endpoint can
+    // answer with a redirect to an internal one. safeFetch resolves the name
+    // and re-checks every hop at delivery time.
+    const response = await safeFetch(row.get('url'), {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -112,7 +117,7 @@ export async function deliver(row: Parse.Object, event: WebhookEvent, data: unkn
       },
       body,
       signal: AbortSignal.timeout(TIMEOUT_MS),
-    })
+    }, 3)
     status = response.status
   } catch {
     status = null

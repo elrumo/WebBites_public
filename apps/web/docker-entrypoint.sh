@@ -31,6 +31,10 @@ alias_env NUXT_BACKEND_INTERNAL_URL "${BACKEND_INTERNAL_URL-}"
 alias_env NUXT_PARSE_INTERNAL_URL "${PARSE_INTERNAL_URL-}"
 alias_env NUXT_APP_URL "${VITE_APP_URL-}"
 alias_env NUXT_HELPBITES_PRIVATE_KEY "${HELPBITES_PRIVATE_KEY-}"
+# TMDB_API_KEY is the name the self-hosted compose file and docs use.
+alias_env NUXT_TMDB_API_TOKEN "${TMDB_API_TOKEN:-${TMDB_API_KEY-}}"
+alias_env NUXT_TWITCH_CLIENT_ID "${TWITCH_CLIENT_ID-}"
+alias_env NUXT_TWITCH_CLIENT_SECRET "${TWITCH_CLIENT_SECRET-}"
 
 # Public (also serialised into the SSR payload for the browser)
 alias_env NUXT_PUBLIC_HELPBITES_API_URL "${HELPBITES_API_URL-}"

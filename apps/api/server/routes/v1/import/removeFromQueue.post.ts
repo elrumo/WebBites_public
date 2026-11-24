@@ -170,11 +170,10 @@ export async function removeBookmarkFromQueue({
       user = await new Parse.Query(Parse.User).include('currentPlan').get(userId, { useMasterKey: true });
 
       const totalImported = user.get('totalImportedBookmarks') || 0;
-      let importedBookmarksArr = user.get('importedBookmarksArr') || [];
-      importedBookmarksArr.push(url);
 
       user.set('totalImportedBookmarks', totalImported + 1);
-      user.set('importedBookmarksArr', importedBookmarksArr);
+      // `importedBookmarksArr` is no longer written: it gained every imported URL,
+      // nothing read it, and it grew the user row without bound.
 
       // Save updated counters
       await user.save(null, { useMasterKey: true });

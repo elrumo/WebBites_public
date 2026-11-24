@@ -4,6 +4,7 @@ import { fetchUrl, logFailedImport, extractColorsFromImg, extractColorsFromImgBu
 import { captureScreenshot } from './images/screenshot.post.js';
 import { defineEventHandler, readBody, H3Event } from 'h3';
 import { resolveUserPlan, hasPlanFeature } from '../../../utils/plans';
+import { fetchImageBytes } from '#root/server/utils/clientMetadata';
 
 /**
  * Full-page screenshot height caps, in pixels.
@@ -337,10 +338,10 @@ async function getWebsiteScreenshot(savedSite: Parse.Object, geoLocation?: strin
                 imageBuffer = Buffer.from(base64String, 'base64');
             } else if (data?.fileUrl) {
                 imageUrl = data.fileUrl;
-                const imageResponse = await fetchUrl(imageUrl, { signal }, 'fullPageScreenshot 1');
-                if (!('error' in imageResponse)) {
-                    imageBuffer = Buffer.from(await imageResponse.arrayBuffer());
-                }
+                // fetchImageBytes, not fetchUrl: these URLs can come from a
+                // row a client writes, and fetchUrl followed redirects to
+                // internal addresses and read bodies of any size.
+                imageBuffer = (await fetchImageBytes(imageUrl, { signal }))?.buffer;
             }
 
             // Last rung of the fallback chain. determineScreenshotUrl already
@@ -351,9 +352,9 @@ async function getWebsiteScreenshot(savedSite: Parse.Object, geoLocation?: strin
                 const ogImage = savedSite.get('OGImage');
                 if (typeof ogImage === 'string' && ogImage) {
                     log(`[getScreenshots] Falling back to OGImage for ${savedSite.get('url')}`);
-                    const ogResponse = await fetchUrl(ogImage, { signal }, 'ogImageFallback');
-                    if (!('error' in ogResponse)) {
-                        imageBuffer = Buffer.from(await ogResponse.arrayBuffer());
+                    const og = await fetchImageBytes(ogImage, { signal });
+                    if (og) {
+                        imageBuffer = og.buffer;
                         mode = 'ogImage';
                     }
                 }

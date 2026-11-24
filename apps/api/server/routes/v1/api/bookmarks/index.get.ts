@@ -11,7 +11,7 @@ defineRouteMeta({
       { name: 'limit', in: 'query', schema: { type: 'integer', default: 50, maximum: 100 } },
       { name: 'before', in: 'query', schema: { type: 'string', format: 'date-time' } },
       { name: 'tag', in: 'query', schema: { type: 'string' } },
-      { name: 'type', in: 'query', schema: { type: 'string', enum: ['website', 'image', 'textNote', 'movie', 'game', 'music'] } },
+      { name: 'type', in: 'query', schema: { type: 'string', enum: ['website', 'image', 'textNote', 'movie', 'game', 'music', 'recipe'] } },
       { name: 'q', in: 'query', description: 'Case-insensitive match on the title', schema: { type: 'string' } },
     ],
     responses: { 200: { description: '`{ bookmarks, nextBefore }`' }, 401: { description: 'Bad API key' }, 429: { description: 'Rate or usage limit hit' } },

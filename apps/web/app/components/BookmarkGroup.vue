@@ -138,6 +138,7 @@
                 <div
                     v-if="!isMounted || isFiltering || !useVirtualScroller"
                     :class="`bookmark-static-${userOptions.displayMode.replaceAll(' ', '-').toLowerCase()}`"
+                    :style="fixedColumns ? { gridTemplateColumns: `repeat(${fixedColumns}, minmax(0, 1fr))` } : undefined"
                 >
                     <!-- :class="`display-${userOptions.displayMode.replaceAll(' ', '-').toLowerCase()} bookmark-static-grid`" -->
                     <div
@@ -320,6 +321,13 @@ const tiltOptionsLogo = ref({
 })
 const columnCount = ref(4)
 const mobileColumnCount = ref(2)
+
+// A column count picked in the viewing options (grid only); 0 means "auto",
+// i.e. follow the screen width.
+const fixedColumns = computed(() => {
+    const n = Number(userOptions.value.gridColumns)
+    return userOptions.value.displayMode?.toLowerCase() === 'grid' && n >= 2 ? n : 0
+})
 const isMounted = ref(false)
 
 // Keep the live DOM smaller so layout/style recalculation stays predictable,
@@ -507,6 +515,8 @@ watch(() => [searchValue.value, selectedTags.value.length, typesFilter.value.len
     });
 });
 
+watch(fixedColumns, () => nextTick(() => updateColumnCount(false)));
+
 watch(columnCount, (newValue) => {
     document.querySelector('.bookmark-group-container').style.setProperty('--column-count', newValue);
 });
@@ -634,7 +644,9 @@ const updateColumnCount = (isNew = false) => {
         return;
     }
 
-    if (width <= 480) {
+    if (fixedColumns.value) {
+        columnCount.value = fixedColumns.value;
+    } else if (width <= 480) {
         columnCount.value = mobileColumnCount.value;
     } else if (width > 480 && width <= 768) {
         columnCount.value = 2;

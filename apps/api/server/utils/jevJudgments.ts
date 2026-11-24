@@ -8,7 +8,7 @@ import type { JevImages, JevRequest, JevResponse } from '../types/jev.types';
 import { CONTENT_LANGUAGES, contentLanguageName } from './aiLanguage';
 
 /** Every feature here is on unless its flag is set to `false`. */
-export const jevOn = (flag: 'JEV_PAGE_CHECK' | 'JEV_TAGS' | 'JEV_SEARCH_RERANK' | 'JEV_IMAGES') =>
+export const jevOn = (flag: 'JEV_PAGE_CHECK' | 'JEV_TAGS' | 'JEV_SEARCH_RERANK' | 'JEV_IMAGES' | 'JEV_RECIPE') =>
   process.env[flag]?.trim().toLowerCase() !== 'false';
 
 /** How many of the user's own tags Jev weighs for one page. */
@@ -75,6 +75,32 @@ export const readPageCheck = (response: JevResponse): PageCheck => ({
   article: noul(response, 'article'),
   language: language(response),
 });
+
+// ─── Recipe ───────────────────────────────────────────────────────────────────
+
+/** At or above this, the page is treated as a recipe worth extracting. */
+export const RECIPE_AT = 0.6;
+
+/** One noul: is the extracted text one recipe, with its ingredients and method. */
+export function recipeRequest(url: string, title: string | null | undefined, text: string): JevRequest {
+  return {
+    state: { page: { url: clip(url, 500), title: clip(title || '', 300), text: clip(text, 3000) } },
+    questions: {
+      recipe: {
+        type: 'noul',
+        instructions: 'Is `page.text` a single recipe, with a list of ingredients and the steps to cook or prepare it?',
+        criteria: {
+          true: 'It lists ingredients and gives the method for one dish or drink, even with a story or notes around it.',
+          false: 'A roundup or list of many recipes, a food article or review with no recipe, a restaurant, shop or product page, a '
+            + 'video page, or anything else that is not one recipe with ingredients and steps.',
+        },
+      },
+    },
+  };
+}
+
+/** P(recipe), or undefined when Jev's answer is missing or malformed. */
+export const readRecipeCheck = (response: JevResponse): number | undefined => noul(response, 'recipe');
 
 // ─── Tags ─────────────────────────────────────────────────────────────────────
 

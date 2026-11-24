@@ -2,10 +2,10 @@ import { joinURL } from 'ufo'
 import { checkIsAdmin } from '../../utils/sessionCache'
 
 // The admin page's Search index tab → the backend's internal-only
-// /v1/sync/meilisearch. GET is the latest run; POST `{ dryRun }` starts one,
-// and only an explicit `dryRun: false` writes anything.
+// /v1/sync/meilisearch. GET is the latest run; POST `{ dryRun, oneWay?, user?, resume? }`
+// starts one (only an explicit `dryRun: false` writes anything); DELETE stops it.
 export default defineEventHandler(async (event) => {
-    if (event.method !== 'GET' && event.method !== 'POST') {
+    if (!['GET', 'POST', 'DELETE'].includes(event.method)) {
         throw createError({ statusCode: 405, statusMessage: 'Method not allowed' })
     }
     const sessionToken = parseCookies(event)['parse.session']
@@ -13,7 +13,16 @@ export default defineEventHandler(async (event) => {
         throw createError({ statusCode: 403, statusMessage: 'Admins only' })
     }
 
-    const body = event.method === 'POST' ? { dryRun: (await readBody(event))?.dryRun !== false } : undefined
+    let body
+    if (event.method === 'POST') {
+        const input = await readBody(event)
+        body = {
+            dryRun: input?.dryRun !== false,
+            ...(typeof input?.user === 'string' && input.user.trim() ? { user: input.user.trim() } : {}),
+            ...(input?.resume === true ? { resume: true } : {}),
+            ...(input?.oneWay === true ? { oneWay: true } : {}),
+        }
+    }
     try {
         return await $fetch(joinURL(backendBaseUrl(), 'v1/sync/meilisearch'), {
             method: event.method,

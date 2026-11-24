@@ -81,6 +81,7 @@ const iconMapping = {
     'microphone': 'i-tabler-microphone',
     'headphones': 'i-tabler-headphones',
     'film': 'i-tabler-movie',
+    'recipe': 'i-tabler-chef-hat',
     'radio': 'i-tabler-radio',
 
     // Text formatting

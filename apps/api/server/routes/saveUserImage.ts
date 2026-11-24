@@ -6,6 +6,7 @@ import { ownStorageURL } from '#root/server/utils/clientMetadata';
 import { contentTypeFor, toWebSafeImage, unsupportedFormatMessage } from '#root/server/utils/imageFormat';
 import { resolveActingUserId } from '#root/server/utils/requireUser';
 import { safeFetch } from '#root/server/utils/safeUrl';
+import { fetchImageBytes } from '../utils/clientMetadata';
 
 Parse.initialize(process.env.VITE_PARSE_ID, process.env.VITE_PARSE_JS_KEY, process.env.VITE_PARSE_MASTER_KEY);
 Parse.serverURL = process.env.VITE_PARSE_URL;
@@ -224,20 +225,21 @@ export default defineEventHandler(async (event) => {
             try {
                 // safeFetch: imageUrl is caller-supplied, so it needs the same
                 // resolved-address check every other user URL fetch gets.
-                const res = await safeFetch(imageUrl);
-                if (!res.ok) {
+                // ...with a deadline and a size cap: this read the whole body,
+                // however large, with no timeout.
+                const fetched = await fetchImageBytes(imageUrl);
+                if (!fetched) {
                     fallbackUrlOnly = true;
                 } else {
-                    const arrayBuffer = await res.arrayBuffer();
-                    const buf = Buffer.from(arrayBuffer);
-                    const ct = res.headers.get('content-type') || 'image/jpeg';
+                    const buf = fetched.buffer;
+                    const ct = fetched.contentType || 'image/jpeg';
                     const urlNoParams = imageUrl.split('?')[0];
                     const lastSeg = urlNoParams.substring(urlNoParams.lastIndexOf('/') + 1);
                     const ext = lastSeg.includes('.') ? lastSeg.split('.').pop() : '';
 
                     pending.push({
                         dataUrl: `data:${ct};base64,${buf.toString('base64')}`,
-                        buffer: arrayBuffer,
+                        buffer: buf,
                         fileName: sanitizeFileName(body.fileName || lastSeg || `${Date.now()}_img`),
                         fileFormat: body.fileFormat || ext || ct.split('/')[1] || 'jpeg'
                     });

@@ -266,6 +266,7 @@
       "movie": "映画",
       "music": "音楽",
       "pdf": "PDF",
+      "recipe": "レシピ",
       "textNote": "メモ",
       "website": "ウェブサイト"
     },
@@ -678,6 +679,8 @@
       "type_confirmation": "確認のため「Delete my account」と入力してください"
     },
     "display_mode": "表示モード",
+    "grid_columns": "列数",
+    "grid_columns_auto": "自動",
     "grid_view": "グリッド表示",
     "image_ratio": {
       "original": "オリジナル"
@@ -2017,8 +2020,44 @@
       "game": "ゲーム",
       "drawing": "手描き",
       "audio": "音声",
+      "recipe": "レシピ",
       "textNote": "メモ"
     }
+  },
+  "recipe": {
+    "unit_hour": "時間",
+    "unit_minute": "分",
+    "ingredient_count": "材料 {count} 点 | 材料 {count} 点",
+    "ingredients": "材料",
+    "steps": "作り方",
+    "notes": "メモ",
+    "prep": "下準備",
+    "cook": "調理",
+    "total": "合計",
+    "servings": "分量",
+    "by": "{author} さん",
+    "open_original": "元のページを開く",
+    "edit": "レシピを編集",
+    "extracting": "レシピを抽出しています…",
+    "extracting_hint": "ページから材料と手順を読み取っています。通常は数秒で終わります。",
+    "show_page": "代わりにページを表示",
+    "write": "自分で書く",
+    "write_title": "レシピを書く",
+    "save": "レシピを保存",
+    "saved": "レシピを保存しました",
+    "save_error": "レシピを保存できませんでした",
+    "field_title": "タイトル",
+    "field_yield": "分量",
+    "field_yield_placeholder": "例: 4人分",
+    "field_prep": "下準備の時間（分）",
+    "field_cook": "調理の時間（分）",
+    "field_ingredients": "材料",
+    "field_steps": "作り方",
+    "field_notes": "メモ",
+    "field_source": "元のリンク（任意）",
+    "field_group_hint": "1行に1つ。行末にコロンを付けると「ソース用:」のようにグループになります。",
+    "error_title": "レシピのタイトルを入力してください。",
+    "error_content": "材料か手順を1つ以上入力してください。"
   },
   "bookmark_card": {
     "image_alt": "カードの画像",
@@ -2253,7 +2292,8 @@
       "movie": "映画を保存",
       "game": "ゲームを保存",
       "drawing": "手描きを保存",
-      "audio": "音声を保存"
+      "audio": "音声を保存",
+      "recipe": "レシピを保存"
     }
   },
   "landing_page": {
@@ -2382,6 +2422,15 @@
       "account_when": "ウェブや Chrome を使う方、フィード・AI タグ・要約を使いたい方に。",
       "device": "デバイス内ライブラリ：",
       "device_when": "Apple デバイスだけを使い、どのサーバーにもデータを置きたくない方に。"
+    },
+    "self_host": {
+      "title": "自分でホストしますか？",
+      "description": "WebBites はオープンソースです。同じアプリを Docker Compose で自分のサーバーに立てて、データベースも AI エンドポイントも自分で用意できます。プランも制限もありません。",
+      "point_start": "コマンド 1 つで起動し、自分のドメインで HTTPS に対応します。",
+      "point_private": "テレメトリーはありません。設定しない限り、データがサーバーの外に出ることはありません。",
+      "point_license": "AGPL-3.0 のフリーソフトウェアです。",
+      "guide": "セルフホスティングガイド",
+      "github": "GitHub で見る"
     }
   },
   "login_page": {
