@@ -30,6 +30,8 @@ Download **WebBites Server** for macOS, Windows or Linux from the
 menu bar (notification area on Windows and Linux), checks Docker, sets WebBites up from a page in your
 browser, and then starts, stops and updates it. See [the app](desktop-app.md).
 
+<p align="center"><img src="../apps/web/public/self-hosting/app/where.webp" width="420" alt="WebBites Server: where will you use WebBites?"></p>
+
 ## From a clone
 
 ```sh

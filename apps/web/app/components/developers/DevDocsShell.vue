@@ -124,6 +124,8 @@ import DevSectionPlayground from '~/components/developers/DevSectionPlayground.v
 import DevSectionEndpoints from '~/components/developers/DevSectionEndpoints.vue'
 import DevSectionBookmarkObject from '~/components/developers/DevSectionBookmarkObject.vue'
 import DevSectionSelfHosting from '~/components/developers/DevSectionSelfHosting.vue'
+import DevSectionSelfHostingApp from '~/components/developers/DevSectionSelfHostingApp.vue'
+import DevSectionSelfHostingTerminal from '~/components/developers/DevSectionSelfHostingTerminal.vue'
 import DevSectionSelfHostingOperations from '~/components/developers/DevSectionSelfHostingOperations.vue'
 
 const props = defineProps({
@@ -147,6 +149,8 @@ const SECTIONS = {
   endpoints: DevSectionEndpoints,
   'bookmark-object': DevSectionBookmarkObject,
   'self-hosting': DevSectionSelfHosting,
+  'self-hosting-app': DevSectionSelfHostingApp,
+  'self-hosting-terminal': DevSectionSelfHostingTerminal,
   'self-hosting-operations': DevSectionSelfHostingOperations,
 }
 
@@ -320,6 +324,14 @@ watch(() => props.slug, () => {
   @apply border-amber-400/20 border-l-amber-400/70 bg-amber-400/[0.06];
 }
 .docs-body :deep(.docs-note p) { @apply text-[15px] text-neutral-300; }
+
+.docs-body :deep(.docs-figure) { @apply m-0 flex max-w-xl flex-col gap-2; }
+.docs-body :deep(.docs-figure img) {
+  @apply block h-auto w-full rounded-2xl border border-white/10 bg-neutral-950 shadow-2xl shadow-black/40;
+}
+.docs-body :deep(.docs-figure figcaption) { @apply text-center text-sm text-neutral-500; }
+.docs-body :deep(.docs-figures) { @apply grid max-w-3xl items-start gap-4 sm:grid-cols-2; }
+.docs-body :deep(.docs-figures .docs-figure) { @apply max-w-none; }
 
 .docs-body :deep(.docs-table-wrap) { @apply overflow-x-auto rounded-xl border border-white/10; }
 .docs-body :deep(.docs-table) { @apply w-full min-w-[32rem] border-collapse text-left text-sm; }

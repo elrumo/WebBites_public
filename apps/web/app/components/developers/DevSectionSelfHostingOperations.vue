@@ -52,14 +52,29 @@
     <h2 id="upgrading">Upgrading</h2>
     <p>
       Images are tagged with the release version, and <code>WEBBITES_VERSION</code> in <code>.env</code>
-      picks one (default <code>latest</code>).
+      picks one. The app and the one-line installer pin it to the release they installed; <code>install.sh</code>
+      from a clone and a hand-written <code>.env</code> without it use <code>latest</code>. How to move to a new release depends on how you installed:
+    </p>
+    <div class="docs-table-wrap">
+      <table class="docs-table">
+        <thead><tr><th>Installed with</th><th>Upgrade</th></tr></thead>
+        <tbody>
+          <tr><td>The WebBites Server app</td><td><strong>Update</strong> on the banner, or <strong>Update to x.y.z…</strong> in the menu</td></tr>
+          <tr><td>The one-line installer</td><td>Run the same <code>curl … get.sh | sh</code> again in the same place</td></tr>
+          <tr><td>The <code>webbites-server</code> command</td><td><code>webbites-server update</code> (<code>--version x.y.z</code> for a given one)</td></tr>
+          <tr><td>compose.yaml by hand</td><td>The commands below</td></tr>
+          <tr><td>A clone</td><td><code>git pull</code>, then <code>docker compose pull</code> and <code>docker compose up -d</code> in <code>deploy/</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      The first three keep the previous release's files in <code>.previous</code> in the WebBites folder and
+      never touch <code>.env</code> beyond <code>WEBBITES_VERSION</code>. By hand:
     </p>
     <DevCode :code="UPGRADE" language="bash" label="Terminal" />
     <p>
       If you edited <code>compose.yaml</code> (a trusted proxy, no screenshot service), see what changed
       before replacing it: <code>curl -fsSL {{ SELF_HOST_COMPOSE_URL }} | diff compose.yaml -</code>.
-      Installed from the GitHub repository instead? Run <code>git pull</code> in <code>deploy/</code> in
-      place of the download.
     </p>
     <p>
       Compose recreates only containers whose image changed, and Parse and the API run any data upgrades

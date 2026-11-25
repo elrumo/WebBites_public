@@ -25,6 +25,13 @@ export function setApiOrigin(origin) {
 export const SELF_HOST_REPO_URL = 'https://github.com/elrumo/webbites_public'
 // The single compose file self-hosters download (public/self-hosting/compose.yaml).
 export const SELF_HOST_COMPOSE_URL = 'https://www.webbites.io/self-hosting/compose.yaml'
+// The one-line installer: downloads only the deployment files of the latest release, no clone.
+export const SELF_HOST_GET_URL = 'https://raw.githubusercontent.com/elrumo/webbites_public/master/deploy/get.sh'
+// Where the WebBites Server app is downloaded from (attached to every release).
+export const SELF_HOST_RELEASES_URL = `${SELF_HOST_REPO_URL}/releases/latest`
+export const SELF_HOST_DOWNLOAD_URL = (file) => `${SELF_HOST_REPO_URL}/releases/latest/download/${file}`
+// Screenshots of the WebBites Server app, in public/self-hosting/app/.
+export const SELF_HOST_SHOTS = '/self-hosting/app'
 
 // Mirrors `API_LIMITS` in the backend's `server/utils/publicApi.ts`.
 export const RATE_LIMITS = [

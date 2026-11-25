@@ -18,7 +18,9 @@ export const DOC_GROUPS = [
     title: 'Self-hosting',
     icon: 'i-heroicons-server-stack',
     items: [
-      { slug: 'self-hosting', title: 'Self-hosting WebBites', description: 'Run the open-source edition on your own server with Docker Compose: requirements, install, first account and what runs.', keywords: 'self host selfhost docker compose install open source server vps domain caddy agpl own' },
+      { slug: 'self-hosting', title: 'Self-hosting WebBites', description: 'Run the open-source edition on your own computer or server: what you need, the ways to install, your first account and what runs.', keywords: 'self host selfhost docker compose install open source server vps domain caddy agpl own desktop app' },
+      { slug: 'self-hosting-app', title: 'The WebBites Server app', description: 'Install and run WebBites on your Mac, PC or Linux desktop without a terminal: download, set up step by step, start, stop and update.', keywords: 'self host desktop app mac macos windows linux menu bar tray installer download docker gui setup update' },
+      { slug: 'self-hosting-terminal', title: 'Install from the terminal', description: 'Install on a server with one command, by hand with compose.yaml, from a clone, or with the webbites-server command.', keywords: 'self host terminal ssh server vps curl get.sh install.sh compose cli headless linux command line' },
       { slug: 'self-hosting-operations', title: 'Configuration, backups & upgrades', description: 'Configure, back up, restore and upgrade a self-hosted WebBites, plus security notes and moving from webbites.io.', keywords: 'self host configuration env backup restore upgrade update security migrate import admin settings mongo redis' },
     ],
   },
