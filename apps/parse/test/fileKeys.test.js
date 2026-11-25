@@ -38,6 +38,14 @@ check('a path without a name is left to Parse', saltUploadUrl('/files') === '/fi
 check('so is a nested path', saltUploadUrl('/files/a/b.png') === '/files/a/b.png');
 check('and a name that does not decode', saltUploadUrl('/files/%E0%A4%A.png') === '/files/%E0%A4%A.png');
 
+// The upload allowlist has to cover the audio the apps and the web recorder store (the server
+// normalises browser recordings to .m4a), or saving audio fails with "File type not allowed".
+const { validateFilename } = require('../src/files');
+for (const name of ['tone.m4a', 'parseUser=u1_fileName=1_tone.M4A', 'a.aac', 'a.ogg', 'a.opus', 'a.flac', 'a.caf', 'a.mp3'])
+  check(`${name} may be uploaded`, validateFilename(name) === null);
+for (const name of ['a.exe', 'a.php', 'noextension'])
+  check(`${name} may not`, validateFilename(name) === 'File type not allowed');
+
 if (failed) {
   console.log(`\n${failed} failed`);
   process.exit(1);

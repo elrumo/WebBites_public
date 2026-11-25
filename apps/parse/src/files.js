@@ -14,7 +14,7 @@
 const env = require('./env');
 const { keyForFileName } = require('./fileKeys');
 
-const ALLOWED_FILE_EXTENSIONS = ['html', 'txt', 'csv', 'json', 'pdf', 'jpg', 'jpeg', 'png', 'gif', 'webp', 'svg', 'mp3', 'wav', 'mp4', 'webm', 'zip', 'gz', 'xls', 'xlsx', 'rtf'];
+const ALLOWED_FILE_EXTENSIONS = ['html', 'txt', 'csv', 'json', 'pdf', 'jpg', 'jpeg', 'png', 'gif', 'webp', 'svg', 'mp3', 'wav', 'mp4', 'webm', 'm4a', 'aac', 'ogg', 'oga', 'opus', 'flac', 'caf', 'aif', 'aiff', 'zip', 'gz', 'xls', 'xlsx', 'rtf'];
 
 function driver() {
   const explicit = env.str('FILES_DRIVER').toLowerCase();

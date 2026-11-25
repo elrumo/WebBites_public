@@ -71,3 +71,39 @@ export function toInternalUrl(url: string): string {
     }
     return url;
 }
+
+/**
+ * Whether `url` is a file URL of THIS deployment's own storage, by exact prefix:
+ *
+ *   <SITE_URL>/parse/files/…     Parse's gridfs files (self-hosted: Parse is a service name)
+ *   <S3_PUBLIC_URL>/…            the S3 driver's public base
+ *   STORAGE_LEGACY_HOSTS         where an earlier store's URLs still live
+ *
+ * `clientMetadata.ownStorageURL` adds this to its built-in webbites.io host, so
+ * "our own storage" follows the configuration for both file drivers. The Parse
+ * prefix counts only where `toInternalUrl` would rewrite it, so a deployment
+ * whose Parse is a real hostname (hosted) accepts nothing it did not before.
+ */
+export function isOwnFileUrl(url: string): boolean {
+    let given: string;
+    try {
+        given = new URL(url).href; // normalised, so no `..` climbs out of a prefix
+    } catch {
+        return false;
+    }
+
+    const owned = prefixes().map(([publicPrefix]) => publicPrefix);
+    const s3Public = trim(process.env.S3_PUBLIC_URL);
+    if (s3Public) owned.push(`${s3Public}/`);
+    for (const host of (process.env.STORAGE_LEGACY_HOSTS || '').split(',').map((h) => h.trim()).filter(Boolean)) {
+        owned.push(`https://${host}/`, `http://${host}/`);
+    }
+
+    return owned.some((prefix) => {
+        try {
+            return given.startsWith(new URL(prefix).href);
+        } catch {
+            return false;
+        }
+    });
+}

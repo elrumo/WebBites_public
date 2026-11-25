@@ -1,5 +1,5 @@
 import { safeFetch, readCappedBody } from './safeUrl';
-import { toInternalUrl } from './internalUrl';
+import { toInternalUrl, isOwnFileUrl } from './internalUrl';
 
 /**
  * Client-extracted post metadata.
@@ -165,7 +165,7 @@ const httpUrl = (value: unknown, allowedHosts?: RegExp[]): string | undefined =>
 /** A URL returned by our authenticated Parse file upload, safe to store as a
  * file reference without asking the server to fetch an arbitrary client URL. */
 export const ownStorageURL = (value: unknown): string | undefined =>
-  httpUrl(value, OWN_STORAGE_HOSTS);
+  httpUrl(value, OWN_STORAGE_HOSTS) ?? (typeof value === 'string' && isOwnFileUrl(value) ? httpUrl(value) : undefined);
 
 /**
  * fetch() for a file URL read off a row's `…FileUrl` string column.
