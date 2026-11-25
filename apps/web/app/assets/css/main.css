@@ -3132,7 +3132,7 @@ pre, code{
 }
 
 /* Anchor targets sit below the sticky nav instead of under it. */
-#features, #pricing{
+#features, #pricing, #self-host{
   scroll-margin-top: 6rem;
 }
 

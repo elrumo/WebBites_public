@@ -42,6 +42,17 @@
                   {{ $t('landing.hero.app_button') }}
                 </UButton>
 
+                <UButton
+                  to="#self-host"
+                  color="neutral"
+                  variant="outline"
+                  class="rounded-full font-bold"
+                  size="xl"
+                  icon="i-tabler-server-2"
+                >
+                  {{ $t('navigation.self_host') }}
+                </UButton>
+
                 <!-- Sign in with Apple -->
                  <!-- <ClientOnly> -->
                   <SignInWithApple 

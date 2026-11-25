@@ -540,7 +540,8 @@
     "developers": "Développeurs",
     "faq": "FAQ",
     "features": "Fonctionnalités",
-    "pricing": "Tarifs"
+    "pricing": "Tarifs",
+    "self_host": "Auto-héberger"
   },
   "plans": {
     "features": {

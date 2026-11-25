@@ -540,7 +540,8 @@
     "developers": "Desarrolladores",
     "faq": "Preguntas frecuentes",
     "features": "Funciones",
-    "pricing": "Precios"
+    "pricing": "Precios",
+    "self_host": "Autoalojar"
   },
   "plans": {
     "features": {
