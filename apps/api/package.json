@@ -67,6 +67,7 @@
     "test:mcpFormat": "tsx server/utils/mcpFormat.test.ts",
     "test:oauthRules": "tsx server/utils/oauthRules.test.ts",
     "test:safeUrl": "tsx server/utils/safeUrl.test.ts",
+    "test:internalUrl": "tsx server/utils/internalUrl.test.ts",
     "test:emailChangeRules": "tsx server/utils/emailChangeRules.test.ts",
     "test:boardAccess": "tsx server/utils/boardAccessRules.test.ts",
     "test:deviceAuthRules": "tsx server/utils/deviceAuthRules.test.ts",

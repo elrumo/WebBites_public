@@ -1,4 +1,5 @@
 import { safeFetch, readCappedBody } from './safeUrl';
+import { toInternalUrl } from './internalUrl';
 
 /**
  * Client-extracted post metadata.
@@ -192,6 +193,9 @@ export async function fetchStoredFile(
   };
   const own = origin(url);
   const isOurs = Boolean(ownStorageURL(url)) || (own !== undefined && trusted.some((t) => t && origin(t) === own));
+  // Our own public file URL: read it by the in-network address (see internalUrl.ts).
+  const internal = toInternalUrl(url);
+  if (internal !== url) return fetch(internal, options);
   return isOurs ? fetch(url, options) : safeFetch(url, options);
 }
 
