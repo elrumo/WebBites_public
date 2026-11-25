@@ -2561,7 +2561,7 @@ export const useStore = defineStore('websitesStore', {
         this.isSearching = false;
         setTimeout(() => {
           try {
-            if(Boolean(searchTerm)) useTrackEvent('Search', { props: { userId, semanticSearch: this.useEmbeddings } });
+            if(Boolean(searchTerm)) trackEvent('Search', { props: { userId, semanticSearch: this.useEmbeddings } });
           } catch (error) {
             console.error("error tracking search event: ", error);
           }
@@ -3449,7 +3449,7 @@ export const useStore = defineStore('websitesStore', {
         // 4) Non-blocking tracking
         setTimeout(() => {
           try {
-            useTrackEvent('AppAccessed', { props: { userId: user.id } });
+            trackEvent('AppAccessed', { props: { userId: user.id } });
           } catch {}
         }, 0);
 
@@ -3513,6 +3513,34 @@ export const useStore = defineStore('websitesStore', {
       let size = (new Blob([JSON.stringify(data)]).size / 1024).toFixed(2) + "KB"
       log(`${string } size in KB: ${size}`);
       return size
+    },
+
+    // Marks the welcome tour as done, in the store and in the database: on the user's `userOptions` row
+    // (what fetchUserOptions reads `isFirstTime` from) and on `_User`. The row is found by its `user`
+    // pointer, not through `_User.userOptions`, which is not always loaded in the page; an account that
+    // has no row yet gets one. Returns whether everything was saved.
+    async markFirstTimeDone() {
+      this.isFirstTime = false;
+      const user = Parse.User.current();
+      if (!user) return false;
+
+      const saveOptionsRow = async () => {
+        let row = await new Parse.Query(UserOptions).equalTo('user', user).first();
+        if (!row) {
+          row = new UserOptions();
+          row.set('user', user);
+          row.set('options', useStoreConstants().defaultUserOptions);
+          row.setACL(new Parse.ACL(user));
+        }
+        await row.save({ isFirstTime: false });
+      };
+
+      const results = await Promise.allSettled([user.save({ isFirstTime: false }), saveOptionsRow()]);
+      const labels = ['_User', 'userOptions'];
+      results.forEach((result, i) => {
+        if (result.status === 'rejected') console.error(`Could not save isFirstTime on ${labels[i]}:`, result.reason);
+      });
+      return results.every((result) => result.status === 'fulfilled');
     },
 
     async fetchUserOptions(){

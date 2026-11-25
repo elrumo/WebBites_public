@@ -87,7 +87,6 @@ const store = useStore();
 
 const {
   showWelcomeModal,
-  isFirstTime,
 } = storeToRefs(store)
 
 const previousTab = ref(0)
@@ -131,19 +130,11 @@ const skipWizard = async (thenAsk = false) => {
         const currentUser = Parse.User.current();
         if (!currentUser) return;
         
-        // Update local state
         showWelcomeModal.value = false;
-        isFirstTime.value = false;
         if (thenAsk === true && !currentUser.get('questionnaire')) store.showQuestionnaireModal = true;
 
-        // Batch update user and userOptions
-        const userOptions = currentUser.get('userOptions');
-        console.log("userOptions: ", userOptions);
-
-        await Promise.all([
-            currentUser.save({ isFirstTime: false }),
-            userOptions?.save({ isFirstTime: false })
-        ]);
+        // Done in the store and in the database (userOptions row and _User); it logs what fails.
+        await store.markFirstTimeDone();
     } catch (error) {
         console.error('Error skipping wizard:', error);
         // Could add error handling/user notification here

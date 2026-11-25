@@ -1450,16 +1450,7 @@
   };
 
   async function firstTimeUser() {
-    try {
-      const UserOptions = Parse.Object.extend("userOptions");
-      const userOptionsQuery = await new Parse.Query(UserOptions);
-      userOptionsQuery.equalTo("user", Parse.User.current());
-      const userOptionsResult = await userOptionsQuery.find();
-      userOptionsResult[0].set('isFirstTime', false);
-      await userOptionsResult[0].save();
-    } catch (error) {
-      console.error('[newBookmark] Error setting isFirstTime to false: ', error);
-    }
+    await store.markFirstTimeDone();
   };
 
   const isTextboxEmpty = computed(() => {
