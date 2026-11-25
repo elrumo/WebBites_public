@@ -35,7 +35,17 @@ Losing `SETTINGS_ENCRYPTION_KEY` or `BACKUP_ENCRYPTION_KEY` makes what they prot
 
 ## Upgrading
 
-Images are tagged with the release version, and `WEBBITES_VERSION` in `.env` picks one (default `latest`).
+Images are tagged with the release version, and `WEBBITES_VERSION` in `.env` picks one. The app and the one-line installer pin it to the release they installed; `install.sh` from a clone and a hand-written `.env` without it use `latest`. How to move to a new release depends on how you installed:
+
+| Installed with | Upgrade |
+|---|---|
+| The WebBites Server app | **Update** on the banner, or **Update to x.y.z…** in the menu |
+| The one-line installer | Run the same `curl … get.sh \| sh` again in the same place |
+| The `webbites-server` command | `webbites-server update` (`--version x.y.z` for a given one) |
+| compose.yaml by hand | The commands below |
+| A clone | `git pull`, then `docker compose pull` and `docker compose up -d` in `deploy/` |
+
+The first three keep the previous release's files in `.previous` in the WebBites folder and never touch `.env` beyond `WEBBITES_VERSION`. By hand:
 
 ```bash
 cd webbites
@@ -44,7 +54,7 @@ docker compose pull
 docker compose up -d
 ```
 
-If you edited `compose.yaml` (a trusted proxy, no screenshot service), see what changed before replacing it: `curl -fsSL https://www.webbites.io/self-hosting/compose.yaml | diff compose.yaml -`. Installed from the GitHub repository instead? Run `git pull` in `deploy/` in place of the download.
+If you edited `compose.yaml` (a trusted proxy, no screenshot service), see what changed before replacing it: `curl -fsSL https://www.webbites.io/self-hosting/compose.yaml | diff compose.yaml -`.
 
 Compose recreates only containers whose image changed, and Parse and the API run any data upgrades they need when they start.
 

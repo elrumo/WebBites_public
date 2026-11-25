@@ -1,0 +1,754 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>WebBites Server</title>
+<link rel="icon" href="/assets/icon.png">
+<style>
+  :root {
+    --bg: #0b0c0c;
+    --surface: rgba(30, 32, 31, .72);
+    --surface-solid: #1b1d1c;
+    --raised: rgba(255, 255, 255, .045);
+    --raised-hover: rgba(255, 255, 255, .08);
+    --line: rgba(255, 255, 255, .08);
+    --line-strong: rgba(255, 255, 255, .14);
+    --text: #f4f6f5;
+    --soft: #b9bfbc;
+    --muted: #7c8480;
+    --green: #16d97c;
+    --green-deep: #0fa958;
+    --green-glow: rgba(22, 217, 124, .28);
+    --amber: #f2b54a;
+    --red: #ff6b6b;
+    --radius: 26px;
+    --sans: -apple-system, BlinkMacSystemFont, "Inter", "SF Pro Text", "Segoe UI Variable", "Segoe UI", Roboto, sans-serif;
+    --mono: ui-monospace, "IBM Plex Mono", SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0; font: 15px/1.55 var(--sans); color: var(--text); background: var(--bg);
+    -webkit-font-smoothing: antialiased; letter-spacing: -.005em;
+  }
+  /* The app's backdrop: a green glow over a faint grid. */
+  body::before {
+    content: ""; position: fixed; inset: 0; z-index: -2;
+    background:
+      radial-gradient(60% 45% at 50% -5%, rgba(22, 217, 124, .20), transparent 70%),
+      radial-gradient(40% 35% at 85% 105%, rgba(22, 217, 124, .08), transparent 70%),
+      var(--bg);
+  }
+  body::after {
+    content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background-image: linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: radial-gradient(70% 60% at 50% 20%, #000 30%, transparent 80%);
+  }
+
+  .shell { min-height: 100%; display: flex; flex-direction: column; align-items: center; padding: 56px 20px 48px; }
+  .brand { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-bottom: 28px; text-align: center; }
+  .brand img { width: 72px; height: 72px; filter: drop-shadow(0 10px 30px var(--green-glow)); }
+  .brand h1 { margin: 0; font-size: 22px; font-weight: 700; letter-spacing: -.02em; }
+  .brand p { margin: 0; color: var(--muted); font-size: 14px; }
+
+  .card {
+    width: 100%; max-width: 560px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 30px; backdrop-filter: blur(24px) saturate(140%); -webkit-backdrop-filter: blur(24px) saturate(140%);
+    box-shadow: 0 30px 80px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.05);
+    animation: rise .35s ease both;
+  }
+  .card + .card { margin-top: 14px; }
+  @keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  h2 { margin: 0 0 6px; font-size: 21px; font-weight: 700; letter-spacing: -.02em; }
+  .lead { margin: 0 0 22px; color: var(--soft); }
+  .small { font-size: 13px; color: var(--muted); }
+  .hidden { display: none !important; }
+
+  /* Buttons: pills, as in the app. */
+  .btn {
+    appearance: none; border: 1px solid var(--line-strong); background: var(--raised); color: var(--text);
+    height: 44px; padding: 0 20px; border-radius: 999px; font: 600 15px var(--sans); cursor: pointer;
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none;
+    transition: background .15s, border-color .15s, transform .08s, box-shadow .15s, opacity .15s;
+  }
+  .btn:hover { background: var(--raised-hover); }
+  .btn:active { transform: scale(.98); }
+  .btn:disabled { opacity: .4; cursor: default; transform: none; }
+  .btn.primary { background: var(--green); border-color: transparent; color: #04140b; box-shadow: 0 8px 28px var(--green-glow); }
+  .btn.primary:hover { background: #2be38c; }
+  .btn.white { background: #fff; border-color: transparent; color: #111; box-shadow: 0 8px 24px rgba(0,0,0,.35); }
+  .btn.white:hover { background: #ececec; }
+  .btn.quiet { background: transparent; border-color: transparent; color: var(--soft); padding: 0 12px; }
+  .btn.quiet:hover { color: var(--text); background: var(--raised); }
+  .btn.danger { color: var(--red); }
+  .btn.block { width: 100%; height: 50px; font-size: 16px; }
+  .btn svg { width: 18px; height: 18px; }
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .actions.end { justify-content: space-between; margin-top: 26px; }
+
+  /* Choice tiles */
+  .tiles { display: grid; gap: 12px; }
+  .tile {
+    display: flex; gap: 16px; align-items: center; text-align: left; width: 100%;
+    padding: 18px; border-radius: 20px; border: 1px solid var(--line); background: var(--raised); color: var(--text);
+    font: inherit; cursor: pointer; transition: border-color .15s, background .15s, box-shadow .15s;
+  }
+  .tile:hover { background: var(--raised-hover); border-color: var(--line-strong); }
+  .tile.selected { border-color: var(--green); box-shadow: 0 0 0 4px rgba(22,217,124,.12); background: rgba(22,217,124,.06); }
+  .tile .ic { flex: none; width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center; background: rgba(255,255,255,.06); color: var(--green); }
+  .tile .ic svg { width: 24px; height: 24px; }
+  .tile b { display: block; font-size: 16px; }
+  .tile span { color: var(--muted); font-size: 14px; }
+
+  /* Fields */
+  .field { display: block; margin-bottom: 16px; }
+  .field > .label { display: block; font-weight: 600; font-size: 14px; margin-bottom: 7px; }
+  .field > .hint { display: block; font-size: 13px; color: var(--muted); margin-top: 7px; }
+  input[type=text], input[type=email], input[type=number] {
+    width: 100%; height: 50px; padding: 0 16px; border-radius: 16px; border: 1px solid var(--line-strong);
+    background: rgba(255,255,255,.04); color: var(--text); font: 16px var(--sans); outline: none;
+    transition: border-color .15s, box-shadow .15s, background .15s;
+  }
+  input::placeholder { color: #5f6763; }
+  input:focus { border-color: var(--green); box-shadow: 0 0 0 4px rgba(22,217,124,.14), 0 0 24px rgba(22,217,124,.12); background: rgba(22,217,124,.04); }
+
+  /* Toggles */
+  .toggle { display: flex; align-items: center; gap: 14px; padding: 14px 0; border-top: 1px solid var(--line); cursor: pointer; }
+  .toggle:first-child { border-top: 0; }
+  .toggle .txt { flex: 1; }
+  .toggle b { display: block; font-size: 15px; }
+  .toggle span { color: var(--muted); font-size: 13px; }
+  .switch { position: relative; flex: none; width: 46px; height: 28px; }
+  .switch input { opacity: 0; width: 0; height: 0; position: absolute; }
+  .switch i { position: absolute; inset: 0; border-radius: 99px; background: rgba(255,255,255,.14); transition: background .2s; }
+  .switch i::after { content: ""; position: absolute; top: 3px; left: 3px; width: 22px; height: 22px; border-radius: 50%; background: #fff; transition: transform .2s; box-shadow: 0 2px 6px rgba(0,0,0,.3); }
+  .switch input:checked + i { background: var(--green); }
+  .switch input:checked + i::after { transform: translateX(18px); }
+
+  details.advanced { margin-top: 6px; border-top: 1px solid var(--line); padding-top: 14px; }
+  details.advanced summary { cursor: pointer; color: var(--soft); font-weight: 600; font-size: 14px; list-style: none; display: flex; align-items: center; gap: 6px; }
+  details.advanced summary::-webkit-details-marker { display: none; }
+  details.advanced summary svg { width: 16px; height: 16px; transition: transform .2s; }
+  details.advanced[open] summary svg { transform: rotate(90deg); }
+  details.advanced .inner { padding-top: 16px; }
+
+  /* Steps (install progress) */
+  .steps { list-style: none; margin: 4px 0 0; padding: 0; }
+  .steps li { display: flex; align-items: center; gap: 14px; padding: 12px 0; color: var(--muted); }
+  .steps li .dot { flex: none; width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid var(--line-strong); display: grid; place-items: center; }
+  .steps li.active { color: var(--text); }
+  .steps li.active .dot { border-color: var(--green); border-top-color: transparent; animation: spin .9s linear infinite; }
+  .steps li.done { color: var(--soft); }
+  .steps li.done .dot { background: var(--green); border-color: var(--green); color: #04140b; }
+  .steps li.done .dot svg { width: 15px; height: 15px; }
+  .steps li.failed .dot { border-color: var(--red); color: var(--red); }
+  .steps.todo li { color: var(--soft); align-items: flex-start; }
+  .steps.todo .dot { border-color: rgba(22,217,124,.5); color: var(--green); font-size: 13px; font-weight: 700; margin-top: -1px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  pre.log {
+    margin: 14px 0 0; padding: 14px 16px; max-height: 300px; overflow: auto; border-radius: 16px;
+    background: rgba(0,0,0,.38); border: 1px solid var(--line); color: #aeb6b2;
+    font: 12.5px/1.6 var(--mono); white-space: pre-wrap; word-break: break-word;
+  }
+
+  .note { display: flex; gap: 12px; padding: 14px 16px; border-radius: 16px; background: rgba(255,255,255,.04); border: 1px solid var(--line); font-size: 14px; color: var(--soft); }
+  .note svg { flex: none; width: 20px; height: 20px; color: var(--green); margin-top: 1px; }
+  .note.warn svg { color: var(--amber); }
+  .note.bad { border-color: rgba(255,107,107,.35); background: rgba(255,107,107,.06); color: #ffb3b3; }
+  .note.bad svg { color: var(--red); }
+  .note b { color: var(--text); }
+  code { font: 13px var(--mono); background: rgba(255,255,255,.07); padding: 2px 6px; border-radius: 6px; color: var(--text); }
+
+  /* Home */
+  .status { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; padding: 5px 12px 5px 10px; border-radius: 99px; background: rgba(255,255,255,.06); color: var(--soft); }
+  .status i { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); }
+  .status.on { color: var(--green); background: rgba(22,217,124,.1); }
+  .status.on i { background: var(--green); box-shadow: 0 0 0 4px rgba(22,217,124,.18); animation: pulse 2s ease-in-out infinite; }
+  .status.warn { color: var(--amber); background: rgba(242,181,74,.1); }
+  .status.warn i { background: var(--amber); }
+  .status.off { color: var(--red); background: rgba(255,107,107,.1); }
+  .status.off i { background: var(--red); }
+  @keyframes pulse { 50% { box-shadow: 0 0 0 7px rgba(22,217,124,0); } }
+  .hero { text-align: center; padding: 6px 0 4px; }
+  .hero .url { font: 500 15px var(--mono); color: var(--soft); margin: 14px 0 22px; word-break: break-all; }
+  .hero h2 { font-size: 26px; margin-top: 16px; }
+
+  .tabs { display: flex; gap: 4px; padding: 4px; border-radius: 99px; background: rgba(255,255,255,.05); border: 1px solid var(--line); width: max-content; margin: 22px auto 0; }
+  .tabs button { appearance: none; border: 0; background: transparent; color: var(--soft); font: 600 14px var(--sans); height: 34px; padding: 0 16px; border-radius: 99px; cursor: pointer; }
+  .tabs button.on { background: rgba(255,255,255,.1); color: var(--text); }
+
+  .list { margin: 0; padding: 0; list-style: none; }
+  .list li { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 0; border-top: 1px solid var(--line); }
+  .list li:first-child { border-top: 0; }
+  .list .k { display: flex; align-items: center; gap: 10px; font-weight: 600; }
+  .list .k i { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); }
+  .list .k i.on { background: var(--green); }
+  .list .k i.bad { background: var(--red); }
+  .list .k i.warn { background: var(--amber); }
+  .list .v { color: var(--muted); font-size: 13px; text-align: right; }
+  .list .row-title b { display: block; }
+  .list .row-title span { color: var(--muted); font-size: 13px; }
+  .list .row-title .path { font-family: var(--mono); font-size: 12.5px; word-break: break-all; }
+
+  .chips { display: flex; gap: 6px; flex-wrap: wrap; }
+  .chip { appearance: none; border: 1px solid var(--line); background: transparent; color: var(--soft); font: 600 13px var(--sans); height: 30px; padding: 0 12px; border-radius: 99px; cursor: pointer; }
+  .chip.on { border-color: var(--green); color: var(--green); background: rgba(22,217,124,.08); }
+
+  .banner { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border-radius: 18px; background: linear-gradient(135deg, rgba(22,217,124,.16), rgba(22,217,124,.04)); border: 1px solid rgba(22,217,124,.35); margin-bottom: 18px; }
+  .banner .txt { flex: 1; font-size: 14px; color: var(--soft); }
+  .banner .txt b { color: var(--text); display: block; font-size: 15px; }
+
+  footer { margin-top: 26px; color: var(--muted); font-size: 12.5px; text-align: center; }
+  footer a { color: var(--soft); text-decoration: none; }
+  footer a:hover { color: var(--text); }
+  .error { margin-top: 14px; }
+  a.link { color: var(--green); text-decoration: none; font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="brand">
+    <img src="/assets/icon.png" alt="">
+    <div>
+      <h1>WebBites Server</h1>
+      <p id="tagline">Your own WebBites, running on your machine.</p>
+    </div>
+  </div>
+
+  <!-- ── Loading ─────────────────────────────────────────────────────────── -->
+  <section id="v-loading" class="card">
+    <ul class="steps"><li class="active"><span class="dot"></span>Checking your computer…</li></ul>
+  </section>
+
+  <!-- ── Docker needed ───────────────────────────────────────────────────── -->
+  <section id="v-docker" class="card hidden">
+    <h2>First, Docker</h2>
+    <p class="lead">WebBites runs inside Docker, a free app that keeps it neatly separate from the rest of your computer.</p>
+    <div class="note warn" style="margin-bottom:22px">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
+      <div id="dockerProblem"></div>
+    </div>
+    <ol class="steps" id="dockerSteps">
+      <li><span class="dot">1</span><span>Install Docker <span class="small" id="dockerWhich"></span></span></li>
+      <li><span class="dot">2</span><span>Open it once, so it starts</span></li>
+      <li><span class="dot">3</span><span>Come back here: this page notices by itself</span></li>
+    </ol>
+    <p id="dockerCommand" class="small hidden" style="margin:14px 0 0">Or in a terminal: <code id="dockerCommandText"></code></p>
+    <div class="actions end">
+      <span class="small" id="dockerWatching">Checking again every few seconds…</span>
+      <a id="dockerLink" class="btn primary" target="_blank" rel="noopener">Get Docker
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+    </div>
+  </section>
+
+  <!-- ── Setup 1: where ─────────────────────────────────────────────────── -->
+  <section id="v-where" class="card hidden">
+    <h2>Where will you use WebBites?</h2>
+    <p class="lead">You can change your mind later by setting it up again in another folder.</p>
+    <div class="tiles">
+      <button class="tile" data-where="local">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2.5"/><path d="M8 21h8M12 17v4"/></svg></span>
+        <div><b id="localTitle">On this computer</b><span>Just for you. Opens in your browser, nothing to configure.</span></div>
+      </button>
+      <button class="tile" data-where="domain">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19M12 2.5c2.6 2.6 3.9 5.8 3.9 9.5s-1.3 6.9-3.9 9.5c-2.6-2.6-3.9-5.8-3.9-9.5s1.3-6.9 3.9-9.5Z"/></svg></span>
+        <div><b>On a server, at my own address</b><span>Reach it from anywhere, with HTTPS. You'll need a domain name.</span></div>
+      </button>
+    </div>
+    <p id="existingNote" class="small hidden" style="margin:18px 0 0">Already set up somewhere? <a href="#" class="link" onclick="openExisting(event)">Open an existing install</a></p>
+  </section>
+
+  <!-- ── Setup 2: details ───────────────────────────────────────────────── -->
+  <section id="v-details" class="card hidden">
+    <h2 id="detailsTitle">Almost there</h2>
+    <p class="lead" id="detailsLead"></p>
+
+    <label class="field hidden" id="domainField">
+      <span class="label">Your domain</span>
+      <input id="domain" type="text" placeholder="bookmarks.example.com" autocomplete="off" spellcheck="false">
+      <span class="hint">Point its DNS record at this server first. The HTTPS certificate is set up for you.</span>
+    </label>
+
+    <label class="field">
+      <span class="label">Your email <span class="small">· optional</span></span>
+      <input id="email" type="email" placeholder="you@example.com" autocomplete="email">
+      <span class="hint">The first account you create with this address becomes the administrator. Leave it empty and the first account to sign up does.</span>
+    </label>
+
+    <details class="advanced">
+      <summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>Advanced</summary>
+      <div class="inner">
+        <label class="toggle">
+          <div class="txt"><b>Page previews</b><span>Screenshots of the pages you save. Uses about 1 GB of memory.</span></div>
+          <span class="switch"><input id="screenshots" type="checkbox" checked><i></i></span>
+        </label>
+        <label class="toggle">
+          <div class="txt"><b>Separate file storage</b><span>Keeps uploads in a bundled S3 store instead of the database. Better for big libraries.</span></div>
+          <span class="switch"><input id="rustfs" type="checkbox"><i></i></span>
+        </label>
+        <label class="field" id="portField" style="margin-top:12px">
+          <span class="label">Port</span>
+          <input id="port" type="number" min="1" max="65535">
+          <span class="hint" id="portHint"></span>
+        </label>
+        <label class="field" style="margin-bottom:0">
+          <span class="label">Folder</span>
+          <input id="dir" type="text" spellcheck="false">
+          <span class="hint">Where WebBites keeps its settings. Your bookmarks live in Docker.</span>
+        </label>
+      </div>
+    </details>
+
+    <div id="setupError" class="note bad error hidden"></div>
+    <div class="actions end">
+      <button class="btn quiet" onclick="go('where')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>Back</button>
+      <button class="btn primary" id="installBtn" onclick="install()">Install WebBites</button>
+    </div>
+    <p id="noRelease" class="small hidden" style="text-align:right;margin:10px 0 0"></p>
+  </section>
+
+  <!-- ── Working (install / update / start / stop) ──────────────────────── -->
+  <section id="v-job" class="card hidden">
+    <h2 id="jobTitle">Setting things up</h2>
+    <p class="lead" id="jobLead">This takes a few minutes the first time. You can close this page: it keeps going.</p>
+    <ul class="steps" id="jobSteps"></ul>
+    <div id="jobError" class="note bad error hidden"></div>
+    <div class="actions end">
+      <button class="btn quiet" onclick="toggleLog()" id="logToggle">Show details</button>
+      <button class="btn" id="jobBack" onclick="leaveJob()">Back</button>
+    </div>
+    <pre class="log hidden" id="jobLog"></pre>
+  </section>
+
+  <!-- ── Done ───────────────────────────────────────────────────────────── -->
+  <section id="v-done" class="card hidden">
+    <div class="hero">
+      <span class="status on"><i></i>Running</span>
+      <h2>WebBites is ready</h2>
+      <p class="lead" style="margin:8px 0 0">One more thing: create your account now.</p>
+    </div>
+    <ol class="steps todo" style="margin:18px 0 6px">
+      <li><span class="dot">1</span><span>Open WebBites and sign up. Your account becomes the administrator.</span></li>
+      <li><span class="dot">2</span><span>Copy the <code>.env</code> file from its folder to somewhere safe: it holds your keys.</span></li>
+    </ol>
+    <div class="actions end">
+      <button class="btn quiet" onclick="finishDone()">Later</button>
+      <a class="btn primary" id="doneOpen" target="_blank" rel="noopener" onclick="finishDone()">Open WebBites
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+    </div>
+  </section>
+
+  <!-- ── Home ───────────────────────────────────────────────────────────── -->
+  <section id="v-home" class="card hidden">
+    <div id="updateBanner" class="banner hidden">
+      <div class="txt"><b id="updateTitle"></b>Your bookmarks and settings stay as they are.</div>
+      <button class="btn primary" onclick="update()">Update</button>
+    </div>
+    <div class="hero">
+      <span id="status" class="status"><i></i><span></span></span>
+      <h2>WebBites <span id="version" style="color:var(--muted);font-weight:600"></span></h2>
+      <div class="url" id="url"></div>
+      <div class="actions" style="justify-content:center">
+        <a class="btn primary" id="openLink" target="_blank" rel="noopener">Open WebBites
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+        <button class="btn" id="powerBtn" onclick="power()"></button>
+      </div>
+    </div>
+    <div class="tabs" role="tablist">
+      <button data-tab="overview" class="on">Overview</button>
+      <button data-tab="logs">Logs</button>
+      <button data-tab="settings">Settings</button>
+    </div>
+  </section>
+
+  <section id="t-overview" class="card hidden">
+    <ul class="list" id="services"></ul>
+    <p id="noServices" class="small hidden" style="margin:0;text-align:center">WebBites is stopped. Start it to see its parts here.</p>
+  </section>
+
+  <section id="t-logs" class="card hidden">
+    <div class="actions" style="justify-content:space-between">
+      <div class="chips" id="logChips"></div>
+      <button class="btn quiet" onclick="loadLogs()" title="Refresh">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.4L21 8"/><path d="M21 3v5h-5"/></svg>Refresh</button>
+    </div>
+    <pre class="log" id="logs">Choose a part of WebBites to see what it's been doing.</pre>
+  </section>
+
+  <section id="t-settings" class="card hidden">
+    <ul class="list">
+      <li><div class="row-title"><b>Address</b><span id="setUrl" class="path"></span></div></li>
+      <li><div class="row-title"><b>Folder</b><span id="setDir" class="path"></span></div>
+        <button class="btn quiet" onclick="post('/api/open-folder')">Show</button></li>
+      <li><div class="row-title"><b>Backups</b><span>Keep a copy of <code>.env</code> from this folder somewhere safe. <a class="link" href="https://www.webbites.io/developers/docs/self-hosting-operations#backups" target="_blank" rel="noopener">How to back up your data</a></span></div></li>
+      <li><div class="row-title"><b>Restart</b><span>Turn WebBites off and on again.</span></div>
+        <button class="btn quiet" onclick="restart()">Restart</button></li>
+      <li><div class="row-title"><b>Another install</b><span>Manage WebBites in a different folder.</span></div>
+        <button class="btn quiet" onclick="openExisting(event)">Choose</button></li>
+      <li><div class="row-title"><b>Version</b><span id="setVersions"></span></div></li>
+    </ul>
+  </section>
+
+  <footer>
+    <a href="https://www.webbites.io/developers/docs/self-hosting-app" target="_blank" rel="noopener">Help</a> ·
+    <a href="https://github.com/elrumo/webbites_public/issues" target="_blank" rel="noopener">Report a problem</a> ·
+    <span id="appVersion"></span>
+  </footer>
+</div>
+
+<script>
+const token = new URLSearchParams(location.search).get('t');
+const $ = (id) => document.getElementById(id);
+const CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
+
+let state = null;
+let view = 'loading';
+let where = 'local';
+let tab = 'overview';
+let logService = '';
+let following = false;   // a job is running and we show it
+let showDone = false;     // the install just finished
+let jobLines = [];
+let portTouched = false;
+
+// ── API ──────────────────────────────────────────────────────────────────
+async function call(path, body) {
+  const res = await fetch(path, {
+    method: body === undefined ? 'GET' : 'POST',
+    headers: body === undefined ? { 'X-Token': token } : { 'X-Token': token, 'Content-Type': 'application/json' },
+    body: body === undefined ? undefined : JSON.stringify(body),
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || res.statusText);
+  return data;
+}
+const post = (path, body = {}) => call(path, body).catch((e) => alert(e.message));
+
+// ── Views ────────────────────────────────────────────────────────────────
+const VIEWS = ['loading', 'docker', 'where', 'details', 'job', 'done', 'home'];
+function go(v) {
+  view = v;
+  for (const name of VIEWS) $('v-' + name).classList.toggle('hidden', name !== v);
+  for (const t of ['overview', 'logs', 'settings']) $('t-' + t).classList.toggle('hidden', !(v === 'home' && tab === t));
+  if (v === 'details') prepareDetails();
+  window.scrollTo({ top: 0 });
+}
+
+function newer(a, b) {
+  const pa = String(a).split('.').map(Number), pb = String(b).split('.').map(Number);
+  if (pa.some(isNaN) || pb.some(isNaN)) return a !== b;
+  for (let i = 0; i < 3; i++) if ((pa[i] || 0) !== (pb[i] || 0)) return (pa[i] || 0) > (pb[i] || 0);
+  return false;
+}
+const computerName = () => (state && state.os === 'darwin') ? 'this Mac' : (state && state.os === 'windows') ? 'this PC' : 'this computer';
+
+function render(s) {
+  state = s;
+  $('appVersion').textContent = s.app ? `WebBites Server ${s.app}` : '';
+  const dockerOk = s.docker.running && s.docker.compose;
+  const running = s.job && s.job.running;
+
+  // Which screen.
+  if (running || following) { if (view !== 'job') { go('job'); } renderJob(s.job); }
+  else if (showDone) go('done');
+  else if (!dockerOk) go('docker');
+  else if (!s.installed) { if (!['where', 'details'].includes(view)) go('where'); }
+  else if (view !== 'home') go('home');
+
+  // Docker
+  $('dockerProblem').textContent = s.docker.problem || '';
+  $('dockerLink').href = s.docker.installUrl;
+  $('dockerWhich').textContent = s.os === 'linux' ? '(Docker Engine)' : '(Docker Desktop)';
+  $('dockerCommand').classList.toggle('hidden', !s.docker.installCommand);
+  $('dockerCommandText').textContent = s.docker.installCommand || '';
+
+  // Setup
+  $('localTitle').textContent = `On ${computerName()}`;
+  $('existingNote').classList.toggle('hidden', s.installed);
+  if (!$('dir').value) $('dir').value = s.dir;
+  if (!portTouched && s.suggestedPort) $('port').value = s.suggestedPort;
+  const noRelease = !s.latest;
+  $('noRelease').classList.toggle('hidden', !noRelease);
+  $('noRelease').textContent = noRelease ? `No WebBites release is available to install yet (${s.latestError || 'none published'}).` : `Installs WebBites ${s.latest}`;
+  if (!noRelease) $('noRelease').classList.remove('hidden');
+  $('installBtn').disabled = noRelease || running;
+
+  // Home
+  if (s.installed) {
+    const total = s.services.length;
+    const up = s.services.filter((x) => x.state === 'running').length;
+    const st = $('status');
+    let label, cls;
+    if (!dockerOk) { label = 'Docker is not running'; cls = 'off'; }
+    else if (s.running && up === total) { label = 'Running'; cls = 'on'; }
+    else if (up > 0) { label = 'Partly running'; cls = 'warn'; }
+    else { label = 'Stopped'; cls = 'off'; }
+    st.className = 'status ' + cls; st.querySelector('span').textContent = label;
+    $('version').textContent = s.version || '';
+    $('url').textContent = s.publicUrl || '';
+    $('openLink').href = s.publicUrl || '#';
+    $('openLink').classList.toggle('hidden', !s.running);
+    $('powerBtn').textContent = s.running ? 'Stop' : 'Start';
+    $('powerBtn').className = s.running ? 'btn danger' : 'btn primary';
+    $('powerBtn').disabled = !dockerOk || running;
+    const canUpdate = s.latest && s.version && s.version !== 'latest' && newer(s.latest, s.version);
+    $('updateBanner').classList.toggle('hidden', !canUpdate);
+    $('updateTitle').textContent = `WebBites ${s.latest} is available`;
+
+    const list = $('services'); list.innerHTML = '';
+    for (const sv of s.services) {
+      const li = document.createElement('li');
+      const k = document.createElement('div'); k.className = 'k';
+      const [word, tone] = serviceState(sv);
+      const dot = document.createElement('i'); dot.className = tone;
+      k.append(dot, document.createTextNode(friendlyName(sv.name)));
+      const v = document.createElement('div'); v.className = 'v'; v.textContent = word; v.title = sv.status || sv.state;
+      li.append(k, v); list.append(li);
+    }
+    $('noServices').classList.toggle('hidden', total > 0);
+    renderChips(s.services);
+    $('setUrl').textContent = s.publicUrl || '';
+    $('setDir').textContent = s.dir;
+    const upToDate = s.latest && !newer(s.latest, s.version);
+    $('setVersions').textContent = `WebBites ${s.version || '?'}` + (s.latest ? (upToDate ? ' · up to date' : ` · ${s.latest} available`) : '') + ` · WebBites Server ${s.app}`;
+  }
+}
+
+const NAMES = { web: 'App', api: 'Engine', parse: 'Accounts & data', mongo: 'Database', redis: 'Queue', meilisearch: 'Search', caddy: 'Web server', screenshot: 'Page previews', rustfs: 'File storage', 'rustfs-init': 'File storage setup' };
+const friendlyName = (n) => NAMES[n] || n;
+// Docker's state in a word, and the colour of its dot.
+function serviceState(sv) {
+  if (sv.state === 'running') {
+    if (sv.health === 'healthy') return ['Healthy', 'on'];
+    if (sv.health === 'starting') return ['Starting…', 'warn'];
+    if (sv.health === 'unhealthy') return ['Having trouble', 'bad'];
+    return ['Running', 'on'];
+  }
+  if (sv.state === 'restarting') return ['Restarting…', 'warn'];
+  if (sv.state === 'created') return ['Not started', ''];
+  if (sv.name === 'rustfs-init' && sv.state === 'exited') return ['Done', 'on'];
+  return ['Stopped', 'bad'];
+}
+
+function renderChips(services) {
+  const wrap = $('logChips'); wrap.innerHTML = '';
+  for (const name of ['', ...services.map((x) => x.name)]) {
+    const b = document.createElement('button');
+    b.className = 'chip' + (name === logService ? ' on' : '');
+    b.textContent = name ? friendlyName(name) : 'Everything';
+    b.onclick = () => { logService = name; renderChips(services); loadLogs(); };
+    wrap.append(b);
+  }
+}
+
+// ── Setup ────────────────────────────────────────────────────────────────
+for (const t of document.querySelectorAll('.tile')) {
+  t.onclick = () => { where = t.dataset.where; go('details'); };
+}
+$('port').addEventListener('input', () => { portTouched = true; });
+
+function prepareDetails() {
+  const local = where === 'local';
+  $('domainField').classList.toggle('hidden', local);
+  $('portField').classList.toggle('hidden', !local);
+  $('detailsTitle').textContent = local ? `WebBites on ${computerName()}` : 'WebBites on your server';
+  $('detailsLead').textContent = local
+    ? 'Nothing else is needed. Add your email if you like, then install.'
+    : 'Tell it your address. Make sure ports 80 and 443 are open on this server.';
+  const port = Number($('port').value) || 80;
+  $('portHint').textContent = port === 80 ? 'WebBites will be at http://localhost.' : `Port 80 is busy, so WebBites will be at http://localhost:${port}.`;
+  $('setupError').classList.add('hidden');
+  if (!local) setTimeout(() => $('domain').focus(), 50);
+}
+
+async function install() {
+  const local = where === 'local';
+  const options = {
+    dir: $('dir').value,
+    domain: local ? 'localhost' : $('domain').value.trim(),
+    httpPort: local ? Number($('port').value || 80) : 80,
+    email: $('email').value.trim(),
+    screenshots: $('screenshots').checked,
+    rustfs: $('rustfs').checked,
+  };
+  if (!local && !options.domain) return showError('setupError', 'Enter your domain, for example bookmarks.example.com.');
+  await startJob('install', options, 'setupError');
+}
+
+// ── Jobs ─────────────────────────────────────────────────────────────────
+const JOB_STEPS = {
+  'Installing WebBites': [
+    ['Downloading WebBites', /Downloading WebBites/],
+    ['Creating your private keys', /Writing \.env/],
+    ['Downloading the app (a few minutes)', /Downloading the images/],
+    ['Starting everything', /Starting WebBites/],
+  ],
+  'Updating WebBites': [
+    ['Downloading the new version', /Downloading WebBites/],
+    ['Downloading the app', /Downloading the images/],
+    ['Restarting', /Starting WebBites/],
+  ],
+  'Starting WebBites': [['Starting everything', /Starting WebBites/]],
+  'Stopping WebBites': [['Stopping', /./]],
+  'Restarting WebBites': [['Restarting', /./]],
+};
+const JOB_DONE = {
+  'Installing WebBites': 'All set',
+  'Updating WebBites': 'Updated',
+  'Starting WebBites': 'WebBites is running',
+  'Stopping WebBites': 'WebBites is stopped',
+  'Restarting WebBites': 'Restarted',
+};
+const JOB_TEXT = {
+  'Installing WebBites': ['Setting things up', 'This takes a few minutes the first time. You can close this page: it keeps going.'],
+  'Updating WebBites': ['Updating WebBites', 'Your bookmarks and settings stay as they are.'],
+  'Starting WebBites': ['Starting WebBites', ''],
+  'Stopping WebBites': ['Stopping WebBites', 'It stays installed. Start brings it back.'],
+  'Restarting WebBites': ['Restarting WebBites', ''],
+};
+
+function renderJob(job) {
+  if (!job) return;
+  const name = job.name;
+  const [title, lead] = JOB_TEXT[name] || [name, ''];
+  $('jobTitle').textContent = job.running ? title : (job.error ? 'That didn’t work' : (JOB_DONE[name] || 'Done'));
+  $('jobLead').textContent = job.running ? lead : '';
+  const lines = (job.lines && job.lines.length >= jobLines.length) ? job.lines : jobLines;
+  const text = lines.join('\n');
+  const steps = JOB_STEPS[name] || [[name, /./]];
+  let reached = -1;
+  steps.forEach(([, re], i) => { if (re.test(text)) reached = i; });
+  const ul = $('jobSteps'); ul.innerHTML = '';
+  steps.forEach(([label], i) => {
+    const li = document.createElement('li');
+    let cls = '';
+    if (!job.running && !job.error) cls = 'done';
+    else if (i < reached) cls = 'done';
+    else if (i === reached || (reached === -1 && i === 0)) cls = job.running ? 'active' : (job.error ? 'failed' : 'done');
+    li.className = cls;
+    li.innerHTML = `<span class="dot">${cls === 'done' ? CHECK : cls === 'failed' ? '!' : ''}</span>`;
+    li.append(document.createTextNode(label));
+    ul.append(li);
+  });
+  $('jobLog').textContent = text;
+  if (!$('jobLog').classList.contains('hidden')) $('jobLog').scrollTop = $('jobLog').scrollHeight;
+  if (job.error && !job.running) {
+    showError('jobError', friendlyError(job.error));
+  } else $('jobError').classList.add('hidden');
+  $('jobBack').classList.toggle('hidden', job.running);
+  $('jobBack').textContent = !job.error ? 'Continue' : (job.name === 'Installing WebBites' ? 'Try again' : 'Back');
+  $('jobBack').className = job.error ? 'btn primary' : 'btn primary';
+}
+
+// errorBox: where a refusal is shown (the job never started); none means a dialog.
+async function startJob(name, body, errorBox) {
+  if (errorBox) $(errorBox).classList.add('hidden');
+  jobLines = []; following = true;
+  try {
+    await call('/api/' + name, body || {});
+    go('job');
+    refresh();
+  } catch (e) {
+    following = false;
+    if (errorBox) showError(errorBox, e.message); else alert(e.message);
+  }
+}
+
+function leaveJob() {
+  following = false;
+  const job = state && state.job;
+  if (job && !job.error && job.name === 'Installing WebBites') showDone = true;
+  // A failed install goes back to its answers, still filled in.
+  view = (job && job.error && job.name === 'Installing WebBites' && !state.installed) ? 'details' : '';
+  if (view === 'details') { go('details'); return; }
+  refresh();
+}
+function finishDone() { showDone = false; view = ''; setTimeout(refresh, 50); }
+
+function toggleLog() {
+  const log = $('jobLog'); log.classList.toggle('hidden');
+  $('logToggle').textContent = log.classList.contains('hidden') ? 'Show details' : 'Hide details';
+  log.scrollTop = log.scrollHeight;
+}
+
+// What went wrong, in words, from the error the server reports.
+function friendlyError(err) {
+  if (/compose pull/.test(err)) return 'WebBites couldn\u2019t be downloaded. Check your internet connection and that Docker is running, then try again. Nothing was changed.';
+  if (/compose up/.test(err)) return 'Some parts of WebBites didn\u2019t start. The details below show which; then try again.';
+  if (/GitHub|release/i.test(err)) return 'Couldn\u2019t reach GitHub to find the latest WebBites. Check your internet connection and try again.';
+  return err;
+}
+
+function showError(id, msg) { const el = $(id); el.textContent = msg; el.classList.remove('hidden'); }
+
+function power() {
+  if (state.running) {
+    if (!confirm('Stop WebBites? It stays installed, and Start brings it back.')) return;
+    startJob('stop');
+  } else startJob('start');
+}
+function restart() { startJob('restart'); }
+function update() {
+  if (!confirm(`Update to WebBites ${state.latest}? A copy of .env first is a good idea. Your bookmarks stay as they are.`)) return;
+  startJob('update');
+}
+
+// ── Home tabs and logs ───────────────────────────────────────────────────
+for (const b of document.querySelectorAll('.tabs button')) {
+  b.onclick = () => {
+    tab = b.dataset.tab;
+    for (const x of document.querySelectorAll('.tabs button')) x.classList.toggle('on', x === b);
+    go('home');
+    if (tab === 'logs') loadLogs();
+  };
+}
+async function loadLogs() {
+  $('logs').textContent = 'Loading…';
+  try {
+    const { logs } = await call(`/api/logs?service=${encodeURIComponent(logService)}`);
+    $('logs').textContent = logs.trim() || 'Nothing logged yet.';
+    $('logs').scrollTop = $('logs').scrollHeight;
+  } catch (e) { $('logs').textContent = e.message; }
+}
+
+async function openExisting(e) {
+  if (e) e.preventDefault();
+  const dir = prompt('The folder of an existing WebBites install (the one with its .env), or an empty folder for a new one:', state ? state.dir : '');
+  if (!dir) return;
+  try { await call('/api/dir', { dir }); $('dir').value = ''; view = ''; refresh(); } catch (err) { alert(err.message); }
+}
+
+// ── Live updates ─────────────────────────────────────────────────────────
+async function refresh() {
+  try { render(await call('/api/state')); }
+  catch (e) { $('v-loading').innerHTML = `<div class="note bad"><span>${e.message}</span></div>`; }
+}
+function listen() {
+  const es = new EventSource(`/api/events?t=${encodeURIComponent(token)}`);
+  es.onmessage = (ev) => {
+    following = true;
+    jobLines.push(JSON.parse(ev.data));
+    if (state && state.job) renderJob({ ...state.job, running: true, lines: jobLines });
+    if (view !== 'job') go('job');
+  };
+  es.addEventListener('end', async () => {
+    await refresh();
+    const job = state && state.job;
+    if (job && !job.error && job.name === 'Installing WebBites') {
+      // Straight to the "ready" screen.
+      following = false; showDone = true; view = ''; render(state);
+    } else if (job) renderJob(job);
+  });
+}
+
+refresh();
+listen();
+setInterval(() => { if (!(state && state.job && state.job.running)) refresh(); }, 4000);
+</script>
+</body>
+</html>

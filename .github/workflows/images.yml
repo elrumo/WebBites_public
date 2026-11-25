@@ -1,8 +1,11 @@
 name: Publish images
 
 # Builds multi-arch images and pushes them to Docker Hub when a version tag is pushed (v1.2.3), or
-# when run by hand; a version tag then also gets a GitHub release (the `release` job below).
-# Needs the repository secrets DOCKERHUB_USERNAME and DOCKERHUB_TOKEN.
+# when run by hand. A version tag also builds the WebBites Server desktop app (macOS, Windows, Linux)
+# and publishes a GitHub release with it attached (the `installer` and `release` jobs below).
+# Needs the repository secrets DOCKERHUB_USERNAME and DOCKERHUB_TOKEN. Optional, to sign and notarize
+# the macOS app: MACOS_CERT_P12 (base64), MACOS_CERT_PASSWORD, MACOS_DEVELOPER_ID, APPLE_ID,
+# APPLE_TEAM_ID and APPLE_APP_PASSWORD (without them it is ad-hoc signed).
 
 on:
   push:
@@ -72,18 +75,98 @@ jobs:
           cache-from: type=gha,scope=${{ matrix.app }}
           cache-to: type=gha,mode=max,scope=${{ matrix.app }}
 
+  installer:
+    # The WebBites Server app, attached to the release.
+    name: Desktop app (${{ matrix.os }})
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    env:
+      # Secrets can't be used in `if:` directly.
+      HAS_MACOS_CERT: ${{ secrets.MACOS_CERT_P12 != '' }}
+    defaults:
+      run:
+        working-directory: apps/installer
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: apps/installer/go.mod
+          cache-dependency-path: apps/installer/go.sum
+      - name: Version
+        run: echo "VERSION=${GITHUB_REF_NAME#v}" >> "$GITHUB_ENV"
+        working-directory: .
+      - name: Linux and Windows
+        if: runner.os == 'Linux'
+        run: |
+          set -e
+          mkdir -p dist
+          for arch in amd64 arm64; do
+            d="WebBites-Server-linux-$arch"
+            mkdir -p "$d"
+            CGO_ENABLED=0 GOOS=linux GOARCH=$arch go build -trimpath -ldflags "-s -w -X main.appVersion=$VERSION" -o "$d/webbites-server" .
+            cp packaging/webbites-server.desktop "$d/"
+            cp icons/app-1024.png "$d/webbites-server.png"
+            tar -czf "dist/$d.tar.gz" "$d"
+          done
+          for arch in amd64 arm64; do
+            d="WebBites-Server-windows-$arch"
+            mkdir -p "$d"
+            CGO_ENABLED=0 GOOS=windows GOARCH=$arch go build -trimpath -ldflags "-s -w -H=windowsgui -X main.appVersion=$VERSION" -o "$d/WebBites Server.exe" .
+            (cd "$d" && zip -q "../dist/$d.zip" "WebBites Server.exe")
+          done
+      - name: macOS signing certificate
+        if: runner.os == 'macOS' && env.HAS_MACOS_CERT == 'true'
+        env:
+          MACOS_CERT_P12: ${{ secrets.MACOS_CERT_P12 }}
+          MACOS_CERT_PASSWORD: ${{ secrets.MACOS_CERT_PASSWORD }}
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+          APPLE_APP_PASSWORD: ${{ secrets.APPLE_APP_PASSWORD }}
+        run: |
+          set -e
+          KC="$RUNNER_TEMP/signing.keychain-db"
+          security create-keychain -p "" "$KC"
+          security set-keychain-settings -lut 21600 "$KC"
+          security unlock-keychain -p "" "$KC"
+          echo "$MACOS_CERT_P12" | base64 --decode > "$RUNNER_TEMP/cert.p12"
+          security import "$RUNNER_TEMP/cert.p12" -k "$KC" -P "$MACOS_CERT_PASSWORD" -T /usr/bin/codesign
+          security set-key-partition-list -S apple-tool:,apple: -s -k "" "$KC"
+          # shellcheck disable=SC2046 # one keychain path per word, on purpose
+          security list-keychains -d user -s "$KC" $(security list-keychains -d user | tr -d '"')
+          xcrun notarytool store-credentials webbites --apple-id "$APPLE_ID" --team-id "$APPLE_TEAM_ID" --password "$APPLE_APP_PASSWORD"
+          echo "NOTARY_PROFILE=webbites" >> "$GITHUB_ENV"
+      - name: macOS
+        if: runner.os == 'macOS'
+        env:
+          DEVELOPER_ID: ${{ secrets.MACOS_DEVELOPER_ID }}
+        run: ./packaging/build-macos-app.sh "$VERSION" dist
+      - uses: actions/upload-artifact@v4
+        with:
+          name: installer-${{ matrix.os }}
+          path: apps/installer/dist/*
+
   release:
     # A version tag also gets a GitHub release, once every image is on Docker Hub: notes generated
     # from the merged pull requests since the previous tag, and the images to pull.
     name: GitHub release
-    needs: build
+    needs: [build, installer]
     if: startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: installer-*
+          path: dist
+          merge-multiple: true
       - uses: softprops/action-gh-release@v2
         with:
+          files: dist/*
           generate_release_notes: true
           # v1.2.0-rc.1 and the like are marked as pre-releases.
           prerelease: ${{ contains(github.ref_name, '-') }}
@@ -91,5 +174,9 @@ jobs:
             Images on Docker Hub, tagged with this version without the `v` (a final release also moves `latest`):
             `elrumo/webbites-web`, `elrumo/webbites-api`, `elrumo/webbites-parse`, `elrumo/webbites-screenshot`.
 
-            Upgrading: set `WEBBITES_VERSION` in `deploy/.env`, then `docker compose pull && docker compose up -d`
+            **Install:** on a server, `curl -fsSL https://raw.githubusercontent.com/${{ github.repository }}/master/deploy/get.sh | sh`.
+            On a Mac or PC, download **WebBites Server** below (macOS, Windows, Linux) and open it.
+
+            **Upgrade:** run the same command again in the same place, use **Update** in WebBites Server, or set
+            `WEBBITES_VERSION` in `.env` and `docker compose pull && docker compose up -d`
             (see [docs/upgrade.md](https://github.com/${{ github.repository }}/blob/${{ github.ref_name }}/docs/upgrade.md)).

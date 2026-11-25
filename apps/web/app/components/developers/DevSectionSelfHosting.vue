@@ -7,7 +7,7 @@
       every feature on, and nothing in it phones home.
     </p>
     <ul>
-      <li><strong>One compose file.</strong> Web app, API, Parse Server, MongoDB, Redis, Meilisearch and Caddy, started with one command. Nothing to clone or build.</li>
+      <li><strong>One app or one command.</strong> Web app, API, Parse Server, MongoDB, Redis, Meilisearch and Caddy, set up and started for you. Nothing to clone or build.</li>
       <li><strong>HTTPS included.</strong> Caddy gets and renews the certificate for your domain by itself.</li>
       <li><strong>AGPL-3.0.</strong> If you modify it and offer it to other people over a network, you offer them your modified source.</li>
     </ul>
@@ -21,45 +21,62 @@
   <section>
     <h2 id="requirements">What you need</h2>
     <ul>
-      <li>A Linux or macOS machine with <strong>Docker and Docker Compose 2.23 or newer</strong>.</li>
-      <li><strong>2 GB of RAM</strong>, or about 3 GB if you also run the screenshot service.</li>
-      <li>For a public install, a <strong>domain name</strong> pointing at the machine, with ports 80 and 443 open.</li>
+      <li><strong>Docker</strong>: Docker Desktop on a Mac or Windows PC, or Docker Engine with Compose 2.23 or newer on Linux.</li>
+      <li><strong>2 GB of free memory</strong>, or about 3 GB with page previews (the screenshot service).</li>
+      <li>To reach it from anywhere: a <strong>domain name</strong> pointing at the machine, with ports 80 and 443 open. To use it on one computer, nothing.</li>
     </ul>
   </section>
 
   <section>
     <h2 id="install">Install</h2>
-    <p>
-      Make a folder, download <code>compose.yaml</code> into it and write a <code>.env</code> next to it with
-      your address and fresh secrets. Change <code>PUBLIC_URL</code> to your domain first, or use
-      <code>http://localhost</code> to try it on one machine.
-    </p>
-    <DevCode :code="INSTALL" language="bash" label="Terminal" />
-    <p>
-      That is the whole install. <code>compose.yaml</code> is the setup, the same for everyone, and is shown
-      in full below. <code>.env</code> holds what is yours: the address and the secrets. Keep it private and
-      back it up; upgrading replaces <code>compose.yaml</code> and never touches it.
-    </p>
+    <p>Pick the way that suits where WebBites will run. They all set up the same thing.</p>
+    <div class="docs-cards">
+      <NuxtLink to="/developers/docs/self-hosting-app" class="docs-card docs-card-hover">
+        <div class="docs-card-title">On your Mac, PC or Linux desktop</div>
+        <div class="docs-card-text">
+          Download the <strong>WebBites Server</strong> app. It checks Docker, asks two questions in your browser,
+          installs, and then starts, stops and updates WebBites from the menu bar. No terminal.
+        </div>
+      </NuxtLink>
+      <NuxtLink to="/developers/docs/self-hosting-terminal#one-command" class="docs-card docs-card-hover">
+        <div class="docs-card-title">On a server, with one command</div>
+        <div class="docs-card-text">
+          One <code>curl … | sh</code> over SSH downloads the latest release, asks for your domain and starts
+          WebBites with HTTPS.
+        </div>
+      </NuxtLink>
+      <NuxtLink to="/developers/docs/self-hosting-terminal#by-hand" class="docs-card docs-card-hover">
+        <div class="docs-card-title">By hand, with compose.yaml</div>
+        <div class="docs-card-text">
+          One compose file and an <code>.env</code> you write yourself. Every line in view, easy to fit into a
+          setup you already have.
+        </div>
+      </NuxtLink>
+      <NuxtLink to="/developers/docs/self-hosting-terminal#cli" class="docs-card docs-card-hover">
+        <div class="docs-card-title">With the webbites-server command</div>
+        <div class="docs-card-text">
+          The app's command-line side, for servers: <code>install</code>, <code>status</code>,
+          <code>update</code>, <code>logs</code>.
+        </div>
+      </NuxtLink>
+    </div>
+    <figure class="docs-figure">
+      <img :src="`${SHOTS}/where.webp`" width="1200" height="1139" loading="lazy" decoding="async"
+        alt="WebBites Server asking where you will use WebBites: on this Mac, or on a server at your own address">
+      <figcaption>The WebBites Server app's first question</figcaption>
+    </figure>
     <p>
       The images are published on Docker Hub as <code>elrumo/webbites-web</code>,
       <code>elrumo/webbites-api</code>, <code>elrumo/webbites-parse</code> and
-      <code>elrumo/webbites-screenshot</code>, for both <code>amd64</code> and <code>arm64</code>.
+      <code>elrumo/webbites-screenshot</code>, for both <code>amd64</code> and <code>arm64</code>, and every
+      way above uses them: nothing is built on your machine.
     </p>
-  </section>
-
-  <section>
-    <h2 id="compose-file">The compose file</h2>
-    <p>
-      Download it from <a :href="COMPOSE_URL">{{ COMPOSE_URL }}</a> or copy it from here. Email, AI, file
-      storage and the rest are set from the admin page, so they are not in it.
-    </p>
-    <DevCode :code="COMPOSE" language="yaml" label="compose.yaml" />
   </section>
 
   <section>
     <h2 id="first-account">Claim the install</h2>
     <p>
-      Open your <code>PUBLIC_URL</code> and <strong>create your account straight away: the first account
+      Open your WebBites (the address the installer shows) and <strong>create your account straight away: the first account
       becomes the administrator.</strong> With <code>INITIAL_ADMIN_EMAIL</code> set, only that address can
       claim it, so a stranger who finds the server first cannot. Leave it empty and whoever signs up first
       wins, so do not leave a fresh install unattended on the internet.
@@ -121,42 +138,16 @@
       <li>Not built yet: invite-only sign-ups, an importer for boards and tags from a webbites.io backup, and running more than one Parse instance.</li>
     </ul>
     <p>
-      Next: <NuxtLink to="/developers/docs/self-hosting-operations">configuration, backups and upgrades</NuxtLink>.
+      Next: install with <NuxtLink to="/developers/docs/self-hosting-app">the WebBites Server app</NuxtLink> or
+      <NuxtLink to="/developers/docs/self-hosting-terminal">from the terminal</NuxtLink>, then read
+      <NuxtLink to="/developers/docs/self-hosting-operations">configuration, backups and upgrades</NuxtLink>.
     </p>
   </section>
 </template>
 
 <script setup>
 import DevCode from '~/components/developers/DevCode.vue'
-import { SELF_HOST_REPO_URL as REPO_URL, SELF_HOST_COMPOSE_URL } from '~/utils/devApi'
-// The same file the site serves for download, so the page and the download never differ.
-// Relative, not ~~/: ~~ is the root of whichever project is being built, which is not this one when another project extends this app.
-import COMPOSE from '../../../public/self-hosting/compose.yaml?raw'
-
-const COMPOSE_URL = SELF_HOST_COMPOSE_URL
-
-const INSTALL = `mkdir webbites && cd webbites
-curl -fsSLO ${COMPOSE_URL}
-
-# Your address and fresh secrets
-cat > .env <<EOF
-PUBLIC_URL=https://notes.example.com
-INITIAL_ADMIN_EMAIL=you@example.com
-MONGO_PASSWORD=$(openssl rand -hex 24)
-PARSE_APP_ID=$(openssl rand -hex 8)
-PARSE_JS_KEY=$(openssl rand -hex 24)
-PARSE_MASTER_KEY=$(openssl rand -hex 32)
-CUSTOM_API_KEY=$(openssl rand -hex 32)
-AUDIO_TOKEN_SECRET=$(openssl rand -hex 32)
-SHARE_LINK_SECRET=$(openssl rand -hex 32)
-BACKUP_ENCRYPTION_KEY=$(openssl rand -hex 32)
-SETTINGS_ENCRYPTION_KEY=$(openssl rand -hex 32)
-MEILI_MASTER_KEY=$(openssl rand -hex 24)
-SCREENSHOT_API_KEY=$(openssl rand -hex 24)
-EOF
-chmod 600 .env
-
-docker compose up -d`
+import { SELF_HOST_REPO_URL as REPO_URL, SELF_HOST_SHOTS as SHOTS } from '~/utils/devApi'
 
 const OWN_API = `curl https://your.domain/v1/api/bookmarks?limit=5 \\
   -H "Authorization: Bearer wb_live_…"`
@@ -169,6 +160,7 @@ const SERVICES = [
   { name: 'mongo', role: 'The database, and file storage unless you choose S3.' },
   { name: 'redis', role: 'Job queue, rate limits and developer API keys. Persisted: it is not just a cache.' },
   { name: 'meilisearch', role: 'Search.' },
-  { name: 'screenshot', role: 'The headless browser that screenshots pages and renders JavaScript. Optional: delete it from compose.yaml to save about 1 GB of RAM.' },
+  { name: 'screenshot', role: 'The headless browser that screenshots pages and renders JavaScript. Optional (page previews): leave it out to save about 1 GB of RAM.' },
+  { name: 'rustfs', role: 'Optional (separate file storage): an S3-compatible store for uploads, instead of MongoDB.' },
 ]
 </script>

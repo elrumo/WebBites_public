@@ -3,6 +3,7 @@
 | | |
 |---|---|
 | [Quickstart](quickstart.md) | From nothing to a running install in about five minutes |
+| [The WebBites Server app](desktop-app.md) | Install and run it on a Mac, PC or Linux desktop, step by step with pictures |
 | [Configuration](configuration.md) | Every setting, what reads it, and where to change it |
 | [Email](email.md) | Password reset, invitations, address changes |
 | [File storage](storage.md) | MongoDB (default), RustFS, or any S3 bucket |

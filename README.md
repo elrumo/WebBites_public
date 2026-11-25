@@ -8,8 +8,24 @@ without payment plans, running on your own server.
 
 ## Quick start
 
-You need a Linux (or macOS) machine with Docker and Docker Compose v2, and, for HTTPS, a domain that
-points at it.
+You need Docker with Docker Compose v2 and, for HTTPS, a domain that points at the machine.
+
+**On a server**, one command (it downloads only the deployment files, not this repository):
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/elrumo/webbites_public/master/deploy/get.sh | sh
+```
+
+**On your Mac or PC**, download the **WebBites Server** app from the
+[latest release](https://github.com/elrumo/webbites_public/releases/latest): it sets WebBites up from
+a page in your browser, then starts, stops and updates it from the menu bar. See [the app](docs/desktop-app.md).
+
+<p align="center">
+  <img src="apps/web/public/self-hosting/app/where.webp" width="380" alt="WebBites Server: where will you use WebBites?">
+  <img src="apps/web/public/self-hosting/app/home.webp" width="380" alt="WebBites Server: running, with Open WebBites and the list of services">
+</p>
+
+**From a clone:**
 
 ```bash
 git clone https://github.com/elrumo/webbites_public.git webbites && cd webbites/deploy
@@ -22,7 +38,9 @@ Open the address the installer prints and create your account: the first account
 administrator. Email, an AI endpoint, file storage and the rest are then set up from **/admin → Settings**,
 no file editing needed.
 
-Documentation is in [`docs/`](docs/): [quickstart](docs/quickstart.md),
+The full self-hosting guide, with every step pictured, is also at
+[webbites.io/developers/docs/self-hosting](https://www.webbites.io/developers/docs/self-hosting).
+Documentation is in [`docs/`](docs/): [quickstart](docs/quickstart.md), [desktop app](docs/desktop-app.md),
 [configuration](docs/configuration.md), [backups](docs/backups.md), [upgrading](docs/upgrade.md),
 [security](docs/security.md), [FAQ](docs/faq.md).
 
@@ -45,7 +63,8 @@ apps/web         Nuxt web app
 apps/api         Nitro/Bun API
 apps/parse       Parse Server and cloud code
 apps/screenshot  Screenshot service
-deploy/          docker-compose.yml, Caddyfile, install.sh, .env.example
+apps/installer   WebBites Server, the desktop/CLI installer (Go)
+deploy/          docker-compose.yml, Caddyfile, install.sh, get.sh (one-line installer), .env.example
 scripts/         repository checks
 docs/            Documentation
 ```

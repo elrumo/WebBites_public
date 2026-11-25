@@ -1,6 +1,18 @@
 # Upgrading
 
-Images are tagged with the release version. `.env` has `WEBBITES_VERSION` (default `latest`).
+Images are tagged with the release version. `.env` has `WEBBITES_VERSION` (the installers pin it to the
+release they installed).
+
+**Installed with the one-line command?** Run it again in the same place: it fetches the new release's
+deployment files (keeping the old ones in `.previous/`), moves `WEBBITES_VERSION` on, pulls and restarts.
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/elrumo/webbites_public/master/deploy/get.sh | sh
+```
+
+**With the WebBites Server app?** Choose **Update to x.y.z** in its menu (or `webbites-server update`).
+
+**By hand** (a clone):
 
 ```sh
 cd deploy

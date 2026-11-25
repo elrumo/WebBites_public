@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=WebBites Server
+Comment=Run your own WebBites with Docker
+Exec=webbites-server
+Icon=webbites-server
+Terminal=false
+Categories=Network;Utility;
