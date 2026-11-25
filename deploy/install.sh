@@ -24,7 +24,7 @@ ASSUME_YES=""
 VERSION="latest"
 HTTP_PORT="80"
 
-usage() { sed -n '2,18p' "$0" | sed 's/^# \{0,1\}//'; }
+usage() { sed -n '2,16p' "$0" | sed 's/^# \{0,1\}//'; }
 
 while [ $# -gt 0 ]; do
   case "$1" in
@@ -166,7 +166,7 @@ S3_BUCKET=webbites
 S3_ENDPOINT_URL=http://rustfs:9000
 S3_REGION=us-east-1
 EOF
-    echo "S3_PUBLIC_URL=$PUBLIC_URL/s3/webbites"
+    echo "S3_PUBLIC_URL=$PUBLIC_URL/s3"
     echo "S3_ACCESS_KEY=$RUSTFS_ACCESS_KEY"
     echo "S3_SECRET_KEY=$RUSTFS_SECRET_KEY"
   fi

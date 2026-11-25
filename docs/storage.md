@@ -11,7 +11,7 @@ Uploaded files, screenshots and saved pages need somewhere to live.
 ## RustFS
 
 `./install.sh --rustfs` turns on the `rustfs` profile and fills in `FILES_DRIVER=s3`, the endpoint
-(`http://rustfs:9000`), a bucket (`webbites`) and the public address (`https://your.domain/s3/webbites`,
+(`http://rustfs:9000`), a bucket (`webbites`) and the public address (`https://your.domain/s3`,
 which Caddy forwards to RustFS). A one-shot container creates the bucket and makes objects readable by
 their URL: that is how browsers load images, so file names are long random strings, not secrets.
 
@@ -29,3 +29,8 @@ bucket). The bucket must allow anonymous reads of objects, or sit behind somethi
 File addresses are saved inside your bookmarks. Switching stores does not move anything: files uploaded
 before the switch keep pointing at the old place. Copy the old files across (same object names) before
 switching, or keep the old store online.
+
+> **Upgrading a RustFS install made before this was fixed?** If your `.env` has
+> `S3_PUBLIC_URL=…/s3/webbites`, change it to `…/s3` (the bucket name is added for you) and restart
+> `parse` and `api`. Files uploaded under the old value were saved with a doubled bucket in their
+> address and need that rewritten once; ask in an issue if you have many.

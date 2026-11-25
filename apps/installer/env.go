@@ -128,7 +128,7 @@ func GenerateEnv(o Options, now time.Time) string {
 		line("S3_BUCKET", "webbites")
 		line("S3_ENDPOINT_URL", "http://rustfs:9000")
 		line("S3_REGION", "us-east-1")
-		line("S3_PUBLIC_URL", publicURL+"/s3/webbites")
+		line("S3_PUBLIC_URL", publicURL+"/s3")
 		line("S3_ACCESS_KEY", rustfsAccess)
 		line("S3_SECRET_KEY", rustfsSecret)
 	}

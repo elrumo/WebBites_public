@@ -237,21 +237,25 @@ services:
   rustfs-init:
     # Creates the bucket once and makes the objects readable by their URL (that is how the
     # browser loads images). Then exits.
-    image: minio/mc:latest
+    # The AWS CLI: minio/mc is no longer published on Docker Hub, and RustFS speaks plain S3.
+    image: amazon/aws-cli:2.42.4
     profiles: [rustfs]
     depends_on:
       - rustfs
     restart: "no"
     environment:
-      RUSTFS_ACCESS_KEY: ${RUSTFS_ACCESS_KEY:?}
-      RUSTFS_SECRET_KEY: ${RUSTFS_SECRET_KEY:?}
+      AWS_ACCESS_KEY_ID: ${RUSTFS_ACCESS_KEY:?}
+      AWS_SECRET_ACCESS_KEY: ${RUSTFS_SECRET_KEY:?}
+      AWS_DEFAULT_REGION: us-east-1
+      AWS_ENDPOINT_URL: http://rustfs:9000
+      AWS_PAGER: ""
       S3_BUCKET: ${S3_BUCKET:-webbites}
     entrypoint: ["/bin/sh", "-c"]
     command:
       - |
-        until mc alias set local http://rustfs:9000 "$$RUSTFS_ACCESS_KEY" "$$RUSTFS_SECRET_KEY" >/dev/null 2>&1; do sleep 2; done
-        mc mb --ignore-existing "local/$$S3_BUCKET"
-        mc anonymous set download "local/$$S3_BUCKET"
+        until aws s3api list-buckets >/dev/null 2>&1; do sleep 2; done
+        aws s3api head-bucket --bucket "$$S3_BUCKET" 2>/dev/null || aws s3api create-bucket --bucket "$$S3_BUCKET" >/dev/null
+        aws s3api put-bucket-policy --bucket "$$S3_BUCKET" --policy "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Principal\":\"*\",\"Action\":[\"s3:GetObject\"],\"Resource\":[\"arn:aws:s3:::$$S3_BUCKET/*\"]}]}"
         echo "bucket $$S3_BUCKET ready"
 
 networks:
