@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WebBites Server</title>
+<link rel="icon" href="/assets/icon.png">
+<style>
+  :root {
+    --bg: #f6f7f6; --card: #fff; --text: #1d1f1e; --muted: #6b716e; --border: #e4e7e5;
+    --accent: #18c37e; --accent-text: #fff; --danger: #d64545; --warn: #b7791f; --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #161817; --card: #1f2220; --text: #eef1ef; --muted: #9aa19d; --border: #2e3330; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); }
+  main { max-width: 760px; margin: 0 auto; padding: 32px 20px 64px; }
+  header { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
+  header img { width: 48px; height: 48px; }
+  header h1 { font-size: 22px; margin: 0; }
+  header .sub { color: var(--muted); font-size: 13px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 20px 22px; margin-bottom: 16px; }
+  .card h2 { font-size: 16px; margin: 0 0 12px; }
+  .muted { color: var(--muted); }
+  .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  label.field { display: block; margin: 12px 0; }
+  label.field > span { display: block; font-weight: 600; margin-bottom: 4px; }
+  label.field small { display: block; color: var(--muted); }
+  input[type=text], input[type=number], input[type=email], select {
+    width: 100%; padding: 9px 11px; border: 1px solid var(--border); border-radius: 9px; background: var(--bg); color: var(--text); font: inherit;
+  }
+  .choice { display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px; margin: 8px 0; cursor: pointer; }
+  .choice input { margin-top: 4px; }
+  .choice b { display: block; }
+  button, a.button {
+    appearance: none; border: 1px solid var(--border); background: var(--card); color: var(--text); padding: 8px 14px;
+    border-radius: 9px; font: inherit; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block;
+  }
+  button.primary, a.button.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-text); }
+  button.danger { color: var(--danger); }
+  button:disabled { opacity: .5; cursor: default; }
+  .pill { display: inline-block; padding: 2px 10px; border-radius: 99px; font-size: 13px; font-weight: 600; border: 1px solid var(--border); }
+  .pill.ok { color: var(--accent); border-color: currentColor; }
+  .pill.bad { color: var(--danger); border-color: currentColor; }
+  .pill.warn { color: var(--warn); border-color: currentColor; }
+  pre { font-family: var(--mono); font-size: 12.5px; background: var(--bg); border: 1px solid var(--border); border-radius: 9px; padding: 12px; max-height: 340px; overflow: auto; white-space: pre-wrap; word-break: break-word; margin: 10px 0 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  td { padding: 6px 0; border-bottom: 1px solid var(--border); }
+  td:last-child { text-align: right; color: var(--muted); }
+  .error { color: var(--danger); margin-top: 10px; white-space: pre-wrap; }
+  code { font-family: var(--mono); font-size: 13px; background: var(--bg); padding: 1px 5px; border-radius: 5px; }
+  .hidden { display: none !important; }
+  a { color: var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <img src="/assets/icon.png" alt="">
+    <div>
+      <h1>WebBites Server</h1>
+      <div class="sub">Your own WebBites, on this computer or your server. <span id="appVersion"></span></div>
+    </div>
+  </header>
+
+  <div id="loading" class="card muted">Checking Docker…</div>
+
+  <!-- Docker missing or not running -->
+  <section id="docker" class="card hidden">
+    <h2>Docker is needed first</h2>
+    <p id="dockerProblem"></p>
+    <p class="muted">WebBites runs in Docker containers. Install it, start it, then check again.</p>
+    <p id="dockerCommand" class="hidden">On Linux: <code id="dockerCommandText"></code></p>
+    <div class="row">
+      <a id="dockerLink" class="button primary" target="_blank" rel="noopener">Get Docker</a>
+      <button onclick="refresh()">Check again</button>
+    </div>
+  </section>
+
+  <!-- Not installed yet -->
+  <section id="setup" class="card hidden">
+    <h2>Set up WebBites</h2>
+    <p id="noRelease" class="error hidden"></p>
+    <label class="field"><span>Folder</span>
+      <input id="dir" type="text">
+      <small>WebBites keeps its settings (<code>.env</code>) here; your data lives in Docker volumes. Already installed? Enter its folder to manage it.</small>
+    </label>
+
+    <div class="field"><b>Where will you use it?</b>
+      <label class="choice"><input type="radio" name="where" value="local" checked>
+        <div><b>On this computer</b><span class="muted">Open it at <code>http://localhost</code>. Good for trying it or for one person.</span></div>
+      </label>
+      <label class="choice"><input type="radio" name="where" value="domain">
+        <div><b>On a server, with my domain</b><span class="muted">For a machine reachable from the internet, with HTTPS. Point the domain's DNS at it first.</span></div>
+      </label>
+    </div>
+
+    <label class="field" id="portField"><span>Port</span>
+      <input id="port" type="number" min="1" max="65535" value="80">
+      <small>80 gives <code>http://localhost</code>. If something else uses it, pick another, like 8080.</small>
+    </label>
+    <label class="field hidden" id="domainField"><span>Domain</span>
+      <input id="domain" type="text" placeholder="notes.example.com" autocomplete="off">
+    </label>
+    <label class="field"><span>Your email <span class="muted">(optional)</span></span>
+      <input id="email" type="email" placeholder="you@example.com" autocomplete="email">
+      <small>Only this address can become the administrator. Empty: the first account to sign up does.</small>
+    </label>
+
+    <label class="choice"><input id="screenshots" type="checkbox" checked>
+      <div><b>Page screenshots</b><span class="muted">Bookmark cards show a picture of the page. Uses about 1 GB of RAM.</span></div>
+    </label>
+    <label class="choice"><input id="rustfs" type="checkbox">
+      <div><b>Keep files in a bundled S3 store</b><span class="muted">RustFS instead of the database. Better for large libraries.</span></div>
+    </label>
+
+    <div class="row" style="margin-top:16px">
+      <button id="installBtn" class="primary" onclick="install()">Install WebBites <span id="installVersion"></span></button>
+      <span id="installHint" class="muted"></span>
+    </div>
+    <div id="setupError" class="error hidden"></div>
+  </section>
+
+  <!-- Installed -->
+  <section id="dash" class="card hidden">
+    <div class="row" style="justify-content:space-between">
+      <h2 style="margin:0">WebBites <span id="version" class="muted"></span></h2>
+      <span id="status" class="pill"></span>
+    </div>
+    <p style="margin:14px 0">
+      <a id="openLink" class="button primary" target="_blank" rel="noopener">Open WebBites</a>
+      <span id="url" class="muted" style="margin-left:8px"></span>
+    </p>
+    <div class="row">
+      <button onclick="act('start')">Start</button>
+      <button onclick="act('restart')">Restart</button>
+      <button class="danger" onclick="act('stop')">Stop</button>
+      <button id="updateBtn" class="primary hidden" onclick="act('update')"></button>
+    </div>
+    <div id="dashError" class="error hidden"></div>
+  </section>
+
+  <section id="jobCard" class="card hidden">
+    <h2 id="jobTitle"></h2>
+    <pre id="jobLog"></pre>
+  </section>
+
+  <section id="services" class="card hidden">
+    <h2>Services</h2>
+    <table id="servicesTable"></table>
+  </section>
+
+  <section id="logsCard" class="card hidden">
+    <h2>Logs</h2>
+    <div class="row">
+      <select id="logService" style="width:auto"></select>
+      <button onclick="loadLogs()">Show</button>
+    </div>
+    <pre id="logs" class="hidden"></pre>
+  </section>
+
+  <section id="folderCard" class="card hidden">
+    <h2>Folder and backups</h2>
+    <p><code id="folder"></code></p>
+    <p class="muted">Back up the <code>.env</code> file in this folder somewhere safe: it holds the keys your data is encrypted with.
+      For the data itself, see <a href="https://github.com/elrumo/webbites_public/blob/master/docs/backups.md" target="_blank" rel="noopener">backups</a>.</p>
+    <div class="row">
+      <button onclick="post('/api/open-folder')">Show folder</button>
+      <button onclick="changeDir()">Use another folder…</button>
+    </div>
+  </section>
+</main>
+
+<script>
+const token = new URLSearchParams(location.search).get('t');
+const $ = (id) => document.getElementById(id);
+let state = null;
+let jobOpen = false;
+
+async function call(path, body) {
+  const res = await fetch(path, {
+    method: body === undefined ? 'GET' : 'POST',
+    headers: body === undefined ? { 'X-Token': token } : { 'X-Token': token, 'Content-Type': 'application/json' },
+    body: body === undefined ? undefined : JSON.stringify(body),
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || res.statusText);
+  return data;
+}
+const post = (path, body = {}) => call(path, body).catch((e) => alert(e.message));
+
+function show(id, on) { $(id).classList.toggle('hidden', !on); }
+
+function newer(a, b) { // is version a newer than b? (x.y.z)
+  const pa = String(a).split('.').map(Number), pb = String(b).split('.').map(Number);
+  if (pa.some(isNaN) || pb.some(isNaN)) return a !== b;
+  for (let i = 0; i < 3; i++) { if ((pa[i] || 0) !== (pb[i] || 0)) return (pa[i] || 0) > (pb[i] || 0); }
+  return false;
+}
+
+function render(s) {
+  state = s;
+  show('loading', false);
+  $('appVersion').textContent = s.app ? `· app ${s.app}` : '';
+  const dockerOk = s.docker.running && s.docker.compose;
+  show('docker', !dockerOk);
+  if (!dockerOk) {
+    $('dockerProblem').textContent = s.docker.problem || '';
+    $('dockerLink').href = s.docker.installUrl;
+    show('dockerCommand', !!s.docker.installCommand);
+    $('dockerCommandText').textContent = s.docker.installCommand || '';
+  }
+  show('setup', dockerOk && !s.installed);
+  show('dash', s.installed);
+  show('services', s.installed && s.services.length > 0);
+  show('logsCard', s.installed && dockerOk);
+  show('folderCard', s.installed);
+  $('folder').textContent = s.dir;
+
+  if (!s.installed) {
+    if (!$('dir').value) $('dir').value = s.dir;
+    const noRelease = !s.latest;
+    show('noRelease', noRelease);
+    $('noRelease').textContent = noRelease ? `Can't find a WebBites release to install (${s.latestError || 'none published yet'}).` : '';
+    $('installVersion').textContent = s.latest ? s.latest : '';
+    $('installBtn').disabled = noRelease || (s.job && s.job.running);
+  } else {
+    $('version').textContent = s.version || '';
+    $('url').textContent = s.publicUrl || '';
+    $('openLink').href = s.publicUrl || '#';
+    const running = s.services.filter((x) => x.state === 'running').length;
+    const pill = $('status');
+    if (!dockerOk) { pill.textContent = 'Docker is not running'; pill.className = 'pill bad'; }
+    else if (s.running && running === s.services.length) { pill.textContent = 'Running'; pill.className = 'pill ok'; }
+    else if (running > 0) { pill.textContent = 'Partly running'; pill.className = 'pill warn'; }
+    else { pill.textContent = 'Stopped'; pill.className = 'pill bad'; }
+    const canUpdate = s.latest && s.version && s.version !== 'latest' && newer(s.latest, s.version);
+    show('updateBtn', canUpdate);
+    $('updateBtn').textContent = `Update to ${s.latest}`;
+    $('servicesTable').innerHTML = '';
+    for (const sv of s.services) {
+      const tr = document.createElement('tr');
+      const a = document.createElement('td'); a.textContent = sv.name;
+      const b = document.createElement('td'); b.textContent = sv.status || sv.state;
+      tr.append(a, b); $('servicesTable').append(tr);
+    }
+    const sel = $('logService');
+    const current = sel.value;
+    sel.innerHTML = '<option value="">All services</option>' + s.services.map((x) => `<option>${x.name}</option>`).join('');
+    sel.value = current;
+  }
+
+  if (s.job) {
+    show('jobCard', true);
+    $('jobTitle').textContent = s.job.running ? `${s.job.name}…` : (s.job.error ? `${s.job.name}: failed` : `${s.job.name}: done`);
+    if (!jobOpen) { $('jobLog').textContent = s.job.lines.join('\n'); scrollLog(); }
+  }
+  for (const b of document.querySelectorAll('#dash button')) b.disabled = !!(s.job && s.job.running);
+}
+
+function scrollLog() { const el = $('jobLog'); el.scrollTop = el.scrollHeight; }
+
+async function refresh() {
+  try { render(await call('/api/state')); } catch (e) { $('loading').textContent = e.message; }
+}
+
+function follow() {
+  const es = new EventSource(`/api/events?t=${encodeURIComponent(token)}`);
+  es.onmessage = (ev) => {
+    jobOpen = true;
+    show('jobCard', true);
+    $('jobLog').textContent += ($('jobLog').textContent ? '\n' : '') + JSON.parse(ev.data);
+    scrollLog();
+  };
+  es.addEventListener('end', () => { jobOpen = false; refresh(); });
+}
+
+async function startJob(fn, errorBox) {
+  $(errorBox).classList.add('hidden');
+  $('jobLog').textContent = '';
+  jobOpen = true;
+  try { await fn(); refresh(); }
+  catch (e) { jobOpen = false; $(errorBox).textContent = e.message; $(errorBox).classList.remove('hidden'); }
+}
+
+function install() {
+  const local = document.querySelector('input[name=where]:checked').value === 'local';
+  const options = {
+    dir: $('dir').value,
+    domain: local ? 'localhost' : $('domain').value,
+    httpPort: local ? Number($('port').value || 80) : 80,
+    email: $('email').value,
+    screenshots: $('screenshots').checked,
+    rustfs: $('rustfs').checked,
+  };
+  if (!local && !options.domain) { $('setupError').textContent = 'Enter your domain.'; show('setupError', true); return; }
+  startJob(() => call('/api/install', options), 'setupError');
+}
+
+function act(name) {
+  if (name === 'stop' && !confirm('Stop WebBites? It stays installed; Start brings it back.')) return;
+  if (name === 'update' && !confirm(`Update to ${state.latest}? Back up .env first. Your data is kept.`)) return;
+  startJob(() => call(`/api/${name}`, {}), 'dashError');
+}
+
+async function loadLogs() {
+  try {
+    const { logs } = await call(`/api/logs?service=${encodeURIComponent($('logService').value)}`);
+    $('logs').textContent = logs || '(empty)';
+    show('logs', true);
+    $('logs').scrollTop = $('logs').scrollHeight;
+  } catch (e) { alert(e.message); }
+}
+
+async function changeDir() {
+  const dir = prompt('Folder of an existing WebBites install, or an empty folder for a new one:', state ? state.dir : '');
+  if (!dir) return;
+  try { await call('/api/dir', { dir }); $('dir').value = ''; refresh(); } catch (e) { alert(e.message); }
+}
+
+// A folder that already holds an install: manage it instead of setting up a new one.
+$('dir').addEventListener('change', async () => {
+  try { await call('/api/dir', { dir: $('dir').value }); refresh(); } catch (e) { /* checked again on Install */ }
+});
+
+for (const r of document.querySelectorAll('input[name=where]')) {
+  r.addEventListener('change', () => {
+    const local = document.querySelector('input[name=where]:checked').value === 'local';
+    show('portField', local); show('domainField', !local);
+  });
+}
+
+refresh();
+follow();
+setInterval(() => { if (!jobOpen) refresh(); }, 8000);
+</script>
+</body>
+</html>

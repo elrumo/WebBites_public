@@ -10,6 +10,8 @@
 #   --email <address>    makes that address the only one allowed to become the administrator
 #   --rustfs             keep files in the bundled S3-compatible store instead of MongoDB
 #   --no-screenshots     don't run the screenshot service
+#   --version <x.y.z>    image version to pin in .env (default: latest)
+#   --http-port <n>      port for plain http on localhost (default 80; use e.g. 8080 if 80 is taken)
 #   --yes                accept defaults, ask nothing
 #   --help
 set -eu
@@ -19,8 +21,10 @@ EMAIL=""
 RUSTFS=""
 SCREENSHOTS="yes"
 ASSUME_YES=""
+VERSION="latest"
+HTTP_PORT="80"
 
-usage() { sed -n '2,16p' "$0" | sed 's/^# \{0,1\}//'; }
+usage() { sed -n '2,18p' "$0" | sed 's/^# \{0,1\}//'; }
 
 while [ $# -gt 0 ]; do
   case "$1" in
@@ -28,6 +32,8 @@ while [ $# -gt 0 ]; do
     --email) EMAIL="${2:?--email needs a value}"; shift 2 ;;
     --rustfs) RUSTFS="yes"; shift ;;
     --no-screenshots) SCREENSHOTS="no"; shift ;;
+    --version) VERSION="${2:?--version needs a value}"; VERSION="${VERSION#v}"; shift 2 ;;
+    --http-port) HTTP_PORT="${2:?--http-port needs a value}"; shift 2 ;;
     --yes|-y) ASSUME_YES="yes"; shift ;;
     --help|-h) usage; exit 0 ;;
     *) echo "Unknown option: $1" >&2; usage >&2; exit 2 ;;
@@ -85,10 +91,19 @@ case "$DOMAIN" in
   */*|*" "*) die "That doesn't look like a host name: $DOMAIN" ;;
 esac
 
+case "$HTTP_PORT" in
+  ''|*[!0-9]*) die "--http-port must be a number" ;;
+esac
+# On a desktop 443 is often taken too, and plain-http localhost doesn't use it: move it out of the way.
+HTTPS_PORT=443
+[ "$HTTP_PORT" = "80" ] || HTTPS_PORT=8443
+
 if [ "$DOMAIN" = "localhost" ]; then
-  PUBLIC_URL="http://localhost"
+  # Caddy listens on 80 inside its container; HTTP_PORT is the port on this machine.
+  if [ "$HTTP_PORT" = "80" ]; then PUBLIC_URL="http://localhost"; else PUBLIC_URL="http://localhost:$HTTP_PORT"; fi
   SITE_ADDRESS="http://localhost"
 else
+  [ "$HTTP_PORT" = "80" ] || die "A domain needs port 80 for its HTTPS certificate; --http-port is for localhost only."
   PUBLIC_URL="https://$DOMAIN"
   SITE_ADDRESS="$DOMAIN"
 fi
@@ -117,9 +132,9 @@ umask 077
 
 PUBLIC_URL=$PUBLIC_URL
 SITE_ADDRESS=$SITE_ADDRESS
-HTTP_PORT=80
-HTTPS_PORT=443
-WEBBITES_VERSION=latest
+HTTP_PORT=$HTTP_PORT
+HTTPS_PORT=$HTTPS_PORT
+WEBBITES_VERSION=$VERSION
 COMPOSE_PROFILES=$PROFILES
 INITIAL_ADMIN_EMAIL=$EMAIL
 
