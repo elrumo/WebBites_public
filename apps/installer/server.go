@@ -108,7 +108,9 @@ func (u *UIServer) tokenOK(given string) bool {
 func (u *UIServer) page(static fs.FS) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		if !u.hostOK(r) || !u.tokenOK(r.URL.Query().Get("t")) {
-			http.Error(w, "Open this page from the WebBites Server menu.", http.StatusForbidden)
+			w.Header().Set("Content-Type", "text/html; charset=utf-8")
+			w.WriteHeader(http.StatusForbidden)
+			_, _ = w.Write([]byte(lockedPage))
 			return
 		}
 		data, _ := fs.ReadFile(static, "index.html")
@@ -223,3 +225,13 @@ func RunningUI() string {
 	}
 	return pageURL
 }
+
+// Shown to anything that reaches the page without this launch's key (an old bookmark, another app).
+const lockedPage = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WebBites Server</title><style>
+body{margin:0;min-height:100vh;display:grid;place-items:center;background:radial-gradient(60% 45% at 50% -5%,rgba(22,217,124,.2),transparent 70%),#0b0c0c;
+color:#f4f6f5;font:15px/1.55 -apple-system,BlinkMacSystemFont,"Inter","Segoe UI",Roboto,sans-serif;text-align:center}
+.c{max-width:420px;padding:32px;border-radius:26px;background:rgba(30,32,31,.72);border:1px solid rgba(255,255,255,.08)}
+h1{font-size:20px;margin:0 0 8px}p{margin:0;color:#b9bfbc}</style></head>
+<body><div class="c"><h1>Open WebBites Server from its menu</h1>
+<p>For your safety this page only opens from the WebBites Server icon in your menu bar (or notification area), with a new key each time.</p></div></body></html>`

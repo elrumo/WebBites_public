@@ -8,6 +8,7 @@ import (
 	"io"
 	"os"
 	"path/filepath"
+	"runtime"
 	"strings"
 	"sync"
 	"time"
@@ -127,10 +128,27 @@ type State struct {
 	Services    []Service    `json:"services"`
 	Running     bool         `json:"running"`
 	Job         *Job         `json:"job,omitempty"`
+	// For a new install on this computer: 80 when it is free, else the first free fallback.
+	SuggestedPort int    `json:"suggestedPort,omitempty"`
+	OS            string `json:"os"`
+}
+
+// FreePort is the port a localhost install should use: 80 if nothing answers there, else the first
+// free one of a few usual alternatives.
+func FreePort() int {
+	for _, p := range []int{80, 8080, 8081, 8088, 8888, 3080} {
+		if !PortInUse(p) {
+			return p
+		}
+	}
+	return 8080
 }
 
 func (m *Manager) State(ctx context.Context) State {
-	s := State{App: appVersion, Docker: CheckDocker(ctx), Dir: m.Dir(), Installed: m.Installed(), Services: []Service{}}
+	s := State{App: appVersion, Docker: CheckDocker(ctx), Dir: m.Dir(), Installed: m.Installed(), Services: []Service{}, OS: runtime.GOOS}
+	if !s.Installed {
+		s.SuggestedPort = FreePort()
+	}
 	if s.Installed {
 		if env, err := ReadEnv(m.envPath()); err == nil {
 			s.Version = env["WEBBITES_VERSION"]
