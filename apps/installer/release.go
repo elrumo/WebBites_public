@@ -84,22 +84,27 @@ func fetch(ctx context.Context, rawURL string) ([]byte, error) {
 	return io.ReadAll(res.Body)
 }
 
-// DownloadDeployFiles puts a version's deployment files in dir. Files already there are kept in
-// dir/.previous first (an upgrade), so a bad release can be rolled back by hand.
-func DownloadDeployFiles(ctx context.Context, dir, version string, log io.Writer) error {
+// FetchDeployFiles downloads a version's deployment files into memory, without touching any folder.
+func FetchDeployFiles(ctx context.Context, version string, log io.Writer) (map[string][]byte, error) {
 	base := sourceBase(version)
 	fmt.Fprintf(log, "Downloading WebBites %s deployment files...\n", version)
 	contents := map[string][]byte{}
 	for _, f := range deployFiles {
 		data, err := fetch(ctx, base+"/"+f)
 		if err != nil {
-			return fmt.Errorf("could not download %s: %w", f, err)
+			return nil, fmt.Errorf("could not download %s: %w", f, err)
 		}
 		if len(data) == 0 {
-			return fmt.Errorf("%s from %s is empty", f, base)
+			return nil, fmt.Errorf("%s from %s is empty", f, base)
 		}
 		contents[f] = data
 	}
+	return contents, nil
+}
+
+// WriteDeployFiles puts deployment files in dir. Files already there are kept in dir/.previous
+// first (an upgrade), so a bad release can be rolled back by hand.
+func WriteDeployFiles(dir string, contents map[string][]byte) error {
 	if err := os.MkdirAll(dir, 0o755); err != nil {
 		return err
 	}
@@ -118,4 +123,13 @@ func DownloadDeployFiles(ctx context.Context, dir, version string, log io.Writer
 		}
 	}
 	return nil
+}
+
+// DownloadDeployFiles fetches a version's deployment files and puts them in dir.
+func DownloadDeployFiles(ctx context.Context, dir, version string, log io.Writer) error {
+	contents, err := FetchDeployFiles(ctx, version, log)
+	if err != nil {
+		return err
+	}
+	return WriteDeployFiles(dir, contents)
 }

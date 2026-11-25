@@ -13,6 +13,7 @@ import (
 	"regexp"
 	"strings"
 	"time"
+	"unicode"
 )
 
 // Options are the installer's questions.
@@ -24,9 +25,28 @@ type Options struct {
 	Screenshots bool   `json:"screenshots"` // the screenshot service (about 1 GB of RAM)
 	RustFS      bool   `json:"rustfs"`      // files in the bundled S3 store instead of MongoDB
 	Version     string `json:"version"`     // image version to pin, e.g. 0.7.0
+	// Project is the Compose project name for a second install on a machine where "webbites" is
+	// taken; empty keeps the compose file's own name. Set by Install, never asked.
+	Project string `json:"-"`
 }
 
 var hostName = regexp.MustCompile(`^[A-Za-z0-9]([A-Za-z0-9-]*[A-Za-z0-9])?(\.[A-Za-z0-9]([A-Za-z0-9-]*[A-Za-z0-9])?)*$`)
+
+// versionChars is what a release name may hold: 1.2.3, 1.2.3-rc.1, edge. It ends up in .env and in a URL.
+var versionChars = regexp.MustCompile(`^[0-9A-Za-z._-]+$`)
+
+func validVersion(v string) error {
+	if !versionChars.MatchString(v) {
+		return fmt.Errorf("the version may only contain letters, digits, '.', '_' and '-' (for example 1.2.3)")
+	}
+	return nil
+}
+
+// oneLine reports whether s can sit after KEY= in .env: no line breaks, NUL or other control
+// characters, which could add settings of their own.
+func oneLine(s string) bool {
+	return strings.IndexFunc(s, unicode.IsControl) < 0
+}
 
 // Normalize fills in defaults and checks the answers.
 func (o *Options) Normalize() error {
@@ -36,6 +56,9 @@ func (o *Options) Normalize() error {
 	}
 	if strings.HasPrefix(o.Domain, "http://") || strings.HasPrefix(o.Domain, "https://") {
 		return fmt.Errorf("give the host name only, for example notes.example.com (no http://)")
+	}
+	if !oneLine(o.Domain) {
+		return fmt.Errorf("the domain name must be a single line without control characters")
 	}
 	if !hostName.MatchString(o.Domain) {
 		return fmt.Errorf("that doesn't look like a host name: %s", o.Domain)
@@ -50,19 +73,28 @@ func (o *Options) Normalize() error {
 		return fmt.Errorf("a domain needs port 80 for its HTTPS certificate; a different port is for localhost only")
 	}
 	o.Email = strings.TrimSpace(o.Email)
+	if !oneLine(o.Email) {
+		return fmt.Errorf("the email address must be a single line without control characters")
+	}
 	o.Version = strings.TrimPrefix(strings.TrimSpace(o.Version), "v")
 	if o.Version == "" {
 		o.Version = "latest"
 	}
-	return nil
+	return validVersion(o.Version)
+}
+
+// HTTPSPort is the port on this computer for HTTPS: 443, or 8443 when plain http is moved off 80
+// (on a desktop 443 is often taken too, and localhost http does not use it).
+func HTTPSPort(httpPort int) int {
+	if httpPort == 80 {
+		return 443
+	}
+	return 8443
 }
 
 // Addresses returns PUBLIC_URL, SITE_ADDRESS and HTTPS_PORT for the options.
 func (o Options) Addresses() (publicURL, siteAddress string, httpsPort int) {
-	httpsPort = 443
-	if o.HTTPPort != 80 {
-		httpsPort = 8443
-	}
+	httpsPort = HTTPSPort(o.HTTPPort)
 	if o.Domain == "localhost" {
 		publicURL = "http://localhost"
 		if o.HTTPPort != 80 {
@@ -119,6 +151,10 @@ func GenerateEnv(o Options, now time.Time) string {
 	line("RUSTFS_SECRET_KEY", rustfsSecret)
 	b.WriteString("\n")
 	line("APP_NAME", "WebBites")
+	if o.Project != "" {
+		b.WriteString("\n# Another WebBites on this machine already uses the project name \"webbites\": this one has its own.\n")
+		line("COMPOSE_PROJECT_NAME", o.Project)
+	}
 	if o.Screenshots {
 		line("SCREENSHOT_SERVICE_URL", "http://screenshot:3000")
 	}

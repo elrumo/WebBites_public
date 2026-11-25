@@ -17,6 +17,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 	"time"
 )
@@ -81,6 +82,23 @@ func StartUI(m *Manager) (*UIServer, error) {
 			return
 		}
 		writeJSON(w, 200, map[string]string{"logs": out})
+	}))
+	// Which of the ports an install on this computer would publish (http, and the https one that goes
+	// with it) something already answers on: for the port hint on the details page.
+	mux.HandleFunc("GET /api/ports", u.api(func(w http.ResponseWriter, r *http.Request) {
+		httpPort, _ := strconv.Atoi(r.URL.Query().Get("http"))
+		if httpPort < 1 || httpPort > 65535 {
+			writeErr(w, 400, fmt.Errorf("the port must be between 1 and 65535"))
+			return
+		}
+		httpsPort := HTTPSPort(httpPort)
+		busy := []int{}
+		for _, p := range []int{httpPort, httpsPort} {
+			if PortInUse(p) {
+				busy = append(busy, p)
+			}
+		}
+		writeJSON(w, 200, map[string]any{"http": httpPort, "https": httpsPort, "busy": busy})
 	}))
 	mux.HandleFunc("GET /api/events", u.api(u.events))
 

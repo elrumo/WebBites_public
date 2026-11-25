@@ -30,6 +30,9 @@ when they start.
 - **Read the release notes** for changes to `.env` or `docker-compose.yml`; new settings usually have defaults.
 - **Roll back** by setting the previous `WEBBITES_VERSION` and running `docker compose up -d`. If the new
   version changed the data format, restore the backup you took.
+- **Keep the project name.** Docker names containers and volumes after the Compose project (`webbites`, or
+  `COMPOSE_PROJECT_NAME` in `.env` when a second install shares the machine). Changing it on a running install
+  starts a new, empty set of volumes and leaves your data behind under the old name.
 - The `meilisearch` image is pinned to a version in `docker-compose.yml`. Moving to a new Meilisearch
   version needs the index dumped or rebuilt; follow Meilisearch's upgrade notes, or delete `meili_data`
   and run **Admin → Search index → Sync now**.

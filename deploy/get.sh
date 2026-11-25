@@ -86,6 +86,9 @@ main() {
     esac
   done
   VERSION="${VERSION#v}"
+  case "$VERSION" in
+    *[!0-9A-Za-z._-]*) die "--version may only contain letters, digits, '.', '_' and '-' (for example 1.2.3)." ;;
+  esac
 
   check_docker
 
@@ -134,6 +137,15 @@ main() {
       eval "sh ./install.sh --version '$VERSION' --yes $PASS"
     fi
     [ -f .env ] || die "install.sh did not write .env"
+    # install.sh gives this install its own project name when "webbites" is taken: say so again here,
+    # where the output ends up on screen even when the installer ran without questions.
+    PROJECT="$(sed -n 's/^COMPOSE_PROJECT_NAME=//p' .env | tail -n 1)"
+    if [ -n "$PROJECT" ]; then
+      say ""
+      say "WARNING: this machine already has a WebBites in Docker (project \"webbites\")."
+      say "This new one is kept apart from it, as project \"$PROJECT\" (set in $(pwd)/.env)."
+      say "Run docker compose from $(pwd): anywhere else it would be the other install you touch."
+    fi
   fi
 
   URL="$(sed -n 's/^PUBLIC_URL=//p' .env | tail -n 1)"

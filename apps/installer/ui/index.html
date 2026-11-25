@@ -477,6 +477,7 @@ function render(s) {
   $('noRelease').textContent = noRelease ? `No WebBites release is available to install yet (${s.latestError || 'none published'}).` : `Installs WebBites ${s.latest}`;
   if (!noRelease) $('noRelease').classList.remove('hidden');
   $('installBtn').disabled = noRelease || running;
+  if (s.publicUrl) $('doneOpen').href = s.publicUrl; // the "ready" screen's Open WebBites (opens in a new tab)
 
   // Home
   if (s.installed) {
@@ -550,7 +551,24 @@ function renderChips(services) {
 for (const t of document.querySelectorAll('.tile')) {
   t.onclick = () => { where = t.dataset.where; go('details'); };
 }
-$('port').addEventListener('input', () => { portTouched = true; });
+let portTimer, portCheck = 0;
+$('port').addEventListener('input', () => { portTouched = true; clearTimeout(portTimer); portTimer = setTimeout(checkPorts, 250); });
+
+// The hint under the port: the address WebBites will have, or which port is taken (the http one, or
+// the https one that goes with it: 443, or 8443 when http is not on 80).
+async function checkPorts() {
+  const hint = $('portHint'), n = Number($('port').value) || 80, seq = ++portCheck;
+  const say = (text, warn) => { hint.textContent = text; hint.style.color = warn ? 'var(--amber)' : ''; };
+  if (!Number.isInteger(n) || n < 1 || n > 65535) return say('The port must be a number between 1 and 65535.', true);
+  const url = n === 80 ? 'http://localhost' : `http://localhost:${n}`;
+  say(`WebBites will be at ${url}.`);
+  try {
+    const r = await call(`/api/ports?http=${n}`);
+    if (seq !== portCheck) return; // a newer answer is on its way
+    if (r.busy.includes(r.http)) say(`Port ${r.http} is already in use on this computer. Choose another.`, true);
+    else if (r.busy.includes(r.https)) say(`Port ${r.https}, which WebBites also uses (for https), is already in use on this computer. Free it, or use port 80 if that is free.`, true);
+  } catch (e) { /* the hint above stays */ }
+}
 
 function prepareDetails() {
   const local = where === 'local';
@@ -560,8 +578,7 @@ function prepareDetails() {
   $('detailsLead').textContent = local
     ? 'Nothing else is needed. Add your email if you like, then install.'
     : 'Tell it your address. Make sure ports 80 and 443 are open on this server.';
-  const port = Number($('port').value) || 80;
-  $('portHint').textContent = port === 80 ? 'WebBites will be at http://localhost.' : `Port 80 is busy, so WebBites will be at http://localhost:${port}.`;
+  checkPorts();
   $('setupError').classList.add('hidden');
   if (!local) setTimeout(() => $('domain').focus(), 50);
 }
@@ -678,8 +695,8 @@ function toggleLog() {
 
 // What went wrong, in words, from the error the server reports.
 function friendlyError(err) {
-  if (/compose pull/.test(err)) return 'WebBites couldn\u2019t be downloaded. Check your internet connection and that Docker is running, then try again. Nothing was changed.';
-  if (/compose up/.test(err)) return 'Some parts of WebBites didn\u2019t start. The details below show which; then try again.';
+  if (/compose .*\bpull\b/.test(err)) return 'WebBites couldn\u2019t be downloaded. Check your internet connection and that Docker is running, then try again. Nothing was changed.';
+  if (/compose .*\bup\b/.test(err)) return 'Some parts of WebBites didn\u2019t start. The details below show which; then try again.';
   if (/GitHub|release/i.test(err)) return 'Couldn\u2019t reach GitHub to find the latest WebBites. Check your internet connection and try again.';
   return err;
 }
