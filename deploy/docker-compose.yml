@@ -4,11 +4,34 @@
 #
 # Only Caddy publishes ports (80 and 443). Everything else talks over the compose network.
 # Images are pinned by WEBBITES_VERSION in .env.
+#
+# Where settings come from. Compose resolves ${VAR} from the shell BEFORE .env, so a variable that
+# happens to be exported in your shell (S3_BUCKET, SENTRY_DSN, TWITCH_CLIENT_ID...) would silently
+# replace what .env says. Optional settings therefore reach web, api and parse through `env_file`,
+# which only ever reads files: .env.example holds the defaults, .env (yours) overrides them. Only
+# values Compose has to compute (URLs, renamed keys, image tag, ports) are still ${...}.
+# Every service sees the whole .env, so each one blanks the secrets it has no business with
+# (scripts/check-compose-env.mjs checks the list). Add new secrets there.
 
 name: webbites
 
 x-restart: &restart
   restart: unless-stopped
+
+x-env: &env
+  env_file:
+    - .env.example
+    - path: .env
+      required: false
+
+x-hide-infra: &hide-infra   # storage and search credentials: only rustfs, api and meilisearch use them
+  RUSTFS_ACCESS_KEY: ""
+  RUSTFS_SECRET_KEY: ""
+
+x-hide-signing: &hide-signing   # only the API signs links and encrypts backups
+  AUDIO_TOKEN_SECRET: ""
+  SHARE_LINK_SECRET: ""
+  BACKUP_ENCRYPTION_KEY: ""
 
 x-logging: &logging
   logging:
@@ -41,8 +64,19 @@ services:
 
   web:
     image: elrumo/webbites-web:${WEBBITES_VERSION:-latest}
-    <<: [*restart, *logging]
+    <<: [*restart, *logging, *env]
     environment:
+      # It reads TMDB_API_KEY, TWITCH_* and S3_PUBLIC_URL from .env. The rest is not for the web server.
+      <<: [*hide-infra, *hide-signing]
+      MONGO_PASSWORD: ""
+      SETTINGS_ENCRYPTION_KEY: ""
+      MEILI_MASTER_KEY: ""
+      SCREENSHOT_API_KEY: ""
+      SMTP_PASS: ""
+      SENTRY_DSN: ""
+      AI_API_KEY: ""
+      S3_ACCESS_KEY: ""
+      S3_SECRET_KEY: ""
       SELF_HOSTED: "true"
       # What the browser uses (the public address) ...
       VITE_APP_URL: ${PUBLIC_URL:?set PUBLIC_URL in .env (run ./install.sh)}
@@ -55,10 +89,6 @@ services:
       PARSE_INTERNAL_URL: http://parse:1337/parse
       PARSE_MASTER_KEY: ${PARSE_MASTER_KEY:?}
       CUSTOM_API_KEY: ${CUSTOM_API_KEY:?}
-      TMDB_API_KEY: ${TMDB_API_KEY:-}
-      TWITCH_CLIENT_ID: ${TWITCH_CLIENT_ID:-}
-      TWITCH_CLIENT_SECRET: ${TWITCH_CLIENT_SECRET:-}
-      S3_PUBLIC_URL: ${S3_PUBLIC_URL:-}
     depends_on:
       api:
         condition: service_healthy
@@ -67,8 +97,10 @@ services:
 
   api:
     image: elrumo/webbites-api:${WEBBITES_VERSION:-latest}
-    <<: [*restart, *logging]
+    <<: [*restart, *logging, *env]
     environment:
+      <<: *hide-infra
+      MONGO_PASSWORD: ""
       PORT: "3000"
       NODE_ENV: production
       BILLING_PROVIDER: none
@@ -85,39 +117,9 @@ services:
       MEILISEARCH_HOST: http://meilisearch:7700
       MEILISEARCH_API_KEY: ${MEILI_MASTER_KEY}
       # Shared secrets
-      CUSTOM_API_KEY: ${CUSTOM_API_KEY}
       VITE_AUDIO_TOKEN_SECRET: ${AUDIO_TOKEN_SECRET}
-      SHARE_LINK_SECRET: ${SHARE_LINK_SECRET}
-      BACKUP_ENCRYPTION_KEY: ${BACKUP_ENCRYPTION_KEY}
-      SETTINGS_ENCRYPTION_KEY: ${SETTINGS_ENCRYPTION_KEY}
-      # Optional features
-      APP_NAME: ${APP_NAME:-WebBites}
-      SUPPORT_EMAIL: ${SUPPORT_EMAIL:-}
-      MAIL_PROVIDER: ${MAIL_PROVIDER:-}
-      MAIL_FROM: ${MAIL_FROM:-}
-      SMTP_HOST: ${SMTP_HOST:-}
-      SMTP_PORT: ${SMTP_PORT:-587}
-      SMTP_USER: ${SMTP_USER:-}
-      SMTP_PASS: ${SMTP_PASS:-}
-      SMTP_SECURE: ${SMTP_SECURE:-false}
-      AI_API_BASE_URL: ${AI_API_BASE_URL:-}
-      AI_API_KEY: ${AI_API_KEY:-}
-      AI_TEXT_MODEL: ${AI_TEXT_MODEL:-}
-      AI_MULTIMODAL_MODEL: ${AI_MULTIMODAL_MODEL:-}
-      EMBEDDING_MODEL: ${EMBEDDING_MODEL:-}
-      FILES_DRIVER: ${FILES_DRIVER:-}
-      S3_BUCKET: ${S3_BUCKET:-}
-      S3_ENDPOINT_URL: ${S3_ENDPOINT_URL:-}
-      S3_REGION: ${S3_REGION:-us-east-1}
-      S3_ACCESS_KEY: ${S3_ACCESS_KEY:-}
-      S3_SECRET_KEY: ${S3_SECRET_KEY:-}
-      S3_PUBLIC_URL: ${S3_PUBLIC_URL:-}
-      SCREENSHOT_SERVICE_URL: ${SCREENSHOT_SERVICE_URL:-}
-      SCREENSHOT_API_KEY: ${SCREENSHOT_API_KEY:-}
-      SENTRY_DSN: ${SENTRY_DSN:-}
-      TMDB_API_KEY: ${TMDB_API_KEY:-}
-      TWITCH_CLIENT_ID: ${TWITCH_CLIENT_ID:-}
-      TWITCH_CLIENT_SECRET: ${TWITCH_CLIENT_SECRET:-}
+      # Everything else (CUSTOM_API_KEY, SHARE_LINK_SECRET, BACKUP_ENCRYPTION_KEY, SETTINGS_ENCRYPTION_KEY,
+      # mail, AI, storage, screenshots, Sentry, TMDB, Twitch...) comes from .env.
     networks:
       - default
       - screenshots
@@ -137,37 +139,23 @@ services:
 
   parse:
     image: elrumo/webbites-parse:${WEBBITES_VERSION:-latest}
-    <<: [*restart, *logging]
+    <<: [*restart, *logging, *env]
     environment:
+      <<: [*hide-infra, *hide-signing]
+      MEILI_MASTER_KEY: ""
+      SCREENSHOT_API_KEY: ""
+      AI_API_KEY: ""
+      TMDB_API_KEY: ""
+      TWITCH_CLIENT_SECRET: ""
       PORT: "1337"
-      PARSE_APP_ID: ${PARSE_APP_ID}
-      PARSE_JS_KEY: ${PARSE_JS_KEY}
-      PARSE_MASTER_KEY: ${PARSE_MASTER_KEY}
       DATABASE_URI: mongodb://webbites:${MONGO_PASSWORD:?}@mongo:27017/parse?authSource=admin
       PARSE_PUBLIC_URL: ${PUBLIC_URL}/parse
       SITE_URL: ${PUBLIC_URL}
       # Cloud code calls the API (job queue, search index clean-up) inside the network.
       BACKEND_URL: http://api:3000/
-      CUSTOM_API_KEY: ${CUSTOM_API_KEY}
       BILLING_PROVIDER: none
-      INITIAL_ADMIN_EMAIL: ${INITIAL_ADMIN_EMAIL:-}
-      SETTINGS_ENCRYPTION_KEY: ${SETTINGS_ENCRYPTION_KEY}
-      APP_NAME: ${APP_NAME:-WebBites}
-      MAIL_PROVIDER: ${MAIL_PROVIDER:-}
-      MAIL_FROM: ${MAIL_FROM:-}
-      SMTP_HOST: ${SMTP_HOST:-}
-      SMTP_PORT: ${SMTP_PORT:-587}
-      SMTP_USER: ${SMTP_USER:-}
-      SMTP_PASS: ${SMTP_PASS:-}
-      SMTP_SECURE: ${SMTP_SECURE:-false}
-      FILES_DRIVER: ${FILES_DRIVER:-}
-      S3_BUCKET: ${S3_BUCKET:-}
-      S3_ENDPOINT_URL: ${S3_ENDPOINT_URL:-}
-      S3_REGION: ${S3_REGION:-us-east-1}
-      S3_ACCESS_KEY: ${S3_ACCESS_KEY:-}
-      S3_SECRET_KEY: ${S3_SECRET_KEY:-}
-      S3_PUBLIC_URL: ${S3_PUBLIC_URL:-}
-      SENTRY_DSN: ${SENTRY_DSN:-}
+      # PARSE_APP_ID, PARSE_JS_KEY, PARSE_MASTER_KEY, CUSTOM_API_KEY, INITIAL_ADMIN_EMAIL, SETTINGS_ENCRYPTION_KEY,
+      # mail, storage and Sentry come from .env.
     depends_on:
       mongo:
         condition: service_healthy
