@@ -26,6 +26,7 @@ import { getUserWithPlan, hasPlanFeature } from './plans';
 import { withRedisLock, getActiveSubscriptions, usageErrorBody } from './rssUtils';
 import { buildOpml } from './rssParser';
 import { sendToQstash } from './serverUtils';
+import { toInternalUrl } from './internalUrl';
 import {
   bookmarkFileEntries, decryptSecret, encryptSecret, netscapeHtml, nextRunAfter, partFileName,
   BACKUP_FILE_COLUMNS, type BackupDestination, type BackupFrequency,
@@ -377,7 +378,7 @@ async function buildPart(userId: string, page: Parse.Object[], run: RunState) {
 /** A stored file's bytes, or null when it is gone or too big to fit in a part. */
 async function downloadFile(url: string): Promise<Buffer | null> {
   try {
-    const res = await fetch(url, { signal: AbortSignal.timeout(FILE_TIMEOUT_MS) });
+    const res = await fetch(toInternalUrl(url), { signal: AbortSignal.timeout(FILE_TIMEOUT_MS) });
     if (!res.ok) return null;
     if (Number(res.headers.get('content-length') || 0) > PART_MAX_BYTES) return null;
     return Buffer.from(await res.arrayBuffer());

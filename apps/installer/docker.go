@@ -99,7 +99,15 @@ func CheckDocker(ctx context.Context) DockerStatus {
 
 // Compose runs `docker compose <args>` in dir and copies its output, line by line, to log.
 func Compose(ctx context.Context, dir string, log io.Writer, args ...string) error {
+	return ComposeEnv(ctx, dir, log, nil, args...)
+}
+
+// ComposeEnv is Compose with extra environment variables (KEY=value), which beat .env.
+func ComposeEnv(ctx context.Context, dir string, log io.Writer, env []string, args ...string) error {
 	cmd := command(ctx, dir, "docker", append([]string{"compose"}, args...)...)
+	if len(env) > 0 {
+		cmd.Env = append(os.Environ(), env...)
+	}
 	pr, pw := io.Pipe()
 	cmd.Stdout, cmd.Stderr = pw, pw
 	if err := cmd.Start(); err != nil {
@@ -169,6 +177,46 @@ func PortInUse(port int) bool {
 	}
 	conn.Close()
 	return true
+}
+
+// ProjectInUse reports whether this machine already has a Compose project named "webbites" (the
+// name in docker-compose.yml): a container of it, or just its volumes. A new install then needs a name
+// of its own, or it would share the other's containers and data. Same test as deploy/install.sh.
+func ProjectInUse(ctx context.Context) bool {
+	ctx, cancel := context.WithTimeout(ctx, 15*time.Second)
+	defer cancel()
+	for _, args := range [][]string{
+		{"ps", "-a", "-q", "--filter", "label=com.docker.compose.project=webbites"},
+		{"volume", "ls", "-q", "--filter", "name=^webbites_"},
+	} {
+		if out, err := command(ctx, "", "docker", args...).Output(); err == nil && len(bytes.TrimSpace(out)) > 0 {
+			return true
+		}
+	}
+	return false
+}
+
+// NewProjectName is the Compose project name of an install that finds "webbites" taken.
+func NewProjectName() string { return "webbites-" + randHex(4) }
+
+// PortsBusy says which of the ports WebBites publishes (http and https) something already answers on.
+func PortsBusy(httpPort, httpsPort int) error {
+	var busy []string
+	if PortInUse(httpPort) {
+		busy = append(busy, fmt.Sprintf("port %d (http)", httpPort))
+	}
+	if PortInUse(httpsPort) {
+		busy = append(busy, fmt.Sprintf("port %d (https)", httpsPort))
+	}
+	if len(busy) == 0 {
+		return nil
+	}
+	hint := "or choose another port"
+	if httpPort != 80 && PortInUse(httpsPort) {
+		hint = "or, if port 80 is free, use it (it pairs with 443 instead)"
+	}
+	return fmt.Errorf("%s is already in use on this computer, and WebBites needs it. Stop what uses it, %s",
+		strings.Join(busy, " and "), hint)
 }
 
 // OpenBrowser opens a URL with the system's default browser.

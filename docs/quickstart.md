@@ -2,7 +2,7 @@
 
 You need a machine with Docker (Compose v2), 2 GB of RAM (3 GB with screenshots), and for a public
 install a domain name pointing at it with ports 80 and 443 open. Three ways in; they all end in the
-same setup (a folder with `docker-compose.yml`, `Caddyfile` and an `.env` of fresh secrets).
+same setup (a folder with `docker-compose.yml`, `Caddyfile`, `.env.example` and an `.env` of fresh secrets).
 
 ## On a server: one command
 

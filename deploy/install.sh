@@ -24,7 +24,7 @@ ASSUME_YES=""
 VERSION="latest"
 HTTP_PORT="80"
 
-usage() { sed -n '2,18p' "$0" | sed 's/^# \{0,1\}//'; }
+usage() { sed -n '2,16p' "$0" | sed 's/^# \{0,1\}//'; }
 
 while [ $# -gt 0 ]; do
   case "$1" in
@@ -44,6 +44,19 @@ cd "$(dirname "$0")"
 
 say() { printf '%s\n' "$*"; }
 die() { printf 'Error: %s\n' "$*" >&2; exit 1; }
+
+# $1 = what it is, $2 = the value. Values end up on one line of .env: refuse line breaks and other
+# control characters, which could add settings of their own.
+single_line() {
+  case "$2" in
+    *[[:cntrl:]]*) die "$1 must be a single line without control characters." ;;
+  esac
+}
+
+# A release: digits, letters, dots, underscores and dashes (1.2.3, rc1, edge), nothing else.
+case "$VERSION" in
+  ''|*[!0-9A-Za-z._-]*) die "--version may only contain letters, digits, '.', '_' and '-' (for example 1.2.3)." ;;
+esac
 
 # ---- prerequisites ----------------------------------------------------------------------------
 command -v docker >/dev/null 2>&1 || die "Docker is not installed. See https://docs.docker.com/engine/install/"
@@ -86,9 +99,10 @@ ask_yes_no() { # $1 prompt, $2 default (yes|no)
 
 # ---- questions --------------------------------------------------------------------------------
 [ -n "$DOMAIN" ] || DOMAIN="$(ask 'Domain name (use localhost to just try it)' localhost)"
+single_line "The domain name" "$DOMAIN"
 case "$DOMAIN" in
   http://*|https://*) die "Give the host name only, for example notes.example.com (no http://)." ;;
-  */*|*" "*) die "That doesn't look like a host name: $DOMAIN" ;;
+  ''|*[!A-Za-z0-9.-]*) die "That doesn't look like a host name: $DOMAIN" ;;
 esac
 
 case "$HTTP_PORT" in
@@ -109,6 +123,7 @@ else
 fi
 
 [ -n "$EMAIL" ] || EMAIL="$(ask 'Your email (the only address that can become the administrator; leave empty to skip)' '')"
+single_line "The email address" "$EMAIL"
 if [ -z "$RUSTFS" ]; then
   RUSTFS="$(ask_yes_no 'Keep files in a bundled S3 store (RustFS) instead of MongoDB?' no)"
 fi
@@ -123,6 +138,17 @@ add_profile() { PROFILES="${PROFILES:+$PROFILES,}$1"; }
 
 RUSTFS_ACCESS_KEY="$(rand_hex 10)"
 RUSTFS_SECRET_KEY="$(rand_hex 24)"
+
+# The compose file calls its project "webbites". If this machine already has a project of that name
+# (another install, or just its volumes), sharing it would mix the two: this install would replace
+# the other's containers, and its old MongoDB volume would refuse the new password. So an install
+# that finds the name taken gets a name of its own in .env; the first one keeps the default.
+project_in_use() {
+  [ -n "$(docker ps -a -q --filter label=com.docker.compose.project=webbites 2>/dev/null)" ] \
+    || [ -n "$(docker volume ls -q --filter name=^webbites_ 2>/dev/null)" ]
+}
+PROJECT=""
+if project_in_use; then PROJECT="webbites-$(rand_hex 4)"; fi
 
 # ---- write .env -------------------------------------------------------------------------------
 umask 077
@@ -154,6 +180,10 @@ RUSTFS_SECRET_KEY=$RUSTFS_SECRET_KEY
 
 APP_NAME=WebBites
 EOF
+  if [ -n "$PROJECT" ]; then
+    printf '\n# Another WebBites on this machine already uses the project name "webbites": this one has its own.\n'
+    echo "COMPOSE_PROJECT_NAME=$PROJECT"
+  fi
   if [ "$SCREENSHOTS" = "yes" ]; then
     echo "SCREENSHOT_SERVICE_URL=http://screenshot:3000"
   fi
@@ -166,7 +196,7 @@ S3_BUCKET=webbites
 S3_ENDPOINT_URL=http://rustfs:9000
 S3_REGION=us-east-1
 EOF
-    echo "S3_PUBLIC_URL=$PUBLIC_URL/s3/webbites"
+    echo "S3_PUBLIC_URL=$PUBLIC_URL/s3"
     echo "S3_ACCESS_KEY=$RUSTFS_ACCESS_KEY"
     echo "S3_SECRET_KEY=$RUSTFS_SECRET_KEY"
   fi
@@ -179,6 +209,12 @@ EOF
 
 say ""
 say "Wrote .env (permissions 600) with new secrets."
+if [ -n "$PROJECT" ]; then
+  say ""
+  say "Note: this machine already has a WebBites named \"webbites\" in Docker. So that this one does not"
+  say "share its containers and data, .env sets COMPOSE_PROJECT_NAME=$PROJECT. Run docker compose from"
+  say "this folder, as below, and it uses that name by itself."
+fi
 say ""
 say "Next:"
 say "  1. docker compose pull"

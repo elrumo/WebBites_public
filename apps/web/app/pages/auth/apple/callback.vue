@@ -87,7 +87,7 @@ onMounted(async () => {
 
     // Track the event
     try {
-      useTrackEvent('appleSignInCompleted', {
+      trackEvent('appleSignInCompleted', {
         props: {
           userId: parseUser.id,
           isNewUser: authResponse.isNewUser

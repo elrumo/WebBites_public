@@ -62,8 +62,25 @@ check_docker() {
   fi
   docker compose version >/dev/null 2>&1 \
     || die "'docker compose' (Compose v2) is not available. See https://docs.docker.com/compose/install/"
-  if ! docker info >/dev/null 2>&1; then
-    die "Docker is installed but this user can't reach it. Start Docker, or run this with sudo (or add yourself to the docker group)."
+  if ! DOCKER_ERR="$(docker info 2>&1 >/dev/null)"; then
+    # Two different problems look alike: the daemon is not running, or it is but this user may not use it.
+    case "$DOCKER_ERR" in
+      *ermission*denied*)
+        say "Docker is running, but this user is not allowed to use it."
+        say "Add yourself to the docker group, log out and back in, then run this again:"
+        say "  sudo usermod -aG docker \$USER"
+        say "Or run it as root:  curl -fsSL https://raw.githubusercontent.com/$REPO/master/deploy/get.sh | sudo sh"
+        ;;
+      *)
+        say "Docker is installed, but it is not running."
+        case "$(uname -s)" in
+          Linux) say "Start it, then run this again:"
+                 say "  sudo systemctl start docker" ;;
+          *)     say "Open Docker Desktop (or OrbStack, Colima...), wait until it says it is running, then run this again." ;;
+        esac
+        ;;
+    esac
+    exit 1
   fi
 }
 
@@ -86,6 +103,9 @@ main() {
     esac
   done
   VERSION="${VERSION#v}"
+  case "$VERSION" in
+    *[!0-9A-Za-z._-]*) die "--version may only contain letters, digits, '.', '_' and '-' (for example 1.2.3)." ;;
+  esac
 
   check_docker
 
@@ -134,6 +154,15 @@ main() {
       eval "sh ./install.sh --version '$VERSION' --yes $PASS"
     fi
     [ -f .env ] || die "install.sh did not write .env"
+    # install.sh gives this install its own project name when "webbites" is taken: say so again here,
+    # where the output ends up on screen even when the installer ran without questions.
+    PROJECT="$(sed -n 's/^COMPOSE_PROJECT_NAME=//p' .env | tail -n 1)"
+    if [ -n "$PROJECT" ]; then
+      say ""
+      say "WARNING: this machine already has a WebBites in Docker (project \"webbites\")."
+      say "This new one is kept apart from it, as project \"$PROJECT\" (set in $(pwd)/.env)."
+      say "Run docker compose from $(pwd): anywhere else it would be the other install you touch."
+    fi
   fi
 
   URL="$(sed -n 's/^PUBLIC_URL=//p' .env | tail -n 1)"

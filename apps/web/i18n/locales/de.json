@@ -540,7 +540,8 @@
     "developers": "Entwickler",
     "faq": "FAQ",
     "features": "Funktionen",
-    "pricing": "Preise"
+    "pricing": "Preise",
+    "self_host": "Selbst hosten"
   },
   "plans": {
     "features": {

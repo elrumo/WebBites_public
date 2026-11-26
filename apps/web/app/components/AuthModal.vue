@@ -460,7 +460,7 @@ const signUp = async () => {
         console.log("Success signing up and logging in");
 
         try{
-          useTrackEvent('signupCompleted', { props: { userId: signedUpUser.id } });
+          trackEvent('signupCompleted', { props: { userId: signedUpUser.id } });
         } catch(error){
           console.log('error tracking signup: ', error);
         }
@@ -511,7 +511,7 @@ const login = async () => {
     emit('auth-success');
 
     try{
-      useTrackEvent('loginCompleted', { props: { userId: user.id } });
+      trackEvent('loginCompleted', { props: { userId: user.id } });
     } catch(error){
       console.log('[authModal] error doesAccountExist: ', error);
     }
@@ -574,7 +574,7 @@ const doesAccountExist = async () => {
     }
 
     try{
-      useTrackEvent('signupStarted');
+      trackEvent('signupStarted');
     } catch(error){
       console.log('error doesAccountExist: ', error);
     }

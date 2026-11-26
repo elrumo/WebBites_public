@@ -24,7 +24,7 @@ Every release has the app attached. Pick the file for your computer from the [la
 
 > You also need **Docker**: [Docker Desktop](https://www.docker.com/products/docker-desktop/) on a Mac or PC, or Docker Engine with the Compose plugin on Linux. Install it whenever you like; the app checks for it first and waits until it is running. Plan for 2 GB of free memory, or 3 GB with page previews.
 
-The first time you open an app downloaded from the internet, your computer may ask whether you trust it. On a Mac, if it says it can't check the app, right-click it and choose **Open**. On Windows, if SmartScreen appears, choose **More info → Run anyway**.
+The first time you open an app downloaded from the internet, your computer may ask whether you trust it. On a Mac, if it says it can't check the app, open **System Settings → Privacy & Security** and choose **Open Anyway** (on macOS 14 and earlier, right-click the app and choose **Open**). On Windows, if SmartScreen appears, choose **More info → Run anyway**.
 
 ## Set it up, step by step
 

@@ -540,7 +540,8 @@
     "developers": "开发者",
     "faq": "常见问题",
     "features": "功能",
-    "pricing": "价格"
+    "pricing": "价格",
+    "self_host": "自行托管"
   },
   "plans": {
     "features": {

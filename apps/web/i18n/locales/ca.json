@@ -540,7 +540,8 @@
     "developers": "Desenvolupadors",
     "faq": "Preguntes freqüents",
     "features": "Funcions",
-    "pricing": "Preus"
+    "pricing": "Preus",
+    "self_host": "Allotja-ho tu"
   },
   "plans": {
     "features": {

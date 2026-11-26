@@ -97,6 +97,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Parse's settings allow-list matches the admin page's registry
         run: node scripts/check-settings-keys.mjs
+      - name: A shell variable cannot override .env, and each secret reaches only its services
+        run: node scripts/check-compose-env.mjs
       - name: shellcheck the scripts
         run: shellcheck deploy/install.sh deploy/get.sh apps/web/docker-entrypoint.sh apps/installer/packaging/build-macos-app.sh
       - name: The one-line installer sets up a folder from the deploy files alone

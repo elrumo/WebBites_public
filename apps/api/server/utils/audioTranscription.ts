@@ -16,10 +16,11 @@
  */
 
 import Parse from 'parse/node.js';
-import { getOpenAIAudio } from '#root/server/utils/aiClients';
+import { getOpenAIAudio, audioConfigured } from '#root/server/utils/aiClients';
 import { sendToQstash, getPartitionedQueue } from './serverUtils.js';
 import { getUserWithPlan, getAudioQuota } from './plans';
 import { ownStorageURL } from './clientMetadata';
+import { toInternalUrl } from './internalUrl';
 import { transcriptionCopy, MAX_AUDIO_BYTES } from './audioFile';
 
 Parse.initialize(
@@ -138,6 +139,13 @@ export async function transcribeAudioBookmark(websiteId: string, userId: string)
     };
 
     try {
+        // A deployment with no OpenAI key (the self-hosted default) cannot
+        // transcribe: say so before reading a recording it will not use.
+        if (!audioConfigured()) {
+            console.error(`[audioTranscription] ${websiteId} skipped: set OPENAI_API_KEY (or OPENAI_API_AUDIO_KEY) to transcribe`);
+            return void await mark('failed');
+        }
+
         const { user, plan } = await getUserWithPlan(userId);
         if (!user) return void await mark('failed');
 
@@ -156,7 +164,7 @@ export async function transcribeAudioBookmark(websiteId: string, userId: string)
             return void await mark('failed');
         }
 
-        const response = await fetch(fileUrl);
+        const response = await fetch(toInternalUrl(fileUrl));
         if (!response.ok) {
             console.error(`[audioTranscription] ${fileUrl} answered ${response.status}`);
             return void await mark('failed');

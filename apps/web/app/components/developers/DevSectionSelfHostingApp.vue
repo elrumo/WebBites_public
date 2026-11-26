@@ -50,7 +50,7 @@
     </div>
     <p>
       The first time you open an app downloaded from the internet, your computer may ask whether you trust
-      it. On a Mac, if it says it can't check the app, right-click it and choose <strong>Open</strong>. On
+      it. On a Mac, if it says it can't check the app, open <strong>System Settings → Privacy &amp; Security</strong> and choose <strong>Open Anyway</strong> (on macOS 14 and earlier, right-click the app and choose <strong>Open</strong>). On
       Windows, if SmartScreen appears, choose <strong>More info → Run anyway</strong>.
     </p>
   </section>

@@ -4,6 +4,7 @@ import { validateInternalApiKey } from '#root/server/utils/api-keys';
 import { fetchUrlWithProgressiveTimeout } from '#root/server/utils/serverUtils.js';
 import { extractContent, findAmpUrl, MIN_CONTENT_LENGTH, SITE_BODY_TEXT_LIMIT, BROWSER_HEADERS, type ExtractedContent } from '#root/server/utils/contentExtraction.js';
 import { assertPublicUrl } from '#root/server/utils/safeUrl';
+import { toInternalUrl } from '#root/server/utils/internalUrl';
 import { screenshotServiceUrl, screenshotServiceKey, renderProvider } from '#root/server/utils/renderService';
 import { askJev } from '#root/server/utils/aiClients';
 import { jevOn, pageCheckRequest, readPageCheck, type PageCheck } from '#root/server/utils/jevJudgments';
@@ -266,7 +267,7 @@ export async function getUnifiedPageContent({
         // Rows hydrated from cache carry the file pointer without its URL column.
         const clientHtmlUrl = savedSite?.get('siteHtmlFileUrl') || savedSite?.get('siteHtmlFile')?.url?.();
         if (clientHtmlUrl && !preferRendered) {
-            await consider(await fetchPageHtml(clientHtmlUrl, 'client'), 'client');
+            await consider(await fetchPageHtml(toInternalUrl(clientHtmlUrl), 'client'), 'client');
         }
 
         // Strategy 1: direct fetch. Browser headers matter: without a User-Agent

@@ -10,6 +10,7 @@ import { defineEventHandler, readBody } from 'h3';
 import Parse from 'parse/node.js';
 import { sendToQstash, validateImportAccess, calculateQuotaInfo, getExistingUrls, getPartitionedQueue } from '../../../utils/serverUtils.js';
 import { ImportSessionManager } from '../../../utils/ImportSessionManager';
+import { toInternalUrl } from '../../../utils/internalUrl';
 
 // Initialize Parse
 Parse.initialize(
@@ -681,7 +682,7 @@ async function extractBookmarksFromFile(user: Parse.User): Promise<string[]> {
         let bookmarks: string[] = [];
 
         // Fetch file content
-        const response = await fetch(fileUrl);
+        const response = await fetch(toInternalUrl(fileUrl));
         if (!response.ok) {
             throw new Error(`[importBookmarks] Failed to fetch file: ${response.statusText}`);
         }

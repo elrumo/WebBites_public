@@ -19,6 +19,7 @@ The three that matter, while the stack runs:
 cd deploy
 set -a; . ./.env; set +a
 STAMP=$(date +%F)
+PROJECT="${COMPOSE_PROJECT_NAME:-webbites}"   # Docker's name for this install; see the note below
 
 # MongoDB (a consistent dump)
 docker compose exec -T mongo mongodump -u webbites -p "$MONGO_PASSWORD" --authenticationDatabase admin \
@@ -26,13 +27,16 @@ docker compose exec -T mongo mongodump -u webbites -p "$MONGO_PASSWORD" --authen
 
 # Redis: save, then copy the append-only file out
 docker compose exec -T redis redis-cli SAVE
-docker run --rm -v webbites_redis_data:/data -v "$PWD":/out alpine tar czf "/out/redis-$STAMP.tgz" -C /data .
+docker run --rm -v "${PROJECT}_redis_data":/data -v "$PWD":/out alpine tar czf "/out/redis-$STAMP.tgz" -C /data .
 
 # The secrets
 cp .env "env-$STAMP.backup" && chmod 600 "env-$STAMP.backup"
 ```
 
-Volume names are prefixed with the compose project name (`webbites_` here; see `docker volume ls`).
+Volume names are prefixed with the Compose project name: `<project>_redis_data`, and so on. It is `webbites`
+unless `.env` sets `COMPOSE_PROJECT_NAME` (the installers do that when a second install on the same machine finds
+`webbites` taken). To see the name of the install in the current folder, run `docker compose ls` (or
+`docker compose config --format json | jq -r .name`); `docker volume ls` lists the volumes.
 With RustFS, also copy `rustfs_data`; with your own bucket, use the provider's versioning or sync.
 Keep backups somewhere that is not this machine. They contain everything, including users' data: encrypt
 them.
@@ -42,12 +46,14 @@ them.
 On a fresh install (or after deleting the volumes), with the original `.env` in place:
 
 ```sh
+set -a; . ./.env; set +a
+PROJECT="${COMPOSE_PROJECT_NAME:-webbites}"
 docker compose up -d mongo redis
 docker compose exec -T mongo mongorestore -u webbites -p "$MONGO_PASSWORD" --authenticationDatabase admin \
   --archive --gzip --drop < mongo-2025-01-01.archive.gz
 
 docker compose stop redis
-docker run --rm -v webbites_redis_data:/data -v "$PWD":/in alpine sh -c 'rm -rf /data/* && tar xzf /in/redis-2025-01-01.tgz -C /data'
+docker run --rm -v "${PROJECT}_redis_data":/data -v "$PWD":/in alpine sh -c 'rm -rf /data/* && tar xzf /in/redis-2025-01-01.tgz -C /data'
 docker compose up -d
 ```
 

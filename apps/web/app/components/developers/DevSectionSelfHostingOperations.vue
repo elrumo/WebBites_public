@@ -153,6 +153,7 @@ docker compose up -d`
 const BACKUP = `cd webbites
 set -a; . ./.env; set +a
 STAMP=$(date +%F)
+PROJECT="\${COMPOSE_PROJECT_NAME:-webbites}"   # Docker's name for this install
 
 # MongoDB (a consistent dump)
 docker compose exec -T mongo mongodump -u webbites -p "$MONGO_PASSWORD" --authenticationDatabase admin \\
@@ -160,17 +161,18 @@ docker compose exec -T mongo mongodump -u webbites -p "$MONGO_PASSWORD" --authen
 
 # Redis: save, then copy the append-only file out
 docker compose exec -T redis redis-cli SAVE
-docker run --rm -v webbites_redis_data:/data -v "$PWD":/out alpine tar czf "/out/redis-$STAMP.tgz" -C /data .
+docker run --rm -v "\${PROJECT}_redis_data":/data -v "$PWD":/out alpine tar czf "/out/redis-$STAMP.tgz" -C /data .
 
 # The secrets
 cp .env "env-$STAMP.backup" && chmod 600 "env-$STAMP.backup"`
 
-const RESTORE = `docker compose up -d mongo redis
+const RESTORE = `PROJECT="\${COMPOSE_PROJECT_NAME:-webbites}"
+docker compose up -d mongo redis
 docker compose exec -T mongo mongorestore -u webbites -p "$MONGO_PASSWORD" --authenticationDatabase admin \\
   --archive --gzip --drop < mongo-2025-01-01.archive.gz
 
 docker compose stop redis
-docker run --rm -v webbites_redis_data:/data -v "$PWD":/in alpine sh -c 'rm -rf /data/* && tar xzf /in/redis-2025-01-01.tgz -C /data'
+docker run --rm -v "\${PROJECT}_redis_data":/data -v "$PWD":/in alpine sh -c 'rm -rf /data/* && tar xzf /in/redis-2025-01-01.tgz -C /data'
 docker compose up -d
 
 # then open Admin → Search index → Sync now to rebuild search`

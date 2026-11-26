@@ -43,6 +43,18 @@
       <div class="flex items-center space-x-4">
         <UButton
           v-if="!selfHosted"
+          to="/#self-host"
+          color="neutral"
+          variant="outline"
+          size="sm"
+          icon="i-tabler-server-2"
+          class="hidden lg:inline-flex font-bold rounded-full"
+        >
+          {{ $t('navigation.self_host') }}
+        </UButton>
+
+        <UButton
+          v-if="!selfHosted"
           color="neutral"
           variant="ghost"
           class="transition hover:scale-125"

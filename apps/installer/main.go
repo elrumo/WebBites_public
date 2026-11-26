@@ -6,6 +6,7 @@ package main
 import (
 	"bufio"
 	"context"
+	"errors"
 	"flag"
 	"fmt"
 	"os"
@@ -43,15 +44,27 @@ func main() {
 	}
 	args := os.Args[1:]
 	cmd := ""
-	if len(args) > 0 && !strings.HasPrefix(args[0], "-") {
+	// A first word starting with "-" is a flag of the app itself (--dir), except these.
+	if len(args) > 0 && (!strings.HasPrefix(args[0], "-") || isInfoFlag(args[0])) {
 		cmd, args = args[0], args[1:]
 	}
 	if err := run(cmd, args); err != nil {
+		if errors.Is(err, flag.ErrHelp) {
+			return // "install --help": the flag package has printed the options
+		}
 		if _, shown := err.(shownError); !shown {
 			fmt.Fprintln(os.Stderr, "Error:", err)
 		}
 		os.Exit(1)
 	}
+}
+
+func isInfoFlag(a string) bool {
+	switch a {
+	case "-h", "-help", "--help", "--version":
+		return true
+	}
+	return false
 }
 
 func run(cmd string, args []string) error {
@@ -140,7 +153,7 @@ func run(cmd string, args []string) error {
 		fmt.Println(appVersion)
 		return nil
 
-	case "help", "-h", "--help":
+	case "help", "-h", "-help", "--help":
 		fmt.Printf(usage, appVersion)
 		return nil
 	}
@@ -261,10 +274,7 @@ func cliInstall(m *Manager, fs *flag.FlagSet, dir *string, args []string) error 
 			o.Domain = ask(in, "Domain name (localhost to use it on this computer)", "localhost")
 		}
 		if (o.Domain == "" || o.Domain == "localhost") && o.HTTPPort == 0 {
-			def := "80"
-			if PortInUse(80) {
-				def = "8080"
-			}
+			def := strconv.Itoa(FreePort()) // 80, unless it or 443 is taken
 			p, err := strconv.Atoi(ask(in, "Port on this computer", def))
 			if err != nil {
 				return fmt.Errorf("the port must be a number")
@@ -280,8 +290,8 @@ func cliInstall(m *Manager, fs *flag.FlagSet, dir *string, args []string) error 
 		if !o.RustFS {
 			o.RustFS = askYes(in, "Keep files in a bundled S3 store (RustFS) instead of MongoDB?", false)
 		}
-	} else if (o.Domain == "" || o.Domain == "localhost") && o.HTTPPort == 0 && PortInUse(80) {
-		o.HTTPPort = 8080
+	} else if (o.Domain == "" || o.Domain == "localhost") && o.HTTPPort == 0 {
+		o.HTTPPort = FreePort()
 	}
 	return following(m, func() error { return m.Install(o, true) })
 }

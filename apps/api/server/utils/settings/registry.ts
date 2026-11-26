@@ -90,7 +90,7 @@ export const FIELDS: SettingField[] = [
     { key: 'S3_ACCESS_KEY', group: 'storage', label: 'Access key', kind: 'secret', parse: true, api: 'live' },
     { key: 'S3_SECRET_KEY', group: 'storage', label: 'Secret key', kind: 'secret', parse: true, api: 'live' },
     { key: 'S3_PUBLIC_URL', group: 'storage', label: 'Public address of the bucket', kind: 'url', parse: true, api: 'live',
-      help: 'Where browsers load files from, for example https://cdn.example.com or https://example.com/s3/webbites.' },
+      help: 'Where browsers load files from, for example https://cdn.example.com or https://example.com/s3 (the bucket name is added to it).' },
 
     // ---- search -------------------------------------------------------------------------------
     { key: 'MEILISEARCH_HOST', group: 'search', label: 'Address', kind: 'url', api: 'restart', placeholder: 'http://meilisearch:7700' },

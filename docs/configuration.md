@@ -10,6 +10,8 @@ Settings come from three places, strongest first:
 
 An empty variable counts as not set, so `FOO=` in `.env` does not lock anything.
 
+`.env` wins over variables exported in your shell: a stray `S3_BUCKET` or `SENTRY_DSN` in your terminal never reaches the containers. (`docker-compose.yml` also reads `.env.example` for defaults, so keep that file next to it. The few values Compose computes itself, such as `PUBLIC_URL`, the ports, `WEBBITES_VERSION` and the generated secrets, can still be overridden for one command with `VAR=x docker compose ...`.)
+
 ## What the admin page can change
 
 | Group | Variables | Takes effect |

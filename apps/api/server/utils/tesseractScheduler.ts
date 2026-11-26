@@ -1,6 +1,7 @@
 import Tesseract from 'tesseract.js';
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
+import { toInternalUrl } from './internalUrl';
 
 // Language data: the .traineddata files shipped in the image (the working directory), or whatever
 // OCR_LANG_PATH points at. Only if neither has them does it fall back to a public mirror, which
@@ -95,7 +96,7 @@ export async function extractTextFromImage(input: string | Buffer): Promise<stri
 
         if (typeof input === 'string') {
             // URL path (existing logic)
-            const response = await fetch(input);
+            const response = await fetch(toInternalUrl(input));
             const arrayBuffer = await response.arrayBuffer();
             const imageBuffer = new Uint8Array(arrayBuffer);
             nodeBuffer = Buffer.from(imageBuffer);

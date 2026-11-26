@@ -38,6 +38,9 @@ const USER_FIELDS = {
   importedBookmarks: { type: 'File' },
   failedToImport: { type: 'Array' },
   questionnaire: { type: 'Object' },
+  // Written by the onboarding tour (OnboardingWizard `skipWizard`) next to `userOptions.isFirstTime`,
+  // which is what the app reads; without the column that save fails with "Permission denied ... addField".
+  isFirstTime: { type: 'Boolean' },
 };
 
 async function ensureUserFields(Parse, log = console) {
