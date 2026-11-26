@@ -65,6 +65,14 @@ const SECRET = 'a'.repeat(64);
     assert.deepEqual(env, {});
     assert.equal(r.skipped.length, 3);
   });
+  await check('the Apple client ids set on the admin page reach Parse, unless the environment has them', () => {
+    const env = {};
+    settings.applyRows([{ key: 'APPLE_CLIENT_IDS', value: 'com.example.web' }], env, SECRET);
+    assert.equal(env.APPLE_CLIENT_IDS, 'com.example.web');
+    const locked = { APPLE_CLIENT_IDS: 'io.webbites.web' };
+    settings.applyRows([{ key: 'APPLE_CLIENT_IDS', value: 'com.example.web' }], locked, SECRET);
+    assert.equal(locked.APPLE_CLIENT_IDS, 'io.webbites.web');
+  });
   await check('one undecryptable row does not stop the others', () => {
     const env = {};
     const r = settings.applyRows([

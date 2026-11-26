@@ -6,6 +6,7 @@
  * The key IS the environment variable name. Precedence: a variable set in the real environment
  * wins (the field shows as locked), then what is stored here, then the built-in default.
  */
+import { createPrivateKey } from 'node:crypto';
 
 export type FieldKind = 'text' | 'secret' | 'number' | 'url' | 'select';
 
@@ -19,6 +20,8 @@ export interface SettingField {
     options?: Array<{ value: string; label: string }>;
     min?: number;
     max?: number;
+    /** A secret that is several lines long (a PEM key): rendered as a text area, checked and stored as PEM. */
+    multiline?: boolean;
     /** Parse reads this too, and needs a restart to see a change. */
     parse?: boolean;
     /** How the API picks up a change: immediately, or only after it restarts. */
@@ -33,6 +36,8 @@ export interface SettingGroup {
     warning?: string;
     /** Whether the page offers a connection test for the group. */
     testable: boolean;
+    /** Where the longer setup steps are written down. */
+    docsUrl?: string;
 }
 
 export const GROUPS: SettingGroup[] = [
@@ -49,6 +54,10 @@ export const GROUPS: SettingGroup[] = [
       warning: 'A new Meilisearch starts empty. Re-index from the Search index tab afterwards.' },
     { id: 'screenshots', title: 'Screenshot service', testable: true,
       description: 'The headless-browser service that takes page screenshots. Without it, bookmark cards use the page\'s own preview image.' },
+    { id: 'apple', title: 'Sign in with Apple', testable: false,
+      docsUrl: 'https://github.com/elrumo/webbites_public/blob/main/docs/configuration.md#sign-in-with-apple',
+      description: 'Optional. Adds a "Continue with Apple" button to the sign-in page. It stays hidden until a Services ID is saved here (or set in .env), because it cannot work without an Apple Developer account.',
+      warning: 'Press Restart after saving: Parse reads the Services ID only when it starts, and signing in with Apple does not work until it is back.' },
     { id: 'branding', title: 'Name and contact', testable: false,
       description: 'Shown in emails and sign-in screens.' },
 ];
@@ -100,6 +109,15 @@ export const FIELDS: SettingField[] = [
     { key: 'SCREENSHOT_SERVICE_URL', group: 'screenshots', label: 'Service address', kind: 'url', api: 'live', placeholder: 'http://screenshot:3000' },
     { key: 'SCREENSHOT_API_KEY', group: 'screenshots', label: 'API key', kind: 'secret', api: 'live' },
 
+    // ---- Sign in with Apple -------------------------------------------------------------------
+    { key: 'APPLE_CLIENT_IDS', group: 'apple', label: 'Services ID', kind: 'text', parse: true, api: 'live', placeholder: 'com.example.webbites.web',
+      help: 'The Services ID from your Apple Developer account, which the web button signs in with. To also accept sign-ins from a native app, add its bundle ID after it, separated by commas.' },
+    { key: 'APPLE_SIWA_TEAM_ID', group: 'apple', label: 'Team ID', kind: 'text', api: 'live', placeholder: 'ABCDE12345',
+      help: 'Optional. Together with the key below, lets WebBites tell Apple to drop its link to an account when that account is deleted.' },
+    { key: 'APPLE_SIWA_KEY_ID', group: 'apple', label: 'Key ID', kind: 'text', api: 'live', placeholder: '1A2B3C4D5E' },
+    { key: 'APPLE_SIWA_PRIVATE_KEY', group: 'apple', label: 'Private key (.p8)', kind: 'secret', multiline: true, api: 'live',
+      placeholder: 'The whole AuthKey_XXXXXXXXXX.p8 file', help: 'Paste the whole contents of the AuthKey_XXXXXXXXXX.p8 file.' },
+
     // ---- branding -----------------------------------------------------------------------------
     { key: 'APP_NAME', group: 'branding', label: 'Name', kind: 'text', parse: true, api: 'live', placeholder: 'WebBites' },
     { key: 'SUPPORT_EMAIL', group: 'branding', label: 'Support address', kind: 'text', api: 'live', placeholder: 'help@example.com' },
@@ -130,6 +148,12 @@ export function validateChanges(changes: Record<string, unknown>): ValidationRes
         const value = String(raw).trim();
         const max = field.kind === 'secret' ? 4000 : 500;
         if (value.length > max) { errors[key] = `Too long (at most ${max} characters).`; continue; }
+        if (field.multiline) {
+            const pem = normalisePrivateKey(value);
+            if (!pem) { errors[key] = 'Must be the EC (P-256) private key in PEM form, pasted whole, as in the .p8 file Apple gives you.'; continue; }
+            values[key] = pem;
+            continue;
+        }
         if (/[\r\n\0]/.test(value)) { errors[key] = 'Must be a single line.'; continue; }
 
         if (field.kind === 'select' && !field.options!.some((o) => o.value === value)) {
@@ -147,9 +171,47 @@ export function validateChanges(changes: Record<string, unknown>): ValidationRes
                 if (u.protocol !== 'http:' && u.protocol !== 'https:') throw new Error('protocol');
             } catch { errors[key] = 'Must be a full http:// or https:// address.'; continue; }
         }
+        if (key === 'APPLE_CLIENT_IDS' && !value.split(',').every((id) => APPLE_ID.test(id.trim()))) {
+            errors[key] = 'Must be one or more IDs such as com.example.webbites.web, separated by commas.'; continue;
+        }
         values[key] = value;
     }
     return { ok: Object.keys(errors).length === 0, values, errors };
+}
+
+const APPLE_ID = /^[A-Za-z0-9][A-Za-z0-9.-]{0,98}[A-Za-z0-9]$/;
+
+/**
+ * A `.p8` key as one canonical PEM, or null when it is not one. Accepts it pasted with real line
+ * breaks or with a literal `\n` (how it is usually kept in an environment variable). Parsed with
+ * node:crypto, so a truncated paste fails here instead of when someone deletes their account.
+ */
+export function normalisePrivateKey(raw: string): string | null {
+    const text = raw.replace(/\\n/g, '\n').replace(/\r\n?/g, '\n').trim();
+    try {
+        // node:crypto parses the PEM (so a truncated or encrypted paste throws) and writes it back in
+        // one canonical form; there is no need to know the armour lines here.
+        const key = createPrivateKey({ key: text, format: 'pem' });
+        if (key.asymmetricKeyType !== 'ec' || key.asymmetricKeyDetails?.namedCurve !== 'prime256v1') return null;
+        return key.export({ type: 'pkcs8', format: 'pem' }).toString().trim();
+    } catch { return null; }
+}
+
+const APPLE_KEY_FIELDS = ['APPLE_SIWA_TEAM_ID', 'APPLE_SIWA_KEY_ID', 'APPLE_SIWA_PRIVATE_KEY'] as const;
+
+/**
+ * Rules that span fields, checked against what the settings will be once a change is applied
+ * (`effective`: key -> value, '' for unset). The key trio is all or nothing, and it is no use
+ * without a Services ID. Returns key -> message.
+ */
+export function validateAppleGroup(effective: Record<string, string>): Record<string, string> {
+    const errors: Record<string, string> = {};
+    const given = APPLE_KEY_FIELDS.filter((k) => (effective[k] ?? '') !== '');
+    if (given.length > 0 && given.length < APPLE_KEY_FIELDS.length) {
+        for (const k of APPLE_KEY_FIELDS) if (!given.includes(k)) errors[k] = 'Team ID, Key ID and the private key are needed together.';
+    }
+    if (given.length > 0 && (effective.APPLE_CLIENT_IDS ?? '') === '') errors.APPLE_CLIENT_IDS = 'Needed when a Team ID and key are saved.';
+    return errors;
 }
 
 /** What a change needs before it takes effect. */

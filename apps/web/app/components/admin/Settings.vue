@@ -60,6 +60,16 @@
         <h2 class="text-base font-semibold">{{ group.title }}</h2>
         <p class="text-sm opacity-70">{{ group.description }}</p>
         <p v-if="group.warning" class="text-xs text-amber-700 dark:text-amber-400">{{ group.warning }}</p>
+        <div v-if="group.id === 'apple'" class="flex flex-col gap-1 text-sm">
+          <p>
+            Register this as the Return URL of your Services ID at Apple:
+            <code class="select-all break-all">{{ appleReturnUrl }}</code>
+          </p>
+          <p class="text-xs opacity-60">Apple only accepts a domain name over HTTPS, not localhost or a plain IP address.</p>
+        </div>
+        <a v-if="group.docsUrl" :href="group.docsUrl" target="_blank" rel="noopener" class="text-xs underline self-start opacity-70">
+          Setup steps in the documentation
+        </a>
       </header>
 
       <div class="grid gap-4 sm:grid-cols-2">
@@ -78,6 +88,18 @@
             <option value="">Default</option>
             <option v-for="o in field.options" :key="o.value" :value="o.value">{{ o.label }}</option>
           </select>
+
+          <UTextarea
+            v-else-if="field.multiline"
+            :id="`s-${field.key}`"
+            v-model="form[field.key]"
+            :rows="5"
+            :disabled="field.locked || !data.encryptionConfigured"
+            :placeholder="field.isSet ? '(set, paste a new key to replace)' : field.placeholder"
+            autocomplete="off"
+            spellcheck="false"
+            class="font-mono"
+          />
 
           <UInput
             v-else
@@ -137,6 +159,9 @@ const pending = reactive({ parse: false, api: false })
 const removed = reactive({})
 
 const STORAGE_KEY = 'wb-settings-pending-restart'
+
+// The address people use, so it is what Apple has to be told. The button sends the browser's own origin.
+const appleReturnUrl = computed(() => `${(import.meta.client ? window.location.origin : useRuntimeConfig().public.appUrl || '').replace(/\/+$/, '')}/auth/apple/callback`)
 
 const groups = computed(() => data.value?.groups ?? [])
 const fieldsOf = (group) => (data.value?.fields ?? []).filter(f => f.group === group.id)

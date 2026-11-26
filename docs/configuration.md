@@ -21,11 +21,36 @@ An empty variable counts as not set, so `FOO=` in `.env` does not lock anything.
 | File storage | `FILES_DRIVER`, `S3_BUCKET`, `S3_ENDPOINT_URL`, `S3_REGION`, `S3_ACCESS_KEY`, `S3_SECRET_KEY`, `S3_PUBLIC_URL` | API at once; Parse after its restart |
 | Search | `MEILISEARCH_HOST`, `MEILISEARCH_API_KEY` | after the API restarts |
 | Screenshots | `SCREENSHOT_SERVICE_URL`, `SCREENSHOT_API_KEY` | at once |
+| Sign in with Apple | `APPLE_CLIENT_IDS`, `APPLE_SIWA_TEAM_ID`, `APPLE_SIWA_KEY_ID`, `APPLE_SIWA_PRIVATE_KEY` | API and the button at once; Parse after its restart |
 | Name and contact | `APP_NAME`, `SUPPORT_EMAIL` | API at once; Parse after its restart |
 
 "Restart" means the **Restart** button the page shows after saving. It makes the service exit; Docker
 (`restart: unless-stopped`) starts it again. No Docker socket is mounted anywhere. If Parse cannot
 start with the saved values it starts with the previous working ones and the page says so.
+
+## Sign in with Apple
+
+Optional, and **off by default**: without an Apple Developer account it cannot work, so the "Continue
+with Apple" button is not shown and the server refuses Apple sign-ins. It switches on when a Services ID
+is saved on the admin page (/admin → Settings → Sign in with Apple) or set as `APPLE_CLIENT_IDS` in
+`.env`. Clearing it switches it off again. The usual precedence applies: `.env` wins and locks the field.
+
+In your Apple Developer account (Certificates, Identifiers & Profiles):
+
+1. Create an **App ID** with the *Sign in with Apple* capability, then a **Services ID** and enable
+   *Sign in with Apple* on it. This Services ID is the setting `APPLE_CLIENT_IDS`.
+2. In the Services ID's configuration add your domain and the **Return URL**
+   `https://<your domain>/auth/apple/callback` (the admin page shows yours). Apple accepts only a domain
+   name served over HTTPS, so `localhost` and bare IP addresses cannot be used.
+3. Optional: create a **Key** with *Sign in with Apple* and download the `.p8` file. Paste its contents,
+   its Key ID and your Team ID into the three other fields (all three, or none). They let WebBites tell
+   Apple to drop its link to an account when the account is deleted; sign-in itself does not need them.
+
+`APPLE_CLIENT_IDS` takes several comma-separated ids. The first is the Services ID used by the web
+button; add a native app's bundle id after it to accept that app's sign-ins as well.
+
+Saving takes effect in the API at once. Parse reads the Services ID at start-up, so press **Restart**
+on the page before trying it. The private key is stored encrypted and never shown again.
 
 ## What stays in `.env`
 
@@ -55,7 +80,7 @@ Losing `SETTINGS_ENCRYPTION_KEY` or `BACKUP_ENCRYPTION_KEY` makes what they prot
 
 `TMDB_API_KEY` (movie and series bookmarks), `TWITCH_CLIENT_ID` / `TWITCH_CLIENT_SECRET` (game
 bookmarks via IGDB), `SENTRY_DSN` (error reports to a Sentry you run; nothing is sent by default),
-`APPLE_CLIENT_IDS` (Sign in with Apple), `RAINDROP_*`, `DROPBOX_*`, `GOOGLE_DRIVE_*`, `REDDIT_*` (import and
+`RAINDROP_*`, `DROPBOX_*`, `GOOGLE_DRIVE_*`, `REDDIT_*` (import and
 backup connectors), `WELCOME_BOOKMARKS=false` (no sample bookmark for new accounts).
 
 ## Other knobs

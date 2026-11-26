@@ -1,11 +1,12 @@
 <template>
     <UButton
+        v-if="enabled"
         color="neutral"
         variant="solid"
         :size="compact ? 'xs' : 'lg'"
         class="rounded-full font-semibold w-fit mx-auto"
         :loading="loadingSignInWithApple"
-        @click="signInWithApple"
+        @click="signInWithApple(clientId)"
     >
         <!-- The spinner takes the logo's place rather than sitting beside it,
              so the label does not shift when the button starts loading. -->
@@ -30,6 +31,9 @@ const store = useStore();
 const {
   signInWithApple
 } = store;
+
+// Not rendered at all unless this server has Apple sign-in configured.
+const { enabled, clientId } = useAppleSignIn();
 
 const {
     loadingSignInWithApple

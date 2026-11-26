@@ -1,6 +1,6 @@
 import { defineEventHandler, readBody, createError } from 'h3'
 import { requireAdmin } from '#root/server/utils/requireAdmin'
-import { restartNeeded, validateChanges, fieldByKey } from '#root/server/utils/settings/registry'
+import { restartNeeded, validateChanges, validateAppleGroup, fieldByKey, FIELDS } from '#root/server/utils/settings/registry'
 import { sourceOf, captureEnvOrigin } from '#root/server/utils/settings/apply'
 import { writeChanges } from '#root/server/utils/settings/store'
 import { loadSettings } from '#root/server/utils/settings'
@@ -27,6 +27,14 @@ export default defineEventHandler(async (event) => {
   const checked = validateChanges(changes)
   if (!checked.ok) {
     throw createError({ statusCode: 400, statusMessage: 'Some values are not valid', data: { errors: checked.errors } })
+  }
+
+  // Rules across fields look at what the settings will be after this change, not just the change.
+  if (Object.keys(checked.values).some(k => k.startsWith('APPLE_'))) {
+    const effective: Record<string, string> = {}
+    for (const f of FIELDS.filter(f => f.group === 'apple')) effective[f.key] = f.key in checked.values ? (checked.values[f.key] ?? '') : (process.env[f.key] ?? '')
+    const errors = validateAppleGroup(effective)
+    if (Object.keys(errors).length) throw createError({ statusCode: 400, statusMessage: 'Some values are not valid', data: { errors } })
   }
 
   // The environment wins over anything stored, so a change to such a setting would do nothing.

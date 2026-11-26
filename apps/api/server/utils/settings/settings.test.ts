@@ -8,7 +8,8 @@ import http from 'node:http';
 import net from 'node:net';
 import { readFileSync } from 'node:fs';
 import { encryptSetting, decryptSetting, isEncrypted } from './crypto';
-import { FIELDS, GROUPS, PARSE_KEYS, validateChanges, restartNeeded, fieldByKey } from './registry';
+import { generateKeyPairSync } from 'node:crypto';
+import { FIELDS, GROUPS, PARSE_KEYS, validateChanges, validateAppleGroup, normalisePrivateKey, restartNeeded, fieldByKey } from './registry';
 import { applyRows, captureEnvOrigin, resetApplyState, sourceOf } from './apply';
 import { testAi, testScreenshots, testSearch, testStorage, testMail } from './connectionTests';
 
@@ -67,6 +68,20 @@ async function main() {
     check('search changes restart the API, not Parse', (() => { const n = restartNeeded(['MEILISEARCH_HOST']); return n.api && !n.parse; })());
     check('AI changes need no restart', (() => { const n = restartNeeded(['AI_TEXT_MODEL', 'AI_API_KEY']); return !n.api && !n.parse; })());
     check('a mixed change needs both', (() => { const n = restartNeeded(['SMTP_HOST', 'MEILISEARCH_HOST']); return n.api && n.parse; })());
+
+    console.log('Sign in with Apple');
+    const p8 = generateKeyPairSync('ec', { namedCurve: 'prime256v1' }).privateKey.export({ type: 'pkcs8', format: 'pem' }).toString().trim();
+    const rsa = generateKeyPairSync('rsa', { modulusLength: 2048 }).privateKey.export({ type: 'pkcs8', format: 'pem' }).toString().trim();
+    check('the key is stored, never shown, and is a secret', fieldByKey('APPLE_SIWA_PRIVATE_KEY')?.kind === 'secret' && fieldByKey('APPLE_SIWA_PRIVATE_KEY')?.multiline === true);
+    check('only the client ids go to Parse', PARSE_KEYS.includes('APPLE_CLIENT_IDS') && !PARSE_KEYS.includes('APPLE_SIWA_PRIVATE_KEY'));
+    check('changing the client ids restarts Parse, the rest is live', restartNeeded(['APPLE_CLIENT_IDS']).parse && !restartNeeded(['APPLE_SIWA_KEY_ID']).parse);
+    check('a .p8 is accepted and kept as PEM', validateChanges({ APPLE_SIWA_PRIVATE_KEY: p8 }).values.APPLE_SIWA_PRIVATE_KEY === p8);
+    check('a one-line .p8 with literal \\n is normalised', normalisePrivateKey(p8.replace(/\n/g, '\\n')) === p8);
+    check('a truncated or non-EC key is refused', !validateChanges({ APPLE_SIWA_PRIVATE_KEY: p8.slice(0, 120) }).ok && !validateChanges({ APPLE_SIWA_PRIVATE_KEY: p8.slice(0, -40) }).ok && !validateChanges({ APPLE_SIWA_PRIVATE_KEY: rsa }).ok && !validateChanges({ APPLE_SIWA_PRIVATE_KEY: 'hello' }).ok);
+    check('client ids are checked one by one', validateChanges({ APPLE_CLIENT_IDS: 'com.example.web, io.webbites.app' }).ok && !validateChanges({ APPLE_CLIENT_IDS: 'com.example.web, not an id' }).ok);
+    check('the key trio is all or nothing', Object.keys(validateAppleGroup({ APPLE_CLIENT_IDS: 'a.b', APPLE_SIWA_TEAM_ID: 'T' })).sort().join() === 'APPLE_SIWA_KEY_ID,APPLE_SIWA_PRIVATE_KEY');
+    check('the key trio needs a Services ID', 'APPLE_CLIENT_IDS' in validateAppleGroup({ APPLE_SIWA_TEAM_ID: 'T', APPLE_SIWA_KEY_ID: 'K', APPLE_SIWA_PRIVATE_KEY: p8 }));
+    check('a Services ID alone, or nothing at all, is fine', Object.keys(validateAppleGroup({ APPLE_CLIENT_IDS: 'a.b' })).length === 0 && Object.keys(validateAppleGroup({})).length === 0);
 
     console.log('applying stored settings');
     const env: NodeJS.ProcessEnv = { SMTP_HOST: 'from-env', MAIL_FROM: '' };

@@ -164,7 +164,7 @@
             </div>
           </div>
 
-          <div class="flex items-center gap-3 text-xs text-white/45">
+          <div v-if="appleEnabled" class="flex items-center gap-3 text-xs text-white/45">
             <span class="h-px flex-1 bg-white/12"></span>
             {{ $t('common.or') || 'or' }}
             <span class="h-px flex-1 bg-white/12"></span>
@@ -187,6 +187,7 @@ import party from "party-js";
 import { useRouter, useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 const { t } = useI18n();
+const { enabled: appleEnabled } = useAppleSignIn();
 
 // Store setup
 const store = useStore();

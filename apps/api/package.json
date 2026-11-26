@@ -75,6 +75,7 @@
     "test:userStorageKeys": "tsx server/utils/userStorageKeys.test.ts",
     "test:apiMetrics": "tsx server/utils/apiMetrics.test.ts",
     "test:appleTokens": "tsx server/utils/appleTokens.test.ts",
+    "test:appleAuth": "tsx server/utils/appleAuth.test.ts",
     "test:meiliEmbedder": "tsx server/utils/meilisearchEmbedder.test.ts",
     "test:meiliTask": "tsx server/utils/meilisearchTask.test.ts",
     "test:meiliSyncControl": "tsx server/utils/meilisearchSyncControl.test.ts",
