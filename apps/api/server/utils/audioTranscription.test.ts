@@ -79,25 +79,28 @@ const run = async (fileUrl: string) => {
 const audio = 'http://localhost:8080/parse/files/app/n.m4a';
 
 env({ SITE_URL: 'http://localhost:8080' });
-let r = await run(audio);
-eq('no OpenAI key: failed, cleanly', r.status, 'failed');
-eq('no OpenAI key: nothing fetched', r.fetched.length, 0);
+// An async main: tsx runs this package as CommonJS, where top-level await is not allowed.
+(async () => {
+  let r = await run(audio);
+  eq('no OpenAI key: failed, cleanly', r.status, 'failed');
+  eq('no OpenAI key: nothing fetched', r.fetched.length, 0);
 
-env({ SITE_URL: 'http://localhost:8080', OPENAI_API_KEY: 'sk-test' });
-r = await run(audio);
-eq('gridfs audio is fetched by the in-network address', r.fetched[0], 'http://parse:1337/parse/files/app/n.m4a');
-eq('unreadable file: failed, no throw', r.status, 'failed');
-eq('unlimited plan: not marked quota', r.status === 'quota', false);
+  env({ SITE_URL: 'http://localhost:8080', OPENAI_API_KEY: 'sk-test' });
+  r = await run(audio);
+  eq('gridfs audio is fetched by the in-network address', r.fetched[0], 'http://parse:1337/parse/files/app/n.m4a');
+  eq('unreadable file: failed, no throw', r.status, 'failed');
+  eq('unlimited plan: not marked quota', r.status === 'quota', false);
 
-r = await run('https://evil.example.org/n.m4a');
-eq('foreign URL is never fetched', r.fetched.length, 0);
-eq('foreign URL: failed', r.status, 'failed');
-r = await run('http://127.0.0.1:7700/indexes');
-eq('loopback URL is never fetched', r.fetched.length, 0);
+  r = await run('https://evil.example.org/n.m4a');
+  eq('foreign URL is never fetched', r.fetched.length, 0);
+  eq('foreign URL: failed', r.status, 'failed');
+  r = await run('http://127.0.0.1:7700/indexes');
+  eq('loopback URL is never fetched', r.fetched.length, 0);
 
-env({ SITE_URL: 'http://localhost:8080', OPENAI_API_KEY: 'sk-test', S3_PUBLIC_URL: 'http://localhost:8080/s3', S3_ENDPOINT_URL: 'http://rustfs:9000' });
-r = await run('http://localhost:8080/s3/webbites/parse/n.m4a');
-eq('s3 audio is fetched by the in-network address', r.fetched[0], 'http://rustfs:9000/webbites/parse/n.m4a');
+  env({ SITE_URL: 'http://localhost:8080', OPENAI_API_KEY: 'sk-test', S3_PUBLIC_URL: 'http://localhost:8080/s3', S3_ENDPOINT_URL: 'http://rustfs:9000' });
+  r = await run('http://localhost:8080/s3/webbites/parse/n.m4a');
+  eq('s3 audio is fetched by the in-network address', r.fetched[0], 'http://rustfs:9000/webbites/parse/n.m4a');
 
-console.log(`${pass} passed, ${fail} failed`);
-process.exit(fail ? 1 : 0);
+  console.log(`${pass} passed, ${fail} failed`);
+  process.exit(fail ? 1 : 0);
+})();
