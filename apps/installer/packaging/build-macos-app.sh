@@ -6,7 +6,9 @@
 # Signing: with DEVELOPER_ID set (e.g. "Developer ID Application: Name (TEAMID)") and the certificate
 # in the keychain, the app is signed with it (hardened runtime) and, with NOTARY_PROFILE set (a
 # `xcrun notarytool store-credentials` profile), notarized and stapled. Without, it is ad-hoc signed:
-# it runs, but the first launch needs right-click > Open.
+# it runs, but the first launch needs System Settings > Privacy & Security > Open Anyway.
+# KEYCHAIN=<path> says which keychain holds the certificate (and the notary profile) when it is not
+# in the default search list, for example a dedicated, unlocked signing keychain.
 set -eu
 VERSION="${1:?version}"
 OUT="${2:?output dir}"
@@ -32,7 +34,7 @@ done
 iconutil -c icns "$ICONSET" -o "$APP/Contents/Resources/AppIcon.icns"
 
 if [ -n "${DEVELOPER_ID:-}" ]; then
-  codesign --force --options runtime --timestamp --sign "$DEVELOPER_ID" "$APP"
+  codesign --force --options runtime --timestamp --sign "$DEVELOPER_ID" ${KEYCHAIN:+--keychain "$KEYCHAIN"} "$APP"
 else
   codesign --force --sign - "$APP"
 fi
@@ -40,7 +42,7 @@ fi
 ZIP="$OUT/WebBites-Server-macOS.zip"
 ditto -c -k --keepParent "$APP" "$ZIP"
 if [ -n "${DEVELOPER_ID:-}" ] && [ -n "${NOTARY_PROFILE:-}" ]; then
-  xcrun notarytool submit "$ZIP" --keychain-profile "$NOTARY_PROFILE" --wait
+  xcrun notarytool submit "$ZIP" --keychain-profile "$NOTARY_PROFILE" ${KEYCHAIN:+--keychain "$KEYCHAIN"} --wait
   xcrun stapler staple "$APP"
   rm "$ZIP" && ditto -c -k --keepParent "$APP" "$ZIP"
 fi

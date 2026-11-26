@@ -21,8 +21,8 @@ From the [latest release](https://github.com/elrumo/webbites_public/releases/lat
 You also need [Docker Desktop](https://www.docker.com/products/docker-desktop/) (or Docker Engine with
 the Compose plugin on Linux), and 2 GB of free memory (3 GB with page previews).
 
-The first time, your computer may ask whether you trust an app from the internet. On a Mac, if it says
-it can't check the app, open **System Settings → Privacy & Security** and choose **Open Anyway** (on macOS 14 and earlier, right-click the app and choose **Open**). On Windows, if SmartScreen appears, choose
+The first time, your computer may ask whether you trust an app from the internet. The Mac app is signed and
+notarized by Apple, so on a Mac you only confirm **Open** once. On Windows, if SmartScreen appears, choose
 **More info → Run anyway**.
 
 ## Set it up
