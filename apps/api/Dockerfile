@@ -40,7 +40,10 @@ COPY docs/mcp-tools.json ./docs/mcp-tools.json
 # Copy source code last (changes most frequently)
 COPY server ./server
 
-# Build with Bun (without Sentry)
+# Build with Bun (without Sentry). `nitro build` is a Node-shebang CLI: with a real Node on PATH
+# `bun run` hands it to Node, which stays stable under QEMU/Rosetta when building amd64 on an arm64
+# machine (Bun itself segfaults there). Node is only in this build stage, not in the image.
+RUN apk add --no-cache nodejs
 RUN bun run build
 
 # Setup the runtime environment
