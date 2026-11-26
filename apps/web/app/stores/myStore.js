@@ -3476,7 +3476,7 @@ export const useStore = defineStore('websitesStore', {
       }
     },
 
-    signInWithApple(){
+    signInWithApple(clientId = 'io.webbites.web'){
       try{
         this.loadingSignInWithApple = true;
         
@@ -3488,7 +3488,7 @@ export const useStore = defineStore('websitesStore', {
       
         // Build the OAuth parameters
         const params = new URLSearchParams({
-          client_id: 'io.webbites.web',
+          client_id: clientId,
           redirect_uri: window.location.origin + '/auth/apple/callback',
           response_type: 'code id_token',
           response_mode: 'form_post',

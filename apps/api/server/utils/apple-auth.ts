@@ -2,6 +2,7 @@ import { randomBytes } from 'node:crypto'
 import Parse from 'parse/node.js'
 import { createRemoteJWKSet, jwtVerify } from 'jose'
 import { getFreePlanPointer } from './plans'
+import { isBillingEnabled } from './billing'
 
 export interface AppleAuthData {
   id_token: string
@@ -47,19 +48,32 @@ const APPLE_ISSUER = 'https://appleid.apple.com'
  */
 const APPLE_JWKS = createRemoteJWKSet(new URL(`${APPLE_ISSUER}/auth/keys`))
 
+/** The ids the hosted service has always accepted, used only when it has none configured. */
+const HOSTED_DEFAULT_AUDIENCES = ['io.webbites.web', 'io.webbites.app']
+
 /**
- * Every client id an identity token may be issued to: the web Services ID and
- * the native bundle id, since iOS mints tokens with `aud` set to the bundle id.
+ * Every client id an identity token may be issued to: the web Services ID and any native bundle
+ * ids (iOS mints tokens with `aud` set to the bundle id). `APPLE_CLIENT_IDS`, comma separated,
+ * set in the environment or on the admin page. The first one is the web Services ID.
  *
- * Defaults to both rather than to the web id alone — a missing env var must not
- * silently kill "Continue with Apple" on the phone again.
+ * Empty means Sign in with Apple is off, which is the self-hosted default: a token Apple issued
+ * to somebody else's app must never sign anyone in here. Only the hosted service (a billing
+ * provider is set, or SELF_HOSTED=false) falls back to its own ids, so a missing variable there
+ * cannot silently kill "Continue with Apple" on the phone.
  */
-export function appleAudiences(): string[] {
-  return (process.env.APPLE_CLIENT_IDS || 'io.webbites.web,io.webbites.app')
+export function appleAudiences(env: NodeJS.ProcessEnv = process.env): string[] {
+  const configured = (env.APPLE_CLIENT_IDS || '')
     .split(',')
     .map((id) => id.trim())
     .filter(Boolean)
+  if (configured.length) return configured
+  return env.SELF_HOSTED === 'false' || isBillingEnabled() ? HOSTED_DEFAULT_AUDIENCES : []
 }
+
+export const appleSignInEnabled = (): boolean => appleAudiences().length > 0
+
+/** The Services ID the browser button signs in with, or null while Apple sign-in is off. */
+export const appleWebClientId = (): string | null => appleAudiences()[0] ?? null
 
 /**
  * Verify an Apple identity token and return its claims.
@@ -69,6 +83,12 @@ export function appleAudiences(): string[] {
  * `iss`/`aud`/`exp` signed you in as any Apple user.
  */
 export async function verifyAppleToken(id_token: string): Promise<AppleJWTPayload> {
+  // Checked here, ahead of everything else, so no route can reach a verification (or an account)
+  // while the server has no Apple client of its own.
+  if (!appleSignInEnabled()) {
+    throw new AppleAuthError('Sign in with Apple is not set up on this server', 'APPLE_NOT_CONFIGURED', 403)
+  }
+
   if (!id_token || id_token.split('.').length !== 3) {
     throw new AppleAuthError('Invalid JWT token format', 'INVALID_TOKEN_FORMAT', 400)
   }

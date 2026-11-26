@@ -15,6 +15,9 @@ whatever your endpoint costs (or nothing with a local model).
 **License?** AGPL-3.0. If you modify WebBites and offer it to other people over a network, you must
 offer them your modified source.
 
+**Is there a "Continue with Apple" button?** Not until you set it up: it needs your own Apple Developer
+account. See [Sign in with Apple](configuration.md#sign-in-with-apple).
+
 **What is missing?**
 - Invite-only sign-ups (anyone who can reach the server can register).
 - An importer for boards and tags from a WebBites.io backup.
