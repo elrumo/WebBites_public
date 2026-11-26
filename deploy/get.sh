@@ -62,8 +62,25 @@ check_docker() {
   fi
   docker compose version >/dev/null 2>&1 \
     || die "'docker compose' (Compose v2) is not available. See https://docs.docker.com/compose/install/"
-  if ! docker info >/dev/null 2>&1; then
-    die "Docker is installed but this user can't reach it. Start Docker, or run this with sudo (or add yourself to the docker group)."
+  if ! DOCKER_ERR="$(docker info 2>&1 >/dev/null)"; then
+    # Two different problems look alike: the daemon is not running, or it is but this user may not use it.
+    case "$DOCKER_ERR" in
+      *ermission*denied*)
+        say "Docker is running, but this user is not allowed to use it."
+        say "Add yourself to the docker group, log out and back in, then run this again:"
+        say "  sudo usermod -aG docker \$USER"
+        say "Or run it as root:  curl -fsSL https://raw.githubusercontent.com/$REPO/master/deploy/get.sh | sudo sh"
+        ;;
+      *)
+        say "Docker is installed, but it is not running."
+        case "$(uname -s)" in
+          Linux) say "Start it, then run this again:"
+                 say "  sudo systemctl start docker" ;;
+          *)     say "Open Docker Desktop (or OrbStack, Colima...), wait until it says it is running, then run this again." ;;
+        esac
+        ;;
+    esac
+    exit 1
   fi
 }
 
